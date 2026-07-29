@@ -485,31 +485,56 @@ We believe changing the world begins by changing the way we learn.</p>
             </p>
         </div>
 
-        <form id="wonderForm">
+       <form
+    id="wonderForm"
+    name="homepage-wonder"
+    method="POST"
+    action="/question-thank-you.html"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+>
 
-            <label for="wonderName">Your name</label>
-            <input
-                id="wonderName"
-                type="text"
-                placeholder="Curious explorer"
-            >
+    <input
+        type="hidden"
+        name="form-name"
+        value="homepage-wonder"
+    >
 
-            <label for="wonderQuestion">I wonder...</label>
-            <textarea
-                id="wonderQuestion"
-                rows="5"
-                placeholder="Why do we dream? Can plants recognise each other? Why does time feel faster when we are having fun?"
-                required
-            ></textarea>
+    <p class="hidden-form-field">
+        <label>
+            Please leave this empty:
+            <input name="bot-field">
+        </label>
+    </p>
 
-            <button type="submit">
-                Send My Question ✨
-            </button>
+    <label for="wonderName">
+        Your name
+    </label>
 
-            <p id="wonderMessage"></p>
+    <input
+        id="wonderName"
+        name="name"
+        type="text"
+        placeholder="Curious explorer"
+    >
 
-        </form>
+    <label for="wonderQuestion">
+        I wonder...
+    </label>
 
+    <textarea
+        id="wonderQuestion"
+        name="question"
+        rows="5"
+        placeholder="Why do we dream? Can plants recognise each other? Why does time feel faster when we are having fun?"
+        required
+    ></textarea>
+
+    <button type="submit">
+        Send My Question ✨
+    </button>
+
+</form>
     </div>
 
 </section>
@@ -630,38 +655,90 @@ We believe changing the world begins by changing the way we learn.</p>
             </p>
 
             <div class="contact-links">
-                <a href="mailto:hello@thewonderproject.com">
-                    ✉️ Email us
-                </a>
+               <a
+    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
+>
+    ✉️ Email us
+</a>
 
-                <a href="https://www.instagram.com/" target="_blank">
-                    📸 Instagram
-                </a>
+<a
+    href="https://www.instagram.com/thewonderproject.space/"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    📸 Instagram
+</a>
             </div>
         </div>
 
-        <form>
-            <label for="name">Your name</label>
-            <input id="name" type="text" placeholder="Your name">
+        <form
+    id="contactForm"
+    name="homepage-contact"
+    method="POST"
+    action="/thank-you.html"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+>
 
-            <label for="email">Your email</label>
-            <input id="email" type="email" placeholder="you@example.com">
+    <input
+        type="hidden"
+        name="form-name"
+        value="homepage-contact"
+    >
 
-            <label for="message">Your message</label>
-            <textarea
-                id="message"
-                rows="5"
-                placeholder="What are you wondering about?"
-            ></textarea>
+    <p class="hidden-form-field">
+        <label>
+            Please leave this empty:
+            <input name="bot-field">
+        </label>
+    </p>
 
-            <button type="submit">Send your message</button>
-        </form>
+    <label for="name">
+        Your name
+    </label>
+
+    <input
+        id="name"
+        name="name"
+        type="text"
+        placeholder="Your name"
+        required
+    >
+
+    <label for="email">
+        Your email
+    </label>
+
+    <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        required
+    >
+
+    <label for="message">
+        Your message
+    </label>
+
+    <textarea
+        id="message"
+        name="message"
+        rows="5"
+        placeholder="What are you wondering about?"
+        required
+    ></textarea>
+
+    <button type="submit">
+        Send your message ✨
+    </button>
+
+</form>
 
     </div>
 
 </section>
-            <p id="formMessage"></p>
-        
+                
     </main>
 <footer>
 
@@ -689,12 +766,19 @@ We believe changing the world begins by changing the way we learn.</p>
             <h3>Connect</h3>
 
             <a href="#contact">Contact Us</a>
-            <a href="https://www.instagram.com/" target="_blank">
-                Instagram
-            </a>
-            <a href="mailto:hello@thewonderproject.com">
-                Email
-            </a>
+            <a
+    href="https://www.instagram.com/thewonderproject.space/"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Instagram
+</a>
+
+<a
+    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
+>
+    Email
+</a>
         </div>
 
     </div>
