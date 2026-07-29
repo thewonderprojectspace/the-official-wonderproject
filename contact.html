@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Contact Us | The Wonder Project</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="contact-page">
+
+    <header>
+        <nav>
+
+            <h1>✨ The Wonder Project</h1>
+
+            <div class="nav-links">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="contact.html" class="active-nav">Contact</a>
+                <a href="schools.html">Schools</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- CONTACT HERO -->
+
+        <section class="contact-hero">
+
+            <!-- Decorative bubbles -->
+
+            <div class="contact-bubble contact-bubble-one"></div>
+            <div class="contact-bubble contact-bubble-two"></div>
+            <div class="contact-bubble contact-bubble-three"></div>
+            <div class="contact-bubble contact-bubble-four"></div>
+            <div class="contact-bubble contact-bubble-five"></div>
+
+            <!-- Floating emojis -->
+
+            <span class="contact-floating contact-float-one">💌</span>
+            <span class="contact-floating contact-float-two">✨</span>
+            <span class="contact-floating contact-float-three">💭</span>
+            <span class="contact-floating contact-float-four">🌈</span>
+            <span class="contact-floating contact-float-five">💡</span>
+            <span class="contact-floating contact-float-six">🫧</span>
+
+            <div class="contact-hero-content">
+
+                <p class="contact-eyebrow">
+                    Our door is always open
+                </p>
+
+                <h1>
+                    Come say hello.
+                </h1>
+
+                <p>
+                    Have a question, an idea or something wonderfully random
+                    that has been sitting in your mind?
+                </p>
+
+                <p>
+                    We would love to hear from you.
+                </p>
+
+                <a href="#contact-options" class="contact-hero-button">
+                    Get in touch ↓
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <section
+            id="contact-options"
+            class="contact-options-section"
+        >
+
+            <div class="contact-section-heading">
+
+                <p class="contact-small-label">
+                    Choose your favourite way
+                </p>
+
+                <h2>
+                    Let’s connect.
+                </h2>
+
+                <p>
+                    Click either card below and it will take you directly
+                    to Instagram or open a new email.
+                </p>
+
+            </div>
+
+
+            <div class="contact-link-grid">
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    href="https://www.instagram.com/thewonderproject.space/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link-card instagram-contact-card"
+                    aria-label="Visit The Wonder Project on Instagram"
+                >
+
+                    <div class="contact-link-icon">
+                        📸
+                    </div>
+
+                    <div class="contact-link-text">
+
+                        <p class="contact-card-label">
+                            Follow our journey
+                        </p>
+
+                        <h3>Instagram</h3>
+
+                        <p>
+                            Find curious questions, project updates,
+                            new resources and little sparks of wonder.
+                        </p>
+
+                        <span class="contact-link-action">
+                            Visit our Instagram →
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- EMAIL -->
+
+                <a
+                    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
+                    class="contact-link-card email-contact-card"
+                    aria-label="Email The Wonder Project"
+                >
+
+                    <div class="contact-link-icon">
+                        💌
+                    </div>
+
+                    <div class="contact-link-text">
+
+                        <p class="contact-card-label">
+                            Send us a message
+                        </p>
+
+                        <h3>Email</h3>
+
+                        <p>
+                            Contact us about collaborations, schools,
+                            resources, ideas or anything you are wondering.
+                        </p>
+
+                        <span class="contact-link-action">
+                            Write an email →
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT FORM -->
+
+        <section class="contact-form-section">
+
+            <div class="contact-form-wrapper">
+
+                <div class="contact-form-intro">
+
+                    <span class="contact-form-emoji">🌻</span>
+
+                    <p class="contact-small-label">
+                        Leave us a message
+                    </p>
+
+                    <h2>
+                        What’s on your mind?
+                    </h2>
+
+                    <p>
+                        Share a question, an idea, some feedback or a possible
+                        collaboration. There are no silly messages here.
+                    </p>
+
+                    <div class="contact-prompt-box">
+
+                        <span>💡</span>
+
+                        <p>
+                            You could begin with:
+                            <strong>“I have an idea...”</strong>,
+                            <strong>“I was wondering...”</strong> or
+                            <strong>“Can we work together?”</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!--
+                    Netlify will collect these submissions.
+
+                    The action sends visitors to thank-you.html
+                    after successful submission.
+                -->
+
+                <form
+                    name="wonder-contact"
+                    method="POST"
+                    action="/thank-you.html"
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                    class="wonder-contact-form"
+                >
+
+                    <!-- Required hidden Netlify field -->
+
+                    <input
+                        type="hidden"
+                        name="form-name"
+                        value="wonder-contact"
+                    >
+
+                    <!-- Custom notification subject -->
+
+                    <input
+                        type="hidden"
+                        name="subject"
+                        value="A new message from The Wonder Project website"
+                    >
+
+                    <!-- Spam protection -->
+
+                    <p class="hidden-form-field">
+                        <label>
+                            Do not fill this out:
+                            <input name="bot-field">
+                        </label>
+                    </p>
+
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+
+                            <label for="contactName">
+                                Your name
+                            </label>
+
+                            <input
+                                id="contactName"
+                                name="name"
+                                type="text"
+                                placeholder="Curious human"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="contactEmail">
+                                Your email
+                            </label>
+
+                            <input
+                                id="contactEmail"
+                                name="email"
+                                type="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="contactRole">
+                            I am a...
+                        </label>
+
+                        <select
+                            id="contactRole"
+                            name="role"
+                        >
+
+                            <option value="">
+                                Choose one
+                            </option>
+
+                            <option value="student">
+                                Student
+                            </option>
+
+                            <option value="teacher">
+                                Teacher or educator
+                            </option>
+
+                            <option value="parent">
+                                Parent or carer
+                            </option>
+
+                            <option value="health-professional">
+                                Healthcare professional
+                            </option>
+
+                            <option value="organisation">
+                                School or organisation
+                            </option>
+
+                            <option value="curious-adult">
+                                Curious adult
+                            </option>
+
+                            <option value="other">
+                                Something else
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="contactTopic">
+                            What is your message about?
+                        </label>
+
+                        <select
+                            id="contactTopic"
+                            name="topic"
+                            required
+                        >
+
+                            <option value="">
+                                Choose a topic
+                            </option>
+
+                            <option value="question">
+                                I have a curious question
+                            </option>
+
+                            <option value="feedback">
+                                Feedback or encouragement
+                            </option>
+
+                            <option value="school">
+                                School or education enquiry
+                            </option>
+
+                            <option value="collaboration">
+                                Collaboration
+                            </option>
+
+                            <option value="resources">
+                                Books or resources
+                            </option>
+
+                            <option value="other">
+                                Something else
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="contactMessage">
+                            Your message
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            name="message"
+                            rows="7"
+                            placeholder="I was wondering..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <label class="contact-consent">
+
+                        <input
+                            type="checkbox"
+                            name="permission-to-reply"
+                            required
+                        >
+
+                        <span>
+                            I understand that The Wonder Project may reply
+                            to the email address I provided.
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="contact-submit-button"
+                    >
+                        Send My Message ✨
+                    </button>
+
+                    <p class="contact-form-note">
+                        Your message will be sent privately to
+                        The Wonder Project.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL MESSAGE -->
+
+        <section class="contact-closing-section">
+
+            <div class="contact-closing-content">
+
+                <span>🌎</span>
+
+                <h2>
+                    Every connection begins somewhere.
+                </h2>
+
+                <p>
+                    The internet helped this page reach you.
+                    Perhaps your message will help a new idea reach the world.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h2>The Wonder Project</h2>
+
+                <p>
+                    Stay curious. Ask bravely. Wonder freely.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Explore</h3>
+
+                <a href="about.html">About Us</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Connect</h3>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+                <a
+                    href="https://www.instagram.com/thewonderproject.space/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
+                >
+                    Email
+                </a>
+
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 The Wonder Project. Made with curiosity ✨
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
