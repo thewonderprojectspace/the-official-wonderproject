@@ -1,8 +1,5 @@
 const welcomeButton = document.getElementById("welcomeButton");
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
-const wonderForm = document.getElementById("wonderForm");
-const wonderMessage = document.getElementById("wonderMessage");
+
 
 /* =========================================
    RESOURCE FILTERS
@@ -38,51 +35,12 @@ filterButtons.forEach(function (button) {
 
 
 /* =========================================
-   HOMEPAGE WONDER FORM
-========================================= */
-
-if (wonderForm && wonderMessage) {
-    wonderForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        wonderMessage.textContent =
-            "Your question has entered the Wonder Universe! ✨";
-
-        wonderForm.reset();
-    });
-}
-
-
-/* =========================================
    OLD WELCOME BUTTON
 ========================================= */
 
 if (welcomeButton) {
     welcomeButton.addEventListener("click", function () {
         alert("What are you wondering about today?");
-    });
-}
-
-
-/* =========================================
-   CONTACT FORM
-========================================= */
-
-if (contactForm && formMessage) {
-    contactForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const nameInput = document.getElementById("name");
-
-        const name =
-            nameInput && nameInput.value.trim()
-                ? nameInput.value.trim()
-                : "curious explorer";
-
-        formMessage.textContent =
-            `Thank you, ${name}. Your form is working on the webpage.`;
-
-        contactForm.reset();
     });
 }
 
@@ -134,63 +92,32 @@ questionButtons.forEach(function (button) {
 });
 
 
-/* =========================================
-   QUESTION SUBMISSION FORM
-========================================= */
-
-const questionSubmissionForm =
-    document.getElementById("questionSubmissionForm");
-
-const questionFormMessage =
-    document.getElementById("questionFormMessage");
-
-if (questionSubmissionForm && questionFormMessage) {
-    questionSubmissionForm.addEventListener(
-        "submit",
-        function (event) {
-            event.preventDefault();
-
-            const submittedQuestionInput =
-                document.getElementById("submittedQuestion");
-
-            const submittedQuestion =
-                submittedQuestionInput
-                    ? submittedQuestionInput.value.trim()
-                    : "";
-
-            if (submittedQuestion === "") {
-                questionFormMessage.textContent =
-                    "Please share your question before sending it.";
-
-                return;
-            }
-
-            questionFormMessage.textContent =
-                "Your question has joined the Wonder Universe! ✨";
-
-            questionSubmissionForm.reset();
-        }
-    );
-}
 /* ======================================================
    ABOUT PAGE FLOATING EMOJIS
 ====================================================== */
 
 const aboutHero = document.querySelector(".about-hero");
-const floatingWonderItems = document.querySelectorAll(".floating-wonder");
+
+const floatingWonderItems =
+    document.querySelectorAll(".floating-wonder");
 
 if (aboutHero && floatingWonderItems.length > 0) {
 
-    aboutHero.addEventListener("mousemove", (event) => {
+    aboutHero.addEventListener("mousemove", function (event) {
 
-        const heroBounds = aboutHero.getBoundingClientRect();
+        const heroBounds =
+            aboutHero.getBoundingClientRect();
 
-        const cursorX = event.clientX - heroBounds.left;
-        const cursorY = event.clientY - heroBounds.top;
+        const cursorX =
+            event.clientX - heroBounds.left;
 
-        floatingWonderItems.forEach((item, index) => {
+        const cursorY =
+            event.clientY - heroBounds.top;
 
-            const itemBounds = item.getBoundingClientRect();
+        floatingWonderItems.forEach(function (item, index) {
+
+            const itemBounds =
+                item.getBoundingClientRect();
 
             const itemCentreX =
                 itemBounds.left -
@@ -202,8 +129,11 @@ if (aboutHero && floatingWonderItems.length > 0) {
                 heroBounds.top +
                 itemBounds.height / 2;
 
-            const distanceX = itemCentreX - cursorX;
-            const distanceY = itemCentreY - cursorY;
+            const distanceX =
+                itemCentreX - cursorX;
+
+            const distanceY =
+                itemCentreY - cursorY;
 
             const distance = Math.sqrt(
                 distanceX * distanceX +
@@ -212,10 +142,13 @@ if (aboutHero && floatingWonderItems.length > 0) {
 
             const movementRadius = 180;
 
-            if (distance < movementRadius && distance > 0) {
-
+            if (
+                distance < movementRadius &&
+                distance > 0
+            ) {
                 const movementStrength =
-                    (movementRadius - distance) / movementRadius;
+                    (movementRadius - distance) /
+                    movementRadius;
 
                 const movementAmount =
                     28 + (index % 3) * 5;
@@ -234,18 +167,16 @@ if (aboutHero && floatingWonderItems.length > 0) {
                     `translate(${moveX}px, ${moveY}px) scale(1.08)`;
 
             } else {
-
                 item.style.transform = "";
-
             }
 
         });
 
     });
 
-    aboutHero.addEventListener("mouseleave", () => {
+    aboutHero.addEventListener("mouseleave", function () {
 
-        floatingWonderItems.forEach((item) => {
+        floatingWonderItems.forEach(function (item) {
             item.style.transform = "";
         });
 
