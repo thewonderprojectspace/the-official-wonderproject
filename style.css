@@ -5088,3 +5088,754 @@ transform:scale(1);
         transform: none;
     }
 }
+/* ======================================================
+   MY WONDER SPACE
+====================================================== */
+
+.signin-page {
+    min-height: 100vh;
+    background: #fffaf7;
+}
+
+.nav-brand {
+    flex-shrink: 0;
+    padding-left: 10px;
+
+    font-family: "Fraunces", serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+
+    background: linear-gradient(
+        90deg,
+        #6d5ef9,
+        #d565c3,
+        #f3b948
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wonder-space-main {
+    min-height: 100vh;
+}
+
+.wonder-space-hero {
+    position: relative;
+
+    min-height: calc(100vh - 105px);
+
+    padding: 90px 7% 110px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(183, 232, 255, 0.75),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 87% 19%,
+            rgba(222, 203, 255, 0.75),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 82% 85%,
+            rgba(255, 215, 230, 0.78),
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 14% 85%,
+            rgba(255, 231, 177, 0.72),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #f1fbff,
+            #f8f2ff 48%,
+            #fff3f7 76%,
+            #fff9e7
+        );
+}
+
+.wonder-space-hero::before {
+    content: "";
+
+    position: absolute;
+    top: 7%;
+    left: 50%;
+
+    width: min(1250px, 91%);
+    height: 88%;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 55% 45% 48% 52% / 46% 53% 47% 54%;
+
+    background: rgba(255, 255, 255, 0.53);
+
+    transform: translateX(-50%);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 30px 80px rgba(83, 59, 121, 0.12);
+}
+
+.wonder-space-introduction {
+    position: relative;
+    z-index: 3;
+
+    width: min(760px, 100%);
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.signin-eyebrow {
+    margin-bottom: 13px;
+
+    color: #8159a4;
+
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+}
+
+.wonder-space-introduction h1 {
+    margin-bottom: 22px;
+
+    color: #3f304c;
+
+    font-family: "Fraunces", serif;
+    font-size: clamp(3rem, 7vw, 5.6rem);
+    line-height: 0.98;
+}
+
+.wonder-space-introduction h1 span {
+    display: block;
+
+    background: linear-gradient(
+        90deg,
+        #7257d5,
+        #c65fc1,
+        #ee8e79,
+        #e5b23e
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.signin-description {
+    width: min(670px, 100%);
+    margin: 0 auto;
+
+    color: #62566b;
+
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.signin-question {
+    margin-top: 28px;
+
+    color: #4d3c59;
+
+    font-family: "Fraunces", serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.wonder-role-grid {
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+
+    width: min(1020px, 100%);
+    margin: auto;
+}
+
+.wonder-role-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+
+    min-height: 215px;
+    margin: 0;
+    padding: 30px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.83);
+    color: #3d3343;
+
+    text-align: left;
+
+    box-shadow: 0 16px 38px rgba(75, 53, 102, 0.11);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.wonder-role-card:hover {
+    transform: translateY(-8px) rotate(-0.5deg);
+
+    border-color: rgba(152, 111, 206, 0.35);
+
+    box-shadow: 0 24px 48px rgba(75, 53, 102, 0.17);
+}
+
+.role-decoration {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+
+    color: rgba(94, 72, 112, 0.19);
+
+    font-family: "Fraunces", serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+}
+
+.role-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 84px;
+    height: 84px;
+
+    border-radius: 26px;
+
+    background: #f1e9ff;
+
+    font-size: 2.45rem;
+
+    transition: transform 0.3s ease;
+}
+
+.wonder-role-card:hover .role-icon {
+    transform: translateY(-6px) rotate(-6deg) scale(1.06);
+}
+
+.educator-role .role-icon {
+    background: #fff0d2;
+}
+
+.adult-role .role-icon {
+    background: #fff0dc;
+}
+
+.institution-role .role-icon {
+    background: #def4ff;
+}
+
+.role-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.role-content strong {
+    margin-bottom: 9px;
+
+    color: #44334e;
+
+    font-family: "Fraunces", serif;
+    font-size: 1.38rem;
+}
+
+.role-content small {
+    max-width: 330px;
+
+    color: #6b6270;
+
+    font-size: 0.93rem;
+    line-height: 1.65;
+}
+
+.role-action {
+    margin-top: 17px;
+
+    color: #7751a5;
+
+    font-size: 0.89rem;
+    font-weight: 800;
+}
+
+.wonder-space-note {
+    position: relative;
+    z-index: 3;
+
+    margin: 35px auto 0;
+
+    color: #74677b;
+
+    text-align: center;
+}
+
+.signin-floating-item {
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 68px;
+    height: 68px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.54);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 14px 32px rgba(80, 55, 112, 0.13);
+
+    font-size: 2rem;
+
+    pointer-events: none;
+
+    animation: signinItemFloat 6s ease-in-out infinite;
+}
+
+.signin-item-one {
+    top: 16%;
+    left: 4%;
+}
+
+.signin-item-two {
+    top: 18%;
+    right: 5%;
+    animation-delay: -1s;
+}
+
+.signin-item-three {
+    top: 50%;
+    left: 2%;
+    animation-delay: -2s;
+}
+
+.signin-item-four {
+    top: 49%;
+    right: 2%;
+    animation-delay: -3s;
+}
+
+.signin-item-five {
+    bottom: 10%;
+    left: 7%;
+    animation-delay: -1.5s;
+}
+
+.signin-item-six {
+    right: 7%;
+    bottom: 10%;
+    animation-delay: -2.5s;
+}
+
+@keyframes signinItemFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
+}
+
+
+/* ======================================================
+   SIGN-IN PANEL
+====================================================== */
+
+.wonder-login-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    background: rgba(54, 39, 67, 0.42);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.wonder-login-panel.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.wonder-login-card {
+    position: relative;
+
+    width: min(510px, 100%);
+    max-height: calc(100vh - 50px);
+    padding: 45px;
+
+    overflow-y: auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.97),
+            rgba(255, 249, 245, 0.96)
+        );
+
+    box-shadow: 0 35px 90px rgba(48, 31, 59, 0.3);
+
+    text-align: center;
+
+    transform: translateY(22px) scale(0.97);
+
+    transition: transform 0.3s ease;
+}
+
+.wonder-login-panel.open .wonder-login-card {
+    transform: translateY(0) scale(1);
+}
+
+.close-login-panel {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: #f3edf6;
+    color: #63526c;
+
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.close-login-panel:hover {
+    background: #e9dff0;
+}
+
+.selected-role-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 22px;
+
+    border-radius: 27px;
+
+    background: #f0e8ff;
+
+    font-size: 2.4rem;
+}
+
+.wonder-login-card h2 {
+    margin-bottom: 12px;
+
+    color: #46354f;
+
+    font-family: "Fraunces", serif;
+    font-size: 2.35rem;
+}
+
+.wonder-login-card > p:not(.signin-eyebrow) {
+    margin-bottom: 28px;
+
+    color: #716776;
+    line-height: 1.65;
+}
+
+#wonderLoginForm {
+    max-width: none;
+    gap: 0;
+
+    text-align: left;
+}
+
+#wonderLoginForm label {
+    display: block;
+
+    margin: 0 0 8px;
+
+    color: #55465e;
+
+    font-size: 0.9rem;
+    font-weight: 750;
+}
+
+#wonderLoginForm > input,
+.password-field {
+    margin-bottom: 18px;
+}
+
+#wonderLoginForm input[type="email"],
+#wonderLoginForm input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+
+    border: 2px solid #e9dfee;
+    border-radius: 15px;
+
+    background: white;
+
+    font: inherit;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#wonderLoginForm input:focus {
+    outline: none;
+
+    border-color: #9a72c4;
+
+    box-shadow: 0 0 0 4px rgba(154, 114, 196, 0.12);
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 55px !important;
+}
+
+.show-password-button {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    color: #665870;
+
+    transform: translateY(-50%);
+}
+
+.login-form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin: 2px 0 22px;
+}
+
+.remember-option {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0 !important;
+
+    font-weight: 500 !important;
+}
+
+.remember-option input {
+    width: auto;
+}
+
+.forgot-password-link {
+    color: #7b51a6;
+
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.wonder-login-button {
+    width: 100%;
+    margin: 0;
+    padding: 15px 22px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #7654c5,
+        #d76bbf
+    );
+
+    font-weight: 800;
+
+    box-shadow: 0 13px 28px rgba(106, 72, 161, 0.23);
+}
+
+.wonder-login-button:hover {
+    transform: translateY(-3px);
+}
+
+.login-form-message {
+    min-height: 25px;
+    margin: 14px 0 0;
+
+    color: #7651a8;
+
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.create-account-message {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-top: 23px;
+    padding-top: 22px;
+
+    border-top: 1px solid #eee5f0;
+
+    color: #716777;
+
+    font-size: 0.9rem;
+}
+
+.create-account-message a {
+    color: #7b51a6;
+
+    font-weight: 800;
+    text-decoration: none;
+}
+
+body.login-panel-open {
+    overflow: hidden;
+}
+
+
+/* ======================================================
+   WONDER SPACE RESPONSIVE DESIGN
+====================================================== */
+
+@media (max-width: 850px) {
+    .wonder-role-grid {
+        grid-template-columns: 1fr;
+        width: min(600px, 100%);
+    }
+
+    .wonder-space-hero::before {
+        height: 92%;
+    }
+}
+
+@media (max-width: 600px) {
+    .wonder-space-hero {
+        padding: 65px 18px 90px;
+    }
+
+    .wonder-space-hero::before {
+        top: 3%;
+        width: calc(100% - 20px);
+        height: 95%;
+        border-radius: 38px;
+    }
+
+    .wonder-space-introduction {
+        margin-bottom: 35px;
+    }
+
+    .wonder-space-introduction h1 {
+        font-size: clamp(2.65rem, 15vw, 4rem);
+    }
+
+    .wonder-role-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+
+        min-height: auto;
+        padding: 26px;
+
+        text-align: center;
+    }
+
+    .role-icon {
+        margin: auto;
+    }
+
+    .role-content {
+        align-items: center;
+    }
+
+    .role-content small {
+        max-width: none;
+    }
+
+    .signin-floating-item {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 16px;
+
+        font-size: 1.4rem;
+        opacity: 0.58;
+    }
+
+    .signin-item-three,
+    .signin-item-four {
+        display: none;
+    }
+
+    .wonder-login-card {
+        padding: 40px 24px 28px;
+        border-radius: 27px;
+    }
+
+    .wonder-login-card h2 {
+        font-size: 2rem;
+    }
+
+    .login-form-options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
