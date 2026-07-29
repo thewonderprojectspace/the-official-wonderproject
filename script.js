@@ -172,3 +172,83 @@ if (questionSubmissionForm && questionFormMessage) {
         }
     );
 }
+/* ======================================================
+   ABOUT PAGE FLOATING EMOJIS
+====================================================== */
+
+const aboutHero = document.querySelector(".about-hero");
+const floatingWonderItems = document.querySelectorAll(".floating-wonder");
+
+if (aboutHero && floatingWonderItems.length > 0) {
+
+    aboutHero.addEventListener("mousemove", (event) => {
+
+        const heroBounds = aboutHero.getBoundingClientRect();
+
+        const cursorX = event.clientX - heroBounds.left;
+        const cursorY = event.clientY - heroBounds.top;
+
+        floatingWonderItems.forEach((item, index) => {
+
+            const itemBounds = item.getBoundingClientRect();
+
+            const itemCentreX =
+                itemBounds.left -
+                heroBounds.left +
+                itemBounds.width / 2;
+
+            const itemCentreY =
+                itemBounds.top -
+                heroBounds.top +
+                itemBounds.height / 2;
+
+            const distanceX = itemCentreX - cursorX;
+            const distanceY = itemCentreY - cursorY;
+
+            const distance = Math.sqrt(
+                distanceX * distanceX +
+                distanceY * distanceY
+            );
+
+            const movementRadius = 180;
+
+            if (distance < movementRadius && distance > 0) {
+
+                const movementStrength =
+                    (movementRadius - distance) / movementRadius;
+
+                const movementAmount =
+                    28 + (index % 3) * 5;
+
+                const moveX =
+                    (distanceX / distance) *
+                    movementStrength *
+                    movementAmount;
+
+                const moveY =
+                    (distanceY / distance) *
+                    movementStrength *
+                    movementAmount;
+
+                item.style.transform =
+                    `translate(${moveX}px, ${moveY}px) scale(1.08)`;
+
+            } else {
+
+                item.style.transform = "";
+
+            }
+
+        });
+
+    });
+
+    aboutHero.addEventListener("mouseleave", () => {
+
+        floatingWonderItems.forEach((item) => {
+            item.style.transform = "";
+        });
+
+    });
+
+}
