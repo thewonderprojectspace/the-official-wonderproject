@@ -4211,3 +4211,508 @@ transform:scale(1);
     padding: 0;
     border: 0;
 }
+
+/* =========================================================
+   BOOKS PAGE — THE WONDER PROJECT
+   Paste this at the bottom of style.css
+========================================================= */
+
+.books-page {
+    background: #fff8ee;
+}
+
+.books-page main {
+    overflow: hidden;
+}
+
+.nav-signin-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.72rem 1.1rem;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #9a4f28;
+    border: 2px solid #f1b27f;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-signin-button:hover {
+    transform: translateY(-2px) rotate(-1deg);
+    box-shadow: 0 8px 20px rgba(133, 74, 32, 0.13);
+}
+
+.books-hero {
+    position: relative;
+    min-height: 660px;
+    display: grid;
+    place-items: center;
+    padding: 7rem 1.5rem 6rem;
+    text-align: center;
+    background:
+        radial-gradient(circle at 14% 22%, rgba(255,255,255,.85) 0 60px, transparent 62px),
+        radial-gradient(circle at 84% 28%, rgba(255,255,255,.7) 0 80px, transparent 82px),
+        linear-gradient(145deg, #ffe6c7, #ffd4aa 52%, #fff0dc);
+}
+
+.books-hero::after {
+    content: "";
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    bottom: -42px;
+    height: 85px;
+    background: #fff8ee;
+    border-radius: 50% 50% 0 0;
+}
+
+.books-hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(860px, 92%);
+}
+
+.books-eyebrow,
+.books-small-label {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    color: #9b542f;
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.books-hero h1 {
+    max-width: 850px;
+    margin: 0 auto 1.4rem;
+    color: #5d3425;
+    font-size: clamp(2.7rem, 7vw, 5.7rem);
+    line-height: 0.98;
+}
+
+.books-hero-content > p:not(.books-eyebrow) {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #704c3c;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+}
+
+.books-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.books-primary-button,
+.books-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.books-primary-button {
+    background: #934c2c;
+    color: #fff;
+    box-shadow: 0 12px 25px rgba(122, 64, 35, 0.2);
+}
+
+.books-secondary-button {
+    background: rgba(255,255,255,.75);
+    color: #7a432c;
+    border: 2px solid rgba(147,76,44,.2);
+}
+
+.books-primary-button:hover,
+.books-secondary-button:hover {
+    transform: translateY(-3px);
+}
+
+.book-float {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 26px;
+    background: rgba(255,255,255,.68);
+    box-shadow: 0 16px 35px rgba(144,80,38,.12);
+    font-size: 2rem;
+    animation: booksFloat 5s ease-in-out infinite;
+}
+
+.book-float-one { top: 18%; left: 8%; transform: rotate(-10deg); }
+.book-float-two { top: 58%; left: 12%; animation-delay: .7s; }
+.book-float-three { top: 17%; right: 10%; animation-delay: 1.2s; }
+.book-float-four { top: 62%; right: 8%; animation-delay: 1.8s; }
+.book-float-five { bottom: 10%; left: 46%; animation-delay: 2.2s; }
+
+@keyframes booksFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -14px; }
+}
+
+.library-intro-section,
+.learning-paths-section,
+.my-books-section,
+.blog-reading-section,
+.progress-preview-section,
+.library-ending-section {
+    padding: 5.5rem 1.5rem;
+}
+
+.library-intro-card,
+.progress-preview-card {
+    width: min(1160px, 100%);
+    margin: 0 auto;
+}
+
+.library-intro-card {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr;
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: 38px;
+    background: #fff;
+    box-shadow: 0 20px 55px rgba(116, 74, 44, 0.09);
+}
+
+.library-intro-card h2,
+.section-heading-centred h2,
+.section-heading-split h2,
+.progress-preview-copy h2,
+.library-ending-card h2 {
+    color: #5d3425;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.1;
+}
+
+.library-intro-card p,
+.section-heading-centred p,
+.section-heading-split > p,
+.progress-preview-copy p,
+.library-ending-card p {
+    color: #70564a;
+    line-height: 1.8;
+}
+
+.library-intro-quote {
+    padding: 2rem;
+    border-radius: 28px;
+    background: #fff0d8;
+    transform: rotate(2deg);
+}
+
+.library-intro-quote span {
+    font-size: 2rem;
+}
+
+.library-intro-quote p {
+    margin: .8rem 0 0;
+    color: #7b4a2e;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.section-heading-centred {
+    width: min(760px, 100%);
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.learning-path-grid,
+.blog-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.3rem;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+.learning-path-card {
+    position: relative;
+    min-height: 435px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 32px;
+    border: 2px solid rgba(255,255,255,.8);
+    box-shadow: 0 18px 40px rgba(106, 72, 46, 0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.learning-path-card:hover {
+    transform: translateY(-8px) rotate(-.5deg);
+    box-shadow: 0 26px 55px rgba(106, 72, 46, 0.14);
+}
+
+.path-junior { background: #fff0b9; }
+.path-teen { background: #dceeff; }
+.path-beyond { background: #eadfff; }
+.path-educator { background: #dff3df; }
+
+.path-icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 1.4rem;
+    border-radius: 22px;
+    background: rgba(255,255,255,.72);
+    font-size: 2rem;
+}
+
+.path-age,
+.book-type,
+.blog-tag {
+    color: #8b5b42;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.learning-path-card h3,
+.book-showcase-copy h3,
+.blog-card h3 {
+    margin: .35rem 0 .75rem;
+    color: #52382c;
+    font-size: 1.55rem;
+}
+
+.learning-path-card > p:not(.path-age),
+.learning-path-card li,
+.book-showcase-copy p,
+.blog-card p {
+    color: #6b574d;
+    line-height: 1.65;
+}
+
+.learning-path-card ul {
+    margin: 1rem 0 1.4rem 1.15rem;
+    padding: 0;
+}
+
+.learning-path-card a,
+.blog-card a {
+    margin-top: auto;
+    color: #72452f;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.my-books-section {
+    background: #fff0dd;
+}
+
+.section-heading-split {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 3rem;
+    align-items: end;
+    width: min(1180px, 100%);
+    margin: 0 auto 3rem;
+}
+
+.book-showcase-grid {
+    display: grid;
+    gap: 1.35rem;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+}
+
+.book-showcase-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.4rem;
+    border-radius: 34px;
+    background: #fff;
+    box-shadow: 0 18px 45px rgba(105, 68, 40, .08);
+}
+
+.book-cover-placeholder {
+    min-height: 285px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.35);
+}
+
+.book-cover-placeholder span { font-size: 4rem; }
+.book-cover-placeholder small { margin-top: .6rem; font-weight: 700; }
+.microbiology-cover { background: linear-gradient(145deg, #5f8274, #a8cdb6); }
+.stethoscope-cover { background: linear-gradient(145deg, #815d8f, #cbb2d3); }
+.coming-cover { background: linear-gradient(145deg, #dc8c52, #f4c090); }
+
+.book-showcase-copy {
+    padding-right: 2rem;
+}
+
+.book-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.book-link-row a {
+    color: #8b4d2f;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.blog-reading-section {
+    background: #fffaf4;
+}
+
+.blog-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    padding: 2rem;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(105, 68, 40, .08);
+    transition: transform .2s ease;
+}
+
+.blog-card:nth-child(1) { transform: rotate(-1deg); }
+.blog-card:nth-child(2) { transform: translateY(14px) rotate(1deg); }
+.blog-card:nth-child(3) { transform: rotate(-.5deg); }
+.blog-card:hover { transform: translateY(-7px) rotate(0); }
+.blog-emoji { font-size: 2.4rem; margin-bottom: 1rem; }
+
+.view-all-wrap {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.progress-preview-section {
+    background: #ffe5c7;
+}
+
+.progress-preview-card {
+    display: grid;
+    grid-template-columns: 1fr .9fr;
+    gap: 3rem;
+    align-items: center;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: 40px;
+    background: rgba(255,255,255,.78);
+    box-shadow: 0 22px 55px rgba(117, 74, 42, .12);
+}
+
+.progress-role-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-top: 1.5rem;
+}
+
+.progress-role-buttons a {
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #7d492e;
+    text-decoration: none;
+    font-weight: 800;
+    border: 1px solid #edc9a9;
+}
+
+.mini-dashboard {
+    padding: 1.6rem;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(86, 63, 45, .13);
+    transform: rotate(1deg);
+}
+
+.dashboard-top,
+.dashboard-item,
+.dashboard-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashboard-top {
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #e5c8b0;
+    color: #5d3425;
+    font-weight: 800;
+}
+
+.dashboard-item { margin-top: 1.4rem; color: #60483c; }
+.dashboard-item small { display: block; color: #947d70; margin-top: .2rem; }
+.progress-line { height: 12px; margin-top: .7rem; overflow: hidden; border-radius: 999px; background: #f6e6d8; }
+.progress-line span { display: block; height: 100%; border-radius: inherit; background: #df8e55; }
+.dashboard-badge-row { margin-top: 1.7rem; flex-wrap: wrap; }
+.dashboard-badge-row span { padding: .65rem .8rem; border-radius: 14px; background: #fff1c9; font-size: .85rem; font-weight: 700; }
+
+.library-ending-section {
+    text-align: center;
+}
+
+.library-ending-card {
+    width: min(850px, 100%);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem);
+    border-radius: 48px 48px 110px 48px;
+    background: #fff;
+    box-shadow: 0 20px 55px rgba(117, 74, 42, .08);
+}
+
+.ending-spark { font-size: 3rem; }
+.library-ending-card p { max-width: 680px; margin: 1rem auto 1.8rem; }
+
+@media (max-width: 1000px) {
+    .learning-path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .library-intro-card,
+    .section-heading-split,
+    .progress-preview-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+    .books-hero { min-height: auto; padding-top: 5rem; }
+    .book-float { width: 56px; height: 56px; border-radius: 18px; font-size: 1.5rem; opacity: .75; }
+    .book-float-one { left: 2%; }
+    .book-float-two { left: 5%; }
+    .book-float-three { right: 3%; }
+    .book-float-four { right: 3%; }
+    .book-float-five { display: none; }
+
+    .learning-path-grid,
+    .blog-card-grid { grid-template-columns: 1fr; }
+
+    .book-showcase-card { grid-template-columns: 1fr; }
+    .book-cover-placeholder { min-height: 240px; }
+    .book-showcase-copy { padding: .4rem; }
+
+    .blog-card:nth-child(n) { transform: none; }
+    .progress-role-buttons { flex-direction: column; }
+    .progress-role-buttons a { text-align: center; }
+}
