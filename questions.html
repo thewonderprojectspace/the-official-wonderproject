@@ -546,7 +546,27 @@ If a hive becomes flooded by very heavy rain or rising water, it can be dangerou
 
                 </div>
 
-                <form id="questionSubmissionForm">
+               <form
+    id="questionSubmissionForm"
+    name="curious-questions"
+    method="POST"
+    action="/question-thank-you.html"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+>
+
+    <input
+        type="hidden"
+        name="form-name"
+        value="curious-questions"
+    >
+
+    <p class="hidden-form-field">
+        <label>
+            Do not fill this in:
+            <input name="bot-field">
+        </label>
+    </p>
 
                     <label for="questionName">
                         Your name or nickname
