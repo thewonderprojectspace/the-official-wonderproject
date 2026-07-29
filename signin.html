@@ -1,1 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Wonder Space | The Wonder Project</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="signin-page">
+
+    <header>
+        <nav>
+
+            <a href="index.html" class="nav-brand">
+                ✨ The Wonder Project
+            </a>
+
+            <button
+                class="mobile-menu-button"
+                type="button"
+                aria-label="Open navigation"
+                aria-expanded="false"
+                aria-controls="mainNavigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="mainNavigation">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="schools.html">Schools</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <a
+                href="signin.html"
+                class="wonder-space-link active-wonder-space"
+            >
+                <span aria-hidden="true">🌟</span>
+                My Wonder Space
+            </a>
+
+        </nav>
+    </header>
+
+    <main class="wonder-space-main">
+
+        <section class="wonder-space-hero">
+
+            <span class="signin-floating-item signin-item-one">
+                ✏️
+            </span>
+
+            <span class="signin-floating-item signin-item-two">
+                💭
+            </span>
+
+            <span class="signin-floating-item signin-item-three">
+                📚
+            </span>
+
+            <span class="signin-floating-item signin-item-four">
+                🔬
+            </span>
+
+            <span class="signin-floating-item signin-item-five">
+                🌈
+            </span>
+
+            <span class="signin-floating-item signin-item-six">
+                🧠
+            </span>
+
+            <div class="wonder-space-introduction">
+
+                <p class="signin-eyebrow">
+                    Welcome back, curious human
+                </p>
+
+                <h1>
+                    Enter Your
+                    <span>Wonder Space</span>
+                </h1>
+
+                <p class="signin-description">
+                    Your Wonder Space is a place to explore learning,
+                    save discoveries and return to ideas that made you
+                    stop and think.
+                </p>
+
+                <p class="signin-question">
+                    Who is exploring today?
+                </p>
+
+            </div>
+
+            <div class="wonder-role-grid">
+
+                <button
+                    class="wonder-role-card student-role"
+                    type="button"
+                    data-role="student"
+                >
+                    <span class="role-decoration">01</span>
+
+                    <span class="role-icon">🎒</span>
+
+                    <span class="role-content">
+                        <strong>I am a student</strong>
+
+                        <small>
+                            Explore activities, questions, books and
+                            learning adventures.
+                        </small>
+
+                        <span class="role-action">
+                            Enter student space →
+                        </span>
+                    </span>
+                </button>
+
+                <button
+                    class="wonder-role-card educator-role"
+                    type="button"
+                    data-role="educator"
+                >
+                    <span class="role-decoration">02</span>
+
+                    <span class="role-icon">🍎</span>
+
+                    <span class="role-content">
+                        <strong>I am an educator</strong>
+
+                        <small>
+                            Discover classroom resources, teaching ideas
+                            and future progress tools.
+                        </small>
+
+                        <span class="role-action">
+                            Enter educator space →
+                        </span>
+                    </span>
+                </button>
+
+                <button
+                    class="wonder-role-card adult-role"
+                    type="button"
+                    data-role="adult"
+                >
+                    <span class="role-decoration">03</span>
+
+                    <span class="role-icon">🌻</span>
+
+                    <span class="role-content">
+                        <strong>I am a curious adult</strong>
+
+                        <small>
+                            Rediscover your spark through stories,
+                            questions and lifelong learning.
+                        </small>
+
+                        <span class="role-action">
+                            Enter adult space →
+                        </span>
+                    </span>
+                </button>
+
+                <button
+                    class="wonder-role-card institution-role"
+                    type="button"
+                    data-role="institution"
+                >
+                    <span class="role-decoration">04</span>
+
+                    <span class="role-icon">🏫</span>
+
+                    <span class="role-content">
+                        <strong>We are a school or university</strong>
+
+                        <small>
+                            Learn about memberships, learner progress and
+                            institutional access.
+                        </small>
+
+                        <span class="role-action">
+                            Explore institution access →
+                        </span>
+                    </span>
+                </button>
+
+            </div>
+
+            <p class="wonder-space-note">
+                ✨ Full accounts and saved progress are coming soon.
+                You can still begin exploring today.
+            </p>
+
+        </section>
+
+        <section
+            class="wonder-login-panel"
+            id="wonderLoginPanel"
+            aria-hidden="true"
+        >
+
+            <div class="wonder-login-card">
+
+                <button
+                    class="close-login-panel"
+                    id="closeLoginPanel"
+                    type="button"
+                    aria-label="Close sign-in form"
+                >
+                    ×
+                </button>
+
+                <div class="selected-role-icon" id="selectedRoleIcon">
+                    🌟
+                </div>
+
+                <p class="signin-eyebrow" id="selectedRoleLabel">
+                    My Wonder Space
+                </p>
+
+                <h2 id="selectedRoleTitle">
+                    Welcome back
+                </h2>
+
+                <p id="selectedRoleDescription">
+                    Enter your details to continue your journey.
+                </p>
+
+                <form id="wonderLoginForm">
+
+                    <label for="wonderEmail">
+                        Email address
+                    </label>
+
+                    <input
+                        id="wonderEmail"
+                        name="email"
+                        type="email"
+                        placeholder="curious@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <label for="wonderPassword">
+                        Password
+                    </label>
+
+                    <div class="password-field">
+
+                        <input
+                            id="wonderPassword"
+                            name="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            class="show-password-button"
+                            id="showPasswordButton"
+                            type="button"
+                            aria-label="Show password"
+                        >
+                            👀
+                        </button>
+
+                    </div>
+
+                    <div class="login-form-options">
+
+                        <label class="remember-option">
+                            <input
+                                type="checkbox"
+                                name="remember"
+                            >
+
+                            <span>Remember me</span>
+                        </label>
+
+                        <a href="#" class="forgot-password-link">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <button
+                        class="wonder-login-button"
+                        type="submit"
+                    >
+                        Continue My Journey ✨
+                    </button>
+
+                    <p
+                        class="login-form-message"
+                        id="loginFormMessage"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+                <div class="create-account-message">
+
+                    <span>New to The Wonder Project?</span>
+
+                    <a href="contact.html">
+                        Join the waiting list
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h2>The Wonder Project</h2>
+
+                <p>
+                    A world where curiosity never has to grow up.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Explore</h3>
+
+                <a href="about.html">About Us</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Connect</h3>
+
+                <a href="contact.html">Contact Us</a>
+                <a href="schools.html">Schools</a>
+                <a href="signin.html">My Wonder Space</a>
+
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 The Wonder Project. Made with curiosity ✨
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
