@@ -11,45 +11,30 @@
 
 <body>
 
-    <header>
-    <nav>
+    <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" class="site-logo">✨ The Wonder Project</a>
 
-        <h1>✨ The Wonder Project</h1>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainNavigation">
+            <span class="sr-only">Open navigation</span>
+            <span></span><span></span><span></span>
+        </button>
 
-        <div class="nav-links">
-            <!-- Add this inside your <nav>, after the .nav-links div -->
-<a href="signin.html" class="nav-signin-button">Sign In ✨</a>
-
-<!-- Optional welcoming sign-in section for index.html -->
-<section class="home-signin-strip">
-    <div class="home-signin-copy">
-        <p class="books-small-label">Your wonder trail starts here</p>
-        <h2>Learn, save your progress and return anytime.</h2>
-        <p>
-            Students, educators and curious adults can each enter through their own simple pathway.
-        </p>
-    </div>
-
-    <div class="home-signin-options">
-        <a href="signin.html?role=student">🎒 Student</a>
-        <a href="signin.html?role=educator">🍎 Educator</a>
-        <a href="signin.html?role=adult">🌟 Adult learner</a>
-    </div>
-</section>
-         <a href="index.html" class="active-nav">
-     Start Here
-</a>
-            <a href="about.html"> About</a>
-            <a href="books.html"> Books</a>
-            <a href="resources.html"> Explore</a>
-            <a href="questions.html"> Wonder</a>
-            <a href="contact.html"> Contact</a>
-            <a href="schools.html"> Schools</a>
+        <div class="nav-links" id="mainNavigation">
+            <a href="index.html" class="active-nav">Start Here</a>
+            <a href="about.html">About</a>
+            <a href="books.html">Books</a>
+            <a href="resources.html">Explore</a>
+            <a href="questions.html">Wonder</a>
+            <a href="schools.html">Schools</a>
+            <a href="contact.html">Contact</a>
         </div>
 
+        <a href="signin.html" class="wonder-space-link">
+            <span aria-hidden="true">🌟</span> My Wonder Space
+        </a>
     </nav>
-
-    </header>
+</header>
 
   <main>
 
@@ -60,28 +45,22 @@
 <div class="floating-emoji emoji-four">📚</div>
 <div class="floating-emoji emoji-five">🌈</div>
 <div class="floating-emoji emoji-six">❓</div>
-        <div class="overlay">
-<p class="eyebrow">Welcome to</p>
+        <div class="overlay hero-card">
+            <p class="eyebrow">Welcome to a world where curiosity never grows up</p>
 
-            <h1>The Wonder Project</h1>
+            <h1>Keep your wonder.<br>Grow your world.</h1>
 
             <p class="hero-tagline">
-                Where curiosity is protected, questions are celebrated,
-                and learning becomes magical!
+                A colourful home for children, students, educators, professionals,
+                and every adult finding their spark again.
             </p>
 
-            <p class="hero-intro">
-               Every extraordinary discovery begins with a simple thought
-            </p>
+            <div class="hero-actions">
+                <a href="#start-wondering" class="hero-button">Start Wondering ✨</a>
+                <a href="about.html" class="hero-secondary-button">Why we are here →</a>
+            </div>
 
-            <p class="wonder-quote">
-                “I wonder if...”
-            </p>
-
-        <a href="#start-wondering" class="hero-button">
-    Start Wondering
-</a>
-
+            <p class="hero-note">Serious learning can still feel joyful.</p>
         </div>
 
     </section>
