@@ -468,3 +468,283 @@ currentYearElements.forEach(function (element) {
     element.textContent =
         new Date().getFullYear();
 });
+/* ======================================================
+   MY WONDER SPACE
+====================================================== */
+
+const roleCards =
+    document.querySelectorAll(".wonder-role-card");
+
+const loginPanel =
+    document.getElementById("wonderLoginPanel");
+
+const closeLoginPanel =
+    document.getElementById("closeLoginPanel");
+
+const selectedRoleIcon =
+    document.getElementById("selectedRoleIcon");
+
+const selectedRoleLabel =
+    document.getElementById("selectedRoleLabel");
+
+const selectedRoleTitle =
+    document.getElementById("selectedRoleTitle");
+
+const selectedRoleDescription =
+    document.getElementById("selectedRoleDescription");
+
+const wonderLoginForm =
+    document.getElementById("wonderLoginForm");
+
+const loginFormMessage =
+    document.getElementById("loginFormMessage");
+
+const showPasswordButton =
+    document.getElementById("showPasswordButton");
+
+const wonderPassword =
+    document.getElementById("wonderPassword");
+
+
+const roleInformation = {
+    student: {
+        icon: "🎒",
+        label: "Student Wonder Space",
+        title: "Ready for another adventure?",
+        description:
+            "Sign in to continue exploring your activities, questions and learning discoveries."
+    },
+
+    educator: {
+        icon: "🍎",
+        label: "Educator Wonder Space",
+        title: "Welcome back, educator",
+        description:
+            "Sign in to explore teaching resources, classroom ideas and future progress tools."
+    },
+
+    adult: {
+        icon: "🌻",
+        label: "Curious Adult Wonder Space",
+        title: "Your curiosity belongs here",
+        description:
+            "Sign in to return to the stories, questions and ideas that helped you rediscover your spark."
+    },
+
+    institution: {
+        icon: "🏫",
+        label: "Institution Wonder Space",
+        title: "Welcome, curious community",
+        description:
+            "Institution accounts and learner progress tools are currently being developed."
+    }
+};
+
+
+function openWonderLogin(role) {
+    if (!loginPanel) {
+        return;
+    }
+
+    const roleDetails =
+        roleInformation[role] ||
+        roleInformation.student;
+
+    if (selectedRoleIcon) {
+        selectedRoleIcon.textContent =
+            roleDetails.icon;
+    }
+
+    if (selectedRoleLabel) {
+        selectedRoleLabel.textContent =
+            roleDetails.label;
+    }
+
+    if (selectedRoleTitle) {
+        selectedRoleTitle.textContent =
+            roleDetails.title;
+    }
+
+    if (selectedRoleDescription) {
+        selectedRoleDescription.textContent =
+            roleDetails.description;
+    }
+
+    if (wonderLoginForm) {
+        wonderLoginForm.dataset.role = role;
+    }
+
+    if (loginFormMessage) {
+        loginFormMessage.textContent = "";
+    }
+
+    loginPanel.classList.add("open");
+
+    loginPanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.classList.add(
+        "login-panel-open"
+    );
+
+    const emailField =
+        document.getElementById("wonderEmail");
+
+    if (emailField) {
+        window.setTimeout(function () {
+            emailField.focus();
+        }, 250);
+    }
+}
+
+
+function closeWonderLogin() {
+    if (!loginPanel) {
+        return;
+    }
+
+    loginPanel.classList.remove("open");
+
+    loginPanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.classList.remove(
+        "login-panel-open"
+    );
+}
+
+
+roleCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+        const selectedRole =
+            card.dataset.role;
+
+        if (selectedRole === "institution") {
+            window.location.href =
+                "schools.html";
+
+            return;
+        }
+
+        openWonderLogin(selectedRole);
+    });
+});
+
+
+if (closeLoginPanel) {
+    closeLoginPanel.addEventListener(
+        "click",
+        closeWonderLogin
+    );
+}
+
+
+if (loginPanel) {
+    loginPanel.addEventListener(
+        "click",
+        function (event) {
+            if (event.target === loginPanel) {
+                closeWonderLogin();
+            }
+        }
+    );
+}
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+        if (
+            event.key === "Escape" &&
+            loginPanel &&
+            loginPanel.classList.contains("open")
+        ) {
+            closeWonderLogin();
+        }
+    }
+);
+
+
+if (
+    showPasswordButton &&
+    wonderPassword
+) {
+    showPasswordButton.addEventListener(
+        "click",
+        function () {
+            const passwordIsHidden =
+                wonderPassword.type === "password";
+
+            wonderPassword.type =
+                passwordIsHidden
+                    ? "text"
+                    : "password";
+
+            showPasswordButton.textContent =
+                passwordIsHidden
+                    ? "🙈"
+                    : "👀";
+
+            showPasswordButton.setAttribute(
+                "aria-label",
+                passwordIsHidden
+                    ? "Hide password"
+                    : "Show password"
+            );
+        }
+    );
+}
+
+
+if (wonderLoginForm) {
+    wonderLoginForm.addEventListener(
+        "submit",
+        function (event) {
+            event.preventDefault();
+
+            const selectedRole =
+                wonderLoginForm.dataset.role ||
+                "student";
+
+            if (loginFormMessage) {
+                loginFormMessage.textContent =
+                    "Your Wonder Space account system is coming soon ✨";
+            }
+
+            /*
+             * Later, this section will connect to your
+             * real login system using Firebase, Supabase
+             * or another secure authentication provider.
+             */
+
+            console.log(
+                "Selected Wonder Space role:",
+                selectedRole
+            );
+        }
+    );
+}
+
+
+/* Open a role automatically from links such as:
+   signin.html?role=educator
+*/
+
+const wonderPageParameters =
+    new URLSearchParams(window.location.search);
+
+const requestedWonderRole =
+    wonderPageParameters.get("role");
+
+if (
+    requestedWonderRole &&
+    roleInformation[requestedWonderRole]
+) {
+    window.setTimeout(function () {
+        openWonderLogin(requestedWonderRole);
+    }, 450);
+}
