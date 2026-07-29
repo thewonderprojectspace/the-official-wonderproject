@@ -4716,3 +4716,54 @@ transform:scale(1);
     .progress-role-buttons { flex-direction: column; }
     .progress-role-buttons a { text-align: center; }
 }
+
+/* Add this to style.css if you use the homepage sign-in strip */
+.home-signin-strip {
+    width: min(1160px, calc(100% - 3rem));
+    margin: 4rem auto;
+    padding: 2.2rem;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 2rem;
+    align-items: center;
+    border-radius: 34px;
+    background: #ffe5c7;
+    box-shadow: 0 18px 45px rgba(112, 70, 40, .09);
+}
+
+.home-signin-copy h2 {
+    margin: .3rem 0 .7rem;
+    color: #5d3425;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.home-signin-copy p {
+    color: #70564a;
+    line-height: 1.7;
+}
+
+.home-signin-options {
+    display: grid;
+    gap: .8rem;
+}
+
+.home-signin-options a {
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.85);
+    color: #75452e;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease;
+}
+
+.home-signin-options a:hover {
+    transform: translateX(6px);
+}
+
+@media (max-width: 760px) {
+    .home-signin-strip {
+        grid-template-columns: 1fr;
+        width: min(100% - 2rem, 1160px);
+    }
+}
