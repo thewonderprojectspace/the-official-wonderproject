@@ -464,44 +464,39 @@
 
         .universe-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
         }
 
         .universe-card {
             position: relative;
-            min-height: 330px;
+            min-height: 440px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            grid-column: span 4;
             overflow: hidden;
-            padding: 1.5rem;
-            background: linear-gradient(145deg, rgba(20,30,67,.9), rgba(8,13,33,.92));
+            padding: 1.35rem;
+            background: linear-gradient(145deg, rgba(20,30,67,.92), rgba(8,13,33,.96));
             border: 1px solid var(--line);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             isolation: isolate;
-            transition: transform .35s ease, border-color .35s ease;
-        }
-
-        .universe-card:nth-child(1),
-        .universe-card:nth-child(6) {
-            grid-column: span 6;
+            transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
         }
 
         .universe-card:hover,
         .universe-card:focus-within {
             transform: translateY(-8px);
             border-color: rgba(185,167,255,.48);
+            box-shadow: 0 28px 80px rgba(0,0,0,.48), 0 0 34px var(--glow, rgba(142,117,255,.18));
         }
 
         .planet {
-            position: absolute;
-            top: 20px;
-            right: 22px;
-            width: 122px;
+            position: relative;
+            width: 118px;
             aspect-ratio: 1;
+            flex: 0 0 auto;
+            align-self: center;
+            margin: .25rem auto 1.35rem;
             border-radius: 50%;
             background: var(--planet, linear-gradient(135deg, #9678ff, #4b387f));
             box-shadow: 0 0 44px var(--glow, rgba(142,117,255,.26));
@@ -509,17 +504,20 @@
         }
 
         .universe-card:hover .planet {
-            transform: rotate(12deg) scale(1.06);
+            transform: rotate(8deg) scale(1.06);
         }
 
         .planet::before {
             content: "";
             position: absolute;
-            inset: 45% -28%;
-            border: 9px solid rgba(237,232,255,.32);
+            left: 50%;
+            top: 50%;
+            width: 150%;
+            height: 34%;
+            border: 8px solid rgba(237,232,255,.32);
             border-top-color: transparent;
             border-radius: 50%;
-            transform: rotate(-15deg);
+            transform: translate(-50%, -50%) rotate(-15deg);
         }
 
         .universe-card::after {
@@ -527,20 +525,24 @@
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: radial-gradient(circle at 85% 15%, var(--mist, rgba(142,117,255,.2)), transparent 40%);
+            background: radial-gradient(circle at 50% 18%, var(--mist, rgba(142,117,255,.2)), transparent 38%);
         }
 
         .universe-card h3 {
-            max-width: 74%;
-            margin-bottom: .55rem;
-            font-size: clamp(1.45rem, 2.3vw, 2.1rem);
-            line-height: 1.05;
+            max-width: none;
+            margin-bottom: .6rem;
+            font-size: clamp(1.45rem, 2vw, 1.9rem);
+            line-height: 1.08;
             letter-spacing: -.035em;
         }
 
         .universe-card p {
-            max-width: 90%;
+            max-width: none;
             color: var(--muted);
+        }
+
+        .universe-card .universe-meta {
+            margin-top: auto;
         }
 
         .universe-meta {
@@ -1108,6 +1110,26 @@
             .reveal {
                 opacity: 1;
                 transform: none;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            .universe-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 680px) {
+            .universe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .universe-card {
+                min-height: 410px;
+            }
+
+            .planet {
+                width: 105px;
             }
         }
     </style>
