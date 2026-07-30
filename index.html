@@ -12,30 +12,47 @@
 <body>
 
     <header class="site-header">
-    <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html" class="site-logo">✨ The Wonder Project</a>
+    <nav class="navbar">
 
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainNavigation">
-            <span class="sr-only">Open navigation</span>
-            <span></span><span></span><span></span>
-        </button>
+        <a href="index.html" class="site-logo">
+            <span class="logo-spark">✦</span>
+            The Wonder Project
+        </a>
 
-        <div class="nav-links" id="mainNavigation">
-            <a href="index.html" class="active-nav">Start Here</a>
+        <div class="nav-actions">
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+          <a href="wonder-space.html" class="wonder-space-btn">
+    ✨ Wonder Space
+</a>
+
+        </div>
+
+        <div class="nav-links" id="mobileMenu">
+            <a href="index.html">Start Here</a>
             <a href="about.html">About</a>
             <a href="books.html">Books</a>
             <a href="resources.html">Explore</a>
             <a href="questions.html">Wonder</a>
+            <a href="blog.html">Blog</a>
             <a href="schools.html">Schools</a>
             <a href="contact.html">Contact</a>
         </div>
 
-        <a href="signin.html" class="wonder-space-link">
-            <span aria-hidden="true">🌟</span> My Wonder Space
-        </a>
     </nav>
 </header>
-
   <main>
 
     <section id="home" class="hero">
