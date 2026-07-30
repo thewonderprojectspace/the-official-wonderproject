@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Wonder Project is a joyful universe for students, educators, professionals, schools and adults rediscovering their curiosity.">
+    <title>The Wonder Project | Enter the Wonderverse</title>
+    <!-- Shared styles used across the rest of the website -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Dark Wonderverse homepage overrides -->
+    <link rel="stylesheet" href="wonderverse-home.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to the Wonderverse</a>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="site-logo">
+                <span class="logo-orbit">✦</span>
+                <span>The Wonder Project</span>
+            </a>
+
+            <div class="nav-links" id="mobileMenu">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="blog.html">Blog</a>
+                <a href="schools.html">Schools</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="sign-in.html" class="sign-in-btn">Sign in</a>
+                <a href="wonder-space.html" class="wonder-space-btn">✨ Wonder Space</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="hero">
+            <div class="shooting-star" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">Transmission received · Welcome, traveller</p>
+                    <h1>There is a whole <span>universe in you.</span></h1>
+                    <p class="hero-tagline">
+                        Enter a gentle world for curious students, brave educators, imaginative professionals,
+                        wandering adults and anyone ready to feel alive, try again and enjoy becoming.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#universes" class="hero-button">Explore the universes ✦</a>
+                        <a href="sign-in.html" class="hero-secondary-button">Enter your Wonder Space →</a>
+                    </div>
+
+                    <p class="hero-note">You never have to choose only one world. Wonder is allowed to be wonderfully messy.</p>
+                </div>
+
+                <div class="moon-stage" aria-hidden="true">
+                    <div class="tiny-orbit"></div>
+                    <div class="moon"></div>
+                    <div class="astronaut-note">“You are not behind. You are simply arriving at your next beginning.”</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="identity-strip" aria-label="Who The Wonder Project is for">
+            <div class="identity-list">
+                <span class="identity-pill">🎒 Students</span>
+                <span class="identity-pill">👩‍🏫 Educators</span>
+                <span class="identity-pill">🧠 Curious adults</span>
+                <span class="identity-pill">🩺 Future doctors</span>
+                <span class="identity-pill">🎨 Creators</span>
+                <span class="identity-pill">🔬 Researchers</span>
+                <span class="identity-pill">💼 Professionals</span>
+                <span class="identity-pill">🌱 People beginning again</span>
+                <span class="identity-pill">🏫 Schools</span>
+            </div>
+        </div>
+
+        <section id="universes" class="section-shell">
+            <div class="section-heading center reveal">
+                <p class="section-label">Choose your worlds</p>
+                <h2>Which universes are calling you?</h2>
+                <p>
+                    Each universe is a different part of life: learning, creating, recovering, trying,
+                    failing, dreaming and doing. Join as many as you like and build a Wonder Space that feels like you.
+                </p>
+            </div>
+
+            <div class="universe-grid">
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#fff5c7,#d8b46c);--glow:rgba(255,229,166,.35);--mist:rgba(255,229,166,.17)">
+                    <div class="planet"></div>
+                    <h3>The Moon of Beginnings</h3>
+                    <p>For slow restarts, tiny promises and the brave first step after losing your spark.</p>
+                    <div class="universe-meta"><span>Gentle goals</span><span>Daily wonder</span><span>Reflection</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Begin here →</a>
+                        <button class="join-universe" data-universe="Moon of Beginnings" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#9d87ff,#5142a0);--glow:rgba(157,135,255,.35);--mist:rgba(157,135,255,.18)">
+                    <div class="planet"></div>
+                    <h3>The Questionarium</h3>
+                    <p>A galaxy of odd thoughts, impossible questions and wonderfully unfinished answers.</p>
+                    <div class="universe-meta"><span>Big questions</span><span>Mysteries</span><span>Curiosity</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="questions.html">Start wondering →</a>
+                        <button class="join-universe" data-universe="The Questionarium" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#79efe0,#247f91);--glow:rgba(124,232,223,.32);--mist:rgba(124,232,223,.16)">
+                    <div class="planet"></div>
+                    <h3>Discovery Nebula</h3>
+                    <p>Science, medicine, maths and the strange little systems holding our universe together.</p>
+                    <div class="universe-meta"><span>Science</span><span>Medicine</span><span>Maths</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Investigate →</a>
+                        <button class="join-universe" data-universe="Discovery Nebula" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffacd7,#9e4f98);--glow:rgba(255,159,208,.3);--mist:rgba(255,159,208,.15)">
+                    <div class="planet"></div>
+                    <h3>The Dream Forge</h3>
+                    <p>Turn “one day” into today through tiny missions, imperfect action and cheerful persistence.</p>
+                    <div class="universe-meta"><span>Goals</span><span>Action</span><span>Momentum</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Build something →</a>
+                        <button class="join-universe" data-universe="The Dream Forge" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffcd70,#cf684d);--glow:rgba(255,205,112,.3);--mist:rgba(255,205,112,.15)">
+                    <div class="planet"></div>
+                    <h3>Oops! Observatory</h3>
+                    <p>A celebration of experiments, wrong turns, funny failures and everything they teach us.</p>
+                    <div class="universe-meta"><span>Failure quests</span><span>Resilience</span><span>Try again</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="blog.html">Meet the mistakes →</a>
+                        <button class="join-universe" data-universe="Oops Observatory" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#a8ffbd,#3b9366);--glow:rgba(140,240,177,.3);--mist:rgba(140,240,177,.15)">
+                    <div class="planet"></div>
+                    <h3>Spark Sanctuary</h3>
+                    <p>A soft place for tired minds to rest, notice joy and rediscover life without productivity pressure.</p>
+                    <div class="universe-meta"><span>Rest</span><span>Joy</span><span>Small wins</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="about.html">Find your spark →</a>
+                        <button class="join-universe" data-universe="Spark Sanctuary" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#b7d2ff,#5771b8);--glow:rgba(183,210,255,.3);--mist:rgba(183,210,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Storyverse</h3>
+                    <p>Books, characters, poems and explanations that make difficult ideas feel wonderfully human.</p>
+                    <div class="universe-meta"><span>Books</span><span>Writing</span><span>Stories</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="books.html">Open a portal →</a>
+                        <button class="join-universe" data-universe="Storyverse" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#d9bdff,#7356a4);--glow:rgba(217,189,255,.3);--mist:rgba(217,189,255,.15)">
+                    <div class="planet"></div>
+                    <h3>Teacher Constellation</h3>
+                    <p>Guides, classroom missions and kind teaching tools for educators who protect curiosity.</p>
+                    <div class="universe-meta"><span>Lessons</span><span>Guides</span><span>Community</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="schools.html">Guide explorers →</a>
+                        <button class="join-universe" data-universe="Teacher Constellation" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#7ed4ff,#315d9c);--glow:rgba(126,212,255,.3);--mist:rgba(126,212,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Student Orbit</h3>
+                    <p>Learning adventures, puzzles and progress paths made for students—not robots completing worksheets.</p>
+                    <div class="universe-meta"><span>Quests</span><span>Skills</span><span>Badges</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Launch a quest →</a>
+                        <button class="join-universe" data-universe="Student Orbit" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="selection-bar" aria-live="polite">
+                <span><strong id="universeCount">0</strong> universes selected. Your curiosity is allowed to contain multitudes.</span>
+                <a href="sign-in.html">Save My Wonderverse →</a>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <div class="section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-label">Wonder becomes movement</p>
+                    <h2>Do more than dream about your life.</h2>
+                    <p>The Wonder Project turns ideas into playful, manageable missions—without punishing you for being human.</p>
+                </div>
+
+                <div class="mission-grid">
+                    <article class="mission-card reveal">
+                        <span class="mission-number">1</span>
+                        <h3>Notice something</h3>
+                        <p>Look closer. Ask the question everyone else walked past.</p>
+                    </article>
+                    <article class="mission-card reveal">
+                        <span class="mission-number">2</span>
+                        <h3>Try something small</h3>
+                        <p>Choose a ten-minute mission rather than waiting for perfect motivation.</p>
+                    </article>
+                    <article class="mission-card reveal">
+                        <span class="mission-number">3</span>
+                        <h3>Celebrate the evidence</h3>
+                        <p>Record the attempt, lesson or glorious failure. That is real progress.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-shell split-section" id="wonder-space-preview">
+            <div class="split-copy reveal">
+                <p class="section-label">Your personal command centre</p>
+                <h2>One Wonder Space. Many versions of you.</h2>
+                <p>
+                    A learner today. A teacher tomorrow. A tired human on Friday. Your space can hold every version of you
+                    without making you squeeze into a single label.
+                </p>
+                <ul class="check-list">
+                    <li>Join multiple universes and switch whenever your curiosity changes.</li>
+                    <li>Collect meaningful badges for trying, reflecting, helping and questioning.</li>
+                    <li>Save missions, books, classroom resources and unfinished ideas.</li>
+                    <li>Track progress without turning your whole life into a competition.</li>
+                </ul>
+                <a href="wonder-space.html" class="primary-button">Open Wonder Space ✦</a>
+            </div>
+
+            <div class="dashboard-preview reveal" aria-label="Wonder Space dashboard preview">
+                <div class="dashboard-top"><span>ISHA'S WONDERVERSE</span><span>Orbit 07</span></div>
+                <div class="dashboard-grid">
+                    <div class="dash-card wide">
+                        <small>Current mission</small>
+                        <strong>Make the idea real</strong>
+                        <div class="progress-track"><span></span></div>
+                    </div>
+                    <div class="dash-card"><small>Universes joined</small><strong>5 🪐</strong></div>
+                    <div class="dash-card"><small>Brave attempts</small><strong>18 ✦</strong></div>
+                    <div class="dash-card wide"><small>Today's tiny wonder</small><strong>Why does moonlight feel quiet?</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schools" class="school-section">
+            <div class="section-shell">
+                <div class="school-panel split-section">
+                    <div class="split-copy reveal">
+                        <p class="section-label">For schools and educators</p>
+                        <h2>Turn your school into a constellation.</h2>
+                        <p>
+                            Schools can bring students and educators into shared universes, assign guided adventures,
+                            explore hands-on resources and see how curiosity, confidence and understanding are growing.
+                        </p>
+                        <div class="school-actions">
+                            <a href="schools.html" class="primary-button">Explore School Membership</a>
+                            <a href="#contact" class="secondary-button">Request a School Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-grid reveal">
+                        <article class="feature-card"><h3>🚀 Assign missions</h3><p>Send adventures to a student, group or whole class.</p></article>
+                        <article class="feature-card"><h3>📊 See real growth</h3><p>Track completion, confidence, questions and misconceptions.</p></article>
+                        <article class="feature-card"><h3>🧪 Learn by doing</h3><p>Use games, investigations, stories and reflection.</p></article>
+                        <article class="feature-card"><h3>🧭 Teacher guides</h3><p>Access ready-to-use plans, prompts and extensions.</p></article>
+                        <article class="feature-card"><h3>🌌 Shared worlds</h3><p>Create class constellations and celebrate collective progress.</p></article>
+                        <article class="feature-card"><h3>✨ Kind achievement</h3><p>Reward courage, consistency, creativity and helpfulness.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section-shell">
+            <div class="section-heading reveal">
+                <p class="section-label">Portals already open</p>
+                <h2>Start exploring today.</h2>
+                <p>Your existing books, questions, resources and activities remain easy to reach—now they feel like portals inside one connected world.</p>
+            </div>
+
+            <div class="resource-grid">
+                <article class="resource-card reveal"><span class="resource-icon">💭</span><h3>Answer a Big Question</h3><p>Explore questions with no boring or obvious answers.</p><a href="questions.html">Enter the Questionarium →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🔬</span><h3>Discover Something New</h3><p>Investigate science, medicine, mathematics and everyday life.</p><a href="resources.html">Visit Discovery Nebula →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">📚</span><h3>Open a Curious Book</h3><p>Meet memorable ideas, unusual characters and human explanations.</p><a href="books.html">Travel to Storyverse →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">❓</span><h3>Ask Your Own Question</h3><p>Share something strange, fascinating, confusing or unexpected.</p><a href="questions.html#submit-question">Send a signal →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧩</span><h3>Try a Challenge</h3><p>Use observations, evidence and creative reasoning to solve mysteries.</p><a href="mystery-box.html">Begin the challenge →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧠</span><h3>Learn Difficult Ideas</h3><p>A simple guide to understanding, remembering and applying concepts.</p><a href="learning-guide.html">Read the guide →</a></article>
+            </div>
+        </section>
+
+        <section id="questions">
+            <div class="question-orb reveal">
+                <p class="section-label">Today's signal from the stars</p>
+                <h2>What would you begin if failure became part of the fun?</h2>
+                <a href="questions.html" class="primary-button">Explore more questions</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section-shell">
+            <div class="contact-card reveal">
+                <div>
+                    <p class="section-label">Send a signal</p>
+                    <h2>Let's build a more curious world.</h2>
+                    <p>Have a question, school enquiry, collaboration, impossible idea or something wonderful to share? We would love to hear it.</p>
+                    <div class="contact-links">
+                        <a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project">✉️ Email us</a>
+                        <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+                    </div>
+                </div>
+
+                <form id="contactForm" name="homepage-contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="homepage-contact">
+                    <p class="hidden-form-field"><label>Please leave this empty: <input name="bot-field"></label></p>
+                    <label for="name">Your name</label>
+                    <input id="name" name="name" type="text" placeholder="Curious explorer" required>
+                    <label for="email">Your email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us what you are wondering, building or hoping to explore..." required></textarea>
+                    <button type="submit">Send your message ✦</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>The Wonder Project</h2>
+                <p>Protecting curiosity, celebrating questions and making life feel like an adventure again.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="about.html">About Us</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Connect</h3>
+                <a href="#contact">Contact Us</a>
+                <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project">Email</a>
+                <a href="sign-in.html">Sign in</a>
+            </div>
+        </div>
+        <p class="copyright">© 2026 The Wonder Project. Made somewhere between the Moon and your imagination ✦</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle?.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        const joinButtons = [...document.querySelectorAll('.join-universe')];
+        const countLabel = document.getElementById('universeCount');
+        const storageKey = 'wonder-project-universes';
+        let selectedUniverses = [];
+
+        try {
+            selectedUniverses = JSON.parse(localStorage.getItem(storageKey)) || [];
+        } catch (error) {
+            selectedUniverses = [];
+        }
+
+        function updateUniverseUI() {
+            joinButtons.forEach(button => {
+                const selected = selectedUniverses.includes(button.dataset.universe);
+                button.setAttribute('aria-pressed', String(selected));
+                button.textContent = selected ? '✓ Joined' : '+ Join';
+            });
+            countLabel.textContent = selectedUniverses.length;
+        }
+
+        joinButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const universe = button.dataset.universe;
+                selectedUniverses = selectedUniverses.includes(universe)
+                    ? selectedUniverses.filter(item => item !== universe)
+                    : [...selectedUniverses, universe];
+
+                localStorage.setItem(storageKey, JSON.stringify(selectedUniverses));
+                updateUniverseUI();
+            });
+        });
+
+        updateUniverseUI();
+
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+    </script>
+
+    <!-- Your existing JavaScript remains connected for any site-wide features. -->
+    <script src="script.js" defer></script>
+</body>
+</html>
