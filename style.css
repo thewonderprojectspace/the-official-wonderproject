@@ -5839,3 +5839,708 @@ body.login-panel-open {
         flex-direction: column;
     }
 }
+/* =========================================================
+   THE WONDER TIMES — NEWSPAPER BLOG PAGE
+   Add this file after style.css in the HTML.
+   ========================================================= */
+
+.wonder-newspaper-page {
+    --ink: #26231f;
+    --soft-ink: #625c52;
+    --paper: #f5edda;
+    --paper-dark: #e6d9bd;
+    --rose: #d6a7a0;
+    --blue: #a9c5c9;
+    --yellow: #e4cf8f;
+    --green: #afbea5;
+    --shadow: rgba(54, 45, 34, 0.2);
+
+    margin: 0;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,0.55), transparent 25%),
+        radial-gradient(circle at 85% 22%, rgba(255,255,255,0.35), transparent 22%),
+        #d7c9af;
+}
+
+.newspaper-wrap {
+    position: relative;
+    min-height: 100vh;
+    padding: 70px 18px 100px;
+    overflow: hidden;
+}
+
+.wonder-paper {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 34px clamp(22px, 5vw, 64px) 28px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(90, 75, 54, 0.025) 0,
+            rgba(90, 75, 54, 0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        var(--paper);
+    border: 1px solid rgba(38, 35, 31, 0.45);
+    box-shadow: 0 24px 60px var(--shadow);
+    clip-path: polygon(
+        0.5% 0.8%, 7% 0.2%, 15% 0.7%, 23% 0.1%, 31% 0.6%, 40% 0.2%,
+        48% 0.8%, 57% 0.1%, 67% 0.7%, 77% 0.2%, 88% 0.8%, 99.4% 0.3%,
+        99.8% 12%, 99.3% 24%, 99.8% 36%, 99.4% 49%, 99.8% 62%,
+        99.2% 75%, 99.7% 88%, 99.2% 99.4%, 88% 99.8%, 76% 99.2%,
+        64% 99.7%, 52% 99.1%, 40% 99.8%, 28% 99.2%, 16% 99.7%,
+        0.7% 99.1%, 0.2% 86%, 0.8% 72%, 0.2% 59%, 0.7% 45%,
+        0.2% 31%, 0.8% 17%
+    );
+}
+
+.paper-topline,
+.paper-meta,
+.paper-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.paper-topline {
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+}
+
+.paper-masthead {
+    text-align: center;
+    padding: 34px 0 22px;
+    border-bottom: 7px double var(--ink);
+}
+
+.paper-kicker,
+.section-label,
+.tiny-heading {
+    margin: 0 0 12px;
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.paper-masthead h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 8vw, 7.2rem);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.055em;
+}
+
+.paper-subtitle {
+    width: min(760px, 100%);
+    margin: 24px auto 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.55;
+    font-style: italic;
+}
+
+.paper-meta {
+    padding-top: 18px;
+    border-top: 1px solid var(--ink);
+}
+
+.front-page-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 0.8fr;
+    gap: clamp(28px, 5vw, 66px);
+    padding: 48px 0;
+}
+
+.lead-story,
+.side-column,
+.newspaper-columns,
+.full-width-story,
+.moon-copy,
+.letter-to-reader {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    line-height: 1.78;
+}
+
+.drop-cap::first-letter {
+    float: left;
+    padding: 8px 10px 0 0;
+    font-size: 5.6rem;
+    line-height: 0.72;
+    font-weight: 900;
+}
+
+.side-column {
+    align-self: start;
+    padding: 24px;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 rgba(38, 35, 31, 0.18);
+    transform: rotate(1deg);
+}
+
+.side-column h2 {
+    margin-top: 0;
+    font-family: "Courier New", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.big-question {
+    font-size: 1.65rem;
+    line-height: 1.22;
+    font-weight: 700;
+}
+
+.ink-note {
+    width: min(360px, 90%);
+    margin: 34px auto 0;
+    padding: 18px 22px;
+    border: 3px double var(--ink);
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.tilted-note {
+    background: #efe1bf;
+    transform: rotate(-2deg);
+}
+
+.wavy-divider {
+    height: 20px;
+    margin: 4px 0 34px;
+    background:
+        radial-gradient(circle at 10px -5px, transparent 12px, var(--ink) 13px, var(--ink) 14px, transparent 15px) 0 0/40px 20px repeat-x;
+    opacity: 0.65;
+}
+
+.conversation-section {
+    padding: 20px 0 48px;
+}
+
+.conversation-line {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    width: min(850px, 100%);
+    margin: 16px auto;
+    padding: 18px 22px;
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0 rgba(38, 35, 31, 0.12);
+}
+
+.host-line {
+    margin-left: 0;
+    background: rgba(169, 197, 201, 0.5);
+    transform: rotate(-0.4deg);
+}
+
+.reader-line {
+    margin-right: 0;
+    background: rgba(214, 167, 160, 0.45);
+    transform: rotate(0.4deg);
+}
+
+.speaker {
+    align-self: start;
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+}
+
+.conversation-line p {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.headline-strip {
+    margin: 12px calc(clamp(22px, 5vw, 64px) * -1) 42px;
+    padding: 22px clamp(22px, 5vw, 64px);
+    color: var(--paper);
+    background: var(--ink);
+    text-align: center;
+}
+
+.headline-strip span {
+    font-family: "Courier New", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+}
+
+.headline-strip h2 {
+    margin: 8px 0 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 4.2rem);
+    line-height: 1;
+}
+
+.newspaper-columns {
+    columns: 2 340px;
+    column-gap: 56px;
+    column-rule: 1px solid rgba(38, 35, 31, 0.45);
+    padding-bottom: 50px;
+}
+
+.newspaper-columns > div {
+    break-inside: avoid;
+    margin-bottom: 28px;
+}
+
+.newspaper-columns h3,
+.full-width-story h2,
+.spark-repair-shop h2,
+.moon-copy h2,
+.letter-to-reader h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 900;
+}
+
+.newspaper-columns h3 {
+    margin-top: 0;
+    font-size: 1.65rem;
+}
+
+.question-card {
+    padding: 16px;
+    background: rgba(175, 190, 165, 0.5);
+    border-left: 7px solid var(--ink);
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+blockquote {
+    margin: 26px 0;
+    padding: 22px;
+    background: #e8dcc5;
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.full-width-story {
+    position: relative;
+    padding: 50px 0 60px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+}
+
+.full-width-story h2 {
+    margin: 0 0 22px;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.95;
+}
+
+.stamp {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 10px 16px;
+    border: 4px solid #8b3f33;
+    color: #8b3f33;
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    transform: rotate(5deg);
+    opacity: 0.8;
+}
+
+.pull-quote {
+    width: min(780px, 100%);
+    margin: 42px auto 0;
+    padding: 24px;
+    background: var(--blue);
+    border: 2px solid var(--ink);
+    font-size: clamp(1.55rem, 3vw, 2.35rem);
+    line-height: 1.2;
+    font-weight: 800;
+    text-align: center;
+    transform: rotate(-1deg);
+}
+
+.object-noticeboard {
+    margin: 60px 0;
+    padding: 34px;
+    background: #d8c8a9;
+    border: 3px solid var(--ink);
+    box-shadow: inset 0 0 0 8px rgba(255,255,255,0.2);
+}
+
+.notice-title,
+.repair-sign {
+    display: table;
+    margin: -54px auto 30px;
+    padding: 12px 22px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+.object-grid,
+.repair-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.object-grid article,
+.repair-grid article {
+    min-height: 210px;
+    padding: 22px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0 rgba(38, 35, 31, 0.15);
+}
+
+.object-grid article:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.object-grid article:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.object-number,
+.repair-grid span {
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.13em;
+}
+
+.object-grid h3,
+.repair-grid h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+}
+
+.object-grid p,
+.repair-grid p,
+.notice-footer {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+}
+
+.notice-footer {
+    margin: 30px 0 0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.spark-repair-shop {
+    margin: 60px 0;
+    padding: 50px 36px 36px;
+    background: var(--green);
+    border: 2px dashed var(--ink);
+}
+
+.spark-repair-shop h2 {
+    margin: 0 0 34px;
+    text-align: center;
+    font-size: clamp(2.4rem, 4vw, 4.3rem);
+}
+
+.repair-grid article:nth-child(1) { background: #f2e7cd; }
+.repair-grid article:nth-child(2) { background: #d9e6e4; }
+.repair-grid article:nth-child(3) { background: #ead6d0; }
+.repair-grid article:nth-child(4) { background: #eee0ad; }
+
+.moon-section {
+    display: grid;
+    grid-template-columns: 0.8fr 1.3fr;
+    gap: 56px;
+    align-items: center;
+    padding: 60px 0;
+    border-top: 7px double var(--ink);
+    border-bottom: 7px double var(--ink);
+}
+
+.moon-orbit {
+    position: relative;
+    min-height: 320px;
+}
+
+.moon-shape {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 38% 35%, rgba(38,35,31,0.13) 0 7px, transparent 8px),
+        radial-gradient(circle at 68% 60%, rgba(38,35,31,0.1) 0 13px, transparent 14px),
+        radial-gradient(circle at 55% 80%, rgba(38,35,31,0.09) 0 8px, transparent 9px),
+        #dfcf9d;
+    border: 2px solid var(--ink);
+    transform: translate(-50%, -50%);
+    box-shadow: 12px 12px 0 rgba(38,35,31,0.1);
+}
+
+.orbit-ring {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    border: 1px dashed var(--ink);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: slow-spin 18s linear infinite;
+}
+
+.ring-one {
+    width: 235px;
+    height: 235px;
+}
+
+.ring-two {
+    width: 310px;
+    height: 220px;
+    animation-direction: reverse;
+}
+
+.moon-copy h2 {
+    margin: 0 0 22px;
+    font-size: clamp(2.4rem, 4vw, 4.4rem);
+    line-height: 1;
+}
+
+.letter-to-reader {
+    position: relative;
+    width: min(860px, 100%);
+    margin: 70px auto 30px;
+    padding: clamp(28px, 5vw, 58px);
+    background: #f0e2c7;
+    border: 1px solid var(--ink);
+    box-shadow: 10px 12px 0 rgba(38,35,31,0.14);
+    transform: rotate(-0.4deg);
+}
+
+.letter-to-reader::before,
+.letter-to-reader::after {
+    content: "";
+    position: absolute;
+    width: 94px;
+    height: 24px;
+    background: rgba(208, 191, 153, 0.85);
+    border: 1px solid rgba(38,35,31,0.15);
+}
+
+.letter-to-reader::before {
+    top: -12px;
+    left: 55px;
+    transform: rotate(-4deg);
+}
+
+.letter-to-reader::after {
+    right: 55px;
+    bottom: -12px;
+    transform: rotate(4deg);
+}
+
+.letter-to-reader h2 {
+    margin: 0 0 22px;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+.letter-highlight {
+    padding: 20px;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.submit-story-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 15px 24px;
+    color: var(--paper);
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    text-decoration: none;
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 6px 6px 0 var(--rose);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-story-button:hover {
+    transform: translate(4px, 4px) rotate(-1deg);
+    box-shadow: 2px 2px 0 var(--rose);
+}
+
+.sign-off {
+    margin-top: 34px;
+}
+
+.paper-footer {
+    margin-top: 50px;
+    padding: 18px 0 4px;
+    border-top: 3px solid var(--ink);
+}
+
+.paper-bubble {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(38, 35, 31, 0.24);
+    background: rgba(245, 237, 218, 0.28);
+    box-shadow: inset 12px 12px 24px rgba(255,255,255,0.25);
+    animation: paper-float 9s ease-in-out infinite;
+}
+
+.bubble-one {
+    width: 120px;
+    height: 120px;
+    top: 110px;
+    left: -35px;
+}
+
+.bubble-two {
+    width: 55px;
+    height: 55px;
+    top: 280px;
+    right: 7%;
+    animation-delay: -2s;
+}
+
+.bubble-three {
+    width: 180px;
+    height: 180px;
+    top: 900px;
+    right: -70px;
+    animation-delay: -5s;
+}
+
+.bubble-four {
+    width: 76px;
+    height: 76px;
+    top: 1600px;
+    left: 4%;
+    animation-delay: -3s;
+}
+
+.bubble-five {
+    width: 135px;
+    height: 135px;
+    bottom: 680px;
+    right: 2%;
+    animation-delay: -7s;
+}
+
+.bubble-six {
+    width: 48px;
+    height: 48px;
+    bottom: 240px;
+    left: 10%;
+    animation-delay: -4s;
+}
+
+@keyframes paper-float {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(10px, -24px, 0) rotate(4deg);
+    }
+}
+
+@keyframes slow-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+    .front-page-grid,
+    .moon-section {
+        grid-template-columns: 1fr;
+    }
+
+    .object-grid,
+    .repair-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stamp {
+        position: static;
+        display: table;
+        margin: 0 0 24px auto;
+    }
+}
+
+@media (max-width: 620px) {
+    .newspaper-wrap {
+        padding: 28px 8px 70px;
+    }
+
+    .wonder-paper {
+        padding-inline: 20px;
+        clip-path: none;
+    }
+
+    .paper-topline,
+    .paper-meta,
+    .paper-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
+    }
+
+    .paper-masthead h1 {
+        font-size: clamp(2.7rem, 16vw, 4.7rem);
+    }
+
+    .conversation-line {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .object-grid,
+    .repair-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .headline-strip {
+        margin-inline: -20px;
+        padding-inline: 20px;
+    }
+
+    .moon-orbit {
+        min-height: 260px;
+    }
+
+    .ring-two {
+        width: 250px;
+        height: 190px;
+    }
+
+    .bubble-three,
+    .bubble-five {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .paper-bubble,
+    .orbit-ring {
+        animation: none;
+    }
+}
