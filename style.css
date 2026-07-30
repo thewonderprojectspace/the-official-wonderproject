@@ -5962,3 +5962,18 @@ body.login-panel-open {
         background: #f5edff;
     }
 }
+.wonder-space-btn{
+    background:linear-gradient(135deg,#9b5de5,#ff8f70);
+    color:white;
+    padding:14px 24px;
+    border-radius:999px;
+    font-weight:700;
+    text-decoration:none;
+    transition:.35s;
+    box-shadow:0 10px 30px rgba(155,93,229,.3);
+}
+
+.wonder-space-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 16px 40px rgba(155,93,229,.45);
+}
