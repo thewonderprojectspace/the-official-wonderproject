@@ -5839,4 +5839,126 @@ body.login-panel-open {
         flex-direction: column;
     }
 }
+/* ========================================
+   MOBILE NAVIGATION
+======================================== */
 
+.navbar {
+    position: relative;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.menu-toggle {
+    display: none;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border: none;
+    border-radius: 22px;
+    background: rgba(240, 230, 255, 0.9);
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+
+    position: relative;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 27px;
+    height: 3px;
+    border-radius: 999px;
+    background: #66417c;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* Turn the three lines into an X */
+
+.menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 850px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+
+        padding: 18px;
+
+        background: rgba(255, 255, 255, 0.97);
+        border: 1px solid rgba(115, 75, 150, 0.12);
+        border-radius: 26px;
+
+        box-shadow: 0 22px 50px rgba(85, 55, 110, 0.18);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+
+        z-index: 1000;
+    }
+
+    .nav-links.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 14px 18px;
+
+        color: #553667;
+        text-align: left;
+        text-decoration: none;
+        font-weight: 700;
+
+        border-radius: 15px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+        background: #f5edff;
+    }
+}
