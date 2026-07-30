@@ -3,807 +3,1537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Wonder Project is a joyful universe for students, educators, professionals, schools and adults rediscovering their curiosity.">
+    <title>The Wonder Project | Enter the Wonderverse</title>
 
-    <title>The Wonder Project</title>
-
+    <!-- Your original stylesheet remains connected. The styles below override it for this homepage. -->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --space: #040714;
+            --space-soft: #080d22;
+            --navy: #0d1534;
+            --panel: rgba(14, 22, 52, 0.72);
+            --panel-strong: rgba(13, 20, 47, 0.94);
+            --line: rgba(194, 208, 255, 0.16);
+            --text: #f7f7ff;
+            --muted: #bac4e8;
+            --moon: #ffe5a6;
+            --gold: #ffd36a;
+            --lavender: #b9a7ff;
+            --violet: #8e75ff;
+            --aqua: #7ce8df;
+            --pink: #ff9fd0;
+            --success: #8cf0b1;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+            --radius: 28px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 18% 8%, rgba(111, 83, 255, 0.19), transparent 27%),
+                radial-gradient(circle at 82% 18%, rgba(33, 184, 201, 0.12), transparent 24%),
+                radial-gradient(circle at 50% 88%, rgba(150, 77, 191, 0.12), transparent 28%),
+                var(--space);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.65;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        body::before {
+            opacity: 0.76;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.4px),
+                radial-gradient(circle, rgba(185,167,255,.75) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(124,232,223,.7) 0 1px, transparent 1.5px);
+            background-position: 0 0, 58px 76px, 130px 32px;
+            background-size: 115px 115px, 180px 180px, 240px 240px;
+            animation: stars-drift 80s linear infinite;
+        }
+
+        body::after {
+            background: linear-gradient(to bottom, transparent 0%, rgba(4,7,20,.15) 58%, rgba(4,7,20,.82) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 9999;
+            padding: .8rem 1rem;
+            color: #070a18;
+            background: var(--moon);
+            border-radius: 999px;
+            transform: translateY(-150%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem clamp(1rem, 4vw, 4rem);
+            background: linear-gradient(to bottom, rgba(4,7,20,.92), rgba(4,7,20,.46), transparent);
+            backdrop-filter: blur(16px);
+        }
+
+        .navbar {
+            width: min(1450px, 100%);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .site-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            margin-right: auto;
+            font-weight: 850;
+            letter-spacing: -.03em;
+            white-space: nowrap;
+        }
+
+        .logo-orbit {
+            width: 38px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            color: #1a1733;
+            background: var(--moon);
+            border-radius: 50%;
+            box-shadow: 0 0 26px rgba(255,229,166,.45);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(.65rem, 1.3vw, 1.2rem);
+            color: var(--muted);
+            font-size: .91rem;
+            font-weight: 650;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: .55rem .1rem;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: .25rem;
+            height: 1px;
+            background: var(--aqua);
+            transition: right .25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: white;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus-visible::after {
+            right: 0;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+        }
+
+        .sign-in-btn,
+        .wonder-space-btn,
+        .primary-button,
+        .secondary-button,
+        .hero-button,
+        .hero-secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            min-height: 46px;
+            padding: .75rem 1.1rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-weight: 800;
+            transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+        }
+
+        .sign-in-btn {
+            color: var(--moon);
+            background: rgba(255,255,255,.045);
+        }
+
+        .wonder-space-btn,
+        .hero-button,
+        .primary-button {
+            color: #11152a;
+            background: linear-gradient(135deg, var(--moon), var(--gold));
+            box-shadow: 0 14px 34px rgba(255, 211, 106, .16);
+        }
+
+        .secondary-button,
+        .hero-secondary-button {
+            color: white;
+            background: rgba(255,255,255,.055);
+        }
+
+        .sign-in-btn:hover,
+        .wonder-space-btn:hover,
+        .primary-button:hover,
+        .secondary-button:hover,
+        .hero-button:hover,
+        .hero-secondary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(0,0,0,.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            padding: 11px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            color: white;
+            background: rgba(255,255,255,.06);
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            margin: 5px 0;
+            background: currentColor;
+            border-radius: 999px;
+        }
+
+        main {
+            overflow: clip;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            align-items: center;
+            padding: 9rem clamp(1.2rem, 7vw, 8rem) 5rem;
+            isolation: isolate;
+        }
+
+        .hero-inner {
+            width: min(1280px, 100%);
+            margin: auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+            align-items: center;
+            gap: clamp(3rem, 8vw, 8rem);
+        }
+
+        .eyebrow,
+        .section-label {
+            margin-bottom: .9rem;
+            color: var(--aqua);
+            font-size: .77rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 840px;
+            font-size: clamp(3.25rem, 8vw, 7.7rem);
+            line-height: .91;
+            letter-spacing: -.065em;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            background: linear-gradient(100deg, var(--moon), var(--pink) 43%, var(--aqua));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            max-width: 700px;
+            margin: 1.7rem 0 2rem;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 2vw, 1.28rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem;
+        }
+
+        .hero-note {
+            margin-top: 1.35rem;
+            color: #8d98bd;
+            font-size: .92rem;
+        }
+
+        .moon-stage {
+            position: relative;
+            min-height: 520px;
+            display: grid;
+            place-items: center;
+        }
+
+        .moon {
+            position: relative;
+            width: min(30vw, 350px);
+            min-width: 245px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 28%, rgba(118,102,134,.18) 0 5%, transparent 5.5%),
+                radial-gradient(circle at 66% 34%, rgba(118,102,134,.14) 0 8%, transparent 8.5%),
+                radial-gradient(circle at 43% 72%, rgba(118,102,134,.12) 0 10%, transparent 10.5%),
+                radial-gradient(circle at 72% 70%, rgba(118,102,134,.09) 0 6%, transparent 6.5%),
+                linear-gradient(135deg, #fff8dc, #f0dca0);
+            box-shadow: 0 0 48px rgba(255,229,166,.38), 0 0 140px rgba(177,147,255,.18);
+            animation: moon-float 8s ease-in-out infinite;
+        }
+
+        .moon::before {
+            content: "";
+            position: absolute;
+            inset: -35%;
+            border: 1px solid rgba(185,167,255,.23);
+            border-radius: 50%;
+            transform: rotate(-17deg) scaleY(.42);
+        }
+
+        .tiny-orbit {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            width: 470px;
+            height: 170px;
+            border: 1px solid rgba(124,232,223,.16);
+            border-radius: 50%;
+            transform: translate(-50%,-50%) rotate(14deg);
+        }
+
+        .tiny-orbit::after {
+            content: "✦";
+            position: absolute;
+            right: 45px;
+            top: 0;
+            color: var(--aqua);
+            filter: drop-shadow(0 0 10px var(--aqua));
+            animation: twinkle 2.5s ease-in-out infinite;
+        }
+
+        .astronaut-note {
+            position: absolute;
+            right: 2%;
+            bottom: 4%;
+            max-width: 235px;
+            padding: 1rem 1.1rem;
+            color: #e8e9ff;
+            background: rgba(12,18,45,.78);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            transform: rotate(3deg);
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 18%;
+            left: 58%;
+            width: 130px;
+            height: 1px;
+            opacity: 0;
+            background: linear-gradient(90deg, transparent, white);
+            transform: rotate(-34deg);
+            animation: shoot 8s ease-in-out infinite 2s;
+        }
+
+        .section-shell {
+            width: min(1280px, calc(100% - 2rem));
+            margin: auto;
+            padding: clamp(4.5rem, 9vw, 8rem) 0;
+        }
+
+        .section-heading {
+            max-width: 780px;
+            margin-bottom: 2.6rem;
+        }
+
+        .section-heading.center {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .section-heading h2,
+        .split-copy h2,
+        .contact-card h2 {
+            margin-bottom: 1rem;
+            font-size: clamp(2.2rem, 5vw, 4.7rem);
+            line-height: 1.02;
+            letter-spacing: -.045em;
+        }
+
+        .section-heading p:not(.section-label),
+        .split-copy > p,
+        .contact-card p {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .identity-strip {
+            border-block: 1px solid var(--line);
+            background: rgba(255,255,255,.025);
+        }
+
+        .identity-list {
+            width: min(1280px, calc(100% - 2rem));
+            margin: auto;
+            padding: 1.15rem 0;
+            display: flex;
+            gap: .75rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .identity-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .identity-pill {
+            flex: 0 0 auto;
+            padding: .62rem .9rem;
+            color: #dbe0fa;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .88rem;
+        }
+
+        .universe-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+        }
+
+        .universe-card {
+            position: relative;
+            min-height: 330px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            grid-column: span 4;
+            overflow: hidden;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, rgba(20,30,67,.9), rgba(8,13,33,.92));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            isolation: isolate;
+            transition: transform .35s ease, border-color .35s ease;
+        }
+
+        .universe-card:nth-child(1),
+        .universe-card:nth-child(6) {
+            grid-column: span 6;
+        }
+
+        .universe-card:hover,
+        .universe-card:focus-within {
+            transform: translateY(-8px);
+            border-color: rgba(185,167,255,.48);
+        }
+
+        .planet {
+            position: absolute;
+            top: 20px;
+            right: 22px;
+            width: 122px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--planet, linear-gradient(135deg, #9678ff, #4b387f));
+            box-shadow: 0 0 44px var(--glow, rgba(142,117,255,.26));
+            transition: transform .5s ease;
+        }
+
+        .universe-card:hover .planet {
+            transform: rotate(12deg) scale(1.06);
+        }
+
+        .planet::before {
+            content: "";
+            position: absolute;
+            inset: 45% -28%;
+            border: 9px solid rgba(237,232,255,.32);
+            border-top-color: transparent;
+            border-radius: 50%;
+            transform: rotate(-15deg);
+        }
+
+        .universe-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 85% 15%, var(--mist, rgba(142,117,255,.2)), transparent 40%);
+        }
+
+        .universe-card h3 {
+            max-width: 74%;
+            margin-bottom: .55rem;
+            font-size: clamp(1.45rem, 2.3vw, 2.1rem);
+            line-height: 1.05;
+            letter-spacing: -.035em;
+        }
+
+        .universe-card p {
+            max-width: 90%;
+            color: var(--muted);
+        }
+
+        .universe-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+            margin: 1rem 0 1.15rem;
+        }
+
+        .universe-meta span {
+            padding: .32rem .6rem;
+            color: #d9def7;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .76rem;
+        }
+
+        .universe-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .8rem;
+        }
+
+        .explore-link {
+            font-weight: 850;
+            color: var(--moon);
+        }
+
+        .join-universe {
+            min-width: 44px;
+            min-height: 44px;
+            padding: .5rem .8rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: white;
+            background: rgba(255,255,255,.07);
+            cursor: pointer;
+        }
+
+        .join-universe[aria-pressed="true"] {
+            color: #102218;
+            background: var(--success);
+            border-color: transparent;
+        }
+
+        .selection-bar {
+            position: sticky;
+            bottom: 1rem;
+            z-index: 20;
+            width: min(760px, calc(100% - 2rem));
+            margin: 2rem auto 0;
+            padding: .9rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            color: #eef0ff;
+            background: rgba(9,14,35,.88);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .selection-bar strong {
+            color: var(--aqua);
+        }
+
+        .selection-bar a {
+            white-space: nowrap;
+            color: var(--moon);
+            font-weight: 850;
+        }
+
+        .mission-section {
+            position: relative;
+        }
+
+        .mission-grid,
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .mission-card,
+        .feature-card {
+            padding: 1.5rem;
+            color: var(--text);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            backdrop-filter: blur(12px);
+        }
+
+        .mission-number {
+            display: inline-grid;
+            width: 42px;
+            aspect-ratio: 1;
+            place-items: center;
+            margin-bottom: 1.2rem;
+            color: #101427;
+            background: var(--moon);
+            border-radius: 50%;
+            font-weight: 950;
+        }
+
+        .mission-card h3,
+        .feature-card h3 {
+            margin-bottom: .55rem;
+            font-size: 1.25rem;
+        }
+
+        .mission-card p,
+        .feature-card p {
+            color: var(--muted);
+        }
+
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 7vw, 7rem);
+            align-items: center;
+        }
+
+        .dashboard-preview {
+            position: relative;
+            padding: 1.15rem;
+            background: rgba(10,16,39,.88);
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: .35rem .4rem;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .8rem;
+        }
+
+        .dash-card {
+            min-height: 145px;
+            padding: 1rem;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+        }
+
+        .dash-card.wide {
+            grid-column: 1 / -1;
+        }
+
+        .dash-card small {
+            color: var(--muted);
+        }
+
+        .dash-card strong {
+            display: block;
+            margin-top: .35rem;
+            font-size: 1.6rem;
+        }
+
+        .progress-track {
+            height: 9px;
+            margin-top: 1rem;
+            overflow: hidden;
+            background: rgba(255,255,255,.08);
+            border-radius: 999px;
+        }
+
+        .progress-track span {
+            display: block;
+            width: 72%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--violet), var(--aqua));
+            border-radius: inherit;
+        }
+
+        .check-list {
+            margin: 1.5rem 0 2rem;
+            display: grid;
+            gap: .75rem;
+        }
+
+        .check-list li {
+            list-style: none;
+            display: flex;
+            gap: .7rem;
+            color: var(--muted);
+        }
+
+        .check-list li::before {
+            content: "✦";
+            color: var(--aqua);
+        }
+
+        .school-section {
+            background: linear-gradient(180deg, transparent, rgba(44,33,96,.18), transparent);
+        }
+
+        .school-panel {
+            padding: clamp(2rem, 5vw, 4rem);
+            background:
+                radial-gradient(circle at 90% 5%, rgba(124,232,223,.13), transparent 30%),
+                linear-gradient(145deg, rgba(20,28,63,.9), rgba(8,12,31,.93));
+            border: 1px solid var(--line);
+            border-radius: 34px;
+            box-shadow: var(--shadow);
+        }
+
+        .school-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem;
+            margin-top: 1.8rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .resource-card {
+            padding: 1.4rem;
+            background: rgba(255,255,255,.035);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            transition: transform .25s ease, background .25s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,.06);
+        }
+
+        .resource-icon {
+            display: inline-grid;
+            width: 52px;
+            aspect-ratio: 1;
+            place-items: center;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,.07);
+            border-radius: 15px;
+            font-size: 1.5rem;
+        }
+
+        .resource-card h3 {
+            margin-bottom: .45rem;
+        }
+
+        .resource-card p {
+            color: var(--muted);
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--moon);
+            font-weight: 850;
+        }
+
+        .question-orb {
+            width: min(980px, calc(100% - 2rem));
+            margin: 2rem auto 0;
+            padding: clamp(2.2rem, 6vw, 5.5rem);
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(185,167,255,.2), transparent 50%),
+                rgba(11,17,43,.75);
+            border: 1px solid var(--line);
+            border-radius: 48% 52% 46% 54% / 55% 42% 58% 45%;
+            box-shadow: var(--shadow);
+        }
+
+        .question-orb h2 {
+            max-width: 780px;
+            margin: auto;
+            font-size: clamp(2rem, 5vw, 4.3rem);
+            line-height: 1.08;
+            letter-spacing: -.045em;
+        }
+
+        .question-orb .primary-button {
+            margin-top: 1.6rem;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: clamp(2rem, 7vw, 6rem);
+            align-items: start;
+            padding: clamp(2rem, 5vw, 4rem);
+            background: var(--panel-strong);
+            border: 1px solid var(--line);
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        form {
+            display: grid;
+            gap: .75rem;
+        }
+
+        form label {
+            color: #d9def6;
+            font-size: .88rem;
+            font-weight: 750;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: .9rem 1rem;
+            color: white;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            outline: none;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: var(--aqua);
+            box-shadow: 0 0 0 4px rgba(124,232,223,.08);
+        }
+
+        form button {
+            min-height: 48px;
+            margin-top: .45rem;
+            color: #11152a;
+            background: linear-gradient(135deg, var(--moon), var(--gold));
+            border: 0;
+            border-radius: 999px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .hidden-form-field {
+            display: none;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .7rem;
+            margin-top: 1.4rem;
+        }
+
+        .contact-links a {
+            padding: .65rem .85rem;
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: #03050e;
+        }
+
+        .footer-content {
+            width: min(1280px, calc(100% - 2rem));
+            margin: auto;
+            padding: 4rem 0 2rem;
+            display: grid;
+            grid-template-columns: 1.7fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-brand p,
+        .footer-links a {
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: grid;
+            align-content: start;
+            gap: .5rem;
+        }
+
+        .copyright {
+            width: min(1280px, calc(100% - 2rem));
+            margin: auto;
+            padding: 1.3rem 0 2rem;
+            color: #7f89aa;
+            border-top: 1px solid var(--line);
+            font-size: .88rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes moon-float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-18px) rotate(2deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: .35; transform: scale(.8); }
+            50% { opacity: 1; transform: scale(1.18); }
+        }
+
+        @keyframes shoot {
+            0%, 72% { opacity: 0; transform: translate(0,0) rotate(-34deg); }
+            76% { opacity: 1; }
+            88% { opacity: 0; transform: translate(-360px,230px) rotate(-34deg); }
+            100% { opacity: 0; }
+        }
+
+        @keyframes stars-drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(115px); }
+        }
+
+        @media (max-width: 1120px) {
+            .nav-links {
+                position: fixed;
+                top: 78px;
+                left: 1rem;
+                right: 1rem;
+                display: none;
+                padding: 1rem;
+                flex-direction: column;
+                align-items: stretch;
+                background: rgba(7,11,29,.96);
+                border: 1px solid var(--line);
+                border-radius: 20px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .sign-in-btn {
+                display: none;
+            }
+
+            .hero-inner,
+            .split-section,
+            .contact-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy {
+                position: relative;
+                z-index: 2;
+            }
+
+            .moon-stage {
+                min-height: 390px;
+            }
+
+            .universe-card,
+            .universe-card:nth-child(1),
+            .universe-card:nth-child(6) {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .site-header {
+                padding-inline: .8rem;
+            }
+
+            .site-logo {
+                font-size: .92rem;
+            }
+
+            .logo-orbit {
+                width: 34px;
+            }
+
+            .wonder-space-btn {
+                padding-inline: .8rem;
+                font-size: .8rem;
+            }
+
+            .hero {
+                padding-inline: 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 17vw, 5.6rem);
+            }
+
+            .moon-stage {
+                min-height: 340px;
+            }
+
+            .moon {
+                min-width: 210px;
+            }
+
+            .tiny-orbit {
+                width: 330px;
+            }
+
+            .astronaut-note {
+                right: 0;
+                font-size: .8rem;
+            }
+
+            .universe-card,
+            .universe-card:nth-child(1),
+            .universe-card:nth-child(6) {
+                grid-column: 1 / -1;
+                min-height: 310px;
+            }
+
+            .mission-grid,
+            .feature-grid,
+            .resource-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dash-card.wide {
+                grid-column: auto;
+            }
+
+            .selection-bar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to the Wonderverse</a>
 
     <header class="site-header">
-    <nav class="navbar">
-
-        <a href="index.html" class="site-logo">
-            <span class="logo-spark">✦</span>
-            The Wonder Project
-        </a>
-
-        <div class="nav-actions">
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mobileMenu"
-            >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-          <a href="wonder-space.html" class="wonder-space-btn">
-    ✨ Wonder Space
-</a>
-
-        </div>
-
-        <div class="nav-links" id="mobileMenu">
-            <a href="index.html">Start Here</a>
-            <a href="about.html">About</a>
-            <a href="books.html">Books</a>
-            <a href="resources.html">Explore</a>
-            <a href="questions.html">Wonder</a>
-            <a href="blog.html">Blog</a>
-            <a href="schools.html">Schools</a>
-            <a href="contact.html">Contact</a>
-        </div>
-
-    </nav>
-</header>
-  <main>
-
-    <section id="home" class="hero">
-<div class="floating-emoji emoji-one">✨</div>
-<div class="floating-emoji emoji-two">💭</div>
-<div class="floating-emoji emoji-three">🔬</div>
-<div class="floating-emoji emoji-four">📚</div>
-<div class="floating-emoji emoji-five">🌈</div>
-<div class="floating-emoji emoji-six">❓</div>
-        <div class="overlay hero-card">
-            <p class="eyebrow">Welcome to a world where curiosity never grows up</p>
-
-            <h1>Keep your wonder.<br>Grow your world.</h1>
-
-            <p class="hero-tagline">
-                A colourful home for children, students, educators, professionals,
-                and every adult finding their spark again.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#start-wondering" class="hero-button">Start Wondering ✨</a>
-                <a href="about.html" class="hero-secondary-button">Why we are here →</a>
-            </div>
-
-            <p class="hero-note">Serious learning can still feel joyful.</p>
-        </div>
-
-    </section>
-<section id="start-wondering" class="wonder-path-section">
-
-    <div class="section-heading">
-        <p class="section-label">Choose your adventure</p>
-
-        <h2>What Are You Wondering About?</h2>
-
-        <p>
-            Every question can lead somewhere extraordinary.
-            Choose a path and begin exploring.
-        </p>
-    </div>
-
- <div class="wonder-path-grid">
-
-    <a href="questions.html"
-       class="wonder-path-card questions-path">
-
-        <span class="path-icon">💭</span>
-        <h3>Answer a Big Question</h3>
-
-        <p>
-            Explore curious questions with no boring or obvious answers.
-        </p>
-
-        <span class="path-arrow">
-            Start thinking →
-        </span>
-    </a>
-
-
-    <a href="resources.html"
-       class="wonder-path-card resources-path">
-
-        <span class="path-icon">🔬</span>
-        <h3>Discover Something New</h3>
-
-        <p>
-            Explore science, medicine, mathematics, and the world around us.
-        </p>
-
-        <span class="path-arrow">
-            Start discovering →
-        </span>
-    </a>
-
-
-    <a href="books.html"
-       class="wonder-path-card books-path">
-
-        <span class="path-icon">📚</span>
-        <h3>Open a Curious Book</h3>
-
-        <p>
-            Meet unusual ideas, memorable characters, and wonderfully
-            human explanations.
-        </p>
-
-        <span class="path-arrow">
-            Browse the books →
-        </span>
-    </a>
-
-
-    <a href="questions.html#submit-question"
-       class="wonder-path-card ask-path">
-
-        <span class="path-icon">❓</span>
-        <h3>Ask Your Own Question</h3>
-
-        <p>
-            Share something strange, fascinating, confusing, or unexpected.
-        </p>
-
-        <span class="path-arrow">
-            Ask away →
-        </span>
-    </a>
-
-</div>
-
-</section>
-  <section id="about">
-
-    <div class="cloud">
-
-        <h2>About Us</h2>
-
-        <p>
-            We believe every child is born curious...
-<br><br>
-        </p>
-<p>Our books, resources, and learning experiences turn curiosity into hands-on discovery, helping learners of all ages build confidence through exploration and play. When curiosity is nurtured, everything else follows.</p>
-
-    </div>
-
-</section>
-
-<section id="books" class="content-section">
-
-    <div class="section-heading">
-        <p class="section-label">Explore</p>
-        <h2>Our Books</h2>
-        <p>
-            Curious books designed to make difficult ideas feel exciting,
-            memorable, and wonderfully human.
-        </p>
-    </div>
-
-    <div class="card-grid">
-
-        <article class="wonder-card">
-            <div class="card-icon">🩺</div>
-
-            <h3>Before Stethoscope</h3>
-
-            <p>
-                A student-friendly journey through medicine, physiology,
-                science, and the questions future doctors ask.
-            </p>
-
-            <a href="books.html" class="card-link">
-                Explore the book →
-            </a>
-        </article>
-
-        <article class="wonder-card">
-            <div class="card-icon">🦠</div>
-
-            <h3>Memesplained Microbiology</h3>
-
-            <p>
-                Microbiology explained through clear ideas, humour, memorable
-                examples, and a little controlled chaos.
-            </p>
-
-            <a href="books.html" class="card-link">
-                Discover more →
-            </a>
-        </article>
-
-        <article class="wonder-card">
-            <div class="card-icon">✨</div>
-
-            <h3>Coming Soon</h3>
-
-            <p>
-                More stories, scientific adventures, learning guides, and
-                curiosity-filled books are on their way.
-            </p>
-
-            <a href="#contact" class="card-link">
-                Keep me updated →
-            </a>
-        </article>
-
-    </div>
-
-</section>
-<section id="manifesto">
-
-    <div class="cloud manifesto-cloud">
-
-        <h2>Our Manifesto</h2>
-<p>We believe curiosity is worth protecting.
-We believe learning should feel like an adventure.
-We believe dreams become reality through courage and consistent action.
-We believe science helps us understand our world.
-We believe education should inspire people to think, create, question, and build.
-We believe changing the world begins by changing the way we learn.</p>
-
-                 <p class="closing">
-            There is still so much waiting to be discovered.<br>
-            So come along, stay curious, and let's start asking questions together.
-        </p>
-
-    </div>
-
-</section>
-<section id="resources" class="resources-section">
-
-    <div class="section-heading">
-        <p class="section-label">Explore and learn</p>
-
-        <h2>Curiosity Resources</h2>
-
-        <p>
-            Discover free activities, classroom ideas, learning guides,
-            challenges, and printable resources designed to make learning
-            feel active, meaningful, and memorable.
-        </p>
-    </div>
-
-    <div class="resource-filter-buttons">
-        <button class="filter-button active" data-category="all">
-            All Resources
-        </button>
-
-        <button class="filter-button" data-category="students">
-            For Students
-        </button>
-
-        <button class="filter-button" data-category="teachers">
-            For Teachers
-        </button>
-
-        <button class="filter-button" data-category="activities">
-            Activities
-        </button>
-
-        <button class="filter-button" data-category="printables">
-            Printables
-        </button>
-    </div>
-
-    <div class="resource-grid">
-
-        <article class="resource-card" data-category="students activities">
-
-            <div class="resource-top">
-                <span class="resource-icon">🔬</span>
-                <span class="resource-badge">Free</span>
-            </div>
-
-            <p class="resource-type">Science Activity</p>
-
-            <h3>Are You Really Alive?</h3>
-
-            <p>
-                Investigate the clues scientists use to decide whether
-                something is living or non-living.
-            </p>
-
-            <div class="resource-details">
-                <span>Years 7–8</span>
-                <span>20 minutes</span>
-            </div>
-
-            <a href="living-things.html" class="resource-link">
-                Start activity →
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="site-logo">
+                <span class="logo-orbit">✦</span>
+                <span>The Wonder Project</span>
             </a>
 
-        </article>
-
-        <article class="resource-card" data-category="teachers printables">
-
-            <div class="resource-top">
-                <span class="resource-icon">👩‍🏫</span>
-                <span class="resource-badge">Teacher</span>
+            <div class="nav-links" id="mobileMenu">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="blog.html">Blog</a>
+                <a href="schools.html">Schools</a>
+                <a href="contact.html">Contact</a>
             </div>
 
-            <p class="resource-type">Lesson Starter</p>
-
-            <h3>Fifty Big Science Questions</h3>
-
-            <p>
-                A collection of curious questions teachers can use to begin
-                discussions, lessons, investigations, or reflection tasks.
-            </p>
-
-            <div class="resource-details">
-                <span>Years 5–10</span>
-                <span>Printable</span>
+            <div class="nav-actions">
+                <a href="sign-in.html" class="sign-in-btn">Sign in</a>
+                <a href="wonder-space.html" class="wonder-space-btn">✨ Wonder Space</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-
-            <a href="science-questions.html" class="resource-link">
-                View questions →
-            </a>
-
-        </article>
-
-        <article class="resource-card" data-category="students printables">
-
-            <div class="resource-top">
-                <span class="resource-icon">🧠</span>
-                <span class="resource-badge">Free</span>
-            </div>
-
-            <p class="resource-type">Learning Guide</p>
-
-            <h3>How to Learn Difficult Ideas</h3>
-
-            <p>
-                A simple student guide to understanding, remembering,
-                questioning, and applying new concepts.
-            </p>
-
-            <div class="resource-details">
-                <span>All learners</span>
-                <span>Guide</span>
-            </div>
-
-            <a href="learning-guide.html" class="resource-link">
-                Read the guide →
-            </a>
-
-        </article>
-
-        <article class="resource-card" data-category="students activities">
-
-            <div class="resource-top">
-                <span class="resource-icon">🧩</span>
-                <span class="resource-badge">Challenge</span>
-            </div>
-
-            <p class="resource-type">Curiosity Challenge</p>
-
-            <h3>The Mystery Box Challenge</h3>
-
-            <p>
-                Use observations, evidence, and scientific reasoning to
-                determine what may be hidden inside a mystery box.
-            </p>
-
-            <div class="resource-details">
-                <span>Years 6–9</span>
-                <span>Group activity</span>
-            </div>
-
-            <a href="mystery-box.html" class="resource-link">
-                Begin challenge →
-            </a>
-
-        </article>
-
-        <article class="resource-card" data-category="teachers">
-
-            <div class="resource-top">
-                <span class="resource-icon">📋</span>
-                <span class="resource-badge">Teacher</span>
-            </div>
-
-            <p class="resource-type">Planning Tool</p>
-
-            <h3>Curiosity Lesson Planner</h3>
-
-            <p>
-                Plan lessons using questions, investigation, discussion,
-                reflection, and student-led discovery.
-            </p>
-
-            <div class="resource-details">
-                <span>Teachers</span>
-                <span>Planning template</span>
-            </div>
-
-            <a href="lesson-planner.html" class="resource-link">
-                Open planner →
-            </a>
-
-        </article>
-
-        <article class="resource-card" data-category="teachers printables">
-
-            <div class="resource-top">
-                <span class="resource-icon">📊</span>
-                <span class="resource-badge">Progress</span>
-            </div>
-
-            <p class="resource-type">Assessment Tool</p>
-
-            <h3>Student Reflection Tracker</h3>
-
-            <p>
-                Help students reflect on what they understood, what challenged
-                them, and what they would like to explore next.
-            </p>
-
-            <div class="resource-details">
-                <span>Years 5–12</span>
-                <span>Printable</span>
-            </div>
-
-            <a href="reflection-tracker.html" class="resource-link">
-                View tracker →
-            </a>
-
-        </article>
-
-    </div>
-
-    <div class="resource-callout">
-
-        <div>
-            <p class="section-label">New resources every month</p>
-
-            <h3>Bring More Wonder Into Your Classroom</h3>
-
-            <p>
-                Join The Wonder Project to access complete lessons,
-                interactive activities, student progress tools, and
-                teacher-ready resources.
-            </p>
-        </div>
-
-        <a href="schools.html" class="primary-button">
-            Explore School Membership
-        </a>
-
-    </div>
-
-</section>
-
-<section id="ask-a-question" class="ask-section">
-
-    <div class="ask-card">
-
-        <div class="ask-text">
-            <p class="section-label">Your turn</p>
-
-            <h2>What Are You Wondering?</h2>
-
-            <p>
-                No question is too strange, too small, or too ambitious.
-                Share yours and it may inspire a future resource, story,
-                lesson, or Big Question.
-            </p>
-        </div>
-
-       <form
-    id="wonderForm"
-    name="homepage-wonder"
-    method="POST"
-    action="/"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
->
-
-    <input
-        type="hidden"
-        name="form-name"
-        value="homepage-wonder"
-    >
-
-    <p class="hidden-form-field">
-        <label>
-            Please leave this empty:
-            <input name="bot-field">
-        </label>
-    </p>
-
-    <label for="wonderName">
-        Your name
-    </label>
-
-    <input
-        id="wonderName"
-        name="name"
-        type="text"
-        placeholder="Curious explorer"
-    >
-
-    <label for="wonderQuestion">
-        I wonder...
-    </label>
-
-    <textarea
-        id="wonderQuestion"
-        name="question"
-        rows="5"
-        placeholder="Why do we dream? Can plants recognise each other? Why does time feel faster when we are having fun?"
-        required
-    ></textarea>
-
-    <button type="submit">
-        Send My Question ✨
-    </button>
-
-</form>
-    </div>
-
-</section>
-<section id="questions" class="questions-section">
-
-    <div class="question-cloud">
-
-        <p class="section-label">Pause and wonder</p>
-
-        <h2>Today's Big Question</h2>
-
-        <p class="big-question">
-            What would you try to understand if you knew you could not get
-            the answer wrong?
-        </p>
-
-        <a href="questions.html" class="wonder-button">
-            Explore more questions
-        </a>
-
-    </div>
-
-</section>
-<section id="schools" class="schools-section">
-
-    <div class="schools-content">
-
-        <div class="schools-text">
-            <p class="section-label">For schools and educators</p>
-
-            <h2>Turn Every Classroom Into a Place of Wonder</h2>
-
-            <p>
-                The Wonder Project combines interactive lessons, curious
-                questions, hands-on activities, teacher resources, and
-                meaningful progress tracking in one engaging learning space.
-            </p>
-
-            <p>
-                Students explore ideas through stories, challenges, games,
-                experiments, and reflection, while teachers can assign
-                activities and understand how every learner is progressing.
-            </p>
-
-            <div class="school-buttons">
-                <a href="schools.html" class="primary-button">
-                    Explore for Schools
-                </a>
-
-                <a href="#contact" class="secondary-button">
-                    Request a School Demo
-                </a>
-            </div>
-        </div>
-
-        <div class="schools-features">
-
-            <div class="school-feature">
-                <span>🎯</span>
-                <div>
-                    <h3>Assign Learning Adventures</h3>
-                    <p>
-                        Choose interactive lessons for individual students
-                        or an entire class.
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="hero">
+            <div class="shooting-star" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">Transmission received · Welcome, traveller</p>
+                    <h1>There is a whole <span>universe in you.</span></h1>
+                    <p class="hero-tagline">
+                        Enter a gentle world for curious students, brave educators, imaginative professionals,
+                        wandering adults and anyone ready to feel alive, try again and enjoy becoming.
                     </p>
+
+                    <div class="hero-actions">
+                        <a href="#universes" class="hero-button">Explore the universes ✦</a>
+                        <a href="sign-in.html" class="hero-secondary-button">Enter your Wonder Space →</a>
+                    </div>
+
+                    <p class="hero-note">You never have to choose only one world. Wonder is allowed to be wonderfully messy.</p>
+                </div>
+
+                <div class="moon-stage" aria-hidden="true">
+                    <div class="tiny-orbit"></div>
+                    <div class="moon"></div>
+                    <div class="astronaut-note">“You are not behind. You are simply arriving at your next beginning.”</div>
                 </div>
             </div>
+        </section>
 
-            <div class="school-feature">
-                <span>📊</span>
-                <div>
-                    <h3>Track Meaningful Progress</h3>
-                    <p>
-                        View lesson completion, quiz results, confidence,
-                        and common misconceptions.
-                    </p>
-                </div>
-            </div>
-
-            <div class="school-feature">
-                <span>🧪</span>
-                <div>
-                    <h3>Learn Through Discovery</h3>
-                    <p>
-                        Use investigations, questions, stories, games,
-                        challenges, and classroom activities.
-                    </p>
-                </div>
-            </div>
-
-            <div class="school-feature">
-                <span>👩‍🏫</span>
-                <div>
-                    <h3>Support Every Teacher</h3>
-                    <p>
-                        Access lesson plans, curriculum links, worksheets,
-                        discussion prompts, and extension tasks.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-      <section id="contact" class="contact-section">
-
-    <div class="contact-card">
-
-        <div>
-            <p class="section-label">Say hello</p>
-            <h2>Let's Wonder Together</h2>
-
-            <p>
-                Have a question, an idea, a collaboration, or something
-                wonderful to share? We would love to hear from you.
-            </p>
-
-            <div class="contact-links">
-               <a
-    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
->
-    ✉️ Email us
-</a>
-
-<a
-    href="https://www.instagram.com/thewonderproject.space/"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    📸 Instagram
-</a>
+        <div class="identity-strip" aria-label="Who The Wonder Project is for">
+            <div class="identity-list">
+                <span class="identity-pill">🎒 Students</span>
+                <span class="identity-pill">👩‍🏫 Educators</span>
+                <span class="identity-pill">🧠 Curious adults</span>
+                <span class="identity-pill">🩺 Future doctors</span>
+                <span class="identity-pill">🎨 Creators</span>
+                <span class="identity-pill">🔬 Researchers</span>
+                <span class="identity-pill">💼 Professionals</span>
+                <span class="identity-pill">🌱 People beginning again</span>
+                <span class="identity-pill">🏫 Schools</span>
             </div>
         </div>
 
-        <form
-    id="contactForm"
-    name="homepage-contact"
-    method="POST"
-    action="/"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
->
+        <section id="universes" class="section-shell">
+            <div class="section-heading center reveal">
+                <p class="section-label">Choose your worlds</p>
+                <h2>Which universes are calling you?</h2>
+                <p>
+                    Each universe is a different part of life: learning, creating, recovering, trying,
+                    failing, dreaming and doing. Join as many as you like and build a Wonder Space that feels like you.
+                </p>
+            </div>
 
-    <input
-        type="hidden"
-        name="form-name"
-        value="homepage-contact"
-    >
+            <div class="universe-grid">
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#fff5c7,#d8b46c);--glow:rgba(255,229,166,.35);--mist:rgba(255,229,166,.17)">
+                    <div class="planet"></div>
+                    <h3>The Moon of Beginnings</h3>
+                    <p>For slow restarts, tiny promises and the brave first step after losing your spark.</p>
+                    <div class="universe-meta"><span>Gentle goals</span><span>Daily wonder</span><span>Reflection</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Begin here →</a>
+                        <button class="join-universe" data-universe="Moon of Beginnings" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <p class="hidden-form-field">
-        <label>
-            Please leave this empty:
-            <input name="bot-field">
-        </label>
-    </p>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#9d87ff,#5142a0);--glow:rgba(157,135,255,.35);--mist:rgba(157,135,255,.18)">
+                    <div class="planet"></div>
+                    <h3>The Questionarium</h3>
+                    <p>A galaxy of odd thoughts, impossible questions and wonderfully unfinished answers.</p>
+                    <div class="universe-meta"><span>Big questions</span><span>Mysteries</span><span>Curiosity</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="questions.html">Start wondering →</a>
+                        <button class="join-universe" data-universe="The Questionarium" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <label for="name">
-        Your name
-    </label>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#79efe0,#247f91);--glow:rgba(124,232,223,.32);--mist:rgba(124,232,223,.16)">
+                    <div class="planet"></div>
+                    <h3>Discovery Nebula</h3>
+                    <p>Science, medicine, maths and the strange little systems holding our universe together.</p>
+                    <div class="universe-meta"><span>Science</span><span>Medicine</span><span>Maths</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Investigate →</a>
+                        <button class="join-universe" data-universe="Discovery Nebula" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <input
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Your name"
-        required
-    >
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffacd7,#9e4f98);--glow:rgba(255,159,208,.3);--mist:rgba(255,159,208,.15)">
+                    <div class="planet"></div>
+                    <h3>The Dream Forge</h3>
+                    <p>Turn “one day” into today through tiny missions, imperfect action and cheerful persistence.</p>
+                    <div class="universe-meta"><span>Goals</span><span>Action</span><span>Momentum</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Build something →</a>
+                        <button class="join-universe" data-universe="The Dream Forge" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <label for="email">
-        Your email
-    </label>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffcd70,#cf684d);--glow:rgba(255,205,112,.3);--mist:rgba(255,205,112,.15)">
+                    <div class="planet"></div>
+                    <h3>Oops! Observatory</h3>
+                    <p>A celebration of experiments, wrong turns, funny failures and everything they teach us.</p>
+                    <div class="universe-meta"><span>Failure quests</span><span>Resilience</span><span>Try again</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="blog.html">Meet the mistakes →</a>
+                        <button class="join-universe" data-universe="Oops Observatory" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="you@example.com"
-        required
-    >
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#a8ffbd,#3b9366);--glow:rgba(140,240,177,.3);--mist:rgba(140,240,177,.15)">
+                    <div class="planet"></div>
+                    <h3>Spark Sanctuary</h3>
+                    <p>A soft place for tired minds to rest, notice joy and rediscover life without productivity pressure.</p>
+                    <div class="universe-meta"><span>Rest</span><span>Joy</span><span>Small wins</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="about.html">Find your spark →</a>
+                        <button class="join-universe" data-universe="Spark Sanctuary" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <label for="message">
-        Your message
-    </label>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#b7d2ff,#5771b8);--glow:rgba(183,210,255,.3);--mist:rgba(183,210,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Storyverse</h3>
+                    <p>Books, characters, poems and explanations that make difficult ideas feel wonderfully human.</p>
+                    <div class="universe-meta"><span>Books</span><span>Writing</span><span>Stories</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="books.html">Open a portal →</a>
+                        <button class="join-universe" data-universe="Storyverse" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <textarea
-        id="message"
-        name="message"
-        rows="5"
-        placeholder="What are you wondering about?"
-        required
-    ></textarea>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#d9bdff,#7356a4);--glow:rgba(217,189,255,.3);--mist:rgba(217,189,255,.15)">
+                    <div class="planet"></div>
+                    <h3>Teacher Constellation</h3>
+                    <p>Guides, classroom missions and kind teaching tools for educators who protect curiosity.</p>
+                    <div class="universe-meta"><span>Lessons</span><span>Guides</span><span>Community</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="schools.html">Guide explorers →</a>
+                        <button class="join-universe" data-universe="Teacher Constellation" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
 
-    <button type="submit">
-        Send your message ✨
-    </button>
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#7ed4ff,#315d9c);--glow:rgba(126,212,255,.3);--mist:rgba(126,212,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Student Orbit</h3>
+                    <p>Learning adventures, puzzles and progress paths made for students—not robots completing worksheets.</p>
+                    <div class="universe-meta"><span>Quests</span><span>Skills</span><span>Badges</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Launch a quest →</a>
+                        <button class="join-universe" data-universe="Student Orbit" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+            </div>
 
-</form>
+            <div class="selection-bar" aria-live="polite">
+                <span><strong id="universeCount">0</strong> universes selected. Your curiosity is allowed to contain multitudes.</span>
+                <a href="sign-in.html">Save My Wonderverse →</a>
+            </div>
+        </section>
 
-    </div>
+        <section class="mission-section">
+            <div class="section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-label">Wonder becomes movement</p>
+                    <h2>Do more than dream about your life.</h2>
+                    <p>The Wonder Project turns ideas into playful, manageable missions—without punishing you for being human.</p>
+                </div>
 
-</section>
-                
+                <div class="mission-grid">
+                    <article class="mission-card reveal">
+                        <span class="mission-number">1</span>
+                        <h3>Notice something</h3>
+                        <p>Look closer. Ask the question everyone else walked past.</p>
+                    </article>
+                    <article class="mission-card reveal">
+                        <span class="mission-number">2</span>
+                        <h3>Try something small</h3>
+                        <p>Choose a ten-minute mission rather than waiting for perfect motivation.</p>
+                    </article>
+                    <article class="mission-card reveal">
+                        <span class="mission-number">3</span>
+                        <h3>Celebrate the evidence</h3>
+                        <p>Record the attempt, lesson or glorious failure. That is real progress.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-shell split-section" id="wonder-space-preview">
+            <div class="split-copy reveal">
+                <p class="section-label">Your personal command centre</p>
+                <h2>One Wonder Space. Many versions of you.</h2>
+                <p>
+                    A learner today. A teacher tomorrow. A tired human on Friday. Your space can hold every version of you
+                    without making you squeeze into a single label.
+                </p>
+                <ul class="check-list">
+                    <li>Join multiple universes and switch whenever your curiosity changes.</li>
+                    <li>Collect meaningful badges for trying, reflecting, helping and questioning.</li>
+                    <li>Save missions, books, classroom resources and unfinished ideas.</li>
+                    <li>Track progress without turning your whole life into a competition.</li>
+                </ul>
+                <a href="wonder-space.html" class="primary-button">Open Wonder Space ✦</a>
+            </div>
+
+            <div class="dashboard-preview reveal" aria-label="Wonder Space dashboard preview">
+                <div class="dashboard-top"><span>ISHA'S WONDERVERSE</span><span>Orbit 07</span></div>
+                <div class="dashboard-grid">
+                    <div class="dash-card wide">
+                        <small>Current mission</small>
+                        <strong>Make the idea real</strong>
+                        <div class="progress-track"><span></span></div>
+                    </div>
+                    <div class="dash-card"><small>Universes joined</small><strong>5 🪐</strong></div>
+                    <div class="dash-card"><small>Brave attempts</small><strong>18 ✦</strong></div>
+                    <div class="dash-card wide"><small>Today's tiny wonder</small><strong>Why does moonlight feel quiet?</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schools" class="school-section">
+            <div class="section-shell">
+                <div class="school-panel split-section">
+                    <div class="split-copy reveal">
+                        <p class="section-label">For schools and educators</p>
+                        <h2>Turn your school into a constellation.</h2>
+                        <p>
+                            Schools can bring students and educators into shared universes, assign guided adventures,
+                            explore hands-on resources and see how curiosity, confidence and understanding are growing.
+                        </p>
+                        <div class="school-actions">
+                            <a href="schools.html" class="primary-button">Explore School Membership</a>
+                            <a href="#contact" class="secondary-button">Request a School Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-grid reveal">
+                        <article class="feature-card"><h3>🚀 Assign missions</h3><p>Send adventures to a student, group or whole class.</p></article>
+                        <article class="feature-card"><h3>📊 See real growth</h3><p>Track completion, confidence, questions and misconceptions.</p></article>
+                        <article class="feature-card"><h3>🧪 Learn by doing</h3><p>Use games, investigations, stories and reflection.</p></article>
+                        <article class="feature-card"><h3>🧭 Teacher guides</h3><p>Access ready-to-use plans, prompts and extensions.</p></article>
+                        <article class="feature-card"><h3>🌌 Shared worlds</h3><p>Create class constellations and celebrate collective progress.</p></article>
+                        <article class="feature-card"><h3>✨ Kind achievement</h3><p>Reward courage, consistency, creativity and helpfulness.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section-shell">
+            <div class="section-heading reveal">
+                <p class="section-label">Portals already open</p>
+                <h2>Start exploring today.</h2>
+                <p>Your existing books, questions, resources and activities remain easy to reach—now they feel like portals inside one connected world.</p>
+            </div>
+
+            <div class="resource-grid">
+                <article class="resource-card reveal"><span class="resource-icon">💭</span><h3>Answer a Big Question</h3><p>Explore questions with no boring or obvious answers.</p><a href="questions.html">Enter the Questionarium →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🔬</span><h3>Discover Something New</h3><p>Investigate science, medicine, mathematics and everyday life.</p><a href="resources.html">Visit Discovery Nebula →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">📚</span><h3>Open a Curious Book</h3><p>Meet memorable ideas, unusual characters and human explanations.</p><a href="books.html">Travel to Storyverse →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">❓</span><h3>Ask Your Own Question</h3><p>Share something strange, fascinating, confusing or unexpected.</p><a href="questions.html#submit-question">Send a signal →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧩</span><h3>Try a Challenge</h3><p>Use observations, evidence and creative reasoning to solve mysteries.</p><a href="mystery-box.html">Begin the challenge →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧠</span><h3>Learn Difficult Ideas</h3><p>A simple guide to understanding, remembering and applying concepts.</p><a href="learning-guide.html">Read the guide →</a></article>
+            </div>
+        </section>
+
+        <section id="questions">
+            <div class="question-orb reveal">
+                <p class="section-label">Today's signal from the stars</p>
+                <h2>What would you begin if failure became part of the fun?</h2>
+                <a href="questions.html" class="primary-button">Explore more questions</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section-shell">
+            <div class="contact-card reveal">
+                <div>
+                    <p class="section-label">Send a signal</p>
+                    <h2>Let's build a more curious world.</h2>
+                    <p>Have a question, school enquiry, collaboration, impossible idea or something wonderful to share? We would love to hear it.</p>
+                    <div class="contact-links">
+                        <a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project">✉️ Email us</a>
+                        <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+                    </div>
+                </div>
+
+                <form id="contactForm" name="homepage-contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="homepage-contact">
+                    <p class="hidden-form-field"><label>Please leave this empty: <input name="bot-field"></label></p>
+                    <label for="name">Your name</label>
+                    <input id="name" name="name" type="text" placeholder="Curious explorer" required>
+                    <label for="email">Your email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us what you are wondering, building or hoping to explore..." required></textarea>
+                    <button type="submit">Send your message ✦</button>
+                </form>
+            </div>
+        </section>
     </main>
-<footer>
 
-    <div class="footer-content">
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>The Wonder Project</h2>
+                <p>Protecting curiosity, celebrating questions and making life feel like an adventure again.</p>
+            </div>
 
-        <div class="footer-brand">
-            <h2>The Wonder Project</h2>
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="about.html">About Us</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+            </div>
 
-            <p>
-                Protecting curiosity, celebrating questions, and making
-                learning feel like an adventure.
-            </p>
+            <div class="footer-links">
+                <h3>Connect</h3>
+                <a href="#contact">Contact Us</a>
+                <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project">Email</a>
+                <a href="sign-in.html">Sign in</a>
+            </div>
         </div>
+        <p class="copyright">© 2026 The Wonder Project. Made somewhere between the Moon and your imagination ✦</p>
+    </footer>
 
-        <div class="footer-links">
-            <h3>Explore</h3>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-            <a href="#about">About Us</a>
-            <a href="#books">Books</a>
-            <a href="#resources">Resources</a>
-            <a href="#questions">Questions</a>
-        </div>
+        menuToggle?.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
 
-        <div class="footer-links">
-            <h3>Connect</h3>
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuToggle?.setAttribute('aria-expanded', 'false');
+            });
+        });
 
-            <a href="#contact">Contact Us</a>
-            <a
-    href="https://www.instagram.com/thewonderproject.space/"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    Instagram
-</a>
+        const joinButtons = [...document.querySelectorAll('.join-universe')];
+        const countLabel = document.getElementById('universeCount');
+        const storageKey = 'wonder-project-universes';
+        let selectedUniverses = [];
 
-<a
-    href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project"
->
-    Email
-</a>
-        </div>
+        try {
+            selectedUniverses = JSON.parse(localStorage.getItem(storageKey)) || [];
+        } catch (error) {
+            selectedUniverses = [];
+        }
 
-    </div>
+        function updateUniverseUI() {
+            joinButtons.forEach(button => {
+                const selected = selectedUniverses.includes(button.dataset.universe);
+                button.setAttribute('aria-pressed', String(selected));
+                button.textContent = selected ? '✓ Joined' : '+ Join';
+            });
+            countLabel.textContent = selectedUniverses.length;
+        }
 
-    <p class="copyright">
-        © 2026 The Wonder Project. Made with curiosity ✨
-    </p>
+        joinButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const universe = button.dataset.universe;
+                selectedUniverses = selectedUniverses.includes(universe)
+                    ? selectedUniverses.filter(item => item !== universe)
+                    : [...selectedUniverses, universe];
 
-</footer>
+                localStorage.setItem(storageKey, JSON.stringify(selectedUniverses));
+                updateUniverseUI();
+            });
+        });
 
-   <script src="script.js" defer></script>
+        updateUniverseUI();
+
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+    </script>
+
+    <!-- Your existing JavaScript remains connected for any site-wide features. -->
+    <script src="script.js" defer></script>
 </body>
 </html>
