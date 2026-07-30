@@ -748,3 +748,75 @@ if (
         openWonderLogin(requestedWonderRole);
     }, 450);
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (!menuButton || !mobileMenu) {
+        console.warn("Mobile menu button or navigation menu was not found.");
+        return;
+    }
+
+    function closeMenu() {
+        menuButton.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+    }
+
+    function openMenu() {
+        menuButton.classList.add("is-open");
+        mobileMenu.classList.add("is-open");
+
+        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+    }
+
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        const menuIsOpen =
+            mobileMenu.classList.contains("is-open");
+
+        if (menuIsOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+        const clickedInsideMenu =
+            mobileMenu.contains(event.target);
+
+        const clickedMenuButton =
+            menuButton.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedMenuButton) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 850) {
+            closeMenu();
+        }
+    });
+});
