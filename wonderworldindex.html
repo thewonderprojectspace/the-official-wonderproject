@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Wonder Project is a joyful universe for students, educators, professionals, schools and adults rediscovering their curiosity.">
+    <meta name="theme-color" content="#050816">
+
+    <title>The Wonder Project | Enter the Wonderverse</title>
+
+    <style>
+        :root {
+            --space: #050816;
+            --space-2: #09102a;
+            --panel: rgba(15, 24, 58, 0.78);
+            --panel-strong: rgba(10, 17, 42, 0.95);
+            --line: rgba(204, 214, 255, 0.16);
+            --text: #f7f8ff;
+            --muted: #bdc7e8;
+            --moon: #ffe7aa;
+            --gold: #ffd46c;
+            --lavender: #b9a7ff;
+            --violet: #8d74ff;
+            --aqua: #7ce8df;
+            --pink: #ff9fd0;
+            --success: #8cf0b1;
+            --shadow: 0 24px 70px rgba(0,0,0,.38);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --page-width: 1280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 84px;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 5%, rgba(111,83,255,.18), transparent 28%),
+                radial-gradient(circle at 88% 18%, rgba(42,184,201,.12), transparent 24%),
+                radial-gradient(circle at 48% 92%, rgba(168,82,203,.12), transparent 30%),
+                var(--space);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.65;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            opacity: .75;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.4px),
+                radial-gradient(circle, rgba(185,167,255,.7) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(124,232,223,.65) 0 1px, transparent 1.5px);
+            background-position: 0 0, 58px 76px, 130px 32px;
+            background-size: 115px 115px, 180px 180px, 240px 240px;
+            animation: starDrift 85s linear infinite;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--aqua);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            padding: .75rem 1rem;
+            color: #0a0e22;
+            background: var(--moon);
+            border-radius: 999px;
+            transform: translateY(-150%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            padding: .7rem;
+            background: rgba(4,7,20,.88);
+            border-bottom: 1px solid rgba(204,214,255,.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .navbar {
+            width: min(var(--page-width), 100%);
+            min-height: 54px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+        }
+
+        .site-logo {
+            min-width: 0;
+            margin-right: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .88rem;
+            font-weight: 850;
+            line-height: 1.1;
+            letter-spacing: -.025em;
+        }
+
+        .site-logo-text {
+            max-width: 125px;
+        }
+
+        .logo-orbit {
+            width: 34px;
+            aspect-ratio: 1;
+            flex: 0 0 34px;
+            display: grid;
+            place-items: center;
+            color: #18152e;
+            background: var(--moon);
+            border-radius: 50%;
+            box-shadow: 0 0 24px rgba(255,229,166,.42);
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: .7rem;
+            right: .7rem;
+            display: none;
+            max-height: calc(100svh - 84px);
+            overflow-y: auto;
+            padding: .7rem;
+            flex-direction: column;
+            gap: .3rem;
+            color: var(--muted);
+            background: rgba(7,11,29,.98);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            width: 100%;
+            padding: .78rem .9rem;
+            border-radius: 12px;
+            background: rgba(255,255,255,.035);
+            font-size: .92rem;
+            font-weight: 700;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255,255,255,.075);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .sign-in-btn {
+            display: none;
+        }
+
+        .wonder-space-btn,
+        .primary-button,
+        .secondary-button,
+        .hero-button,
+        .hero-secondary-button {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            padding: .72rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-weight: 850;
+            text-align: center;
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        .wonder-space-btn {
+            min-height: 40px;
+            padding: .55rem .7rem;
+            color: #101427;
+            background: linear-gradient(135deg, var(--moon), var(--gold));
+            font-size: .72rem;
+            white-space: nowrap;
+        }
+
+        .hero-button,
+        .primary-button {
+            color: #101427;
+            background: linear-gradient(135deg, var(--moon), var(--gold));
+            box-shadow: 0 14px 34px rgba(255,211,106,.16);
+        }
+
+        .hero-secondary-button,
+        .secondary-button {
+            color: white;
+            background: rgba(255,255,255,.055);
+        }
+
+        .menu-toggle {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            padding: 8px;
+            color: white;
+            background: rgba(255,255,255,.06);
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            margin: 5px 0;
+            background: currentColor;
+            border-radius: 999px;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        main {
+            overflow: clip;
+        }
+
+        .hero {
+            position: relative;
+            min-height: auto;
+            padding: 7.4rem 1rem 3.2rem;
+            isolation: isolate;
+        }
+
+        .hero-inner {
+            width: min(var(--page-width), 100%);
+            margin: auto;
+            display: grid;
+            gap: 1.6rem;
+        }
+
+        .hero-copy {
+            text-align: center;
+        }
+
+        .eyebrow,
+        .section-label {
+            margin-bottom: .85rem;
+            color: var(--aqua);
+            font-size: .69rem;
+            font-weight: 900;
+            letter-spacing: .15em;
+            line-height: 1.5;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 100%;
+            margin: auto;
+            font-size: clamp(2.65rem, 14vw, 4.1rem);
+            line-height: .98;
+            letter-spacing: -.055em;
+            overflow-wrap: anywhere;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: transparent;
+            background: linear-gradient(100deg, var(--moon), var(--pink) 43%, var(--aqua));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            max-width: 36rem;
+            margin: 1.3rem auto 1.6rem;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.72;
+        }
+
+        .hero-actions {
+            display: grid;
+            gap: .75rem;
+        }
+
+        .hero-actions a {
+            width: 100%;
+            min-height: 50px;
+        }
+
+        .hero-note {
+            max-width: 34rem;
+            margin: 1rem auto 0;
+            color: #8f9abd;
+            font-size: .79rem;
+        }
+
+        .moon-stage {
+            position: relative;
+            min-height: 285px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .moon {
+            position: relative;
+            width: min(63vw, 245px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 28%, rgba(118,102,134,.18) 0 5%, transparent 5.5%),
+                radial-gradient(circle at 66% 34%, rgba(118,102,134,.14) 0 8%, transparent 8.5%),
+                radial-gradient(circle at 43% 72%, rgba(118,102,134,.12) 0 10%, transparent 10.5%),
+                linear-gradient(135deg, #fff8dc, #f0dca0);
+            box-shadow: 0 0 48px rgba(255,229,166,.38), 0 0 140px rgba(177,147,255,.18);
+            animation: moonFloat 8s ease-in-out infinite;
+        }
+
+        .moon::before {
+            content: "";
+            position: absolute;
+            inset: -34%;
+            border: 1px solid rgba(185,167,255,.23);
+            border-radius: 50%;
+            transform: rotate(-17deg) scaleY(.42);
+        }
+
+        .tiny-orbit {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(88vw, 320px);
+            height: min(44vw, 150px);
+            border: 1px solid rgba(124,232,223,.18);
+            border-radius: 50%;
+            transform: translate(-50%,-50%) rotate(14deg);
+        }
+
+        .tiny-orbit::after {
+            content: "✦";
+            position: absolute;
+            right: 35px;
+            top: -2px;
+            color: var(--aqua);
+            filter: drop-shadow(0 0 10px var(--aqua));
+            animation: twinkle 2.5s ease-in-out infinite;
+        }
+
+        .astronaut-note {
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+            width: min(88%, 290px);
+            padding: .65rem .75rem;
+            color: #e8e9ff;
+            background: rgba(12,18,45,.82);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            font-size: .72rem;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 16%;
+            right: 8%;
+            width: 110px;
+            height: 1px;
+            opacity: 0;
+            background: linear-gradient(90deg, transparent, white);
+            transform: rotate(-34deg);
+            animation: shoot 8s ease-in-out infinite 2s;
+        }
+
+        .identity-strip {
+            overflow: hidden;
+            border-block: 1px solid var(--line);
+            background: rgba(255,255,255,.025);
+        }
+
+        .identity-list {
+            width: 100%;
+            display: flex;
+            gap: .65rem;
+            overflow-x: auto;
+            padding: .85rem 1rem 1rem;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .identity-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .identity-pill {
+            flex: 0 0 auto;
+            padding: .58rem .8rem;
+            color: #dbe0fa;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .78rem;
+            white-space: nowrap;
+        }
+
+        .section-shell {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 4rem 0;
+        }
+
+        .section-heading {
+            max-width: 780px;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading.center {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .section-heading h2,
+        .split-copy h2,
+        .contact-card h2 {
+            margin-bottom: .9rem;
+            font-size: clamp(2rem, 10vw, 3rem);
+            line-height: 1.06;
+            letter-spacing: -.045em;
+        }
+
+        .section-heading p:not(.section-label),
+        .split-copy > p,
+        .contact-card p {
+            color: var(--muted);
+            font-size: .96rem;
+        }
+
+        .universe-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .universe-card {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 1.1rem;
+            background: linear-gradient(145deg, rgba(20,30,67,.92), rgba(8,13,33,.96));
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            isolation: isolate;
+            transition: transform .3s ease, border-color .3s ease;
+        }
+
+        .universe-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 14%, var(--mist, rgba(142,117,255,.2)), transparent 38%);
+        }
+
+        .planet {
+            position: relative;
+            width: 88px;
+            aspect-ratio: 1;
+            align-self: center;
+            margin: .1rem auto 1rem;
+            border-radius: 50%;
+            background: var(--planet);
+            box-shadow: 0 0 44px var(--glow);
+            transition: transform .45s ease;
+        }
+
+        .planet::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 150%;
+            height: 34%;
+            border: 6px solid rgba(237,232,255,.32);
+            border-top-color: transparent;
+            border-radius: 50%;
+            transform: translate(-50%,-50%) rotate(-15deg);
+        }
+
+        .universe-card h3 {
+            margin-bottom: .55rem;
+            font-size: 1.45rem;
+            line-height: 1.12;
+            text-align: center;
+        }
+
+        .universe-card > p {
+            color: var(--muted);
+            font-size: .92rem;
+            text-align: center;
+        }
+
+        .universe-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .42rem;
+            margin: 1rem 0;
+        }
+
+        .universe-meta span {
+            padding: .4rem .6rem;
+            color: #d9def7;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .7rem;
+        }
+
+        .universe-actions {
+            display: grid;
+            gap: .65rem;
+            margin-top: auto;
+        }
+
+        .explore-link,
+        .join-universe {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            text-align: center;
+        }
+
+        .explore-link {
+            color: var(--moon);
+            background: rgba(255,255,255,.035);
+            border: 1px solid var(--line);
+            font-weight: 850;
+        }
+
+        .join-universe {
+            padding: .6rem .85rem;
+            color: white;
+            background: rgba(255,255,255,.07);
+            border: 1px solid var(--line);
+            cursor: pointer;
+        }
+
+        .join-universe[aria-pressed="true"] {
+            color: #102218;
+            background: var(--success);
+            border-color: transparent;
+        }
+
+        .selection-bar {
+            width: 100%;
+            margin-top: 1rem;
+            display: grid;
+            gap: .85rem;
+            padding: 1rem;
+            color: #eef0ff;
+            background: rgba(9,14,35,.9);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .selection-bar strong {
+            color: var(--aqua);
+        }
+
+        .selection-bar a {
+            width: 100%;
+            padding: .7rem .9rem;
+            color: #101427;
+            background: var(--moon);
+            border-radius: 999px;
+            font-weight: 850;
+            text-align: center;
+        }
+
+        .mission-grid,
+        .feature-grid,
+        .resource-grid,
+        .dashboard-grid,
+        .footer-content,
+        .split-section,
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .mission-card,
+        .feature-card,
+        .resource-card,
+        .dash-card {
+            min-height: 0;
+            padding: 1.15rem;
+            color: var(--text);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+        }
+
+        .mission-number {
+            width: 42px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1rem;
+            color: #101427;
+            background: var(--moon);
+            border-radius: 50%;
+            font-weight: 950;
+        }
+
+        .mission-card h3,
+        .feature-card h3,
+        .resource-card h3 {
+            margin-bottom: .5rem;
+        }
+
+        .mission-card p,
+        .feature-card p,
+        .resource-card p {
+            color: var(--muted);
+        }
+
+        .dashboard-preview {
+            padding: 1rem;
+            background: rgba(10,16,39,.9);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: .9rem;
+            color: var(--muted);
+            font-size: .72rem;
+        }
+
+        .dash-card small {
+            color: var(--muted);
+        }
+
+        .dash-card strong {
+            display: block;
+            margin-top: .35rem;
+            font-size: 1.35rem;
+        }
+
+        .progress-track {
+            height: 9px;
+            margin-top: 1rem;
+            overflow: hidden;
+            background: rgba(255,255,255,.08);
+            border-radius: 999px;
+        }
+
+        .progress-track span {
+            display: block;
+            width: 72%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--violet), var(--aqua));
+        }
+
+        .check-list {
+            margin: 1.3rem 0 1.6rem;
+            display: grid;
+            gap: .7rem;
+        }
+
+        .check-list li {
+            list-style: none;
+            display: flex;
+            gap: .65rem;
+            color: var(--muted);
+        }
+
+        .check-list li::before {
+            content: "✦";
+            color: var(--aqua);
+        }
+
+        .school-panel {
+            padding: 1.2rem;
+            background:
+                radial-gradient(circle at 90% 5%, rgba(124,232,223,.13), transparent 30%),
+                linear-gradient(145deg, rgba(20,28,63,.9), rgba(8,12,31,.93));
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .school-actions {
+            display: grid;
+            gap: .7rem;
+            margin-top: 1.4rem;
+        }
+
+        .school-actions a {
+            width: 100%;
+        }
+
+        .resource-card {
+            background: rgba(255,255,255,.04);
+        }
+
+        .resource-icon {
+            width: 50px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            margin-bottom: .9rem;
+            background: rgba(255,255,255,.07);
+            border-radius: 15px;
+            font-size: 1.45rem;
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--moon);
+            font-weight: 850;
+        }
+
+        .question-orb {
+            width: min(calc(100% - 2rem), 980px);
+            margin: 2rem auto 0;
+            padding: 2.2rem 1.2rem;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(185,167,255,.2), transparent 50%),
+                rgba(11,17,43,.78);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .question-orb h2 {
+            max-width: 780px;
+            margin: auto;
+            font-size: clamp(2rem, 9vw, 3rem);
+            line-height: 1.08;
+        }
+
+        .question-orb .primary-button {
+            width: 100%;
+            margin-top: 1.4rem;
+        }
+
+        .contact-card {
+            padding: 1.15rem;
+            background: var(--panel-strong);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        form {
+            display: grid;
+            gap: .72rem;
+        }
+
+        form label {
+            color: #d9def6;
+            font-size: .88rem;
+            font-weight: 750;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: .9rem 1rem;
+            color: white;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: var(--aqua);
+            box-shadow: 0 0 0 4px rgba(124,232,223,.08);
+        }
+
+        form button {
+            min-height: 48px;
+            margin-top: .4rem;
+            color: #11152a;
+            background: linear-gradient(135deg, var(--moon), var(--gold));
+            border: 0;
+            border-radius: 999px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .hidden-form-field {
+            display: none;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: .6rem;
+            margin-top: 1.2rem;
+        }
+
+        .contact-links a {
+            padding: .7rem .85rem;
+            background: rgba(255,255,255,.05);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            text-align: center;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: #03050e;
+        }
+
+        .footer-content {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .footer-brand p,
+        .footer-links a {
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: grid;
+            gap: .45rem;
+        }
+
+        .copyright {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 1.2rem 0 1.8rem;
+            color: #7f89aa;
+            border-top: 1px solid var(--line);
+            font-size: .82rem;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (min-width: 680px) {
+            .site-logo-text {
+                max-width: none;
+            }
+
+            .wonder-space-btn {
+                min-height: 44px;
+                padding-inline: 1rem;
+                font-size: .82rem;
+            }
+
+            .hero {
+                padding-inline: 2rem;
+            }
+
+            .hero-actions {
+                max-width: 600px;
+                margin-inline: auto;
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .universe-grid,
+            .mission-grid,
+            .resource-grid {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .dashboard-grid,
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .dash-card.wide {
+                grid-column: 1 / -1;
+            }
+
+            .selection-bar {
+                grid-template-columns: 1fr auto;
+                align-items: center;
+            }
+
+            .selection-bar a {
+                width: auto;
+            }
+
+            .school-actions,
+            .contact-links {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .question-orb .primary-button {
+                width: auto;
+            }
+
+            .footer-content {
+                grid-template-columns: 1.6fr 1fr 1fr;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 980px) {
+            .site-header {
+                padding: 1rem clamp(1rem,4vw,4rem);
+                background: linear-gradient(to bottom, rgba(4,7,20,.94), rgba(4,7,20,.5), transparent);
+                border-bottom: 0;
+            }
+
+            .navbar {
+                min-height: 58px;
+                gap: 1.2rem;
+            }
+
+            .site-logo {
+                font-size: 1rem;
+            }
+
+            .logo-orbit {
+                width: 38px;
+                flex-basis: 38px;
+            }
+
+            .nav-links {
+                position: static;
+                display: flex;
+                max-height: none;
+                overflow: visible;
+                padding: 0;
+                flex-direction: row;
+                gap: clamp(.65rem,1.2vw,1.15rem);
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .nav-links a {
+                width: auto;
+                padding: .55rem .1rem;
+                background: transparent;
+                font-size: .9rem;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .sign-in-btn {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: .7rem 1rem;
+                color: var(--moon);
+                background: rgba(255,255,255,.045);
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                font-weight: 800;
+            }
+
+            .hero {
+                min-height: 100svh;
+                display: grid;
+                align-items: center;
+                padding: 9rem clamp(2rem,7vw,8rem) 5rem;
+            }
+
+            .hero-inner {
+                grid-template-columns: minmax(0,1.12fr) minmax(320px,.88fr);
+                align-items: center;
+                gap: clamp(3rem,8vw,8rem);
+            }
+
+            .hero-copy {
+                text-align: left;
+            }
+
+            .hero h1 {
+                max-width: 840px;
+                margin: 0;
+                font-size: clamp(3.5rem,7.5vw,7.5rem);
+                line-height: .91;
+            }
+
+            .hero-tagline,
+            .hero-note {
+                margin-left: 0;
+            }
+
+            .hero-actions {
+                max-width: none;
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .hero-actions a {
+                width: auto;
+            }
+
+            .moon-stage {
+                min-height: 520px;
+                overflow: visible;
+            }
+
+            .moon {
+                width: min(30vw,350px);
+            }
+
+            .tiny-orbit {
+                width: 470px;
+                height: 170px;
+            }
+
+            .astronaut-note {
+                left: auto;
+                right: 2%;
+                bottom: 4%;
+                width: 235px;
+                padding: 1rem 1.1rem;
+                font-size: .82rem;
+                text-align: left;
+                transform: rotate(3deg);
+            }
+
+            .section-shell {
+                padding: clamp(4.8rem,8vw,8rem) 0;
+            }
+
+            .section-heading h2,
+            .split-copy h2,
+            .contact-card h2 {
+                font-size: clamp(2.4rem,5vw,4.7rem);
+            }
+
+            .universe-grid {
+                grid-template-columns: repeat(3,minmax(0,1fr));
+                gap: 1.25rem;
+            }
+
+            .universe-card {
+                min-height: 430px;
+                padding: 1.35rem;
+                border-radius: var(--radius-lg);
+            }
+
+            .planet {
+                width: 118px;
+                margin-bottom: 1.3rem;
+            }
+
+            .universe-card h3,
+            .universe-card > p {
+                text-align: left;
+            }
+
+            .universe-meta {
+                justify-content: flex-start;
+                margin-top: auto;
+            }
+
+            .universe-actions {
+                grid-template-columns: 1fr auto;
+                align-items: center;
+            }
+
+            .join-universe {
+                min-width: 86px;
+            }
+
+            .selection-bar {
+                position: sticky;
+                bottom: 1rem;
+                width: min(760px,calc(100% - 2rem));
+                margin-inline: auto;
+            }
+
+            .mission-grid,
+            .resource-grid {
+                grid-template-columns: repeat(3,minmax(0,1fr));
+            }
+
+            .split-section,
+            .contact-card {
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(2rem,7vw,7rem);
+                align-items: center;
+            }
+
+            .contact-card {
+                grid-template-columns: .85fr 1.15fr;
+                align-items: start;
+                padding: clamp(2rem,5vw,4rem);
+                border-radius: 32px;
+            }
+
+            .school-panel {
+                padding: clamp(2rem,5vw,4rem);
+                border-radius: 34px;
+            }
+
+            .resource-card,
+            .mission-card,
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .universe-card:hover,
+            .mission-card:hover,
+            .feature-card:hover,
+            .resource-card:hover {
+                transform: translateY(-7px);
+            }
+
+            .universe-card:hover .planet {
+                transform: rotate(8deg) scale(1.06);
+            }
+        }
+
+        @media (max-width: 390px) {
+            .site-logo-text {
+                max-width: 98px;
+                font-size: .77rem;
+            }
+
+            .wonder-space-btn {
+                padding-inline: .5rem;
+                font-size: .65rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.4rem,14vw,3.25rem);
+            }
+
+            .section-shell {
+                width: min(calc(100% - 1.4rem), var(--page-width));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes moonFloat {
+            0%,100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-16px) rotate(2deg); }
+        }
+
+        @keyframes twinkle {
+            0%,100% { opacity: .35; transform: scale(.8); }
+            50% { opacity: 1; transform: scale(1.18); }
+        }
+
+        @keyframes shoot {
+            0%,72% { opacity: 0; transform: translate(0,0) rotate(-34deg); }
+            76% { opacity: 1; }
+            88% { opacity: 0; transform: translate(-320px,210px) rotate(-34deg); }
+            100% { opacity: 0; }
+        }
+
+        @keyframes starDrift {
+            from { transform: translateY(0); }
+            to { transform: translateY(115px); }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to the Wonderverse</a>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="site-logo">
+                <span class="logo-orbit">✦</span>
+                <span class="site-logo-text">The Wonder Project</span>
+            </a>
+
+            <div class="nav-links" id="mobileMenu">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="blog.html">Blog</a>
+                <a href="schools.html">Schools</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="sign-in.html" class="sign-in-btn">Sign in</a>
+                <a href="wonder-space.html" class="wonder-space-btn">✨ Wonder Space</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="shooting-star" aria-hidden="true"></div>
+
+            <div class="hero-inner">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">Transmission received · Welcome, traveller</p>
+                    <h1>There is a whole <span>universe in you.</span></h1>
+                    <p class="hero-tagline">
+                        Enter a gentle world for curious students, brave educators, imaginative professionals,
+                        wandering adults and anyone ready to feel alive, try again and enjoy becoming.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#universes" class="hero-button">Explore the universes ✦</a>
+                        <a href="sign-in.html" class="hero-secondary-button">Enter your Wonder Space →</a>
+                    </div>
+
+                    <p class="hero-note">You never have to choose only one world. Wonder is allowed to be wonderfully messy.</p>
+                </div>
+
+                <div class="moon-stage" aria-hidden="true">
+                    <div class="tiny-orbit"></div>
+                    <div class="moon"></div>
+                    <div class="astronaut-note">“You are not behind. You are simply arriving at your next beginning.”</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="identity-strip" aria-label="Who The Wonder Project is for">
+            <div class="identity-list">
+                <span class="identity-pill">🎒 Students</span>
+                <span class="identity-pill">👩‍🏫 Educators</span>
+                <span class="identity-pill">🧠 Curious adults</span>
+                <span class="identity-pill">🩺 Future doctors</span>
+                <span class="identity-pill">🎨 Creators</span>
+                <span class="identity-pill">🔬 Researchers</span>
+                <span class="identity-pill">💼 Professionals</span>
+                <span class="identity-pill">🌱 Beginning again</span>
+                <span class="identity-pill">🏫 Schools</span>
+            </div>
+        </div>
+
+        <section id="universes" class="section-shell">
+            <div class="section-heading center reveal">
+                <p class="section-label">Choose your worlds</p>
+                <h2>Which universes are calling you?</h2>
+                <p>Each universe explores a different part of life. Join as many as you like and build a Wonder Space that feels like you.</p>
+            </div>
+
+            <div class="universe-grid">
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#fff5c7,#d8b46c);--glow:rgba(255,229,166,.35);--mist:rgba(255,229,166,.17)">
+                    <div class="planet"></div>
+                    <h3>The Moon of Beginnings</h3>
+                    <p>For slow restarts, tiny promises and the brave first step after losing your spark.</p>
+                    <div class="universe-meta"><span>Gentle goals</span><span>Daily wonder</span><span>Reflection</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Begin here →</a>
+                        <button class="join-universe" data-universe="Moon of Beginnings" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#9d87ff,#5142a0);--glow:rgba(157,135,255,.35);--mist:rgba(157,135,255,.18)">
+                    <div class="planet"></div>
+                    <h3>The Questionarium</h3>
+                    <p>A galaxy of odd thoughts, impossible questions and wonderfully unfinished answers.</p>
+                    <div class="universe-meta"><span>Big questions</span><span>Mysteries</span><span>Curiosity</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="questions.html">Start wondering →</a>
+                        <button class="join-universe" data-universe="The Questionarium" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#79efe0,#247f91);--glow:rgba(124,232,223,.32);--mist:rgba(124,232,223,.16)">
+                    <div class="planet"></div>
+                    <h3>Discovery Nebula</h3>
+                    <p>Science, medicine, maths and the strange little systems holding our universe together.</p>
+                    <div class="universe-meta"><span>Science</span><span>Medicine</span><span>Maths</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Investigate →</a>
+                        <button class="join-universe" data-universe="Discovery Nebula" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffacd7,#9e4f98);--glow:rgba(255,159,208,.3);--mist:rgba(255,159,208,.15)">
+                    <div class="planet"></div>
+                    <h3>The Dream Forge</h3>
+                    <p>Turn “one day” into today through tiny missions, imperfect action and cheerful persistence.</p>
+                    <div class="universe-meta"><span>Goals</span><span>Action</span><span>Momentum</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="wonder-space.html">Build something →</a>
+                        <button class="join-universe" data-universe="The Dream Forge" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#ffcd70,#cf684d);--glow:rgba(255,205,112,.3);--mist:rgba(255,205,112,.15)">
+                    <div class="planet"></div>
+                    <h3>Oops! Observatory</h3>
+                    <p>A celebration of experiments, wrong turns, funny failures and everything they teach us.</p>
+                    <div class="universe-meta"><span>Failure quests</span><span>Resilience</span><span>Try again</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="blog.html">Meet the mistakes →</a>
+                        <button class="join-universe" data-universe="Oops Observatory" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#a8ffbd,#3b9366);--glow:rgba(140,240,177,.3);--mist:rgba(140,240,177,.15)">
+                    <div class="planet"></div>
+                    <h3>Spark Sanctuary</h3>
+                    <p>A soft place for tired minds to rest, notice joy and rediscover life without productivity pressure.</p>
+                    <div class="universe-meta"><span>Rest</span><span>Joy</span><span>Small wins</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="about.html">Find your spark →</a>
+                        <button class="join-universe" data-universe="Spark Sanctuary" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#b7d2ff,#5771b8);--glow:rgba(183,210,255,.3);--mist:rgba(183,210,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Storyverse</h3>
+                    <p>Books, characters, poems and explanations that make difficult ideas feel wonderfully human.</p>
+                    <div class="universe-meta"><span>Books</span><span>Writing</span><span>Stories</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="books.html">Open a portal →</a>
+                        <button class="join-universe" data-universe="Storyverse" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#d9bdff,#7356a4);--glow:rgba(217,189,255,.3);--mist:rgba(217,189,255,.15)">
+                    <div class="planet"></div>
+                    <h3>Teacher Constellation</h3>
+                    <p>Guides, classroom missions and kind teaching tools for educators who protect curiosity.</p>
+                    <div class="universe-meta"><span>Lessons</span><span>Guides</span><span>Community</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="schools.html">Guide explorers →</a>
+                        <button class="join-universe" data-universe="Teacher Constellation" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+
+                <article class="universe-card reveal" style="--planet:linear-gradient(135deg,#7ed4ff,#315d9c);--glow:rgba(126,212,255,.3);--mist:rgba(126,212,255,.14)">
+                    <div class="planet"></div>
+                    <h3>Student Orbit</h3>
+                    <p>Learning adventures, puzzles and progress paths made for students—not robots completing worksheets.</p>
+                    <div class="universe-meta"><span>Quests</span><span>Skills</span><span>Badges</span></div>
+                    <div class="universe-actions">
+                        <a class="explore-link" href="resources.html">Launch a quest →</a>
+                        <button class="join-universe" data-universe="Student Orbit" aria-pressed="false">+ Join</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="selection-bar" aria-live="polite">
+                <span><strong id="universeCount">0</strong> universes selected. Your curiosity is allowed to contain multitudes.</span>
+                <a href="sign-in.html">Save My Wonderverse →</a>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="section-heading reveal">
+                <p class="section-label">Wonder becomes movement</p>
+                <h2>Do more than dream about your life.</h2>
+                <p>The Wonder Project turns ideas into playful, manageable missions—without punishing you for being human.</p>
+            </div>
+
+            <div class="mission-grid">
+                <article class="mission-card reveal"><span class="mission-number">1</span><h3>Notice something</h3><p>Look closer. Ask the question everyone else walked past.</p></article>
+                <article class="mission-card reveal"><span class="mission-number">2</span><h3>Try something small</h3><p>Choose a ten-minute mission rather than waiting for perfect motivation.</p></article>
+                <article class="mission-card reveal"><span class="mission-number">3</span><h3>Celebrate the evidence</h3><p>Record the attempt, lesson or glorious failure. That is real progress.</p></article>
+            </div>
+        </section>
+
+        <section class="section-shell split-section" id="wonder-space-preview">
+            <div class="split-copy reveal">
+                <p class="section-label">Your personal command centre</p>
+                <h2>One Wonder Space. Many versions of you.</h2>
+                <p>A learner today. A teacher tomorrow. A tired human on Friday. Your space can hold every version of you.</p>
+
+                <ul class="check-list">
+                    <li>Join multiple universes and switch whenever your curiosity changes.</li>
+                    <li>Collect meaningful badges for trying, reflecting, helping and questioning.</li>
+                    <li>Save missions, books, classroom resources and unfinished ideas.</li>
+                    <li>Track progress without turning your whole life into a competition.</li>
+                </ul>
+
+                <a href="wonder-space.html" class="primary-button">Open Wonder Space ✦</a>
+            </div>
+
+            <div class="dashboard-preview reveal">
+                <div class="dashboard-top"><span>ISHA'S WONDERVERSE</span><span>Orbit 07</span></div>
+                <div class="dashboard-grid">
+                    <div class="dash-card wide"><small>Current mission</small><strong>Make the idea real</strong><div class="progress-track"><span></span></div></div>
+                    <div class="dash-card"><small>Universes joined</small><strong>5 🪐</strong></div>
+                    <div class="dash-card"><small>Brave attempts</small><strong>18 ✦</strong></div>
+                    <div class="dash-card wide"><small>Today's tiny wonder</small><strong>Why does moonlight feel quiet?</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schools">
+            <div class="section-shell">
+                <div class="school-panel split-section">
+                    <div class="split-copy reveal">
+                        <p class="section-label">For schools and educators</p>
+                        <h2>Turn your school into a constellation.</h2>
+                        <p>Bring students and educators into shared universes, assign guided adventures and see curiosity, confidence and understanding grow.</p>
+
+                        <div class="school-actions">
+                            <a href="schools.html" class="primary-button">Explore School Membership</a>
+                            <a href="#contact" class="secondary-button">Request a School Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-grid reveal">
+                        <article class="feature-card"><h3>🚀 Assign missions</h3><p>Send adventures to a student, group or whole class.</p></article>
+                        <article class="feature-card"><h3>📊 See real growth</h3><p>Track completion, confidence, questions and misconceptions.</p></article>
+                        <article class="feature-card"><h3>🧪 Learn by doing</h3><p>Use games, investigations, stories and reflection.</p></article>
+                        <article class="feature-card"><h3>🧭 Teacher guides</h3><p>Access ready-to-use plans, prompts and extensions.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section-shell">
+            <div class="section-heading reveal">
+                <p class="section-label">Portals already open</p>
+                <h2>Start exploring today.</h2>
+                <p>Your books, questions, resources and activities remain easy to reach—now they feel like portals inside one connected world.</p>
+            </div>
+
+            <div class="resource-grid">
+                <article class="resource-card reveal"><span class="resource-icon">💭</span><h3>Answer a Big Question</h3><p>Explore questions with no boring or obvious answers.</p><a href="questions.html">Enter the Questionarium →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🔬</span><h3>Discover Something New</h3><p>Investigate science, medicine, mathematics and everyday life.</p><a href="resources.html">Visit Discovery Nebula →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">📚</span><h3>Open a Curious Book</h3><p>Meet memorable ideas, unusual characters and human explanations.</p><a href="books.html">Travel to Storyverse →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">❓</span><h3>Ask Your Own Question</h3><p>Share something strange, fascinating, confusing or unexpected.</p><a href="questions.html#submit-question">Send a signal →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧩</span><h3>Try a Challenge</h3><p>Use observations, evidence and creative reasoning to solve mysteries.</p><a href="mystery-box.html">Begin the challenge →</a></article>
+                <article class="resource-card reveal"><span class="resource-icon">🧠</span><h3>Learn Difficult Ideas</h3><p>A simple guide to understanding, remembering and applying concepts.</p><a href="learning-guide.html">Read the guide →</a></article>
+            </div>
+        </section>
+
+        <section id="questions">
+            <div class="question-orb reveal">
+                <p class="section-label">Today's signal from the stars</p>
+                <h2>What would you begin if failure became part of the fun?</h2>
+                <a href="questions.html" class="primary-button">Explore more questions</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section-shell">
+            <div class="contact-card reveal">
+                <div>
+                    <p class="section-label">Send a signal</p>
+                    <h2>Let's build a more curious world.</h2>
+                    <p>Have a question, school enquiry, collaboration, impossible idea or something wonderful to share? We would love to hear it.</p>
+
+                    <div class="contact-links">
+                        <a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20The%20Wonder%20Project">✉️ Email us</a>
+                        <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+                    </div>
+                </div>
+
+                <form name="homepage-contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="homepage-contact">
+                    <p class="hidden-form-field"><label>Leave this empty: <input name="bot-field"></label></p>
+
+                    <label for="name">Your name</label>
+                    <input id="name" name="name" type="text" placeholder="Curious explorer" required>
+
+                    <label for="email">Your email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us what you are wondering, building or hoping to explore..." required></textarea>
+
+                    <button type="submit">Send your message ✦</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>The Wonder Project</h2>
+                <p>Protecting curiosity, celebrating questions and making life feel like an adventure again.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="about.html">About Us</a>
+                <a href="books.html">Books</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Connect</h3>
+                <a href="#contact">Contact Us</a>
+                <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:tiwariisha72@gmail.com">Email</a>
+                <a href="sign-in.html">Sign in</a>
+            </div>
+        </div>
+
+        <p class="copyright">© 2026 The Wonder Project. Made somewhere between the Moon and imagination.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        function closeMenu() {
+            mobileMenu.classList.remove("open");
+            menuToggle.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.toggle("open");
+            menuToggle.classList.toggle("open", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", event => {
+            if (!event.target.closest(".navbar") && mobileMenu.classList.contains("open")) {
+                closeMenu();
+            }
+        });
+
+        const storageKey = "wonderverse-universes";
+        const joinButtons = [...document.querySelectorAll(".join-universe")];
+        const universeCount = document.getElementById("universeCount");
+
+        let selectedUniverses = [];
+        try {
+            selectedUniverses = JSON.parse(localStorage.getItem(storageKey)) || [];
+        } catch {
+            selectedUniverses = [];
+        }
+
+        function updateUniverseUI() {
+            joinButtons.forEach(button => {
+                const selected = selectedUniverses.includes(button.dataset.universe);
+                button.setAttribute("aria-pressed", String(selected));
+                button.textContent = selected ? "✓ Joined" : "+ Join";
+            });
+
+            universeCount.textContent = selectedUniverses.length;
+            localStorage.setItem(storageKey, JSON.stringify(selectedUniverses));
+        }
+
+        joinButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const name = button.dataset.universe;
+
+                if (selectedUniverses.includes(name)) {
+                    selectedUniverses = selectedUniverses.filter(item => item !== name);
+                } else {
+                    selectedUniverses.push(name);
+                }
+
+                updateUniverseUI();
+            });
+        });
+
+        updateUniverseUI();
+
+        const revealItems = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add("visible"));
+        }
+    </script>
+</body>
+</html>
