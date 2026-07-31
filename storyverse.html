@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enter Storyverse, The Wonder Project's library of books, learning pathways, stories and curious ideas.">
+    <meta name="theme-color" content="#070817">
+
+    <title>Storyverse | Books from The Wonder Project</title>
+
+    <style>
+        :root {
+            --space: #070817;
+            --space-soft: #0d102a;
+            --panel: rgba(22, 22, 58, 0.78);
+            --panel-strong: rgba(13, 16, 42, 0.95);
+            --line: rgba(218, 214, 255, 0.16);
+            --text: #fbf9ff;
+            --muted: #c6c3e4;
+            --paper: #fff0c8;
+            --gold: #ffd46c;
+            --lavender: #c7b4ff;
+            --violet: #9477ff;
+            --pink: #ff9fcf;
+            --aqua: #80e8df;
+            --rose: #ffb2b8;
+            --success: #91efb3;
+            --shadow: 0 24px 70px rgba(0,0,0,.4);
+            --radius-lg: 30px;
+            --radius-md: 20px;
+            --page-width: 1280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 84px;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 6%, rgba(151, 102, 255, .21), transparent 28%),
+                radial-gradient(circle at 88% 12%, rgba(255, 124, 185, .13), transparent 25%),
+                radial-gradient(circle at 50% 94%, rgba(69, 191, 194, .1), transparent 29%),
+                var(--space);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.65;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+            opacity: .7;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.4px),
+                radial-gradient(circle, rgba(199,180,255,.75) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(255,159,207,.6) 0 1px, transparent 1.5px);
+            background-position: 0 0, 67px 82px, 138px 37px;
+            background-size: 120px 120px, 190px 190px, 250px 250px;
+            animation: starDrift 90s linear infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent 0%, rgba(7,8,23,.15) 55%, rgba(7,8,23,.8) 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--aqua);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 9999;
+            padding: .75rem 1rem;
+            color: #101328;
+            background: var(--paper);
+            border-radius: 999px;
+            transform: translateY(-150%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            padding: .7rem;
+            background: rgba(5, 7, 20, .89);
+            border-bottom: 1px solid rgba(218,214,255,.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .navbar {
+            width: min(var(--page-width), 100%);
+            min-height: 54px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+        }
+
+        .site-logo {
+            min-width: 0;
+            margin-right: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .88rem;
+            font-weight: 850;
+            line-height: 1.1;
+            letter-spacing: -.025em;
+        }
+
+        .site-logo-text {
+            max-width: 125px;
+        }
+
+        .logo-orbit {
+            width: 34px;
+            aspect-ratio: 1;
+            flex: 0 0 34px;
+            display: grid;
+            place-items: center;
+            color: #20152f;
+            background: linear-gradient(135deg, var(--paper), var(--pink));
+            border-radius: 50%;
+            box-shadow: 0 0 24px rgba(255, 191, 214, .38);
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: .7rem;
+            right: .7rem;
+            display: none;
+            max-height: calc(100svh - 84px);
+            overflow-y: auto;
+            padding: .7rem;
+            flex-direction: column;
+            gap: .3rem;
+            color: var(--muted);
+            background: rgba(8, 10, 29, .98);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            width: 100%;
+            padding: .78rem .9rem;
+            border-radius: 12px;
+            background: rgba(255,255,255,.035);
+            font-size: .92rem;
+            font-weight: 700;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+            background: rgba(255,255,255,.085);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .sign-in-btn {
+            display: none;
+        }
+
+        .wonder-space-btn,
+        .primary-button,
+        .secondary-button {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            padding: .72rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-weight: 850;
+            text-align: center;
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        }
+
+        .wonder-space-btn {
+            min-height: 40px;
+            padding: .55rem .7rem;
+            color: #151329;
+            background: linear-gradient(135deg, var(--paper), var(--pink));
+            font-size: .72rem;
+            white-space: nowrap;
+        }
+
+        .primary-button {
+            color: #151329;
+            background: linear-gradient(135deg, var(--paper), var(--gold));
+            box-shadow: 0 14px 34px rgba(255, 212, 108, .14);
+        }
+
+        .secondary-button {
+            color: white;
+            background: rgba(255,255,255,.055);
+        }
+
+        .menu-toggle {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            padding: 8px;
+            color: white;
+            background: rgba(255,255,255,.06);
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            margin: 5px 0;
+            background: currentColor;
+            border-radius: 999px;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        main {
+            overflow: clip;
+        }
+
+        /* Hero */
+        .story-hero {
+            position: relative;
+            min-height: auto;
+            padding: 7.4rem 1rem 3.5rem;
+            isolation: isolate;
+        }
+
+        .hero-inner {
+            width: min(var(--page-width), 100%);
+            margin: auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .eyebrow,
+        .section-label {
+            margin-bottom: .85rem;
+            color: var(--aqua);
+            font-size: .69rem;
+            font-weight: 900;
+            letter-spacing: .15em;
+            line-height: 1.5;
+            text-transform: uppercase;
+        }
+
+        .story-hero h1 {
+            max-width: 100%;
+            margin: auto;
+            font-size: clamp(2.65rem, 14vw, 4.2rem);
+            line-height: .98;
+            letter-spacing: -.055em;
+        }
+
+        .story-hero h1 span {
+            display: block;
+            color: transparent;
+            background: linear-gradient(100deg, var(--paper), var(--pink) 48%, var(--lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .hero-text {
+            max-width: 38rem;
+            margin: 1.3rem auto 1.6rem;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.72;
+        }
+
+        .hero-actions {
+            display: grid;
+            gap: .75rem;
+        }
+
+        .hero-actions a {
+            width: 100%;
+        }
+
+        .hero-note {
+            max-width: 34rem;
+            margin: 1rem auto 0;
+            color: #9995b9;
+            font-size: .8rem;
+        }
+
+        /* Story planet */
+        .story-planet-stage {
+            position: relative;
+            min-height: 310px;
+            display: grid;
+            place-items: center;
+        }
+
+        .story-planet {
+            position: relative;
+            width: min(67vw, 245px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 31% 28%, rgba(255,255,255,.28) 0 6%, transparent 6.5%),
+                radial-gradient(circle at 70% 35%, rgba(82,52,132,.2) 0 8%, transparent 8.5%),
+                radial-gradient(circle at 42% 73%, rgba(82,52,132,.16) 0 11%, transparent 11.5%),
+                linear-gradient(135deg, #e4cfff, #8563bf);
+            box-shadow: 0 0 55px rgba(199,180,255,.38), 0 0 150px rgba(255,159,207,.17);
+            animation: planetFloat 8s ease-in-out infinite;
+        }
+
+        .story-planet::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 145%;
+            height: 37%;
+            border: 9px solid rgba(255,240,200,.32);
+            border-top-color: transparent;
+            border-radius: 50%;
+            transform: translate(-50%,-50%) rotate(-16deg);
+        }
+
+        .story-planet::after {
+            content: "📖";
+            position: relative;
+            z-index: 2;
+            font-size: clamp(3.6rem, 15vw, 5.6rem);
+            filter: drop-shadow(0 14px 18px rgba(0,0,0,.24));
+        }
+
+        .planet-orbit {
+            position: absolute;
+            width: min(92vw, 330px);
+            height: min(42vw, 145px);
+            border: 1px solid rgba(128,232,223,.18);
+            border-radius: 50%;
+            transform: rotate(12deg);
+        }
+
+        .planet-orbit::after {
+            content: "✦";
+            position: absolute;
+            right: 35px;
+            top: -3px;
+            color: var(--aqua);
+            filter: drop-shadow(0 0 10px var(--aqua));
+            animation: twinkle 2.4s ease-in-out infinite;
+        }
+
+        .floating-page {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            width: 47px;
+            aspect-ratio: .78;
+            color: #2c2342;
+            background: linear-gradient(145deg, #fff8e5, #ead6ff);
+            border-radius: 5px 11px 11px 5px;
+            box-shadow: 0 14px 35px rgba(0,0,0,.3);
+            font-size: 1.2rem;
+            animation: pageFloat 6s ease-in-out infinite;
+        }
+
+        .page-one { left: 4%; top: 16%; transform: rotate(-13deg); }
+        .page-two { right: 2%; top: 22%; transform: rotate(14deg); animation-delay: -2s; }
+        .page-three { right: 10%; bottom: 8%; transform: rotate(-8deg); animation-delay: -4s; }
+
+        /* Shared sections */
+        .section-shell {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 4rem 0;
+        }
+
+        .section-heading {
+            max-width: 790px;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading.center {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .section-heading h2,
+        .split-copy h2,
+        .final-card h2 {
+            margin-bottom: .9rem;
+            font-size: clamp(2rem, 10vw, 3rem);
+            line-height: 1.06;
+            letter-spacing: -.045em;
+        }
+
+        .section-heading p:not(.section-label),
+        .split-copy > p,
+        .final-card p {
+            color: var(--muted);
+            font-size: .96rem;
+        }
+
+        .story-message {
+            display: grid;
+            gap: 1.2rem;
+            padding: 1.25rem;
+            background:
+                radial-gradient(circle at 95% 0%, rgba(255,159,207,.13), transparent 35%),
+                var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .story-quote {
+            padding: 1.2rem;
+            color: #201b34;
+            background: linear-gradient(145deg, var(--paper), #f0dcff);
+            border-radius: 19px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .story-quote span {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: 1.6rem;
+        }
+
+        /* Door/path cards */
+        .path-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .path-card {
+            position: relative;
+            min-height: 0;
+            overflow: hidden;
+            padding: 1.2rem;
+            background: linear-gradient(145deg, rgba(27,29,69,.92), rgba(12,14,39,.96));
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            isolation: isolate;
+        }
+
+        .path-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 80% 0%, var(--path-glow), transparent 38%);
+        }
+
+        .path-icon {
+            width: 62px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,.075);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            font-size: 1.8rem;
+        }
+
+        .path-age,
+        .book-type,
+        .blog-tag {
+            margin-bottom: .35rem;
+            color: var(--aqua);
+            font-size: .74rem;
+            font-weight: 900;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .path-card h3 {
+            margin-bottom: .55rem;
+            font-size: 1.45rem;
+        }
+
+        .path-card > p:not(.path-age),
+        .path-card li {
+            color: var(--muted);
+        }
+
+        .path-card ul {
+            margin: 1rem 0 1.2rem;
+            display: grid;
+            gap: .45rem;
+            padding-left: 1.15rem;
+        }
+
+        .path-card a {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: .7rem .9rem;
+            color: #151329;
+            background: linear-gradient(135deg, var(--paper), var(--pink));
+            border-radius: 999px;
+            font-weight: 850;
+            text-align: center;
+        }
+
+        /* Bookshelves */
+        .books-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .book-card {
+            display: grid;
+            gap: 1.2rem;
+            padding: 1.15rem;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .book-cover {
+            position: relative;
+            min-height: 260px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            padding: 1rem;
+            border-radius: 18px 8px 8px 18px;
+            box-shadow: 15px 17px 30px rgba(0,0,0,.28);
+            transform: perspective(900px) rotateY(-4deg);
+        }
+
+        .book-cover::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: rgba(255,255,255,.2);
+            box-shadow: 3px 0 rgba(0,0,0,.12);
+        }
+
+        .microbiology-cover {
+            background:
+                radial-gradient(circle at 20% 18%, rgba(255,255,255,.24), transparent 25%),
+                linear-gradient(145deg, #4e2483, #d15c9d);
+        }
+
+        .stethoscope-cover {
+            background:
+                radial-gradient(circle at 85% 10%, rgba(255,255,255,.22), transparent 24%),
+                linear-gradient(145deg, #173a63, #3e99a7);
+        }
+
+        .coming-cover {
+            background:
+                radial-gradient(circle at 50% 10%, rgba(255,255,255,.25), transparent 26%),
+                linear-gradient(145deg, #8a6732, #e0a85f);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cover-content span {
+            display: block;
+            margin-bottom: .65rem;
+            font-size: 4rem;
+        }
+
+        .cover-content strong {
+            display: block;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .cover-content small {
+            display: block;
+            margin-top: .5rem;
+            opacity: .75;
+        }
+
+        .book-copy h3 {
+            margin-bottom: .65rem;
+            font-size: 1.6rem;
+            line-height: 1.1;
+        }
+
+        .book-copy > p:not(.book-type) {
+            color: var(--muted);
+        }
+
+        .book-links {
+            display: grid;
+            gap: .65rem;
+            margin-top: 1.2rem;
+        }
+
+        .book-links a {
+            min-height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .65rem .85rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255,255,255,.05);
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .book-links a:first-child {
+            color: #151329;
+            background: linear-gradient(135deg, var(--paper), var(--gold));
+        }
+
+        /* Blog scroll */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .blog-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.2rem;
+            background: rgba(255,255,255,.04);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            transition: transform .3s ease, background .3s ease;
+        }
+
+        .blog-emoji {
+            width: 54px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,.07);
+            border-radius: 16px;
+            font-size: 1.6rem;
+        }
+
+        .blog-card h3 {
+            margin-bottom: .55rem;
+            font-size: 1.25rem;
+        }
+
+        .blog-card > p:not(.blog-tag) {
+            color: var(--muted);
+        }
+
+        .blog-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--paper);
+            font-weight: 850;
+        }
+
+        .view-all {
+            margin-top: 1.4rem;
+            text-align: center;
+        }
+
+        /* Progress */
+        .progress-panel {
+            display: grid;
+            gap: 1.3rem;
+            padding: 1.25rem;
+            background:
+                radial-gradient(circle at 92% 7%, rgba(128,232,223,.12), transparent 30%),
+                var(--panel-strong);
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .role-buttons {
+            display: grid;
+            gap: .65rem;
+            margin-top: 1.25rem;
+        }
+
+        .role-buttons a {
+            min-height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .65rem .85rem;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .mini-dashboard {
+            padding: 1rem;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+
+        .dashboard-top,
+        .dashboard-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .dashboard-top {
+            margin-bottom: 1.2rem;
+            color: var(--muted);
+            font-size: .78rem;
+        }
+
+        .dashboard-item {
+            margin-top: 1rem;
+        }
+
+        .dashboard-item small {
+            display: block;
+            color: var(--muted);
+        }
+
+        .progress-line {
+            height: 9px;
+            margin-top: .55rem;
+            overflow: hidden;
+            background: rgba(255,255,255,.08);
+            border-radius: 999px;
+        }
+
+        .progress-line span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--violet), var(--aqua));
+        }
+
+        .dashboard-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: 1.25rem;
+        }
+
+        .dashboard-badges span {
+            padding: .45rem .65rem;
+            color: #dcd9f7;
+            background: rgba(255,255,255,.055);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .72rem;
+        }
+
+        .final-card {
+            width: min(calc(100% - 2rem), 980px);
+            margin: 2rem auto 4rem;
+            padding: 2.2rem 1.2rem;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(199,180,255,.2), transparent 50%),
+                rgba(14,17,48,.82);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .final-spark {
+            display: block;
+            margin-bottom: .6rem;
+            font-size: 2rem;
+        }
+
+        .final-card .primary-button {
+            width: 100%;
+            margin-top: 1.4rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: #03040d;
+        }
+
+        .footer-content {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 3rem 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
+            text-align: center;
+        }
+
+        .footer-brand p,
+        .footer-links a {
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: grid;
+            gap: .45rem;
+        }
+
+        .copyright {
+            width: min(calc(100% - 2rem), var(--page-width));
+            margin: auto;
+            padding: 1.2rem 0 1.8rem;
+            color: #817f9d;
+            border-top: 1px solid var(--line);
+            font-size: .82rem;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (min-width: 680px) {
+            .site-logo-text {
+                max-width: none;
+            }
+
+            .wonder-space-btn {
+                min-height: 44px;
+                padding-inline: 1rem;
+                font-size: .82rem;
+            }
+
+            .story-hero {
+                padding-inline: 2rem;
+            }
+
+            .hero-actions {
+                max-width: 590px;
+                margin-inline: auto;
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .path-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .book-card {
+                grid-template-columns: minmax(180px, .72fr) minmax(0, 1.28fr);
+                align-items: center;
+            }
+
+            .book-links,
+            .role-buttons {
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }
+
+            .story-message,
+            .progress-panel {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .final-card .primary-button {
+                width: auto;
+            }
+
+            .footer-content {
+                grid-template-columns: 1.6fr 1fr 1fr;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 980px) {
+            .site-header {
+                padding: 1rem clamp(1rem,4vw,4rem);
+                background: linear-gradient(to bottom, rgba(5,7,20,.94), rgba(5,7,20,.5), transparent);
+                border-bottom: 0;
+            }
+
+            .navbar {
+                min-height: 58px;
+                gap: 1.2rem;
+            }
+
+            .site-logo {
+                font-size: 1rem;
+            }
+
+            .logo-orbit {
+                width: 38px;
+                flex-basis: 38px;
+            }
+
+            .nav-links {
+                position: static;
+                display: flex;
+                max-height: none;
+                overflow: visible;
+                padding: 0;
+                flex-direction: row;
+                gap: clamp(.65rem,1.2vw,1.15rem);
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .nav-links a {
+                width: auto;
+                padding: .55rem .1rem;
+                background: transparent;
+                font-size: .9rem;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .sign-in-btn {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: .7rem 1rem;
+                color: var(--paper);
+                background: rgba(255,255,255,.045);
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                font-weight: 800;
+            }
+
+            .story-hero {
+                min-height: 100svh;
+                display: grid;
+                align-items: center;
+                padding: 9rem clamp(2rem,7vw,8rem) 5rem;
+            }
+
+            .hero-inner {
+                grid-template-columns: minmax(0,1.08fr) minmax(340px,.92fr);
+                align-items: center;
+                gap: clamp(3rem,8vw,8rem);
+            }
+
+            .hero-copy {
+                text-align: left;
+            }
+
+            .story-hero h1 {
+                max-width: 820px;
+                margin: 0;
+                font-size: clamp(3.6rem,7vw,7rem);
+                line-height: .91;
+            }
+
+            .hero-text,
+            .hero-note {
+                margin-left: 0;
+            }
+
+            .hero-actions {
+                max-width: none;
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .hero-actions a {
+                width: auto;
+            }
+
+            .story-planet-stage {
+                min-height: 520px;
+            }
+
+            .story-planet {
+                width: min(31vw,360px);
+            }
+
+            .planet-orbit {
+                width: 500px;
+                height: 180px;
+            }
+
+            .floating-page {
+                width: 62px;
+            }
+
+            .section-shell {
+                padding: clamp(4.8rem,8vw,8rem) 0;
+            }
+
+            .section-heading h2,
+            .split-copy h2,
+            .final-card h2 {
+                font-size: clamp(2.4rem,5vw,4.6rem);
+            }
+
+            .story-message {
+                grid-template-columns: 1.35fr .65fr;
+                gap: 3rem;
+                padding: clamp(2rem,5vw,4rem);
+                border-radius: 34px;
+            }
+
+            .path-grid {
+                grid-template-columns: repeat(4, minmax(0,1fr));
+                gap: 1.15rem;
+            }
+
+            .path-card {
+                min-height: 430px;
+                display: flex;
+                flex-direction: column;
+                padding: 1.35rem;
+                border-radius: 26px;
+            }
+
+            .path-card a {
+                margin-top: auto;
+            }
+
+            .books-grid {
+                gap: 1.25rem;
+            }
+
+            .book-card {
+                grid-template-columns: 280px minmax(0,1fr);
+                gap: 2.3rem;
+                padding: 1.5rem;
+                border-radius: 28px;
+            }
+
+            .book-cover {
+                min-height: 340px;
+            }
+
+            .book-links {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .book-links a {
+                width: auto;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(3,minmax(0,1fr));
+            }
+
+            .progress-panel {
+                grid-template-columns: 1.05fr .95fr;
+                gap: clamp(2rem,7vw,6rem);
+                padding: clamp(2rem,5vw,4rem);
+                border-radius: 34px;
+            }
+
+            .role-buttons {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .path-card:hover,
+            .book-card:hover,
+            .blog-card:hover {
+                transform: translateY(-7px);
+            }
+
+            .path-card,
+            .book-card {
+                transition: transform .3s ease, border-color .3s ease;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .site-logo-text {
+                max-width: 98px;
+                font-size: .77rem;
+            }
+
+            .wonder-space-btn {
+                padding-inline: .5rem;
+                font-size: .65rem;
+            }
+
+            .story-hero h1 {
+                font-size: clamp(2.4rem,14vw,3.2rem);
+            }
+
+            .section-shell {
+                width: min(calc(100% - 1.4rem), var(--page-width));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes planetFloat {
+            0%,100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-17px) rotate(2deg); }
+        }
+
+        @keyframes pageFloat {
+            0%,100% { translate: 0 0; }
+            50% { translate: 0 -14px; }
+        }
+
+        @keyframes twinkle {
+            0%,100% { opacity: .35; transform: scale(.8); }
+            50% { opacity: 1; transform: scale(1.18); }
+        }
+
+        @keyframes starDrift {
+            from { transform: translateY(0); }
+            to { transform: translateY(120px); }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to Storyverse</a>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="site-logo">
+                <span class="logo-orbit">✦</span>
+                <span class="site-logo-text">The Wonder Project</span>
+            </a>
+
+            <div class="nav-links" id="mobileMenu">
+                <a href="index.html">Start Here</a>
+                <a href="about.html">About</a>
+                <a href="books.html" class="active">Books</a>
+                <a href="resources.html">Explore</a>
+                <a href="questions.html">Wonder</a>
+                <a href="blog.html">Blog</a>
+                <a href="schools.html">Schools</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="sign-in.html" class="sign-in-btn">Sign in</a>
+                <a href="wonder-space.html" class="wonder-space-btn">✨ Wonder Space</a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="story-hero">
+            <div class="hero-inner">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow">Storyverse transmission · Portal open</p>
+                    <h1>Every book is a <span>door to another universe.</span></h1>
+                    <p class="hero-text">
+                        Wander through curious books, playful explanations, thoughtful blogs and learning pathways
+                        made for students, educators, future doctors, professionals and adults who still enjoy asking why.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#bookshelf" class="primary-button">Enter the bookshelf ✦</a>
+                        <a href="#pathways" class="secondary-button">Choose your reading path →</a>
+                    </div>
+
+                    <p class="hero-note">No library voice required. Excited whispers, strange questions and joyful discoveries are welcome here.</p>
+                </div>
+
+                <div class="story-planet-stage" aria-hidden="true">
+                    <div class="planet-orbit"></div>
+                    <div class="story-planet"></div>
+                    <span class="floating-page page-one">✎</span>
+                    <span class="floating-page page-two">?</span>
+                    <span class="floating-page page-three">✦</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="story-message reveal">
+                <div class="split-copy">
+                    <p class="section-label">A cosy corner for curious minds</p>
+                    <h2>Serious learning. Playful spirit.</h2>
+                    <p>
+                        Learning does not have to feel cold, quiet or overly serious. A child can practise fractions,
+                        a teacher can discover a classroom idea, a medical student can revise science and an adult
+                        can read something simply because it makes them wonder.
+                    </p>
+                </div>
+
+                <blockquote class="story-quote">
+                    <span>💭</span>
+                    “You do not have to stop having fun just because your work matters.”
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="pathways" class="section-shell">
+            <div class="section-heading center reveal">
+                <p class="section-label">Choose a doorway</p>
+                <h2>Who is entering Storyverse today?</h2>
+                <p>Start wherever you are. You can always wander through another door later.</p>
+            </div>
+
+            <div class="path-grid">
+                <article class="path-card reveal" style="--path-glow:rgba(255,212,108,.18)">
+                    <span class="path-icon">🧩</span>
+                    <p class="path-age">Years 3–5</p>
+                    <h3>Little Wonderers</h3>
+                    <p>Friendly maths, science, reading, puzzles and creative mini-projects.</p>
+                    <ul>
+                        <li>Times tables and number confidence</li>
+                        <li>Everyday science questions</li>
+                        <li>Reading challenges and word games</li>
+                    </ul>
+                    <a href="resources-years-3-5.html">Explore Years 3–5 →</a>
+                </article>
+
+                <article class="path-card reveal" style="--path-glow:rgba(128,232,223,.17)">
+                    <span class="path-icon">🚀</span>
+                    <p class="path-age">Years 7–10</p>
+                    <h3>Curious Challengers</h3>
+                    <p>Skill-building resources that make school learning feel useful and alive.</p>
+                    <ul>
+                        <li>Maths and science explainers</li>
+                        <li>Study habits and exam preparation</li>
+                        <li>Projects and investigations</li>
+                    </ul>
+                    <a href="resources-years-7-10.html">Explore Years 7–10 →</a>
+                </article>
+
+                <article class="path-card reveal" style="--path-glow:rgba(199,180,255,.2)">
+                    <span class="path-icon">🧠</span>
+                    <p class="path-age">Senior school & beyond</p>
+                    <h3>Big Thinkers</h3>
+                    <p>Resources for university learners, professionals and endlessly curious adults.</p>
+                    <ul>
+                        <li>Biology, microbiology and medicine</li>
+                        <li>Career, research and education ideas</li>
+                        <li>Reflection and lifelong learning</li>
+                    </ul>
+                    <a href="resources-beyond.html">Explore Beyond School →</a>
+                </article>
+
+                <article class="path-card reveal" style="--path-glow:rgba(255,159,207,.18)">
+                    <span class="path-icon">🍎</span>
+                    <p class="path-age">Educators & institutions</p>
+                    <h3>Wonder Makers</h3>
+                    <p>Classroom-ready ideas, teaching resources and future progress tools.</p>
+                    <ul>
+                        <li>Lesson ideas and printables</li>
+                        <li>Student engagement activities</li>
+                        <li>Progress tools for learning communities</li>
+                    </ul>
+                    <a href="schools.html">Visit the Educator Hub →</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="bookshelf" class="section-shell">
+            <div class="section-heading reveal">
+                <p class="section-label">Written with curiosity by Isha</p>
+                <h2>Books from The Wonder Project</h2>
+                <p>Complex ideas, friendlier explanations, memorable stories and just enough silliness to help them stay.</p>
+            </div>
+
+            <div class="books-grid">
+                <article class="book-card reveal">
+                    <div class="book-cover microbiology-cover">
+                        <div class="cover-content">
+                            <span>🦠</span>
+                            <strong>Memesplained:<br>Microbiology</strong>
+                            <small>Student-friendly science</small>
+                        </div>
+                    </div>
+
+                    <div class="book-copy">
+                        <p class="book-type">Microbiology · Student-friendly</p>
+                        <h3>Memesplained: Microbiology</h3>
+                        <p>
+                            A colourful introduction to microbiology created for students who learn better through
+                            simple explanations, memorable examples and humour.
+                        </p>
+
+                        <div class="book-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer">View the book →</a>
+                            <a href="#">Read a sample</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card reveal">
+                    <div class="book-cover stethoscope-cover">
+                        <div class="cover-content">
+                            <span>🩺</span>
+                            <strong>Before<br>Stethoscope</strong>
+                            <small>Foundations before the clinic</small>
+                        </div>
+                    </div>
+
+                    <div class="book-copy">
+                        <p class="book-type">Medicine · First and second year</p>
+                        <h3>Before Stethoscope</h3>
+                        <p>
+                            A growing medical learning series connecting foundational science, clinical thinking,
+                            stories and exam-focused revision for the next generation of doctors.
+                        </p>
+
+                        <div class="book-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer">View the series →</a>
+                            <a href="#">See what is coming next</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="book-card reveal">
+                    <div class="book-cover coming-cover">
+                        <div class="cover-content">
+                            <span>✨</span>
+                            <strong>Future<br>Stories</strong>
+                            <small>Currently becoming</small>
+                        </div>
+                    </div>
+
+                    <div class="book-copy">
+                        <p class="book-type">Coming soon</p>
+                        <h3>More Wonder-Filled Books</h3>
+                        <p>
+                            Future books and pocket guides for school mathematics, science, medical students,
+                            teachers and curious adults will find their home on this shelf.
+                        </p>
+
+                        <div class="book-links">
+                            <a href="contact.html">Suggest a book idea →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="section-heading center reveal">
+                <p class="section-label">Messages from the margins</p>
+                <h2>From the Wonder Blog</h2>
+                <p>Short reads for classrooms, commutes, lunch breaks and late-night curiosity.</p>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card reveal">
+                    <span class="blog-emoji">🧠</span>
+                    <p class="blog-tag">Curiosity</p>
+                    <h3>Why Do Adults Stop Asking Silly Questions?</h3>
+                    <p>A gentle reminder that “silly” questions often lead to brilliant discoveries.</p>
+                    <a href="blog.html">Read the story →</a>
+                </article>
+
+                <article class="blog-card reveal">
+                    <span class="blog-emoji">🧪</span>
+                    <p class="blog-tag">Learning</p>
+                    <h3>Can Serious Learning Still Be Fun?</h3>
+                    <p>Why colour, humour, play and imagination belong in every learning space.</p>
+                    <a href="blog-serious-learning-can-be-fun.html">Read the story →</a>
+                </article>
+
+                <article class="blog-card reveal">
+                    <span class="blog-emoji">💡</span>
+                    <p class="blog-tag">Ideas</p>
+                    <h3>Everything Around You Started as an Idea</h3>
+                    <p>From paper clips to Wi-Fi, ordinary objects began with somebody wondering.</p>
+                    <a href="blog-everything-started-as-an-idea.html">Read the story →</a>
+                </article>
+            </div>
+
+            <div class="view-all">
+                <a href="blog.html" class="secondary-button">Visit all blog posts</a>
+            </div>
+        </section>
+
+        <section class="section-shell">
+            <div class="progress-panel reveal">
+                <div class="split-copy">
+                    <p class="section-label">Your reading trail</p>
+                    <h2>A future home for learning progress.</h2>
+                    <p>
+                        Educators will be able to create groups and share pathways. Learners will be able to
+                        save activities, collect badges and continue their adventures where they left off.
+                    </p>
+
+                    <div class="role-buttons">
+                        <a href="sign-in.html?role=student">Student or learner sign in</a>
+                        <a href="sign-in.html?role=educator">Educator sign in</a>
+                        <a href="schools.html">School or university access</a>
+                    </div>
+                </div>
+
+                <div class="mini-dashboard" aria-label="Example Storyverse progress dashboard">
+                    <div class="dashboard-top">
+                        <span>MY STORY TRAIL</span>
+                        <span>🌟 12 sparks</span>
+                    </div>
+
+                    <div class="dashboard-item">
+                        <div><strong>Maths Mission</strong><small>Fractions and patterns</small></div>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-line"><span style="width:75%"></span></div>
+
+                    <div class="dashboard-item">
+                        <div><strong>Science Adventure</strong><small>Living things</small></div>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress-line"><span style="width:45%"></span></div>
+
+                    <div class="dashboard-badges">
+                        <span>🔍 Question Asker</span>
+                        <span>🧠 Deep Thinker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-card reveal">
+            <span class="final-spark">✨</span>
+            <p class="section-label">The final page is never really final</p>
+            <h2>You are never too old to wonder.</h2>
+            <p>
+                Come here to study, teach, read, build, laugh, reflect or begin again.
+                Your serious side and your playful side are allowed to sit at the same table.
+            </p>
+            <a href="questions.html" class="primary-button">Ask a curious question</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>The Wonder Project</h2>
+                <p>Protecting curiosity, celebrating questions and turning learning into an adventure.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="about.html">About Us</a>
+                <a href="books.html">Storyverse</a>
+                <a href="resources.html">Resources</a>
+                <a href="questions.html">Questions</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Connect</h3>
+                <a href="contact.html">Contact Us</a>
+                <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:tiwariisha72@gmail.com">Email</a>
+                <a href="sign-in.html">Sign in</a>
+            </div>
+        </div>
+
+        <p class="copyright">© 2026 The Wonder Project. Written somewhere between a bookshelf and the stars.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        function closeMenu() {
+            mobileMenu.classList.remove("open");
+            menuToggle.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.toggle("open");
+            menuToggle.classList.toggle("open", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+        document.addEventListener("click", event => {
+            if (!event.target.closest(".navbar") && mobileMenu.classList.contains("open")) {
+                closeMenu();
+            }
+        });
+
+        const revealItems = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealItems.forEach(item => observer.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add("visible"));
+        }
+    </script>
+</body>
+</html>
