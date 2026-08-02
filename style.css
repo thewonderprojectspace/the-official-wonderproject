@@ -4833,6 +4833,20 @@ transform:scale(1);
     background-clip: text;
 }
 
+.site-logo-image {
+    display: block;
+    width: auto;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Slightly larger on desktop */
+@media (min-width: 980px) {
+    .site-logo-image {
+        height: 38px;
+    }
+}
+
 .site-nav .nav-links {
     justify-self: center;
 }
