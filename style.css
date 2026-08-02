@@ -4822,22 +4822,34 @@ transform:scale(1);
 }
 
 .site-logo {
-    font-family: "Fraunces", serif;
-    font-size: 1.22rem;
-    font-weight: 700;
-    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #11162f;
+
+    /* Remove the old text-gradient behaviour */
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+
     text-decoration: none;
-    background: linear-gradient(90deg, #6d5ef9, #d565c3, #f3a65d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .site-logo-image {
     display: block;
     width: auto;
     height: 30px;
+    max-width: 170px;
     object-fit: contain;
+}
+
+@media (min-width: 980px) {
+    .site-logo-image {
+        height: 36px;
+        max-width: 200px;
+    }
 }
 
 /* Slightly larger on desktop */
