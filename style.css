@@ -6003,3 +6003,43 @@ body.login-panel-open {
     transform:translateY(-4px) scale(1.03);
     box-shadow:0 16px 40px rgba(155,93,229,.45);
 }
+
+/* FINAL LOGO SIZE — keep at bottom of CSS */
+.site-logo {
+    width: 140px !important;
+    max-width: 140px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    margin-right: auto;
+    display: flex !important;
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: transparent !important;
+    border-radius: 0;
+    -webkit-text-fill-color: initial;
+}
+
+.site-logo-image {
+    display: block !important;
+    width: 140px !important;
+    max-width: 140px !important;
+    height: auto !important;
+    max-height: 38px !important;
+    object-fit: contain;
+}
+
+/* Smaller logo on phones */
+@media (max-width: 700px) {
+    .site-logo {
+        width: 105px !important;
+        max-width: 105px !important;
+        height: 30px !important;
+    }
+
+    .site-logo-image {
+        width: 105px !important;
+        max-width: 105px !important;
+        max-height: 30px !important;
+    }
+}
