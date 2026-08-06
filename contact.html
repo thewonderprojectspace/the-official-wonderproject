@@ -567,7 +567,18 @@
         }
 
         .form-field select {
-            color-scheme: dark;
+            color-scheme: light;
+        }
+
+        /* Native dropdown menus may ignore the dark field background.
+           Give their options an explicit high-contrast palette. */
+        .form-field select option {
+            color: #050714;
+            background-color: #ffffff;
+        }
+
+        .form-field select option:checked {
+            color: #050714;
         }
 
         .form-field input::placeholder,
@@ -1005,6 +1016,7 @@
                         id="wonderContactForm"
                         name="wonder-contact"
                         method="POST"
+                        action="https://endearing-cat-c1f80e.netlify.app/"
                         data-netlify="true"
                         netlify-honeypot="bot-field"
                     >
@@ -1155,38 +1167,10 @@
 
         const form = document.getElementById('wonderContactForm');
         const submitButton = document.getElementById('submitButton');
-        const formStatus = document.getElementById('formStatus');
-        const successCard = document.getElementById('successCard');
 
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        form.addEventListener('submit', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'Transmitting…';
-            formStatus.textContent = '';
-            formStatus.className = 'form-status';
-
-            try {
-                const formData = new FormData(form);
-                const response = await fetch(window.location.pathname, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(formData).toString()
-                });
-
-                if (!response.ok) {
-                    throw new Error('Submission failed');
-                }
-
-                form.reset();
-                form.hidden = true;
-                successCard.classList.add('visible');
-                successCard.focus();
-            } catch (error) {
-                formStatus.textContent = 'The signal did not send. Please try again or use the email option above.';
-                formStatus.classList.add('error');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Try Sending Again ✦';
-            }
         });
     </script>
 </body>
