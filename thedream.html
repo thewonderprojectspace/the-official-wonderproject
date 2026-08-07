@@ -1,1 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09061b">
+  <title>The Dream Forge</title>
+  <style>
+    :root {
+      --ink:#f9f4ff; --muted:#c6bbdf; --night:#08061a; --panel:rgba(18,12,48,.76);
+      --line:rgba(218,191,255,.2); --violet:#aa7dff; --pink:#ff72c7; --cyan:#6ce7ee;
+      --gold:#ffd879; --mint:#8ff0c7; --danger:#ff9cae;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:Inter,ui-rounded,"Segoe UI",system-ui,sans-serif;background:
+      radial-gradient(circle at 8% 12%,rgba(145,74,255,.2),transparent 25rem),
+      radial-gradient(circle at 86% 26%,rgba(255,76,186,.13),transparent 26rem),
+      radial-gradient(circle at 50% 90%,rgba(47,196,218,.11),transparent 30rem),var(--night);min-height:100vh;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.6;background-image:
+      radial-gradient(circle,#fff 0 1px,transparent 1.4px),radial-gradient(circle,#bda8ff 0 1px,transparent 1.5px);
+      background-size:61px 61px,97px 97px;background-position:7px 13px,31px 47px;animation:drift 34s linear infinite}
+    button,input,textarea{font:inherit} button{color:inherit} button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+    a{color:inherit}.wrap{width:min(1160px,calc(100% - 32px));margin:auto;position:relative}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:850;letter-spacing:-.02em}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.06);box-shadow:0 0 25px rgba(170,125,255,.25)}
+    .privacy{display:flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted)}.privacy i{width:8px;height:8px;background:var(--mint);border-radius:50%;box-shadow:0 0 10px var(--mint)}
+    .hero{padding:55px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:58px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.73rem}
+    h1{font-size:clamp(3.4rem,8vw,7.2rem);line-height:.86;letter-spacing:-.065em;margin:22px 0 27px;max-width:760px}
+    h1 span{display:block;background:linear-gradient(100deg,var(--cyan),#c59aff 45%,var(--pink) 72%,var(--gold));background-clip:text;color:transparent;padding-bottom:.11em}
+    .lede{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.75;color:var(--muted);max-width:650px;margin:0}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+    .btn{border:1px solid var(--line);border-radius:999px;padding:13px 19px;font-weight:800;cursor:pointer;background:rgba(255,255,255,.06);transition:.2s transform,.2s background,.2s box-shadow;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.1)}.btn.primary{border:0;background:linear-gradient(110deg,#8465ff,var(--pink));box-shadow:0 12px 35px rgba(162,82,255,.27)}
+    .unicorn-scene{min-height:390px;position:relative;display:grid;place-items:center;isolation:isolate}
+    .orbit{position:absolute;width:340px;height:340px;border:1px solid rgba(205,179,255,.24);border-radius:50%;transform:rotate(-18deg);animation:orbit 13s linear infinite}.orbit:after{content:"✦";position:absolute;top:20px;left:55px;color:var(--cyan);font-size:24px;text-shadow:0 0 18px var(--cyan)}
+    .moon{position:absolute;width:265px;height:265px;border-radius:50%;background:radial-gradient(circle at 35% 27%,#fff8ca,#cab8ff 37%,#7654b7 70%,#2a1b55);box-shadow:0 0 60px rgba(171,134,255,.4),inset -25px -22px 50px rgba(16,6,41,.38)}
+    .unicorn{position:relative;font-size:136px;filter:drop-shadow(0 0 14px rgba(255,255,255,.5)) drop-shadow(0 0 30px rgba(255,106,204,.4));animation:float 4.6s ease-in-out infinite;z-index:2}.spark{position:absolute;color:var(--gold);text-shadow:0 0 14px currentColor;animation:twinkle 2.2s ease-in-out infinite}.s1{top:10%;right:10%;font-size:28px}.s2{bottom:16%;left:6%;color:var(--pink);font-size:20px;animation-delay:.8s}.s3{top:25%;left:3%;color:var(--cyan);animation-delay:1.4s}
+    .section{padding:28px 0 72px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}.section h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.045em;margin:5px 0}.section-sub{color:var(--muted);line-height:1.65;max-width:640px;margin:0}
+    .card{background:linear-gradient(145deg,rgba(28,19,66,.87),rgba(12,9,35,.9));border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 70px rgba(2,0,17,.34);backdrop-filter:blur(16px)}
+    .reservoir{display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden}.dream-entry{padding:32px;border-right:1px solid var(--line)}.dream-list{padding:32px;min-height:310px}
+    label,.label{display:block;font-weight:800;margin-bottom:9px}.hint{color:var(--muted);font-size:.9rem;line-height:1.55;margin:8px 0 0}
+    input,textarea{width:100%;color:var(--ink);background:rgba(5,3,21,.57);border:1px solid rgba(214,191,255,.25);border-radius:16px;padding:14px 15px;transition:.2s border,.2s box-shadow}textarea{min-height:112px;resize:vertical;line-height:1.55}input::placeholder,textarea::placeholder{color:#877ca5}
+    input:focus,textarea:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(170,125,255,.1)}.input-action{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:15px}
+    .category-row,.choice-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.chip{border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:999px;padding:9px 13px;cursor:pointer;color:var(--muted)}.chip[aria-pressed="true"]{background:rgba(170,125,255,.2);border-color:var(--violet);color:white;box-shadow:0 0 16px rgba(170,125,255,.15)}
+    .dreams{display:grid;gap:10px;margin-top:17px}.empty{border:1px dashed rgba(213,188,255,.27);border-radius:18px;padding:26px;color:var(--muted);text-align:center;line-height:1.6}.dream-item{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035)}.dream-item.active{border-color:var(--pink);box-shadow:0 0 22px rgba(255,114,199,.12)}.dream-main{flex:1;min-width:0}.dream-title{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dream-cat{font-size:.75rem;color:var(--muted);margin-top:3px}.icon-btn{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer}.select-btn{color:var(--cyan)}
+    .forge-shell{padding:30px;position:relative;overflow:hidden}.forge-shell:before{content:"";position:absolute;inset:-100px auto auto -100px;width:300px;height:300px;border-radius:50%;background:rgba(255,84,186,.1);filter:blur(60px);pointer-events:none}
+    .trail{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:0 0 29px;position:relative}.trail:before{content:"";height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink),var(--gold));position:absolute;top:19px;left:8%;right:8%;opacity:.35}
+    .trail-step{border:0;background:transparent;cursor:pointer;position:relative;text-align:center;color:var(--muted);font-weight:700;font-size:.78rem;padding:0}.trail-step b{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;margin:0 auto 8px;background:#18103a;border:1px solid var(--line);position:relative}.trail-step.active{color:white}.trail-step.active b,.trail-step.done b{background:linear-gradient(135deg,var(--violet),var(--pink));border-color:transparent;box-shadow:0 0 23px rgba(190,89,255,.37)}
+    .pane{display:none;animation:reveal .35s ease}.pane.active{display:grid;grid-template-columns:.78fr 1.22fr;gap:30px;align-items:start}.pane-copy{padding:20px}.pane-copy .number{color:var(--cyan);font-weight:900;font-size:.77rem;letter-spacing:.14em;text-transform:uppercase}.pane h3{font-size:clamp(1.65rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.04em;margin:12px 0}.pane-copy p{color:var(--muted);line-height:1.7}.workbench{border:1px solid var(--line);background:rgba(7,4,28,.48);border-radius:22px;padding:22px}.workbench>*+*{margin-top:17px}
+    .choice{padding:13px 14px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:15px;text-align:left;cursor:pointer;flex:1;min-width:145px}.choice strong{display:block}.choice small{color:var(--muted);display:block;margin-top:4px}.choice.selected{border-color:var(--cyan);background:rgba(108,231,238,.09);box-shadow:0 0 18px rgba(108,231,238,.09)}
+    .gentle-note{border-left:3px solid var(--gold);background:rgba(255,216,121,.07);padding:13px 15px;border-radius:0 13px 13px 0;color:#e9ddbc;line-height:1.55;font-size:.9rem}.pane-nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.pane-nav .btn{padding:11px 17px}
+    .action-card{border:1px solid rgba(143,240,199,.35);background:linear-gradient(135deg,rgba(47,142,112,.13),rgba(151,89,239,.1));padding:18px;border-radius:18px}.action-card strong{color:var(--mint)}
+    .effort-zone{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px}.spark-meter{padding:28px;text-align:center;display:grid;place-items:center;min-height:310px}.spark-count{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,rgba(255,216,121,.25),rgba(255,96,194,.1) 48%,transparent 70%);border:1px solid rgba(255,216,121,.26);box-shadow:0 0 50px rgba(255,115,199,.14)}.spark-count b{font-size:4rem;line-height:1;background:linear-gradient(var(--gold),var(--pink));background-clip:text;color:transparent}.spark-count span{display:block;font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:8px}.effort-log{padding:28px}.effort-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.effort-btn{min-height:105px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04);cursor:pointer;padding:12px}.effort-btn:hover{background:rgba(170,125,255,.11)}.effort-btn span{display:block;font-size:1.5rem;margin-bottom:7px}.effort-btn small{color:var(--muted)}
+    .effort-btn strong,.effort-btn small{display:block}.effort-btn small{line-height:1.4;margin-top:4px}
+    .history{display:grid;gap:8px;max-height:190px;overflow:auto}.history-item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.035);font-size:.88rem}.history-item time{color:var(--muted);margin-left:auto;font-size:.75rem}
+    .closing{padding:80px 0;text-align:center}.closing .card{padding:clamp(30px,7vw,76px);position:relative;overflow:hidden}.closing .card:after{content:"🦄";position:absolute;right:-16px;bottom:-35px;font-size:130px;opacity:.09;transform:rotate(-15deg)}.closing blockquote{font-size:clamp(2rem,5vw,4.3rem);line-height:1.05;letter-spacing:-.05em;margin:0 auto 24px;max-width:890px}.closing p{color:var(--muted);max-width:660px;margin:0 auto;line-height:1.7}
+    footer{padding:30px 0 45px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.danger{color:var(--danger);border:0;background:transparent;text-decoration:underline;cursor:pointer}
+    .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:#f8f0ff;color:#1a1034;border-radius:999px;padding:12px 18px;font-weight:800;z-index:10;box-shadow:0 14px 40px rgba(0,0,0,.4);transition:.35s transform}.toast.show{transform:translate(-50%,0)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @keyframes drift{to{background-position:68px 74px,128px 144px}}@keyframes orbit{to{transform:rotate(342deg)}}@keyframes float{50%{transform:translateY(-13px) rotate(2deg)}}@keyframes twinkle{50%{transform:scale(1.5);opacity:.5}}@keyframes reveal{from{opacity:0;transform:translateY(8px)}}
+    @media(max-width:780px){.hero{grid-template-columns:1fr;padding-top:32px}.unicorn-scene{min-height:300px;grid-row:1}.moon{width:210px;height:210px}.orbit{width:270px;height:270px}.unicorn{font-size:105px}.reservoir,.effort-zone{grid-template-columns:1fr}.dream-entry{border-right:0;border-bottom:1px solid var(--line)}.pane.active{grid-template-columns:1fr;gap:4px}.pane-copy{padding:4px}.trail-step span{display:none}.effort-buttons{grid-template-columns:1fr}.effort-btn{min-height:72px}.section-head{align-items:start;flex-direction:column}.privacy span{display:none}}
+    @media(max-width:500px){.wrap{width:min(100% - 20px,1160px)}h1{font-size:3.35rem}.hero{gap:20px}.dream-entry,.dream-list,.forge-shell,.effort-log,.spark-meter{padding:20px}.input-action{grid-template-columns:1fr}.input-action .btn{width:100%}.trail{gap:2px}.trail-step b{width:36px;height:36px}.choice{min-width:100%}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+    @media print{body:before,.topbar,.hero,.reservoir,.trail,.pane-copy,.pane-nav,.effort-zone,.closing,footer{display:none!important}body{background:white;color:#111}.section{padding:0}.forge-shell,.workbench{box-shadow:none;background:white;border:1px solid #bbb;color:#111}.pane{display:none!important}.pane[data-pane="4"]{display:block!important}.hint,.gentle-note{color:#333}}
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="index.html" aria-label="The Wonder Project home"><span class="brand-mark">✦</span><span>The Wonder Project</span></a>
+    <div class="privacy"><i></i><span>Private on this device</span></div>
+  </header>
 
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">✦ Enter the midnight workshop</div>
+        <h1>The Dream <span>Forge</span></h1>
+        <p class="lede">A dream is a beginning. Bring yours here, meet what is stopping it, and forge one small action you can actually take—without judgement, pressure, or pretending real barriers do not exist.</p>
+        <div class="hero-actions"><a class="btn primary" href="#dreams">Name a dream <span aria-hidden="true">↓</span></a><a class="btn" href="#effort">Count an effort</a></div>
+      </div>
+      <div class="unicorn-scene" aria-label="A magical unicorn floating before a moon">
+        <div class="orbit"></div><div class="moon"></div><div class="unicorn" aria-hidden="true">🦄</div>
+        <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span>
+      </div>
+    </section>
+
+    <section class="wrap section" id="dreams">
+      <div class="section-head"><div><div class="eyebrow">01 · The dream reservoir</div><h2>Catch it before it floats away.</h2></div><p class="section-sub">Add every dream—serious, strange, tiny, enormous. You do not have to act on all of them today. Choose one to bring to the forge.</p></div>
+      <div class="card reservoir">
+        <div class="dream-entry">
+          <label for="dreamInput">What do you want to make real?</label>
+          <textarea id="dreamInput" maxlength="220" placeholder="Learn to cook three meals… write a book… feel stronger… return to study… start a garden…"></textarea>
+          <div class="label" style="margin-top:16px">Which constellation does it belong to?</div>
+          <div class="category-row" id="categories" aria-label="Dream category">
+            <button class="chip" aria-pressed="true" data-category="Creative">🎨 Creative</button><button class="chip" aria-pressed="false" data-category="Learning">📚 Learning</button><button class="chip" aria-pressed="false" data-category="Wellbeing">🌱 Wellbeing</button><button class="chip" aria-pressed="false" data-category="Work">🚀 Work</button><button class="chip" aria-pressed="false" data-category="Community">🤝 Community</button><button class="chip" aria-pressed="false" data-category="Life">✨ Life</button>
+          </div>
+          <div class="input-action"><p class="hint">No account. Nothing is sent anywhere.</p><button class="btn primary" id="addDream">Add to my sky ✦</button></div>
+        </div>
+        <div class="dream-list"><div class="label">My constellation <span id="dreamTotal" style="color:var(--muted)">(0)</span></div><p class="hint">Select a dream to shape it. Your active dream has a pink glow.</p><div class="dreams" id="dreamList"></div></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="forge">
+      <div class="section-head"><div><div class="eyebrow">02 · The forge trail</div><h2>Dreaming meets doing.</h2></div><p class="section-sub" id="activeLabel">Choose a dream above, then walk it through five gentle questions.</p></div>
+      <div class="card forge-shell">
+        <nav class="trail" aria-label="Dream forge steps">
+          <button class="trail-step active" data-go="0"><b>1</b><span>Dream</span></button><button class="trail-step" data-go="1"><b>2</b><span>Why</span></button><button class="trail-step" data-go="2"><b>3</b><span>Blocker</span></button><button class="trail-step" data-go="3"><b>4</b><span>Tiny step</span></button><button class="trail-step" data-go="4"><b>✦</b><span>Launch</span></button>
+        </nav>
+
+        <div class="pane active" data-pane="0"><div class="pane-copy"><div class="number">Step one</div><h3>Hold one dream in your hands.</h3><p>A clear dream can be shaped. A perfect plan is not required.</p></div><div class="workbench"><label for="activeDream">The dream I am forging</label><textarea id="activeDream" placeholder="Select a dream above or write one here."></textarea><div class="choice-row" id="readiness"><button class="choice" data-value="ready"><strong>⚡ I am ready</strong><small>Let’s make a move.</small></button><button class="choice" data-value="nervous"><strong>🦋 I want to, but I’m scared</strong><small>Courage can be tiny.</small></button><button class="choice" data-value="notyet"><strong>🌙 Not yet</strong><small>I can still get curious.</small></button></div><div class="pane-nav"><span></span><button class="btn primary next">Find my why →</button></div></div></div>
+
+        <div class="pane" data-pane="1"><div class="pane-copy"><div class="number">Step two</div><h3>Give the dream a heartbeat.</h3><p>Your reason does not need to impress anyone. It only needs to be true enough to bring you back.</p></div><div class="workbench"><label for="whyInput">Why does this matter to me?</label><textarea id="whyInput" placeholder="If this became real, I might feel… It would let me…"></textarea><label for="futureInput">What could be different six months from now?</label><textarea id="futureInput" placeholder="Keep it concrete and kind."></textarea><div class="pane-nav"><button class="btn back">← Back</button><button class="btn primary next">Meet the blocker →</button></div></div></div>
+
+        <div class="pane" data-pane="2"><div class="pane-copy"><div class="number">Step three</div><h3>Name what stands at the gate.</h3><p>An obstacle is information, not a verdict about you. Some barriers are inside us. Some are genuinely outside us. Many are both.</p></div><div class="workbench"><div class="label">Where is the pressure coming from?</div><div class="choice-row" id="blockerType"><button class="choice" data-value="mind"><strong>🧠 Inside my mind</strong><small>Fear, doubt, perfectionism, overwhelm</small></button><button class="choice" data-value="external"><strong>🧱 Outside factors</strong><small>Time, money, health, access, responsibilities</small></button><button class="choice" data-value="both"><strong>🌗 A bit of both</strong><small>The barriers are tangled together</small></button><button class="choice" data-value="unsure"><strong>🔭 I’m not sure yet</strong><small>I need to notice the pattern</small></button></div><label for="blockerInput">What exactly happens between deciding and beginning?</label><textarea id="blockerInput" placeholder="When I try to begin, I notice…"></textarea><div class="gentle-note" id="blockerPrompt">Choose the closest kind of blocker. There is no wrong answer.</div><div class="pane-nav"><button class="btn back">← Back</button><button class="btn primary next">Shrink the step →</button></div></div></div>
+
+        <div class="pane" data-pane="3"><div class="pane-copy"><div class="number">Step four</div><h3>Make the first step almost too small.</h3><p>Confidence often arrives after evidence. Give yourself one piece of evidence: a ten-minute action, a single message, one page, one stretch.</p></div><div class="workbench"><label for="tinyInput">What can I do in 10 minutes or less?</label><textarea id="tinyInput" placeholder="Open the document and write one sentence… put my shoes by the door… find one beginner recipe…"></textarea><label for="supportInput">What would make beginning easier?</label><input id="supportInput" placeholder="A reminder, a friend, a clear space, information, rest…"><label for="ifThenInput">If the blocker appears, then I will…</label><input id="ifThenInput" placeholder="…make the step smaller / ask for help / try the alternative path"><div class="gentle-note">Starting small is not thinking small. It is how your brain collects proof that movement is possible.</div><div class="pane-nav"><button class="btn back">← Back</button><button class="btn primary next">Forge my plan →</button></div></div></div>
+
+        <div class="pane" data-pane="4"><div class="pane-copy"><div class="number">Step five</div><h3>Your launch spell is ready.</h3><p>You do not have to feel fearless. Take the next honest action with the version of courage you have today.</p></div><div class="workbench"><div class="action-card" id="planSummary"></div><div class="gentle-note">Effort counts even when the result is messy. Rest can be part of a plan. Asking for help is action too.</div><div class="pane-nav"><button class="btn back">← Adjust</button><div><button class="btn" id="printPlan">Print</button> <button class="btn primary" id="savePlan">Save this plan ✦</button></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="effort">
+      <div class="section-head"><div><div class="eyebrow">03 · The effort galaxy</div><h2>Count attempts, not perfection.</h2></div><p class="section-sub">Inspiring people are usually standing on a mountain of tries, edits, mistakes, help, pauses, and returns. Add a spark whenever you move—even imperfectly.</p></div>
+      <div class="effort-zone">
+        <div class="card spark-meter"><div><div class="spark-count"><div><b id="sparkCount">0</b><span>effort sparks</span></div></div><p class="hint" id="sparkMessage">Your galaxy begins with one honest try.</p></div></div>
+        <div class="card effort-log"><div class="label">What happened today?</div><div class="effort-buttons"><button class="effort-btn" data-effort="I began"><span>⚡</span><strong>I began</strong><small>Starting deserves a spark</small></button><button class="effort-btn" data-effort="I tried"><span>🛠️</span><strong>I tried</strong><small>Messy effort still counts</small></button><button class="effort-btn" data-effort="I learned"><span>🌈</span><strong>I learned</strong><small>A discovery is movement</small></button></div><div class="label">Recent sparks</div><div class="history" id="history"></div></div>
+      </div>
+    </section>
+
+    <section class="wrap closing"><div class="card"><blockquote>“You do not need a new personality. You need one possible next move.”</blockquote><p>The forge is always open. Return after a hard day, reshape the action, and begin again. No streaks. No shame. Just another spark.</p><div class="hero-actions" style="justify-content:center"><a class="btn primary" href="#dreams">Forge another dream</a></div></div></section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>Made gently for The Wonder Project · Your words stay in this browser.</span><button class="danger" id="clearAll">Clear my Dream Forge data</button></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    const KEY='wonder-project-dream-forge-v1';
+    const fresh=()=>({dreams:[],activeId:null,category:'Creative',draft:{dream:'',readiness:'',why:'',future:'',blockerType:'',blocker:'',tiny:'',support:'',ifThen:''},efforts:[]});
+    let state=fresh(), step=0;
+    try{state={...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){}
+    const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+    const esc=s=>(s||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+    const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
+    const fields={activeDream:'dream',whyInput:'why',futureInput:'future',blockerInput:'blocker',tinyInput:'tiny',supportInput:'support',ifThenInput:'ifThen'};
+    Object.entries(fields).forEach(([id,key])=>{$('#'+id).addEventListener('input',e=>{state.draft[key]=e.target.value;save();if(key==='dream'&&state.activeId){const d=state.dreams.find(x=>x.id===state.activeId);if(d){d.text=e.target.value;renderDreams()}}})});
+    $$('#categories .chip').forEach(b=>b.addEventListener('click',()=>{state.category=b.dataset.category;$$('#categories .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));save()}));
+    function renderDreams(){
+      const list=$('#dreamList');$('#dreamTotal').textContent=`(${state.dreams.length})`;
+      if(!state.dreams.length){list.innerHTML='<div class="empty">Your sky is waiting.<br>Add the first dream you can hear.</div>';return}
+      list.innerHTML=state.dreams.map(d=>`<div class="dream-item ${d.id===state.activeId?'active':''}"><button class="icon-btn select-btn" data-select="${d.id}" aria-label="Select this dream">✦</button><div class="dream-main"><div class="dream-title">${esc(d.text)}</div><div class="dream-cat">${esc(d.category)}</div></div><button class="icon-btn" data-remove="${d.id}" aria-label="Remove this dream">×</button></div>`).join('');
+      $$('[data-select]').forEach(b=>b.onclick=()=>selectDream(b.dataset.select));
+      $$('[data-remove]').forEach(b=>b.onclick=()=>{const id=b.dataset.remove;state.dreams=state.dreams.filter(d=>d.id!==id);if(state.activeId===id){state.activeId=null;state.draft={...fresh().draft}}save();sync();renderDreams()});
+    }
+    function selectDream(id){const d=state.dreams.find(x=>x.id===id);if(!d)return;state.activeId=id;state.draft.dream=d.text;save();sync();renderDreams();go(0);$('#forge').scrollIntoView({behavior:'smooth'});toast('Dream moved to the forge ✦')}
+    $('#addDream').onclick=()=>{const input=$('#dreamInput'),text=input.value.trim();if(!text){toast('Give your dream a few words first');input.focus();return}const d={id:String(Date.now()),text,category:state.category};state.dreams.unshift(d);state.activeId=d.id;state.draft={...fresh().draft,dream:text};input.value='';save();sync();renderDreams();toast('A new star joined your sky')};
+    function bindChoice(group,key,callback){$$(`#${group} .choice`).forEach(b=>b.onclick=()=>{state.draft[key]=b.dataset.value;$$(`#${group} .choice`).forEach(x=>x.classList.toggle('selected',x===b));save();if(callback)callback(b.dataset.value)})}
+    bindChoice('readiness','readiness');
+    const prompts={mind:'Fear is allowed to travel with you. What would make the task small enough that fear does not get the final vote?',external:'This barrier is real—not a personal failure. Could support, information, resources, a boundary, more time, or another route reduce it?',both:'Separate the knot: what is within your control today, and where might you need support or a different path?',unsure:'Observe without judgement: what exactly happens between deciding and beginning? The pattern may reveal the barrier.'};
+    bindChoice('blockerType','blockerType',v=>$('#blockerPrompt').textContent=prompts[v]);
+    function sync(){Object.entries(fields).forEach(([id,key])=>$('#'+id).value=state.draft[key]||'');$$('#readiness .choice').forEach(b=>b.classList.toggle('selected',b.dataset.value===state.draft.readiness));$$('#blockerType .choice').forEach(b=>b.classList.toggle('selected',b.dataset.value===state.draft.blockerType));if(state.draft.blockerType)$('#blockerPrompt').textContent=prompts[state.draft.blockerType];$('#activeLabel').textContent=state.draft.dream?`Now forging: “${state.draft.dream.slice(0,80)}${state.draft.dream.length>80?'…':''}”`:'Choose a dream above, then walk it through five gentle questions.'}
+    function summary(){const d=state.draft;$('#planSummary').innerHTML=`<div class="label">My forged action plan</div><p><strong>Dream:</strong> ${esc(d.dream)||'Still waiting to be named'}</p><p><strong>Why it matters:</strong> ${esc(d.why)||'Still discovering this'}</p><p><strong>What is in the way:</strong> ${esc(d.blocker)||'Still noticing the barrier'}</p><p><strong>My tiny next action:</strong> ${esc(d.tiny)||'Choose one action that takes 10 minutes or less'}</p><p><strong>Support:</strong> ${esc(d.support)||'I can decide what would help'}</p><p><strong>If the blocker appears:</strong> ${esc(d.ifThen)||'I will make the next step smaller and begin again'}</p>`}
+    function go(n){step=Math.max(0,Math.min(4,n));$$('.pane').forEach((p,i)=>p.classList.toggle('active',i===step));$$('.trail-step').forEach((b,i)=>{b.classList.toggle('active',i===step);b.classList.toggle('done',i<step)});if(step===4)summary();save()}
+    $$('.next').forEach(b=>b.onclick=()=>go(step+1));$$('.back').forEach(b=>b.onclick=()=>go(step-1));$$('[data-go]').forEach(b=>b.onclick=()=>go(Number(b.dataset.go)));
+    $('#savePlan').onclick=()=>{save();toast('Plan saved on this device ✦')};$('#printPlan').onclick=()=>window.print();
+    function renderEfforts(){const count=state.efforts.length;$('#sparkCount').textContent=count;$('#sparkMessage').textContent=count===0?'Your galaxy begins with one honest try.':count<5?'You are collecting proof that you can move.':count<12?'Look at that—effort is becoming a constellation.':'This is what persistence really looks like: many small returns.';$('#history').innerHTML=count?state.efforts.slice(0,8).map(e=>`<div class="history-item"><span>✦</span><strong>${esc(e.type)}</strong><time>${new Date(e.at).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</time></div>`).join(''):'<div class="empty">No sparks yet. Your first try belongs here.</div>'}
+    $$('.effort-btn').forEach(b=>b.onclick=()=>{state.efforts.unshift({type:b.dataset.effort,at:new Date().toISOString()});save();renderEfforts();toast(`${b.dataset.effort} — that counts ✦`)});
+    $('#clearAll').onclick=()=>{if(confirm('Clear every dream, plan, and effort spark saved on this device?')){state=fresh();localStorage.removeItem(KEY);step=0;sync();renderDreams();renderEfforts();go(0);toast('The forge is clear. You can begin again.')}};
+    sync();renderDreams();renderEfforts();go(0);
+  })();
+  </script>
+</body>
+</html>
