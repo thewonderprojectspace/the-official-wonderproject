@@ -715,11 +715,10 @@ if (wonderLoginForm) {
                     "Your Wonder Space account system is coming soon ✨";
             }
 
-            /*
-             * Later, this section will connect to your
-             * real login system using Firebase, Supabase
-             * or another secure authentication provider.
-             */
+          const SUPABASE_CONFIG = {
+    supabaseUrl: "https://rdryqjmstqmjdgjlnbys.supabase.co",
+    supabasePublishableKey: "sb_publishable_x0bvvf8NpNlfZswMXeOv8A_8eGr2Xo0"
+};
 
             console.log(
                 "Selected Wonder Space role:",
