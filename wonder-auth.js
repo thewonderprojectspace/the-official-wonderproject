@@ -1,8 +1,8 @@
 // The Wonder Project — authentication bridge
 // Add your own Supabase values below. The publishable key is designed for browser use.
 export const WONDER_AUTH_CONFIG = {
-  supabaseUrl: "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE",
-  supabasePublishableKey: "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE",
+  supabaseUrl: "https://rdryqjmstqmjdgjlnbys.supabase.co",
+  supabasePublishableKey: "sb_publishable_x0bvvf8NpNlfZswMXeOv8A_8eGr2Xo0",
   dashboardPage: "my-universe.html",
   signInPage: "sign-in.html"
 };
