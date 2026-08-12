@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore questions, wonder missions and curiosity constellations in Wonder Verse.">
+  <title>Explore | Wonder Verse</title>
+  <link rel="icon" type="image/png" href="images/wonder-verse-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #f8f1ff; --muted: #cfc4df; --night: #0c0620; --pink: #ff83c9;
+      --pink-pale: #ffd0e9; --mint: #9cf7ce; --line: rgba(225,216,255,.16);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden; color: var(--ink);
+      font-family: "Nunito", sans-serif;
+      background: radial-gradient(circle at 13% 18%,rgba(255,111,194,.13),transparent 28rem),
+        radial-gradient(circle at 83% 31%,rgba(120,255,198,.10),transparent 30rem),var(--night);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, textarea { font: inherit; }
+    .sky { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .sky::before {
+      content: ""; position: absolute; inset: 0; opacity: .3;
+      background-image: radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(156,247,206,.65) 0 1px,transparent 1.5px);
+      background-position: 0 0,36px 42px; background-size: 82px 82px,113px 113px;
+    }
+    .star { position: absolute; color: var(--pink-pale); font-family: serif; animation: twinkle 4s ease-in-out infinite; }
+    .s1 { left: 7%; top: 18%; font-size: 1.5rem; }.s2 { left: 47%; top: 9%; color: var(--mint); font-size: 2rem; animation-delay: 1s; }
+    .s3 { right: 8%; top: 24%; font-size: 1.35rem; animation-delay: 2s; }.s4 { right: 18%; top: 66%; color: var(--mint); animation-delay: .5s; }
+    main, header { position: relative; z-index: 1; }
+    header { padding: 22px 5vw 0; }
+    nav {
+      max-width: 1180px; min-height: 76px; margin: auto; padding: 12px 14px 12px 18px;
+      display: flex; align-items: center; gap: 26px; border: 1px solid var(--line); border-radius: 24px;
+      background: rgba(18,11,45,.72); backdrop-filter: blur(18px); box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+    .site-logo { display: inline-flex; align-items: center; margin-right: auto; flex-shrink: 0; }
+    .site-logo-image { display: block; width: 180px; max-width: 100%; height: auto; object-fit: contain; }
+    .text-brand { display: none; align-items: center; gap: 10px; margin-right: auto; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: var(--mint); border: 1px solid rgba(156,247,206,.5); border-radius: 50%; }
+    .text-brand strong { display: block; font-family: "Cormorant Garamond",serif; font-size: 1.3rem; }
+    .text-brand small { display: block; color: var(--pink-pale); font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: .82rem; font-weight: 700; }
+    .nav-links a:hover, .nav-links a.active { color: var(--mint); }
+    .account-link { padding: 12px 17px; color: var(--pink-pale); border: 1px solid rgba(255,131,201,.4); border-radius: 15px; }
+    .menu-button { display: none; width: 42px; height: 42px; padding: 10px; border: 1px solid var(--line); border-radius: 13px; background: transparent; }
+    .menu-button span { display: block; width: 100%; height: 2px; margin: 5px 0; background: var(--pink-pale); }
+    .hero { max-width: 1180px; min-height: 700px; margin: auto; padding: 130px 5vw 90px; position: relative; }
+    .eyebrow,.kicker { color: var(--mint); font-size: .72rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow span { margin-right: 8px; color: var(--pink); }
+    h1,h2,h3,blockquote { font-family: "Cormorant Garamond",serif; }
+    h1 { max-width: 770px; margin: 20px 0; font-size: clamp(4.3rem,8.5vw,7.6rem); font-weight: 600; line-height: .85; letter-spacing: -.045em; }
+    h1 em { color: var(--pink); font-weight: 500; text-shadow: 0 0 35px rgba(255,131,201,.16); }
+    .hero > p { max-width: 620px; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 13px; padding: 15px 22px; border-radius: 17px; font-size: .87rem; font-weight: 800; transition: .2s ease; cursor: pointer; }
+    .button:hover { transform: translateY(-3px); }
+    .primary { color: #171028; border: 0; background: linear-gradient(120deg,var(--mint),var(--pink-pale)); box-shadow: 0 13px 35px rgba(156,247,206,.12); }
+    .quiet { color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,.04); }
+    .hero-orbit { position: absolute; width: 300px; height: 300px; right: 5%; top: 165px; opacity: .85; }
+    .ring { position: absolute; inset: 0; border: 1px solid rgba(255,131,201,.25); border-radius: 50%; transform: rotate(25deg) scaleY(.43); }
+    .ring.two { border-color: rgba(156,247,206,.28); transform: rotate(-34deg) scaleY(.58); }
+    .orbit-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 94px; height: 94px; display: grid; place-items: center; color: var(--pink-pale); font-size: 2rem; border-radius: 50%; background: radial-gradient(circle at 35% 30%,#5b315d,#20143c 70%); box-shadow: 0 0 70px rgba(255,131,201,.24); }
+    .orbit-note,.orbit-star { position: absolute; font-size: 1.3rem; }.orbit-note { left: 25px; top: 48%; color: var(--mint); }.orbit-star { right: 32px; top: 20%; color: var(--pink); }
+    .section { max-width: 1180px; margin: auto; padding: 100px 5vw; }
+    .section-heading { max-width: 650px; margin-bottom: 45px; }
+    .section-heading.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-heading h2,.mission-copy h2,.portal-copy h2 { margin: 13px 0; font-size: clamp(2.8rem,5vw,4.5rem); font-weight: 600; line-height: 1; }
+    .section-heading p,.mission-copy > p,.portal-copy p { color: var(--muted); line-height: 1.75; }
+    .path-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .path-card { position: relative; min-height: 330px; padding: 30px; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); transition: .25s ease; }
+    .path-card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -70px; bottom: -80px; background: radial-gradient(circle,rgba(255,131,201,.18),transparent 70%); }
+    .path-card:nth-child(even)::after { background: radial-gradient(circle,rgba(156,247,206,.16),transparent 70%); }
+    .path-card:hover { transform: translateY(-6px); border-color: rgba(156,247,206,.35); }
+    .path-number { color: rgba(255,255,255,.33); font-family: "Cormorant Garamond",serif; }
+    .path-symbol { position: absolute; right: 28px; top: 23px; width: 55px; height: 55px; display: grid; place-items: center; color: var(--mint); font-size: 1.4rem; border: 1px solid rgba(156,247,206,.22); border-radius: 50%; background: rgba(156,247,206,.08); }
+    .path-card:nth-child(odd) .path-symbol { color: var(--pink-pale); border-color: rgba(255,131,201,.22); background: rgba(255,131,201,.08); }
+    .path-card h3 { margin: 72px 0 12px; font-size: 2rem; }
+    .path-card p { max-width: 390px; color: var(--muted); font-size: .93rem; line-height: 1.7; }
+    .card-link { position: absolute; bottom: 29px; color: var(--pink-pale); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .card-link b { margin-left: 8px; color: var(--mint); }
+    .constellations { padding-top: 130px; }
+    .topic-cloud { max-width: 990px; margin: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 13px; }
+    .topic-pill { padding: 14px 19px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.035); font-size: .82rem; font-weight: 700; cursor: pointer; transition: .2s ease; }
+    .topic-pill span { margin-right: 9px; color: var(--mint); }.topic-pill:nth-child(odd) span { color: var(--pink); }
+    .topic-pill:hover { color: var(--ink); transform: translateY(-3px); border-color: rgba(255,131,201,.4); background: rgba(255,131,201,.07); }
+    .wonder-card { position: relative; max-width: 980px; min-height: 490px; margin: auto; padding: 75px 9%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; border: 1px solid rgba(255,131,201,.27); border-radius: 46px; background: radial-gradient(circle at 50% 20%,rgba(255,131,201,.14),transparent 42%),linear-gradient(145deg,rgba(37,22,66,.96),rgba(14,9,36,.95)); box-shadow: 0 40px 100px rgba(0,0,0,.25); }
+    .wonder-card::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(156,247,206,.1); border-radius: 35px; }
+    .wonder-label { color: var(--mint); font-size: .72rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .wonder-label span { margin-right: 7px; color: var(--pink); }
+    blockquote { max-width: 760px; margin: 27px 0 17px; color: var(--pink-pale); font-size: clamp(2.5rem,5vw,4.1rem); line-height: 1.06; }
+    .whisper { color: var(--muted); font-size: .87rem; font-style: italic; }
+    .wonder-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; position: relative; z-index: 2; }
+    .saved { color: var(--mint); border-color: rgba(156,247,206,.4); }
+    .missions { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; padding-top: 150px; padding-bottom: 150px; }
+    .mission-switcher { display: flex; gap: 10px; margin-top: 30px; }
+    .mission-switcher button { width: 42px; height: 42px; color: var(--muted); border: 1px solid var(--line); border-radius: 50%; background: transparent; font-size: .7rem; font-weight: 800; cursor: pointer; }
+    .mission-switcher button.active { color: #171028; border-color: var(--mint); background: var(--mint); }
+    .mission-note { position: relative; min-height: 380px; padding: 70px 60px 48px; display: flex; flex-direction: column; justify-content: center; color: #241532; border-radius: 10px 36px 16px 45px; background: linear-gradient(150deg,#fce5f2,#d8ffec); transform: rotate(1.3deg); box-shadow: 20px 25px 0 rgba(255,131,201,.09),0 35px 70px rgba(0,0,0,.22); }
+    .note-pin { position: absolute; left: 50%; top: 20px; transform: translateX(-50%); width: 38px; height: 38px; display: grid; place-items: center; color: white; border-radius: 50%; background: #a44883; }
+    .mission-note small { color: #73566c; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    .mission-note p { margin: 25px 0 32px; font-family: "Cormorant Garamond",serif; font-size: clamp(2.1rem,4vw,3.15rem); font-weight: 600; line-height: 1.07; }
+    .mission-note button { width: max-content; padding: 0; color: #69425d; border: 0; border-bottom: 1px solid rgba(105,66,93,.35); background: none; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+    .portal-card { padding: 65px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; border: 1px solid rgba(156,247,206,.22); border-radius: 38px; background: linear-gradient(125deg,rgba(156,247,206,.07),rgba(255,131,201,.06)); }
+    .question-form { display: flex; flex-direction: column; gap: 12px; }
+    .question-form label { color: var(--pink-pale); font-size: .78rem; font-weight: 800; }
+    textarea { width: 100%; min-height: 150px; padding: 20px; resize: vertical; color: var(--ink); border: 1px solid var(--line); border-radius: 18px; outline: none; background: rgba(8,5,27,.65); line-height: 1.6; }
+    textarea:focus { border-color: var(--mint); box-shadow: 0 0 0 4px rgba(156,247,206,.08); }
+    textarea::placeholder { color: #81758f; }
+    .question-form .button { width: max-content; }
+    .form-note { min-height: 20px; margin: 2px 0 0; color: var(--mint); font-size: .78rem; opacity: 0; transition: opacity .2s ease; }
+    .form-note.visible { opacity: 1; }
+    .space-cta { max-width: 930px; padding-top: 180px; padding-bottom: 180px; text-align: center; }
+    .cta-symbol { width: 76px; height: 76px; margin: 0 auto 25px; display: grid; place-items: center; color: var(--pink-pale); border: 1px solid rgba(255,131,201,.3); border-radius: 50%; background: rgba(255,131,201,.07); box-shadow: 0 0 45px rgba(255,131,201,.11); font-size: 1.6rem; }
+    .space-cta h2 { margin: 17px 0; font-size: clamp(3.5rem,7vw,6.3rem); font-weight: 600; line-height: .88; }
+    .space-cta p { max-width: 620px; margin: 25px auto 30px; color: var(--muted); line-height: 1.8; }
+    footer { max-width: 1180px; margin: auto; padding: 35px 5vw 50px; display: flex; align-items: center; gap: 30px; color: var(--muted); border-top: 1px solid var(--line); font-size: .75rem; }
+    footer p { margin-right: auto; } footer a { color: var(--mint); font-weight: 800; }
+    @keyframes twinkle { 0%,100% { opacity:.35;transform:scale(.9) } 50% { opacity:1;transform:scale(1.15) } }
+    @media (max-width:900px) {
+      .nav-links { display: none; position: absolute; left: 5vw; right: 5vw; top: 105px; padding: 22px; flex-direction: column; align-items: stretch; border: 1px solid var(--line); border-radius: 20px; background: #17102e; }
+      .nav-links.open { display: flex; }.menu-button { display: block; }.account-link { text-align: center; }
+      .hero-orbit { right: -110px; opacity: .28; }.missions,.portal-card { grid-template-columns: 1fr; }.missions { gap: 45px; }.portal-card { gap: 35px; }
+    }
+    @media (max-width:650px) {
+      header { padding: 12px 14px 0; }nav { min-height: 64px; padding: 10px 12px; border-radius: 18px; }.site-logo-image { width: 145px; }
+      .hero { min-height: 650px; padding: 100px 22px 70px; }h1 { font-size: clamp(3.7rem,18vw,5.5rem); }.hero > p { font-size: 1rem; }.button { width: 100%; }
+      .section { padding: 75px 22px; }.path-grid { grid-template-columns: 1fr; }.path-card { min-height: 310px; }
+      .wonder-card { min-height: 530px; padding: 65px 28px; border-radius: 30px; }.missions { padding-top: 110px; padding-bottom: 110px; }
+      .mission-note { min-height: 350px; padding: 65px 32px 40px; }.portal-card { padding: 40px 24px; border-radius: 28px; }.question-form .button { width: 100%; }
+      .space-cta { padding-top: 130px; padding-bottom: 130px; }footer { flex-direction: column; align-items: flex-start; }footer p { margin-right: 0; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto }*,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important } }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><span class="star s1">✦</span><span class="star s2">·</span><span class="star s3">✧</span><span class="star s4">♪</span></div>
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
+        <img src="images/wonder-verse-header-logo-light-trimmed.png" alt="Wonder Verse" class="site-logo-image" width="180" onerror="this.parentElement.style.display='none';document.querySelector('.text-brand').style.display='flex'">
+      </a>
+      <a href="index.html" class="text-brand" aria-label="Wonder Verse homepage"><span class="brand-mark">✦</span><span><strong>Wonder Verse</strong><small>The Wonder Project</small></span></a>
+      <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links">
+        <a href="index.html">Start Here</a><a href="about.html">About</a><a href="books.html">Books</a><a class="active" href="resources.html">Explore</a><a class="account-link" href="sign-in.html">My Wonder Space</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="top">
+      <div class="eyebrow"><span>♪</span>Your curiosity has a place here</div>
+      <h1>Choose where your<br><em>wonder</em> takes you.</h1>
+      <p>There is no right place to begin. Follow a question, notice something unexpected, or choose a small mission. Every discovery starts with wondering.</p>
+      <div class="hero-actions"><a class="button primary" href="#paths">Begin exploring <span>✦</span></a><a class="button quiet" href="#wonder">Give me a question <span>♪</span></a></div>
+      <div class="hero-orbit" aria-hidden="true"><span class="ring"></span><span class="ring two"></span><span class="orbit-core">♡</span><span class="orbit-note">♪</span><span class="orbit-star">✦</span></div>
+    </section>
+    <section class="section" id="paths">
+      <div class="section-heading"><span class="kicker">A constellation of possibilities</span><h2>Pick a path that feels like you.</h2><p>You can always wander somewhere new. Curiosity does not need a map.</p></div>
+      <div class="path-grid">
+        <a class="path-card" href="#wonder"><span class="path-number">01</span><span class="path-symbol">♪</span><h3>Little Explorers</h3><p>Tiny experiments, enormous questions and gentle adventures for young wonderers.</p><span class="card-link">Follow this path <b>→</b></span></a>
+        <a class="path-card" href="#wonder"><span class="path-number">02</span><span class="path-symbol">✦</span><h3>Curious Minds</h3><p>Follow fascinating trails through space, nature, inventions and the human body.</p><span class="card-link">Follow this path <b>→</b></span></a>
+        <a class="path-card" href="#wonder"><span class="path-number">03</span><span class="path-symbol">☾</span><h3>Wonder Again</h3><p>A quiet corner for grown-ups ready to notice the beautiful, unusual and easily missed.</p><span class="card-link">Follow this path <b>→</b></span></a>
+        <a class="path-card" href="#wonder"><span class="path-number">04</span><span class="path-symbol">♡</span><h3>Educator’s Corner</h3><p>Thoughtful prompts and playful activities that make room for brave questions.</p><span class="card-link">Follow this path <b>→</b></span></a>
+      </div>
+    </section>
+    <section class="section constellations">
+      <div class="section-heading center"><span class="kicker">Curiosity constellations</span><h2>What is glowing in your mind?</h2><p>Choose a little light and see where it leads.</p></div>
+      <div class="topic-cloud">
+        <button class="topic-pill"><span>✦</span>Space &amp; the Universe</button><button class="topic-pill"><span>♪</span>The Human Mind</button><button class="topic-pill"><span>♡</span>The Human Body</button><button class="topic-pill"><span>⌁</span>Nature &amp; Animals</button>
+        <button class="topic-pill"><span>+</span>Ideas &amp; Inventions</button><button class="topic-pill"><span>?</span>Everyday Mysteries</button><button class="topic-pill"><span>∞</span>Creativity &amp; Imagination</button><button class="topic-pill"><span>☾</span>People &amp; the World</button>
+      </div>
+    </section>
+    <section class="section" id="wonder">
+      <div class="wonder-card"><div class="wonder-label"><span>✦</span>Today’s wonder</div><blockquote id="wonderText">“If Earth is always spinning, why can’t we feel it?”</blockquote><p class="whisper">Do not rush to answer. Stay with the question for a moment.</p><div class="wonder-actions"><button class="button primary" id="anotherWonder">Another wonder <span>♪</span></button><button class="button quiet" id="saveWonder">Save this wonder ♡</button></div></div>
+    </section>
+    <section class="section missions" id="missions">
+      <div class="mission-copy"><span class="kicker">Step away from the screen</span><h2>A tiny mission for a wonderfully ordinary day.</h2><p>Wonder lives in kitchens, pockets, footpaths and conversations—not only on a webpage.</p><div class="mission-switcher"><button class="active" data-mission="0">01</button><button data-mission="1">02</button><button data-mission="2">03</button><button data-mission="3">04</button></div></div>
+      <div class="mission-note"><span class="note-pin">♡</span><small>Your wonder mission</small><p id="missionText">Find three things near you that began as someone’s idea.</p><button id="anotherMission">Choose another →</button></div>
+    </section>
+    <section class="section">
+      <div class="portal-card"><div class="portal-copy"><span class="kicker">The question portal</span><h2>What are you wondering about?</h2><p>No question is too small, strange or silly. Keep yours safely in this browser and return to it later.</p></div><form class="question-form" id="questionForm"><label for="question">My question is…</label><textarea id="question" required placeholder="Why do we remember some dreams and forget others?"></textarea><button class="button primary" type="submit">Save my wonder <span>✦</span></button><p class="form-note" id="formNote" role="status">Your question has joined your constellation ♪</p></form></div>
+    </section>
+    <section class="section space-cta" id="wonder-space"><span class="cta-symbol">☾</span><span class="kicker">A universe that grows with you</span><h2>Your curiosity<br>belongs somewhere.</h2><p>Create your own Wonder Space to collect questions, keep discoveries and watch your personal constellation grow.</p><a class="button primary" href="sign-in.html">Create my Wonder Space <span>♡</span></a></section>
+  </main>
+  <footer><span>✦ Wonder Verse</span><p>Made gently for minds that still ask why.</p><a href="#top">Back to the stars ↑</a></footer>
+  <script>
+    const wonders = ["If Earth is always spinning, why can’t we feel it?","Do trees recognise the other trees growing beside them?","Where does a thought go when we forget it?","Would colours have different names on another planet?","What ordinary object around you began as someone’s impossible idea?"];
+    const missions = ["Find three things near you that began as someone’s idea.","Look at the sky for one quiet minute. Write down everything you notice.","Ask someone older what they wondered about when they were little.","Give an ordinary object five completely unexpected new uses."];
+    let wonderIndex = 0, missionIndex = 0;
+    const wonderText = document.getElementById("wonderText"), saveWonder = document.getElementById("saveWonder"), missionText = document.getElementById("missionText");
+    function nextWonder(){ wonderIndex=(wonderIndex+1)%wonders.length; wonderText.textContent=`“${wonders[wonderIndex]}”`; saveWonder.textContent="Save this wonder ♡"; saveWonder.classList.remove("saved"); }
+    document.getElementById("anotherWonder").addEventListener("click",nextWonder);
+    document.querySelectorAll(".topic-pill").forEach(button=>button.addEventListener("click",()=>{ nextWonder(); document.getElementById("wonder").scrollIntoView(); }));
+    saveWonder.addEventListener("click",()=>{ localStorage.setItem("wonderVerseSavedWonder",wonders[wonderIndex]); saveWonder.textContent="Saved with care ♡"; saveWonder.classList.add("saved"); });
+    function showMission(index){ missionIndex=index; missionText.textContent=missions[index]; document.querySelectorAll("[data-mission]").forEach((button,i)=>button.classList.toggle("active",i===index)); }
+    document.querySelectorAll("[data-mission]").forEach(button=>button.addEventListener("click",()=>showMission(Number(button.dataset.mission))));
+    document.getElementById("anotherMission").addEventListener("click",()=>showMission((missionIndex+1)%missions.length));
+    document.getElementById("questionForm").addEventListener("submit",event=>{ event.preventDefault(); const question=document.getElementById("question").value.trim(); if(!question)return; const savedQuestions=JSON.parse(localStorage.getItem("wonderVerseQuestions")||"[]"); savedQuestions.push({question,date:new Date().toISOString()}); localStorage.setItem("wonderVerseQuestions",JSON.stringify(savedQuestions)); event.target.reset(); document.getElementById("formNote").classList.add("visible"); });
+    const menuButton=document.querySelector(".menu-button"),navLinks=document.querySelector(".nav-links");
+    menuButton.addEventListener("click",()=>{ const open=navLinks.classList.toggle("open"); menuButton.setAttribute("aria-expanded",String(open)); });
+  </script>
+</body>
+</html>
