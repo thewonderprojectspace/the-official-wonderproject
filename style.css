@@ -9,18 +9,29 @@ html {
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 15% 5%, rgba(111, 83, 255, .18), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(42, 184, 201, .12), transparent 24%),
+        radial-gradient(circle at 48% 92%, rgba(168, 82, 203, .12), transparent 30%),
+        var(--space);
+
+    font-family: "Nunito", sans-serif;
+    line-height: 1.65;
 }
 
-/* =========================================
-   FLOATING WONDER NAVIGATION
-========================================= */
-
-body {
-    font-family: "Poppins", sans-serif;
-    padding-top: 105px;
+h1,
+h2,
+h3,
+h4,
+.nav-brand,
+.hero-title {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: -0.02em;
 }
-
 header {
     position: fixed;
     top: 18px;
