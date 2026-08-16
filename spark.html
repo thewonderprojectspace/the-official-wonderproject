@@ -1,737 +1,239 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag('js', new Date());
-      gtag('config', 'G-EF9DVH7JQN');
-    </script>
-
-     <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Moon of Beginnings — a gentle, private place to begin again, one tiny promise at a time.">
-  <title>The Moon of Beginnings | The Wonder Project</title>
-  <style>
-    :root {
-      --night: #050816;
-      --navy: #0d1b3d;
-      --blue: #132850;
-      --purple: #8b7cf6;
-      --purple-deep: #5544c9;
-      --teal: #5eead4;
-      --gold: #ffd166;
-      --cream: #fff8df;
-      --white: #f7f8ff;
-      --muted: #bbc3df;
-      --glass: rgba(18, 30, 68, .72);
-      --line: rgba(184, 194, 255, .17);
-      --shadow: 0 24px 70px rgba(0, 0, 0, .32);
-      --radius: 28px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--white);
-      background:
-        radial-gradient(circle at 78% 10%, rgba(94, 234, 212, .08), transparent 27rem),
-        radial-gradient(circle at 16% 24%, rgba(139, 124, 246, .16), transparent 28rem),
-        linear-gradient(150deg, #050816 0%, #091329 52%, #071a28 100%);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      opacity: .72;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.85) 0 1px, transparent 1.4px),
-        radial-gradient(circle, rgba(94,234,212,.65) 0 1px, transparent 1.4px),
-        radial-gradient(circle, rgba(255,209,102,.55) 0 1px, transparent 1.5px);
-      background-size: 137px 137px, 211px 211px, 293px 293px;
-      background-position: 7px 13px, 61px 97px, 121px 41px;
-    }
-
-    a { color: inherit; }
-    button, input, textarea, select { font: inherit; }
-    button { color: inherit; }
-    .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; background: var(--gold); color: #18203b; padding: .7rem 1rem; border-radius: 999px; }
-    .skip-link:focus { top: 1rem; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(5, 8, 22, .78);
-      backdrop-filter: blur(18px);
-    }
-
-    nav {
-      width: min(1180px, calc(100% - 2rem));
-      margin: auto;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .brand { text-decoration: none; font-weight: 850; letter-spacing: -.02em; margin-right: auto; }
-    .brand span { color: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: .2rem; }
-    .nav-links a { text-decoration: none; color: var(--muted); padding: .55rem .72rem; border-radius: 999px; font-size: .92rem; }
-    .nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current="page"] { color: white; background: rgba(255,255,255,.08); }
-    .menu-button { display: none; border: 1px solid var(--line); background: rgba(255,255,255,.05); border-radius: 12px; padding: .55rem .7rem; cursor: pointer; }
-
-    .container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
-    .hero { min-height: 88vh; display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 4rem; padding: 5rem 0 4rem; }
-    .eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: .18em; font-weight: 800; font-size: .78rem; }
-    h1, h2, h3 { line-height: 1.1; letter-spacing: -.035em; margin-top: 0; }
-    h1 { font-size: clamp(3.4rem, 7.8vw, 7rem); margin-bottom: 1.25rem; }
-    h2 { font-size: clamp(2rem, 4.2vw, 3.7rem); margin-bottom: .9rem; }
-    h3 { font-size: 1.25rem; }
-    .gold { color: var(--gold); }
-    .hero-copy > p { max-width: 640px; color: var(--muted); font-size: clamp(1.04rem, 1.7vw, 1.22rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
-
-    .button {
-      border: 0;
-      border-radius: 999px;
-      padding: .82rem 1.2rem;
-      cursor: pointer;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .45rem;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { color: #17203c; background: linear-gradient(135deg, var(--gold), #ffe8a3); box-shadow: 0 12px 35px rgba(255, 209, 102, .22); }
-    .button-soft { color: white; background: rgba(255,255,255,.08); border: 1px solid var(--line); }
-    .button-small { padding: .56rem .9rem; font-size: .9rem; }
-    .button-danger { color: #ffc8d1; background: rgba(255, 94, 125, .09); border: 1px solid rgba(255, 94, 125, .22); }
-
-    .moon-scene { min-height: 500px; position: relative; display: grid; place-items: center; }
-    .moon {
-      width: min(350px, 72vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      position: relative;
-      background:
-        radial-gradient(circle at 35% 28%, rgba(255,255,255,.95), transparent 11%),
-        radial-gradient(circle at 67% 66%, rgba(166,133,70,.16) 0 8%, transparent 9%),
-        radial-gradient(circle at 36% 62%, rgba(173,140,73,.14) 0 12%, transparent 13%),
-        linear-gradient(145deg, #fff5c7, #f2cc72);
-      box-shadow: 0 0 45px rgba(255, 219, 132, .46), 0 0 130px rgba(255, 209, 102, .19);
-      animation: moonFloat 6s ease-in-out infinite;
-    }
-    .moon::after { content: ""; position: absolute; inset: 9% 17% 55% 58%; border-radius: 50%; background: rgba(150,119,62,.12); transform: rotate(-18deg); }
-    .orbit { position: absolute; width: 118%; height: 35%; left: -9%; top: 42%; border: 7px solid rgba(221, 225, 255, .42); border-top-color: transparent; border-radius: 50%; transform: rotate(-12deg); }
-    .orbit::after { content: "✦"; color: var(--teal); font-size: 1.4rem; position: absolute; right: 7%; top: 56%; text-shadow: 0 0 18px var(--teal); }
-    .moon-note { position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: min(330px, 86%); text-align: center; color: var(--cream); background: rgba(5,8,22,.68); border: 1px solid var(--line); backdrop-filter: blur(12px); border-radius: 18px; padding: .85rem 1rem; box-shadow: var(--shadow); }
-
-    @keyframes moonFloat { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-16px) rotate(1deg); } }
-    @keyframes breathe { 0%,100% { transform: scale(.78); box-shadow: 0 0 30px rgba(94,234,212,.18); } 50% { transform: scale(1.08); box-shadow: 0 0 85px rgba(94,234,212,.42); } }
-    @keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px,-13px); } }
-
-    .section { padding: 6.5rem 0; scroll-margin-top: 90px; }
-    .section-intro { max-width: 700px; margin-bottom: 2.2rem; }
-    .section-intro p, .muted { color: var(--muted); }
-    .glass {
-      background: linear-gradient(145deg, rgba(20,35,76,.82), rgba(9,18,43,.76));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-    .panel { padding: clamp(1.25rem, 3.5vw, 2.3rem); }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-
-    .choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
-    .choice {
-      min-height: 114px;
-      text-align: left;
-      padding: 1rem;
-      border-radius: 18px;
-      color: var(--white);
-      background: rgba(255,255,255,.045);
-      border: 1px solid var(--line);
-      cursor: pointer;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .choice:hover { transform: translateY(-3px); background: rgba(255,255,255,.075); }
-    .choice[aria-pressed="true"] { border-color: rgba(255,209,102,.72); background: rgba(255,209,102,.1); box-shadow: inset 0 0 0 1px rgba(255,209,102,.15); }
-    .choice-icon { display: block; font-size: 1.55rem; margin-bottom: .35rem; }
-    .choice strong { display: block; }
-    .choice small { color: var(--muted); }
-
-    label { display: block; font-weight: 780; margin-bottom: .5rem; }
-    input, textarea, select {
-      width: 100%;
-      color: white;
-      background: rgba(3, 9, 27, .66);
-      border: 1px solid rgba(190, 201, 255, .22);
-      border-radius: 15px;
-      padding: .88rem 1rem;
-      outline: none;
-    }
-    input:focus, textarea:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(94,234,212,.1); }
-    textarea { resize: vertical; min-height: 145px; }
-    select option { color: #111a36; }
-    .field { margin-bottom: 1rem; }
-    .field-row { display: grid; grid-template-columns: 1fr auto; gap: .7rem; align-items: end; }
-    .helper { color: var(--muted); font-size: .88rem; margin-top: .45rem; }
-    .notice { display: flex; gap: .7rem; color: #dce3ff; background: rgba(94,234,212,.07); border: 1px solid rgba(94,234,212,.2); border-radius: 16px; padding: .9rem 1rem; margin-bottom: 1.2rem; }
-    .notice span { color: var(--teal); }
-    .suggestions { display: flex; flex-wrap: wrap; gap: .5rem; margin: .8rem 0 1.2rem; }
-    .chip { border: 1px solid var(--line); background: rgba(255,255,255,.05); color: var(--muted); padding: .42rem .72rem; border-radius: 999px; cursor: pointer; }
-    .chip:hover { color: white; border-color: rgba(255,209,102,.5); }
-
-    .promise-card { position: relative; overflow: hidden; }
-    .promise-card::after { content: "✦"; position: absolute; right: 1.4rem; top: 1rem; color: var(--gold); font-size: 4rem; opacity: .09; }
-    .current-promise { margin-top: 1rem; padding: 1.15rem; border: 1px solid rgba(255,209,102,.25); background: rgba(255,209,102,.07); border-radius: 18px; }
-    .current-promise p { font-size: 1.1rem; margin: .35rem 0 .85rem; }
-    .promise-meta { color: var(--gold); font-size: .82rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
-    .empty { color: var(--muted); font-style: italic; }
-    .progress-stars { display: flex; flex-wrap: wrap; gap: .45rem; min-height: 40px; align-items: center; }
-    .progress-star { color: var(--gold); font-size: 1.45rem; filter: drop-shadow(0 0 8px rgba(255,209,102,.45)); animation: drift 4s ease-in-out infinite; }
-
-    .journal-entry { border-top: 1px solid var(--line); padding: 1rem 0; }
-    .journal-entry:first-child { border-top: 0; }
-    .journal-entry time { color: var(--teal); font-size: .8rem; }
-    .journal-entry .prompt { color: var(--muted); font-size: .9rem; margin: .15rem 0; }
-    .journal-entry p { white-space: pre-wrap; margin: .4rem 0 0; }
-    .entry-actions { margin-top: .65rem; }
-    .text-button { border: 0; background: transparent; color: #f3a9b7; padding: 0; cursor: pointer; font-size: .86rem; }
-
-    .purpose-fields { display: grid; gap: .85rem; }
-    .purpose-field { display: grid; grid-template-columns: 38px 1fr; gap: .65rem; align-items: center; }
-    .purpose-field span { width: 38px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: rgba(139,124,246,.15); color: #c8c0ff; }
-    .constellation {
-      min-height: 390px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      background: radial-gradient(circle at 50% 50%, rgba(85,68,201,.19), transparent 60%), rgba(3,9,27,.5);
-      border: 1px solid var(--line);
-    }
-    .constellation svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .constellation line { stroke: rgba(139,124,246,.5); stroke-width: 1.5; stroke-dasharray: 5 7; }
-    .star-node { position: absolute; width: 44%; transform: translate(-50%, -50%); text-align: center; }
-    .star-node i { display: block; color: var(--gold); font-style: normal; font-size: 2rem; text-shadow: 0 0 18px rgba(255,209,102,.65); }
-    .star-node span { display: inline-block; max-width: 100%; color: #e7eaff; background: rgba(5,8,22,.72); padding: .25rem .55rem; border-radius: 10px; font-size: .78rem; overflow-wrap: anywhere; }
-    .node-1 { left: 24%; top: 25%; } .node-2 { left: 74%; top: 20%; } .node-3 { left: 68%; top: 72%; } .node-4 { left: 27%; top: 76%; }
-
-    .quiet-orbit { text-align: center; position: relative; overflow: hidden; }
-    .breathing-wrap { min-height: 250px; display: grid; place-items: center; }
-    .breathing-moon { width: 142px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; color: #092a32; font-weight: 900; background: radial-gradient(circle at 35% 30%, white, var(--teal)); animation: breathe 8s ease-in-out infinite; }
-    .orbit-instruction { min-height: 1.6em; color: var(--teal); font-weight: 800; }
-    .affirmation { font-size: clamp(1.4rem, 3vw, 2.2rem); color: var(--cream); max-width: 680px; margin: 1rem auto; }
-
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 1rem; }
-    .stat { text-align: center; padding: 1rem; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.035); }
-    .stat strong { display: block; color: var(--gold); font-size: 1.65rem; }
-    .stat span { color: var(--muted); font-size: .84rem; }
-    .status { min-height: 1.5rem; margin-top: .7rem; color: var(--teal); font-size: .9rem; }
-
-    footer { border-top: 1px solid var(--line); padding: 2.5rem 0; color: var(--muted); }
-    .footer-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .footer-inner a { color: var(--cream); }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; gap: 1rem; padding-top: 4rem; }
-      .hero-copy > p { margin-inline: auto; }
-      .hero-actions { justify-content: center; }
-      .moon-scene { min-height: 410px; }
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .choice-grid { grid-template-columns: repeat(2, 1fr); }
-      .menu-button { display: block; }
-      .nav-links { display: none; position: absolute; top: 72px; left: 1rem; right: 1rem; flex-direction: column; align-items: stretch; background: #0a1129; border: 1px solid var(--line); border-radius: 18px; padding: .7rem; box-shadow: var(--shadow); }
-      .nav-links.open { display: flex; }
-    }
-
-    @media (max-width: 560px) {
-      .choice-grid, .stats { grid-template-columns: 1fr; }
-      .choice { min-height: auto; }
-      .field-row { grid-template-columns: 1fr; }
-      .section { padding: 4.5rem 0; }
-      h1 { font-size: clamp(3rem, 16vw, 4.7rem); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-    }
-  </style>
+  <meta name="description" content="The Moon of Beginnings: a playful, practical place to restart what matters or begin something new—messily, honestly and now.">
+  <meta name="theme-color" content="#71846b">
+  <title>Messy Beginnings | The Wonder Verse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="spark.css">
+  <script src="spark.js" defer></script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to the beginning</a>
+  <a class="skip-link" href="#main-content">Skip to your beginning</a>
 
   <header class="site-header">
-    <nav aria-label="Main navigation">
-        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="The Wonder Verse homepage">
+        <span class="brand-seed" aria-hidden="true"><i></i><i></i></span>
+        <span>THE WONDER<br><em>VERSE</em></span>
+      </a>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
       <div class="nav-links" id="navLinks">
-        <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
-    <img
-        src="images/wonder-verse-header-logo-light-trimmed.png"
-        alt="Wonder Verse"
-        class="site-logo-image"
-        width="180"
-    >
-</a>
-        <a href="index.html">Start Here</a>
-        <a href="about.html">About</a>
+        <a href="index.html">Start here</a>
+        <a href="about.html">Our story</a>
         <a href="books.html">Books</a>
         <a href="resources.html">Explore</a>
-        <a href="spark.html" aria-current="page">Begin Again</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
+        <a href="schools.html">Schools</a>
       </div>
+
+      <a class="nav-cta" href="sign-in.html">My Wonder Space <span>↗</span></a>
     </nav>
   </header>
 
-  <main id="main">
-    <section class="container hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">A gentle corner of the Wonderverse</p>
-        <h1 id="hero-title">The Moon of <span class="gold">Beginnings</span></h1>
-        <p>You do not need to have everything figured out. You only need somewhere safe to begin—slowly, quietly and without judgement.</p>
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span>Moon 01</span> The beginning bit</p>
+        <h1>Begin before<br>it looks <em>beautiful.</em></h1>
+        <p class="hero-intro">Start something new. Pick up what you left behind. Return after a week, a year or an impressively dramatic amount of avoidance.</p>
+        <p class="firm-note"><b>Here is the rule:</b> you do not have to feel ready. You only have to make the next move small enough to do.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#arrival">Take one tiny step</a>
-          <a class="button button-soft" href="#quiet-orbit">I only need some quiet</a>
+          <a class="button primary" href="#restart-studio">Make a messy start <span>↓</span></a>
+          <button class="button secondary" id="quickStartButton" type="button">Give me a 5-minute move <span>↗</span></button>
         </div>
       </div>
-      <div class="moon-scene" aria-hidden="true">
-        <div class="moon"><div class="orbit"></div></div>
-        <div class="moon-note">There is no such thing as being “too late” on the Moon of Beginnings.</div>
+
+      <div class="messy-art reveal" aria-label="A playful stack of imperfect paper shapes representing a messy beginning">
+        <div class="doodle-loop"></div>
+        <div class="paper paper-back"><span>PERFECT PLAN</span><s>waiting...</s></div>
+        <div class="paper paper-middle"><span>TRY 01</span><b>wrong-ish</b><i>good.</i></div>
+        <div class="paper paper-front">
+          <small>TODAY'S VERY SERIOUS PLAN</small>
+          <strong>start</strong>
+          <span>somewhere →</span>
+          <div class="scribble" aria-hidden="true"></div>
+        </div>
+        <span class="art-symbol symbol-one">✦</span>
+        <span class="art-symbol symbol-two">+</span>
+        <span class="art-symbol symbol-three">?</span>
       </div>
     </section>
 
-    <section class="section container" id="arrival" aria-labelledby="arrival-title">
-      <div class="section-intro">
-        <p class="eyebrow">01 · Arrive as you are</p>
-        <h2 id="arrival-title">How are you arriving today?</h2>
-        <p>No explanation is required. Choose the feeling that comes closest.</p>
-      </div>
-      <div class="glass panel">
-        <div class="choice-grid" id="moodChoices">
-          <button class="choice" type="button" data-mood="Hopeful" aria-pressed="false"><span class="choice-icon">🌱</span><strong>Hopeful</strong><small>Something new is stirring.</small></button>
-          <button class="choice" type="button" data-mood="Tired" aria-pressed="false"><span class="choice-icon">🌙</span><strong>Tired</strong><small>I need a softer beginning.</small></button>
-          <button class="choice" type="button" data-mood="Lost" aria-pressed="false"><span class="choice-icon">🧭</span><strong>Lost</strong><small>I do not know where to start.</small></button>
-          <button class="choice" type="button" data-mood="Nervous" aria-pressed="false"><span class="choice-icon">🫧</span><strong>Nervous</strong><small>I want to try, but I am scared.</small></button>
-          <button class="choice" type="button" data-mood="Curious" aria-pressed="false"><span class="choice-icon">✨</span><strong>Curious</strong><small>I want to see what is possible.</small></button>
-          <button class="choice" type="button" data-mood="Unsure" aria-pressed="false"><span class="choice-icon">☁️</span><strong>I’m not sure</strong><small>That is a perfectly valid answer.</small></button>
-        </div>
-        <p class="status" id="moodStatus" role="status"></p>
-      </div>
+    <section class="permission-strip">
+      <span>YOU MAY BE NEW AT THIS</span>
+      <i>+</i>
+      <span>YOU MAY BE RETURNING</span>
+      <i>+</i>
+      <span>YOU MAY BE A COMPLETE MESS</span>
+      <i>=</i>
+      <strong>YOU MAY STILL BEGIN</strong>
     </section>
 
-    <section class="section container" id="beginning" aria-labelledby="beginning-title">
-      <div class="section-intro">
-        <p class="eyebrow">02 · Choose a direction</p>
-        <h2 id="beginning-title">What would you like to begin again?</h2>
-        <p>You are choosing a direction, not signing a contract with the universe.</p>
+    <section class="arrival-section section">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark"><span>First, be honest</span> How are you arriving?</p>
+        <h2>Your feeling gets a seat.<br>It does not have to drive.</h2>
+        <p>Choose what feels closest. We will respect it—and then find one action that can travel with you.</p>
       </div>
-      <div class="glass panel">
-        <div class="choice-grid" id="pathChoices">
-          <button class="choice" type="button" data-path="Study or career" aria-pressed="false"><span class="choice-icon">📚</span><strong>Study or career</strong><small>Learn, apply, practise or explore.</small></button>
-          <button class="choice" type="button" data-path="Health and movement" aria-pressed="false"><span class="choice-icon">🌿</span><strong>Health and movement</strong><small>Move with care, not punishment.</small></button>
-          <button class="choice" type="button" data-path="Creativity" aria-pressed="false"><span class="choice-icon">🎨</span><strong>Creativity</strong><small>Make something imperfectly.</small></button>
-          <button class="choice" type="button" data-path="Confidence" aria-pressed="false"><span class="choice-icon">🪞</span><strong>Confidence</strong><small>Become kinder to yourself.</small></button>
-          <button class="choice" type="button" data-path="Home and daily life" aria-pressed="false"><span class="choice-icon">🍳</span><strong>Home and daily life</strong><small>Cook, organise or build a rhythm.</small></button>
-          <button class="choice" type="button" data-path="I do not know yet" aria-pressed="false"><span class="choice-icon">🔭</span><strong>I don’t know yet</strong><small>Wonder can come before purpose.</small></button>
-        </div>
-        <p class="status" id="pathStatus" role="status"></p>
+
+      <div class="choice-grid" id="moodChoices" aria-label="Choose how you feel">
+        <button class="choice reveal" type="button" data-mood="Ready" aria-pressed="false"><span class="choice-symbol">↗</span><strong>Ready</strong><small>Good. Use the energy while it is here.</small></button>
+        <button class="choice reveal" type="button" data-mood="Tired" aria-pressed="false"><span class="choice-symbol">~</span><strong>Tired</strong><small>Then the step must be smaller, not absent.</small></button>
+        <button class="choice reveal" type="button" data-mood="Lost" aria-pressed="false"><span class="choice-symbol">?</span><strong>Lost</strong><small>You only need a direction for five minutes.</small></button>
+        <button class="choice reveal" type="button" data-mood="Nervous" aria-pressed="false"><span class="choice-symbol">···</span><strong>Nervous</strong><small>Courage can shake and still press start.</small></button>
+        <button class="choice reveal" type="button" data-mood="Curious" aria-pressed="false"><span class="choice-symbol">✦</span><strong>Curious</strong><small>Follow the question before judging it.</small></button>
+        <button class="choice reveal" type="button" data-mood="Avoiding it" aria-pressed="false"><span class="choice-symbol">↶</span><strong>Avoiding it</strong><small>Noted. Let us make it harder to avoid.</small></button>
       </div>
+      <p class="choice-response" id="moodResponse" aria-live="polite">Choose one. No performance required.</p>
     </section>
 
-    <section class="section container" id="promise" aria-labelledby="promise-title">
-      <div class="section-intro">
-        <p class="eyebrow">03 · One tiny promise</p>
-        <h2 id="promise-title">What feels possible today?</h2>
-        <p>Make it small enough that a difficult day can still hold it.</p>
-      </div>
-      <div class="grid-2">
-        <div class="glass panel promise-card">
-          <div class="field">
-            <label for="promiseInput">My tiny promise</label>
-            <div class="field-row">
-              <input id="promiseInput" maxlength="120" placeholder="For example: read for ten minutes">
-              <button class="button button-primary" id="savePromise" type="button">Save promise</button>
+    <section class="restart-studio section" id="restart-studio">
+      <div class="studio-wrap">
+        <div class="studio-copy reveal">
+          <p class="eyebrow"><span>The restart studio</span> One decision, one move</p>
+          <h2>What are you actually beginning?</h2>
+          <p>A clear beginning is stronger than a beautiful intention. Name the thing, then cut it down to the next visible action.</p>
+          <blockquote>Do not write “get fit.” Write “put my shoes beside the door.”</blockquote>
+        </div>
+
+        <form class="start-card reveal" id="startForm">
+          <div class="tape" aria-hidden="true"></div>
+          <p class="card-label">MESSY START CARD / 001</p>
+
+          <fieldset>
+            <legend>Is this a return or something new?</legend>
+            <div class="toggle-row">
+              <label><input type="radio" name="startType" value="I am starting again" checked><span>↶ Starting again</span></label>
+              <label><input type="radio" name="startType" value="I am starting something new"><span>+ Something new</span></label>
             </div>
-            <p class="helper">One specific action is kinder than one enormous ambition.</p>
-          </div>
-          <div class="suggestions" aria-label="Promise suggestions">
-            <button class="chip" type="button">Study for 10 minutes</button>
-            <button class="chip" type="button">Walk around the block</button>
-            <button class="chip" type="button">Cook one simple meal</button>
-            <button class="chip" type="button">Write one paragraph</button>
-            <button class="chip" type="button">Research one possibility</button>
-          </div>
-          <div id="currentPromise" class="current-promise" aria-live="polite"></div>
-          <p class="status" id="promiseStatus" role="status"></p>
-        </div>
-        <div class="glass panel">
-          <h3>Your sky of returned days</h3>
-          <p class="muted">Every completed promise lights one star. Missing a day never takes a star away.</p>
-          <div class="progress-stars" id="progressStars"></div>
-          <div class="stats">
-            <div class="stat"><strong id="completedCount">0</strong><span>tiny promises</span></div>
-            <div class="stat"><strong id="returnedDays">0</strong><span>days you returned</span></div>
-            <div class="stat"><strong id="journalCount">0</strong><span>moon notes</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </fieldset>
 
-    <section class="section container" id="journal" aria-labelledby="journal-title">
-      <div class="section-intro">
-        <p class="eyebrow">04 · My little Moon Journal</p>
-        <h2 id="journal-title">Leave the thought somewhere gentle.</h2>
-        <p>This is for honesty, unfinished sentences and thoughts that do not yet make sense.</p>
-      </div>
-      <div class="grid-2">
-        <div class="glass panel">
-          <div class="notice"><span aria-hidden="true">🔒</span><div><strong>Private on this device.</strong><br>This journal is not sent to us or posted publicly. Clearing browser data may remove it.</div></div>
-          <div class="field">
-            <label for="journalPrompt">Choose a gentle prompt</label>
-            <select id="journalPrompt">
-              <option>What has been weighing on me lately?</option>
-              <option>What do I miss doing?</option>
-              <option>When did I last feel excited about something?</option>
-              <option>What would I try if nobody could laugh at me?</option>
-              <option>What is one thing I am proud of today?</option>
-              <option>What kind of life feels peaceful to me?</option>
-              <option>I just want to write freely.</option>
+          <label for="bigThing">The thing I am choosing</label>
+          <input id="bigThing" name="bigThing" maxlength="90" placeholder="Example: return to my book, apply for the course…" required>
+
+          <label for="smallMove">The next action I can physically do</label>
+          <input id="smallMove" name="smallMove" maxlength="120" placeholder="Example: open the document and write one sentence" required>
+
+          <div class="minute-row">
+            <label for="minutes">I will give it</label>
+            <select id="minutes" name="minutes">
+              <option value="5">5 minutes</option>
+              <option value="10">10 minutes</option>
+              <option value="20">20 minutes</option>
+              <option value="30">30 minutes</option>
             </select>
+            <span>today.</span>
           </div>
-          <div class="field">
-            <label for="journalText">My moon note</label>
-            <textarea id="journalText" maxlength="4000" placeholder="You can begin with one honest sentence..."></textarea>
-            <p class="helper"><span id="journalCharacters">0</span>/4000 characters</p>
-          </div>
-          <button class="button button-primary" id="saveJournal" type="button">Keep this note</button>
-          <p class="status" id="journalStatus" role="status"></p>
-        </div>
-        <div class="glass panel">
-          <h3>Recent moon notes</h3>
-          <div id="journalEntries"></div>
-        </div>
+
+          <button class="button card-button" type="submit">Make this beginning real <span>↗</span></button>
+          <p class="privacy-note">Saved only in this browser. Your unfinished ideas remain yours.</p>
+        </form>
       </div>
     </section>
 
-    <section class="section container" id="purpose" aria-labelledby="purpose-title">
-      <div class="section-intro">
-        <p class="eyebrow">05 · Your Purpose Constellation</p>
-        <h2 id="purpose-title">Purpose can be discovered slowly.</h2>
-        <p>Write fragments, not perfect answers. Your constellation can change whenever you do.</p>
+    <section class="current-start section" id="currentStartSection">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark"><span>Your beginning</span> Small enough to act on</p>
+        <h2>Do the next visible thing.</h2>
       </div>
-      <div class="grid-2">
-        <div class="glass panel purpose-fields">
-          <div class="purpose-field"><span>1</span><div><label for="purpose1">What makes me curious?</label><input id="purpose1" maxlength="90" placeholder="Questions, places, ideas..."></div></div>
-          <div class="purpose-field"><span>2</span><div><label for="purpose2">What do I care about?</label><input id="purpose2" maxlength="90" placeholder="People, causes, experiences..."></div></div>
-          <div class="purpose-field"><span>3</span><div><label for="purpose3">What am I drawn towards?</label><input id="purpose3" maxlength="90" placeholder="Skills, activities, possibilities..."></div></div>
-          <div class="purpose-field"><span>4</span><div><label for="purpose4">What would I like to contribute?</label><input id="purpose4" maxlength="90" placeholder="Something I want to give..."></div></div>
-          <button class="button button-primary" id="savePurpose" type="button">Light my constellation</button>
-          <p class="status" id="purposeStatus" role="status"></p>
+
+      <article class="promise-card reveal" id="promiseCard">
+        <div class="promise-status"><span id="promiseType">NO START SAVED YET</span><i></i></div>
+        <p class="promise-big" id="promiseBig">Choose the thing you want to begin.</p>
+        <div class="promise-arrow">↓</div>
+        <p class="promise-small" id="promiseSmall">Then give it one action.</p>
+        <div class="promise-footer">
+          <span id="promiseTime">5 minutes is enough to begin.</span>
+          <button id="doneButton" type="button" disabled>Mark today as shown up <span>+</span></button>
         </div>
-        <div class="constellation" aria-label="A constellation made from your four reflections">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <line x1="24" y1="25" x2="74" y2="20"></line><line x1="74" y1="20" x2="68" y2="72"></line><line x1="68" y1="72" x2="27" y2="76"></line><line x1="27" y1="76" x2="24" y2="25"></line><line x1="24" y1="25" x2="68" y2="72"></line>
-          </svg>
-          <div class="star-node node-1"><i>✦</i><span id="node1">Curiosity</span></div>
-          <div class="star-node node-2"><i>✦</i><span id="node2">Care</span></div>
-          <div class="star-node node-3"><i>✦</i><span id="node3">Direction</span></div>
-          <div class="star-node node-4"><i>✦</i><span id="node4">Contribution</span></div>
-        </div>
+      </article>
+
+      <div class="return-board reveal">
+        <div><span class="board-number" id="returnCount">0</span><p>days you returned</p></div>
+        <div class="return-marks" id="returnMarks" aria-label="Your returned days"></div>
+        <p class="board-note">A return counts. A restart counts. Five honest minutes count.</p>
       </div>
     </section>
 
-    <section class="section container" id="quiet-orbit" aria-labelledby="quiet-title">
-      <div class="glass panel quiet-orbit">
-        <p class="eyebrow">06 · The Quiet Orbit</p>
-        <h2 id="quiet-title">You do not have to achieve anything here.</h2>
-        <p class="muted">Follow the moon for one slow breath, or simply sit for a moment.</p>
-        <div class="breathing-wrap">
-          <div class="breathing-moon" id="breathingMoon" aria-hidden="true">breathe</div>
-        </div>
-        <p class="orbit-instruction" id="orbitInstruction">Breathe in slowly…</p>
-        <p class="affirmation">“Today, simply existing is enough.”</p>
-        <div class="field" style="max-width:620px;margin:1.5rem auto 0;text-align:left">
-          <label for="feelingInput">If you want, leave one feeling here</label>
-          <div class="field-row">
-            <input id="feelingInput" maxlength="80" placeholder="Today I feel...">
-            <button class="button button-soft" id="saveFeeling" type="button">Let it rest</button>
-          </div>
-        </div>
-        <p class="status" id="feelingStatus" role="status"></p>
+    <section class="motivation-section">
+      <div class="motivation-art reveal" aria-hidden="true">
+        <div class="mood-blob"><span>MOTIVATION</span></div>
+        <div class="exit-arrow">leaves ↗</div>
+      </div>
+      <div class="motivation-copy reveal">
+        <p class="eyebrow"><span>The part nobody puts on a poster</span> Motivation is unreliable</p>
+        <h2>Do not build the plan around a feeling that keeps changing.</h2>
+        <p>Motivation may introduce you to a goal. It rarely stays for the whole project. Build a tiny rhythm that still works when you are bored, busy, uncertain or not feeling particularly inspirational.</p>
+        <p class="motivation-highlight">Your mood can say “not today.” Your decision can answer, “five minutes.”</p>
       </div>
     </section>
 
-    <section class="section container" aria-labelledby="privacy-title">
-      <div class="glass panel grid-2">
-        <div>
-          <p class="eyebrow">A safe beginning</p>
-          <h2 id="privacy-title">Your thoughts belong to you.</h2>
-          <p class="muted">Phase 1 stores your choices only in this browser. There are no profiles, public posts, follower counts or judgement scores.</p>
-        </div>
-        <div>
-          <h3>Want to clear this moon?</h3>
-          <p class="muted">This permanently removes the Moon of Beginnings data saved by this page on this device.</p>
-          <button class="button button-danger" id="clearData" type="button">Clear my Moon data</button>
-          <p class="status" id="clearStatus" role="status"></p>
-        </div>
+    <section class="idea-deck section">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark"><span>Stuck?</span> Borrow a first move</p>
+        <h2>Pick a card. Start badly.</h2>
+        <p>These are deliberately small. The point is not to finish. The point is to break the spell of not beginning.</p>
       </div>
+
+      <div class="idea-grid">
+        <button class="idea-card reveal" type="button" data-action="Open the document and write one deliberately ordinary sentence."><span>01 / WORDS</span><strong>Write one ordinary sentence.</strong><i>↗</i></button>
+        <button class="idea-card reveal" type="button" data-action="Put on your shoes and walk to the end of the street."><span>02 / MOVEMENT</span><strong>Walk to the end of the street.</strong><i>↗</i></button>
+        <button class="idea-card reveal" type="button" data-action="Read one page and underline one sentence worth keeping."><span>03 / STUDY</span><strong>Read one page with a pencil.</strong><i>↗</i></button>
+        <button class="idea-card reveal" type="button" data-action="Create the folder, name the project and place one file inside it."><span>04 / PROJECT</span><strong>Make the folder. Name the thing.</strong><i>↗</i></button>
+        <button class="idea-card reveal" type="button" data-action="Write the first line of the message you have been avoiding."><span>05 / COURAGE</span><strong>Write the first line of the message.</strong><i>↗</i></button>
+        <button class="idea-card reveal" type="button" data-action="Clear one small surface and stop when the timer ends."><span>06 / HOME</span><strong>Clear one small surface.</strong><i>↗</i></button>
+      </div>
+      <p class="picked-action" id="pickedAction" aria-live="polite">Choose a card and it will become your five-minute move.</p>
+    </section>
+
+    <section class="note-section section">
+      <div class="note-grid">
+        <div class="note-copy reveal">
+          <p class="eyebrow"><span>Leave evidence</span> A note from the attempt</p>
+          <h2>Messy work still leaves clues.</h2>
+          <p>Write what happened—not what should have happened. This is a record of movement, not a performance review.</p>
+        </div>
+
+        <form class="note-form reveal" id="noteForm">
+          <label for="noteText">Today I began by…</label>
+          <textarea id="noteText" maxlength="280" placeholder="Opened the page. Wrote three terrible lines. Kept one."></textarea>
+          <button class="button note-button" type="submit">Keep this evidence <span>+</span></button>
+        </form>
+      </div>
+
+      <div class="note-list" id="noteList" aria-live="polite"></div>
+    </section>
+
+    <section class="final-call">
+      <p>YOUR NEXT BEGINNING DOES NOT NEED ANOTHER MONDAY.</p>
+      <h2>Close this page.<br>Do the five-minute thing.</h2>
+      <a href="#currentStartSection">Read my next move <span>↑</span></a>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <span>✨ The Wonder Project · Begin gently. Return freely.</span>
-      <a href="index.html">Return to the Wonderverse</a>
-    </div>
+    <a class="brand footer-brand" href="index.html"><span class="brand-seed" aria-hidden="true"><i></i><i></i></span><span>THE WONDER<br><em>VERSE</em></span></a>
+    <p>For imperfect attempts, returned dreams and people willing to begin before they feel ready.</p>
+    <div class="footer-links"><a href="about.html">Our story</a><a href="questions.html">Questions</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
+    <small>© 2026 The Wonder Verse Project · Begin somewhere.</small>
   </footer>
-
-  <script>
-    (() => {
-      'use strict';
-
-      const STORAGE_KEY = 'wonder-project-moon-v1';
-      const today = () => new Date().toISOString().slice(0, 10);
-      const defaultState = {
-        mood: '', path: '', currentPromise: null, completedPromises: [],
-        journal: [], purpose: ['', '', '', ''], feelings: [], returnedDates: []
-      };
-
-      function loadState() {
-        try {
-          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-          return saved && typeof saved === 'object' ? { ...defaultState, ...saved } : { ...defaultState };
-        } catch (_) { return { ...defaultState }; }
-      }
-
-      let state = loadState();
-      const $ = (selector) => document.querySelector(selector);
-      const $$ = (selector) => [...document.querySelectorAll(selector)];
-      const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      const announce = (selector, message) => { const el = $(selector); el.textContent = message; window.setTimeout(() => { if (el.textContent === message) el.textContent = ''; }, 4200); };
-      const formatDate = (iso) => new Intl.DateTimeFormat('en-AU', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(iso));
-
-      function choose(groupSelector, key, statusSelector, noun) {
-        $$(groupSelector).forEach(button => {
-          button.addEventListener('click', () => {
-            $$(groupSelector).forEach(item => item.setAttribute('aria-pressed', 'false'));
-            button.setAttribute('aria-pressed', 'true');
-            state[key] = button.dataset[key];
-            save();
-            announce(statusSelector, `${noun} saved gently.`);
-          });
-        });
-      }
-
-      function renderChoices() {
-        $$('#moodChoices .choice').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mood === state.mood)));
-        $$('#pathChoices .choice').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.path === state.path)));
-      }
-
-      function renderPromise() {
-        const holder = $('#currentPromise');
-        holder.replaceChildren();
-        if (!state.currentPromise) {
-          const empty = document.createElement('p');
-          empty.className = 'empty';
-          empty.textContent = 'No promise yet. Small is welcome here.';
-          holder.append(empty);
-        } else {
-          const meta = document.createElement('div');
-          meta.className = 'promise-meta';
-          meta.textContent = state.path || 'Today’s beginning';
-          const text = document.createElement('p');
-          text.textContent = state.currentPromise.text;
-          const button = document.createElement('button');
-          button.className = 'button button-primary button-small';
-          button.type = 'button';
-          button.textContent = '✦ I kept this promise';
-          button.addEventListener('click', completePromise);
-          holder.append(meta, text, button);
-        }
-        renderStats();
-      }
-
-      function createPromise() {
-        const input = $('#promiseInput');
-        const text = input.value.trim();
-        if (!text) return announce('#promiseStatus', 'Write one tiny promise first.');
-        if (state.currentPromise && !window.confirm('Replace your current tiny promise with this one?')) return;
-        state.currentPromise = { text, createdAt: new Date().toISOString() };
-        state.returnedDates = [...new Set([...state.returnedDates, today()])];
-        save();
-        input.value = '';
-        renderPromise();
-        announce('#promiseStatus', 'Your tiny promise is waiting without pressure.');
-      }
-
-      function completePromise() {
-        if (!state.currentPromise) return;
-        state.completedPromises.unshift({ ...state.currentPromise, completedAt: new Date().toISOString() });
-        state.currentPromise = null;
-        state.returnedDates = [...new Set([...state.returnedDates, today()])];
-        save();
-        renderPromise();
-        announce('#promiseStatus', 'A new star is shining for you.');
-      }
-
-      function renderStats() {
-        $('#completedCount').textContent = state.completedPromises.length;
-        $('#returnedDays').textContent = state.returnedDates.length;
-        $('#journalCount').textContent = state.journal.length;
-        const stars = $('#progressStars');
-        stars.replaceChildren();
-        if (!state.completedPromises.length) {
-          const empty = document.createElement('span');
-          empty.className = 'empty';
-          empty.textContent = 'Your first star will appear here.';
-          stars.append(empty);
-          return;
-        }
-        state.completedPromises.slice(0, 24).forEach((promise, index) => {
-          const star = document.createElement('span');
-          star.className = 'progress-star';
-          star.textContent = '✦';
-          star.title = promise.text;
-          star.style.animationDelay = `${(index % 5) * -.7}s`;
-          stars.append(star);
-        });
-      }
-
-      function renderJournal() {
-        const holder = $('#journalEntries');
-        holder.replaceChildren();
-        if (!state.journal.length) {
-          const empty = document.createElement('p');
-          empty.className = 'empty';
-          empty.textContent = 'Your saved thoughts will rest here.';
-          holder.append(empty);
-        } else {
-          state.journal.slice(0, 6).forEach(entry => {
-            const article = document.createElement('article');
-            article.className = 'journal-entry';
-            const time = document.createElement('time');
-            time.dateTime = entry.createdAt;
-            time.textContent = formatDate(entry.createdAt);
-            const prompt = document.createElement('div');
-            prompt.className = 'prompt';
-            prompt.textContent = entry.prompt;
-            const text = document.createElement('p');
-            text.textContent = entry.text;
-            const actions = document.createElement('div');
-            actions.className = 'entry-actions';
-            const remove = document.createElement('button');
-            remove.type = 'button';
-            remove.className = 'text-button';
-            remove.textContent = 'Remove this note';
-            remove.addEventListener('click', () => {
-              if (!window.confirm('Remove this private moon note?')) return;
-              state.journal = state.journal.filter(item => item.id !== entry.id);
-              save(); renderJournal(); renderStats();
-            });
-            actions.append(remove);
-            article.append(time, prompt, text, actions);
-            holder.append(article);
-          });
-        }
-        renderStats();
-      }
-
-      function saveJournal() {
-        const input = $('#journalText');
-        const text = input.value.trim();
-        if (!text) return announce('#journalStatus', 'Your note can be short, but it cannot be empty.');
-        state.journal.unshift({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, prompt: $('#journalPrompt').value, text, createdAt: new Date().toISOString() });
-        state.returnedDates = [...new Set([...state.returnedDates, today()])];
-        save(); input.value = ''; $('#journalCharacters').textContent = '0';
-        renderJournal();
-        announce('#journalStatus', 'Your private moon note has been kept.');
-      }
-
-      function renderPurpose() {
-        state.purpose.forEach((value, index) => {
-          $(`#purpose${index + 1}`).value = value || '';
-          $(`#node${index + 1}`).textContent = value || ['Curiosity', 'Care', 'Direction', 'Contribution'][index];
-        });
-      }
-
-      function savePurpose() {
-        state.purpose = [1, 2, 3, 4].map(i => $(`#purpose${i}`).value.trim());
-        save(); renderPurpose();
-        announce('#purposeStatus', state.purpose.some(Boolean) ? 'Your constellation is glowing.' : 'Add at least one fragment when you are ready.');
-      }
-
-      function saveFeeling() {
-        const input = $('#feelingInput');
-        const text = input.value.trim();
-        if (!text) return announce('#feelingStatus', 'You can leave a word here when you are ready.');
-        state.feelings.unshift({ text, createdAt: new Date().toISOString() });
-        state.feelings = state.feelings.slice(0, 30);
-        save(); input.value = '';
-        announce('#feelingStatus', `“${text}” can rest here for now.`);
-      }
-
-      function clearAllData() {
-        if (!window.confirm('Clear all promises, journal notes, feelings and constellation answers saved by this page? This cannot be undone.')) return;
-        localStorage.removeItem(STORAGE_KEY);
-        state = { ...defaultState, completedPromises: [], journal: [], purpose: ['', '', '', ''], feelings: [], returnedDates: [] };
-        renderAll();
-        announce('#clearStatus', 'This Moon is clear. You are welcome to begin again.');
-      }
-
-      function renderAll() { renderChoices(); renderPromise(); renderJournal(); renderPurpose(); }
-
-      choose('#moodChoices .choice', 'mood', '#moodStatus', 'Your arrival');
-      choose('#pathChoices .choice', 'path', '#pathStatus', 'Your direction');
-      $('#savePromise').addEventListener('click', createPromise);
-      $('#promiseInput').addEventListener('keydown', event => { if (event.key === 'Enter') createPromise(); });
-      $$('.chip').forEach(chip => chip.addEventListener('click', () => { $('#promiseInput').value = chip.textContent; $('#promiseInput').focus(); }));
-      $('#saveJournal').addEventListener('click', saveJournal);
-      $('#journalText').addEventListener('input', event => { $('#journalCharacters').textContent = event.target.value.length; });
-      $('#savePurpose').addEventListener('click', savePurpose);
-      $('#saveFeeling').addEventListener('click', saveFeeling);
-      $('#clearData').addEventListener('click', clearAllData);
-
-      const menuButton = $('#menuButton');
-      menuButton.addEventListener('click', () => {
-        const open = $('#navLinks').classList.toggle('open');
-        menuButton.setAttribute('aria-expanded', String(open));
-      });
-      $$('#navLinks a').forEach(link => link.addEventListener('click', () => { $('#navLinks').classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); }));
-
-      let breathIn = true;
-      window.setInterval(() => {
-        breathIn = !breathIn;
-        $('#orbitInstruction').textContent = breathIn ? 'Breathe in slowly…' : 'Let the breath go…';
-      }, 4000);
-
-      renderAll();
-    })();
-  </script>
 </body>
 </html>
