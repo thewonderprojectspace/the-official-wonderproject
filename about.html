@@ -1,352 +1,222 @@
   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag('js', new Date());
-      gtag('config', 'G-EF9DVH7JQN');
-    </script>
-
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meet The Wonder Project: a home for curious humans, brave questions and the spark that never really leaves us.">
-  <meta name="theme-color" content="#050816">
-  <title>About | The Wonder Project</title>
-  <style>
-    :root {
-      --space:#050816; --space-2:#09102a; --panel:rgba(15,24,58,.78);
-      --panel-strong:rgba(10,17,42,.95); --line:rgba(204,214,255,.16);
-      --text:#f7f8ff; --muted:#bdc7e8; --moon:#ffe7aa; --gold:#ffd46c;
-      --lavender:#b9a7ff; --violet:#8d74ff; --aqua:#7ce8df; --pink:#ff9fd0;
-      --success:#8cf0b1; --shadow:0 24px 70px rgba(0,0,0,.38);
-      --radius-lg:28px; --radius-md:20px; --page-width:1180px;
-    }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; scroll-padding-top:88px; }
-    body {
-      min-height:100vh; overflow-x:hidden; color:var(--text);
-      background:
-        radial-gradient(circle at 15% 5%,rgba(111,83,255,.18),transparent 28%),
-        radial-gradient(circle at 88% 18%,rgba(42,184,201,.12),transparent 24%),
-        radial-gradient(circle at 48% 92%,rgba(168,82,203,.12),transparent 30%),
-        var(--space);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      line-height:1.65;
-    }
-    body::before {
-      content:""; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.75;
-      background-image:
-        radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.4px),
-        radial-gradient(circle,rgba(185,167,255,.7) 0 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(124,232,223,.65) 0 1px,transparent 1.5px);
-      background-position:0 0,58px 76px,130px 32px;
-      background-size:115px 115px,180px 180px,240px 240px;
-      animation:starDrift 85s linear infinite;
-    }
-    a { color:inherit; text-decoration:none; }
-    button { font:inherit; }
-    :focus-visible { outline:3px solid var(--aqua); outline-offset:3px; }
-    .skip-link { position:fixed; top:10px; left:10px; z-index:9999; padding:.75rem 1rem; color:#0a0e22; background:var(--moon); border-radius:999px; transform:translateY(-150%); }
-    .skip-link:focus { transform:translateY(0); }
-
-    .site-header { position:fixed; inset:0 0 auto; z-index:1000; padding:.7rem; background:rgba(4,7,20,.88); border-bottom:1px solid rgba(204,214,255,.08); backdrop-filter:blur(18px); }
-    .navbar { width:min(1280px,100%); min-height:54px; margin:auto; display:flex; align-items:center; gap:.55rem; }
-    .site-logo { min-width:0; margin-right:auto; display:inline-flex; align-items:center; gap:.5rem; font-size:.88rem; font-weight:850; line-height:1.1; letter-spacing:-.025em; }
-    .site-logo-text { max-width:125px; }
-    .logo-orbit { width:34px; aspect-ratio:1; flex:0 0 34px; display:grid; place-items:center; color:#18152e; background:var(--moon); border-radius:50%; box-shadow:0 0 24px rgba(255,229,166,.42); }
-    .nav-links { position:fixed; top:70px; left:.7rem; right:.7rem; display:none; max-height:calc(100svh - 84px); overflow-y:auto; padding:.7rem; flex-direction:column; gap:.3rem; color:var(--muted); background:rgba(7,11,29,.98); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); }
-    .nav-links.open { display:flex; }
-    .nav-links a { width:100%; padding:.78rem .9rem; border-radius:12px; background:rgba(255,255,255,.035); font-size:.92rem; font-weight:700; }
-    .nav-links a:hover,.nav-links a.active { color:white; background:rgba(185,167,255,.13); }
-    .nav-actions { display:flex; align-items:center; gap:.4rem; }
-    .sign-in-btn { display:none; }
-    .wonder-space-btn,.button { min-height:42px; display:inline-flex; align-items:center; justify-content:center; gap:.4rem; padding:.65rem .9rem; border:1px solid var(--line); border-radius:999px; font-weight:850; text-align:center; transition:transform .25s ease,box-shadow .25s ease,background .25s ease; }
-    .wonder-space-btn,.button.primary { color:#101427; background:linear-gradient(135deg,var(--moon),var(--gold)); box-shadow:0 14px 34px rgba(255,211,106,.16); }
-    .button.secondary { color:white; background:rgba(255,255,255,.055); }
-    .button:hover,.wonder-space-btn:hover { transform:translateY(-2px); }
-    .menu-toggle { width:40px; height:40px; flex:0 0 40px; padding:8px; color:white; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:50%; cursor:pointer; }
-    .menu-toggle span { display:block; height:2px; margin:5px 0; background:currentColor; border-radius:999px; transition:transform .25s ease,opacity .25s ease; }
-    .menu-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .menu-toggle.open span:nth-child(2) { opacity:0; }
-    .menu-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-
-    main { overflow:clip; }
-    .shell { width:min(var(--page-width),calc(100% - 2rem)); margin-inline:auto; }
-    .section { padding:4.5rem 0; }
-    .section-label { margin-bottom:.75rem; color:var(--aqua); font-size:.7rem; font-weight:900; letter-spacing:.15em; line-height:1.5; text-transform:uppercase; }
-    .section-heading { max-width:720px; margin-bottom:2rem; }
-    .section-heading.center { margin-inline:auto; text-align:center; }
-    h1,h2,h3 { line-height:1.08; letter-spacing:-.035em; }
-    h2 { font-size:clamp(2rem,7vw,3.65rem); }
-    h3 { font-size:1.2rem; }
-    p { color:var(--muted); }
-
-    .about-hero { position:relative; min-height:720px; display:grid; align-items:center; padding:8rem 0 5rem; isolation:isolate; }
-    .hero-grid { display:grid; align-items:center; gap:3rem; }
-    .hero-copy { position:relative; z-index:2; text-align:center; }
-    .hero-copy h1 { max-width:760px; margin:0 auto 1.4rem; font-size:clamp(3.15rem,13vw,6.4rem); line-height:.94; letter-spacing:-.06em; }
-    .hero-copy h1 span { display:block; color:var(--moon); text-shadow:0 0 38px rgba(255,231,170,.25); }
-    .hero-copy>p:not(.section-label) { max-width:650px; margin:0 auto 1.6rem; font-size:clamp(1.05rem,2vw,1.22rem); }
-    .hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem; }
-    .origin-orbit { position:relative; width:min(400px,86vw); aspect-ratio:1; margin:auto; display:grid; place-items:center; }
-    .origin-orbit::before,.origin-orbit::after { content:""; position:absolute; inset:12%; border:1px solid rgba(185,167,255,.25); border-radius:50%; transform:rotate(-18deg) scaleY(.48); }
-    .origin-orbit::after { inset:2%; border-color:rgba(124,232,223,.16); transform:rotate(24deg) scaleY(.64); }
-    .founder-moon { position:relative; z-index:2; width:52%; aspect-ratio:1; display:grid; place-items:center; border-radius:50%; background:radial-gradient(circle at 32% 30%,#fff9da,#f5d88f 55%,#b78944); box-shadow:inset -22px -24px 35px rgba(91,55,31,.25),0 0 80px rgba(255,231,170,.28); }
-    .founder-moon span { font-size:clamp(2.5rem,10vw,4.5rem); filter:drop-shadow(0 8px 10px rgba(0,0,0,.18)); }
-    .orbit-word { position:absolute; z-index:3; padding:.45rem .75rem; color:#fff; background:rgba(15,24,58,.86); border:1px solid var(--line); border-radius:999px; font-size:.72rem; font-weight:800; box-shadow:var(--shadow); animation:float 5s ease-in-out infinite; }
-    .orbit-word.one { top:12%; left:0; color:var(--aqua); }
-    .orbit-word.two { top:25%; right:0; color:var(--pink); animation-delay:-1.2s; }
-    .orbit-word.three { bottom:16%; left:4%; color:var(--moon); animation-delay:-2.3s; }
-    .orbit-word.four { right:7%; bottom:4%; color:var(--lavender); animation-delay:-3.4s; }
-
-    .transmission { position:relative; padding:2rem; text-align:center; background:linear-gradient(135deg,rgba(185,167,255,.13),rgba(124,232,223,.06)); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow); overflow:hidden; }
-    .transmission::before { content:"“"; position:absolute; top:-2rem; left:1.2rem; color:rgba(255,231,170,.12); font-family:Georgia,serif; font-size:12rem; line-height:1; }
-    .transmission h2 { max-width:820px; margin:.2rem auto 1rem; }
-    .transmission p:last-child { max-width:760px; margin:auto; font-size:1.08rem; }
-
-    .story-grid { display:grid; gap:2.5rem; align-items:center; }
-    .story-copy p { margin-top:1rem; }
-    .story-copy strong { color:var(--moon); }
-    .question-cloud { position:relative; min-height:360px; display:grid; align-content:center; gap:.75rem; }
-    .question { width:max-content; max-width:90%; padding:.85rem 1rem; color:var(--text); background:rgba(255,255,255,.055); border:1px solid var(--line); border-radius:18px 18px 18px 4px; box-shadow:0 14px 34px rgba(0,0,0,.2); animation:float 5s ease-in-out infinite; }
-    .question:nth-child(even) { justify-self:end; border-radius:18px 18px 4px 18px; animation-delay:-1.5s; }
-    .question:nth-child(3) { animation-delay:-2.7s; }
-    .question:nth-child(4) { animation-delay:-3.7s; }
-
-    .spark-panel { display:grid; gap:2rem; align-items:center; padding:2rem; background:linear-gradient(135deg,rgba(255,231,170,.11),rgba(255,159,208,.06)); border:1px solid rgba(255,231,170,.22); border-radius:var(--radius-lg); box-shadow:var(--shadow); }
-    .spark-visual { width:145px; aspect-ratio:1; margin:auto; display:grid; place-items:center; font-size:4.4rem; background:radial-gradient(circle,rgba(255,212,108,.26),transparent 65%); animation:pulse 3.5s ease-in-out infinite; }
-    .spark-copy p { margin-top:1rem; }
-    .spark-quote { padding-left:1rem; color:var(--moon); border-left:3px solid var(--gold); font-size:1.15rem; font-weight:750; }
-
-    .idea-grid,.people-grid { display:grid; gap:1rem; }
-    .idea-card,.person-card { position:relative; padding:1.35rem; overflow:hidden; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-md); transition:transform .25s ease,border-color .25s ease; }
-    .idea-card:hover,.person-card:hover { transform:translateY(-5px); border-color:rgba(185,167,255,.48); }
-    .idea-card::after,.person-card::after { content:""; position:absolute; width:100px; height:100px; right:-45px; bottom:-50px; background:var(--glow,rgba(185,167,255,.13)); border-radius:50%; filter:blur(4px); }
-    .card-icon { display:block; margin-bottom:.8rem; font-size:2rem; }
-    .idea-card p,.person-card p { margin-top:.55rem; font-size:.92rem; }
-
-    .belief-band { margin:1rem 0 0; padding:3.5rem 1rem; text-align:center; background:linear-gradient(90deg,rgba(141,116,255,.09),rgba(124,232,223,.12),rgba(255,159,208,.08)); border-block:1px solid var(--line); }
-    .belief-band p { max-width:780px; margin:auto; color:var(--text); font-size:clamp(1.35rem,4vw,2.1rem); font-weight:800; letter-spacing:-.025em; }
-    .belief-band strong { color:var(--moon); }
-
-    .flow-panel { position:relative; padding:3rem 1.5rem; text-align:center; background:radial-gradient(circle at 50% 10%,rgba(124,232,223,.14),transparent 42%),var(--panel-strong); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; }
-    .flow-panel .symbol { display:block; margin-bottom:1rem; font-size:3.5rem; }
-    .flow-panel h2,.flow-panel p { max-width:760px; margin-inline:auto; }
-    .flow-panel p { margin-top:1rem; }
-    .flow-panel .featured { color:var(--aqua); font-weight:800; }
-
-    .community-grid { display:grid; gap:2.5rem; align-items:center; }
-    .constellation { position:relative; min-height:330px; display:grid; place-items:center; }
-    .constellation::before { content:""; position:absolute; width:220px; height:220px; border:1px dashed rgba(185,167,255,.3); border-radius:50%; animation:spin 24s linear infinite; }
-    .world { position:relative; z-index:2; width:110px; aspect-ratio:1; display:grid; place-items:center; font-size:3.5rem; background:rgba(124,232,223,.1); border:1px solid rgba(124,232,223,.3); border-radius:50%; box-shadow:0 0 55px rgba(124,232,223,.18); }
-    .person { position:absolute; z-index:3; width:55px; aspect-ratio:1; display:grid; place-items:center; font-size:1.8rem; background:var(--panel-strong); border:1px solid var(--line); border-radius:50%; }
-    .person.p1 { top:5%; left:18%; } .person.p2 { top:15%; right:13%; } .person.p3 { bottom:12%; left:14%; } .person.p4 { right:19%; bottom:4%; }
-    .community-copy p { margin-top:1rem; }
-
-    .letter { position:relative; max-width:850px; margin:auto; padding:2.2rem; background:linear-gradient(145deg,rgba(18,29,67,.96),rgba(9,16,42,.96)); border:1px solid rgba(255,231,170,.2); border-radius:var(--radius-lg); box-shadow:var(--shadow); }
-    .letter::before { content:"✦"; position:absolute; top:1rem; right:1.2rem; color:var(--moon); font-size:1.4rem; }
-    .letter h2 { margin-bottom:1rem; color:var(--moon); }
-    .letter p { margin-top:1rem; }
-    .letter .highlight { color:var(--text); font-size:1.16rem; font-weight:800; }
-    .signature { margin-top:2rem; color:var(--lavender); }
-
-    .final-cta { padding:5rem 1rem 6rem; text-align:center; }
-    .final-cta-inner { max-width:900px; margin:auto; padding:3rem 1.2rem; background:radial-gradient(circle at 50% 0,rgba(255,231,170,.18),transparent 42%),var(--panel); border:1px solid var(--line); border-radius:var(--radius-lg); }
-    .final-cta .spark { display:block; margin-bottom:.8rem; font-size:3.4rem; }
-    .final-cta p { max-width:650px; margin:1rem auto 1.5rem; }
-    .final-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem; }
-
-    footer { padding:3rem 1rem 1.5rem; background:rgba(3,6,17,.72); border-top:1px solid var(--line); }
-    .footer-content { width:min(var(--page-width),100%); margin:auto; display:grid; gap:2rem; }
-    .footer-brand p,.footer-links a { color:var(--muted); }
-    .footer-links { display:flex; flex-direction:column; gap:.45rem; }
-    .footer-links h3 { margin-bottom:.35rem; color:var(--moon); font-size:.9rem; text-transform:uppercase; letter-spacing:.1em; }
-    .footer-links a:hover { color:var(--aqua); }
-    .copyright { width:min(var(--page-width),100%); margin:2rem auto 0; padding-top:1.25rem; border-top:1px solid var(--line); font-size:.82rem; }
-
-    .reveal { opacity:0; transform:translateY(22px); transition:opacity .75s ease,transform .75s ease; }
-    .reveal.visible { opacity:1; transform:none; }
-    @keyframes starDrift { to { background-position:115px 115px,238px 256px,370px 272px; } }
-    @keyframes float { 50% { transform:translateY(-9px); } }
-    @keyframes pulse { 50% { transform:scale(1.08); filter:drop-shadow(0 0 18px rgba(255,212,108,.35)); } }
-    @keyframes spin { to { transform:rotate(360deg); } }
-
-    @media (min-width:680px) {
-      .shell { width:min(var(--page-width),calc(100% - 3rem)); }
-      .section { padding:6rem 0; }
-      .idea-grid { grid-template-columns:repeat(2,1fr); }
-      .people-grid { grid-template-columns:repeat(2,1fr); }
-      .spark-panel { grid-template-columns:180px 1fr; padding:3rem; }
-      .footer-content { grid-template-columns:1.5fr 1fr 1fr; }
-      .letter { padding:3.5rem; }
-    }
-    @media (min-width:980px) {
-      .site-logo-text { max-width:none; }
-      .nav-links { position:static; display:flex; max-height:none; overflow:visible; padding:0; flex-direction:row; gap:.1rem; background:none; border:0; border-radius:0; box-shadow:none; }
-      .nav-links a { width:auto; padding:.55rem .6rem; background:none; font-size:.78rem; }
-      .sign-in-btn { display:inline-flex; padding:.55rem .65rem; color:var(--muted); font-size:.8rem; font-weight:750; }
-      .menu-toggle { display:none; }
-      .hero-grid { grid-template-columns:1.15fr .85fr; }
-      .hero-copy { text-align:left; }
-      .hero-copy h1,.hero-copy>p:not(.section-label) { margin-left:0; }
-      .hero-actions { justify-content:flex-start; }
-      .idea-grid { grid-template-columns:repeat(4,1fr); }
-      .people-grid { grid-template-columns:repeat(3,1fr); }
-      .story-grid,.community-grid { grid-template-columns:1fr 1fr; }
-    }
-    @media (prefers-reduced-motion:reduce) {
-      html { scroll-behavior:auto; }
-      *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; }
-      .reveal { opacity:1; transform:none; }
-    }
-  </style>
+  <meta name="description" content="The story behind The Wonder Verse: a gentle but honest invitation to stay curious, choose what matters and act on the life you want to create.">
+  <meta name="theme-color" content="#17122f">
+  <title>Our Story | The Wonder Verse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="about.css">
+  <script src="about.js" defer></script>
 </head>
+
 <body>
   <a class="skip-link" href="#main-content">Skip to our story</a>
+
   <header class="site-header">
     <nav class="navbar" aria-label="Main navigation">
-      <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
-    <img
-        src="images/wonder-verse-header-logo-light-trimmed.png"
-        alt="Wonder Verse"
-        class="site-logo-image"
-        width="180"
-    >
-</a>
-      <div class="nav-links" id="mobileMenu">
-        <a href="index.html">Start Here</a><a href="about.html" class="active" aria-current="page">About</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="#wonder-pathways">Wonder</a><a href="blog.html">Blog</a><a href="schools.html">Schools</a><a href="contact.html">Contact</a>
+      <a class="brand" href="index.html" aria-label="The Wonder Verse homepage">
+        <span class="brand-moon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>THE WONDER<br><em>VERSE</em></span>
+      </a>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Start here</a>
+        <a class="active" href="about.html">Our story</a>
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="schools.html">Schools</a>
       </div>
-      <div class="nav-actions">
-        <a href="sign-in.html" class="sign-in-btn">Sign in</a>
-        <a href="wonder-space.html" class="wonder-space-btn">Wonder Space</a>
-        <a href="https://endearing-cat-c1f80e.netlify.app/contact.html">
-    Contact
-</a>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
-      </div>
+
+      <a class="nav-cta" href="sign-in.html">My Wonder Space <span>↗</span></a>
     </nav>
   </header>
 
   <main id="main-content">
-    <section class="about-hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy reveal">
-          <p class="section-label">Transmission received · A home for curious humans</p>
-          <h1>Welcome back to <span>your wonder.</span></h1>
-          <p>Curiosity never really leaves us. Sometimes it simply becomes quiet. This is a place for anyone ready to hear that little spark again.</p>
-          <div class="hero-actions"><a href="#our-story" class="button primary">Discover our story ✦</a><a href="questions.html" class="button secondary">Ask something strange →</a></div>
+    <section class="hero">
+      <div class="star-field" aria-hidden="true"></div>
+      <span class="sky-mark mark-one" aria-hidden="true">✦</span>
+      <span class="sky-mark mark-two" aria-hidden="true">· · ─ ·</span>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span>Our story</span> A field note on becoming</p>
+        <h1>Where did all<br>the <em>spark</em> go?</h1>
+        <p class="hero-intro">The Wonder Verse began with children’s questions—but it did not begin by observing children alone.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#letter">Read Isha’s letter <span>↓</span></a>
+          <a class="button secondary" href="#action">Find your next step <span>↗</span></a>
         </div>
-        <div class="origin-orbit reveal" aria-hidden="true">
-          <span class="orbit-word one">curiosity</span><span class="orbit-word two">courage</span><span class="orbit-word three">questions</span><span class="orbit-word four">possibility</span>
-          <div class="founder-moon"><span>💡</span></div>
+        <p class="field-note"><span>01</span> Curiosity was never something you were supposed to outgrow.</p>
+      </div>
+
+      <div class="hero-art reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <span class="orbit-word word-one">ASK</span>
+        <span class="orbit-word word-two">MAKE</span>
+        <span class="orbit-word word-three">TRY AGAIN</span>
+        <img src="images/colour-pencil-cup.png" alt="A hand-painted cup filled with colourful pencils">
+        <div class="art-note"><strong>Still in there.</strong><span>Your colour did not disappear.</span></div>
+      </div>
+    </section>
+
+    <section class="opening-note section">
+      <div class="narrow reveal">
+        <p class="eyebrow dark"><span>What I noticed</span> Children, adults and everyone between</p>
+        <h2>I watched curiosity become quieter.</h2>
+        <p class="lead">Children began arriving with labels already attached: advanced, behind, difficult, distracted, gifted, average. Adults were carrying invisible labels too: successful, late, productive, unmotivated, not enough.</p>
+        <p>Isha did not only observe how children learned. She noticed how adults were slowly losing their spark in a highly aware, data-based world—a world where everybody seemed informed, optimised and completely certain of where they were going.</p>
+        <p>From the outside, everyone appeared to have it figured out. From the inside, many people quietly wondered whether they were falling behind.</p>
+      </div>
+    </section>
+
+    <section class="pressure-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span>The modern pressure</span> Measured, labelled, compared</p>
+        <h2>We have more information than ever.<br>That does not always mean we feel more alive.</h2>
+      </div>
+
+      <div class="pressure-grid">
+        <article class="pressure-card reveal">
+          <span class="card-index">01</span><div class="symbol">#</div>
+          <h3>The label</h3>
+          <p>A child becomes a category before they have had time to discover who they are. An adult becomes a job title, a number or a milestone.</p>
+        </article>
+        <article class="pressure-card reveal">
+          <span class="card-index">02</span><div class="symbol">≠</div>
+          <h3>The comparison</h3>
+          <p>We compare our ordinary Tuesday with somebody else’s carefully selected evidence and call ourselves late.</p>
+        </article>
+        <article class="pressure-card reveal">
+          <span class="card-index">03</span><div class="symbol">…</div>
+          <h3>The waiting</h3>
+          <p>We wait for motivation, Monday, certainty or the perfect plan—then wonder why the life we imagined has not moved.</p>
+        </article>
+      </div>
+
+      <p class="gentle-truth reveal">Your emotions deserve to be understood. They should be listened to with care. But understanding how you feel is not the end of the story; eventually, the next kind thing is to decide what you will <em>do.</em></p>
+    </section>
+
+    <section class="quote-section" id="action">
+      <div class="quote-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="quote-inner reveal">
+        <p class="eyebrow"><span>A belief at the centre</span> Knowledge must move</p>
+        <blockquote>“The highest form of knowledge is action.”</blockquote>
+        <p>You can read every book, save every post and understand every theory. But if you never act on what matters to you—if you sit, criticise, compare or wait for the right time—nothing changes by magic.</p>
+        <p class="firm-line">You have to show up for yourself, especially when motivation fades. Most of the time, it will.</p>
+      </div>
+    </section>
+
+    <section class="compass-section section">
+      <div class="section-heading ink reveal">
+        <p class="eyebrow dark"><span>The action compass</span> Gentle direction, real movement</p>
+        <h2>Consistency starts before the calendar.</h2>
+        <p>It starts with an honest decision about what matters and why it deserves a place in your life.</p>
+      </div>
+
+      <div class="compass">
+        <article class="compass-step reveal"><span>01</span><div class="step-mark">●</div><h3>Decide</h3><p>Make a strong, clear decision. A vague wish is difficult to follow.</p></article>
+        <article class="compass-step reveal"><span>02</span><div class="step-mark">↗</div><h3>Give it a why</h3><p>Name the purpose beneath the goal. Meaning carries you further than mood.</p></article>
+        <article class="compass-step reveal"><span>03</span><div class="step-mark">│</div><h3>Stay aligned</h3><p>Let small choices point in the same direction, even when the day is imperfect.</p></article>
+        <article class="compass-step reveal"><span>04</span><div class="step-mark">↻</div><h3>Review honestly</h3><p>Ask whether the goal is still worth keeping—and, if it is, keep showing up.</p></article>
+      </div>
+
+      <div class="start-now reveal">
+        <div><span class="now-symbol">NOW</span></div>
+        <div>
+          <h3>There is no “right time” waiting for you.</h3>
+          <p>There is no special Monday holding the courage you do not have today. Begin with what you know, what you have and the smallest honest action available to you now.</p>
         </div>
       </div>
     </section>
 
-    <section class="shell">
-      <div class="transmission reveal">
-        <p class="section-label">A little note before we begin</p>
-        <h2>If you found your way here, welcome.</h2>
-        <p>The Wonder Project was not created because the world needed another website. It was created because the world needs more people willing to ask, <strong>“Why?”</strong></p>
+    <section class="you-and-you">
+      <div class="you-visual reveal" aria-hidden="true">
+        <div class="past-you"><span>THEN</span><i></i></div>
+        <div class="thread"><span>and</span></div>
+        <div class="present-you"><span>NOW</span><i></i></div>
+      </div>
+      <div class="you-copy reveal">
+        <p class="eyebrow"><span>A kinder way to grow</span> Not you versus you</p>
+        <h2>It has always been<br><em>you and you.</em></h2>
+        <p>Your previous self is not the enemy you must defeat. That version of you survived days you no longer have to survive. They made choices, tried again, rested, failed and showed up when it mattered.</p>
+        <p>If the previous you had not kept going, the present you would not be standing here.</p>
+        <p class="featured">Thank who you were. Then help who you are becoming.</p>
       </div>
     </section>
 
-    <section class="section shell" id="our-story">
-      <div class="story-grid">
-        <div class="story-copy reveal">
-          <p class="section-label">Where everything began</p>
-          <h2>It started with children’s questions.</h2>
-          <p>The founder of The Wonder Project, <strong>Isha</strong>, spent years teaching and working closely with children. While helping students learn mathematics and science, she noticed something wonderful: children could turn even the smallest moment into a mystery.</p>
-          <p>Their questions were funny, raw, surprising and sometimes much deeper than they first appeared. Children asked without worrying about whether they sounded silly. They simply wanted to know.</p>
-        </div>
-        <div class="question-cloud reveal" aria-label="Questions children wonder about">
-          <div class="question">Do fish ever get thirsty? 🐠</div><div class="question">Where does darkness go? 💡</div><div class="question">Do ants ever get lost? 🐜</div><div class="question">Can plants talk? 🌱</div><div class="question">Why do we dream? 💭</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell">
-      <div class="spark-panel reveal">
-        <div class="spark-visual" aria-hidden="true">✨</div>
-        <div class="spark-copy">
-          <p class="section-label">The spark never disappears</p>
-          <h2>Somewhere between childhood and adulthood, many of us become quieter.</h2>
-          <p>Life becomes busy. Responsibilities grow. Deadlines appear. Sometimes we become afraid of sounding inexperienced, unrealistic or silly.</p>
-          <p>But wonder does not belong only to children.</p>
-          <p class="spark-quote">Your curiosity is still there. It may simply be waiting for permission to return.</p>
+    <section class="possibility section">
+      <div class="possibility-inner reveal">
+        <p class="eyebrow dark"><span>What school rarely says aloud</span> Your life is not a fixed category</p>
+        <h2>You are capable of far more than a label can hold.</h2>
+        <p>To meet the deeper parts of yourself, stay curious. Stay teachable. Stay childlike enough to ask ridiculous questions, make messy things and begin before you are impressive.</p>
+        <div class="possibility-lines">
+          <span>Curiosity before certainty.</span>
+          <span>Action before applause.</span>
+          <span>Consistency before perfection.</span>
         </div>
       </div>
     </section>
 
-    <section class="section shell">
-      <div class="section-heading center reveal"><p class="section-label">Look around you</p><h2>Curiosity built the world.</h2><p>Almost everything surrounding us began as a thought inside someone’s mind.</p></div>
-      <div class="idea-grid">
-        <article class="idea-card reveal" style="--glow:rgba(255,231,170,.18)"><span class="card-icon">🛣️</span><h3>Roads</h3><p>Someone imagined a smoother way to help people travel.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(255,212,108,.18)"><span class="card-icon">💡</span><h3>Electric light</h3><p>Someone wondered whether darkness could be pushed away.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(185,167,255,.18)"><span class="card-icon">📎</span><h3>Paper clips</h3><p>One tiny bent wire became a clever way to keep ideas together.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(255,159,208,.18)"><span class="card-icon">✏️</span><h3>Pencils</h3><p>Years of experiments turned graphite into an everyday tool for thinking.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(140,240,177,.18)"><span class="card-icon">🏠</span><h3>Homes</h3><p>People imagined new ways to create safety, comfort and belonging.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(124,232,223,.18)"><span class="card-icon">🌐</span><h3>The internet</h3><p>People imagined information travelling across the world.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(126,212,255,.18)"><span class="card-icon">📶</span><h3>Wi-Fi</h3><p>Invisible waves now connect people who may never meet.</p></article>
-        <article class="idea-card reveal" style="--glow:rgba(255,159,208,.18)"><span class="card-icon">🩺</span><h3>Medicine</h3><p>Generations of curious minds asked how suffering could be reduced.</p></article>
-      </div>
+    <section class="letter-section" id="letter">
+      <article class="letter reveal">
+        <div class="letter-top"><span>PRIVATE FIELD NOTE</span><span>FOR THE PERSON READING THIS</span></div>
+        <p class="salutation">Dear you,</p>
+
+        <p>I hope you know that you are not late. You are not a failed version of somebody else. And you are not required to have your entire life beautifully explained before you take the next step.</p>
+
+        <p>But I also want to remind you—gently and firmly—that your life needs your participation.</p>
+
+        <p>Do not leave every meaningful idea for “someday.” Do not reach the end of your life carrying the ache of the thing you could have begun when you had the chance, the ability and this astonishingly unfinished life in front of you.</p>
+
+        <p>Choose something worthy of your effort. Understand why it matters. Make the decision. Then return to it when the motivation disappears, because motivation is a visitor; commitment is the person who stays to help clean up.</p>
+
+        <p>You do not need to transform overnight. You only need to stop abandoning yourself in tiny moments.</p>
+
+        <p class="letter-highlight">Start now. Start gently. Start imperfectly. But let this be the day your knowledge becomes movement.</p>
+
+        <p>You are already remarkable—not because you have done everything, but because there is still so much life, colour and possibility within you. Please do something with it.</p>
+
+        <div class="signature">
+          <span>With belief in your becoming,</span>
+          <strong>Isha</strong>
+          <small>Founder, The Wonder Verse</small>
+        </div>
+      </article>
     </section>
 
-    <div class="belief-band"><p>Every invention began with someone thinking: <strong>“I wonder if this is possible.”</strong></p></div>
-
-    <section class="section shell">
-      <div class="section-heading center reveal"><p class="section-label">Curiosity belongs to everyone</p><h2>This project is for you.</h2><p>You do not need to be a scientist to wonder.</p></div>
-      <div class="people-grid">
-        <article class="person-card reveal"><span class="card-icon">🍎</span><h3>Educators</h3><p>For teachers helping students think deeply, ask bravely and enjoy learning again.</p></article>
-        <article class="person-card reveal"><span class="card-icon">🩺</span><h3>Future doctors</h3><p>For medical students becoming knowledgeable, curious and compassionate doctors.</p></article>
-        <article class="person-card reveal"><span class="card-icon">🔬</span><h3>Researchers</h3><p>For people willing to follow a question even when the answer is far away.</p></article>
-        <article class="person-card reveal"><span class="card-icon">🎨</span><h3>Creators</h3><p>For artists, writers and dreamers who see possibility in ordinary things.</p></article>
-        <article class="person-card reveal"><span class="card-icon">🧠</span><h3>Professionals</h3><p>For people improving, questioning and imagining better ways forward.</p></article>
-        <article class="person-card reveal"><span class="card-icon">🌱</span><h3>Growing humans</h3><p>For anyone feeling stuck, tired or distant from who they hoped to become.</p></article>
-      </div>
-    </section>
-
-    <section class="section shell">
-      <div class="flow-panel reveal"><span class="symbol" aria-hidden="true">🌊</span><p class="section-label">Follow one question</p><h2>Curiosity can lead you back into flow.</h2><p>Flow is that beautiful feeling when you become so involved in something that time seems to disappear. One question becomes another. Curiosity becomes excitement. Excitement becomes ambition. And ambition slowly becomes action.</p><p class="featured">We believe wonder can help you find your way back to that place.</p></div>
-    </section>
-
-    <section class="section shell">
-      <div class="community-grid">
-        <div class="constellation reveal" aria-hidden="true"><span class="person p1">🧑‍🏫</span><span class="person p2">👩‍⚕️</span><span class="person p3">🧑‍🔬</span><span class="person p4">🧑‍🎨</span><span class="world">🌍</span></div>
-        <div class="community-copy reveal"><p class="section-label">We need one another</p><h2>Every idea is part of a bigger story.</h2><p>Someone discovered radio waves. Someone developed the computer. Someone built an internet cable beneath the ocean. Someone created the browser you are using now.</p><p>Thousands of people you may never meet helped this message reach your screen. The internet and Wi-Fi may be the tools that connected us, but curiosity is what brought you here.</p></div>
-      </div>
-    </section>
-
-    <section class="section shell">
-      <article class="letter reveal"><p class="section-label">A note for the stranger reading this</p><h2>Hey, you.</h2><p>Out of billions of people, somehow this little page reached you—through a search, a shared link, an algorithm or a tiny moment of coincidence.</p><p>We do not know how far The Wonder Project will travel. Perhaps it will inspire a classroom. A teacher. A future doctor. A scientist. A family. A child. Or one person who needed a reason to begin again.</p><p>Maybe that person is you.</p><p>We hope this project becomes a small part of you getting up, following an idea and making the best of this brief and beautiful life.</p><p class="highlight">The energy you are searching for may have been inside you all along. Perhaps it is not gone. Perhaps it is simply waiting for the right question.</p><div class="signature"><p>With curiosity,</p><strong>Isha and The Wonder Project </strong></div></article>
-    </section>
-
-    <section class="final-cta">
-      <div class="final-cta-inner reveal"><span class="spark">💡</span><h2>The next idea the world is waiting for might be yours.</h2><p>Ask ridiculous questions. Explore ordinary things. Follow the ideas that refuse to leave you alone. You never know where one small moment of wonder may lead.</p><div class="final-actions"><a href="questions.html" class="button primary">Start wondering ✨</a><a href="resources.html" class="button secondary">Explore resources</a></div></div>
+    <section class="daily-reminder">
+      <p>YOUR REMINDER FOR TODAY</p>
+      <h2 id="reminderText">You do not need more time. You need one honest beginning.</h2>
+      <button id="newReminder" type="button">Draw another reminder <span>↻</span></button>
     </section>
   </main>
 
   <footer>
-    <div class="footer-content"><div class="footer-brand"><h2>The Wonder Project</h2><p>Stay curious. Ask bravely. Wonder freely.</p></div><div class="footer-links"><h3>Explore</h3><a href="about.html">About us</a><a href="books.html">Books</a><a href="resources.html">Resources</a><a href="questions.html">Questions</a></div><div class="footer-links"><h3>Connect</h3><a href="contact.html">Contact us</a><a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:tiwariisha72@gmail.com">Email</a></div></div>
-    <p class="copyright">© 2026 The Wonder Project. Made with curiosity ✨</p>
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-moon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>THE WONDER<br><em>VERSE</em></span>
+    </a>
+    <p>Protecting curiosity, celebrating good questions and helping ideas become action.</p>
+    <div class="footer-links"><a href="about.html">Our story</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
+    <small>© 2026 The Wonder Verse Project · Made somewhere between the moon and imagination.</small>
   </footer>
-
-  <script>
-    const menuToggle=document.getElementById('menuToggle');
-    const mobileMenu=document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click',()=>{const open=mobileMenu.classList.toggle('open');menuToggle.classList.toggle('open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');});
-    mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuToggle.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}));
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-  </script>
 </body>
 </html>
