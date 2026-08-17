@@ -1,78 +1,271 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag('js', new Date());
-      gtag('config', 'G-EF9DVH7JQN');
-    </script>
-
-     <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Question-arium — a gentle journey from space to the deep sea, filled with curious questions for adults and children.">
-  <title>The Question-arium | The Wonder Project</title>
-  <style>
-    :root{--space:#030719;--violet:#9382ff;--star:#ffe88f;--aqua:#66f1df;--sky:#aeeaf3;--grass:#73b975;--paper:#fffdf2;--ink:#132542;--sea:#086695;--deep:#031d42;--abyss:#010819;--pink:#ff91b0;--white:#f8faff;--muted:#c4cce7;--shadow:0 22px 60px rgba(3,12,38,.25)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--white);background:var(--space);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}button,input{font:inherit}button{color:inherit}a{color:inherit}.shell{width:min(1140px,calc(100% - 2rem));margin:auto}.skip{position:fixed;top:-5rem;left:1rem;z-index:200;padding:.65rem 1rem;border-radius:99px;color:var(--ink);background:var(--star)}.skip:focus{top:1rem}
-    header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(3,7,25,.72);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px)}nav{min-height:72px;display:flex;align-items:center;gap:1rem}.brand{margin-right:auto;font-weight:900;text-decoration:none}.brand span{color:var(--star)}.nav-links{display:flex;gap:.1rem}.nav-links a{padding:.48rem .65rem;border-radius:99px;color:#d5dcf3;font-size:.88rem;text-decoration:none}.nav-links a:hover,.nav-links a[aria-current=page]{color:#fff;background:rgba(255,255,255,.1)}.menu{display:none;padding:.5rem .7rem;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.08);cursor:pointer}
-    h1,h2,h3{margin-top:0;line-height:1.08;letter-spacing:-.035em}h1{max-width:900px;margin-inline:auto;font-size:clamp(3.3rem,9vw,7.5rem)}h2{font-size:clamp(2.2rem,5vw,4.3rem)}h3{font-size:1.2rem}.kicker{margin:0 0 .7rem;font-size:.76rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase}.heading{max-width:780px;margin-bottom:2rem}.heading.center{text-align:center;margin-inline:auto}.heading>p:last-child{font-size:1.07rem}.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.8rem 1.1rem;border:0;border-radius:99px;font-weight:850;text-decoration:none;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-star{color:var(--ink);background:linear-gradient(135deg,#fff1a8,#ffd66d);box-shadow:0 13px 35px rgba(255,220,115,.22)}.btn-glass{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.19)}.btn-sea{color:#07344c;background:linear-gradient(135deg,var(--aqua),#91dfff)}
-    /* The planetarium */
-    .space{min-height:112vh;position:relative;display:grid;place-items:center;padding:9rem 1rem 13rem;overflow:hidden;isolation:isolate;background:radial-gradient(circle at 50% 38%,rgba(95,70,190,.38),transparent 27rem),linear-gradient(#030719,#0b1438 68%,#315d80)}.space:before{content:"";position:absolute;inset:0;z-index:-3;opacity:.75;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px),radial-gradient(circle,#7affea 0 1px,transparent 1.5px),radial-gradient(circle,#ffe68b 0 1.2px,transparent 1.8px);background-size:131px 131px,207px 207px,283px 283px;background-position:8px 15px,54px 91px,141px 38px}.hero{text-align:center;position:relative;z-index:3}.hero .kicker{color:var(--aqua)}.gradient{color:transparent;background:linear-gradient(90deg,var(--star),#ffb4df 48%,var(--aqua));background-clip:text}.hero-copy{max-width:730px;margin:1rem auto 2rem;color:var(--muted);font-size:clamp(1.05rem,2vw,1.25rem)}.hero-actions{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}.hero-note{max-width:430px;margin:2.7rem auto 0;padding:1rem 1.2rem;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px)}
-    .planet{--glow:rgba(255,255,255,.3);position:absolute;border-radius:50%;animation:float 7s ease-in-out infinite;box-shadow:inset -16px -18px 28px rgba(0,0,0,.28),0 0 34px var(--glow)}.planet:after{content:"";position:absolute;inset:44% -28%;height:15%;border:7px solid rgba(230,228,255,.55);border-top-color:transparent;border-radius:50%;transform:rotate(-13deg)}.p1{--glow:rgba(255,150,208,.4);width:128px;aspect-ratio:1;left:7%;top:21%;background:linear-gradient(135deg,#ffb6de,#8446ae)}.p2{--glow:rgba(90,240,220,.4);width:83px;aspect-ratio:1;right:9%;top:19%;background:linear-gradient(135deg,#77efda,#236b9a);animation-delay:-3s}.p3{--glow:rgba(255,210,105,.4);width:59px;aspect-ratio:1;right:17%;bottom:26%;background:linear-gradient(135deg,#ffe598,#df7159);animation-delay:-5s}.p4{--glow:rgba(145,125,255,.4);width:47px;aspect-ratio:1;left:17%;bottom:24%;background:linear-gradient(135deg,#b9aaff,#5e50bd);animation-delay:-4s}.shoot{position:absolute;top:18%;left:40%;width:100px;height:2px;background:linear-gradient(90deg,transparent,#fff);animation:shoot 8s linear infinite}.mountains{position:absolute;inset:auto 0 -2px;height:175px;background:var(--sky);clip-path:polygon(0 72%,10% 48%,23% 69%,35% 27%,46% 65%,59% 38%,73% 69%,88% 36%,100% 65%,100% 100%,0 100%)}
-    @keyframes float{50%{transform:translateY(-18px) rotate(2deg)}}@keyframes shoot{0%{transform:translate(-45vw,-15vh) rotate(-25deg);opacity:0}8%{opacity:1}18%,100%{transform:translate(55vw,25vh) rotate(-25deg);opacity:0}}@keyframes bubble{0%{transform:translateY(8rem) scale(.6);opacity:0}20%{opacity:.75}100%{transform:translateY(-42rem) scale(1.15);opacity:0}}@keyframes swim{from{transform:translateX(-15vw)}to{transform:translateX(115vw)}}@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
-    /* The land */
-    .land{position:relative;z-index:2;min-height:100vh;margin-top:-2px;padding:6.5rem 0 10rem;color:var(--ink);overflow:hidden;background:linear-gradient(var(--sky) 0 19%,#c5eed1 45%,var(--grass) 45%)}.land:before,.land:after{content:"";position:absolute;z-index:-1;border-radius:50% 50% 0 0}.land:before{width:80%;height:350px;left:-25%;top:19%;background:#92d391;transform:rotate(8deg)}.land:after{width:85%;height:330px;right:-27%;top:23%;background:#65ad6c;transform:rotate(-7deg)}.land .kicker{color:#454681}.keeper{display:grid;grid-template-columns:.85fr 1.15fr;gap:1.3rem;margin-bottom:5.2rem}.intro,.capsule{padding:clamp(1.3rem,3vw,2.3rem);border-radius:30px;box-shadow:var(--shadow)}.intro{background:rgba(255,253,242,.9)}.intro p{color:#45526b}.capsule{position:relative;overflow:hidden;color:#fff;background:#172856}.capsule:after{content:"?";position:absolute;right:1rem;top:-2rem;color:rgba(255,255,255,.06);font-size:13rem;font-weight:950}.capsule label{display:block;position:relative;z-index:1;margin-bottom:.5rem;font-weight:850}.input-row{display:grid;grid-template-columns:1fr auto;gap:.65rem;position:relative;z-index:1}.input-row input{width:100%;padding:.9rem 1rem;color:#fff;background:rgba(3,10,35,.62);border:1px solid rgba(255,255,255,.25);border-radius:16px;outline:none}.input-row input:focus{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(102,241,223,.12)}.input-row input::placeholder{color:#afbadc}.private{position:relative;z-index:1;color:#bdc7e6;font-size:.86rem}.status{min-height:1.4rem;position:relative;z-index:1;margin:.5rem 0 0;color:var(--aqua);font-size:.9rem}
-    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}.filters{display:flex;gap:.4rem;flex-wrap:wrap}.filter{padding:.45rem .75rem;color:#29415b;background:rgba(255,255,255,.62);border:1px solid rgba(16,33,60,.17);border-radius:99px;font-weight:750;cursor:pointer}.filter[aria-pressed=true]{color:#fff;background:#263d70}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.card{min-height:205px;display:flex;flex-direction:column;padding:1.25rem;border:1px solid rgba(16,33,60,.12);border-radius:24px 24px 24px 7px;background:rgba(255,253,242,.94);box-shadow:0 13px 35px rgba(22,75,66,.12);transition:.22s}.card:nth-child(3n+2){transform:rotate(.7deg)}.card:nth-child(3n){transform:rotate(-.55deg)}.card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(22,75,66,.2)}.category{align-self:flex-start;padding:.27rem .55rem;border-radius:99px;color:#4a4d69;background:#ebe9ff;font-size:.72rem;font-weight:850}.card h3{margin:1rem 0 auto;font-size:1.2rem}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:1rem}.number{color:#71809b;font-size:.77rem;font-weight:800}.save{padding:.43rem .62rem;color:#26395f;background:#d9f4eb;border:0;border-radius:99px;font-size:.79rem;font-weight:800;cursor:pointer}.save.saved{color:#fff;background:#3d5c83}.more{display:flex;justify-content:center;margin-top:2rem}.waves{position:absolute;inset:auto 0 -1px;height:150px;background:var(--sea);clip-path:polygon(0 47%,8% 54%,18% 43%,29% 56%,42% 42%,55% 56%,67% 44%,81% 57%,91% 44%,100% 52%,100% 100%,0 100%)}
-    /* The deep sea */
-    .sea{min-height:110vh;position:relative;padding:8rem 0 7rem;overflow:hidden;background:radial-gradient(circle at 50% 5%,rgba(90,220,255,.25),transparent 28rem),linear-gradient(var(--sea),var(--deep) 46%,var(--abyss))}.rays{position:absolute;inset:0;background:linear-gradient(104deg,transparent 35%,rgba(125,235,255,.08) 36% 42%,transparent 43% 55%,rgba(125,235,255,.06) 56% 62%,transparent 63%);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}.bubble{position:absolute;bottom:-5rem;left:var(--left);width:var(--size);aspect-ratio:1;border:1px solid rgba(162,241,255,.5);border-radius:50%;animation:bubble var(--speed) linear infinite;animation-delay:var(--delay)}.fish{position:absolute;top:var(--top);left:0;color:rgba(123,236,230,.5);font-size:var(--size);animation:swim var(--speed) linear infinite;animation-delay:var(--delay)}.jelly{position:absolute;right:7%;top:18%;font-size:5rem;filter:drop-shadow(0 0 20px rgba(255,145,176,.45));animation:bob 5s ease-in-out infinite}.sea .heading{position:relative;z-index:2}.sea .kicker{color:var(--aqua)}.sea .heading>p:last-child{color:#bdcde7}.vault{position:relative;z-index:3;display:grid;grid-template-columns:.78fr 1.22fr;gap:1.2rem;align-items:start}.vault-info,.chest{padding:clamp(1.25rem,3vw,2.2rem);border:1px solid rgba(145,223,255,.18);border-radius:28px;background:rgba(2,16,48,.73);backdrop-filter:blur(14px);box-shadow:0 25px 80px rgba(0,0,0,.24)}.vault-info p{color:#bac9e5}.chest-top{display:flex;justify-content:space-between;align-items:center;gap:.8rem}.small{padding:.45rem .7rem;font-size:.8rem}.saved-list{display:grid;gap:.7rem}.saved-item{display:grid;grid-template-columns:1fr auto;gap:.8rem;align-items:center;padding:.9rem 1rem;border:1px solid rgba(145,223,255,.13);border-radius:17px;background:rgba(69,145,178,.15)}.saved-item p{margin:0;overflow-wrap:anywhere}.saved-item small{display:block;color:#91c7d9}.remove{width:34px;aspect-ratio:1;color:#ffbdd0;background:rgba(255,145,176,.14);border:0;border-radius:50%;cursor:pointer}.empty{padding:2rem 1rem;color:#a9bedb;text-align:center;border:1px dashed rgba(145,223,255,.24);border-radius:18px}.seabed{height:110px;position:absolute;inset:auto 0 0;background:#06122a;clip-path:polygon(0 44%,14% 27%,26% 56%,39% 34%,54% 59%,70% 32%,85% 60%,100% 39%,100% 100%,0 100%)}.coral{position:absolute;bottom:32px;color:var(--pink);font-size:5rem}.c1{left:6%}.c2{right:9%;color:var(--violet);transform:scale(.76)}footer{padding:2.2rem 0;color:#aab9d3;background:#010615;border-top:1px solid rgba(255,255,255,.08)}.footer{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.footer a{color:var(--aqua)}
-    .modal{position:fixed;inset:0;z-index:180;display:none;place-items:center;padding:1rem;background:rgba(1,5,18,.84);backdrop-filter:blur(12px)}.modal.open{display:grid}.modal-card{width:min(600px,100%);padding:2.2rem;text-align:center;border:1px solid rgba(255,255,255,.16);border-radius:30px;background:linear-gradient(145deg,#19295a,#0c173b);box-shadow:0 30px 100px rgba(0,0,0,.5)}.big-question{color:var(--star);font-size:clamp(1.5rem,4vw,2.35rem);font-weight:850;line-height:1.25}.modal-actions{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem}
-    @media(max-width:900px){.menu{display:block}.nav-links{display:none;position:absolute;top:72px;left:1rem;right:1rem;flex-direction:column;padding:.7rem;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:#08102c}.nav-links.open{display:flex}.keeper,.vault{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.p1{left:-3%}.p2{right:-2%}}@media(max-width:600px){.grid{grid-template-columns:1fr}.input-row{grid-template-columns:1fr}.card{min-height:175px}.planet{scale:.72}.p1{top:14%}.p2{top:23%}.jelly{right:-1rem;opacity:.55}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
-  </style>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to the questions</a>
-  <header><nav class="shell"><a class="brand" href="index.html"><span>✨</span> The Wonder Project</a><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button><div class="nav-links" id="nav"><a href="index.html">Start Here</a><a href="about.html">About</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="questions.html" aria-current="page">Wonder</a><a href="spark.html">Begin Again</a><a href="blog.html">Blog</a><a href="schools.html">Schools</a><a href="contact.html">Contact</a></div></nav></header>
-  <main id="main">
-    <section class="space" aria-labelledby="title"><div class="shoot" aria-hidden="true"></div><div class="planet p1" aria-hidden="true"></div><div class="planet p2" aria-hidden="true"></div><div class="planet p3" aria-hidden="true"></div><div class="planet p4" aria-hidden="true"></div><div class="hero shell"><p class="kicker">The Question-arium</p><h1 id="title">A whole world built from <span class="gradient">“I wonder…”</span></h1><p class="hero-copy">Children ask them out loud. Adults sometimes carry them quietly. Here, every strange, small and enormous question has somewhere to float.</p><div class="hero-actions"><a class="btn btn-star" href="#meadow">Land in the Question Meadow</a><button class="btn btn-glass random" type="button">Surprise me with a question ✦</button></div><div class="hero-note">No question is too silly. Silly questions have a wonderful habit of opening serious doors.</div></div><div class="mountains" aria-hidden="true"></div></section>
-    <section class="land" id="meadow" aria-labelledby="meadow-title"><div class="shell"><div class="keeper"><div class="intro"><p class="kicker">Your Curiosity Capsule</p><h2 id="meadow-title">Leave a question. Come back when it calls you.</h2><p>You do not need to answer it today. Some questions need time, a walk, a conversation—or several years of wondering.</p></div><div class="capsule"><label for="ownQuestion">What are you wondering?</label><div class="input-row"><input id="ownQuestion" maxlength="220" placeholder="I wonder why..." autocomplete="off"><button class="btn btn-sea" id="keepOwn" type="button">Keep for later</button></div><p class="private">🔒 Kept only in this browser. No name, account or form submission.</p><p class="status" id="keeperStatus" role="status"></p></div></div>
-      <div class="heading"><p class="kicker">The Question Meadow</p><h2>Fifty-four wonderfully odd things to wonder about.</h2><p>Pick one that tickles your brain. Save it in the deep-sea vault, talk about it, or let it lead to an even better question.</p></div><div class="toolbar"><div class="filters" id="filters" aria-label="Filter questions"></div><button class="btn btn-star random" type="button">Pick one for me 🎲</button></div><div class="grid" id="grid"></div><div class="more"><button class="btn btn-star" id="more" type="button">Show more questions</button></div></div><div class="waves" aria-hidden="true"></div></section>
-    <section class="sea" id="vault" aria-labelledby="vault-title"><div class="rays" aria-hidden="true"></div><span class="bubble" style="--size:25px;--left:9%;--speed:10s;--delay:-3s"></span><span class="bubble" style="--size:14px;--left:22%;--speed:8s;--delay:-6s"></span><span class="bubble" style="--size:34px;--left:63%;--speed:13s;--delay:-4s"></span><span class="bubble" style="--size:19px;--left:83%;--speed:9s;--delay:-1s"></span><span class="fish" style="--top:25%;--size:2.2rem;--speed:22s;--delay:-9s">𓆝</span><span class="fish" style="--top:67%;--size:3rem;--speed:29s;--delay:-18s">𓆟</span><span class="jelly" aria-hidden="true">🪼</span><div class="shell"><div class="heading center"><p class="kicker">The Deep-Sea Question Vault</p><h2 id="vault-title">Some questions glow in the dark.</h2><p>Your questions are safe down here until you feel like returning. They do not expire, and they do not demand an answer.</p></div><div class="vault"><aside class="vault-info"><h3>How to revisit a question</h3><p>Choose just one. Ask what you already think, what you would need to discover, and who might see it differently.</p><button class="btn btn-sea" id="chooseSaved" type="button">Choose from my vault</button><p class="status" id="vaultStatus" role="status"></p></aside><div class="chest"><div class="chest-top"><h3>My saved questions <span id="count">(0)</span></h3><button class="btn btn-glass small" id="clear" type="button">Clear vault</button></div><div class="saved-list" id="savedList"></div></div></div></div><div class="coral c1" aria-hidden="true">♨</div><div class="coral c2" aria-hidden="true">♨</div><div class="seabed" aria-hidden="true"></div></section>
-  </main>
-  <footer><div class="shell footer"><span>✨ The Wonder Project · Keep wondering gently.</span><a href="index.html">Return to the Wonderverse</a></div></footer>
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalQuestion"><div class="modal-card"><p class="kicker" style="color:var(--aqua)">Your question for this moment</p><p class="big-question" id="modalQuestion"></p><div class="modal-actions"><button class="btn btn-star" id="saveModal" type="button">Keep for later</button><button class="btn btn-glass" id="another" type="button">Another one</button><button class="btn btn-glass" id="close" type="button">Close</button></div></div></div>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
   <script>
-  (()=>{'use strict';
-    const questions=[
-      ['Universe','If the universe is growing, what is it growing into?'],['Universe','Why does the Moon seem to follow us when we travel?'],['Universe','What would the sky look like from a planet with two suns?'],['Universe','If space is silent, how do astronauts talk to each other?'],['Universe','Could there be colours in space that humans cannot imagine?'],['Universe','Where does a shooting star actually go?'],['Universe','Would you age differently if you travelled very fast through space?'],['Universe','How do planets know where to keep moving?'],['Universe','What might rain be made of on another planet?'],
-      ['Nature','Do trees recognise the other trees growing near them?'],['Nature','Where does the wind begin?'],['Nature','Why does the air smell different just before rain?'],['Nature','Can a plant remember something that happened to it?'],['Nature','How does a tiny seed know which way is up?'],['Nature','Why are there so many different shades of green?'],['Nature','Do mountains slowly change shape while nobody is watching?'],['Nature','Where does a rainbow go when it disappears?'],['Nature','Can two snowflakes ever be exactly the same?'],
-      ['Animals','Do animals dream, and what might they dream about?'],['Animals','How do birds know where to fly during migration?'],['Animals','Where do ants go when it rains?'],['Animals','What do bees do inside the hive on a rainy day?'],['Animals','Do pets think we are members of their family?'],['Animals','How does an octopus decide which arm to move first?'],['Animals','Can animals have best friends?'],['Animals','Why do cats fit themselves into very small boxes?'],['Animals','Do birds enjoy singing, or are they always sending messages?'],
-      ['Everyday','Why do we forget why we walked into a room?'],['Everyday','Where do all the missing socks go?'],['Everyday','Why does food sometimes taste better when someone else makes it?'],['Everyday','Why does waiting for five minutes feel longer than having fun for an hour?'],['Everyday','Why do we open the fridge again when we know nothing new is inside?'],['Everyday','Why does our recorded voice sound unfamiliar to us?'],['Everyday','How does a smell suddenly bring back an old memory?'],['Everyday','Why do good ideas arrive when we are trying to sleep?'],['Everyday','Who decided where one day ends and the next one begins?'],
-      ['Mind & Feelings','Why do we sometimes laugh when we are nervous?'],['Mind & Feelings','Why do dreams disappear so quickly after we wake up?'],['Mind & Feelings','Can we miss a place we have never visited?'],['Mind & Feelings','Why can one song change how an entire day feels?'],['Mind & Feelings','Where do thoughts go when we stop thinking about them?'],['Mind & Feelings','Why is it sometimes easier to be kind to others than to ourselves?'],['Mind & Feelings','Can being curious help us feel less afraid?'],['Mind & Feelings','How do we know when an idea is truly our own?'],['Mind & Feelings','Why can a familiar place suddenly feel completely different?'],
-      ['Deep Sea','What lives in the deepest part of the ocean that we have never seen?'],['Deep Sea','How do deep-sea creatures make their own light?'],['Deep Sea','Does the ocean have places that are completely silent?'],['Deep Sea','How do whales find one another across such an enormous ocean?'],['Deep Sea','What would the sea say if we could understand it?'],['Deep Sea','Why do waves keep coming even when the weather is calm?'],['Deep Sea','Could an undiscovered animal be larger than a whale?'],['Deep Sea','How old is the oldest drop of water in the ocean?'],['Deep Sea','What does moonlight look like from underneath the water?']
-    ];
-    const KEY='wonder-project-questionarium-v1',categories=['All','Universe','Nature','Animals','Everyday','Mind & Feelings','Deep Sea'],$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let filter='All',visible=12,saved=load(),modalSource='all';
-    function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return Array.isArray(x)?x:[]}catch{return[]}}function store(){localStorage.setItem(KEY,JSON.stringify(saved))}function has(q){return saved.some(x=>x.q===q)}function say(id,msg){const e=$(id);e.textContent=msg;setTimeout(()=>{if(e.textContent===msg)e.textContent=''},4200)}
-    function renderFilters(){const h=$('#filters');h.replaceChildren();categories.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='filter';b.textContent=c;b.setAttribute('aria-pressed',c===filter);b.onclick=()=>{filter=c;visible=12;renderFilters();renderGrid()};h.append(b)})}
-    function pool(){return filter==='All'?questions:questions.filter(x=>x[0]===filter)}
-    function renderGrid(){const h=$('#grid'),p=pool();h.replaceChildren();p.slice(0,visible).forEach(item=>{const n=questions.indexOf(item),a=document.createElement('article');a.className='card';const c=document.createElement('span');c.className='category';c.textContent=item[0];const title=document.createElement('h3');title.textContent=item[1];const bottom=document.createElement('div');bottom.className='card-bottom';const num=document.createElement('span');num.className='number';num.textContent=`QUESTION ${String(n+1).padStart(2,'0')}`;const b=document.createElement('button');b.type='button';b.className='save'+(has(item[1])?' saved':'');b.textContent=has(item[1])?'✓ Kept':'Keep for later';b.onclick=()=>toggle(item[1],item[0]);bottom.append(num,b);a.append(c,title,bottom);h.append(a)});$('#more').hidden=visible>=p.length}
-    function toggle(q,c){if(has(q))saved=saved.filter(x=>x.q!==q);else saved.unshift({q,c,date:new Date().toISOString()});store();renderGrid();renderVault()}
-    function keepOwn(){const i=$('#ownQuestion');let q=i.value.trim();if(!q)return say('#keeperStatus','Let your question begin with even a few words.');if(!q.endsWith('?'))q+='?';if(has(q))return say('#keeperStatus','That question is already waiting in your vault.');saved.unshift({q,c:'My question',date:new Date().toISOString()});store();i.value='';renderVault();renderGrid();say('#keeperStatus','Your question has drifted safely into the deep-sea vault.')}
-    function renderVault(){const h=$('#savedList');$('#count').textContent=`(${saved.length})`;h.replaceChildren();if(!saved.length){const e=document.createElement('div');e.className='empty';e.textContent='Your vault is quiet. Save a question from the meadow or leave one of your own.';h.append(e);return}saved.forEach((x,i)=>{const row=document.createElement('div');row.className='saved-item';const copy=document.createElement('div'),p=document.createElement('p'),small=document.createElement('small'),b=document.createElement('button');p.textContent=x.q;small.textContent=x.c;b.type='button';b.className='remove';b.textContent='×';b.setAttribute('aria-label',`Remove question: ${x.q}`);b.onclick=()=>{saved.splice(i,1);store();renderVault();renderGrid()};copy.append(p,small);row.append(copy,b);h.append(row)})}
-    function show(fromSaved=false){const source=fromSaved?saved.map(x=>[x.c,x.q]):questions;if(!source.length)return say('#vaultStatus','Save a question first, then the vault can choose one for you.');const x=source[Math.floor(Math.random()*source.length)];modalSource=fromSaved?'saved':'all';$('#modalQuestion').textContent=x[1];$('#saveModal').hidden=fromSaved||has(x[1]);$('#modal').classList.add('open');$('#close').focus()}
-    function close(){ $('#modal').classList.remove('open') }
-    $('#keepOwn').onclick=keepOwn;$('#ownQuestion').onkeydown=e=>{if(e.key==='Enter')keepOwn()};$$('.random').forEach(b=>b.onclick=()=>show(false));$('#chooseSaved').onclick=()=>show(true);$('#another').onclick=()=>show(modalSource==='saved');$('#close').onclick=close;$('#modal').onclick=e=>{if(e.target===$('#modal'))close()};document.onkeydown=e=>{if(e.key==='Escape')close()};$('#saveModal').onclick=()=>{const q=$('#modalQuestion').textContent,x=questions.find(a=>a[1]===q);if(x&&!has(q)){saved.unshift({q,c:x[0],date:new Date().toISOString()});store();renderGrid();renderVault()}$('#saveModal').hidden=true};$('#more').onclick=()=>{visible+=12;renderGrid()};$('#clear').onclick=()=>{if(saved.length&&confirm('Clear every question saved in this browser?')){saved=[];store();renderVault();renderGrid();say('#vaultStatus','The vault is clear and ready for new questions.')}};
-    $('#menu').onclick=()=>{const open=$('#nav').classList.toggle('open');$('#menu').setAttribute('aria-expanded',open)};$$('#nav a').forEach(a=>a.onclick=()=>{$('#nav').classList.remove('open');$('#menu').setAttribute('aria-expanded','false')});renderFilters();renderGrid();renderVault();
-  })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
   </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Questionarium: direct, practical questions for adults exploring purpose, values, career alignment, boundaries, perspective, ego and action.">
+  <meta name="theme-color" content="#86aabd">
+  <title>The Questionarium | The Wonder Verse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="questions.css">
+  <script src="questions.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to the questions</a>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="The Wonder Verse homepage">
+        <span class="brand-mark" aria-hidden="true">?</span>
+        <span>THE WONDER<br><em>VERSE</em></span>
+      </a>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false"><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Start here</a><a href="about.html">Our story</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a class="active" href="questions.html">Questionarium</a>
+      </div>
+      <a class="nav-cta" href="sign-in.html">My Wonder Space <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span>Room 02</span> The Questionarium</p>
+        <h1>Ask the question<br>that changes the <em>answer.</em></h1>
+        <p class="hero-intro">Not “What is the meaning of life?” More like: <strong>Whose life are you currently building—and why are you still calling it yours?</strong></p>
+        <p class="hero-note">This is not a personality test. It will not label you, flatter you or make the decision for you. It will help you stop hiding the real question underneath the convenient one.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#values-room">Question my direction <span>↓</span></a>
+          <button class="button secondary" id="randomHero" type="button">Ask me something uncomfortable <span>↗</span></button>
+        </div>
+      </div>
+
+      <div class="brain-map reveal">
+        <svg class="brain" viewBox="0 0 500 420" role="img" aria-label="A coded line drawing of a brain with pathways to purpose, values, reality, boundaries and humility">
+          <path class="brain-outline" d="M245 79c-28-35-84-27-98 14-39-4-65 31-52 64-36 18-43 67-13 93-20 35 5 79 44 79 11 42 67 55 96 25 18 20 52 20 70 1 35 29 88 10 92-33 38-7 56-53 31-83 26-31 11-79-27-91 4-43-42-73-79-51-13-28-45-36-64-18Z"/>
+          <path d="M246 81c-18 38 5 60-8 92s-7 52 10 72-2 67 1 105M146 96c18 13 22 34 15 56M95 158c29-3 47 11 54 33M82 250c23-15 51-10 66 8M126 329c7-29 29-40 56-39M309 98c-14 24-7 46 11 61M389 149c-26 2-43 17-47 41M415 239c-24-10-48-2-59 19M384 321c-12-27-37-36-62-29M162 153c22-3 38 7 47 27M149 258c22 4 37-6 44-26M320 159c-25 3-40 17-45 38M356 258c-22-1-41 9-49 27"/>
+          <circle cx="246" cy="80" r="5"/><circle cx="95" cy="158" r="5"/><circle cx="82" cy="250" r="5"/><circle cx="126" cy="329" r="5"/><circle cx="389" cy="149" r="5"/><circle cx="415" cy="239" r="5"/><circle cx="384" cy="321" r="5"/>
+        </svg>
+        <span class="brain-label label-purpose">PURPOSE</span>
+        <span class="brain-label label-values">VALUES</span>
+        <span class="brain-label label-reality">REALITY</span>
+        <span class="brain-label label-boundaries">BOUNDARIES</span>
+        <span class="brain-label label-ego">EGO</span>
+        <div class="brain-note"><strong>A brain is excellent at explaining.</strong><span>Ask whether it is also being honest.</span></div>
+      </div>
+    </section>
+
+    <section class="truth-strip">
+      <span>QUESTION THE GOAL</span><i>→</i><span>QUESTION THE FEAR</span><i>→</i><span>QUESTION YOUR VERSION OF THE STORY</span><i>→</i><strong>THEN CHOOSE</strong>
+    </section>
+
+    <section class="values-section section" id="values-room">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark"><span>Room one</span> Values before goals</p>
+        <h2>A goal can look right<br>and still feel wrong.</h2>
+        <p>Often the problem is not discipline. It is misalignment. Choose up to four values that you want your life—not merely your language—to demonstrate.</p>
+      </div>
+
+      <div class="value-picker reveal" id="valuePicker" aria-label="Choose up to four core values">
+        <button type="button" data-value="Freedom" aria-pressed="false">Freedom</button>
+        <button type="button" data-value="Security" aria-pressed="false">Security</button>
+        <button type="button" data-value="Family" aria-pressed="false">Family</button>
+        <button type="button" data-value="Growth" aria-pressed="false">Growth</button>
+        <button type="button" data-value="Creativity" aria-pressed="false">Creativity</button>
+        <button type="button" data-value="Mastery" aria-pressed="false">Mastery</button>
+        <button type="button" data-value="Service" aria-pressed="false">Service</button>
+        <button type="button" data-value="Health" aria-pressed="false">Health</button>
+        <button type="button" data-value="Adventure" aria-pressed="false">Adventure</button>
+        <button type="button" data-value="Integrity" aria-pressed="false">Integrity</button>
+        <button type="button" data-value="Belonging" aria-pressed="false">Belonging</button>
+        <button type="button" data-value="Recognition" aria-pressed="false">Recognition</button>
+      </div>
+      <p class="value-status" id="valueStatus" aria-live="polite">0 of 4 chosen. Do not choose what sounds admirable. Choose what costs you something when it is absent.</p>
+
+      <article class="calendar-test reveal">
+        <span class="test-number">01 / THE CALENDAR TEST</span>
+        <h3>If somebody studied your calendar and spending—not your intentions—which values would they say you actually live by?</h3>
+        <textarea id="calendarAnswer" maxlength="500" placeholder="The honest answer, not the flattering answer…"></textarea>
+      </article>
+    </section>
+
+    <section class="alignment-section section">
+      <div class="alignment-grid">
+        <div class="alignment-copy reveal">
+          <p class="eyebrow"><span>Room two</span> The alignment check</p>
+          <h2>Test the goal.<br>Do not worship it.</h2>
+          <p>A goal is not sacred because an earlier version of you chose it. It is allowed to be reviewed, refined or released.</p>
+          <blockquote>Are you committed to the purpose—or only attached to the original plan?</blockquote>
+        </div>
+
+        <form class="alignment-card reveal" id="alignmentForm">
+          <p class="card-code">ALIGNMENT FILE / CURRENT</p>
+          <label for="goalInput">The goal or decision I am questioning</label>
+          <input id="goalInput" maxlength="120" placeholder="Example: leave my job, begin a degree, grow the business…" required>
+
+          <div class="slider-field">
+            <label for="valueRange">It reflects my chosen values <output id="valueOutput">5</output>/10</label>
+            <input id="valueRange" type="range" min="0" max="10" value="5">
+          </div>
+          <div class="slider-field">
+            <label for="realityRange">It is practical in my current reality <output id="realityOutput">5</output>/10</label>
+            <input id="realityRange" type="range" min="0" max="10" value="5">
+          </div>
+          <div class="slider-field">
+            <label for="energyRange">It gives more energy than it drains <output id="energyOutput">5</output>/10</label>
+            <input id="energyRange" type="range" min="0" max="10" value="5">
+          </div>
+
+          <button class="button card-button" type="submit">Read the tension <span>↗</span></button>
+          <p class="privacy-line">Your answers stay in this browser.</p>
+        </form>
+      </div>
+
+      <div class="alignment-result reveal" id="alignmentResult" aria-live="polite">
+        <span>NO GOAL TESTED YET</span>
+        <p>Alignment is not always a yes or no. Sometimes the answer is “not this way,” “not yet,” or “build the bridge first.”</p>
+      </div>
+    </section>
+
+    <section class="reality-section section">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark"><span>Room three</span> Desire meets reality</p>
+        <h2>“I want to leave” is a feeling.<br>What is the decision?</h2>
+        <p>Being practical is not betraying your purpose. A bridge is not the destination, but it may be how you reach it without destroying your stability.</p>
+      </div>
+
+      <div class="job-case reveal">
+        <div class="case-label"><span>CASE FILE</span><strong>THE JOB I JUST STARTED</strong></div>
+        <div class="case-story">
+          <p>“I want to leave this job. It does not feel like me. But I have only just started, I am not financially stable and I do not yet have another option.”</p>
+        </div>
+        <div class="case-questions">
+          <article><span>01</span><p>Is the work genuinely misaligned—or are you experiencing the discomfort of being new and unskilled?</p></article>
+          <article><span>02</span><p>What specific evidence would confirm that the role is wrong, rather than simply difficult?</p></article>
+          <article><span>03</span><p>What financial runway, skill or alternative must exist before leaving becomes responsible?</p></article>
+          <article><span>04</span><p>What can you test, learn or build outside work while the current role funds the transition?</p></article>
+          <article><span>05</span><p>Are you staying strategically—or staying because fear prefers a respectable excuse?</p></article>
+          <article><span>06</span><p>What date will you review the decision so that “not yet” does not quietly become “never”?</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="question-room section" id="question-room">
+      <div class="room-top reveal">
+        <div>
+          <p class="eyebrow"><span>Room four</span> The direct-question room</p>
+          <h2>No vague wondering.<br>Choose where to look.</h2>
+        </div>
+        <button class="button room-random" id="randomRoom" type="button">Choose the question I may be avoiding <span>?</span></button>
+      </div>
+
+      <div class="filters" id="filters" aria-label="Question categories"></div>
+      <div class="question-stage reveal">
+        <div class="question-meta"><span id="questionCategory">PURPOSE</span><span id="questionNumber">QUESTION 01</span></div>
+        <h3 id="questionText">If nobody could see or praise your life, which parts would you still choose?</h3>
+        <textarea id="answerText" maxlength="900" placeholder="Write the first honest answer. You can make it more articulate later."></textarea>
+        <div class="question-actions">
+          <button type="button" id="previousQuestion">← Previous</button>
+          <button type="button" id="saveAnswer">Save this answer <span>+</span></button>
+          <button type="button" id="nextQuestion">Next question →</button>
+        </div>
+        <p class="save-status" id="saveStatus" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="perspective-section section">
+      <div class="perspective-grid">
+        <div class="perspective-copy reveal">
+          <p class="eyebrow dark"><span>Room five</span> Stand up and look again</p>
+          <h2>A boundary and an open mind can exist in the same person.</h2>
+          <p>You can refuse disrespect without assuming every disagreement is disrespect. You can defend yourself without becoming unable to hear. You can understand where someone is coming from without handing them control of your direction.</p>
+        </div>
+        <div class="two-lenses reveal">
+          <article>
+            <span>MY LENS</span>
+            <h3>What exactly was said or done?</h3>
+            <p>Separate the observable event from the story your hurt, fear or pride added to it.</p>
+          </article>
+          <div class="lens-bridge">AND</div>
+          <article>
+            <span>THEIR LENS</span>
+            <h3>What might they be protecting, fearing or misunderstanding?</h3>
+            <p>Understanding the source does not make harmful behaviour acceptable. It makes your response more deliberate.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="boundary-prompts reveal">
+        <p>Before you respond to criticism, ask:</p>
+        <ul>
+          <li><span>01</span> Is there useful information here, even if the delivery was poor?</li>
+          <li><span>02</span> Am I being corrected, controlled or disrespected? These require different responses.</li>
+          <li><span>03</span> What would standing up for myself sound like without performing anger?</li>
+          <li><span>04</span> Am I explaining my decision—or asking permission from someone who does not live with its consequences?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="humility-section section">
+      <div class="humility-art reveal" aria-hidden="true">
+        <div class="confidence-shape">I KNOW</div>
+        <div class="correction-line">↓</div>
+        <div class="wisdom-shape">I MAY BE WRONG</div>
+      </div>
+      <div class="humility-copy reveal">
+        <p class="eyebrow"><span>Room six</span> Ego under examination</p>
+        <h2>Confidence is useful.<br>Uncorrectable confidence is expensive.</h2>
+        <p>Were you ever completely certain about something that later humbled you? What did reality show you that praise, intelligence or confidence could not?</p>
+        <div class="humility-questions">
+          <button type="button" data-humble="When did being the smartest person in the room stop you from learning from it?">When did feeling “smart” stop you learning?</button>
+          <button type="button" data-humble="Which mistake do you still explain away because admitting it would change the story you tell about yourself?">Which mistake do you still explain away?</button>
+          <button type="button" data-humble="Who do you criticise most quickly—and what might they expose in you?">Who do you criticise most quickly?</button>
+          <button type="button" data-humble="What do you pretend to understand because asking would make you feel inexperienced?">What do you pretend to understand?</button>
+        </div>
+        <p class="humility-selected" id="humilitySelected">Choose the question that makes you want to defend yourself. Start there.</p>
+      </div>
+    </section>
+
+    <section class="action-section section">
+      <div class="action-inner reveal">
+        <p class="eyebrow dark"><span>The exit question</span> Insight must become behaviour</p>
+        <h2>If your most honest answer is true,<br>what must change next?</h2>
+        <form id="actionForm">
+          <label for="actionInput">Within the next seven days, I will…</label>
+          <input id="actionInput" maxlength="180" placeholder="Have the conversation, calculate the runway, apply, apologise, say no…" required>
+          <button type="submit">Commit this answer <span>↗</span></button>
+        </form>
+        <p id="actionResult" aria-live="polite">A question that changes nothing may only be sophisticated avoidance.</p>
+      </div>
+    </section>
+
+    <section class="saved-section section">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span>Your private file</span> Answers worth returning to</p>
+        <h2>The questions you answered.</h2>
+        <p>These notes are stored only in this browser. Read for patterns, contradictions and the answer you keep circling.</p>
+      </div>
+      <div class="saved-list" id="savedList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">?</span><span>THE WONDER<br><em>VERSE</em></span></a>
+    <p>Question the goal. Respect reality. Notice your ego. Then choose the next honest action.</p>
+    <div class="footer-links"><a href="about.html">Our story</a><a href="spark.html">Begin again</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
+    <small>© 2026 The Wonder Verse Project · Better questions. More honest choices.</small>
+  </footer>
 </body>
 </html>
- 
