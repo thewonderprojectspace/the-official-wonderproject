@@ -37,3 +37,28 @@ footer{padding:75px max(5vw,2rem) 35px;display:grid;grid-template-columns:1fr 1f
 @media(max-width:950px){.nav-links{position:absolute;display:none;top:86px;left:1.5rem;right:1.5rem;padding:1rem;flex-direction:column;background:#251b48}.nav-links.open{display:flex}.nav-cta{display:none}.menu-button{margin-left:auto;display:grid;gap:6px;border:0;background:none}.menu-button span{display:block;width:25px;height:1px;background:#fff}.hero{grid-template-columns:1fr;padding-top:150px}.hero-copy{margin:0}.moon-scene{min-height:500px}.section-intro,.educator-panel{grid-template-columns:1fr}.world-grid{grid-template-columns:repeat(2,1fr)}.educator-panel>div:last-child{order:-1}.pathway{grid-template-columns:55px 1fr 30px}.pathway p{grid-column:2/4;margin-top:-1rem}.method-row article{padding-right:1.5rem}}
 @media(max-width:620px){.nav{width:calc(100% - 2rem)}.brand-moon{width:34px;height:34px}.hero{padding-left:1.25rem;padding-right:1.25rem;min-height:auto}.hero h1{font-size:3.65rem}.moon-scene{min-height:410px}.moon-caption{right:5%;bottom:-1%}.manifesto{padding:90px 1.25rem}.world-section,.tiny-method,.pathway-section{padding:90px 1.25rem}.section-intro{gap:1.5rem}.world-grid{grid-template-columns:1fr}.world-card{min-height:420px}.method-row{grid-template-columns:1fr;gap:3rem}.pathway{grid-template-columns:42px 1fr 25px;gap:1rem}.pathway p{grid-column:2/4}.educator-panel{padding:80px 1.25rem}.paper-moon{width:270px}.question-panel h2 br{display:none}footer{grid-template-columns:1fr}.footer-brand{grid-row:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.moon-scene img{animation:none}.world-card{transition:none}}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-logo-image {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .site-logo-image {
+    width: 50px;
+    height: 50px;
+  }
+}
