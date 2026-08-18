@@ -163,9 +163,36 @@ footer > p { max-width: 520px; margin: 0; color: #b5acc1; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 2rem; font-size: .71rem; letter-spacing: .1em; text-transform: uppercase; }
 footer small { grid-column: 1 / -1; padding-top: 2rem; color: #7f768c; border-top: 1px solid rgba(255, 255, 255, .14); font-size: .64rem; }
 
-.reveal { opacity: 0; transform: translateY(25px); transition: opacity .75s ease, transform .75s ease; }
-.reveal.visible { opacity: 1; transform: none; }
-@keyframes float { 50% { transform: translateY(-14px) rotate(1deg); } }
+/* Content is visible by default */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* JavaScript adds this before observing */
+.reveal.reveal-ready {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+/* Revealed on screen */
+.reveal.reveal-ready.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.reveal-ready,
+  .reveal.reveal-ready.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 
 @media (max-width: 980px) {
     .hero { grid-template-columns: 1fr; }
