@@ -10,58 +10,110 @@
     gtag('config', 'G-EF9DVH7JQN');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The story behind The Wonder Verse: a gentle but honest invitation to stay curious, choose what matters and act on the life you want to create.">
-  <meta name="theme-color" content="#17122f">
-  <title>Our Story | The Wonder Verse</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="about.css">
-  <script src="about.js" defer></script>
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="description"
+  content="The story behind The Wonder Verse: a gentle but honest invitation to stay curious, choose what matters and act on the life you want to create."
+>
+
+<meta name="theme-color" content="#fffaf0">
+
+<title>Our Story | The Wonder Verse</title>
+
+<!-- Browser-tab logo -->
+<link
+  rel="icon"
+  type="image/png"
+  href="images/wonder-verse-moon-pencil-logo.png"
+>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+  rel="stylesheet"
+>
+
+<!-- General website styling -->
+<link rel="stylesheet" href="style.css">
+
+<!-- About-page styling -->
+<link rel="stylesheet" href="about.css">
+
+<!-- Navigation styling must remain last -->
+<link rel="stylesheet" href="wonder-verse-navbar.css">
+
+<!-- About-page functionality -->
+<script src="about.js" defer></script>
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">Skip to our story</a>
 
-  <header>
-  <nav class="shell">
-
-    <!-- Wonder Verse logo -->
-    <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
-      <img
-        src="images/wonder-verse-moon-pencil-logo.png"
-        alt=""
-        class="site-logo-image"
-      >
-      <span>Wonder Verse</span>
-    </a>
-
-    <!-- Mobile menu button -->
-    <button
-      class="menu"
-      id="menu"
-      type="button"
-      aria-expanded="false"
-      aria-controls="navlinks"
+  <header class="wv-header">
+    <nav
+      class="wv-nav"
+      data-wv-nav
+      aria-label="Main navigation"
     >
-      Menu
-    </button>
 
-    <!-- Navigation links -->
-    <div class="navlinks" id="navlinks">
-      <a href="index.html">Start Here</a>
-      <a href="about.html">About</a>
-      <a href="books.html">Books</a>
-      <a href="resources.html">Explore</a>
-      <a href="wonderverse.html">Wonder</a>
-      <a href="schools.html">Schools</a>
-      <a href="contact.html">Contact</a>
-    </div>
+      <!-- Wonder Verse brand -->
+      <a
+        href="index.html"
+        class="wv-brand"
+        aria-label="Wonder Verse homepage"
+      >
+        <span class="wv-brand-image-wrap">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt=""
+            class="wv-brand-image"
+          >
+        </span>
 
-  </nav>
-</header>
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Wonder Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        class="wv-menu"
+        type="button"
+        data-wv-menu
+        aria-expanded="false"
+        aria-controls="wvNavLinks"
+        aria-label="Open navigation menu"
+      >
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div
+        class="wv-links"
+        id="wvNavLinks"
+        data-wv-links
+      >
+        <a href="index.html">Start Here</a>
+
+        <!-- Current page -->
+        <a href="about.html" aria-current="page">Our Story</a>
+
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="questions.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </nav>
+  </header>
 
   <main id="main-content">
     <section class="hero">
@@ -232,5 +284,6 @@
     <div class="footer-links"><a href="about.html">Our story</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
     <small>© 2026 The Wonder Verse Project · Made somewhere between the moon and imagination.</small>
   </footer>
+  <script src="wonder-verse-navbar.js"></script>
 </body>
 </html>
