@@ -25,28 +25,43 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to our story</a>
 
-  <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="The Wonder Verse homepage">
-        <span class="brand-moon" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>THE WONDER<br><em>VERSE</em></span>
-      </a>
+  <header>
+  <nav class="shell">
 
-      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
-        <span></span><span></span>
-      </button>
+    <!-- Wonder Verse logo -->
+    <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+        class="site-logo-image"
+      >
+      <span>Wonder Verse</span>
+    </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="index.html">Start here</a>
-        <a class="active" href="about.html">Our story</a>
-        <a href="books.html">Books</a>
-        <a href="resources.html">Explore</a>
-        <a href="schools.html">Schools</a>
-      </div>
+    <!-- Mobile menu button -->
+    <button
+      class="menu"
+      id="menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navlinks"
+    >
+      Menu
+    </button>
 
-      <a class="nav-cta" href="sign-in.html">My Wonder Space <span>↗</span></a>
-    </nav>
-  </header>
+    <!-- Navigation links -->
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">Start Here</a>
+      <a href="about.html">About</a>
+      <a href="books.html">Books</a>
+      <a href="resources.html">Explore</a>
+      <a href="wonderverse.html">Wonder</a>
+      <a href="schools.html">Schools</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </nav>
+</header>
 
   <main id="main-content">
     <section class="hero">
