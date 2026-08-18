@@ -225,3 +225,27 @@ footer small { grid-column: 1 / -1; padding-top: 2rem; color: #96a293; border-to
   .mood-blob { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-logo-image {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .site-logo-image {
+    width: 50px;
+    height: 50px;
+  }
+}
