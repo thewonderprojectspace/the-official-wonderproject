@@ -197,5 +197,15 @@
     <div><a href="about.html">About</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="mailto:tiwariisha72@gmail.com">Say hello</a></div>
     <small>© 2026 The Wonder Verse Project · Made somewhere between the moon and imagination.</small>
   </footer>
+      <script>
+  const menuButton = document.getElementById("menuButton");
+  const navLinks = document.getElementById("navLinks");
+
+  menuButton.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuButton.setAttribute("aria-expanded", isOpen);
+  });
+</script>
 </body>
 </html>
