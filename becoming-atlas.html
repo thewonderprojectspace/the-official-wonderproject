@@ -12,8 +12,68 @@
 </head>
 <body>
 <main>
-  <header class="topbar"><a class="brand" href="#top"><span class="brand-star">✦</span> Wonder Verse</a><nav aria-label="Page navigation"><a href="#journey">The journey</a><a href="#atlas">My atlas</a></nav><div class="save-state"><span class="save-dot"></span><span id="saveStatus">Your words stay on this device.</span></div></header>
-  <section class="hero" id="top"><div class="hero-grain"></div><div class="hero-copy"><p class="eyebrow">An inner cartography · by Wonder Verse</p><h1>The Becoming <em>Atlas</em></h1><p class="lead">A place to map the mistakes that matured you, the instincts that moved you, and the brave beginnings that still belong to you.</p><div class="hero-actions"><a class="button primary" href="#journey">Begin where you are <span>→</span></a><a class="text-link" href="#atlas">Build my timeline <span>↓</span></a></div><p class="permission"><span>◌</span> You do not need to have it all figured out. You only need to be honest enough to take the next step.</p></div><div class="hero-art">
+  <header class="wv-header">
+    <nav
+      class="wv-nav"
+      data-wv-nav
+      aria-label="Main navigation"
+    >
+
+      <!-- Wonder Verse brand -->
+      <a
+        href="index.html"
+        class="wv-brand"
+        aria-label="Wonder Verse homepage"
+      >
+        <span class="wv-brand-image-wrap">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt=""
+            class="wv-brand-image"
+          >
+        </span>
+
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Wonder Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        class="wv-menu"
+        type="button"
+        data-wv-menu
+        aria-expanded="false"
+        aria-controls="wvNavLinks"
+        aria-label="Open navigation menu"
+      >
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div
+        class="wv-links"
+        id="wvNavLinks"
+        data-wv-links
+      >
+        <a href="index.html">Start Here</a>
+
+        <!-- Current page -->
+        <a href="becoming-atlas.html" aria-current="page">Becoming Atlas</a>
+
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="index#pathways.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </nav>
+  </header>
+  <section class="hero" id="top"><div class="hero-grain"></div><div class="hero-copy">
+    <p class="eyebrow">An inner cartography · by Wonder Verse</p><h1>The Becoming <em>Atlas</em></h1><p class="lead">A place to map the mistakes that matured you, the instincts that moved you, and the brave beginnings that still belong to you.</p><div class="hero-actions"><a class="button primary" href="#journey">Begin where you are <span>→</span></a><a class="text-link" href="#atlas">Build my timeline <span>↓</span></a></div><p class="permission"><span>◌</span> You do not need to have it all figured out. You only need to be honest enough to take the next step.</p></div><div class="hero-art">
     <svg class="orbit-mark" viewBox="0 0 460 460" role="img" aria-label="An abstract compass made of orbit lines"><circle cx="230" cy="230" r="126" class="wash"/><ellipse cx="230" cy="230" rx="202" ry="88" class="orbit one"/><ellipse cx="230" cy="230" rx="202" ry="88" class="orbit two" transform="rotate(58 230 230)"/><ellipse cx="230" cy="230" rx="202" ry="88" class="orbit three" transform="rotate(118 230 230)"/><path d="M230 92l21 117 117 21-117 21-21 117-21-117-117-21 117-21z" class="compass"/><circle cx="230" cy="230" r="14" class="core"/><circle cx="80" cy="283" r="8" class="dot"/><circle cx="351" cy="104" r="6" class="dot"/><circle cx="374" cy="315" r="10" class="dot gold"/></svg><span class="art-note note-one">not a straight line</span><span class="art-note note-two">still becoming</span></div></section>
   <section class="manifesto"><p class="eyebrow">Before you begin</p><blockquote>“Self-discovery is not finding a hidden, finished version of you. It is noticing what is true—and choosing what to do with it.”</blockquote><div class="manifesto-grid"><p>This is not a test, a personality label or a demand to turn every wound into a lesson. It is a private place to think with precision.</p><p>Move slowly. Answer what is alive. Leave what is not. Your unfinished answers are allowed to remain unfinished.</p></div></section>
   <section class="journey" id="journey"><div class="section-head"><div><p class="eyebrow">Part one · Look back clearly</p><h2>Five turns on the road to yourself.</h2></div><p class="progress-copy"><strong id="progress">0</strong> of 20 reflections held</p></div><div class="chapter-list" id="chapters"></div></section>
