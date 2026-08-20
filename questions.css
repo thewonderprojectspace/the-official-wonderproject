@@ -201,11 +201,27 @@ footer small { grid-column: 1 / -1; padding-top: 2rem; color: #89969d; border-to
   }
 }
  
-  .hero, .alignment-grid, .perspective-grid, .humility-section { grid-template-columns: 1fr; }
-  .hero-copy { margin-left: 0; }
-  .brain-map { min-height: 550px; }
-  .room-top { grid-template-columns: 1fr; }
+@media (max-width: 980px) {
+  .hero,
+  .alignment-grid,
+  .perspective-grid,
+  .humility-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    margin-left: 0;
+  }
+
+  .brain-map {
+    min-height: 550px;
+  }
+
+  .room-top {
+    grid-template-columns: 1fr;
+  }
 }
+
 
 @media (max-width: 680px) {
   .navbar { width: calc(100% - 2rem); }
@@ -377,4 +393,12 @@ footer small { grid-column: 1 / -1; padding-top: 2rem; color: #89969d; border-to
     padding: 11px 13px;
     border-radius: 10px;
   }
+}
+/* Keep all Questionarium content visible */
+.reveal,
+.reveal.reveal-ready,
+.reveal.reveal-ready.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
