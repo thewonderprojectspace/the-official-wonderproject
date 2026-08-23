@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Oops Observatory by Wonder Verse — a warm, private space to examine mistakes, insecurity, failure and the strange courage required to try again."
+  >
+
+  <title>Oops Observatory | Wonder Verse</title>
+
+  <!-- Browser tab icon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- General site styling -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Page styling -->
+  <link rel="stylesheet" href="oops-observatory.css">
+
+  <!-- Navbar remains last -->
+  <link rel="stylesheet" href="wonder-verse-navbar.css">
+
+  <!-- Page functionality -->
+  <script src="oops-observatory.js" defer></script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">
+    Skip to the observatory
+  </a>
+
+  <!-- =====================================================
+       NAVIGATION
+  ====================================================== -->
+
+  <header class="wv-header">
+
+    <nav
+      class="wv-nav"
+      data-wv-nav
+      aria-label="Main navigation"
+    >
+
+      <a
+        href="index.html"
+        class="wv-brand"
+        aria-label="Wonder Verse homepage"
+      >
+
+        <span class="wv-brand-image-wrap">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt=""
+            class="wv-brand-image"
+          >
+        </span>
+
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Wonder Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+
+      </a>
+
+      <button
+        class="wv-menu"
+        type="button"
+        data-wv-menu
+        aria-expanded="false"
+        aria-controls="wvNavLinks"
+        aria-label="Open navigation menu"
+      >
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
+
+      <div
+        class="wv-links"
+        id="wvNavLinks"
+        data-wv-links
+      >
+        <a href="index.html">Start Here</a>
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="questions.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </nav>
+  </header>
+
+
+  <main id="main-content">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="oops-hero" id="top">
+
+      <div class="oops-hero-noise" aria-hidden="true"></div>
+
+      <div class="oops-hero-copy">
+
+        <p class="eyebrow">
+          Wonder Verse field station · mistakes welcome
+        </p>
+
+        <h1>
+          The Oops
+          <em>Observatory.</em>
+        </h1>
+
+        <p class="oops-lead">
+          A place to study the things that went spectacularly,
+          awkwardly, painfully or hilariously wrong — without turning
+          them into proof that you should stop.
+        </p>
+
+        <div class="oops-hero-actions">
+
+          <a
+            href="#observations"
+            class="button oops-primary"
+          >
+            Inspect the wreckage
+            <span>→</span>
+          </a>
+
+          <a
+            href="#failure-wall"
+            class="oops-text-link"
+          >
+            See the failure wall
+            <span>↓</span>
+          </a>
+
+        </div>
+
+        <p class="oops-permission">
+          <span aria-hidden="true">⊘</span>
+
+          Scientific finding: trying something difficult may result
+          in temporary embarrassment, suspicious decisions and
+          character development.
+        </p>
+
+      </div>
+
+
+      <div class="oops-hero-art" aria-hidden="true">
+
+        <div class="oops-sun"></div>
+
+        <svg
+          class="oops-orbit"
+          viewBox="0 0 500 500"
+        >
+          <circle cx="250" cy="250" r="172" class="ring ring-one"/>
+          <circle cx="250" cy="250" r="118" class="ring ring-two"/>
+
+          <ellipse
+            cx="250"
+            cy="250"
+            rx="220"
+            ry="77"
+            class="orbit-line"
+            transform="rotate(22 250 250)"
+          />
+
+          <ellipse
+            cx="250"
+            cy="250"
+            rx="220"
+            ry="77"
+            class="orbit-line"
+            transform="rotate(101 250 250)"
+          />
+
+          <path
+            class="zig"
+            d="M106 338L166 279L205 310L270 204L315 250L395 138"
+          />
+
+          <circle cx="106" cy="338" r="9" class="planet"/>
+          <circle cx="270" cy="204" r="12" class="planet"/>
+          <circle cx="395" cy="138" r="7" class="planet"/>
+          <circle cx="250" cy="250" r="18" class="core"/>
+        </svg>
+
+        <span class="oops-note note-a">
+          this looked better in my head
+        </span>
+
+        <span class="oops-note note-b">
+          plot twist: survived
+        </span>
+
+        <span class="oops-note note-c">
+          data acquired
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OPENING
+    ====================================================== -->
+
+    <section class="oops-manifesto">
+
+      <p class="eyebrow">
+        Important observational protocol
+      </p>
+
+      <blockquote>
+        “The people who look fearless often have a much larger
+        archive of things that did not work.”
+      </blockquote>
+
+      <div class="oops-manifesto-grid">
+
+        <p>
+          Confidence is rarely built by avoiding failure. It is often
+          built by failing, discovering that you are still here,
+          adjusting something and walking back into the arena with
+          slightly better information.
+        </p>
+
+        <p>
+          This is not a page for romanticising pain. Some things hurt.
+          Some mistakes cost us. Some seasons genuinely flatten us.
+          But even rock bottom can become a strangely useful place
+          from which to examine the architecture of your life.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FAILURE EQUATION
+    ====================================================== -->
+
+    <section class="failure-equation">
+
+      <div class="equation-copy">
+
+        <p class="eyebrow">
+          A deeply unofficial formula
+        </p>
+
+        <h2>
+          Trial + error usually contains
+          <em>way more error</em> than advertised.
+        </h2>
+
+      </div>
+
+      <div class="equation-board">
+
+        <div class="equation-card">
+          <span class="equation-symbol">01</span>
+          <strong>I tried.</strong>
+          <p>
+            Excellent. We already have more data than the version of
+            you who only imagined it.
+          </p>
+        </div>
+
+        <div class="equation-plus">+</div>
+
+        <div class="equation-card">
+          <span class="equation-symbol">17</span>
+          <strong>It went wrong.</strong>
+          <p>
+            Potentially several times. Occasionally in front of
+            witnesses.
+          </p>
+        </div>
+
+        <div class="equation-plus">+</div>
+
+        <div class="equation-card">
+          <span class="equation-symbol">01</span>
+          <strong>I noticed why.</strong>
+          <p>
+            Congratulations. The catastrophe has been converted into
+            information.
+          </p>
+        </div>
+
+        <div class="equation-equals">=</div>
+
+        <div class="equation-result">
+          <span>↗</span>
+          <strong>Growth with terrible PR.</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REFLECTION OBSERVATIONS
+    ====================================================== -->
+
+    <section
+      class="observations"
+      id="observations"
+    >
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">
+            Observatory log · examine without prosecution
+          </p>
+
+          <h2>
+            Put the failure under the telescope.
+          </h2>
+        </div>
+
+        <p class="progress-copy">
+          <strong id="oopsProgress">0</strong>
+          of 18 observations recorded
+        </p>
+
+      </div>
+
+      <div
+        class="observation-list"
+        id="observationChapters"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MIRROR SECTION
+    ====================================================== -->
+
+    <section class="mirror-room">
+
+      <div class="mirror-copy">
+
+        <p class="eyebrow">
+          The uncomfortable mirror room
+        </p>
+
+        <h2>
+          Maybe the failure was not the only thing that hurt.
+        </h2>
+
+        <p>
+          Sometimes the event is painful. Sometimes what hurts more is
+          what it appears to confirm about us.
+        </p>
+
+      </div>
+
+      <div
+        class="mirror-grid"
+        id="mirrorFields"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INSECURITY FLIP
+    ====================================================== -->
+
+    <section class="insecurity-lab">
+
+      <div class="lab-intro">
+
+        <p class="eyebrow">
+          Experimental chamber
+        </p>
+
+        <h2>
+          Can the insecurity become equipment?
+        </h2>
+
+        <p>
+          Not every insecurity contains wisdom. Some are simply loud.
+          But occasionally the thing you fear reveals exactly what you
+          care about — and where your next training ground is.
+        </p>
+
+      </div>
+
+      <div class="flip-board">
+
+        <label class="flip-field">
+
+          <span>
+            The insecurity
+          </span>
+
+          <textarea
+            id="insecurityInput"
+            rows="4"
+            placeholder="Example: I am scared people will realise I have no idea what I am doing."
+          ></textarea>
+
+        </label>
+
+
+        <div class="flip-arrow" aria-hidden="true">
+          ↯
+        </div>
+
+
+        <label class="flip-field">
+
+          <span>
+            What might it be pointing towards?
+          </span>
+
+          <textarea
+            id="signalInput"
+            rows="4"
+            placeholder="Maybe I care deeply about becoming competent. Maybe I need practice, mentorship or evidence."
+          ></textarea>
+
+        </label>
+
+
+        <div class="flip-arrow" aria-hidden="true">
+          ↯
+        </div>
+
+
+        <label class="flip-field">
+
+          <span>
+            Turn it into an advantage
+          </span>
+
+          <textarea
+            id="advantageInput"
+            rows="4"
+            placeholder="What can you do because you know this insecurity exists?"
+          ></textarea>
+
+        </label>
+
+      </div>
+
+      <button
+        id="saveFlip"
+        class="button oops-dark"
+        type="button"
+      >
+        Save this experiment
+        <span>＋</span>
+      </button>
+
+      <p
+        id="flipStatus"
+        class="small-status"
+        aria-live="polite"
+      ></p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FAILURE WALL
+    ====================================================== -->
+
+    <section
+      class="failure-wall"
+      id="failure-wall"
+    >
+
+      <div class="wall-heading">
+
+        <div>
+          <p class="eyebrow">
+            Private failure wall
+          </p>
+
+          <h2>
+            Things that did not work.
+            <br>
+            <em>And what they gave you anyway.</em>
+          </h2>
+        </div>
+
+        <p>
+          Add the experiments, rejected applications, awkward
+          conversations, abandoned ideas, failed routines and
+          magnificent disasters.
+        </p>
+
+      </div>
+
+
+      <div class="failure-builder">
+
+        <label>
+
+          <span>
+            The incident
+          </span>
+
+          <input
+            id="failureTitle"
+            type="text"
+            placeholder="What went wrong?"
+          >
+
+        </label>
+
+
+        <label>
+
+          <span>
+            Approximate damage level
+          </span>
+
+          <select id="failureLevel">
+            <option>Minor wobble</option>
+            <option>Embarrassing but survivable</option>
+            <option>Character development</option>
+            <option>Absolute plot twist</option>
+            <option>Rock-bottom archaeology</option>
+          </select>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            What did it expose?
+          </span>
+
+          <input
+            id="failureExposed"
+            type="text"
+            placeholder="A blind spot, fear, missing skill, bad assumption…"
+          >
+
+        </label>
+
+
+        <label>
+
+          <span>
+            What is useful now?
+          </span>
+
+          <input
+            id="failureUseful"
+            type="text"
+            placeholder="The lesson, boundary, skill or decision you keep."
+          >
+
+        </label>
+
+
+        <button
+          class="button oops-primary"
+          id="addFailure"
+          type="button"
+        >
+          Log the oops
+          <span>＋</span>
+        </button>
+
+      </div>
+
+
+      <div
+        id="failureEntries"
+        class="failure-entry-grid"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VISION SECTION
+    ====================================================== -->
+
+    <section class="vision-section">
+
+      <div class="vision-glow"></div>
+
+      <div class="vision-inner">
+
+        <p class="eyebrow">
+          A note for the idea nobody else sees yet
+        </p>
+
+        <h2>
+          Your vision does not require unanimous approval
+          before it becomes worth exploring.
+        </h2>
+
+        <p>
+          People may not understand what you are building because
+          they are looking through the architecture of their own life,
+          not yours. Listen carefully to useful criticism. Learn from
+          evidence. Change your method when necessary.
+        </p>
+
+        <p>
+          But do not confuse
+          <strong>“they cannot see it yet”</strong>
+          with
+          <strong>“there is nothing there.”</strong>
+        </p>
+
+        <div class="vision-question">
+
+          <label>
+
+            <span>
+              What possibility can you see that you are scared to
+              take seriously?
+            </span>
+
+            <textarea
+              id="visionInput"
+              rows="5"
+              placeholder="Write the vision before your inner committee arrives with PowerPoint slides explaining why it is unrealistic."
+            ></textarea>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEXT EXPERIMENT
+    ====================================================== -->
+
+    <section class="next-experiment">
+
+      <div class="next-copy">
+
+        <p class="eyebrow">
+          Before leaving the laboratory
+        </p>
+
+        <h2>
+          Do not promise yourself perfection.
+          Design the next experiment.
+        </h2>
+
+      </div>
+
+      <div class="experiment-grid">
+
+        <label>
+
+          <span>
+            What will you try?
+          </span>
+
+          <textarea
+            id="nextTry"
+            rows="3"
+            placeholder="Something real, not a six-month fantasy plan."
+          ></textarea>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            What would count as useful evidence?
+          </span>
+
+          <textarea
+            id="nextEvidence"
+            rows="3"
+            placeholder="What will tell you whether to continue, change or stop?"
+          ></textarea>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            What are you willing to be bad at temporarily?
+          </span>
+
+          <textarea
+            id="nextBadAt"
+            rows="3"
+            placeholder="Beginnerhood requires consent."
+          ></textarea>
+
+        </label>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CLOSING
+    ====================================================== -->
+
+    <section class="oops-closing">
+
+      <div class="closing-chaos" aria-hidden="true">
+        <span>×</span>
+        <span>↯</span>
+        <span>○</span>
+        <span>?</span>
+        <span>↗</span>
+      </div>
+
+      <div class="oops-closing-copy">
+
+        <p class="eyebrow">
+          Observatory conclusion
+        </p>
+
+        <h2>
+          You may fail again.
+          <br>
+          This is not necessarily bad news.
+        </h2>
+
+        <p>
+          The aim was never to become somebody who never gets things
+          wrong. The aim is to become someone who can notice,
+          recover, learn, repair and keep creating.
+        </p>
+
+        <p class="closing-line">
+          Make the thing.
+          Ask the question.
+          Submit the application.
+          Start badly.
+          Collect data.
+          Adjust.
+          Continue.
+        </p>
+
+      </div>
+
+      <div class="closing-actions">
+
+        <button
+          id="downloadObservatory"
+          class="button oops-light"
+          type="button"
+        >
+          Save my observations
+          <span>↓</span>
+        </button>
+
+        <p id="saveStatus">
+          Your reflections stay privately on this device.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="oops-footer">
+
+    <span>
+      ✦ Wonder Verse
+    </span>
+
+    <p>
+      A universe for curious people who are still figuring things out.
+    </p>
+
+    <a href="#top">
+      Back to questionable decisions ↑
+    </a>
+
+  </footer>
+
+
+  <script src="wonder-verse-navbar.js"></script>
+
+</body>
+</html>
