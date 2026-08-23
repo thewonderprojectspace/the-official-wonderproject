@@ -1,1316 +1,474 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { window.dataLayer.push(arguments); }
-        gtag("js", new Date());
-        gtag("config", "G-EF9DVH7JQN");
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A calm Wonder Verse space for teachers, medical students, supervisors and school communities to reflect, share challenges and shape affordable workshops.">
-    <meta name="theme-color" content="#07101f">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <title>Teacher Constellation | The Wonder Verse Project</title>
-
-    <style>
-        :root {
-            --space: #07101f;
-            --space-deep: #040914;
-            --space-soft: #0d1a2c;
-            --panel: rgba(16, 31, 49, .78);
-            --panel-strong: rgba(11, 24, 40, .96);
-            --line: rgba(220, 231, 244, .14);
-            --text: #f5f8f7;
-            --muted: #bccbc9;
-            --sage: #a9d5c1;
-            --sage-deep: #6aa88f;
-            --lavender: #c5b9ee;
-            --moon: #f4ddb3;
-            --rose: #e7b9c5;
-            --blue: #a8cce3;
-            --shadow: 0 24px 70px rgba(0, 0, 0, .32);
-            --radius-lg: 30px;
-            --radius-md: 20px;
-            --page-width: 1180px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 12% 4%, rgba(169, 213, 193, .15), transparent 28%),
-                radial-gradient(circle at 88% 18%, rgba(197, 185, 238, .14), transparent 25%),
-                radial-gradient(circle at 54% 88%, rgba(168, 204, 227, .10), transparent 32%),
-                var(--space);
-            font-family: "Nunito", sans-serif;
-            line-height: 1.7;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-            opacity: .52;
-            background-image:
-                radial-gradient(circle, rgba(255, 255, 255, .86) 0 1px, transparent 1.35px),
-                radial-gradient(circle, rgba(169, 213, 193, .72) 0 1px, transparent 1.45px),
-                radial-gradient(circle, rgba(197, 185, 238, .65) 0 1px, transparent 1.45px);
-            background-position: 0 0, 62px 82px, 138px 38px;
-            background-size: 128px 128px, 198px 198px, 270px 270px;
-            animation: starDrift 100s linear infinite;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            font: inherit;
-        }
-
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :focus-visible {
-            outline: 3px solid var(--sage);
-            outline-offset: 3px;
-        }
-
-        .skip-link {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 9999;
-            padding: .75rem 1rem;
-            color: #07101f;
-            background: var(--moon);
-            border-radius: 999px;
-            transform: translateY(-150%);
-        }
-
-        .skip-link:focus {
-            transform: translateY(0);
-        }
-
-        h1,
-        h2,
-        h3,
-        .site-logo,
-        .button {
-            font-family: "Space Grotesk", sans-serif;
-        }
-
-        h1,
-        h2,
-        h3 {
-            line-height: 1.16;
-            letter-spacing: -.035em;
-        }
-
-        .site-header {
-            position: fixed;
-            inset: 0 0 auto;
-            z-index: 1000;
-            padding: .7rem;
-            background: rgba(4, 9, 20, .88);
-            border-bottom: 1px solid rgba(220, 231, 244, .08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .navbar {
-            width: min(var(--page-width), 100%);
-            min-height: 54px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: .55rem;
-        }
-
-        .site-logo {
-            min-width: 0;
-            margin-right: auto;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .site-logo-image {
-            width: 180px;
-            max-width: 42vw;
-            height: auto;
-            display: block;
-        }
-
-        .nav-links {
-            position: fixed;
-            top: 70px;
-            left: .7rem;
-            right: .7rem;
-            display: none;
-            max-height: calc(100svh - 84px);
-            overflow-y: auto;
-            padding: .7rem;
-            flex-direction: column;
-            gap: .3rem;
-            color: var(--muted);
-            background: rgba(7, 16, 31, .98);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-        }
-
-        .nav-links.open {
-            display: flex;
-        }
-
-        .nav-links a {
-            width: 100%;
-            padding: .78rem .9rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, .035);
-            font-size: .92rem;
-            font-weight: 700;
-        }
-
-        .nav-links a:hover,
-        .nav-links a[aria-current="page"] {
-            color: white;
-            background: rgba(169, 213, 193, .10);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: .4rem;
-        }
-
-        .wonder-space-btn,
-        .button {
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: .45rem;
-            padding: .68rem 1rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            font-weight: 700;
-            text-align: center;
-            cursor: pointer;
-            transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
-        }
-
-        .wonder-space-btn,
-        .button-primary {
-            color: #07151a;
-            background: linear-gradient(135deg, #c7e7d8, var(--sage));
-            box-shadow: 0 14px 34px rgba(106, 168, 143, .16);
-        }
-
-        .wonder-space-btn {
-            min-height: 40px;
-            padding: .55rem .75rem;
-            font-size: .75rem;
-            white-space: nowrap;
-        }
-
-        .button-secondary {
-            color: white;
-            background: rgba(255, 255, 255, .055);
-        }
-
-        .button:hover,
-        .wonder-space-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, .22);
-        }
-
-        .menu-toggle {
-            width: 40px;
-            height: 40px;
-            flex: 0 0 40px;
-            padding: 8px;
-            color: white;
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid var(--line);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            display: block;
-            height: 2px;
-            margin: 5px 0;
-            background: currentColor;
-            border-radius: 999px;
-            transition: transform .25s ease, opacity .25s ease;
-        }
-
-        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        main {
-            overflow: clip;
-        }
-
-        .hero {
-            position: relative;
-            padding: 8.4rem 1rem 4.5rem;
-            isolation: isolate;
-        }
-
-        .hero-inner,
-        .section-shell,
-        .footer-content {
-            width: min(var(--page-width), 100%);
-            margin-inline: auto;
-        }
-
-        .hero-inner {
-            display: grid;
-            align-items: center;
-            gap: 2.8rem;
-        }
-
-        .hero-copy {
-            text-align: center;
-        }
-
-        .eyebrow,
-        .section-label {
-            margin-bottom: .8rem;
-            color: var(--sage);
-            font-size: .78rem;
-            font-weight: 800;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            max-width: 820px;
-            margin-inline: auto;
-            font-size: clamp(2.55rem, 8vw, 5.5rem);
-        }
-
-        .hero h1 span {
-            display: block;
-            color: var(--moon);
-        }
-
-        .hero-tagline {
-            max-width: 720px;
-            margin: 1.35rem auto 0;
-            color: var(--muted);
-            font-size: clamp(1.05rem, 2vw, 1.23rem);
-        }
-
-        .hero-actions {
-            margin-top: 1.7rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: .75rem;
-        }
-
-        .hero-note {
-            max-width: 650px;
-            margin: 1rem auto 0;
-            color: #d2ddda;
-            font-size: .92rem;
-        }
-
-        .quiet-orbit {
-            position: relative;
-            width: min(390px, 82vw);
-            aspect-ratio: 1;
-            margin-inline: auto;
-            display: grid;
-            place-items: center;
-        }
-
-        .quiet-orbit::before,
-        .quiet-orbit::after {
-            content: "";
-            position: absolute;
-            border: 1px solid rgba(197, 185, 238, .24);
-            border-radius: 50%;
-        }
-
-        .quiet-orbit::before {
-            inset: 4%;
-            transform: rotate(-14deg) scaleY(.62);
-        }
-
-        .quiet-orbit::after {
-            inset: 16%;
-            border-color: rgba(169, 213, 193, .23);
-            transform: rotate(27deg) scaleY(.7);
-        }
-
-        .rest-moon {
-            width: 58%;
-            aspect-ratio: 1;
-            display: grid;
-            place-items: center;
-            padding: 1.3rem;
-            color: #21312e;
-            background:
-                radial-gradient(circle at 38% 32%, rgba(255, 255, 255, .8), transparent 9%),
-                radial-gradient(circle at 62% 67%, rgba(150, 121, 89, .12), transparent 11%),
-                linear-gradient(145deg, #fff0cc, #dcbf91);
-            border-radius: 50%;
-            box-shadow: 0 0 70px rgba(244, 221, 179, .22);
-            text-align: center;
-            font-weight: 800;
-            line-height: 1.35;
-            animation: breathe 7s ease-in-out infinite;
-        }
-
-        .orbit-dot {
-            position: absolute;
-            width: 15px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: var(--lavender);
-            box-shadow: 0 0 22px rgba(197, 185, 238, .55);
-        }
-
-        .orbit-dot.one { top: 20%; right: 9%; }
-        .orbit-dot.two { bottom: 15%; left: 14%; background: var(--sage); }
-
-        .section-shell {
-            padding: 4.6rem 1rem;
-        }
-
-        .section-heading {
-            max-width: 760px;
-            margin-bottom: 2rem;
-        }
-
-        .section-heading.center {
-            margin-inline: auto;
-            text-align: center;
-        }
-
-        .section-heading h2,
-        .form-heading h2 {
-            font-size: clamp(2rem, 5vw, 3.45rem);
-        }
-
-        .section-heading > p:not(.section-label),
-        .form-heading > p:not(.section-label) {
-            margin-top: .9rem;
-            color: var(--muted);
-        }
-
-        .permission-panel {
-            display: grid;
-            gap: 1rem;
-            padding: clamp(1.4rem, 4vw, 2.4rem);
-            background:
-                linear-gradient(135deg, rgba(169, 213, 193, .11), rgba(197, 185, 238, .08)),
-                var(--panel);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-        }
-
-        .permission-panel blockquote {
-            max-width: 880px;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(1.45rem, 4vw, 2.35rem);
-            line-height: 1.35;
-            letter-spacing: -.025em;
-        }
-
-        .permission-panel p {
-            max-width: 790px;
-            color: var(--muted);
-        }
-
-        .reflection-grid,
-        .workshop-grid,
-        .value-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .reflection-card,
-        .workshop-card,
-        .value-card {
-            position: relative;
-            overflow: hidden;
-            padding: 1.45rem;
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-md);
-        }
-
-        .reflection-card::before,
-        .workshop-card::before {
-            content: "";
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 3px;
-            background: var(--card-color, var(--sage));
-        }
-
-        .reflection-card h3,
-        .workshop-card h3,
-        .value-card h3 {
-            margin-bottom: .65rem;
-            font-size: 1.2rem;
-        }
-
-        .reflection-card p,
-        .workshop-card p,
-        .value-card p {
-            color: var(--muted);
-        }
-
-        .soft-prompt {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--card-color, var(--sage));
-            font-weight: 800;
-        }
-
-        .workshop-section {
-            position: relative;
-        }
-
-        .workshop-card {
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
-        }
-
-        .workshop-audience {
-            width: fit-content;
-            margin-bottom: 1rem;
-            padding: .35rem .7rem;
-            color: #07151a;
-            background: var(--card-color, var(--sage));
-            border-radius: 999px;
-            font-size: .75rem;
-            font-weight: 800;
-        }
-
-        .topic-list {
-            margin: 1rem 0 1.25rem;
-            display: grid;
-            gap: .5rem;
-            list-style: none;
-        }
-
-        .topic-list li {
-            position: relative;
-            padding-left: 1.25rem;
-            color: #dce5e3;
-        }
-
-        .topic-list li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--card-color, var(--sage));
-        }
-
-        .workshop-card .button {
-            width: fit-content;
-            margin-top: auto;
-        }
-
-        .coming-note {
-            margin-top: 1.1rem;
-            padding: 1rem 1.1rem;
-            color: #dfe9e6;
-            background: rgba(244, 221, 179, .07);
-            border: 1px solid rgba(244, 221, 179, .18);
-            border-radius: 16px;
-        }
-
-        .form-panel {
-            display: grid;
-            gap: 2rem;
-            padding: clamp(1.25rem, 4vw, 2.5rem);
-            background: var(--panel-strong);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-        }
-
-        .form-heading {
-            align-self: start;
-        }
-
-        .form-values {
-            margin-top: 1.4rem;
-            display: grid;
-            gap: .75rem;
-            list-style: none;
-        }
-
-        .form-values li {
-            display: flex;
-            gap: .7rem;
-            color: #d6e1df;
-        }
-
-        .form-values span {
-            color: var(--sage);
-            font-weight: 800;
-        }
-
-        form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .form-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .field {
-            display: grid;
-            gap: .45rem;
-        }
-
-        .field label,
-        .group-label {
-            color: #e7efed;
-            font-weight: 800;
-        }
-
-        .optional {
-            color: var(--muted);
-            font-size: .82rem;
-            font-weight: 500;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            color: var(--text);
-            background: rgba(255, 255, 255, .055);
-            border: 1px solid rgba(220, 231, 244, .18);
-            border-radius: 14px;
-        }
-
-        input,
-        select {
-            min-height: 48px;
-            padding: .72rem .85rem;
-        }
-
-        textarea {
-            min-height: 130px;
-            padding: .82rem .85rem;
-            resize: vertical;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #93a7a4;
-        }
-
-        select option {
-            color: #07101f;
-            background: #edf4f1;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--sage);
-            background: rgba(169, 213, 193, .075);
-        }
-
-        fieldset {
-            padding: 0;
-            border: 0;
-        }
-
-        .choice-grid {
-            margin-top: .65rem;
-            display: grid;
-            gap: .65rem;
-        }
-
-        .choice {
-            display: flex;
-            align-items: flex-start;
-            gap: .65rem;
-            padding: .78rem;
-            color: #dfe8e6;
-            background: rgba(255, 255, 255, .035);
-            border: 1px solid rgba(220, 231, 244, .1);
-            border-radius: 13px;
-            cursor: pointer;
-        }
-
-        .choice input {
-            width: 18px;
-            min-height: 18px;
-            height: 18px;
-            margin-top: .2rem;
-            flex: 0 0 18px;
-            accent-color: var(--sage-deep);
-        }
-
-        .privacy-note {
-            padding: .85rem 1rem;
-            color: var(--muted);
-            background: rgba(168, 204, 227, .06);
-            border-left: 3px solid var(--blue);
-            border-radius: 10px;
-            font-size: .9rem;
-        }
-
-        .consent {
-            display: flex;
-            align-items: flex-start;
-            gap: .65rem;
-            color: #dfe8e6;
-            cursor: pointer;
-        }
-
-        .consent input {
-            width: 18px;
-            min-height: 18px;
-            height: 18px;
-            margin-top: .25rem;
-            flex: 0 0 18px;
-            accent-color: var(--sage-deep);
-        }
-
-        .submit-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: .9rem;
-        }
-
-        .submit-row .button {
-            border: 0;
-        }
-
-        .submit-note {
-            color: var(--muted);
-            font-size: .87rem;
-        }
-
-        .organisation-panel {
-            display: grid;
-            gap: 1rem;
-            padding: clamp(1.4rem, 4vw, 2.4rem);
-            text-align: center;
-            background:
-                radial-gradient(circle at 50% 0, rgba(197, 185, 238, .15), transparent 55%),
-                var(--panel);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-lg);
-        }
-
-        .organisation-panel p {
-            max-width: 720px;
-            margin-inline: auto;
-            color: var(--muted);
-        }
-
-        .organisation-panel .button {
-            width: fit-content;
-            margin-inline: auto;
-        }
-
-        footer {
-            margin-top: 2rem;
-            padding: 4rem 1rem 2rem;
-            background: rgba(3, 8, 16, .72);
-            border-top: 1px solid var(--line);
-        }
-
-        .footer-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .footer-brand p,
-        .footer-links a {
-            color: var(--muted);
-        }
-
-        .footer-brand p {
-            max-width: 420px;
-            margin-top: .65rem;
-        }
-
-        .footer-links {
-            display: grid;
-            align-content: start;
-            gap: .5rem;
-        }
-
-        .footer-links h3 {
-            margin-bottom: .25rem;
-            font-size: 1rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--sage);
-        }
-
-        .copyright {
-            width: min(var(--page-width), 100%);
-            margin: 2.5rem auto 0;
-            padding-top: 1.5rem;
-            color: #899b98;
-            border-top: 1px solid var(--line);
-            font-size: .85rem;
-            text-align: center;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        @keyframes starDrift {
-            to { background-position: 128px 128px, 260px 280px, 408px 308px; }
-        }
-
-        @keyframes breathe {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.02); }
-        }
-
-        @media (min-width: 680px) {
-            .reflection-grid,
-            .value-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .workshop-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .form-grid.two-columns {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .choice-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .footer-content {
-                grid-template-columns: 1.7fr 1fr 1fr;
-            }
-        }
-
-        @media (min-width: 980px) {
-            .nav-links {
-                position: static;
-                display: flex;
-                width: auto;
-                max-height: none;
-                overflow: visible;
-                padding: 0;
-                flex-direction: row;
-                align-items: center;
-                gap: .1rem;
-                background: transparent;
-                border: 0;
-                box-shadow: none;
-            }
-
-            .nav-links a {
-                width: auto;
-                padding: .6rem .72rem;
-                background: transparent;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
-
-            .hero {
-                min-height: 790px;
-                display: grid;
-                align-items: center;
-                padding-top: 8rem;
-            }
-
-            .hero-inner {
-                grid-template-columns: minmax(0, 1.25fr) minmax(330px, .75fr);
-            }
-
-            .hero-copy {
-                text-align: left;
-            }
-
-            .hero h1,
-            .hero-tagline,
-            .hero-note {
-                margin-left: 0;
-            }
-
-            .hero-actions {
-                justify-content: flex-start;
-            }
-
-            .reflection-grid {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-
-            .workshop-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .form-panel {
-                grid-template-columns: minmax(270px, .72fr) minmax(0, 1.28fr);
-                gap: 3rem;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .site-logo-image {
-                max-width: 38vw;
-            }
-
-            .wonder-space-btn {
-                font-size: .68rem;
-                padding-inline: .6rem;
-            }
-
-            .hero-actions .button,
-            .workshop-card .button,
-            .organisation-panel .button {
-                width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-        }
-    </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Teacher Constellation by Wonder Verse — a warm space for teachers to reflect, share, breathe and help shape practical workshops for real educational life.">
+  <meta name="theme-color" content="#f3a63a">
+
+  <title>Teacher Constellation | Wonder Verse</title>
+
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="teachers-constellation.css">
+  <link rel="stylesheet" href="wonder-verse-navbar.css">
+
+  <script src="teachers-constellation.js" defer></script>
 </head>
 
 <body>
-    <a class="skip-link" href="#main-content">Skip to the teacher space</a>
+  <a class="skip-link" href="#main-content">Skip to the teacher space</a>
 
-    <header class="site-header">
-        <nav class="navbar" aria-label="Main navigation">
-            <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
-                <img src="./images/wonder-verse-header-logo-light-trimmed.png" alt="Wonder Verse" class="site-logo-image" width="180">
-            </a>
+  <header class="wv-header">
+    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
+        <span class="wv-brand-image-wrap">
+          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+        </span>
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Wonder Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
 
-            <div class="nav-links" id="mobileMenu">
-                <a href="index.html">Start Here</a>
-                <a href="about.html">About</a>
-                <a href="books.html">Books</a>
-                <a href="resources.html">Explore</a>
-                <a href="index.html#wonder-pathways">Wonder</a>
-                <a href="schools.html">Schools</a>
-                <a href="teachers.html" aria-current="page">Teachers</a>
-                <a href="https://endearing-cat-c1f80e.netlify.app/">Contact</a>
-            </div>
+      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false"
+        aria-controls="wvNavLinks" aria-label="Open navigation menu">
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
 
-            <div class="nav-actions">
-                <a href="sign-in.html" class="wonder-space-btn">Wonder Space</a>
-                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+      <div class="wv-links" id="wvNavLinks" data-wv-links>
+        <a href="index.html">Start Here</a>
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="questions.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="teachers.html" aria-current="page">Teachers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <main id="main-content">
-        <section class="hero">
-            <div class="hero-inner">
-                <div class="hero-copy reveal">
-                    <p class="eyebrow">Teacher Constellation · a quieter corner of the universe</p>
-                    <h1>You hold space for everyone. <span>This space can hold you.</span></h1>
-                    <p class="hero-tagline">
-                        A calm place for teachers, supervisors and school communities to pause, speak honestly and help shape practical workshops for real educational life.
-                    </p>
+  <main id="main-content">
 
-                    <div class="hero-actions">
-                        <a href="#share" class="button button-primary">Share what you need</a>
-                        <a href="#workshops" class="button button-secondary">Explore future workshops</a>
-                    </div>
+    <section class="teacher-hero" id="top">
+      <div class="sun-wash" aria-hidden="true"></div>
 
-                    <p class="hero-note">No polished professional voice is required here. Tired, hopeful, unsure and still learning are all welcome.</p>
-                </div>
+      <div class="teacher-hero-copy reveal">
+        <p class="eyebrow">Teacher Constellation · a warmer corner of Wonder Verse</p>
 
-                <div class="quiet-orbit" aria-hidden="true">
-                    <div class="orbit-dot one"></div>
-                    <div class="orbit-dot two"></div>
-                    <div class="rest-moon">You do not have to solve everything tonight.</div>
-                </div>
-            </div>
-        </section>
+        <h1>
+          You hold space
+          <span>for everyone.</span>
+          <em>This space can hold you.</em>
+        </h1>
 
-        <section class="section-shell">
-            <div class="permission-panel reveal">
-                <p class="section-label">A note before you continue</p>
-                <blockquote>Teaching can be meaningful and exhausting at the same time. One truth does not cancel the other.</blockquote>
-                <p>
-                    Behind every lesson plan is a person managing time, changing expectations, students with different needs, administration, assessment, communication and a life outside the classroom. This page is not here to tell you to simply “be more organised.” It is here to listen first.
-                </p>
-            </div>
-        </section>
+        <p class="hero-lead">
+          A place for teachers to arrive exactly as they are — energised, exhausted,
+          proud, frustrated, uncertain, inspired, or somewhere inconveniently in between.
+        </p>
 
-        <section class="section-shell" id="reflect">
-            <div class="section-heading center reveal">
-                <p class="section-label">A gentle check-in</p>
-                <h2>What has teaching really felt like for you?</h2>
-                <p>You can use these prompts privately, or respond through the workshop form below. There is no correct way to be an educator.</p>
-            </div>
-
-            <div class="reflection-grid">
-                <article class="reflection-card reveal" style="--card-color: var(--sage);">
-                    <h3>The pace</h3>
-                    <p>Which parts of your week feel rushed, repetitive or impossible to fit into the time available?</p>
-                    <span class="soft-prompt">What would make one day lighter?</span>
-                </article>
-
-                <article class="reflection-card reveal" style="--card-color: var(--lavender);">
-                    <h3>The difficult moments</h3>
-                    <p>What classroom, workplace, study or leadership challenges have been hardest to navigate?</p>
-                    <span class="soft-prompt">What support was missing?</span>
-                </article>
-
-                <article class="reflection-card reveal" style="--card-color: var(--rose);">
-                    <h3>The field itself</h3>
-                    <p>What do you wish had been explained, taught or designed differently before you entered education?</p>
-                    <span class="soft-prompt">What would you change?</span>
-                </article>
-
-                <article class="reflection-card reveal" style="--card-color: var(--blue);">
-                    <h3>The quiet wins</h3>
-                    <p>What has worked—even once? Your small discoveries may help another educator feel less alone.</p>
-                    <span class="soft-prompt">What could you share?</span>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-shell workshop-section" id="workshops">
-            <div class="section-heading reveal">
-                <p class="section-label">Workshops taking shape · later in 2026</p>
-                <h2>Practical sessions shaped by the people attending them.</h2>
-                <p>
-                    These small, affordable workshops are still being designed. Your questions will help decide the first topics, examples and activities—so the sessions respond to genuine needs rather than assumptions.
-                </p>
-            </div>
-
-            <div class="workshop-grid">
-                <article class="workshop-card reveal" style="--card-color: var(--sage);">
-                    <span class="workshop-audience">Primary educators</span>
-                    <h3>Curiosity without classroom chaos</h3>
-                    <p>For teachers who want creative, cross-curricular learning that is joyful but still manageable.</p>
-                    <ul class="topic-list">
-                        <li>Building wonder into ordinary lessons</li>
-                        <li>Supporting mixed confidence and ability</li>
-                        <li>Making reflection quick and meaningful</li>
-                        <li>Planning activities without doubling workload</li>
-                    </ul>
-                    <a href="#share" class="button button-secondary" data-workshop-link="Primary workshop">Suggest a question</a>
-                </article>
-
-                <article class="workshop-card reveal" style="--card-color: var(--lavender);">
-                    <span class="workshop-audience">Secondary educators</span>
-                    <h3>Engagement, challenge and the human classroom</h3>
-                    <p>For teachers balancing curriculum demands, assessment, motivation and complex classroom dynamics.</p>
-                    <ul class="topic-list">
-                        <li>Responding to resistance and disengagement</li>
-                        <li>Teaching for understanding, not pattern copying</li>
-                        <li>Feedback students can actually use</li>
-                        <li>Protecting curiosity in exam-driven years</li>
-                    </ul>
-                    <a href="#share" class="button button-secondary" data-workshop-link="Secondary workshop">Suggest a question</a>
-                </article>
-
-                <article class="workshop-card reveal" style="--card-color: var(--blue);">
-                    <span class="workshop-audience">Medical students & educators</span>
-                    <h3>Learning medicine without losing the learner</h3>
-                    <p>For medical students, clinical educators and supervisors exploring clearer, kinder learning.</p>
-                    <ul class="topic-list">
-                        <li>Making dense concepts memorable and clinical</li>
-                        <li>Studying without relying on passive rereading</li>
-                        <li>Giving and receiving useful clinical feedback</li>
-                        <li>Supporting learners through pressure and uncertainty</li>
-                    </ul>
-                    <a href="#share" class="button button-secondary" data-workshop-link="Medical learning workshop">Suggest a question</a>
-                </article>
-            </div>
-
-            <p class="coming-note reveal">
-                Dates, delivery format and the minimal participation price will be announced once the first workshop themes are chosen. Registering your interest does not commit you to attending or paying.
-            </p>
-        </section>
-
-        <section class="section-shell" id="share">
-            <div class="form-panel reveal">
-                <div class="form-heading">
-                    <p class="section-label">Send a signal</p>
-                    <h2>What should we work through together?</h2>
-                    <p>
-                        Share a question, describe a difficulty, suggest a workshop or simply leave an idea. Your response can be brief and unfinished.
-                    </p>
-
-                    <ul class="form-values">
-                        <li><span>01</span> Questions shape future workshop content.</li>
-                        <li><span>02</span> You can share as much or as little as you wish.</li>
-                        <li><span>03</span> Registering interest is free and carries no obligation.</li>
-                    </ul>
-                </div>
-
-                <form name="teacher-workshop-interest" method="POST" action="https://ephemeral-begonia-abaf2e.netlify.app/" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="teacher-workshop-interest">
-                    <p hidden>
-                        <label>Do not fill this out: <input name="bot-field"></label>
-                    </p>
-
-                    <div class="form-grid two-columns">
-                        <div class="field">
-                            <label for="name">Your name <span class="optional">(or a first name)</span></label>
-                            <input id="name" name="name" type="text" autocomplete="name" placeholder="How should I address you?" required>
-                        </div>
-
-                        <div class="field">
-                            <label for="email">Email</label>
-                            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-                        </div>
-                    </div>
-
-                    <div class="form-grid two-columns">
-                        <div class="field">
-                            <label for="role">Which best describes you?</label>
-                            <select id="role" name="role" required>
-                                <option value="" selected disabled>Select one</option>
-                                <option>Primary teacher</option>
-                                <option>Secondary teacher</option>
-                                <option>Pre-service teacher</option>
-                                <option>Medical student</option>
-                                <option>Clinical or medical educator</option>
-                                <option>Supervisor or mentor</option>
-                                <option>School leader or coordinator</option>
-                                <option>Other education professional</option>
-                            </select>
-                        </div>
-
-                        <div class="field">
-                            <label for="organisation">School or organisation <span class="optional">(optional)</span></label>
-                            <input id="organisation" name="organisation" type="text" autocomplete="organization" placeholder="You may leave this blank">
-                        </div>
-                    </div>
-
-                    <fieldset>
-                        <legend class="group-label">What are you interested in? <span class="optional">(choose any)</span></legend>
-                        <div class="choice-grid">
-                            <label class="choice"><input type="checkbox" name="interests" value="Primary workshop"> Primary education workshop</label>
-                            <label class="choice"><input type="checkbox" name="interests" value="Secondary workshop"> Secondary education workshop</label>
-                            <label class="choice"><input type="checkbox" name="interests" value="Medical learning workshop"> Medical learning or teaching workshop</label>
-                            <label class="choice"><input type="checkbox" name="interests" value="School or team session"> A session for a school, team or supervisors</label>
-                        </div>
-                    </fieldset>
-
-                    <div class="field">
-                        <label for="workshop-question">What question would you like us to work on in a workshop?</label>
-                        <textarea id="workshop-question" name="workshop-question" placeholder="For example: How can I support students who switch off as soon as work feels difficult?" required></textarea>
-                    </div>
-
-                    <div class="field">
-                        <label for="challenge">What has been difficult, hectic or missing in your educational experience? <span class="optional">(optional)</span></label>
-                        <textarea id="challenge" name="challenge" placeholder="You can describe a recurring challenge, something you wish had been better, or support you have needed."></textarea>
-                    </div>
-
-                    <div class="field">
-                        <label for="share-idea">Is there anything you have learned that may help another educator? <span class="optional">(optional)</span></label>
-                        <textarea id="share-idea" name="share-idea" placeholder="A small strategy, an honest reflection or something that finally worked..."></textarea>
-                    </div>
-
-                    <div class="form-grid two-columns">
-                        <div class="field">
-                            <label for="format">Preferred format <span class="optional">(optional)</span></label>
-                            <select id="format" name="preferred-format">
-                                <option value="">No preference yet</option>
-                                <option>Online, live</option>
-                                <option>In person — Melbourne</option>
-                                <option>School or workplace session</option>
-                                <option>Short recorded workshop</option>
-                            </select>
-                        </div>
-
-                        <div class="field">
-                            <label for="duration">Preferred session length <span class="optional">(optional)</span></label>
-                            <select id="duration" name="preferred-duration">
-                                <option value="">No preference yet</option>
-                                <option>45–60 minutes</option>
-                                <option>90 minutes</option>
-                                <option>Half day</option>
-                                <option>Short series over several weeks</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <p class="privacy-note">
-                        Please do not include student, patient, colleague or school names, or any details that could identify another person. Broad situations are enough for workshop planning.
-                    </p>
-
-                    <label class="consent">
-                        <input type="checkbox" name="updates-consent" value="yes" required>
-                        <span>I am happy to be contacted about relevant Wonder Verse workshops. I understand that this is an expression of interest, not a booking.</span>
-                    </label>
-
-                    <div class="submit-row">
-                        <button class="button button-primary" type="submit">Send my workshop question</button>
-                        <span class="submit-note">A thoughtful sentence is enough.</span>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section class="section-shell">
-            <div class="organisation-panel reveal">
-                <p class="section-label">For schools, faculties and learning teams</p>
-                <h2>Would your team benefit from a tailored session?</h2>
-                <p>
-                    Sessions can be shaped around classroom engagement, learning design, feedback, curiosity, student confidence or a challenge specific to your community. Use the same form and choose “a session for a school, team or supervisors.”
-                </p>
-                <a href="#share" class="button button-secondary" data-workshop-link="School or team session">Request a conversation</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h2>The Wonder Project</h2>
-                <p>Protecting curiosity, celebrating questions and making education feel more human.</p>
-            </div>
-
-            <div class="footer-links">
-                <h3>Explore</h3>
-                <a href="about.html">About Us</a>
-                <a href="books.html">Books</a>
-                <a href="resources.html">Resources</a>
-                <a href="index.html#wonder-pathways">Wonder</a>
-            </div>
-
-            <div class="footer-links">
-                <h3>Connect</h3>
-                <a href="https://endearing-cat-c1f80e.netlify.app/">Contact Us</a>
-                <a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="mailto:tiwariisha72@gmail.com">Email</a>
-                <a href="sign-in.html">Sign in</a>
-            </div>
+        <div class="hero-actions">
+          <a class="button teacher-primary" href="#check-in">Check in with myself <span>→</span></a>
+          <a class="teacher-text-link" href="#workshops">Explore teacher workshops <span>↓</span></a>
         </div>
 
-        <p class="copyright">© 2026 The Wonder Verse Project. A quieter constellation for the people who help others learn.</p>
-    </footer>
+        <p class="permission-line">
+          <span>☼</span>
+          No polished professional voice is required here. You are allowed to be a person before you are a teacher.
+        </p>
+      </div>
 
-    <script>
-        const menuToggle = document.getElementById("menuToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
+      <div class="teacher-hero-art reveal" aria-hidden="true">
+        <div class="sun-disc">
+          <span>You do not have to solve everything before tomorrow morning.</span>
+        </div>
 
-        function closeMenu() {
-            mobileMenu.classList.remove("open");
-            menuToggle.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation menu");
-        }
+        <svg class="teacher-orbits" viewBox="0 0 500 500">
+          <ellipse cx="250" cy="250" rx="218" ry="89" class="orbit-line"/>
+          <ellipse cx="250" cy="250" rx="218" ry="89" class="orbit-line" transform="rotate(61 250 250)"/>
+          <ellipse cx="250" cy="250" rx="218" ry="89" class="orbit-line" transform="rotate(119 250 250)"/>
+          <path class="constellation-line" d="M87 292L159 176L244 238L329 125L414 285"/>
+          <circle cx="87" cy="292" r="8" class="star"/>
+          <circle cx="159" cy="176" r="6" class="star"/>
+          <circle cx="244" cy="238" r="10" class="star"/>
+          <circle cx="329" cy="125" r="7" class="star"/>
+          <circle cx="414" cy="285" r="9" class="star"/>
+        </svg>
 
-        menuToggle.addEventListener("click", () => {
-            const isOpen = mobileMenu.classList.toggle("open");
-            menuToggle.classList.toggle("open", isOpen);
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
-            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-        });
+        <span class="art-note note-one">still learning too</span>
+        <span class="art-note note-two">quiet wins count</span>
+        <span class="art-note note-three">one lesson at a time</span>
+      </div>
+    </section>
 
-        mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    <section class="teacher-manifesto reveal">
+      <p class="eyebrow">Before the next bell</p>
+      <blockquote>
+        Teaching can be meaningful and exhausting at the same time.
+        One truth does not cancel the other.
+      </blockquote>
 
-        document.addEventListener("click", event => {
-            if (!event.target.closest(".navbar") && mobileMenu.classList.contains("open")) {
-                closeMenu();
-            }
-        });
+      <div class="manifesto-grid">
+        <p>
+          Behind every lesson plan is a person carrying preparation, assessment,
+          behaviour, communication, administration, changing expectations and a life outside school.
+        </p>
+        <p>
+          This space is not going to tell you to simply “be more organised”.
+          It is here to help you notice what is heavy, what is working, what you need,
+          and what should perhaps never have been normalised in the first place.
+        </p>
+      </div>
+    </section>
 
-        const workshopLinks = document.querySelectorAll("[data-workshop-link]");
-        const interestCheckboxes = [...document.querySelectorAll('input[name="interests"]')];
-        const workshopQuestion = document.getElementById("workshop-question");
+    <section class="teacher-checkin" id="check-in">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">A gentle check-in</p>
+          <h2>What has teaching really felt like lately?</h2>
+        </div>
+        <p>Keep these answers private, or use them to shape what you share later.</p>
+      </div>
 
-        workshopLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                const requestedInterest = link.dataset.workshopLink;
-                const matchingCheckbox = interestCheckboxes.find(checkbox => checkbox.value === requestedInterest);
+      <div class="checkin-grid">
+        <article class="checkin-card reveal">
+          <span class="card-number">01</span>
+          <p class="card-kicker">The weight</p>
+          <h3>What has felt heavier than it should?</h3>
+          <p>Which part of teaching is quietly draining more energy than people around you realise?</p>
+          <textarea data-reflection="weight" rows="4" placeholder="The workload, the emotional load, the expectations, the pace…"></textarea>
+        </article>
 
-                if (matchingCheckbox) {
-                    matchingCheckbox.checked = true;
-                }
+        <article class="checkin-card reveal">
+          <span class="card-number">02</span>
+          <p class="card-kicker">The spark</p>
+          <h3>What reminded you why you teach?</h3>
+          <p>A student moment, a breakthrough, a laugh, a lesson that finally landed — tiny counts.</p>
+          <textarea data-reflection="spark" rows="4" placeholder="Something that made the day feel worth it…"></textarea>
+        </article>
 
-                window.setTimeout(() => workshopQuestion.focus(), 450);
-            });
-        });
+        <article class="checkin-card reveal">
+          <span class="card-number">03</span>
+          <p class="card-kicker">The missing piece</p>
+          <h3>What support do you wish existed?</h3>
+          <p>What do teachers keep being expected to “just know” without enough time, training or support?</p>
+          <textarea data-reflection="missing" rows="4" placeholder="What would make the work feel more human?"></textarea>
+        </article>
 
-        const revealItems = document.querySelectorAll(".reveal");
+        <article class="checkin-card reveal">
+          <span class="card-number">04</span>
+          <p class="card-kicker">The quiet win</p>
+          <h3>What are you doing better than you think?</h3>
+          <p>What have you handled, built, improved or survived that deserves more credit than you gave it?</p>
+          <textarea data-reflection="win" rows="4" placeholder="You are allowed to notice your own progress…"></textarea>
+        </article>
+      </div>
 
-        if ("IntersectionObserver" in window) {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: .1 });
+      <p class="local-save-note" id="reflectionStatus">Your private reflections stay on this device.</p>
+    </section>
 
-            revealItems.forEach(item => observer.observe(item));
-        } else {
-            revealItems.forEach(item => item.classList.add("visible"));
+    <section class="teacher-field-note reveal">
+      <div class="field-note-mark">“</div>
+      <div>
+        <p class="eyebrow">A field note for difficult weeks</p>
+        <h2>You are not failing because teaching feels hard.</h2>
+        <p>
+          Some weeks ask for too much. Some classes do not respond the way you hoped.
+          Some systems are clumsy. Some days you will question yourself. That does not erase
+          the care, skill and thinking you bring to the room.
+        </p>
+        <p class="field-note-small">
+          A difficult class is not a verdict on your ability. A brilliant lesson is not the only evidence that you are growing.
+        </p>
+      </div>
+    </section>
+
+    <section class="teacher-seasons">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Teaching has seasons too</p>
+          <h2>You do not have to feel the same way about your work every week.</h2>
+        </div>
+      </div>
+
+      <div class="season-track">
+        <article class="season-card reveal">
+          <span>☼</span>
+          <h3>The bright weeks</h3>
+          <p>Things click. Students respond. You remember why you chose this work.</p>
+          <small>Notice what created this energy. It may be worth protecting.</small>
+        </article>
+
+        <article class="season-card reveal">
+          <span>◒</span>
+          <h3>The stretched weeks</h3>
+          <p>There is simply too much. Nothing is catastrophic, but your capacity is being consumed.</p>
+          <small>Ask what can be simplified, delayed, shared or done imperfectly.</small>
+        </article>
+
+        <article class="season-card reveal">
+          <span>☁</span>
+          <h3>The hard weeks</h3>
+          <p>A class, interaction, workload or personal season makes everything feel harder.</p>
+          <small>You do not need to turn every difficult week into a character-building exercise.</small>
+        </article>
+
+        <article class="season-card reveal">
+          <span>↗</span>
+          <h3>The rebuilding weeks</h3>
+          <p>You try something different. A boundary changes. A routine improves. Energy slowly returns.</p>
+          <small>Progress in teaching is often procedural before it is inspirational.</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="workshop-section" id="workshops">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Workshops taking shape · 2026</p>
+          <h2>Practical sessions shaped by the people actually doing the work.</h2>
+        </div>
+        <p>
+          The first workshops will be small, affordable and grounded in real questions from teachers and educators.
+        </p>
+      </div>
+
+      <div class="workshop-grid">
+        <article class="workshop-card reveal">
+          <span class="audience">Primary educators</span>
+          <h3>Curiosity without classroom chaos</h3>
+          <p>Creative, cross-curricular teaching that stays joyful without doubling your planning load.</p>
+          <ul>
+            <li>Building wonder into ordinary lessons</li>
+            <li>Supporting mixed confidence and ability</li>
+            <li>Quick reflection that is actually useful</li>
+            <li>Creative activities that remain manageable</li>
+          </ul>
+          <a href="#share" class="button teacher-secondary" data-workshop-link="Primary workshop">Suggest a question</a>
+        </article>
+
+        <article class="workshop-card reveal featured">
+          <span class="audience">Secondary educators</span>
+          <h3>Engagement, challenge & the human classroom</h3>
+          <p>For teachers balancing curriculum, assessment, motivation, resistance and classroom dynamics.</p>
+          <ul>
+            <li>Responding to disengagement and resistance</li>
+            <li>Teaching for understanding, not pattern copying</li>
+            <li>Feedback students can genuinely use</li>
+            <li>Protecting curiosity in exam-driven years</li>
+          </ul>
+          <a href="#share" class="button teacher-secondary" data-workshop-link="Secondary workshop">Suggest a question</a>
+        </article>
+
+        <article class="workshop-card reveal">
+          <span class="audience">Educators & supervisors</span>
+          <h3>Teaching without losing the teacher</h3>
+          <p>A reflective session about communication, feedback, workload, boundaries and sustainable practice.</p>
+          <ul>
+            <li>Giving feedback without flattening confidence</li>
+            <li>Supporting people through uncertainty</li>
+            <li>Creating psychologically safer learning spaces</li>
+            <li>Making reflection practical rather than performative</li>
+          </ul>
+          <a href="#share" class="button teacher-secondary" data-workshop-link="Educator wellbeing workshop">Suggest a question</a>
+        </article>
+      </div>
+
+      <p class="coming-note reveal">
+        Dates, delivery format and participation price will be announced once the first themes are chosen.
+        Registering interest does not commit you to attending or paying.
+      </p>
+    </section>
+
+    <section class="teacher-share" id="share">
+      <div class="share-intro reveal">
+        <p class="eyebrow">Send a signal</p>
+        <h2>What should we talk about that teachers rarely get enough space to say?</h2>
+        <p>
+          Share a question, a difficulty, a workshop idea, a small win, or something you wish had been different.
+          Your response can be brief, unfinished and human.
+        </p>
+      </div>
+
+      <div class="form-shell reveal">
+        <aside class="form-aside">
+          <span class="aside-symbol">✦</span>
+          <h3>This is not a performance review.</h3>
+          <p>Write like a person, not like a professional development brochure.</p>
+
+          <div class="aside-points">
+            <p><b>01</b> Questions shape future workshop content.</p>
+            <p><b>02</b> Share as much or as little as you wish.</p>
+            <p><b>03</b> Please leave identifying details about students or colleagues out.</p>
+          </div>
+        </aside>
+
+        <form name="teacher-workshop-interest" method="POST"
+          action="https://ephemeral-begonia-abaf2e.netlify.app/"
+          data-netlify="true" netlify-honeypot="bot-field">
+
+          <input type="hidden" name="form-name" value="teacher-workshop-interest">
+
+          <p hidden>
+            <label>Do not fill this out: <input name="bot-field"></label>
+          </p>
+
+          <div class="form-grid two">
+            <label class="field">
+              <span>Your name <small>(or first name)</small></span>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="How should I address you?" required>
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+          </div>
+
+          <div class="form-grid two">
+            <label class="field">
+              <span>Which best describes you?</span>
+              <select id="role" name="role" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Primary teacher</option>
+                <option>Secondary teacher</option>
+                <option>Pre-service teacher</option>
+                <option>Clinical or medical educator</option>
+                <option>Supervisor or mentor</option>
+                <option>School leader or coordinator</option>
+                <option>Other education professional</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>School or organisation <small>(optional)</small></span>
+              <input id="organisation" name="organisation" type="text" autocomplete="organization" placeholder="You may leave this blank">
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>What are you interested in? <small>(choose any)</small></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="interests" value="Primary workshop"><span>Primary education workshop</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="Secondary workshop"><span>Secondary education workshop</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="Educator wellbeing workshop"><span>Teacher / educator reflection session</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="School or team session"><span>School, faculty or team session</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span>What question would you like us to work on?</span>
+            <textarea id="workshop-question" name="workshop-question"
+              placeholder="For example: How can I support students who switch off as soon as work feels difficult?" required></textarea>
+          </label>
+
+          <label class="field">
+            <span>What has been difficult, hectic or missing? <small>(optional)</small></span>
+            <textarea id="challenge" name="challenge"
+              placeholder="A recurring challenge, something you wish had been better, or support you have needed…"></textarea>
+          </label>
+
+          <label class="field">
+            <span>What has worked that another teacher might need to hear? <small>(optional)</small></span>
+            <textarea id="share-idea" name="share-idea"
+              placeholder="A tiny strategy, an honest reflection, or something that finally worked…"></textarea>
+          </label>
+
+          <div class="form-grid two">
+            <label class="field">
+              <span>Preferred format <small>(optional)</small></span>
+              <select id="format" name="preferred-format">
+                <option value="">No preference yet</option>
+                <option>Online, live</option>
+                <option>In person — Melbourne</option>
+                <option>School or workplace session</option>
+                <option>Short recorded workshop</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Preferred session length <small>(optional)</small></span>
+              <select id="duration" name="preferred-duration">
+                <option value="">No preference yet</option>
+                <option>45–60 minutes</option>
+                <option>90 minutes</option>
+                <option>Half day</option>
+                <option>Short series over several weeks</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="privacy-note">
+            Please do not include student, patient, colleague or school names, or details that could identify another person.
+            Broad situations are enough.
+          </p>
+
+          <label class="consent">
+            <input type="checkbox" name="updates-consent" value="yes" required>
+            <span>I am happy to be contacted about relevant Wonder Verse workshops. I understand this is an expression of interest, not a booking.</span>
+          </label>
+
+          <div class="submit-row">
+            <button class="button teacher-primary" type="submit">Send my signal <span>→</span></button>
+            <span>A thoughtful sentence is enough.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="school-invite reveal">
+      <div>
+        <p class="eyebrow">For schools, faculties & learning teams</p>
+        <h2>What if professional learning felt more like a useful conversation?</h2>
+        <p>
+          Sessions can be shaped around classroom engagement, learning design, feedback,
+          curiosity, student confidence, educator reflection or a challenge specific to your community.
+        </p>
+      </div>
+
+      <a href="#share" class="button teacher-dark" data-workshop-link="School or team session">Talk about a team session <span>→</span></a>
+    </section>
+
+    <section class="teacher-closing reveal">
+      <span class="closing-sun">☼</span>
+      <div>
+        <p class="eyebrow">Before you go</p>
+        <h2>The work matters. So does the person doing it.</h2>
+        <p>
+          Keep the lesson that worked. Learn from the one that did not.
+          Ask for help sooner. Take the quiet win seriously. And remember that being a committed teacher
+          does not require disappearing inside the profession.
+        </p>
+      </div>
+      <a href="#top" class="teacher-text-link">Return to the sunlight ↑</a>
+    </section>
+
+  </main>
+
+  <footer class="teacher-footer">
+    <span>✦ Wonder Verse</span>
+    <p>For the people who help other people learn.</p>
+    <a href="index.html">Return home</a>
+  </footer>
+
+  <script src="wonder-verse-navbar.js"></script>
+</body>
+</html>
         }
     </script>
 </body>
