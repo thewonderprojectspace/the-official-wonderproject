@@ -1,1 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student Orbit — a grounded Wonder Verse field guide for navigating expectations, money, identity and meaningful work.">
+  <meta name="theme-color" content="#071e29">
+  <title>Student Orbit | Wonder Verse</title>
 
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+
+  <!-- Keep style.css and wonder-verse-navbar.css if they are used across your website. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="wonder-verse-navbar.css">
+  <link rel="stylesheet" href="student-orbit.css">
+  <script src="student-orbit.js" defer></script>
+</head>
+
+<body>
+  <header class="wv-header">
+    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
+        <span class="wv-brand-image-wrap">
+          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+        </span>
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Wonder Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
+
+      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu">
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
+
+      <div class="wv-links" id="wvNavLinks" data-wv-links>
+        <a href="index.html">Start Here</a>
+        <a href="books.html">Books</a>
+        <a href="resources.html">Explore</a>
+        <a href="questions.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="aurora aurora-one" aria-hidden="true"></div>
+      <div class="aurora aurora-two" aria-hidden="true"></div>
+      <div class="stars" aria-hidden="true"></div>
+
+      <div class="hero-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span>Student Orbit</span> · a field guide for becoming</p>
+          <h1>Your life is not<br>a group project.</h1>
+          <p class="hero-lead">But it is happening inside a world of family, money, expectations, algorithms and very loud opinions.</p>
+          <p class="hero-body">This is a place to hold the dream and the grocery bill in the same conversation—without pretending either one is imaginary.</p>
+          <div class="actions">
+            <a class="button primary" href="#pressures">Enter your orbit <span>↓</span></a>
+            <a class="text-link" href="#two-track">Meet the practical dreamer <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="orbit-visual reveal" aria-label="A student surrounded by common pressures">
+          <div class="orbit-ring ring-one"></div>
+          <div class="orbit-ring ring-two"></div>
+          <div class="orbit-ring ring-three"></div>
+          <div class="student-core"><small>THE STUDENT</small><strong>still<br>becoming</strong><span>not behind</span></div>
+          <span class="orbit-word word-one">expectations</span>
+          <span class="orbit-word word-two">money</span>
+          <span class="orbit-word word-three">belonging</span>
+          <span class="orbit-word word-four">comparison</span>
+          <span class="orbit-word word-five">the dream</span>
+          <span class="orbit-note">current location:<br><strong>figuring it out</strong></span>
+        </div>
+      </div>
+      <div class="scroll-note">SCROLL TO NAME THE GRAVITY <span>↓</span></div>
+    </section>
+
+    <section class="manifesto reveal">
+      <p class="eyebrow dark"><span>A necessary complication</span></p>
+      <div class="manifesto-grid">
+        <h2>“Do what you love” is beautiful advice.<br><em>It is also an incomplete financial plan.</em></h2>
+        <div>
+          <p>There is magic in choosing a life that feels like yours. There is dignity in earning enough to eat, rest, help your family and stand on your own feet.</p>
+          <p>Maturity is not choosing one truth and mocking the other. It is designing a life where stability becomes infrastructure—not a cage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pressures" id="pressures">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow dark"><span>01 · The pressure map</span></p><h2>Name what is pulling you.</h2></div>
+        <p>Choose an orbit. Pressure becomes easier to negotiate when it stops disguising itself as your own voice.</p>
+      </div>
+
+      <div class="pressure-workbench reveal">
+        <div class="pressure-list" id="pressure-list" role="tablist" aria-label="Student pressures"></div>
+        <article class="pressure-detail wash-mint" id="pressure-detail" role="tabpanel" aria-live="polite">
+          <div class="detail-top"><span id="pressure-number">ORBIT 01</span><span>PRESSURE, TRANSLATED</span></div>
+          <h3 id="pressure-title"></h3>
+          <p id="pressure-body"></p>
+          <div class="question-card"><small>ASK YOURSELF</small><strong id="pressure-question"></strong></div>
+          <div class="say-card"><small>A SENTENCE YOU CAN BORROW</small><q id="pressure-line"></q></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="protest" id="conversation">
+      <div class="protest-shell">
+        <div class="protest-title reveal">
+          <p class="eyebrow"><span>02 · The mini protest</span></p>
+          <h2>You do not need a dramatic exit.<br>You may need an honest sentence.</h2>
+        </div>
+
+        <div class="speech-card reveal">
+          <span class="quote-mark">“</span>
+          <p>Mum, Dad—I know this may not happen in a year. I may never be famous, and I am not asking you to pretend risk does not exist. I want to give this a serious try while I build the skills and income to support myself. Can we talk about a plan, not only a permission slip?</p>
+          <footer>THE PROTEST, WITH A BUDGET</footer>
+        </div>
+
+        <div class="conversation-rules">
+          <article class="reveal"><span>01</span><h3>Name the dream</h3><p>Say what you actually want to try. “Something creative” is fog; a three-month design portfolio is a plan.</p></article>
+          <article class="reveal"><span>02</span><h3>Name the risk</h3><p>Show that you understand time, money and uncertainty. Being hopeful does not require acting naïve.</p></article>
+          <article class="reveal"><span>03</span><h3>Name the experiment</h3><p>Offer a timeframe, weekly commitment, budget and review point. Ask to be judged by the work.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-track" id="two-track">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow dark"><span>03 · The two-track life</span></p><h2>Stand on your feet.<br>Keep your eyes on the stars.</h2></div>
+        <p>A practical life and a meaningful life are not natural enemies. For many people, they are built in parallel for a while.</p>
+      </div>
+
+      <div class="route-switcher reveal" id="route-switcher" role="tablist" aria-label="Two-track plan">
+        <button class="active" type="button" data-route="anchor" role="tab" aria-selected="true"><span>A</span>Build the anchor</button>
+        <button type="button" data-route="signal" role="tab" aria-selected="false"><span>B</span>Protect the signal</button>
+      </div>
+      <div class="route-panel route-anchor" id="route-panel">
+        <div class="route-code" id="route-code">TRACK A</div>
+        <div class="route-copy"><p id="route-subtitle"></p><h3 id="route-title"></h3><div class="route-body" id="route-body"></div></div>
+        <ol id="route-actions"></ol>
+      </div>
+      <div class="parallel-line"><span>Monday–Friday</span><div></div><strong>YOUR LIFE IS ALLOWED TO HAVE MORE THAN ONE TIMELINE</strong><div></div><span>Evenings · weekends · seasons</span></div>
+    </section>
+
+    <section class="section truth-grid">
+      <div class="section-heading compact reveal"><div><p class="eyebrow dark"><span>04 · Reality, without cynicism</span></p><h2>Things worth remembering.</h2></div></div>
+      <div class="truths">
+        <article class="truth-large reveal"><span>01</span><h3>The system is real.<br>So are the spaces within it.</h3><p>You may work inside institutions, schedules and economies you did not design. Agency is rarely absolute—but it is rarely zero.</p></article>
+        <article class="reveal"><span>02</span><h3>A job can be a season.</h3><p>It does not need to become your whole identity to be useful, respectable work.</p></article>
+        <article class="reveal"><span>03</span><h3>Not monetised ≠ not meaningful.</h3><p>Some things can remain art, service, study, play or a private source of aliveness.</p></article>
+        <article class="reveal"><span>04</span><h3>Fame is not the unit.</h3><p>Measure skill, courage, consistency, contribution and whether you recognise yourself.</p></article>
+        <article class="reveal"><span>05</span><h3>Plans can change.</h3><p>A review date is not a threat. It is permission to learn without promising forever.</p></article>
+      </div>
+    </section>
+
+    <section class="field-note" id="field-note">
+      <div class="note-shell">
+        <div class="note-intro reveal"><p class="eyebrow"><span>05 · A note from your orbit</span></p><h2>What deserves a fair chance?</h2><p>Not a five-year manifesto. Just the next honest experiment you want to protect.</p></div>
+        <div class="note-paper reveal">
+          <label for="student-note">I want to give myself permission to…</label>
+          <textarea id="student-note" placeholder="try, make, learn, apply, begin…" rows="4"></textarea>
+          <div><small>Saved only on this device.</small><button id="save-note" type="button">Save this note <span>→</span></button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <div><p class="eyebrow"><span>Final coordinates</span></p><h2>You are not choosing between<br>magic and food.</h2><p>You are learning how to feed yourself without starving the part of you that wants to make a life—not merely maintain one.</p></div>
+      <a href="#top">Return to orbit <span>↑</span></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>✦ Wonder Verse</span>
+    <p>For students becoming people in public.</p>
+    <a href="index.html">Return home</a>
+  </footer>
+
+  <script src="wonder-verse-navbar.js"></script>
+</body>
+</html>
