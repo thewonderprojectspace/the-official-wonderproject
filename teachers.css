@@ -1,0 +1,378 @@
+/* =========================================================
+   TEACHER CONSTELLATION — WONDER VERSE
+   Warm amber / honey / orange system
+========================================================= */
+
+:root{
+  --tc-ink:#3f291d;
+  --tc-deep:#5d311b;
+  --tc-burnt:#a95422;
+  --tc-orange:#df7d28;
+  --tc-amber:#f3a63a;
+  --tc-honey:#f6c55d;
+  --tc-sun:#ffd875;
+  --tc-peach:#f7d8b0;
+  --tc-cream:#fff8eb;
+  --tc-paper:#fffdf7;
+  --tc-wash:#fdf0d7;
+  --tc-soft:#f9e2bd;
+  --tc-muted:#80634e;
+  --tc-border:rgba(111,66,34,.14);
+  --tc-shadow:0 26px 70px rgba(117,67,31,.12);
+  --tc-radius-lg:34px;
+  --tc-radius-md:24px;
+  --tc-radius-sm:15px;
+}
+
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  overflow-x:hidden;
+  background:var(--tc-paper);
+  color:var(--tc-ink);
+  font-family:"DM Sans",sans-serif;
+}
+main{overflow:hidden}
+h1,h2,h3,blockquote{font-family:"Fraunces",serif}
+.eyebrow{
+  margin:0 0 15px;
+  color:var(--tc-burnt);
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:52px;
+  padding:0 23px;
+  border:0;
+  border-radius:999px;
+  font:700 .9rem "DM Sans",sans-serif;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.button:hover{transform:translateY(-2px)}
+.teacher-primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--tc-orange),var(--tc-burnt));
+  box-shadow:0 16px 30px rgba(169,84,34,.22);
+}
+.teacher-secondary{
+  color:var(--tc-deep);
+  background:var(--tc-cream);
+  border:1px solid var(--tc-border);
+}
+.teacher-dark{color:var(--tc-cream);background:var(--tc-deep)}
+.teacher-text-link{
+  color:var(--tc-deep);
+  font-size:.9rem;
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid rgba(93,49,27,.25);
+  padding-bottom:4px;
+}
+
+/* HERO */
+.teacher-hero{
+  position:relative;
+  min-height:800px;
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(390px,.94fr);
+  align-items:center;
+  gap:70px;
+  padding:120px clamp(28px,7vw,120px) 100px;
+  background:
+    radial-gradient(circle at 76% 25%,rgba(255,216,117,.72),transparent 27%),
+    radial-gradient(circle at 16% 78%,rgba(223,125,40,.12),transparent 30%),
+    linear-gradient(135deg,#fff9ec 0%,#fce8bd 49%,#f5c96b 100%);
+}
+.sun-wash{
+  position:absolute;
+  width:540px;height:540px;
+  right:-170px;top:-130px;
+  border-radius:50%;
+  background:rgba(255,248,235,.35);
+}
+.teacher-hero-copy{position:relative;z-index:2;max-width:720px}
+.teacher-hero h1{
+  margin:0;
+  color:var(--tc-deep);
+  font-size:clamp(4rem,7.4vw,7.8rem);
+  line-height:.88;
+  font-weight:500;
+  letter-spacing:-.055em;
+}
+.teacher-hero h1 span{display:block;color:var(--tc-orange)}
+.teacher-hero h1 em{display:block;color:var(--tc-burnt);font-style:italic}
+.hero-lead{
+  max-width:680px;
+  margin:32px 0 0;
+  color:#72533d;
+  font-size:clamp(1.05rem,1.35vw,1.23rem);
+  line-height:1.75;
+}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:36px}
+.permission-line{display:flex;gap:10px;max-width:650px;margin-top:34px;color:var(--tc-muted);font-size:.87rem;line-height:1.65}
+.permission-line span{color:var(--tc-orange);font-size:1.25rem}
+
+.teacher-hero-art{position:relative;min-height:580px;display:flex;align-items:center;justify-content:center}
+.sun-disc{
+  position:absolute;
+  width:310px;height:310px;
+  display:grid;place-items:center;
+  padding:40px;
+  box-sizing:border-box;
+  text-align:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffd875,#efa83d);
+  box-shadow:0 35px 80px rgba(181,110,35,.23);
+  color:#6c3b1c;
+  font-family:"Fraunces",serif;
+  font-size:1.35rem;
+  line-height:1.4;
+}
+.teacher-orbits{position:relative;z-index:2;width:min(100%,530px);overflow:visible}
+.orbit-line{fill:none;stroke:rgba(93,49,27,.36);stroke-width:1.3}
+.constellation-line{fill:none;stroke:#fff8eb;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.star{fill:var(--tc-burnt);stroke:var(--tc-cream);stroke-width:4}
+.art-note{
+  position:absolute;z-index:4;
+  padding:10px 15px;
+  border:1px solid var(--tc-border);
+  border-radius:999px;
+  background:rgba(255,253,247,.82);
+  backdrop-filter:blur(10px);
+  color:var(--tc-deep);
+  font-size:.75rem;font-weight:700;
+  box-shadow:0 12px 25px rgba(90,49,28,.08);
+}
+.note-one{top:16%;left:1%;transform:rotate(-5deg)}
+.note-two{top:31%;right:1%;transform:rotate(5deg)}
+.note-three{left:13%;bottom:18%;transform:rotate(2deg)}
+
+/* MANIFESTO */
+.teacher-manifesto{
+  padding:115px clamp(28px,9vw,150px);
+  color:#fff7ea;
+  background:var(--tc-deep);
+}
+.teacher-manifesto .eyebrow{color:var(--tc-honey)}
+.teacher-manifesto blockquote{
+  max-width:1050px;margin:0;
+  font-size:clamp(2.4rem,4.7vw,4.8rem);
+  line-height:1.06;letter-spacing:-.04em
+}
+.manifesto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:70px;max-width:1000px;margin-top:58px}
+.manifesto-grid p{margin:0;color:rgba(255,248,235,.72);line-height:1.8}
+
+/* CHECK-IN */
+.teacher-checkin,.teacher-seasons,.workshop-section,.teacher-share{
+  padding:120px clamp(28px,7vw,118px);
+}
+.teacher-checkin{background:var(--tc-paper)}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:45px;
+  max-width:1300px;margin:0 auto 66px;
+}
+.section-head h2,.share-intro h2{
+  max-width:820px;margin:0;color:var(--tc-deep);
+  font-size:clamp(2.8rem,5vw,5.1rem);line-height:1;letter-spacing:-.045em
+}
+.section-head>p{max-width:430px;color:var(--tc-muted);line-height:1.7}
+.checkin-grid{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.checkin-card{
+  min-height:430px;padding:31px;
+  border:1px solid var(--tc-border);
+  border-radius:var(--tc-radius-md);
+  background:linear-gradient(145deg,#fffdf8,#fff5df);
+  box-shadow:0 14px 35px rgba(116,70,33,.05);
+}
+.card-number{
+  display:block;margin-bottom:42px;color:var(--tc-orange);
+  font-family:"Fraunces",serif;font-size:2.7rem
+}
+.card-kicker{margin:0 0 9px;color:var(--tc-burnt);font-size:.73rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+.checkin-card h3{margin:0;color:var(--tc-deep);font-size:2rem;line-height:1.15}
+.checkin-card>p:not(.card-kicker){color:var(--tc-muted);line-height:1.7}
+textarea,input,select{
+  box-sizing:border-box;width:100%;
+  border:1px solid var(--tc-border);border-radius:var(--tc-radius-sm);
+  background:rgba(255,255,255,.76);color:var(--tc-ink);font:inherit;outline:none;
+  transition:border .18s ease,box-shadow .18s ease,background .18s ease;
+}
+textarea{min-height:125px;padding:17px;resize:vertical;line-height:1.6}
+input,select{min-height:52px;padding:0 15px}
+textarea:focus,input:focus,select:focus{
+  border-color:rgba(223,125,40,.58);background:#fff;
+  box-shadow:0 0 0 4px rgba(243,166,58,.12)
+}
+textarea::placeholder,input::placeholder{color:#ab8c73}
+.local-save-note{max-width:1300px;margin:18px auto 0;color:var(--tc-muted);font-size:.82rem}
+
+/* FIELD NOTE */
+.teacher-field-note{
+  position:relative;
+  display:grid;grid-template-columns:120px 1fr;gap:40px;
+  padding:100px clamp(28px,9vw,150px);
+  background:linear-gradient(135deg,var(--tc-orange),#eea33f);
+  color:#fff8eb;
+}
+.field-note-mark{font-family:"Fraunces",serif;font-size:9rem;line-height:.7;color:rgba(255,255,255,.3)}
+.teacher-field-note h2{max-width:850px;margin:0;font-size:clamp(2.8rem,5vw,5.2rem);line-height:1;letter-spacing:-.04em}
+.teacher-field-note p{max-width:770px;line-height:1.8;color:rgba(255,255,255,.82)}
+.teacher-field-note .eyebrow{color:#fff0c5}
+.field-note-small{font-weight:700!important;color:#fff!important}
+
+/* SEASONS */
+.teacher-seasons{background:var(--tc-wash)}
+.season-track{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.season-card{
+  min-height:325px;padding:27px;border:1px solid var(--tc-border);
+  border-radius:var(--tc-radius-md);background:rgba(255,253,247,.76)
+}
+.season-card>span{font-size:2.4rem;color:var(--tc-orange)}
+.season-card h3{margin:25px 0 10px;color:var(--tc-deep);font-size:1.55rem}
+.season-card p{color:var(--tc-muted);line-height:1.7}
+.season-card small{display:block;margin-top:22px;padding-top:18px;border-top:1px solid var(--tc-border);color:var(--tc-burnt);line-height:1.55;font-weight:600}
+
+/* WORKSHOPS */
+.workshop-section{background:var(--tc-paper)}
+.workshop-grid{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.workshop-card{
+  min-height:540px;display:flex;flex-direction:column;padding:30px;
+  border:1px solid var(--tc-border);border-radius:var(--tc-radius-md);background:#fffaf0;
+}
+.workshop-card.featured{background:linear-gradient(145deg,#fff0cb,#ffe1a2);transform:translateY(-10px)}
+.audience{
+  width:max-content;padding:7px 11px;border-radius:999px;
+  color:var(--tc-deep);background:rgba(243,166,58,.23);
+  font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em
+}
+.workshop-card h3{margin:27px 0 12px;color:var(--tc-deep);font-size:1.9rem;line-height:1.1}
+.workshop-card p{color:var(--tc-muted);line-height:1.7}
+.workshop-card ul{list-style:none;margin:17px 0 28px;padding:0;display:grid;gap:11px;color:#6e513d}
+.workshop-card li{position:relative;padding-left:22px}
+.workshop-card li::before{content:"☼";position:absolute;left:0;color:var(--tc-orange)}
+.workshop-card .button{margin-top:auto;width:max-content}
+.coming-note{
+  max-width:1300px;margin:22px auto 0;padding:17px 20px;
+  border:1px solid rgba(223,125,40,.2);border-radius:16px;
+  background:#fff6e1;color:var(--tc-muted)
+}
+
+/* FORM */
+.teacher-share{background:linear-gradient(145deg,#f7cc74,#efaa43)}
+.share-intro{max-width:1000px;margin-bottom:55px}
+.share-intro .eyebrow{color:#7b3d18}
+.share-intro h2{color:#5a2d16}
+.share-intro>p{max-width:760px;color:#744a2b;line-height:1.8}
+.form-shell{
+  max-width:1300px;margin:auto;display:grid;grid-template-columns:.72fr 1.28fr;gap:40px;
+  padding:34px;border-radius:var(--tc-radius-lg);background:rgba(255,253,247,.88);box-shadow:var(--tc-shadow)
+}
+.form-aside{
+  min-height:100%;padding:30px;border-radius:24px;
+  background:var(--tc-deep);color:#fff8eb
+}
+.aside-symbol{font-size:2.8rem;color:var(--tc-honey)}
+.form-aside h3{font-size:2rem;line-height:1.15}
+.form-aside>p,.aside-points p{color:rgba(255,248,235,.7);line-height:1.7}
+.aside-points{margin-top:40px;display:grid;gap:14px}
+.aside-points b{color:var(--tc-honey);margin-right:8px}
+form{display:grid;gap:18px}
+.form-grid.two{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.field{display:grid;gap:8px}
+.field>span,legend{color:var(--tc-deep);font-weight:700}
+.field small,legend small{color:var(--tc-muted);font-weight:500}
+fieldset{border:0;padding:0;margin:0}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.choice{
+  display:flex;align-items:flex-start;gap:10px;padding:13px;
+  border:1px solid var(--tc-border);border-radius:14px;background:#fff9ec;color:#6d503b;cursor:pointer
+}
+.choice input,.consent input{width:18px;min-height:18px;height:18px;flex:0 0 18px;accent-color:var(--tc-orange)}
+.privacy-note{
+  margin:0;padding:15px 17px;border-left:3px solid var(--tc-orange);
+  border-radius:12px;background:#fff3d8;color:var(--tc-muted);font-size:.9rem
+}
+.consent{display:flex;align-items:flex-start;gap:10px;color:#6e513d;line-height:1.55;cursor:pointer}
+.submit-row{display:flex;align-items:center;flex-wrap:wrap;gap:15px}
+.submit-row>span{color:var(--tc-muted);font-size:.82rem}
+
+/* SCHOOL INVITE + CLOSING */
+.school-invite{
+  display:grid;grid-template-columns:1fr auto;align-items:end;gap:55px;
+  padding:110px clamp(28px,8vw,135px);
+  background:var(--tc-paper)
+}
+.school-invite h2{max-width:860px;margin:0;color:var(--tc-deep);font-size:clamp(2.7rem,5vw,5rem);line-height:1}
+.school-invite p{max-width:780px;color:var(--tc-muted);line-height:1.8}
+.teacher-closing{
+  position:relative;display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:40px;
+  padding:95px clamp(28px,8vw,135px);
+  background:var(--tc-deep);color:#fff7e9
+}
+.closing-sun{font-size:4rem;color:var(--tc-honey)}
+.teacher-closing .eyebrow{color:var(--tc-honey)}
+.teacher-closing h2{margin:0;font-size:clamp(2.4rem,4.5vw,4.6rem);line-height:1}
+.teacher-closing p{max-width:780px;color:rgba(255,248,235,.72);line-height:1.8}
+.teacher-closing .teacher-text-link{color:var(--tc-honey);border-color:rgba(246,197,93,.3)}
+
+/* FOOTER */
+.teacher-footer{
+  display:flex;justify-content:space-between;align-items:center;gap:30px;
+  padding:27px clamp(28px,6vw,95px);background:#3c2116;color:rgba(255,255,255,.56);font-size:.79rem
+}
+.teacher-footer span,.teacher-footer a{color:var(--tc-honey);text-decoration:none}
+.teacher-footer p{margin:0}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:1100px){
+  .teacher-hero{grid-template-columns:1fr}
+  .teacher-hero-art{min-height:500px}
+  .season-track,.workshop-grid{grid-template-columns:repeat(2,1fr)}
+  .form-shell{grid-template-columns:1fr}
+  .school-invite{grid-template-columns:1fr}
+  .teacher-closing{grid-template-columns:75px 1fr}
+  .teacher-closing>a{grid-column:2}
+}
+@media(max-width:760px){
+  .teacher-hero{min-height:auto;padding-top:90px}
+  .teacher-hero h1{font-size:clamp(3.8rem,18vw,6rem)}
+  .teacher-hero-art{min-height:410px}
+  .sun-disc{width:235px;height:235px;font-size:1.05rem}
+  .manifesto-grid,.checkin-grid,.season-track,.workshop-grid,.form-grid.two,.choice-grid{grid-template-columns:1fr}
+  .section-head{display:block}
+  .section-head>p{margin-top:18px}
+  .teacher-field-note{grid-template-columns:1fr}
+  .field-note-mark{font-size:6rem}
+  .teacher-closing{grid-template-columns:1fr}
+  .teacher-closing>a{grid-column:auto}
+  .teacher-footer{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .teacher-hero,
+  .teacher-checkin,
+  .teacher-seasons,
+  .workshop-section,
+  .teacher-share,
+  .teacher-manifesto,
+  .teacher-field-note,
+  .school-invite,
+  .teacher-closing{padding-left:20px;padding-right:20px}
+  .hero-actions{align-items:flex-start;flex-direction:column}
+  .form-shell{padding:18px}
+  .workshop-card.featured{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
