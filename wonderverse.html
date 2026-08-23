@@ -145,6 +145,56 @@
     .open-door-note { text-align: center; color: var(--muted); font-size: 12px; margin: 42px 0 0; }
     .open-door-note span { color: var(--gold); margin-right: 7px; }
 
+    .reality-section { padding: 110px clamp(24px,7vw,108px); background: #f5f0e6; color: #111936; }
+    .reality-section .eyebrow { color: #247f78; }
+    .reality-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; max-width: 1350px; margin: 0 auto 55px; }
+    .reality-heading h2 { font-size: clamp(45px,5.4vw,72px); font-weight: 500; line-height: .98; letter-spacing: -.035em; margin: 14px 0 0; }
+    .reality-heading > p { color: #536064; line-height: 1.8; margin: 0; }
+    .reality-grid { display: grid; grid-template-columns: repeat(3,1fr); max-width: 1350px; margin: auto; border: 1px solid rgba(17,25,54,.14); }
+    .reality-card { min-height: 325px; padding: 34px; border-right: 1px solid rgba(17,25,54,.14); position: relative; }
+    .reality-card:last-child { border-right: 0; }
+    .reality-card:nth-child(1) { background: #dceee5; }
+    .reality-card:nth-child(2) { background: #e0e9f7; }
+    .reality-card:nth-child(3) { background: #f2dfd2; }
+    .reality-card > span { font-size: 9px; letter-spacing: .18em; font-weight: 700; }
+    .reality-card h3 { font-size: 31px; font-weight: 500; line-height: 1.05; margin: 60px 0 18px; }
+    .reality-card p { color: #43545a; font-size: 13px; line-height: 1.75; }
+
+    .decision-section { padding: 115px clamp(24px,7vw,108px); background: linear-gradient(140deg,#061b2b,#0d3940); border-block: 1px solid var(--line); }
+    .decision-shell { max-width: 1350px; margin: auto; }
+    .decision-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; margin-bottom: 45px; }
+    .decision-heading h2 { font-size: clamp(45px,5vw,68px); line-height: 1; font-weight: 500; margin: 14px 0 0; }
+    .decision-heading p:last-child { color: var(--muted); line-height: 1.8; }
+    .decision-path { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid rgba(255,255,255,.17); }
+    .decision-step { min-height: 310px; padding: 30px; border-right: 1px solid rgba(255,255,255,.17); }
+    .decision-step:last-child { border-right: 0; }
+    .decision-step > span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #071225; background: var(--step); font-family: var(--display); box-shadow: 0 0 25px color-mix(in srgb,var(--step) 40%,transparent); }
+    .decision-step:nth-child(1) { --step:#63e6ce; }.decision-step:nth-child(2) { --step:#ffd36c; }.decision-step:nth-child(3) { --step:#ff9fce; }.decision-step:nth-child(4) { --step:#a38cff; }
+    .decision-step h3 { font-size: 27px; font-weight: 500; margin: 54px 0 14px; }
+    .decision-step p { color: var(--muted); font-size: 12px; line-height: 1.75; }
+    .consequence-note { margin-top: 28px; padding: 20px 24px; border-left: 3px solid var(--gold); background: rgba(255,211,108,.08); color: #e4e6f4; font-size: 13px; line-height: 1.75; }
+
+    .bridge-section { padding: 115px clamp(24px,7vw,108px); background: #efe9dc; color: #10172e; }
+    .bridge-shell { max-width: 1350px; margin: auto; }
+    .bridge-heading { display: flex; justify-content: space-between; gap: 60px; align-items: end; margin-bottom: 50px; }
+    .bridge-heading h2 { font-size: clamp(45px,5vw,69px); font-weight: 500; line-height: .98; margin: 14px 0 0; }
+    .bridge-heading > p { color: #566166; max-width: 420px; line-height: 1.8; }
+    .bridge-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+    .bridge-card { min-height: 285px; padding: 27px; border: 1px solid rgba(16,23,46,.15); background: var(--bridge-bg); display: flex; flex-direction: column; }
+    .bridge-card:nth-child(1) { --bridge-bg:#d8ede4; }.bridge-card:nth-child(2) { --bridge-bg:#e1e6f5; }.bridge-card:nth-child(3) { --bridge-bg:#f1ddd2; }.bridge-card:nth-child(4) { --bridge-bg:#ede0f1; }
+    .bridge-card > span { font-size: 9px; letter-spacing: .16em; font-weight: 700; }
+    .bridge-card h3 { font-size: 25px; font-weight: 500; margin: 48px 0 13px; }
+    .bridge-card p { color: #4e5b60; font-size: 12px; line-height: 1.7; }
+    .bridge-card small { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(16,23,46,.13); color: #27746f; font-weight: 700; line-height: 1.5; }
+    .help-strip { margin-top: 18px; background: #101d36; color: white; padding: 28px 32px; display: grid; grid-template-columns: .7fr 1.3fr; gap: 35px; }
+    .help-strip strong { font-family: var(--display); font-size: 25px; font-weight: 500; }
+    .help-strip p { color: #c7cee1; font-size: 12px; line-height: 1.75; margin: 0; }
+
+    .thanks-section { padding: 120px clamp(24px,7vw,108px); text-align: center; background: radial-gradient(circle at 50% 0,rgba(99,230,206,.14),transparent 30rem),#071126; }
+    .thanks-section h2 { max-width: 900px; margin: 20px auto 25px; font-size: clamp(48px,6vw,78px); font-weight: 500; line-height: .98; }
+    .thanks-section > p:not(.eyebrow) { max-width: 680px; margin: 0 auto; color: var(--muted); line-height: 1.8; }
+    .thanks-signoff { display: inline-block; margin-top: 38px; color: var(--gold); font-family: var(--display); font-size: 23px; border-bottom: 1px solid rgba(255,211,108,.35); padding-bottom: 8px; }
+
     .signal-exchange { padding: 80px clamp(24px,7vw,108px); display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; background: linear-gradient(135deg,rgba(31,27,72,.9),rgba(6,29,44,.92)); border-block: 1px solid var(--line); }
     .signal-exchange h2 { font-size: clamp(41px,5vw,63px); font-weight: 500; line-height: 1; margin: 13px 0; }
     .signal-list { border-top: 1px solid rgba(255,255,255,.16); }
@@ -189,6 +239,13 @@
       .page-intro { grid-template-columns: 1fr; min-height: auto; }
       .orbit-art { width: min(80vw,380px); margin-top: 50px; margin-bottom: 25px; }
       .profession-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .reality-heading, .decision-heading { grid-template-columns: 1fr; gap: 25px; }
+      .reality-grid { grid-template-columns: 1fr; }
+      .reality-card { border-right: 0; border-bottom: 1px solid rgba(17,25,54,.14); }
+      .decision-path, .bridge-grid { grid-template-columns: repeat(2,1fr); }
+      .decision-step:nth-child(2) { border-right: 0; }
+      .decision-step { border-bottom: 1px solid rgba(255,255,255,.17); }
+      .bridge-heading { display: block; }
       .signal-exchange { grid-template-columns: 1fr; gap: 30px; }
       .reflection-grid, .feature-band { grid-template-columns: 1fr; }
       .reflection-card { min-height: 360px; }
@@ -206,24 +263,101 @@
       .work-welcome span { border-left: 0; padding-left: 0; }
       .profession-section, .quiet-section { padding: 75px 18px; }
       .profession-grid { grid-template-columns: 1fr; }
+      .reality-section, .decision-section, .bridge-section, .thanks-section { padding: 75px 20px; }
+      .decision-path, .bridge-grid { grid-template-columns: 1fr; }
+      .decision-step { border-right: 0; min-height: 270px; }
+      .help-strip { grid-template-columns: 1fr; }
       .profession-card { min-height: 390px; }
       .section-heading h2 { font-size: 42px; }
       .signal-exchange { padding: 65px 20px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .orbit-art { animation: none; } }
+
+    /* =========================================================
+       STUDENT ORBIT TEMPLATE SYSTEM — WONDER AT WORK
+       ========================================================= */
+    :root {
+      --night: #061b28;
+      --navy: #082f3a;
+      --text: #effff9;
+      --muted: #bcd2ce;
+      --mint: #79d7aa;
+      --gold: #e2f59b;
+      --pink: #f3a7ad;
+      --purple: #aebbe9;
+      --paper: #fbfaf4;
+      --ink: #08242a;
+      --display: "Cormorant Garamond", Georgia, serif;
+    }
+    body { background: var(--paper); color: var(--ink); }
+    body::before { background: linear-gradient(150deg,#061b28 0%,#0a3d48 58%,#0b5d58 100%); }
+    body::after { position: absolute; height: 900px; opacity: .36; }
+    .site-header { position: absolute; width: 100%; background: transparent; border-bottom-color: rgba(255,255,255,.2); }
+    .site-header .brand, .site-header .nav-links a { color: #effff9; }
+    .site-header .nav-links a.active { border-bottom-color: var(--gold); }
+    .site-header .brand em { color: var(--gold); }
+    .page-intro { min-height: 930px; padding-top: 145px; background: linear-gradient(150deg,#061b28 0%,#0a3d48 58%,#0b5d58 100%); }
+    .intro-copy { max-width: 720px; }
+    .intro-copy h1 { font-size: clamp(65px,7.8vw,112px); line-height: .88; letter-spacing: -.05em; }
+    .lead { max-width: 590px; color: #d2e9e2; }
+    .soft-button { border-radius: 2px; background: var(--gold); box-shadow: none; text-transform: uppercase; letter-spacing: .12em; font-size: 10px; padding: 16px 20px; }
+    .orbit-art { width: min(45vw,570px); }
+    .orbit-one { inset: 2%; border-color: rgba(220,255,237,.22); }
+    .orbit-two { border-color: rgba(226,245,155,.4); border-top-color: transparent; }
+    .orbit-core { inset: 31%; background: radial-gradient(circle at 32% 27%,rgba(255,255,255,.85),transparent 9%),linear-gradient(145deg,#f6ffd7,#a8e38e 55%,#54bd93); box-shadow: inset -30px -25px 50px rgba(8,61,69,.28),0 0 70px rgba(121,215,170,.32); }
+    .work-welcome { padding: 74px clamp(24px,7vw,108px); background: var(--gold); color: var(--ink); border: 0; }
+    .work-welcome p { font-size: clamp(30px,3.7vw,55px); line-height: 1; }
+    .work-welcome span { color: #49615b; border-left-color: rgba(8,36,42,.25); }
+    .reality-section { background: var(--paper); padding-top: 125px; }
+    .reality-heading h2, .profession-section h2, .bridge-heading h2 { letter-spacing: -.04em; }
+    .reality-grid { border-color: rgba(8,36,42,.17); }
+    .reality-card { border-color: rgba(8,36,42,.17); border-radius: 0; }
+    .reality-card:nth-child(1) { background:#dff4e5; }.reality-card:nth-child(2) { background:#d9e8ef; }.reality-card:nth-child(3) { background:#ecf4c9; }
+    .profession-section { background: #f0ede3; color: var(--ink); padding-top: 125px; }
+    .profession-section .section-heading h2 { color: var(--ink); }
+    .profession-section .section-heading > p:not(.eyebrow), .open-door-note { color: #566c69; }
+    .profession-grid { gap: 12px; }
+    .profession-card { min-height: 410px; border-radius: 0; border-color: rgba(8,36,42,.15); color: var(--ink); box-shadow: none; backdrop-filter: none; background: color-mix(in srgb,var(--profession) 17%,#fbfaf4); }
+    .profession-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(8,36,42,.12); }
+    .profession-card::before { opacity: .45; }.profession-card::after { opacity: .22; }
+    .profession-roles { color: color-mix(in srgb,var(--profession) 72%,#08242a); }
+    .profession-message, .profession-card ul { color: #526a67; }
+    .profession-card details { border-top-color: rgba(8,36,42,.17); }
+    .profession-card summary { color: var(--ink); }
+    .profession-care { --profession:#ef8798; }.profession-engineer { --profession:#6caed3; }.profession-data { --profession:#9f95da; }.profession-trade { --profession:#d5b950; }.profession-business { --profession:#58bd9d; }.profession-creative { --profession:#df8fbd; }.profession-community { --profession:#7ac486; }.profession-explore { --profession:#a98aca; }
+    .decision-section { background: linear-gradient(135deg,#082936,#074d50); padding-block: 125px; }
+    .decision-path { border-color: rgba(255,255,255,.2); }
+    .decision-step { border-color: rgba(255,255,255,.2); }
+    .consequence-note { background: rgba(226,245,155,.08); border-left-color: var(--gold); }
+    .bridge-section { background: var(--paper); padding-block: 125px; }
+    .bridge-grid { gap: 0; border: 1px solid rgba(8,36,42,.15); }
+    .bridge-card { border: 0; border-right: 1px solid rgba(8,36,42,.15); }
+    .bridge-card:last-child { border-right: 0; }
+    .bridge-card:nth-child(1) { --bridge-bg:#dff4e5; }.bridge-card:nth-child(2) { --bridge-bg:#d9e8ef; }.bridge-card:nth-child(3) { --bridge-bg:#f2dfd2; }.bridge-card:nth-child(4) { --bridge-bg:#e7def0; }
+    .help-strip { background: var(--ink); }
+    .signal-exchange { padding-block: 105px; background: var(--gold); color: var(--ink); border: 0; }
+    .signal-exchange h2 { color: var(--ink); }
+    .signal-list { border-top-color: rgba(8,36,42,.18); }
+    .signal-list p { color: #304d4d; border-bottom-color: rgba(8,36,42,.18); }
+    .signal-list span { color: #14766e; }
+    .quiet-section { background: #d9efe0; color: var(--ink); padding-block: 125px; }
+    .quiet-section .section-heading h2, .quiet-section .privacy-note strong { color: var(--ink); }
+    .quiet-section .section-heading > p:not(.eyebrow), .privacy-note p { color: #536a66; }
+    .privacy-note { background: rgba(255,255,255,.45); border-color: rgba(8,36,42,.16); }
+    .reflection-card { border-radius: 0; background: var(--paper); color: var(--ink); border-color: rgba(8,36,42,.16); box-shadow: 12px 12px 0 rgba(8,36,42,.07); }
+    .reflection-card > p { color: #5c716e; }.reflection-card textarea { color: var(--ink); background: transparent; border-color: rgba(8,36,42,.2); }.reflection-card textarea::placeholder { color:#879995; }
+    .save-row button { border-radius: 2px; background: var(--ink); color: white; text-transform: uppercase; letter-spacing: .1em; }
+    .save-row span { color:#667a76; }
+    .feature-band { background: var(--paper); color: var(--ink); border-top-color: rgba(8,36,42,.15); }
+    .feature-band > div { border-left-color: rgba(8,36,42,.15); }.feature-band p { color:#536a66; }.feature-band span { color:#14766e; }
+    .thanks-section { background: linear-gradient(135deg,#06202d,#074648); padding-block: 130px; }
+    .site-footer { background:#041a22; }
+    @media(max-width:900px){.site-header{position:absolute}.bridge-card{border-right:0;border-bottom:1px solid rgba(8,36,42,.15)}}
   </style>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Wonder Verse home">
-       <a href="index.html" class="site-logo" aria-label="Wonder Verse homepage">
-    <img
-        src="./images/wonder-verse-header-logo-light-trimmed.png"
-        alt="Wonder Verse"
-        class="site-logo-image"
-        width="180"
-    >
-</a>
+    <a class="brand" href="index.html" aria-label="Wonder Verse homepage">
       <span class="mark" aria-hidden="true"><i></i><b></b></span>
       <span>WONDER <em>VERSE</em></span>
     </a>
@@ -240,10 +374,10 @@
   <main>
     <section class="page-intro">
       <div class="intro-copy">
-        <p class="eyebrow">WONDER AT WORK</p>
-        <h1>Every profession has a human story.</h1>
-        <p class="lead">A calm corner for the doctor after a difficult conversation, the engineer with an unfinished problem, the tradie whose skill went unnoticed, the analyst searching for a pattern—and everybody still finding their place.</p>
-        <a class="soft-button" href="#professional-constellations">Find your constellation <span>↓</span></a>
+        <p class="eyebrow">WONDER AT WORK · A FIELD GUIDE FOR THE HUMAN BEHIND THE ROLE</p>
+        <h1>Your work is not your whole sky.</h1>
+        <p class="lead">But it can take up so much of it that you forget there were stars anywhere else. This space is for the person who never wanted the job, once loved it, still loves the work but not the environment—or simply cannot keep repeating the same day unheard.</p>
+        <a class="soft-button" href="#lost-spark">Enter the work orbit <span>↓</span></a>
       </div>
       <div class="orbit-art" aria-hidden="true">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -253,8 +387,20 @@
     </section>
 
     <section class="work-welcome">
-      <p>Different work. Different pressures. Shared humanity.</p>
-      <span>There is no professional ranking here.</span>
+      <p>Thank you for coming to this space.</p>
+      <span>You do not have to pretend work is fine here.</span>
+    </section>
+
+    <section class="reality-section" id="lost-spark">
+      <div class="reality-heading">
+        <div><p class="eyebrow">WHEN WONDER GOES QUIET</p><h2>You can care about your work and still be tired of how you have to do it.</h2></div>
+        <p>Perhaps you never wanted this job. Perhaps you once loved it, but repetition, pressure or being ignored has worn the colour out of it. Losing the spark does not automatically mean you are lazy, ungrateful or in the wrong profession. It means something needs attention.</p>
+      </div>
+      <div class="reality-grid">
+        <article class="reality-card"><span>01 · THE WORK</span><h3>The task itself no longer fits.</h3><p>Your interests, values or strengths may have changed. That is information—not a moral failure. Before leaving the entire field, test whether a different role, team, schedule or specialisation changes the experience.</p></article>
+        <article class="reality-card"><span>02 · THE ENVIRONMENT</span><h3>You may love the work and hate the conditions.</h3><p>Being excluded from decisions, repeatedly dismissed, under-resourced or managed through fear can make meaningful work feel unbearable. Do not confuse one unhealthy workplace with the total value of your profession.</p></article>
+        <article class="reality-card"><span>03 · THE CAPACITY</span><h3>You might not need inspiration. You might need recovery.</h3><p>Exhaustion can make every future look wrong. Where possible, pause major decisions long enough to sleep, seek support and separate “I cannot continue like this” from “I can never do this again.”</p></article>
+      </div>
     </section>
 
     <section class="profession-section" id="professional-constellations">
@@ -276,6 +422,35 @@
       <p class="open-door-note"><span>✦</span> Your work does not fit a box? You still belong here. Enter as you are.</p>
     </section>
 
+    <section class="decision-section" id="leaving-well">
+      <div class="decision-shell">
+        <div class="decision-heading">
+          <div><p class="eyebrow">LEAVING WITH YOUR EYES OPEN</p><h2>Your mental health matters. So do the consequences.</h2></div>
+          <p>You may understand the rent, visa, family, career or financial consequences and still decide the risk is worth taking. This space will not tell you to “just quit”, and it will not tell you to sacrifice yourself indefinitely. It will help you make the risk more deliberate.</p>
+        </div>
+        <div class="decision-path">
+          <article class="decision-step"><span>1</span><h3>Name what is unsafe</h3><p>Write down the behaviours, incidents or conditions—not only the feeling. If there is discrimination, harassment, violence or an immediate safety concern, seek qualified workplace, union, legal or emergency support.</p></article>
+          <article class="decision-step"><span>2</span><h3>Calculate the runway</h3><p>List rent, food, medication, transport, debt and people who rely on you. Work out what one month actually costs. A clear number is less frightening and more useful than a cloud of panic.</p></article>
+          <article class="decision-step"><span>3</span><h3>Create the bridge</h3><p>Apply quietly, reduce expenses, ask for leave, collect references and explore contract, casual or adjacent work. An exit does not have to be one dramatic jump; it can be a bridge built plank by plank.</p></article>
+          <article class="decision-step"><span>4</span><h3>Choose your risk</h3><p>There may be no consequence-free option. Staying has a cost. Leaving has a cost. The goal is not perfect certainty—it is choosing with honest information and enough support to carry the decision.</p></article>
+        </div>
+        <div class="consequence-note"><strong>A serious note:</strong> if work is affecting your health, speak with a GP, psychologist, trusted person, union representative or qualified adviser. A reflective webpage can help you organise your thinking, but it cannot assess your safety, health, finances or legal position.</div>
+      </div>
+    </section>
+
+    <section class="bridge-section" id="short-term-bridge">
+      <div class="bridge-shell">
+        <div class="bridge-heading"><div><p class="eyebrow">THE SHORT-TERM BRIDGE</p><h2>Make ends meet without making this your forever.</h2></div><p>Yes, the matrix still invoices us. We may not change the whole system today, but we can learn its rules, adapt them and use temporary work to buy time for the next chapter.</p></div>
+        <div class="bridge-grid">
+          <article class="bridge-card"><span>USE YOUR HANDS</span><h3>Repair, assemble or help</h3><p>Furniture assembly, gardening, cleaning, moving help, basic repairs, pet care or local errands can turn practical reliability into short-term income.</p><small>Be clear about your skills, pricing, safety and insurance requirements.</small></article>
+          <article class="bridge-card"><span>SELL WHAT YOU MAKE</span><h3>Paint, design or create</h3><p>Offer small commissions, portraits, cards, alterations, digital designs, tutoring resources, baked goods or handmade items. Begin with one simple offer—not an entire brand identity.</p><small>Price materials, labour, fees and delivery before promising the work.</small></article>
+          <article class="bridge-card"><span>USE WHAT YOU KNOW</span><h3>Teach or support</h3><p>Tutoring, language practice, proofreading, admin help, spreadsheet support, résumé editing or beginner lessons can translate existing knowledge into flexible work.</p><small>Protect confidential information and stay inside your actual qualifications.</small></article>
+          <article class="bridge-card"><span>REDUCE THE PRESSURE</span><h3>Sell, pause or renegotiate</h3><p>Sell unused items, pause subscriptions, contact providers early, ask about payment plans and find local financial counselling or community assistance before a crisis compounds.</p><small>Asking for help is a strategy—not evidence that you failed.</small></article>
+        </div>
+        <div class="help-strip"><strong>You are allowed to ask.</strong><p>Tell one trustworthy person specifically what would help: a meal, a reference, a temporary room, a lift, a job lead, childcare, someone to review your budget or simply company while you make the next call. People cannot always solve the problem, but they may be able to carry one corner of it.</p></div>
+      </div>
+    </section>
+
     <section class="signal-exchange">
       <div><p class="eyebrow">ACROSS PROFESSIONS</p><h2>Let curiosity cross the corridor.</h2></div>
       <div class="signal-list"><p><span>01</span>What does your profession understand that the rest of us rarely see?</p><p><span>02</span>What question would you genuinely like to ask someone in another field?</p><p><span>03</span>What would become possible if two very different professions worked together?</p></div>
@@ -295,6 +470,13 @@
       <div><span>01</span><h3>Reflect without judgement</h3><p>Name what happened without turning every difficult moment into a verdict about yourself.</p></div>
       <div><span>02</span><h3>Protect the small wins</h3><p>Keep evidence of care, craft, courage and progress that ordinary metrics may never capture.</p></div>
       <div><span>03</span><h3>Stay curious together</h3><p>Discover the thinking, pressure and possibility inside work that looks nothing like your own.</p></div>
+    </section>
+
+    <section class="thanks-section">
+      <p class="eyebrow">BEFORE YOU RETURN</p>
+      <h2>Thank you for bringing the person behind the profession.</h2>
+      <p>You did not have to arrive inspired. You did not have to defend your job, announce your resignation or transform your life before lunch. You came here, told yourself a little more truth and looked for the next workable step. That counts.</p>
+      <span class="thanks-signoff">Take what helps. Leave what does not. Come back when the noise gets loud.</span>
     </section>
   </main>
 
