@@ -353,13 +353,48 @@
     .thanks-section { background: linear-gradient(135deg,#06202d,#074648); padding-block: 130px; }
     .site-footer { background:#041a22; }
     @media(max-width:900px){.site-header{position:absolute}.bridge-card{border-right:0;border-bottom:1px solid rgba(8,36,42,.15)}}
+
+    /* HIGH-CONTRAST LIGHT EDITION */
+    .site-header { background: rgba(17,108,108,.96); border-bottom-color: rgba(255,255,255,.35); }
+    .brand-logo { display:block; width:180px; max-height:52px; object-fit:contain; object-position:left center; }
+    .brand-fallback { display:none; color:white; font-size:12px; letter-spacing:.16em; font-weight:700; }
+    .page-intro { background: linear-gradient(145deg,#d8f0e5 0%,#d8edf0 52%,#e9f3cb 100%); color:var(--ink); }
+    body::after { opacity:.14; filter:invert(1); }
+    .intro-copy h1 { color:var(--ink); text-shadow:none; }
+    .page-intro .eyebrow { color:#146c69; }
+    .lead { color:#385a5a; }
+    .soft-button { background:#126f70; color:white; }
+    .soft-button:hover { background:#0a565b; }
+    .orbit-art { color:#14746e; filter:drop-shadow(0 0 28px rgba(20,116,110,.14)); }
+    .orbit-one { border-color:rgba(8,36,42,.26); }
+    .orbit-two { border-color:rgba(18,111,112,.45); border-top-color:transparent; }
+    .satellite-one { color:#c29522; background:#c29522; }.satellite-two { color:#c56b82; background:#c56b82; }
+    .decision-section { background:#d9e9ef; color:var(--ink); border-color:rgba(8,36,42,.15); }
+    .decision-section .eyebrow { color:#176d70; }
+    .decision-heading p:last-child { color:#466366; }
+    .decision-path { border-color:rgba(8,36,42,.18); }
+    .decision-step { border-color:rgba(8,36,42,.18); }
+    .decision-step p { color:#496265; }
+    .decision-step > span { box-shadow:none; }
+    .consequence-note { color:#304f51; background:#f4f2ce; border-left-color:#9c7b16; }
+    .help-strip { background:#d6ebe2; color:var(--ink); border:1px solid rgba(8,36,42,.15); }
+    .help-strip p { color:#49625f; }
+    .thanks-section { background:#cce9d7; color:var(--ink); }
+    .thanks-section .eyebrow { color:#176d70; }
+    .thanks-section > p:not(.eyebrow) { color:#49635f; }
+    .thanks-signoff { color:#146c69; border-bottom-color:rgba(20,108,105,.35); }
+    .site-footer { background:#176f70; color:white; }
+    .site-footer p { color:#d8efeb; }.site-footer > a { color:#f2f4b4; }
+    .footer-logo { width:150px; max-height:44px; object-fit:contain; }
+    @media(max-width:900px){.brand-logo{width:150px}.nav-links{background:rgba(17,108,108,.98)}}
+    @media(max-width:560px){.brand-logo{width:132px}.page-intro{padding-top:120px}}
   </style>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Wonder Verse homepage">
-      <span class="mark" aria-hidden="true"><i></i><b></b></span>
-      <span>WONDER <em>VERSE</em></span>
+      <img src="./images/wonder-verse-header-logo-light-trimmed.png" alt="Wonder Verse" class="brand-logo" width="180" onerror="this.hidden=true;this.nextElementSibling.style.display='inline'">
+      <span class="brand-fallback">WONDER VERSE</span>
     </a>
     <button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNavigation"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="mainNavigation" aria-label="Main navigation">
@@ -480,7 +515,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-brand"><span class="mark" aria-hidden="true"><i></i><b></b></span><span>WONDER VERSE</span></div><p>A place for questions, reflection and the human behind every role.</p><a href="index.html#wonder-pathways">Explore the three spaces ↑</a></footer>
+  <footer class="site-footer"><div class="footer-brand"><img src="./images/wonder-verse-header-logo-light-trimmed.png" alt="Wonder Verse" class="footer-logo" width="150" onerror="this.hidden=true;this.nextElementSibling.style.display='inline'"><span class="brand-fallback">WONDER VERSE</span></div><p>A place for questions, reflection and the human behind every role.</p><a href="index.html#wonder-pathways">Explore the three spaces ↑</a></footer>
 
   <script>
     const menuButton = document.querySelector('.menu-button');
