@@ -231,3 +231,16 @@ footer small { grid-column: 1 / -1; padding-top: 2rem; color: #7f768c; border-to
   .hero-art img { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+/* Remove the empty space between navbar and hero */
+#main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.hero {
+  margin-top: 0 !important;
+}
+
+.wv-header {
+  margin-bottom: 0 !important;
+}
