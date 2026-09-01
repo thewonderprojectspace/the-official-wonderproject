@@ -1,58 +1,638 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jigyasa Verse Schools — global learning pathways, curriculum-aware resources and curiosity-led activities for learners, educators and education leaders.">
+  <meta name="theme-color" content="#0b574f">
+  <title>Schools | Jigyasa Verse</title>
 
-    <title>For Schools | The Wonder Project</title>
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="wonder-verse-navbar.css">
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --ink: #102b2a;
+      --deep: #073f3c;
+      --green: #0c6c60;
+      --aqua: #73d6c7;
+      --mint: #c9eee6;
+      --pale: #edf9f4;
+      --blue: #226b86;
+      --lime: #d9ee87;
+      --paper: #fbf9ee;
+      --white: #fffef8;
+      --line: rgba(16, 43, 42, .19);
+      --shadow: 0 18px 55px rgba(7, 63, 60, .13);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+    }
+    button, input, select { font: inherit; }
+    a { color: inherit; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .schools-main { overflow: hidden; }
+    .eyebrow {
+      margin: 0 0 .8rem;
+      color: var(--green);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .section-shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .section-title {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(2rem, 4.8vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+    }
+    .section-intro { max-width: 670px; margin: 1rem 0 0; font-size: 1.05rem; color: #3e5a57; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      min-height: 48px;
+      padding: .75rem 1.15rem;
+      border: 1px solid var(--deep);
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(7, 63, 60, .18); }
+    .button-primary { color: white; background: var(--deep); }
+    .button-paper { background: var(--white); }
+
+    /* Hero */
+    .school-hero {
+      position: relative;
+      min-height: 760px;
+      padding: clamp(6rem, 10vw, 9rem) max(20px, calc((100vw - 1180px) / 2)) 5rem;
+      background:
+        radial-gradient(circle at 83% 20%, rgba(217, 238, 135, .78) 0 8%, transparent 8.3%),
+        radial-gradient(circle at 9% 86%, rgba(115, 214, 199, .65) 0 12%, transparent 12.3%),
+        linear-gradient(135deg, #dff5eb 0%, #c7eee6 48%, #b8dfeb 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .school-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      opacity: .2; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+    .hero-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center;
+    }
+    .hero-copy h1 {
+      max-width: 780px; margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(3.25rem, 7.2vw, 7.5rem);
+      font-weight: 600; letter-spacing: -.06em; line-height: .88;
+    }
+    .hero-copy h1 span { display: block; color: var(--green); }
+    .hero-copy h1 em { display: block; margin-top: .35em; font-size: .38em; font-weight: 500; letter-spacing: -.025em; line-height: 1.12; }
+    .hero-lead { max-width: 680px; margin: 2rem 0 1.5rem; font-size: clamp(1.05rem, 1.8vw, 1.32rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero-note { display: inline-block; margin: 1.4rem 0 0; padding: .45rem .75rem; border: 1px dashed var(--green); transform: rotate(-1deg); font-size: .86rem; }
+
+    .portal-board { position: relative; min-height: 480px; }
+    .board-card {
+      position: absolute; border: 2px solid var(--ink); box-shadow: 9px 10px 0 rgba(16, 43, 42, .17);
+    }
+    .board-main { inset: 20px 30px 70px 20px; padding: 2rem; background: var(--white); transform: rotate(2deg); }
+    .board-main small { font-weight: 700; letter-spacing: .13em; }
+    .board-main strong { display: block; margin-top: 1.2rem; font-family: "Fraunces", serif; font-size: clamp(2.3rem, 4.8vw, 4.6rem); line-height: .9; }
+    .board-main p { max-width: 290px; margin-top: 1.3rem; }
+    .board-ticket { right: 0; bottom: 22px; z-index: 2; width: 230px; padding: 1rem; background: var(--lime); transform: rotate(-5deg); }
+    .board-ticket span { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; }
+    .board-ticket strong { display: block; margin: .5rem 0; font-size: 1.25rem; }
+    .orbit { position: absolute; left: -30px; top: 0; width: 120px; height: 120px; border: 2px dashed var(--green); border-radius: 50%; animation: spin 18s linear infinite; }
+    .orbit::after { content: "?"; position: absolute; right: 0; top: 4px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--green); font-weight: 700; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Entry portal */
+    .entry-portal { position: relative; z-index: 2; margin-top: -2rem; }
+    .entry-panel {
+      display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: end;
+      padding: clamp(1.4rem, 3vw, 2.25rem); border: 1px solid var(--line); border-radius: 24px;
+      background: rgba(255, 254, 248, .96); box-shadow: var(--shadow);
+    }
+    .entry-panel h2 { margin: 0 0 .25rem; font-family: "Fraunces", serif; font-size: clamp(1.7rem, 3vw, 2.7rem); }
+    .role-buttons { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+    .role-chip {
+      padding: .62rem .85rem; border: 1px solid var(--line); border-radius: 100px; color: var(--ink); background: var(--pale); cursor: pointer;
+    }
+    .role-chip.active, .role-chip:hover { color: white; background: var(--green); border-color: var(--green); }
+    .login-wrap { text-align: right; }
+    .login-wrap small { display: block; max-width: 220px; margin-top: .45rem; color: #58706d; }
+
+    /* Manifesto */
+    .school-manifesto { padding: clamp(5rem, 9vw, 9rem) 0; }
+    .manifesto-quote { max-width: 980px; margin: 0; font-family: "Fraunces", serif; font-size: clamp(2.1rem, 5.2vw, 5.25rem); line-height: 1.04; letter-spacing: -.045em; }
+    .manifesto-quote span { color: var(--green); }
+    .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 5rem; margin: 2.5rem 0 0 25%; }
+
+    /* Explorer */
+    .explorer { padding: clamp(5rem, 8vw, 8rem) 0; background: var(--deep); color: white; }
+    .explorer .eyebrow { color: var(--aqua); }
+    .explorer .section-intro { color: #c5dedb; }
+    .explorer-head { display: grid; grid-template-columns: 1fr .62fr; gap: 3rem; align-items: end; }
+    .explorer-tools { display: grid; grid-template-columns: 1fr 210px; gap: .75rem; margin: 2.5rem 0 1rem; }
+    .search-wrap { position: relative; }
+    .search-wrap span { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--deep); }
+    .explorer input, .explorer select {
+      width: 100%; min-height: 52px; padding: .75rem 1rem; border: 0; border-radius: 10px; color: var(--ink); background: var(--white);
+    }
+    .explorer input { padding-left: 2.7rem; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1rem 0 2.2rem; }
+    .filter-chip { padding: .5rem .78rem; border: 1px solid rgba(255,255,255,.35); border-radius: 100px; color: white; background: transparent; cursor: pointer; }
+    .filter-chip.active, .filter-chip:hover { color: var(--deep); background: var(--lime); border-color: var(--lime); }
+    .school-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .school-card {
+      display: flex; flex-direction: column; min-height: 285px; padding: 1.4rem; border: 1px solid rgba(255,255,255,.2); border-radius: 18px;
+      color: var(--ink); background: var(--white); transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .school-card:hover { transform: translateY(-5px) rotate(-.25deg); box-shadow: 0 16px 35px rgba(0,0,0,.2); }
+    .school-card[hidden] { display: none; }
+    .card-top { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+    .card-icon { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid var(--line); border-radius: 14px; color: var(--green); background: var(--mint); font-size: 1.35rem; }
+    .card-code { font-size: .73rem; font-weight: 700; letter-spacing: .12em; color: #5f7673; }
+    .school-card h3 { margin: 1.2rem 0 .5rem; font-family: "Fraunces", serif; font-size: 1.55rem; line-height: 1.05; }
+    .school-card p { margin: 0; color: #506663; font-size: .92rem; }
+    .school-card a { margin-top: auto; padding-top: 1.2rem; color: var(--green); font-weight: 700; text-decoration: none; }
+    .empty-state { display: none; padding: 2rem; border: 1px dashed rgba(255,255,255,.5); text-align: center; }
+
+    /* Curriculum compass */
+    .curriculum { padding: clamp(5rem, 9vw, 9rem) 0; background: var(--mint); }
+    .compass-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
+    .compass-visual { position: relative; aspect-ratio: 1; display: grid; place-items: center; }
+    .compass-ring { width: 78%; aspect-ratio: 1; display: grid; place-items: center; border: 2px dashed var(--green); border-radius: 50%; }
+    .compass-ring::before { content: "N"; position: absolute; top: 5%; font-weight: 700; }
+    .compass-core { width: 56%; aspect-ratio: 1; display: grid; place-items: center; padding: 1rem; border-radius: 50%; color: white; background: var(--deep); text-align: center; font-family: "Fraunces", serif; font-size: clamp(1.25rem, 3vw, 2rem); }
+    .compass-word { position: absolute; padding: .35rem .6rem; border: 1px solid var(--green); background: var(--paper); font-size: .78rem; font-weight: 700; }
+    .word-one { top: 15%; right: 0; transform: rotate(5deg); }
+    .word-two { bottom: 18%; left: 0; transform: rotate(-5deg); }
+    .word-three { bottom: 5%; right: 12%; transform: rotate(2deg); }
+    .country-form { display: grid; grid-template-columns: 1fr auto; gap: .7rem; margin-top: 1.4rem; }
+    .country-form input { min-width: 0; padding: .8rem 1rem; border: 1px solid var(--green); border-radius: 100px; background: var(--white); }
+    .country-message { min-height: 1.5em; margin: .8rem 0 0; font-size: .9rem; font-weight: 600; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 2rem; }
+    .principle { padding: 1rem; border-top: 2px solid var(--green); background: rgba(255,255,255,.45); }
+    .principle strong { display: block; margin-bottom: .25rem; }
+
+    /* Resource studio */
+    .resource-studio { padding: clamp(5rem, 9vw, 9rem) 0; }
+    .studio-head { display: grid; grid-template-columns: 1fr .7fr; gap: 3rem; align-items: end; }
+    .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .resource-card { position: relative; min-height: 310px; padding: 1.25rem; border: 1px solid var(--ink); background: var(--white); box-shadow: 6px 7px 0 var(--mint); }
+    .resource-card:nth-child(even) { background: var(--pale); transform: translateY(22px); }
+    .resource-card .resource-label { font-size: .73rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .resource-card h3 { margin: 3rem 0 .65rem; font-family: "Fraunces", serif; font-size: 1.75rem; line-height: 1.04; }
+    .resource-card p { color: #4f6865; }
+    .resource-stamp { position: absolute; right: 1rem; top: 1rem; padding: .3rem .45rem; border: 1px dashed var(--green); color: var(--green); font-size: .7rem; font-weight: 700; transform: rotate(4deg); }
+
+    /* People pathways */
+    .people { padding: clamp(5rem, 9vw, 9rem) 0; background: #b8dfea; }
+    .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--ink); background: var(--ink); }
+    .person-card { min-height: 300px; padding: 1.5rem; background: var(--paper); }
+    .person-card span { display: block; color: var(--green); font-weight: 700; }
+    .person-card h3 { margin: 2rem 0 .6rem; font-family: "Fraunces", serif; font-size: 1.65rem; }
+    .person-card a { display: inline-block; margin-top: 1rem; font-weight: 700; color: var(--green); text-decoration: none; }
+
+    /* Truth room and closing */
+    .truth-room { padding: clamp(5rem, 9vw, 9rem) 0; color: white; background: var(--blue); }
+    .truth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 6rem; align-items: center; }
+    .truth-room .eyebrow { color: var(--lime); }
+    .truth-room .section-title { max-width: 800px; }
+    .truth-list { display: grid; gap: .8rem; }
+    .truth-line { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+    .truth-line strong { color: var(--lime); }
+    .school-closing { padding: clamp(5rem, 9vw, 9rem) 0; text-align: center; background: var(--lime); }
+    .school-closing .section-title { max-width: 900px; margin-inline: auto; }
+    .school-closing p { max-width: 650px; margin: 1.3rem auto 1.8rem; }
+    .schools-footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem max(20px, calc((100vw - 1180px) / 2)); color: #c5dedb; background: var(--ink); font-size: .9rem; }
+    .schools-footer a { color: white; }
+
+    /* Login dialog */
+    .login-dialog { width: min(520px, calc(100% - 30px)); padding: 0; border: 0; border-radius: 20px; box-shadow: 0 25px 80px rgba(0,0,0,.35); }
+    .login-dialog::backdrop { background: rgba(5, 35, 33, .7); backdrop-filter: blur(5px); }
+    .dialog-inner { position: relative; padding: 2rem; background: var(--paper); }
+    .dialog-inner h2 { margin: .3rem 0 .8rem; font-family: "Fraunces", serif; font-size: 2.2rem; }
+    .dialog-close { position: absolute; right: 1rem; top: 1rem; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; }
+    .dialog-note { padding: .8rem 1rem; border-left: 4px solid var(--green); background: var(--mint); }
+
+    /* Motion */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .orbit { animation: none; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .explorer-head, .compass-grid, .studio-head, .truth-grid { grid-template-columns: 1fr; }
+      .portal-board { min-height: 410px; max-width: 560px; }
+      .school-grid { grid-template-columns: repeat(2, 1fr); }
+      .resource-grid, .people-grid { grid-template-columns: repeat(2, 1fr); }
+      .manifesto-grid { margin-left: 0; }
+      .entry-panel { grid-template-columns: 1fr; }
+      .login-wrap { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .section-shell { width: min(100% - 28px, 1180px); }
+      .school-hero { padding-inline: 16px; }
+      .hero-copy h1 { font-size: clamp(3rem, 18vw, 5rem); }
+      .portal-board { min-height: 360px; }
+      .board-main { inset: 15px 15px 70px 5px; padding: 1.4rem; }
+      .board-ticket { width: 190px; }
+      .manifesto-grid, .school-grid, .principles, .resource-grid, .people-grid { grid-template-columns: 1fr; }
+      .explorer-tools, .country-form { grid-template-columns: 1fr; }
+      .resource-card:nth-child(even) { transform: none; }
+      .schools-footer { flex-direction: column; }
+    }
+  </style>
 </head>
 
 <body>
+  <header class="wv-header">
+    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Jigyasa Verse homepage">
+        <span class="wv-brand-image-wrap">
+          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+        </span>
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Jigyasa Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
 
-    <header>
-        <nav>
-            <h1>The Wonder Project</h1>
+      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu">
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
 
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#books">Books</a>
-                <a href="index.html#resources">Resources</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
+      <div class="wv-links" id="wvNavLinks" data-wv-links>
+        <a href="index.html">Start Here</a>
+        <a href="books.html">Books</a>
+        <a href="wonderverse.html">Wonder</a>
+        <a href="schools.html" aria-current="page">Schools</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <main>
+  <main class="schools-main" id="main-content">
+    <section class="school-hero" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Jigyasa Verse Schools · the world is one enormous classroom</p>
+          <h1>Enter school.<span>Leave more curious.</span><em>For every kind of learner, educator and learning place.</em></h1>
+          <p class="hero-lead">
+            Explore ideas, worksheets, projects and learning trails shaped around your role, your learning place and your country’s curriculum—without reducing education to another answer-generating machine.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#explore">Explore the schools <span>→</span></a>
+            <a class="button button-paper" href="#compass">Find your curriculum <span>↓</span></a>
+          </div>
+          <p class="hero-note">Nothing here is “too easy” or “too hard”. It is simply familiar—or not familiar yet.</p>
+        </div>
 
-        <section class="school-page-hero">
+        <div class="portal-board reveal" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="board-card board-main">
+            <small>WORLD SCHOOL DIRECTORY · ISSUE 01</small>
+            <strong>LEARN<br>BEYOND<br>LABELS.</strong>
+            <p>Primary school. Dance school. Medical school. Trade school. The name changes. Curiosity does not.</p>
+          </div>
+          <div class="board-card board-ticket">
+            <span>ADMIT ONE CURIOUS HUMAN</span>
+            <strong>DESTINATION: UNKNOWN</strong>
+            <small>Good. That is where learning begins.</small>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <p class="section-label">The Wonder Project for Schools</p>
+    <section class="entry-portal section-shell reveal" aria-labelledby="entry-title">
+      <div class="entry-panel">
+        <div>
+          <p class="eyebrow">Your doorway</p>
+          <h2 id="entry-title">Who are you arriving as today?</h2>
+          <p id="role-message">Choose a role to gently personalise what you see. You can change it whenever you like.</p>
+          <div class="role-buttons" aria-label="Choose your role">
+            <button class="role-chip active" type="button" data-role="Everyone">Everyone</button>
+            <button class="role-chip" type="button" data-role="Learner">Learner</button>
+            <button class="role-chip" type="button" data-role="Educator">Educator</button>
+            <button class="role-chip" type="button" data-role="Administrator">Administrator</button>
+            <button class="role-chip" type="button" data-role="Leader">School leader</button>
+            <button class="role-chip" type="button" data-role="Family">Parent or family</button>
+          </div>
+        </div>
+        <div class="login-wrap">
+          <button class="button button-primary" type="button" data-open-login>Log in to your learning space</button>
+          <small>Accounts are being built. Explore freely in the meantime—no password gymnastics required.</small>
+        </div>
+      </div>
+    </section>
 
-            <h1>
-                Learning Students Want to Explore
-            </h1>
+    <section class="school-manifesto">
+      <div class="section-shell reveal">
+        <p class="eyebrow">Our slightly uncomfortable idea</p>
+        <blockquote class="manifesto-quote">
+          The purpose of learning is not to be <span>given the truth.</span> It is to become brave, patient and honest enough to seek it.
+        </blockquote>
+        <div class="manifesto-grid">
+          <p>We live in a world where answers arrive before questions have had time to become interesting. Here, technology may point to a doorway—but original resources, books, practice, people and lived experience help you walk through it.</p>
+          <p>So leave the couch occasionally. Ask a human. Open the whole book. Make something with your hands. Test the idea. Change your mind. The goal is not one universal truth; it is a more honest relationship with your own learning.</p>
+        </div>
+      </div>
+    </section>
 
-            <p>
-                Interactive learning adventures, teacher-ready resources,
-                and progress insights designed to protect curiosity and
-                build confident learners.
-            </p>
+    <section class="explorer" id="explore">
+      <div class="section-shell">
+        <div class="explorer-head reveal">
+          <div>
+            <p class="eyebrow">The school constellation</p>
+            <h2 class="section-title">Every place that teaches belongs here.</h2>
+          </div>
+          <p class="section-intro">Search by subject, school type or curiosity. These doorways can later become individual sites with their own lessons, projects, communities and resource libraries.</p>
+        </div>
 
-            <a href="index.html#contact" class="primary-button">
-                Request a Demo
-            </a>
+        <div class="explorer-tools reveal">
+          <label class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input id="school-search" type="search" placeholder="Try ‘music’, ‘medicine’, ‘children’ or ‘coding’" aria-label="Search school pathways">
+          </label>
+          <label>
+            <select id="stage-filter" aria-label="Filter by learning stage">
+              <option value="all">Every learning stage</option>
+              <option value="early">Early years</option>
+              <option value="school">School years</option>
+              <option value="adult">Adult & professional</option>
+              <option value="all-ages">All ages</option>
+            </select>
+          </label>
+        </div>
 
-        </section>
+        <div class="filter-row reveal" aria-label="Filter school pathways by field">
+          <button class="filter-chip active" type="button" data-filter="all">All schools</button>
+          <button class="filter-chip" type="button" data-filter="academic">Academic</button>
+          <button class="filter-chip" type="button" data-filter="creative">Creative</button>
+          <button class="filter-chip" type="button" data-filter="professional">Professional</button>
+          <button class="filter-chip" type="button" data-filter="practical">Practical</button>
+          <button class="filter-chip" type="button" data-filter="community">Community</button>
+        </div>
 
-    </main>
+        <div class="school-grid" id="school-grid">
+          <article class="school-card reveal" data-category="academic" data-stage="early school" data-search="primary elementary children maths science literacy curiosity">
+            <div class="card-top"><span class="card-icon">123</span><span class="card-code">SCHOOL 01</span></div><h3>Primary & Elementary School</h3><p>Foundations made lively: number, language, science, wonder, friendship and learning how to learn.</p><a href="primary-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="academic" data-stage="school" data-search="high secondary school teenagers mathematics science humanities exam careers">
+            <div class="card-top"><span class="card-icon">∆</span><span class="card-code">SCHOOL 02</span></div><h3>Secondary & High School</h3><p>Subject depth, revision, real projects and honest conversations about exams, identity and what comes next.</p><a href="high-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="community" data-stage="early" data-search="play preschool early childhood kindergarten children families games">
+            <div class="card-top"><span class="card-icon">○△</span><span class="card-code">SCHOOL 03</span></div><h3>Play School & Early Learning</h3><p>Stories, movement, sound, messy making and the serious intellectual work of play.</p><a href="play-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="professional academic" data-stage="adult" data-search="medical medicine health nursing biology anatomy clinical students doctors">
+            <div class="card-top"><span class="card-icon">♡</span><span class="card-code">SCHOOL 04</span></div><h3>Medical & Health School</h3><p>Foundational science, clinical thinking, patient humanity and learning before—and beyond—the stethoscope.</p><a href="medical-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="creative" data-stage="all-ages" data-search="music singing instruments composition rhythm sound performance">
+            <div class="card-top"><span class="card-icon">♪</span><span class="card-code">SCHOOL 05</span></div><h3>Music School</h3><p>Listen closely, practise imperfectly and explore voice, instruments, rhythm, theory and composition.</p><a href="music-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="creative" data-stage="all-ages" data-search="art visual drawing painting sculpture photography design makers">
+            <div class="card-top"><span class="card-icon">◒</span><span class="card-code">SCHOOL 06</span></div><h3>Art & Design School</h3><p>Observation before perfection: drawing, colour, making, visual culture, critique and creative courage.</p><a href="art-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="creative" data-stage="all-ages" data-search="dance movement ballet hip hop classical cultural choreography performance">
+            <div class="card-top"><span class="card-icon">↝</span><span class="card-code">SCHOOL 07</span></div><h3>Dance & Movement School</h3><p>Technique, expression, body awareness, choreography and movement traditions from around the world.</p><a href="dance-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="creative" data-stage="all-ages" data-search="theatre drama film acting cinema storytelling stage performance">
+            <div class="card-top"><span class="card-icon">◫</span><span class="card-code">SCHOOL 08</span></div><h3>Theatre, Film & Story School</h3><p>Write it, stage it, film it and learn what stories reveal about the people telling them.</p><a href="story-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="practical professional" data-stage="adult" data-search="trade vocational carpentry plumbing electrical mechanics apprenticeship hands practical">
+            <div class="card-top"><span class="card-icon">⌁</span><span class="card-code">SCHOOL 09</span></div><h3>Trade & Vocational School</h3><p>Knowledge with its sleeves rolled up: tools, safety, craft, apprenticeships and skilled work.</p><a href="trade-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="professional" data-stage="adult" data-search="business law finance economics enterprise leadership legal entrepreneurs">
+            <div class="card-top"><span class="card-icon">§</span><span class="card-code">SCHOOL 10</span></div><h3>Business, Law & Enterprise School</h3><p>Build useful things, read the fine print and examine how decisions shape people and communities.</p><a href="enterprise-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="academic professional" data-stage="school adult" data-search="technology coding computer engineering ai robotics digital stem">
+            <div class="card-top"><span class="card-icon">&lt;/&gt;</span><span class="card-code">SCHOOL 11</span></div><h3>Technology & Engineering School</h3><p>Code, construct, question and understand the systems behind the screens—not only how to consume them.</p><a href="technology-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="practical" data-stage="school adult" data-search="culinary cooking food hospitality nutrition restaurant chef culture">
+            <div class="card-top"><span class="card-icon">◇</span><span class="card-code">SCHOOL 12</span></div><h3>Culinary & Hospitality School</h3><p>Food science, technique, service, culture and the extraordinary education hidden in an ordinary kitchen.</p><a href="culinary-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="practical academic" data-stage="school adult" data-search="agriculture environment nature farming sustainability ecology land animals">
+            <div class="card-top"><span class="card-icon">⌇</span><span class="card-code">SCHOOL 13</span></div><h3>Agriculture & Earth School</h3><p>Learn from land, water, climate, food systems and the people caring for them.</p><a href="earth-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="community academic" data-stage="all-ages" data-search="language culture languages history indigenous world community translation">
+            <div class="card-top"><span class="card-icon">अA</span><span class="card-code">SCHOOL 14</span></div><h3>Language & Culture School</h3><p>Speak, listen and study languages through the histories, people and worlds that keep them alive.</p><a href="language-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="community" data-stage="early school adult all-ages" data-search="inclusive disability neurodiversity special education access support learning needs">
+            <div class="card-top"><span class="card-icon">∞</span><span class="card-code">SCHOOL 15</span></div><h3>Inclusive Learning School</h3><p>Flexible, strengths-based resources designed around access, dignity and different ways of knowing.</p><a href="inclusive-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="practical community" data-stage="all-ages" data-search="sport fitness coaching athletics games health movement teamwork">
+            <div class="card-top"><span class="card-icon">◎</span><span class="card-code">SCHOOL 16</span></div><h3>Sport & Coaching School</h3><p>Train bodies and minds through movement, strategy, teamwork, wellbeing and reflective coaching.</p><a href="sport-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="academic professional" data-stage="adult" data-search="university research higher education academic thesis phd evidence laboratory">
+            <div class="card-top"><span class="card-icon">⌬</span><span class="card-code">SCHOOL 17</span></div><h3>University & Research School</h3><p>Evidence, methods, academic survival and the difficult art of asking a question worth researching.</p><a href="research-school.html">Visit this school →</a>
+          </article>
+          <article class="school-card reveal" data-category="professional community" data-stage="adult" data-search="teacher educator leadership administration principal curriculum training professional development">
+            <div class="card-top"><span class="card-icon">✎</span><span class="card-code">SCHOOL 18</span></div><h3>Educator & Leadership School</h3><p>Teaching practice, curriculum, staff learning, school culture and room for educators to be human too.</p><a href="educator-school.html">Visit this school →</a>
+          </article>
+        </div>
+        <p class="empty-state" id="empty-state">No doorway matches that search yet. Try a broader word—or tell us which school the constellation is missing.</p>
+      </div>
+    </section>
 
+    <section class="curriculum" id="compass">
+      <div class="section-shell compass-grid">
+        <div class="compass-visual reveal" aria-hidden="true">
+          <div class="compass-ring"><div class="compass-core">Your place.<br>Your curriculum.<br>Your questions.</div></div>
+          <span class="compass-word word-one">LOCAL KNOWLEDGE</span><span class="compass-word word-two">GLOBAL CURIOSITY</span><span class="compass-word word-three">ORIGINAL SOURCES</span>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">Curriculum compass</p>
+          <h2 class="section-title">Global does not mean generic.</h2>
+          <p class="section-intro">Future resource trails will be mapped to country, region, learning stage and subject while leaving room for local knowledge, teacher judgement and student curiosity.</p>
+          <form class="country-form" id="country-form">
+            <label class="sr-only" for="country-input">Enter your country or curriculum</label>
+            <input id="country-input" type="text" placeholder="Enter a country or curriculum (e.g. Victoria, IB, India)">
+            <button class="button button-primary" type="submit">Check the map</button>
+          </form>
+          <p class="country-message" id="country-message" aria-live="polite"></p>
+          <div class="principles">
+            <div class="principle"><strong>Aligned</strong><span>Clear links to the relevant curriculum—not vague “educational” decoration.</span></div>
+            <div class="principle"><strong>Adaptable</strong><span>Educators can adjust resources for context, learners and classroom reality.</span></div>
+            <div class="principle"><strong>Transparent</strong><span>Sources, intended outcomes and limitations are visible.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resource-studio" id="resources">
+      <div class="section-shell">
+        <div class="studio-head reveal">
+          <div><p class="eyebrow">The resource studio</p><h2 class="section-title">Things to print, try, discuss and make.</h2></div>
+          <p class="section-intro">A future member space can save progress and organise collections. The learning itself should still escape the screen.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card reveal"><span class="resource-label">Print & practise</span><span class="resource-stamp">COMING SOON</span><h3>Curriculum-aware worksheets</h3><p>Thoughtful practice with room to show working, reflect, revise and try again.</p></article>
+          <article class="resource-card reveal"><span class="resource-label">Make & investigate</span><span class="resource-stamp">COMING SOON</span><h3>Offline activity trails</h3><p>Experiments, field observations, interviews, builds and challenges that require more than clicking.</p></article>
+          <article class="resource-card reveal"><span class="resource-label">Read & verify</span><span class="resource-stamp">COMING SOON</span><h3>Original-source quests</h3><p>Guided trails into books, research, archives, experts and lived knowledge—with questions, not shortcuts.</p></article>
+          <article class="resource-card reveal"><span class="resource-label">Teach & lead</span><span class="resource-stamp">COMING SOON</span><h3>Educator collections</h3><p>Lesson sparks, discussion guides, differentiation ideas, workshop trails and leadership tools.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="people">
+      <div class="section-shell">
+        <div class="reveal"><p class="eyebrow">Not merely “users”</p><h2 class="section-title">A different desk for every curious human.</h2></div>
+        <div class="people-grid">
+          <article class="person-card reveal"><span>01 · Learners</span><h3>Follow what pulls you in.</h3><p>Choose a trail, save questions, attempt activities and build evidence of what you can now do.</p><a href="#explore">Find your doorway →</a></article>
+          <article class="person-card reveal"><span>02 · Educators</span><h3>Teach with more room to breathe.</h3><p>Find curriculum-aware resources, remix activity pathways and share what actually works.</p><a href="contact.html">Suggest a teaching need →</a></article>
+          <article class="person-card reveal"><span>03 · Administrators</span><h3>Turn resources into access.</h3><p>Curate collections, support staff and learners, and keep learning pathways organised.</p><a href="contact.html">Discuss institutional access →</a></article>
+          <article class="person-card reveal"><span>04 · Leaders</span><h3>Build a culture, not a dashboard.</h3><p>Explore professional learning, curriculum conversations and ways to protect genuine curiosity.</p><a href="contact.html">Explore collaboration →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="truth-room">
+      <div class="section-shell truth-grid">
+        <div class="reveal"><p class="eyebrow">The source room</p><h2 class="section-title">Search engines can locate. Humans still have to understand.</h2><p>Jigyasa Verse should guide learners towards stronger evidence, deeper conversations and first-hand experience—not manufacture certainty where it does not exist.</p></div>
+        <div class="truth-list reveal">
+          <div class="truth-line"><strong>Ask:</strong> Who created this—and why?</div>
+          <div class="truth-line"><strong>Trace:</strong> Can I reach the original book, study, person or record?</div>
+          <div class="truth-line"><strong>Test:</strong> What happens when this idea meets evidence or experience?</div>
+          <div class="truth-line"><strong>Reflect:</strong> Am I being honest about what I know, assume and still need to learn?</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="school-closing">
+      <div class="section-shell reveal">
+        <p class="eyebrow">Assembly dismissed</p>
+        <h2 class="section-title">Let’s unleash your true self—one honest question at a time.</h2>
+        <p>You do not have to know which school, subject or future belongs to you yet. Begin with what feels unfamiliar. Stay long enough for it to become a little more familiar.</p>
+        <a class="button button-primary" href="#explore">Choose a doorway <span>↑</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="schools-footer"><span>© Jigyasa Verse</span><span>Learning places for curious humans everywhere.</span><a href="index.html">Return home</a></footer>
+
+  <dialog class="login-dialog" id="login-dialog">
+    <div class="dialog-inner">
+      <button class="dialog-close" type="button" aria-label="Close login information" data-close-login>×</button>
+      <p class="eyebrow">The key is still being cut</p>
+      <h2>Your learning space is coming later.</h2>
+      <p>Accounts will eventually help learners save trails and help educators organise resources. For now, the whole public school constellation remains open to explore.</p>
+      <p class="dialog-note">No fake login. No data collected here. Just an honest “we are building it”.</p>
+      <a class="button button-primary" href="contact.html">Tell us what you would need</a>
+    </div>
+  </dialog>
+
+  <script src="wonder-verse-navbar.js"></script>
+  <script>
+    (() => {
+      const cards = [...document.querySelectorAll('.school-card')];
+      const search = document.querySelector('#school-search');
+      const stage = document.querySelector('#stage-filter');
+      const filters = [...document.querySelectorAll('.filter-chip')];
+      const empty = document.querySelector('#empty-state');
+      let currentFilter = 'all';
+
+      function filterSchools() {
+        const query = search.value.trim().toLowerCase();
+        const selectedStage = stage.value;
+        let visible = 0;
+        cards.forEach(card => {
+          const haystack = `${card.dataset.search} ${card.textContent}`.toLowerCase();
+          const categoryMatch = currentFilter === 'all' || card.dataset.category.includes(currentFilter);
+          const stageMatch = selectedStage === 'all' || card.dataset.stage.includes(selectedStage) || card.dataset.stage.includes('all-ages');
+          const searchMatch = !query || haystack.includes(query);
+          card.hidden = !(categoryMatch && stageMatch && searchMatch);
+          if (!card.hidden) visible += 1;
+        });
+        empty.style.display = visible ? 'none' : 'block';
+      }
+
+      filters.forEach(button => button.addEventListener('click', () => {
+        filters.forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.dataset.filter;
+        filterSchools();
+      }));
+      search.addEventListener('input', filterSchools);
+      stage.addEventListener('change', filterSchools);
+
+      const roleMessages = {
+        Everyone: 'Choose a role to gently personalise what you see. You can change it whenever you like.',
+        Learner: 'Welcome, learner. Begin with a doorway that feels interesting—not the one that merely looks impressive.',
+        Educator: 'Welcome, educator. Look for adaptable resources, teaching sparks and places to share what your learners need.',
+        Administrator: 'Welcome, organiser of the organised chaos. Explore future collections, access and institutional pathways.',
+        Leader: 'Welcome, leader. Explore learning culture, curriculum conversations and professional learning pathways.',
+        Family: 'Welcome, family. Find activities that invite curiosity without turning home into a second classroom.'
+      };
+      document.querySelectorAll('.role-chip').forEach(button => button.addEventListener('click', () => {
+        document.querySelectorAll('.role-chip').forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        document.querySelector('#role-message').textContent = roleMessages[button.dataset.role];
+      }));
+
+      const countryForm = document.querySelector('#country-form');
+      countryForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const value = document.querySelector('#country-input').value.trim();
+        const message = document.querySelector('#country-message');
+        message.textContent = value
+          ? `${value} has been added to your exploration request. The curriculum library is still growing, so this page will never pretend an alignment exists until it has been properly checked.`
+          : 'Enter a country, state, province or curriculum framework so we know which map you need.';
+      });
+
+      const dialog = document.querySelector('#login-dialog');
+      document.querySelector('[data-open-login]').addEventListener('click', () => dialog.showModal());
+      document.querySelector('[data-close-login]').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .1 });
+      document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    })();
+  </script>
 </body>
 </html>
