@@ -58,18 +58,37 @@
 
   <main id="main-content">
     <section class="home-hero" aria-labelledby="home-title">
+      <span class="hero-doodle hero-doodle-one" aria-hidden="true">✦</span>
+      <span class="hero-doodle hero-doodle-two" aria-hidden="true">· · ─ ·</span>
+      <span class="hero-doodle hero-doodle-three" aria-hidden="true">↝</span>
+
       <div class="home-hero-copy">
-        <p class="home-eyebrow">For humans who still wonder</p>
+        <p class="home-eyebrow"><span>Field note 001</span> For humans who still wonder</p>
         <h1 id="home-title">There is a whole <em>universe</em> in you.</h1>
         <p class="home-intro">A place to learn, question, make mistakes and feel more human—at school, at work and everywhere in between.</p>
-        <a class="home-text-link" href="#choose-your-place">Find your place <span aria-hidden="true">↓</span></a>
+        <div class="home-hero-actions">
+          <a class="home-primary-link" href="#choose-your-place">Choose your doorway <span aria-hidden="true">↓</span></a>
+          <span class="home-hero-note">No perfect plan required.</span>
+        </div>
       </div>
 
-      <figure class="home-moon">
-        <img src="images/painted-moon.png" alt="A softly painted golden moon with looping grey craters">
-        <figcaption>Hand-painted, because perfect circles are overrated.</figcaption>
-      </figure>
+      <div class="home-moon-scene">
+        <span class="orbit-word orbit-word-one" aria-hidden="true">ask why</span>
+        <span class="orbit-word orbit-word-two" aria-hidden="true">begin again</span>
+        <span class="orbit-star orbit-star-one" aria-hidden="true">✦</span>
+        <span class="orbit-star orbit-star-two" aria-hidden="true">+</span>
+        <figure class="home-moon">
+          <img src="images/painted-moon.png" alt="A softly painted golden moon with looping grey craters">
+          <figcaption>Hand-painted, because perfect circles are overrated.</figcaption>
+        </figure>
+      </div>
     </section>
+
+    <div class="wonder-ribbon" aria-label="Jigyasa Verse is for first tries, strange questions, classroom sparks, workday courage and glorious mistakes">
+      <div aria-hidden="true">
+        <span>FIRST TRIES</span><b>✦</b><span>STRANGE QUESTIONS</span><b>✦</b><span>CLASSROOM SPARKS</span><b>✦</b><span>WORKDAY COURAGE</span><b>✦</b><span>GLORIOUS MISTAKES</span>
+      </div>
+    </div>
 
     <section class="home-doors" id="choose-your-place" aria-labelledby="door-title">
       <div class="home-section-heading">
@@ -79,19 +98,25 @@
 
       <div class="home-door-grid">
         <a class="home-door home-door-wonder" href="wonderverse.html">
-          <span class="home-door-number">01</span>
+          <div class="home-door-top">
+            <span class="home-door-glyph" aria-hidden="true">W</span>
+            <span class="home-door-number">DOORWAY 01</span>
+          </div>
           <div>
-            <p>For work, life and everything nobody teaches us</p>
-            <h3>Enter the Wonder Gateway</h3>
+            <p class="home-door-for">For work, life and everything nobody teaches us</p>
+            <h3>Enter the Wonder Place</h3>
             <span class="home-door-action">Explore the human side of life <b aria-hidden="true">↗</b></span>
           </div>
         </a>
 
         <a class="home-door home-door-schools" href="schools.html">
-          <span class="home-door-number">02</span>
+          <div class="home-door-top">
+            <span class="home-door-glyph" aria-hidden="true">S</span>
+            <span class="home-door-number">DOORWAY 02</span>
+          </div>
           <div>
-            <p>For students, teachers, families and learning communities</p>
-            <h3>Enter the Schools Gateway</h3>
+            <p class="home-door-for">For students, teachers, families and learning communities</p>
+            <h3>Enter the Schools Place</h3>
             <span class="home-door-action">Find playful learning resources <b aria-hidden="true">↗</b></span>
           </div>
         </a>
@@ -99,6 +124,7 @@
     </section>
 
     <section class="home-worlds" aria-labelledby="world-title">
+      <span class="worlds-side-note" aria-hidden="true">TODAY I NEED...</span>
       <div class="home-section-heading home-section-heading-row">
         <div>
           <p class="home-eyebrow">Inside the Wonder Place</p>
@@ -142,6 +168,7 @@
         <h2 id="question-title">What would you try if being bad at it was part of the adventure?</h2>
       </div>
       <a href="questions.html">Find another question <span aria-hidden="true">↗</span></a>
+      <span class="question-scribble" aria-hidden="true">keep wondering ↝</span>
     </section>
   </main>
 
