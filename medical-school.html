@@ -1,1 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jigyasa Verse Medical School — human-centred learning pathways, exam maps and clinical reasoning resources from first year to early practice.">
+  <meta name="theme-color" content="#063f46">
+  <title>Medical School | Jigyasa Verse</title>
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="stylesheet" href="medical-school.css">
+  <script src="medical-school.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
+      <span class="brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="brand-image"></span>
+      <span class="brand-copy"><strong>Jigyasa Verse</strong><small>Medical School</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation menu">☰</button>
+    <nav id="mainNav" aria-label="Medical School navigation">
+      <a href="#year-path">Your year</a><a href="#exam-map">Exam map</a><a href="#library">Learning library</a><a href="#case-lab">Case lab</a><a href="#human-room">The human room</a>
+      <a class="nav-home" href="schools.html">All schools →</a>
+    </nav>
+  </header>
 
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-image">
+        <img src="images/medical-school-hero.png" alt="A diverse group of medical students learning collaboratively in an anatomy and clinical skills laboratory">
+        <span class="hero-note note-one">“Wait… which nerve was that?”</span>
+        <span class="hero-note note-two">Nobody knows everything.<br><strong>That is why rounds have teams.</strong></span>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">From first lecture to first patient · without losing the person inside the coat</p>
+        <h1>Know the science.<em>Keep the human.</em></h1>
+        <p class="hero-lead">A calmer place to connect foundational medicine, clinical reasoning, global exam pathways and the very strange emotional experience of becoming a doctor.</p>
+        <div class="hero-actions"><a class="primary-button" href="#year-path">Start with your year →</a><a class="secondary-button" href="#exam-map">Find an exam pathway</a></div>
+        <div class="pulse-card"><span class="pulse-dot" aria-hidden="true"></span><div><strong>Quick pulse check</strong><p>You are allowed to understand this slowly. Safe medicine is built from careful thinking—not panic disguised as productivity.</p></div></div>
+      </div>
+    </section>
+
+    <section class="quick-dock" aria-label="Quick actions">
+      <a href="#library"><span>⌕</span>Find a topic</a><a href="#case-lab"><span>＋</span>Try today’s case</a><a href="#exam-map"><span>◎</span>Map my exam</a><a href="#human-room"><span>♡</span>I need five minutes</a>
+    </section>
+
+    <section class="year-path section" id="year-path">
+      <div class="section-heading"><div><p class="eyebrow">The long corridor</p><h2>Where are you standing right now?</h2></div><p>Medical programs differ across countries and universities. These stages are learning guides—not claims about one universal curriculum.</p></div>
+      <div class="year-tabs" role="tablist" aria-label="Medical training stage">
+        <button role="tab" aria-selected="true" data-year="year1">Year 1</button><button role="tab" aria-selected="false" data-year="year2">Year 2</button><button role="tab" aria-selected="false" data-year="year3">Year 3</button><button role="tab" aria-selected="false" data-year="year4">Year 4</button><button role="tab" aria-selected="false" data-year="year5">Year 5</button><button role="tab" aria-selected="false" data-year="final">Final year</button><button role="tab" aria-selected="false" data-year="early">Internship / early practice</button>
+      </div>
+      <div class="year-panel" id="yearPanel" role="tabpanel" aria-live="polite"></div>
+    </section>
+
+    <section class="exam-map section" id="exam-map">
+      <div class="section-heading light"><div><p class="eyebrow">The passport desk</p><h2>One profession. Very different pathways.</h2></div><p>Start with purpose—not acronym. Entry tests, university assessments and licensing examinations are not interchangeable.</p></div>
+      <div class="exam-controls">
+        <label>Country or pathway<select id="countryFilter"><option value="all">Show all regions</option><option>Australia</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>India</option><option>New Zealand</option><option>Ireland</option></select></label>
+        <div class="phase-filters" aria-label="Filter exams by stage"><button class="active" data-phase="all">All stages</button><button data-phase="admission">Before medical school</button><button data-phase="degree">During the degree</button><button data-phase="licensing">Licensing / registration</button><button data-phase="postgraduate">Postgraduate entry</button></div>
+      </div>
+      <div class="exam-legend"><span><i class="admission"></i>Admission</span><span><i class="degree"></i>Degree assessment</span><span><i class="licensing"></i>Licensing / registration</span><span><i class="postgraduate"></i>Postgraduate selection</span></div>
+      <div class="exam-grid" id="examGrid"></div>
+      <p class="exam-caution">Requirements and formats change. Always confirm eligibility, dates and official preparation material with the relevant authority and your intended university or regulator.</p>
+    </section>
+
+    <section class="library section" id="library">
+      <div class="section-heading"><div><p class="eyebrow">Before the stethoscope shelf</p><h2>Learn systems—not isolated trivia.</h2></div><p>Search by discipline or learning mode. Every resource doorway is designed to connect core science, clinical relevance, reflection and active recall.</p></div>
+      <div class="library-tools"><label class="search-box">⌕ <input id="resourceSearch" type="search" placeholder="Search anatomy, ECG, inflammation…" aria-label="Search medical resources"></label><label>Discipline <select id="disciplineFilter"><option value="all">All disciplines</option></select></label><label>Mode <select id="modeFilter"><option value="all">Every mode</option><option>Concept guide</option><option>Clinical case</option><option>Active recall</option><option>Skills station</option><option>Reflection</option></select></label></div>
+      <div class="result-line"><span id="resourceCount"></span><button id="clearResourceFilters" type="button">Clear filters</button></div>
+      <div class="resource-grid" id="resourceGrid"></div>
+      <div class="empty-state" id="resourceEmpty" hidden><strong>Nothing found in this drawer.</strong><p>Try a broader topic or clear the filters.</p></div>
+    </section>
+
+    <section class="case-lab section" id="case-lab">
+      <div class="case-intro"><p class="eyebrow">Today’s case lab</p><h2>Reason before revealing.</h2><p>The goal is not to name the diagnosis in three seconds. Notice, organise, ask what is missing and choose the safest next step.</p><div class="case-rule">Educational scenario only · not patient-specific medical advice</div></div>
+      <div class="case-card">
+        <div class="case-header"><span>CASE 014</span><span>GENERAL MEDICINE · EARLY CLINICAL</span></div>
+        <h3>A 24-year-old student reports increasing fatigue, breathlessness on stairs and difficulty concentrating over several months.</h3>
+        <div class="case-vitals"><span>Alert</span><span>HR 102</span><span>BP 108/68</span><span>Afebrile</span></div>
+        <fieldset><legend>What would you do before jumping to a diagnosis?</legend><label><input type="radio" name="caseStep" value="history"> Take a focused history and clarify red flags</label><label><input type="radio" name="caseStep" value="diagnose"> Announce the most likely diagnosis immediately</label><label><input type="radio" name="caseStep" value="ignore"> Reassure without further assessment</label></fieldset>
+        <button class="case-button" id="checkCase" type="button">Check my reasoning →</button>
+        <div class="case-feedback" id="caseFeedback" aria-live="polite">Choose a step, then explain to yourself what information it could add.</div>
+      </div>
+    </section>
+
+    <section class="human-room section" id="human-room">
+      <div class="human-image"><img src="images/clinical-debrief.png" alt="A medical student and compassionate senior clinician reflecting together after a clinical encounter"></div>
+      <div class="human-copy"><p class="eyebrow">The human room</p><h2>You are becoming a doctor. You remain a person.</h2><p>There will be days when the content is fascinating and days when you cannot remember why you started. Neither day tells the whole story.</p>
+        <div class="human-options"><button type="button" data-reset="overwhelmed">I feel overwhelmed</button><button type="button" data-reset="behind">I feel behind</button><button type="button" data-reset="mistake">I made a mistake</button><button type="button" data-reset="numb">I feel emotionally flat</button></div>
+        <div class="reset-card" id="resetCard" aria-live="polite"><strong>Choose what is closest.</strong><p>This will not diagnose or fix you. It will give you one small, humane next step.</p></div>
+      </div>
+    </section>
+
+    <section class="source-room section">
+      <div class="source-title"><p class="eyebrow">The evidence desk</p><h2>Do not memorise a screenshot of a screenshot.</h2></div>
+      <div class="source-grid"><article><span>01</span><h3>Trace the source</h3><p>Move from summary to guideline, regulator, original paper or recognised textbook.</p></article><article><span>02</span><h3>Check the date</h3><p>Clinical guidance and examination rules change. Current authority matters.</p></article><article><span>03</span><h3>Name uncertainty</h3><p>Separate what is known, suspected, context-dependent and still missing.</p></article><article><span>04</span><h3>Return to the patient</h3><p>Evidence supports care. It does not replace listening, consent or individual context.</p></article></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand"><span class="brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt=""></span><div><strong>Jigyasa Verse Medical School</strong><p>Know the why before the ward. Keep the human after it.</p></div></div><div class="footer-links"><a href="#year-path">Years</a><a href="#exam-map">Exams</a><a href="#library">Library</a><a href="contact.html">Suggest a resource</a></div><a href="#top">Back to the beginning ↑</a></footer>
+
+  <dialog class="resource-dialog" id="resourceDialog" aria-labelledby="dialogTitle"><button class="dialog-close" id="dialogClose" type="button" aria-label="Close resource">×</button><div id="dialogContent"></div></dialog>
+</body>
+</html>
