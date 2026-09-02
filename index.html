@@ -1,193 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-      <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag('js', new Date());
-      gtag('config', 'G-EF9DVH7JQN');
-    </script>
-  
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A playful universe for curious students, educators, professionals and grown-ups who still ask why.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jigyasa Verse is a playful universe for curious students, educators, professionals and grown-ups who still ask why.">
   <meta name="theme-color" content="#17122f">
-  <title>The Jigyasa Verse | A Place for Curious Minds</title>
+  <title>Jigyasa Verse | Curiosity Lives Here</title>
+
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="wonder-verse-navbar.css">
+  <link rel="stylesheet" href="jigyasa-index-refined.css">
+
   <script src="script.js" defer></script>
+  <script src="wonder-verse-navbar.js" defer></script>
+
+  <!-- Google Analytics: keep this only if you are actively using this property. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EF9DVH7JQN');
+  </script>
 </head>
-<body>
-  <a class="skip" href="#content">Skip to the Wonderverse</a>
 
-<!-- Add in <head>, AFTER the page's normal stylesheet -->
-<link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
-<link rel="stylesheet" href="wonder-verse-navbar.css">
+<body class="jigyasa-home">
+  <a class="skip" href="#main-content">Skip to the main content</a>
 
-<!-- Replace the page's existing <header> with this one. -->
-<header class="wv-header">
-  <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
-    <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
-      <span class="wv-brand-image-wrap">
-        <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
-      </span>
-      <span class="wv-brand-copy">
-        <span class="wv-brand-name">Jigyasa Verse</span>
-        <span class="wv-brand-note">Curiosity lives here</span>
-      </span>
-    </a>
+  <header class="wv-header">
+    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Jigyasa Verse homepage" aria-current="page">
+        <span class="wv-brand-image-wrap">
+          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+        </span>
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Jigyasa Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
 
-    <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu">
-      <span class="wv-menu-label">Menu</span>
-      <span class="wv-menu-lines" aria-hidden="true"></span>
-    </button>
+      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu">
+        <span class="wv-menu-label">Menu</span>
+        <span class="wv-menu-lines" aria-hidden="true"></span>
+      </button>
 
-    <div class="wv-links" id="wvNavLinks" data-wv-links>
-      <a href="index.html">Start Here</a>
-      <a href="about.html">Our Story</a>
-      <a href="books.html">Books</a>
-     <a href="#pathways">Wonder</a>
-      <a href="schools.html">Schools</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-</header>
+      <div class="wv-links" id="wvNavLinks" data-wv-links>
+        <a href="index.html" aria-current="page">Start Here</a>
+        <a href="wonderverse.html">Wonder</a>
+        <a href="schools.html">Schools</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-<!-- Add immediately before </body> -->
-<script src="wonder-verse-navbar.js"></script>
-
-<!-- On each page, add aria-current="page" to its matching link.
-     Example on questions.html:
-     <a href="questions.html" aria-current="page">Wonder</a>
--->
-  <main id="content">
-    <section class="hero">
-      <div class="sky-scribble scribble-one" aria-hidden="true">✦</div>
-      <div class="sky-scribble scribble-two" aria-hidden="true">· · ─ ·</div>
-
-      <div class="hero-copy">
-        <p class="overline"><span>Field note 001</span> For the wonderfully curious</p>
-        <h1>There is a whole<br><em>universe</em> in you.</h1>
-        <p class="hero-text">A playful place for curious students, thoughtful educators, imaginative professionals and grown-ups who miss asking <i>why?</i></p>
-        <div class="hero-actions">
-          <a class="button solid" href="#worlds">Choose a world <span>↓</span></a>
-          <a class="button quiet" href="sign-in.html">Enter your space <span>↗</span></a>
-        </div>
-        <p class="margin-note"><span>01</span> You do not need a perfect plan. Curiosity is allowed to wander.</p>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="home-hero-copy">
+        <p class="home-eyebrow">For humans who still wonder</p>
+        <h1 id="home-title">There is a whole <em>universe</em> in you.</h1>
+        <p class="home-intro">A place to learn, question, make mistakes and feel more human—at school, at work and everywhere in between.</p>
+        <a class="home-text-link" href="#choose-your-place">Find your place <span aria-hidden="true">↓</span></a>
       </div>
 
-      <div class="moon-scene" aria-label="A hand-painted yellow moon floating among sketched stars">
-        <div class="orbit-line"><span></span></div>
-        <span class="star star-a">✦</span><span class="star star-b">+</span><span class="star star-c">·</span>
+      <figure class="home-moon">
         <img src="images/painted-moon.png" alt="A softly painted golden moon with looping grey craters">
-        <div class="moon-caption"><b>A moon painted by hand</b><span>because perfect circles are overrated.</span></div>
+        <figcaption>Hand-painted, because perfect circles are overrated.</figcaption>
+      </figure>
+    </section>
+
+    <section class="home-doors" id="choose-your-place" aria-labelledby="door-title">
+      <div class="home-section-heading">
+        <p class="home-eyebrow">Two places. One curious universe.</p>
+        <h2 id="door-title">Where would you like to begin?</h2>
+      </div>
+
+      <div class="home-door-grid">
+        <a class="home-door home-door-wonder" href="wonderverse.html">
+          <span class="home-door-number">01</span>
+          <div>
+            <p>For work, life and everything nobody teaches us</p>
+            <h3>Enter the Wonder Gateway</h3>
+            <span class="home-door-action">Explore the human side of life <b aria-hidden="true">↗</b></span>
+          </div>
+        </a>
+
+        <a class="home-door home-door-schools" href="schools.html">
+          <span class="home-door-number">02</span>
+          <div>
+            <p>For students, teachers, families and learning communities</p>
+            <h3>Enter the Schools Gateway</h3>
+            <span class="home-door-action">Find playful learning resources <b aria-hidden="true">↗</b></span>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section class="manifesto">
-      <p>WONDER IS NOT A CHILDHOOD PHASE</p>
-      <h2>It is how we notice more,<br>learn deeply and begin again.</h2>
-      <div class="constellation" aria-hidden="true">
-        <i></i><i></i><i></i><i></i>
-        <svg viewBox="0 0 230 70"><path d="M8 50 L64 16 L125 47 L182 12 L222 43"></path></svg>
-      </div>
-    </section>
-
-    <section class="world-section" id="worlds">
-      <div class="section-intro">
+    <section class="home-worlds" aria-labelledby="world-title">
+      <div class="home-section-heading home-section-heading-row">
         <div>
-          <p class="overline"><span>Map of possibilities</span> Six places to begin</p>
-          <h2>Follow the world<br>that feels like <em>you.</em></h2>
+          <p class="home-eyebrow">Inside the Wonder Place</p>
+          <h2 id="world-title">Six worlds for real life.</h2>
         </div>
-        <p>Each world holds a different kind of curiosity. Visit one, visit all six, or change your mind halfway through. That counts as exploring.</p>
+        <p>Pick the one that sounds most like what you need today.</p>
       </div>
 
-      <div class="world-grid">
-        <a class="world-card honey" href="spark.html">
-          <span class="world-number">01</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>↗</b></div>
-          <h3>The Moon of Beginnings</h3><p>For soft restarts, brave first steps and promises small enough to keep.</p>
-          <span class="world-link">Begin here <b>↗</b></span>
+      <div class="world-directory">
+        <a class="world-row world-honey" href="spark.html">
+          <span class="world-index">01</span><span class="world-symbol" aria-hidden="true">↗</span>
+          <strong>The Moon of Beginnings</strong><span class="world-summary">Small restarts and brave first steps.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
-        <a class="world-card lilac" href="questions.html">
-          <span class="world-number">02</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>?</b></div>
-          <h3>The Question-arium</h3><p>A cabinet of peculiar thoughts, unfinished answers and questions worth keeping.</p>
-          <span class="world-link">Start wondering <b>↗</b></span>
+        <a class="world-row world-lilac" href="questions.html">
+          <span class="world-index">02</span><span class="world-symbol" aria-hidden="true">?</span>
+          <strong>The Question-arium</strong><span class="world-summary">Peculiar thoughts and questions worth keeping.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
-        <a class="world-card mint" href="becoming-atlas.html">
-          <span class="world-number">03</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>∴</b></div>
-          <h3>The Becoming Atlas</h3><p> Questions about mistakes, accountability, relationships and workplace repair.</p>
-          <span class="world-link">Becoming Atlas <b>↗</b></span>
+        <a class="world-row world-mint" href="becoming-atlas.html">
+          <span class="world-index">03</span><span class="world-symbol" aria-hidden="true">∴</span>
+          <strong>The Becoming Atlas</strong><span class="world-summary">Accountability, relationships and repair.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
-            <a class="world-card ember" href="oops-observatory.html">
-          <span class="world-number">04</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>!</b></div>
-          <h3>‘Oops!’ Observatory</h3><p>A museum of wrong turns, glorious flops and the lessons hiding inside them.</p>
-          <span class="world-link">Meet the mistakes <b>↗</b></span>
+        <a class="world-row world-ember" href="oops-observatory.html">
+          <span class="world-index">04</span><span class="world-symbol" aria-hidden="true">!</span>
+          <strong>The ‘Oops!’ Observatory</strong><span class="world-summary">Wrong turns, glorious flops and their lessons.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
-          
-        <a class="world-card violet" href="teachers.html">
-          <span class="world-number">05</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>+</b></div>
-          <h3>Teacher Constellation</h3><p>Thoughtful tools and shared space for the educators who keep curiosity alive.</p>
-          <span class="world-link">For educators <b>↗</b></span>
+        <a class="world-row world-violet" href="teachers.html">
+          <span class="world-index">05</span><span class="world-symbol" aria-hidden="true">+</span>
+          <strong>Teacher Constellation</strong><span class="world-summary">A thoughtful space for curious educators.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
-        <a class="world-card sky" href="student-orbit.html">
-          <span class="world-number">06</span><div class="coded-moon" aria-hidden="true"><i></i><i></i><b>△</b></div>
-          <h3>Student Orbit</h3><p>Learning adventures built for curious humans—not worksheet-completing robots.</p>
-          <span class="world-link">Launch a quest <b>↗</b></span>
+        <a class="world-row world-sky" href="student-orbit.html">
+          <span class="world-index">06</span><span class="world-symbol" aria-hidden="true">△</span>
+          <strong>Student Orbit</strong><span class="world-summary">Learning adventures for curious humans.</span><b class="world-arrow" aria-hidden="true">↗</b>
         </a>
       </div>
     </section>
 
-    <section class="tiny-method">
-      <p class="overline"><span>How wonder moves</span> A very unofficial method</p>
-      <div class="method-row">
-        <article><span>01</span><div class="method-symbol">?</div><h3>Notice</h3><p>Pause at the thing everybody else walked past.</p></article>
-        <article><span>02</span><div class="method-symbol">↝</div><h3>Try</h3><p>Make one small, delightfully imperfect attempt.</p></article>
-        <article><span>03</span><div class="method-symbol">✦</div><h3>Keep</h3><p>Save the question, the lesson and the funny failure.</p></article>
-      </div>
-    </section>
-
-    <section class="pathway-section" id="pathways">
-      <div class="pathway-title">
-        <p class="overline"><span>Three doorways</span> One wonderfully complicated human</p>
-        <h2>Where would you<br>like to land?</h2>
-      </div>
-      <div class="pathway-list">
-        <a href="wonderverse.html" class="pathway"><span class="pathway-mark">W / 01</span><div><small>For every profession</small><h3>Wonder at Work</h3></div><p>Make room for the human behind the job: the difficult days, ideas nobody asked about, small wins and work that could feel better.</p><b>↗</b></a>
-        <a href="wonderinlife.html" class="pathway"><span class="pathway-mark">W / 02</span><div><small>For your inner world</small><h3>Wonder in Life</h3></div><p>A space beyond productivity for ordinary beauty, strange questions, half-made dreams and the parts of you still becoming.</p><b>↗</b></a>
-        <a href="wonderschools.html" class="pathway"><span class="pathway-mark">W / 03</span><div><small>For learning communities</small><h3>Wonder Schools</h3></div><p>Playful, meaningful experiences where students and educators can question, create, reflect and learn together.</p><b>↗</b></a>
-      </div>
-    </section>
-
-    <section class="educator-panel">
-      <div class="paper-moon" aria-hidden="true"><span>✦</span><i></i><i></i><i></i></div>
+    <section class="home-question" aria-labelledby="question-title">
+      <span class="home-question-mark" aria-hidden="true">?</span>
       <div>
-        <p class="overline"><span>For educators &amp; schools</span> Curiosity belongs in the timetable</p>
-        <h2>Build a classroom<br>full of good questions.</h2>
-        <p>Use thoughtful missions, creative investigations and gentle reflection to help students grow in confidence—not simply complete another task.</p>
-        <div class="hero-actions"><a class="button ink" href="schools.html">Explore school programs <span>↗</span></a><a class="button paper" href="teachers.html">Visit the teacher space</a></div>
+        <p class="home-eyebrow">A question for tonight</p>
+        <h2 id="question-title">What would you try if being bad at it was part of the adventure?</h2>
       </div>
-    </section>
-
-    <section class="question-panel">
-      <span class="question-mark">?</span>
-      <p>Tonight’s question from somewhere near the moon</p>
-      <h2>What would you try if being bad at it<br>was part of the adventure?</h2>
-      <a href="questions.html">Find another question <span>↗</span></a>
+      <a href="questions.html">Find another question <span aria-hidden="true">↗</span></a>
     </section>
   </main>
 
-  <footer>
-    <a class="brand footer-brand" href="index.html"><span class="brand-moon"><i></i><i></i><i></i></span><span>THE WONDER<br><em>VERSE</em></span></a>
-    <p>Protecting curiosity, celebrating good questions and making life feel a little more alive.</p>
-    <div><a href="about.html">About</a><a href="books.html">Books</a><a href="mailto:tiwariisha72@gmail.com">Say hello</a></div>
-    <small>© 2026 The Jigyasa Verse Project · Made somewhere between the moon and imagination.</small>
+  <footer class="home-footer">
+    <div>
+      <a class="home-footer-brand" href="index.html">Jigyasa Verse</a>
+      <p>Protecting curiosity and making life feel a little more alive.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="about.html">Our Story</a>
+      <a href="books.html">Books</a>
+      <a href="contact.html">Say hello</a>
+    </nav>
+    <small>© 2026 Jigyasa Verse · Made somewhere between the moon and imagination.</small>
   </footer>
-<script src="wonder-verse-navbar.js"></script>
 </body>
 </html>
