@@ -841,34 +841,14 @@ html {
   backdrop-filter: blur(14px);
 }
 
-.wv-brand-name,
-.wv-brand-note,
 .wv-links a,
 .wv-menu {
   color: #fffaf0;
 }
 
-/* Turn the white logo artwork black while keeping it visible on the space theme. */
-.wv-brand-image-wrap {
-  display: grid;
-  place-items: center;
-  padding: .28rem;
-  border: 1px solid #fffaf0;
-  border-radius: 50%;
-  background: #ffd84f;
-  box-shadow: 3px 3px 0 #8c6cf1;
-  transform: rotate(-5deg);
-}
-
-.wv-brand-image {
-  filter: brightness(0) saturate(100%);
-}
-
-.wv-brand:hover .wv-brand-image-wrap,
-.wv-brand:focus-visible .wv-brand-image-wrap {
-  background: #73e6d5;
-  box-shadow: 4px 4px 0 #ff8ca7;
-  transform: rotate(3deg) scale(1.04);
+.wv-brand-name,
+.wv-brand-note {
+  color: #17122f;
 }
 
 .wv-links a:hover,
@@ -1160,6 +1140,7 @@ html {
     animation: none;
   }
 }
+
 
 
 
