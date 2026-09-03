@@ -2,549 +2,180 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Wonder at Work — a calm space for every profession to reflect, reconnect and stay curious.">
-  <title>Wonder at Work | Wonder Verse</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-    :root {
-      --night: #050816;
-      --navy: #0b1734;
-      --panel: rgba(15, 28, 65, .78);
-      --line: rgba(194, 205, 255, .17);
-      --text: #f7f8ff;
-      --muted: #b9c3e2;
-      --mint: #63e6ce;
-      --pink: #ff9fce;
-      --gold: #ffd36c;
-      --purple: #a38cff;
-      --display: "Cormorant Garamond", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wonder Lok — a field guide to the beautifully complicated business of being human.">
+  <meta name="theme-color" content="#06383b">
+  <title>Wonder Lok | Jigyasa Verse</title>
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--night); color: var(--text); font-family: var(--sans); }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 85% 8%, rgba(99,230,206,.09), transparent 29rem),
-        radial-gradient(circle at 13% 27%, rgba(144,118,255,.18), transparent 30rem),
-        radial-gradient(circle at 70% 78%, rgba(255,107,176,.1), transparent 34rem),
-        linear-gradient(150deg, #050816 0%, #09142d 48%, #071b29 100%);
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: .68;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.85) 0 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(99,230,206,.65) 0 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(255,159,206,.58) 0 1px, transparent 1.5px);
-      background-size: 137px 137px, 211px 211px, 293px 293px;
-      background-position: 7px 13px, 61px 97px, 121px 41px;
-    }
-    a { color: inherit; text-decoration: none; }
-    button, textarea { font: inherit; }
-    h1, h2, h3 { font-family: var(--display); }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-    .site-header {
-      height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 clamp(24px, 6vw, 92px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(5,8,22,.82);
-      backdrop-filter: blur(16px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: .18em; }
-    .brand em { font-style: normal; color: var(--gold); }
-    .mark { width: 30px; height: 30px; position: relative; display: inline-block; color: var(--gold); border: 1px solid rgba(255,211,108,.35); border-radius: 50%; flex: 0 0 auto; }
-    .mark::before, .mark::after, .mark i::before { content: ""; position: absolute; border-radius: 50%; }
-    .mark::before { width: 2px; height: 2px; left: 19%; top: 20%; background: currentColor; box-shadow: 17px 3px currentColor, 8px 18px currentColor; }
-    .mark::after { width: 12px; height: 12px; left: 8px; top: 8px; border: 1px solid currentColor; transform: rotate(-22deg); }
-    .mark i::before { width: 23px; height: 8px; left: 3px; top: 10px; border: 1px solid currentColor; transform: rotate(-18deg); }
-    .mark b { position: absolute; width: 3px; height: 3px; right: 3px; top: 8px; border-radius: 50%; background: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 42px); }
-    .nav-links a { color: var(--muted); font-size: 13px; padding: 28px 0 24px; border-bottom: 2px solid transparent; }
-    .nav-links a:hover, .nav-links a.active { color: white; border-bottom-color: var(--mint); }
-    .menu-button { display: none; border: 0; background: transparent; padding: 8px; cursor: pointer; }
-    .menu-button span { display: block; width: 23px; height: 1px; background: white; margin: 5px; }
-
-    .page-intro {
-      min-height: calc(100vh - 78px);
-      padding: 80px clamp(24px, 8vw, 128px);
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-    .page-intro::after { content: ""; position: absolute; right: 8%; bottom: 7%; width: 180px; height: 1px; background: linear-gradient(90deg,transparent,rgba(99,230,206,.6)); transform: rotate(-30deg); box-shadow: 0 0 15px rgba(99,230,206,.35); }
-    .intro-copy { max-width: 680px; position: relative; z-index: 2; }
-    .eyebrow { margin: 0; color: var(--mint); font-size: 11px; font-weight: 700; letter-spacing: .22em; }
-    .intro-copy h1 { color: white; font-size: clamp(60px,7.5vw,102px); font-weight: 500; line-height: .95; letter-spacing: -.035em; margin: 20px 0 26px; text-shadow: 0 10px 45px rgba(0,0,0,.25); }
-    .lead { color: var(--muted); font-size: clamp(16px,1.6vw,20px); line-height: 1.8; max-width: 610px; }
-    .soft-button { margin-top: 26px; display: inline-flex; align-items: center; gap: 22px; padding: 15px 20px; border-radius: 999px; color: #111936; background: linear-gradient(135deg,var(--gold),#ffe9a6); box-shadow: 0 14px 38px rgba(255,211,108,.2); font-size: 13px; font-weight: 700; transition: .25s ease; }
-    .soft-button:hover { transform: translateY(-3px); background: linear-gradient(135deg,#ffe392,#fff2c7); }
-    .soft-button span { font-size: 17px; }
-
-    .orbit-art { width: min(38vw,430px); aspect-ratio: 1; position: relative; justify-self: center; color: var(--mint); filter: drop-shadow(0 0 30px rgba(99,230,206,.16)); animation: float 7s ease-in-out infinite; }
-    .orbit { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); }
-    .orbit-one { inset: 8%; }
-    .orbit-two { left: 4%; right: 4%; top: 41%; height: 19%; border: 5px solid rgba(226,220,255,.38); border-top-color: transparent; transform: rotate(-16deg); }
-    .orbit-core { position: absolute; inset: 30%; border-radius: 50%; background: radial-gradient(circle at 32% 27%,rgba(255,255,255,.85),transparent 9%), radial-gradient(circle at 67% 65%,rgba(57,39,105,.3) 0 9%,transparent 10%), linear-gradient(145deg,#ffb4d8 0%,#9d7cff 45%,#4fcfbd 100%); box-shadow: inset -30px -25px 50px rgba(17,12,55,.38), 0 0 55px rgba(157,124,255,.45), 0 0 145px rgba(99,230,206,.18); }
-    .orbit-core span { position: absolute; left: 28%; top: 24%; width: 18%; height: 8%; border-radius: 50%; background: rgba(255,255,255,.25); transform: rotate(-20deg); }
-    .satellite { position: absolute; border-radius: 50%; box-shadow: 0 0 18px currentColor; }
-    .satellite-one { width: 8px; height: 8px; left: 9%; top: 26%; color: var(--gold); background: var(--gold); }
-    .satellite-two { width: 5px; height: 5px; right: 7%; bottom: 29%; color: var(--pink); background: var(--pink); }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
-
-    .work-welcome { padding: 22px clamp(24px,7vw,108px); display: flex; justify-content: center; gap: 15px; align-items: center; background: rgba(10,19,44,.72); border-block: 1px solid var(--line); backdrop-filter: blur(14px); text-align: center; }
-    .work-welcome p { font-family: var(--display); font-size: 22px; margin: 0; }
-    .work-welcome span { color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; border-left: 1px solid rgba(255,255,255,.2); padding-left: 15px; }
-
-    .profession-section { padding: 110px clamp(24px,7vw,108px); scroll-margin-top: 78px; background: rgba(3,8,25,.18); }
-    .section-heading { max-width: 720px; text-align: center; margin: 0 auto 54px; }
-    .section-heading.left { text-align: left; margin-left: 0; margin-bottom: 34px; }
-    .section-heading h2 { color: white; font-size: clamp(43px,5vw,66px); font-weight: 500; line-height: 1.02; margin: 14px 0 18px; }
-    .section-heading > p:not(.eyebrow) { color: var(--muted); line-height: 1.8; }
-    .profession-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; max-width: 1400px; margin: auto; }
-    .profession-card { --profession: #927cff; min-height: 410px; padding: 23px; color: var(--text); border: 1px solid var(--line); border-radius: 21px; background: radial-gradient(circle at 88% 5%,color-mix(in srgb,var(--profession) 22%,transparent),transparent 36%), linear-gradient(145deg,rgba(21,38,84,.86),rgba(7,16,40,.88)); box-shadow: 0 22px 65px rgba(0,0,0,.25); backdrop-filter: blur(16px); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform .28s ease, box-shadow .28s ease; }
-    .profession-card::before { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--profession); left: 13%; top: 17%; box-shadow: 72px 45px 0 -1px var(--profession),145px 12px 0 -1px var(--profession); opacity: .7; }
-    .profession-card::after { content: ""; position: absolute; width: 150px; height: 150px; border: 1px solid var(--profession); border-radius: 50%; right: -82px; top: -78px; opacity: .32; box-shadow: 0 0 32px color-mix(in srgb,var(--profession) 22%,transparent); }
-    .profession-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb,var(--profession) 65%,white); box-shadow: 0 28px 85px rgba(0,0,0,.38),0 0 35px color-mix(in srgb,var(--profession) 12%,transparent); }
-    .profession-care { --profession:#ff8da6; } .profession-engineer { --profession:#76b8ff; } .profession-data { --profession:#a38cff; } .profession-trade { --profession:#ffd36c; }
-    .profession-business { --profession:#64dfc7; } .profession-creative { --profession:#ff91cf; } .profession-community { --profession:#86e89a; } .profession-explore { --profession:#d8b1ff; }
-    .profession-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
-    .profession-number { color: var(--muted); font-size: 9px; letter-spacing: .2em; }
-    .profession-symbol { width: 47px; height: 47px; border-radius: 50%; display: grid; place-items: center; color: #071225; background: radial-gradient(circle at 35% 28%,white,var(--profession)); box-shadow: 0 0 25px color-mix(in srgb,var(--profession) 55%,transparent); font-family: var(--display); font-size: 20px; }
-    .profession-card h3 { font-size: 29px; line-height: 1.03; font-weight: 500; margin: 0 0 10px; }
-    .profession-roles { min-height: 44px; color: var(--profession); font-size: 10px; line-height: 1.55; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
-    .profession-message { color: var(--muted); font-size: 13px; line-height: 1.65; margin: 14px 0 22px; }
-    .profession-card details { margin-top: auto; border-top: 1px solid var(--line); padding-top: 16px; }
-    .profession-card summary { list-style: none; cursor: pointer; font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-    .profession-card summary::-webkit-details-marker { display: none; }
-    .profession-card summary span { color: var(--profession); font-size: 18px; font-weight: 400; transition: transform .2s ease; }
-    .profession-card details[open] summary span { transform: rotate(45deg); }
-    .profession-card ul { padding: 13px 0 0 16px; margin: 0; color: var(--muted); }
-    .profession-card li { font-size: 11px; line-height: 1.55; margin-bottom: 7px; }
-    .open-door-note { text-align: center; color: var(--muted); font-size: 12px; margin: 42px 0 0; }
-    .open-door-note span { color: var(--gold); margin-right: 7px; }
-
-    .reality-section { padding: 110px clamp(24px,7vw,108px); background: #f5f0e6; color: #111936; }
-    .reality-section .eyebrow { color: #247f78; }
-    .reality-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; max-width: 1350px; margin: 0 auto 55px; }
-    .reality-heading h2 { font-size: clamp(45px,5.4vw,72px); font-weight: 500; line-height: .98; letter-spacing: -.035em; margin: 14px 0 0; }
-    .reality-heading > p { color: #536064; line-height: 1.8; margin: 0; }
-    .reality-grid { display: grid; grid-template-columns: repeat(3,1fr); max-width: 1350px; margin: auto; border: 1px solid rgba(17,25,54,.14); }
-    .reality-card { min-height: 325px; padding: 34px; border-right: 1px solid rgba(17,25,54,.14); position: relative; }
-    .reality-card:last-child { border-right: 0; }
-    .reality-card:nth-child(1) { background: #dceee5; }
-    .reality-card:nth-child(2) { background: #e0e9f7; }
-    .reality-card:nth-child(3) { background: #f2dfd2; }
-    .reality-card > span { font-size: 9px; letter-spacing: .18em; font-weight: 700; }
-    .reality-card h3 { font-size: 31px; font-weight: 500; line-height: 1.05; margin: 60px 0 18px; }
-    .reality-card p { color: #43545a; font-size: 13px; line-height: 1.75; }
-
-    .decision-section { padding: 115px clamp(24px,7vw,108px); background: linear-gradient(140deg,#061b2b,#0d3940); border-block: 1px solid var(--line); }
-    .decision-shell { max-width: 1350px; margin: auto; }
-    .decision-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; margin-bottom: 45px; }
-    .decision-heading h2 { font-size: clamp(45px,5vw,68px); line-height: 1; font-weight: 500; margin: 14px 0 0; }
-    .decision-heading p:last-child { color: var(--muted); line-height: 1.8; }
-    .decision-path { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid rgba(255,255,255,.17); }
-    .decision-step { min-height: 310px; padding: 30px; border-right: 1px solid rgba(255,255,255,.17); }
-    .decision-step:last-child { border-right: 0; }
-    .decision-step > span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #071225; background: var(--step); font-family: var(--display); box-shadow: 0 0 25px color-mix(in srgb,var(--step) 40%,transparent); }
-    .decision-step:nth-child(1) { --step:#63e6ce; }.decision-step:nth-child(2) { --step:#ffd36c; }.decision-step:nth-child(3) { --step:#ff9fce; }.decision-step:nth-child(4) { --step:#a38cff; }
-    .decision-step h3 { font-size: 27px; font-weight: 500; margin: 54px 0 14px; }
-    .decision-step p { color: var(--muted); font-size: 12px; line-height: 1.75; }
-    .consequence-note { margin-top: 28px; padding: 20px 24px; border-left: 3px solid var(--gold); background: rgba(255,211,108,.08); color: #e4e6f4; font-size: 13px; line-height: 1.75; }
-
-    .bridge-section { padding: 115px clamp(24px,7vw,108px); background: #efe9dc; color: #10172e; }
-    .bridge-shell { max-width: 1350px; margin: auto; }
-    .bridge-heading { display: flex; justify-content: space-between; gap: 60px; align-items: end; margin-bottom: 50px; }
-    .bridge-heading h2 { font-size: clamp(45px,5vw,69px); font-weight: 500; line-height: .98; margin: 14px 0 0; }
-    .bridge-heading > p { color: #566166; max-width: 420px; line-height: 1.8; }
-    .bridge-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
-    .bridge-card { min-height: 285px; padding: 27px; border: 1px solid rgba(16,23,46,.15); background: var(--bridge-bg); display: flex; flex-direction: column; }
-    .bridge-card:nth-child(1) { --bridge-bg:#d8ede4; }.bridge-card:nth-child(2) { --bridge-bg:#e1e6f5; }.bridge-card:nth-child(3) { --bridge-bg:#f1ddd2; }.bridge-card:nth-child(4) { --bridge-bg:#ede0f1; }
-    .bridge-card > span { font-size: 9px; letter-spacing: .16em; font-weight: 700; }
-    .bridge-card h3 { font-size: 25px; font-weight: 500; margin: 48px 0 13px; }
-    .bridge-card p { color: #4e5b60; font-size: 12px; line-height: 1.7; }
-    .bridge-card small { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(16,23,46,.13); color: #27746f; font-weight: 700; line-height: 1.5; }
-    .help-strip { margin-top: 18px; background: #101d36; color: white; padding: 28px 32px; display: grid; grid-template-columns: .7fr 1.3fr; gap: 35px; }
-    .help-strip strong { font-family: var(--display); font-size: 25px; font-weight: 500; }
-    .help-strip p { color: #c7cee1; font-size: 12px; line-height: 1.75; margin: 0; }
-
-    .thanks-section { padding: 120px clamp(24px,7vw,108px); text-align: center; background: radial-gradient(circle at 50% 0,rgba(99,230,206,.14),transparent 30rem),#071126; }
-    .thanks-section h2 { max-width: 900px; margin: 20px auto 25px; font-size: clamp(48px,6vw,78px); font-weight: 500; line-height: .98; }
-    .thanks-section > p:not(.eyebrow) { max-width: 680px; margin: 0 auto; color: var(--muted); line-height: 1.8; }
-    .thanks-signoff { display: inline-block; margin-top: 38px; color: var(--gold); font-family: var(--display); font-size: 23px; border-bottom: 1px solid rgba(255,211,108,.35); padding-bottom: 8px; }
-
-    .signal-exchange { padding: 80px clamp(24px,7vw,108px); display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; background: linear-gradient(135deg,rgba(31,27,72,.9),rgba(6,29,44,.92)); border-block: 1px solid var(--line); }
-    .signal-exchange h2 { font-size: clamp(41px,5vw,63px); font-weight: 500; line-height: 1; margin: 13px 0; }
-    .signal-list { border-top: 1px solid rgba(255,255,255,.16); }
-    .signal-list p { display: grid; grid-template-columns: 45px 1fr; gap: 10px; padding: 21px 0; margin: 0; border-bottom: 1px solid rgba(255,255,255,.16); color: #dddbe8; font-size: 14px; line-height: 1.6; }
-    .signal-list span { color: var(--mint); font-size: 9px; letter-spacing: .18em; padding-top: 5px; }
-
-    .quiet-section { padding: 110px clamp(24px,7vw,108px); scroll-margin-top: 78px; background: radial-gradient(circle at 75% 30%,rgba(255,159,206,.08),transparent 30rem); }
-    .privacy-note { max-width: 850px; display: flex; gap: 16px; align-items: flex-start; color: var(--text); background: rgba(99,230,206,.07); border: 1px solid rgba(99,230,206,.2); border-radius: 16px; padding: 18px 20px; margin-bottom: 28px; }
-    .privacy-note strong { font-family: var(--display); font-size: 19px; }
-    .privacy-note p { color: var(--muted); font-size: 12px; line-height: 1.65; margin: 3px 0 0; }
-    .lock-symbol { width: 22px; height: 18px; border: 1.5px solid var(--mint); border-radius: 4px; position: relative; margin-top: 8px; flex: 0 0 22px; }
-    .lock-symbol::before { content: ""; position: absolute; width: 10px; height: 9px; border: 1.5px solid var(--mint); border-bottom: 0; border-radius: 8px 8px 0 0; left: 4px; top: -8px; }
-    .reflection-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    .reflection-card { min-height: 400px; padding: 24px; color: var(--text); border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg,rgba(18,34,75,.85),rgba(7,16,40,.88)); box-shadow: 0 22px 60px rgba(0,0,0,.24); display: flex; flex-direction: column; }
-    .card-rule { height: 2px; background: rgba(255,255,255,.1); margin-bottom: 24px; }
-    .card-rule span { display: block; width: 22%; height: 100%; background: linear-gradient(90deg,var(--pink),var(--mint)); }
-    .reflection-card h3 { font-size: 28px; font-weight: 500; margin: 0 0 10px; }
-    .reflection-card > p { min-height: 64px; color: var(--muted); font-size: 13px; line-height: 1.65; }
-    .reflection-card textarea { width: 100%; resize: vertical; color: white; background: rgba(2,9,27,.65); border: 1px solid rgba(194,205,255,.2); border-radius: 10px; padding: 14px; line-height: 1.6; outline: none; margin: 10px 0 17px; }
-    .reflection-card textarea::placeholder { color: #7884a8; }
-    .reflection-card textarea:focus { border-color: var(--mint); box-shadow: 0 0 0 3px rgba(99,230,206,.12); }
-    .save-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
-    .save-row button { border: 0; border-radius: 999px; color: #10172e; background: linear-gradient(135deg,var(--gold),#ffe9a7); padding: 10px 14px; font-size: 11px; font-weight: 700; cursor: pointer; }
-    .save-row span { color: var(--muted); font-size: 9px; text-align: right; }
-
-    .feature-band { padding: 60px clamp(24px,7vw,108px); display: grid; grid-template-columns: repeat(3,1fr); gap: 35px; background: rgba(8,18,42,.86); border-top: 1px solid var(--line); }
-    .feature-band > div { border-left: 1px solid var(--line); padding-left: 24px; }
-    .feature-band span { color: var(--mint); font-size: 10px; letter-spacing: .2em; }
-    .feature-band h3 { font-size: 27px; font-weight: 500; margin: 9px 0; }
-    .feature-band p { color: var(--muted); font-size: 13px; line-height: 1.7; }
-
-    .site-footer { padding: 44px clamp(24px,7vw,108px); display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 30px; align-items: center; border-top: 1px solid var(--line); background: #050816; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .16em; font-weight: 700; }
-    .site-footer p { text-align: center; color: var(--muted); font-size: 11px; }
-    .site-footer > a { text-align: right; color: var(--mint); font-size: 11px; font-weight: 700; }
-
-    @media (max-width: 900px) {
-      .menu-button { display: block; }
-      .nav-links { display: none; position: absolute; top: 77px; left: 0; right: 0; padding: 12px 24px 24px; background: rgba(5,8,22,.98); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 12px 0; }
-      .page-intro { grid-template-columns: 1fr; min-height: auto; }
-      .orbit-art { width: min(80vw,380px); margin-top: 50px; margin-bottom: 25px; }
-      .profession-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .reality-heading, .decision-heading { grid-template-columns: 1fr; gap: 25px; }
-      .reality-grid { grid-template-columns: 1fr; }
-      .reality-card { border-right: 0; border-bottom: 1px solid rgba(17,25,54,.14); }
-      .decision-path, .bridge-grid { grid-template-columns: repeat(2,1fr); }
-      .decision-step:nth-child(2) { border-right: 0; }
-      .decision-step { border-bottom: 1px solid rgba(255,255,255,.17); }
-      .bridge-heading { display: block; }
-      .signal-exchange { grid-template-columns: 1fr; gap: 30px; }
-      .reflection-grid, .feature-band { grid-template-columns: 1fr; }
-      .reflection-card { min-height: 360px; }
-      .site-footer { grid-template-columns: 1fr; text-align: center; }
-      .site-footer p, .site-footer > a { text-align: center; }
-      .footer-brand { justify-content: center; }
-    }
-    @media (max-width: 560px) {
-      .site-header { height: 66px; padding-inline: 18px; }
-      .nav-links { top: 65px; }
-      .brand { font-size: 11px; }
-      .page-intro { padding: 65px 20px; }
-      .intro-copy h1 { font-size: 52px; }
-      .work-welcome { flex-direction: column; }
-      .work-welcome span { border-left: 0; padding-left: 0; }
-      .profession-section, .quiet-section { padding: 75px 18px; }
-      .profession-grid { grid-template-columns: 1fr; }
-      .reality-section, .decision-section, .bridge-section, .thanks-section { padding: 75px 20px; }
-      .decision-path, .bridge-grid { grid-template-columns: 1fr; }
-      .decision-step { border-right: 0; min-height: 270px; }
-      .help-strip { grid-template-columns: 1fr; }
-      .profession-card { min-height: 390px; }
-      .section-heading h2 { font-size: 42px; }
-      .signal-exchange { padding: 65px 20px; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .orbit-art { animation: none; } }
-
-    /* =========================================================
-       STUDENT ORBIT TEMPLATE SYSTEM — WONDER AT WORK
-       ========================================================= */
-    :root {
-      --night: #061b28;
-      --navy: #082f3a;
-      --text: #effff9;
-      --muted: #bcd2ce;
-      --mint: #79d7aa;
-      --gold: #e2f59b;
-      --pink: #f3a7ad;
-      --purple: #aebbe9;
-      --paper: #fbfaf4;
-      --ink: #08242a;
-      --display: "Cormorant Garamond", Georgia, serif;
-    }
-    body { background: var(--paper); color: var(--ink); }
-    body::before { background: linear-gradient(150deg,#061b28 0%,#0a3d48 58%,#0b5d58 100%); }
-    body::after { position: absolute; height: 900px; opacity: .36; }
-    .site-header { position: absolute; width: 100%; background: transparent; border-bottom-color: rgba(255,255,255,.2); }
-    .site-header .brand, .site-header .nav-links a { color: #effff9; }
-    .site-header .nav-links a.active { border-bottom-color: var(--gold); }
-    .site-header .brand em { color: var(--gold); }
-    .page-intro { min-height: 930px; padding-top: 145px; background: linear-gradient(150deg,#061b28 0%,#0a3d48 58%,#0b5d58 100%); }
-    .intro-copy { max-width: 720px; }
-    .intro-copy h1 { font-size: clamp(65px,7.8vw,112px); line-height: .88; letter-spacing: -.05em; }
-    .lead { max-width: 590px; color: #d2e9e2; }
-    .soft-button { border-radius: 2px; background: var(--gold); box-shadow: none; text-transform: uppercase; letter-spacing: .12em; font-size: 10px; padding: 16px 20px; }
-    .orbit-art { width: min(45vw,570px); }
-    .orbit-one { inset: 2%; border-color: rgba(220,255,237,.22); }
-    .orbit-two { border-color: rgba(226,245,155,.4); border-top-color: transparent; }
-    .orbit-core { inset: 31%; background: radial-gradient(circle at 32% 27%,rgba(255,255,255,.85),transparent 9%),linear-gradient(145deg,#f6ffd7,#a8e38e 55%,#54bd93); box-shadow: inset -30px -25px 50px rgba(8,61,69,.28),0 0 70px rgba(121,215,170,.32); }
-    .work-welcome { padding: 74px clamp(24px,7vw,108px); background: var(--gold); color: var(--ink); border: 0; }
-    .work-welcome p { font-size: clamp(30px,3.7vw,55px); line-height: 1; }
-    .work-welcome span { color: #49615b; border-left-color: rgba(8,36,42,.25); }
-    .reality-section { background: var(--paper); padding-top: 125px; }
-    .reality-heading h2, .profession-section h2, .bridge-heading h2 { letter-spacing: -.04em; }
-    .reality-grid { border-color: rgba(8,36,42,.17); }
-    .reality-card { border-color: rgba(8,36,42,.17); border-radius: 0; }
-    .reality-card:nth-child(1) { background:#dff4e5; }.reality-card:nth-child(2) { background:#d9e8ef; }.reality-card:nth-child(3) { background:#ecf4c9; }
-    .profession-section { background: #f0ede3; color: var(--ink); padding-top: 125px; }
-    .profession-section .section-heading h2 { color: var(--ink); }
-    .profession-section .section-heading > p:not(.eyebrow), .open-door-note { color: #566c69; }
-    .profession-grid { gap: 12px; }
-    .profession-card { min-height: 410px; border-radius: 0; border-color: rgba(8,36,42,.15); color: var(--ink); box-shadow: none; backdrop-filter: none; background: color-mix(in srgb,var(--profession) 17%,#fbfaf4); }
-    .profession-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(8,36,42,.12); }
-    .profession-card::before { opacity: .45; }.profession-card::after { opacity: .22; }
-    .profession-roles { color: color-mix(in srgb,var(--profession) 72%,#08242a); }
-    .profession-message, .profession-card ul { color: #526a67; }
-    .profession-card details { border-top-color: rgba(8,36,42,.17); }
-    .profession-card summary { color: var(--ink); }
-    .profession-care { --profession:#ef8798; }.profession-engineer { --profession:#6caed3; }.profession-data { --profession:#9f95da; }.profession-trade { --profession:#d5b950; }.profession-business { --profession:#58bd9d; }.profession-creative { --profession:#df8fbd; }.profession-community { --profession:#7ac486; }.profession-explore { --profession:#a98aca; }
-    .decision-section { background: linear-gradient(135deg,#082936,#074d50); padding-block: 125px; }
-    .decision-path { border-color: rgba(255,255,255,.2); }
-    .decision-step { border-color: rgba(255,255,255,.2); }
-    .consequence-note { background: rgba(226,245,155,.08); border-left-color: var(--gold); }
-    .bridge-section { background: var(--paper); padding-block: 125px; }
-    .bridge-grid { gap: 0; border: 1px solid rgba(8,36,42,.15); }
-    .bridge-card { border: 0; border-right: 1px solid rgba(8,36,42,.15); }
-    .bridge-card:last-child { border-right: 0; }
-    .bridge-card:nth-child(1) { --bridge-bg:#dff4e5; }.bridge-card:nth-child(2) { --bridge-bg:#d9e8ef; }.bridge-card:nth-child(3) { --bridge-bg:#f2dfd2; }.bridge-card:nth-child(4) { --bridge-bg:#e7def0; }
-    .help-strip { background: var(--ink); }
-    .signal-exchange { padding-block: 105px; background: var(--gold); color: var(--ink); border: 0; }
-    .signal-exchange h2 { color: var(--ink); }
-    .signal-list { border-top-color: rgba(8,36,42,.18); }
-    .signal-list p { color: #304d4d; border-bottom-color: rgba(8,36,42,.18); }
-    .signal-list span { color: #14766e; }
-    .quiet-section { background: #d9efe0; color: var(--ink); padding-block: 125px; }
-    .quiet-section .section-heading h2, .quiet-section .privacy-note strong { color: var(--ink); }
-    .quiet-section .section-heading > p:not(.eyebrow), .privacy-note p { color: #536a66; }
-    .privacy-note { background: rgba(255,255,255,.45); border-color: rgba(8,36,42,.16); }
-    .reflection-card { border-radius: 0; background: var(--paper); color: var(--ink); border-color: rgba(8,36,42,.16); box-shadow: 12px 12px 0 rgba(8,36,42,.07); }
-    .reflection-card > p { color: #5c716e; }.reflection-card textarea { color: var(--ink); background: transparent; border-color: rgba(8,36,42,.2); }.reflection-card textarea::placeholder { color:#879995; }
-    .save-row button { border-radius: 2px; background: var(--ink); color: white; text-transform: uppercase; letter-spacing: .1em; }
-    .save-row span { color:#667a76; }
-    .feature-band { background: var(--paper); color: var(--ink); border-top-color: rgba(8,36,42,.15); }
-    .feature-band > div { border-left-color: rgba(8,36,42,.15); }.feature-band p { color:#536a66; }.feature-band span { color:#14766e; }
-    .thanks-section { background: linear-gradient(135deg,#06202d,#074648); padding-block: 130px; }
-    .site-footer { background:#041a22; }
-    @media(max-width:900px){.site-header{position:absolute}.bridge-card{border-right:0;border-bottom:1px solid rgba(8,36,42,.15)}}
-
-    /* HIGH-CONTRAST LIGHT EDITION */
-    .site-header { background: rgba(17,108,108,.96); border-bottom-color: rgba(255,255,255,.35); }
-    .brand-logo { display:block; width:180px; max-height:52px; object-fit:contain; object-position:left center; }
-    .brand-fallback { display:none; color:white; font-size:12px; letter-spacing:.16em; font-weight:700; }
-    .page-intro { background: linear-gradient(145deg,#d8f0e5 0%,#d8edf0 52%,#e9f3cb 100%); color:var(--ink); }
-    body::after { opacity:.14; filter:invert(1); }
-    .intro-copy h1 { color:var(--ink); text-shadow:none; }
-    .page-intro .eyebrow { color:#146c69; }
-    .lead { color:#385a5a; }
-    .soft-button { background:#126f70; color:white; }
-    .soft-button:hover { background:#0a565b; }
-    .orbit-art { color:#14746e; filter:drop-shadow(0 0 28px rgba(20,116,110,.14)); }
-    .orbit-one { border-color:rgba(8,36,42,.26); }
-    .orbit-two { border-color:rgba(18,111,112,.45); border-top-color:transparent; }
-    .satellite-one { color:#c29522; background:#c29522; }.satellite-two { color:#c56b82; background:#c56b82; }
-    .decision-section { background:#d9e9ef; color:var(--ink); border-color:rgba(8,36,42,.15); }
-    .decision-section .eyebrow { color:#176d70; }
-    .decision-heading p:last-child { color:#466366; }
-    .decision-path { border-color:rgba(8,36,42,.18); }
-    .decision-step { border-color:rgba(8,36,42,.18); }
-    .decision-step p { color:#496265; }
-    .decision-step > span { box-shadow:none; }
-    .consequence-note { color:#304f51; background:#f4f2ce; border-left-color:#9c7b16; }
-    .help-strip { background:#d6ebe2; color:var(--ink); border:1px solid rgba(8,36,42,.15); }
-    .help-strip p { color:#49625f; }
-    .thanks-section { background:#cce9d7; color:var(--ink); }
-    .thanks-section .eyebrow { color:#176d70; }
-    .thanks-section > p:not(.eyebrow) { color:#49635f; }
-    .thanks-signoff { color:#146c69; border-bottom-color:rgba(20,108,105,.35); }
-    .site-footer { background:#176f70; color:white; }
-    .site-footer p { color:#d8efeb; }.site-footer > a { color:#f2f4b4; }
-    .footer-logo { width:150px; max-height:44px; object-fit:contain; }
-    @media(max-width:900px){.brand-logo{width:150px}.nav-links{background:rgba(17,108,108,.98)}}
-    @media(max-width:560px){.brand-logo{width:132px}.page-intro{padding-top:120px}}
-  </style>
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="stylesheet" href="wonderverse.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Wonder Verse homepage">
-      <img src="./images/wonder-verse-moon-pencil-logo.png" alt="Wonder Verse" class="brand-logo" width="180" onerror="this.hidden=true;this.nextElementSibling.style.display='inline'">
-      <span class="brand-fallback">WONDER VERSE</span>
-    </a>
-    <button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNavigation"><span></span><span></span><span></span></button>
-    <nav class="nav-links" id="mainNavigation" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="index.html#wonder-pathways">Wonder</a>
-      <a href="wonderschools.html">Schools</a>
-      <a href="wonderverse.html" class="active">Work</a>
-      <a href="wonderinlife.html">Life</a>
-    </nav>
-  </header>
+  <div class="wonder-lok">
+    <div class="bloom bloom-one" aria-hidden="true"></div>
+    <div class="bloom bloom-two" aria-hidden="true"></div>
 
-  <main>
-    <section class="page-intro">
-      <div class="intro-copy">
-        <p class="eyebrow">WONDER AT WORK · A FIELD GUIDE FOR THE HUMAN BEHIND THE ROLE</p>
-        <h1>Your work is not your whole sky.</h1>
-        <p class="lead">But it can take up so much of it that you forget there were stars anywhere else. This space is for the person who never wanted the job, once loved it, still loves the work but not the environment—or simply cannot keep repeating the same day unheard.</p>
-        <a class="soft-button" href="#lost-spark">Enter the work orbit <span>↓</span></a>
-      </div>
-      <div class="orbit-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="orbit-core"><span></span></div>
-        <i class="satellite satellite-one"></i><i class="satellite satellite-two"></i>
-      </div>
-    </section>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
+        <img src="images/wonder-verse-moon-pencil-logo.png" alt="Jigyasa Verse moon with pencils logo">
+        <span>
+          <strong>JIGYASA VERSE</strong>
+          <small>Curiosity lives here</small>
+        </span>
+      </a>
 
-    <section class="work-welcome">
-      <p>Thank you for coming to this space.</p>
-      <span>You do not have to pretend work is fine here.</span>
-    </section>
+      <!-- CSS-only mobile menu: no JavaScript required. -->
+      <input class="menu-toggle" type="checkbox" id="menu-toggle" aria-label="Open navigation menu">
+      <label class="menu-button" for="menu-toggle" aria-hidden="true">
+        <span>MENU</span><i></i><i></i>
+      </label>
 
-    <section class="reality-section" id="lost-spark">
-      <div class="reality-heading">
-        <div><p class="eyebrow">WHEN WONDER GOES QUIET</p><h2>You can care about your work and still be tired of how you have to do it.</h2></div>
-        <p>Perhaps you never wanted this job. Perhaps you once loved it, but repetition, pressure or being ignored has worn the colour out of it. Losing the spark does not automatically mean you are lazy, ungrateful or in the wrong profession. It means something needs attention.</p>
-      </div>
-      <div class="reality-grid">
-        <article class="reality-card"><span>01 · THE WORK</span><h3>The task itself no longer fits.</h3><p>Your interests, values or strengths may have changed. That is information—not a moral failure. Before leaving the entire field, test whether a different role, team, schedule or specialisation changes the experience.</p></article>
-        <article class="reality-card"><span>02 · THE ENVIRONMENT</span><h3>You may love the work and hate the conditions.</h3><p>Being excluded from decisions, repeatedly dismissed, under-resourced or managed through fear can make meaningful work feel unbearable. Do not confuse one unhealthy workplace with the total value of your profession.</p></article>
-        <article class="reality-card"><span>03 · THE CAPACITY</span><h3>You might not need inspiration. You might need recovery.</h3><p>Exhaustion can make every future look wrong. Where possible, pause major decisions long enough to sleep, seek support and separate “I cannot continue like this” from “I can never do this again.”</p></article>
-      </div>
-    </section>
+      <nav class="nav-links" aria-label="Wonder Lok navigation">
+        <a href="#life">Life</a>
+        <a href="#work">Work</a>
+        <a href="#world">The World</a>
+        <a class="learning-link" href="schools.html">Learning Lok ↗</a>
+      </nav>
+    </header>
 
-    <section class="profession-section" id="professional-constellations">
-      <div class="section-heading">
-        <p class="eyebrow">PROFESSIONAL CONSTELLATIONS</p>
-        <h2>Find a world that feels familiar.</h2>
-        <p>Choose the closest fit, explore another person’s world, or move between them. No job title can contain a whole person.</p>
-      </div>
-      <div class="profession-grid">
-        <article class="profession-card profession-care"><div class="profession-top"><span class="profession-number">01</span><span class="profession-symbol">+</span></div><h3>Health &amp; Care</h3><p class="profession-roles">Doctors · nurses · allied health · carers · researchers</p><p class="profession-message">For the people who hold knowledge, responsibility and another person’s trust at the same time.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>A person reminded me why this work matters when…</li><li>Something I need to process without carrying it alone…</li><li>One moment of care that may have gone unnoticed…</li></ul></details></article>
-        <article class="profession-card profession-engineer"><div class="profession-top"><span class="profession-number">02</span><span class="profession-symbol">△</span></div><h3>Engineering &amp; Science</h3><p class="profession-roles">Engineers · scientists · laboratory teams · researchers</p><p class="profession-message">For minds that test, question, calculate and build safer answers from imperfect information.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>The problem I am trying to see differently…</li><li>An assumption worth testing…</li><li>A result that surprised me today…</li></ul></details></article>
-        <article class="profession-card profession-data"><div class="profession-top"><span class="profession-number">03</span><span class="profession-symbol">{ }</span></div><h3>Technology &amp; Data</h3><p class="profession-roles">Developers · analysts · cybersecurity · product teams</p><p class="profession-message">For people finding patterns, designing systems and translating complexity into something useful.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>A pattern I noticed that others may have missed…</li><li>A system that could be kinder to its users…</li><li>A technical problem I want to explain more simply…</li></ul></details></article>
-        <article class="profession-card profession-trade"><div class="profession-top"><span class="profession-number">04</span><span class="profession-symbol">◇</span></div><h3>Trades &amp; Making</h3><p class="profession-roles">Builders · electricians · mechanics · technicians · makers</p><p class="profession-message">For practical thinkers whose judgement, skill and hands quietly keep the world working.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>Something I repaired, improved or made today…</li><li>A skill that experience has taught me…</li><li>A detail people rarely notice about my craft…</li></ul></details></article>
-        <article class="profession-card profession-business"><div class="profession-top"><span class="profession-number">05</span><span class="profession-symbol">↗</span></div><h3>Business &amp; Organisations</h3><p class="profession-roles">Operations · finance · HR · managers · consultants</p><p class="profession-message">For people balancing decisions, deadlines, relationships and the work that happens between meetings.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>A conversation I would handle differently next time…</li><li>Work that mattered but will not appear in a report…</li><li>A decision that needs more thought, not more speed…</li></ul></details></article>
-        <article class="profession-card profession-creative"><div class="profession-top"><span class="profession-number">06</span><span class="profession-symbol">✦</span></div><h3>Creative &amp; Communication</h3><p class="profession-roles">Writers · designers · artists · marketers · performers</p><p class="profession-message">For people turning blank pages, uncertain ideas and human feeling into something others can experience.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>The idea that keeps returning to me…</li><li>Something I want to make before judging it…</li><li>A response to my work that I need to release…</li></ul></details></article>
-        <article class="profession-card profession-community"><div class="profession-top"><span class="profession-number">07</span><span class="profession-symbol">◎</span></div><h3>Community &amp; Public Service</h3><p class="profession-roles">Government · nonprofits · social work · emergency services</p><p class="profession-message">For the people supporting communities, navigating systems and doing work whose impact can take time to appear.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>A need I noticed in the community…</li><li>A boundary that would help me continue this work…</li><li>A quiet contribution worth recognising…</li></ul></details></article>
-        <article class="profession-card profession-explore"><div class="profession-top"><span class="profession-number">08</span><span class="profession-symbol">?</span></div><h3>Finding My Direction</h3><p class="profession-roles">Students · jobseekers · career changers · multi-passionate people</p><p class="profession-message">For anyone between roles, exploring possibilities or building a path that does not have a familiar name yet.</p><details><summary>Open reflection prompts <span>+</span></summary><ul><li>Work I am curious enough to learn more about…</li><li>A strength I keep underestimating…</li><li>The next small experiment I could try…</li></ul></details></article>
-      </div>
-      <p class="open-door-note"><span>✦</span> Your work does not fit a box? You still belong here. Enter as you are.</p>
-    </section>
-
-    <section class="decision-section" id="leaving-well">
-      <div class="decision-shell">
-        <div class="decision-heading">
-          <div><p class="eyebrow">LEAVING WITH YOUR EYES OPEN</p><h2>Your mental health matters. So do the consequences.</h2></div>
-          <p>You may understand the rent, visa, family, career or financial consequences and still decide the risk is worth taking. This space will not tell you to “just quit”, and it will not tell you to sacrifice yourself indefinitely. It will help you make the risk more deliberate.</p>
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">YOU HAVE ENTERED <span>•</span> WONDER LOK</p>
+          <h1>Being human is<br><em>strange.</em> Let’s<br>look closer.</h1>
+          <p class="hero-intro">Part field guide, part playground, part deep breath. Explore the inner life, the workday and the astonishing world around you.</p>
+          <a class="primary-button" href="#map">Choose a kind of wonder <span>↓</span></a>
         </div>
-        <div class="decision-path">
-          <article class="decision-step"><span>1</span><h3>Name what is unsafe</h3><p>Write down the behaviours, incidents or conditions—not only the feeling. If there is discrimination, harassment, violence or an immediate safety concern, seek qualified workplace, union, legal or emergency support.</p></article>
-          <article class="decision-step"><span>2</span><h3>Calculate the runway</h3><p>List rent, food, medication, transport, debt and people who rely on you. Work out what one month actually costs. A clear number is less frightening and more useful than a cloud of panic.</p></article>
-          <article class="decision-step"><span>3</span><h3>Create the bridge</h3><p>Apply quietly, reduce expenses, ask for leave, collect references and explore contract, casual or adjacent work. An exit does not have to be one dramatic jump; it can be a bridge built plank by plank.</p></article>
-          <article class="decision-step"><span>4</span><h3>Choose your risk</h3><p>There may be no consequence-free option. Staying has a cost. Leaving has a cost. The goal is not perfect certainty—it is choosing with honest information and enough support to carry the decision.</p></article>
+
+        <div class="specimen" aria-hidden="true">
+          <div class="specimen-core">?</div>
+          <span class="specimen-note note-one">CURIOSITY<br>SPECIMEN 001</span>
+          <span class="specimen-note note-two">CAUTION:<br>MAY CHANGE YOU</span>
+          <i></i><i></i><i></i><i></i>
         </div>
-        <div class="consequence-note"><strong>A serious note:</strong> if work is affecting your health, speak with a GP, psychologist, trusted person, union representative or qualified adviser. A reflective webpage can help you organise your thinking, but it cannot assess your safety, health, finances or legal position.</div>
-      </div>
-    </section>
+      </section>
 
-    <section class="bridge-section" id="short-term-bridge">
-      <div class="bridge-shell">
-        <div class="bridge-heading"><div><p class="eyebrow">THE SHORT-TERM BRIDGE</p><h2>Make ends meet without making this your forever.</h2></div><p>Yes, the matrix still invoices us. We may not change the whole system today, but we can learn its rules, adapt them and use temporary work to buy time for the next chapter.</p></div>
-        <div class="bridge-grid">
-          <article class="bridge-card"><span>USE YOUR HANDS</span><h3>Repair, assemble or help</h3><p>Furniture assembly, gardening, cleaning, moving help, basic repairs, pet care or local errands can turn practical reliability into short-term income.</p><small>Be clear about your skills, pricing, safety and insurance requirements.</small></article>
-          <article class="bridge-card"><span>SELL WHAT YOU MAKE</span><h3>Paint, design or create</h3><p>Offer small commissions, portraits, cards, alterations, digital designs, tutoring resources, baked goods or handmade items. Begin with one simple offer—not an entire brand identity.</p><small>Price materials, labour, fees and delivery before promising the work.</small></article>
-          <article class="bridge-card"><span>USE WHAT YOU KNOW</span><h3>Teach or support</h3><p>Tutoring, language practice, proofreading, admin help, spreadsheet support, résumé editing or beginner lessons can translate existing knowledge into flexible work.</p><small>Protect confidential information and stay inside your actual qualifications.</small></article>
-          <article class="bridge-card"><span>REDUCE THE PRESSURE</span><h3>Sell, pause or renegotiate</h3><p>Sell unused items, pause subscriptions, contact providers early, ask about payment plans and find local financial counselling or community assistance before a crisis compounds.</p><small>Asking for help is a strategy—not evidence that you failed.</small></article>
+      <section class="trail-map" id="map" aria-labelledby="map-title">
+        <p class="section-label" id="map-title">THE THREE TRAILS</p>
+        <div class="trail-grid">
+          <a class="trail-card life-card" href="#life">
+            <span class="trail-number">01</span>
+            <small>INNER WEATHER • RELATIONSHIPS • BECOMING</small>
+            <h2>Wonder<br><em>in Life</em></h2>
+            <p>Six worlds for the gloriously complicated business of being a person.</p>
+            <b>FOLLOW THIS TRAIL ↓</b>
+          </a>
+
+          <a class="trail-card work-card" href="#work">
+            <span class="trail-number">02</span>
+            <small>CHOICES • COURAGE • WORKDAY REALITY</small>
+            <h2>Wonder<br><em>at Work</em></h2>
+            <p>For careers, callings, difficult Mondays and the humans behind job titles.</p>
+            <b>FOLLOW THIS TRAIL ↓</b>
+          </a>
+
+          <a class="trail-card world-card" href="#world">
+            <span class="trail-number">03</span>
+            <small>NATURE • CULTURE • SCIENCE • IDEAS</small>
+            <h2>Wonder<br><em>in the World</em></h2>
+            <p>Big questions, tiny marvels and everything asking to be noticed.</p>
+            <b>FOLLOW THIS TRAIL ↓</b>
+          </a>
         </div>
-        <div class="help-strip"><strong>You are allowed to ask.</strong><p>Tell one trustworthy person specifically what would help: a meal, a reference, a temporary room, a lift, a job lead, childcare, someone to review your budget or simply company while you make the next call. People cannot always solve the problem, but they may be able to carry one corner of it.</p></div>
-      </div>
-    </section>
+      </section>
 
-    <section class="signal-exchange">
-      <div><p class="eyebrow">ACROSS PROFESSIONS</p><h2>Let curiosity cross the corridor.</h2></div>
-      <div class="signal-list"><p><span>01</span>What does your profession understand that the rest of us rarely see?</p><p><span>02</span>What question would you genuinely like to ask someone in another field?</p><p><span>03</span>What would become possible if two very different professions worked together?</p></div>
-    </section>
+      <section class="life-worlds" id="life" aria-labelledby="life-title">
+        <div class="section-heading">
+          <div>
+            <p>TRAIL 01 / WONDER IN LIFE</p>
+            <h2 id="life-title">Six worlds.<br><em>Every human trait.</em></h2>
+          </div>
+          <p>Don’t choose the most impressive one. Choose the world that feels most useful today.</p>
+        </div>
 
-    <section class="quiet-section" id="quiet-space">
-      <div class="section-heading left"><p class="eyebrow">THE QUIET DESK</p><h2>Leave the role at the door for a moment.</h2><p>No performance review. No networking voice. Just an honest check-in with the person who did the work.</p></div>
-      <aside class="privacy-note"><span class="lock-symbol" aria-hidden="true"></span><div><strong>A private pause</strong><p>These reflections stay in this browser. Avoid names or identifying details about patients, clients, colleagues, projects or workplaces.</p></div></aside>
-      <div class="reflection-grid">
-        <form class="reflection-card" data-storage-key="wv-work-release"><div class="card-rule"><span></span></div><h3>Put something down</h3><p>What happened today that is still taking up space in your mind?</p><label class="sr-only" for="wv-work-release">What happened today that is still taking up space in your mind?</label><textarea id="wv-work-release" rows="5" placeholder="The moment I am still carrying…"></textarea><div class="save-row"><button type="submit">Save privately</button><span role="status">Only you can see this entry</span></div></form>
-        <form class="reflection-card" data-storage-key="wv-work-win"><div class="card-rule"><span></span></div><h3>Keep a small win</h3><p>What did you solve, learn, repair, create or make a little better?</p><label class="sr-only" for="wv-work-win">What did you solve, learn, repair, create or make a little better?</label><textarea id="wv-work-win" rows="5" placeholder="One thing I am quietly proud of…"></textarea><div class="save-row"><button type="submit">Save privately</button><span role="status">Only you can see this entry</span></div></form>
-        <form class="reflection-card" data-storage-key="wv-work-question"><div class="card-rule"><span></span></div><h3>Follow the question</h3><p>What question or idea deserves another look when the day is less noisy?</p><label class="sr-only" for="wv-work-question">What question or idea deserves another look when the day is less noisy?</label><textarea id="wv-work-question" rows="5" placeholder="I keep wondering whether…"></textarea><div class="save-row"><button type="submit">Save privately</button><span role="status">Only you can see this entry</span></div></form>
-      </div>
-    </section>
+        <div class="world-grid">
+          <a class="human-world acid" href="spark.html">
+            <span class="world-number">01</span><b class="world-mark">↗</b>
+            <div><h3>The Moon of Beginnings</h3><p>Start something. Start over. Start small.</p></div><i>ENTER ↗</i>
+          </a>
+          <a class="human-world aqua" href="questions.html">
+            <span class="world-number">02</span><b class="world-mark">?</b>
+            <div><h3>The Question-arium</h3><p>For thoughts too peculiar to throw away.</p></div><i>ENTER ↗</i>
+          </a>
+          <a class="human-world coral" href="becoming-atlas.html">
+            <span class="world-number">03</span><b class="world-mark">∴</b>
+            <div><h3>The Becoming Atlas</h3><p>Relationships, accountability and repair.</p></div><i>ENTER ↗</i>
+          </a>
+          <a class="human-world violet" href="oops-observatory.html">
+            <span class="world-number">04</span><b class="world-mark">!</b>
+            <div><h3>The ‘Oops!’ Observatory</h3><p>Glorious flops, wrong turns and what they teach.</p></div><i>ENTER ↗</i>
+          </a>
+          <a class="human-world sun" href="teachers.html">
+            <span class="world-number">05</span><b class="world-mark">+</b>
+            <div><h3>Teachers Constellation</h3><p>A soft landing for the humans who teach.</p></div><i>ENTER ↗</i>
+          </a>
+          <a class="human-world blue" href="student-orbit.html">
+            <span class="world-number">06</span><b class="world-mark">△</b>
+            <div><h3>Student Orbit</h3><p>The beautifully difficult business of becoming.</p></div><i>ENTER ↗</i>
+          </a>
+        </div>
+      </section>
 
-    <section class="feature-band">
-      <div><span>01</span><h3>Reflect without judgement</h3><p>Name what happened without turning every difficult moment into a verdict about yourself.</p></div>
-      <div><span>02</span><h3>Protect the small wins</h3><p>Keep evidence of care, craft, courage and progress that ordinary metrics may never capture.</p></div>
-      <div><span>03</span><h3>Stay curious together</h3><p>Discover the thinking, pressure and possibility inside work that looks nothing like your own.</p></div>
-    </section>
+      <section class="feature-zone work-zone" id="work" aria-labelledby="work-title">
+        <div class="feature-index">02</div>
+        <div class="feature-copy">
+          <p class="section-label">WONDER AT WORK</p>
+          <h2 id="work-title">Your job title is not your whole story.</h2>
+          <p>Explore professions, impossible decisions, workday realities and the quiet human skills no résumé knows how to hold.</p>
+          <ul>
+            <li>Meet the human behind the profession</li>
+            <li>Walk through real decision paths</li>
+            <li>Reflect without chasing a perfect answer</li>
+          </ul>
+          <a class="primary-button" href="wonderatwork.html">Enter Wonder at Work <span>↗</span></a>
+        </div>
+        <div class="work-poster" aria-hidden="true">
+          <span>WORK</span><em>≠</em><span>WORTH</span>
+          <small>A FIELD GUIDE FOR VERY HUMAN PROFESSIONALS</small>
+        </div>
+      </section>
 
-    <section class="thanks-section">
-      <p class="eyebrow">BEFORE YOU RETURN</p>
-      <h2>Thank you for bringing the person behind the profession.</h2>
-      <p>You did not have to arrive inspired. You did not have to defend your job, announce your resignation or transform your life before lunch. You came here, told yourself a little more truth and looked for the next workable step. That counts.</p>
-      <span class="thanks-signoff">Take what helps. Leave what does not. Come back when the noise gets loud.</span>
-    </section>
-  </main>
+      <section class="feature-zone world-zone" id="world" aria-labelledby="world-title">
+        <div class="feature-index">03</div>
+        <div class="feature-copy">
+          <p class="section-label">WONDER IN THE WORLD</p>
+          <h2 id="world-title">Look outward. Everything is interesting.</h2>
+          <p>Follow questions through science, nature, culture, stories and ideas. This trail is for noticing more—not knowing everything.</p>
+          <div class="world-actions">
+            <a href="questions.html">Browse big questions ↗</a>
+            <a href="books.html">Open the bookshelf ↗</a>
+          </div>
+        </div>
+        <div class="wonder-samples" aria-hidden="true">
+          <span>WHY DO WE DREAM?</span>
+          <span>HOW DO TREES TALK?</span>
+          <span>WHO GETS TO TELL HISTORY?</span>
+          <span>WHAT MAKES AN IDEA TRAVEL?</span>
+        </div>
+      </section>
 
-  <footer class="site-footer"><div class="footer-brand"><img src="./images/wonder-verse-header-logo-light-trimmed.png" alt="Wonder Verse" class="footer-logo" width="150" onerror="this.hidden=true;this.nextElementSibling.style.display='inline'"><span class="brand-fallback">WONDER VERSE</span></div><p>A place for questions, reflection and the human behind every role.</p><a href="index.html#wonder-pathways">Explore the three spaces ↑</a></footer>
+      <section class="crossroads">
+        <p>WRONG DOOR? IMPOSSIBLE.</p>
+        <h2>Curiosity can change direction.</h2>
+        <div>
+          <a href="index.html">Back to the Verse</a>
+          <a href="schools.html">Enter Learning Lok ↗</a>
+        </div>
+      </section>
+    </main>
 
-  <script>
-    const menuButton = document.querySelector('.menu-button');
-    const navigation = document.querySelector('.nav-links');
-    menuButton.addEventListener('click', () => {
-      const isOpen = navigation.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-    });
-    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navigation.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-    }));
-
-    document.querySelectorAll('.reflection-card').forEach(form => {
-      const key = form.dataset.storageKey;
-      const textarea = form.querySelector('textarea');
-      const status = form.querySelector('[role="status"]');
-      try { textarea.value = localStorage.getItem(key) || ''; } catch (error) {}
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        try {
-          localStorage.setItem(key, textarea.value);
-          status.textContent = 'Saved on this device';
-          setTimeout(() => status.textContent = 'Only you can see this entry', 1800);
-        } catch (error) {
-          status.textContent = 'Your browser blocked local saving';
-        }
-      });
-    });
-  </script>
+    <footer>
+      <a href="index.html">JIGYASA VERSE</a>
+      <p>For humans who still ask why.</p>
+      <small>© 2026 · Made somewhere between a question and a possibility.</small>
+    </footer>
+  </div>
 </body>
 </html>
+
