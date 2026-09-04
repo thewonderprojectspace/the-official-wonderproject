@@ -292,3 +292,264 @@ footer small { grid-column: 1 / -1; color: rgba(234,255,223,0.4); }
   html { scroll-behavior: auto; }
   .bloom, .specimen-core { animation: none; }
 }
+/* WONDER LOK — ILLUSTRATED WORLD CARDS */
+
+.world-grid.world-grid-illustrated {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.world-grid-illustrated,
+.world-grid-illustrated * {
+  box-sizing: border-box;
+}
+
+.world-grid-illustrated .illustrated-world {
+  --world-accent: #d8ff43;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(110px, 36%) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+
+  width: 100%;
+  height: auto;
+  min-height: 242px;
+  padding: 24px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #103c3b;
+  color: #eff8df;
+  border: 1px solid rgba(221, 244, 218, 0.24);
+  border-radius: 22px 48px 22px 22px;
+
+  text-decoration: none;
+  text-align: left;
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* Individual world colours */
+
+.world-grid-illustrated .acid {
+  --world-accent: #d8ff43;
+}
+
+.world-grid-illustrated .aqua {
+  --world-accent: #64e8dd;
+}
+
+.world-grid-illustrated .coral {
+  --world-accent: #ff9387;
+}
+
+.world-grid-illustrated .violet {
+  --world-accent: #c39aff;
+}
+
+.world-grid-illustrated .sun {
+  --world-accent: #ffdb65;
+}
+
+.world-grid-illustrated .blue {
+  --world-accent: #83caff;
+}
+
+/* Illustration stays on the left */
+
+.world-grid-illustrated .world-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 190px;
+  min-width: 0;
+
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.world-grid-illustrated .world-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+
+  transition: transform 250ms ease;
+}
+
+/* All copy stays on the right */
+
+.world-grid-illustrated .world-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.world-grid-illustrated .world-index {
+  display: block;
+  margin-bottom: 12px;
+
+  color: var(--world-accent);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  line-height: 1.4;
+}
+
+.world-grid-illustrated .world-copy h3 {
+  margin: 0;
+  color: #eff8df;
+
+  font-size: clamp(1.2rem, 1.8vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.world-grid-illustrated .world-copy p {
+  margin: 12px 0 0;
+  max-width: 30ch;
+
+  color: #c0d5cd;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.world-grid-illustrated .world-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 21px;
+
+  color: var(--world-accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
+
+.world-grid-illustrated .world-enter span {
+  font-size: 1rem;
+  transition: transform 220ms ease;
+}
+
+/* Keyboard navigation */
+
+.world-grid-illustrated .illustrated-world:focus-visible {
+  outline: 3px solid var(--world-accent);
+  outline-offset: 5px;
+}
+
+/* Hover effects for devices with a mouse */
+
+@media (hover: hover) {
+  .world-grid-illustrated .illustrated-world:hover {
+    transform: translateY(-4px);
+    background: #154947;
+    border-color: var(--world-accent);
+    box-shadow: 0 12px 28px rgba(0, 20, 24, 0.2);
+  }
+
+  .world-grid-illustrated .illustrated-world:hover .world-art img {
+    transform: rotate(-3deg) scale(1.05);
+  }
+
+  .world-grid-illustrated .illustrated-world:hover .world-enter span {
+    transform: translate(3px, -3px);
+  }
+}
+
+/* Tablet: one card per row, image still left */
+
+@media (max-width: 900px) {
+  .world-grid.world-grid-illustrated {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .world-grid-illustrated .illustrated-world {
+    grid-template-columns: minmax(110px, 30%) minmax(0, 1fr);
+    min-height: 220px;
+  }
+}
+
+/* Mobile: preserve the horizontal layout */
+
+@media (max-width: 540px) {
+  .world-grid.world-grid-illustrated {
+    gap: 14px;
+  }
+
+  .world-grid-illustrated .illustrated-world {
+    grid-template-columns: minmax(0, 31%) minmax(0, 1fr);
+    gap: 14px;
+
+    min-height: 192px;
+    padding: 18px 14px;
+    border-radius: 18px 34px 18px 18px;
+  }
+
+  .world-grid-illustrated .world-art {
+    height: 140px;
+  }
+
+  .world-grid-illustrated .world-index {
+    margin-bottom: 8px;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .world-grid-illustrated .world-copy h3 {
+    font-size: clamp(1rem, 4.4vw, 1.3rem);
+    line-height: 1.2;
+  }
+
+  .world-grid-illustrated .world-copy p {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .world-grid-illustrated .world-enter {
+    margin-top: 13px;
+    font-size: 0.6rem;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .world-grid-illustrated .illustrated-world,
+  .world-grid-illustrated .world-art img,
+  .world-grid-illustrated .world-enter span {
+    transition: none;
+    transform: none;
+  }
+}
