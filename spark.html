@@ -1,244 +1,981 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EF9DVH7JQN');
+    gtag("js", new Date());
+    gtag("config", "G-EF9DVH7JQN");
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Moon of Beginnings: a playful, practical place to restart what matters or begin something new—messily, honestly and now.">
-  <meta name="theme-color" content="#71846b">
-  <title>Messy Beginnings | The Jigyasa Verse</title>
+
+  <meta
+    name="description"
+    content="Moon of Beginnings — for people ready to stop watching, stop waiting and begin."
+  >
+
+  <meta name="theme-color" content="#25342a">
+
+  <title>Moon of Beginnings | Jigyasa Verse</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="spark.css">
   <script src="spark.js" defer></script>
 </head>
 
 <body>
-  <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
-  <img
-    src="images/wonder-verse-moon-pencil-logo.png"
-    alt="Jigyasa Verse"
-    class="brand-logo"
-  >
-</a>
 
-      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false">
-        <span></span><span></span>
+  <!-- ========================================
+       NAVIGATION
+  ========================================= -->
+
+  <header class="site-header">
+
+    <nav class="navbar" aria-label="Main navigation">
+
+      <a
+        href="index.html"
+        class="wv-brand"
+        aria-label="Jigyasa Verse homepage"
+      >
+        <span class="wv-brand-image-wrap">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt=""
+            class="wv-brand-image"
+          >
+        </span>
+
+        <span class="wv-brand-copy">
+          <span class="wv-brand-name">Jigyasa Verse</span>
+          <span class="wv-brand-note">Curiosity lives here</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="navLinks"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
       </button>
 
       <div class="nav-links" id="navLinks">
         <a href="index.html">Start here</a>
         <a href="about.html">Our story</a>
         <a href="books.html">Books</a>
-                <a href="schools.html">Schools</a>
+        <a href="schools.html">Schools</a>
       </div>
 
     </nav>
+
   </header>
 
-  <main id="main-content">
+
+  <main>
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
+
     <section class="hero">
+
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span>Moon 01</span> The beginning bit</p>
-        <h1>Begin before<br>it looks <em>beautiful.</em></h1>
-        <p class="hero-intro">Start something new. Pick up what you left behind. Return after a week, a year or an impressively dramatic amount of avoidance.</p>
-        <p class="firm-note"><b>Here is the rule:</b> you do not have to feel ready. You only have to make the next move small enough to do.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#restart-studio">Make a messy start <span>↓</span></a>
-          <button class="button secondary" id="quickStartButton" type="button">Give me a 5-minute move <span>↗</span></button>
-        </div>
+
+        <p class="moon-label">
+          <span>MOON 01</span>
+          BEGINNINGS
+        </p>
+
+        <h1>
+          You can keep
+          <span class="watch-word">watching.</span>
+
+          <small>or</small>
+
+          you can
+          <em>begin.</em>
+        </h1>
+
+        <p class="hero-line">
+          Someone is already doing the thing you keep saying you want to do.
+        </p>
+
+        <p class="hero-hit">
+          Maybe that bothers you.
+          <strong>Good.</strong>
+        </p>
+
+        <p class="hero-soft">
+          Not because they are better than you.
+          Because somewhere underneath the comparison,
+          you know you could be moving too.
+        </p>
+
+        <a href="#honesty" class="big-start-button">
+          I'M READY
+          <span>↘</span>
+        </a>
+
       </div>
 
-      <div class="messy-art reveal" aria-label="A playful stack of imperfect paper shapes representing a messy beginning">
-        <div class="doodle-loop"></div>
-        <div class="paper paper-back"><span>PERFECT PLAN</span><s>waiting...</s></div>
-        <div class="paper paper-middle"><span>TRY 01</span><b>wrong-ish</b><i>good.</i></div>
-        <div class="paper paper-front">
-          <small>TODAY'S VERY SERIOUS PLAN</small>
-          <strong>start</strong>
-          <span>somewhere →</span>
-          <div class="scribble" aria-hidden="true"></div>
+
+      <!-- VISUAL PATH -->
+
+      <div class="path-art reveal" aria-hidden="true">
+
+        <div class="goal-star">★</div>
+
+        <p class="goal-label">THE THING<br>YOU WANT</p>
+
+        <div class="path-split"></div>
+
+        <div class="path-column watch-path">
+
+          <span class="path-title">WATCH</span>
+
+          <span>compare</span>
+
+          <i>↓</i>
+
+          <span>judge</span>
+
+          <i>↓</i>
+
+          <span>scroll</span>
+
+          <i>↓</i>
+
+          <span>wait</span>
+
+          <i>↓</i>
+
+          <strong>same place.</strong>
+
         </div>
-        <span class="art-symbol symbol-one">✦</span>
-        <span class="art-symbol symbol-two">+</span>
-        <span class="art-symbol symbol-three">?</span>
+
+        <div class="path-column begin-path">
+
+          <span class="path-title">BEGIN</span>
+
+          <span>try</span>
+
+          <i>↓</i>
+
+          <span>fail</span>
+
+          <i>↓</i>
+
+          <span>learn</span>
+
+          <i>↓</i>
+
+          <span>return</span>
+
+          <i>↓</i>
+
+          <strong>somewhere new.</strong>
+
+        </div>
+
+
+        <div class="excuse-note">
+          <span>I'LL START WHEN...</span>
+
+          <s>Monday</s>
+          <s>I have more time</s>
+          <s>I feel ready</s>
+
+          <b>how long<br>are we doing this?</b>
+        </div>
+
       </div>
+
     </section>
 
-    <section class="permission-strip">
-      <span>YOU MAY BE NEW AT THIS</span>
-      <i>+</i>
-      <span>YOU MAY BE RETURNING</span>
-      <i>+</i>
-      <span>YOU MAY BE A COMPLETE MESS</span>
-      <i>=</i>
-      <strong>YOU MAY STILL BEGIN</strong>
+
+
+    <!-- ========================================
+         MOVING STRIP
+    ========================================= -->
+
+    <section class="truth-strip">
+
+      <div class="truth-track">
+
+        <span>NO PERFECT MONDAY</span>
+        <i>✦</i>
+
+        <span>NO PERFECT MOOD</span>
+        <i>✦</i>
+
+        <span>NO PERFECT BEGINNING</span>
+        <i>✦</i>
+
+        <strong>JUST BEGIN.</strong>
+        <i>✦</i>
+
+        <span>NO PERFECT MONDAY</span>
+        <i>✦</i>
+
+        <span>NO PERFECT MOOD</span>
+        <i>✦</i>
+
+        <span>NO PERFECT BEGINNING</span>
+
+      </div>
+
     </section>
 
-    <section class="arrival-section section">
+
+
+    <!-- ========================================
+         WHAT IS ACTUALLY STOPPING YOU?
+    ========================================= -->
+
+    <section class="honesty-section section" id="honesty">
+
       <div class="section-heading reveal">
-        <p class="eyebrow dark"><span>First, be honest</span> How are you arriving?</p>
-        <h2>Your feeling gets a seat.<br>It does not have to drive.</h2>
-        <p>Choose what feels closest. We will respect it—and then find one action that can travel with you.</p>
+
+        <p class="section-number">01 / BE HONEST</p>
+
+        <h2>
+          What is actually
+          <em>stopping you?</em>
+        </h2>
+
+        <p>
+          Pick the answer you normally avoid admitting.
+        </p>
+
       </div>
 
-      <div class="choice-grid" id="moodChoices" aria-label="Choose how you feel">
-        <button class="choice reveal" type="button" data-mood="Ready" aria-pressed="false"><span class="choice-symbol">↗</span><strong>Ready</strong><small>Good. Use the energy while it is here.</small></button>
-        <button class="choice reveal" type="button" data-mood="Tired" aria-pressed="false"><span class="choice-symbol">~</span><strong>Tired</strong><small>Then the step must be smaller, not absent.</small></button>
-        <button class="choice reveal" type="button" data-mood="Lost" aria-pressed="false"><span class="choice-symbol">?</span><strong>Lost</strong><small>You only need a direction for five minutes.</small></button>
-        <button class="choice reveal" type="button" data-mood="Nervous" aria-pressed="false"><span class="choice-symbol">···</span><strong>Nervous</strong><small>Courage can shake and still press start.</small></button>
-        <button class="choice reveal" type="button" data-mood="Curious" aria-pressed="false"><span class="choice-symbol">✦</span><strong>Curious</strong><small>Follow the question before judging it.</small></button>
-        <button class="choice reveal" type="button" data-mood="Avoiding it" aria-pressed="false"><span class="choice-symbol">↶</span><strong>Avoiding it</strong><small>Noted. Let us make it harder to avoid.</small></button>
+
+      <div class="honesty-grid">
+
+        <button
+          class="honesty-card reveal"
+          data-response="Ready usually arrives after movement. Start before the feeling shows up."
+        >
+          <span>01</span>
+          <strong>I'm waiting to feel ready.</strong>
+          <i>↗</i>
+        </button>
+
+
+        <button
+          class="honesty-card reveal"
+          data-response="Some reasons are real. Some are fear wearing sensible clothes. Know which one you're dealing with."
+        >
+          <span>02</span>
+          <strong>I keep making excuses.</strong>
+          <i>↗</i>
+        </button>
+
+
+        <button
+          class="honesty-card reveal"
+          data-response="You probably will be bad at it at first. You're new. That's allowed."
+        >
+          <span>03</span>
+          <strong>I'm scared I'll be bad at it.</strong>
+          <i>↗</i>
+        </button>
+
+
+        <button
+          class="honesty-card reveal"
+          data-response="Their progress is not an insult to you. It is evidence that movement is possible."
+        >
+          <span>04</span>
+          <strong>I keep comparing myself.</strong>
+          <i>↗</i>
+        </button>
+
+
+        <button
+          class="honesty-card reveal"
+          data-response="Thinking feels productive because nothing can go wrong inside your head. Eventually you have to touch the work."
+        >
+          <span>05</span>
+          <strong>I'm overthinking everything.</strong>
+          <i>↗</i>
+        </button>
+
+
+        <button
+          class="honesty-card reveal"
+          data-response="Then starting is not the skill you need. Returning is."
+        >
+          <span>06</span>
+          <strong>I start. Then disappear.</strong>
+          <i>↗</i>
+        </button>
+
       </div>
-      <p class="choice-response" id="moodResponse" aria-live="polite">Choose one. No performance required.</p>
+
+
+      <div class="honesty-response" id="honestyResponse" aria-live="polite">
+
+        <span>YOUR ANSWER WILL APPEAR HERE</span>
+
+        <p>
+          Pick one.
+          You already know which one it is.
+        </p>
+
+      </div>
+
     </section>
 
-    <section class="restart-studio section" id="restart-studio">
-      <div class="studio-wrap">
-        <div class="studio-copy reveal">
-          <p class="eyebrow"><span>The restart studio</span> One decision, one move</p>
-          <h2>What are you actually beginning?</h2>
-          <p>A clear beginning is stronger than a beautiful intention. Name the thing, then cut it down to the next visible action.</p>
-          <blockquote>Do not write “get fit.” Write “put my shoes beside the door.”</blockquote>
+
+
+    <!-- ========================================
+         THE DOOR
+    ========================================= -->
+
+    <section class="door-section">
+
+      <div class="door-copy reveal">
+
+        <p>02 / THE DOOR</p>
+
+        <h2>
+          This place is
+          <em>not for everyone.</em>
+        </h2>
+
+        <div class="door-short-copy">
+
+          <p>
+            If you only want to imagine a different life,
+            this page cannot help you.
+          </p>
+
+          <p>
+            If you want another quote to save and forget,
+            there are plenty elsewhere.
+          </p>
+
+          <p class="stay-line">
+            But if you're tired of postponing yourself —
+            <strong>stay.</strong>
+          </p>
+
         </div>
 
-        <form class="start-card reveal" id="startForm">
-          <div class="tape" aria-hidden="true"></div>
-          <p class="card-label">MESSY START CARD / 001</p>
+      </div>
 
-          <fieldset>
-            <legend>Is this a return or something new?</legend>
-            <div class="toggle-row">
-              <label><input type="radio" name="startType" value="I am starting again" checked><span>↶ Starting again</span></label>
-              <label><input type="radio" name="startType" value="I am starting something new"><span>+ Something new</span></label>
-            </div>
-          </fieldset>
 
-          <label for="bigThing">The thing I am choosing</label>
-          <input id="bigThing" name="bigThing" maxlength="90" placeholder="Example: return to my book, apply for the course…" required>
+      <div class="door-visual reveal">
 
-          <label for="smallMove">The next action I can physically do</label>
-          <input id="smallMove" name="smallMove" maxlength="120" placeholder="Example: open the document and write one sentence" required>
+        <div class="door-frame">
 
-          <div class="minute-row">
-            <label for="minutes">I will give it</label>
-            <select id="minutes" name="minutes">
-              <option value="5">5 minutes</option>
-              <option value="10">10 minutes</option>
-              <option value="20">20 minutes</option>
-              <option value="30">30 minutes</option>
-            </select>
-            <span>today.</span>
+          <div class="door-panel">
+
+            <span>STAY?</span>
+
+            <div class="door-handle"></div>
+
           </div>
 
-          <button class="button card-button" type="submit">Make this beginning real <span>↗</span></button>
-          <p class="privacy-note">Saved only in this browser. Your unfinished ideas remain yours.</p>
-        </form>
-      </div>
-    </section>
-
-    <section class="current-start section" id="currentStartSection">
-      <div class="section-heading reveal">
-        <p class="eyebrow dark"><span>Your beginning</span> Small enough to act on</p>
-        <h2>Do the next visible thing.</h2>
-      </div>
-
-      <article class="promise-card reveal" id="promiseCard">
-        <div class="promise-status"><span id="promiseType">NO START SAVED YET</span><i></i></div>
-        <p class="promise-big" id="promiseBig">Choose the thing you want to begin.</p>
-        <div class="promise-arrow">↓</div>
-        <p class="promise-small" id="promiseSmall">Then give it one action.</p>
-        <div class="promise-footer">
-          <span id="promiseTime">5 minutes is enough to begin.</span>
-          <button id="doneButton" type="button" disabled>Mark today as shown up <span>+</span></button>
         </div>
-      </article>
 
-      <div class="return-board reveal">
-        <div><span class="board-number" id="returnCount">0</span><p>days you returned</p></div>
-        <div class="return-marks" id="returnMarks" aria-label="Your returned days"></div>
-        <p class="board-note">A return counts. A restart counts. Five honest minutes count.</p>
+        <a href="#start-studio" class="door-button">
+          YES. I'M DOING SOMETHING.
+          <span>↘</span>
+        </a>
+
       </div>
+
     </section>
+
+
+
+    <!-- ========================================
+         START STUDIO
+    ========================================= -->
+
+    <section class="start-studio section" id="start-studio">
+
+      <div class="start-heading reveal">
+
+        <p>03 / ACTION</p>
+
+        <h2>
+          Enough
+          <em>thinking.</em>
+        </h2>
+
+      </div>
+
+
+      <form class="start-card reveal" id="startForm">
+
+        <div class="start-question">
+
+          <label for="bigThing">
+            What are you beginning?
+          </label>
+
+          <input
+            id="bigThing"
+            type="text"
+            maxlength="100"
+            placeholder="Write the thing."
+            required
+          >
+
+        </div>
+
+
+        <div class="start-question">
+
+          <label for="smallMove">
+            What can you physically do today?
+          </label>
+
+          <input
+            id="smallMove"
+            type="text"
+            maxlength="120"
+            placeholder="Open the document. Send the email. Put on the shoes."
+            required
+          >
+
+        </div>
+
+
+        <fieldset class="time-choice">
+
+          <legend>How long are you giving it?</legend>
+
+          <label>
+            <input type="radio" name="minutes" value="5" checked>
+            <span>5</span>
+          </label>
+
+          <label>
+            <input type="radio" name="minutes" value="10">
+            <span>10</span>
+          </label>
+
+          <label>
+            <input type="radio" name="minutes" value="20">
+            <span>20</span>
+          </label>
+
+          <label>
+            <input type="radio" name="minutes" value="30">
+            <span>30</span>
+          </label>
+
+          <small>MINUTES</small>
+
+        </fieldset>
+
+
+        <button class="commit-button" type="submit">
+
+          START
+
+          <span>↗</span>
+
+        </button>
+
+        <p class="privacy-note">
+          Saved only on this device.
+          Your unfinished plans are still yours.
+        </p>
+
+      </form>
+
+    </section>
+
+
+
+    <!-- ========================================
+         ACTIVE BEGINNING
+    ========================================= -->
+
+    <section class="active-section section" id="activeSection">
+
+      <div class="active-shell reveal">
+
+        <div class="active-top">
+
+          <span>YOU SAID</span>
+
+          <button id="resetStart" type="button">
+            reset
+          </button>
+
+        </div>
+
+
+        <h2 id="activeBig">
+          Nothing yet.
+        </h2>
+
+
+        <div class="active-divider">
+
+          <span>↓</span>
+
+        </div>
+
+
+        <p class="today-label">
+          TODAY
+        </p>
+
+        <h3 id="activeMove">
+          Give yourself one real action.
+        </h3>
+
+
+        <div class="timer-area">
+
+          <span class="timer-label">
+            YOUR TIME
+          </span>
+
+          <div class="timer-display" id="timerDisplay">
+            05:00
+          </div>
+
+          <div class="timer-controls">
+
+            <button
+              type="button"
+              id="timerButton"
+              disabled
+            >
+              START TIMER
+            </button>
+
+            <button
+              type="button"
+              id="doneButton"
+              disabled
+            >
+              I DID THE THING ✓
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         EXCUSE WALL
+    ========================================= -->
+
+    <section class="excuse-section section">
+
+      <div class="section-heading reveal">
+
+        <p class="section-number">
+          04 / YOU'VE PROBABLY SAID ONE
+        </p>
+
+        <h2>
+          Pick your favourite
+          <em>excuse.</em>
+        </h2>
+
+        <p>
+          Click it.
+        </p>
+
+      </div>
+
+
+      <div class="excuse-wall">
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 01</small>
+
+              <strong>
+                "I don't have time."
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                Then don't find an hour.
+              </strong>
+
+              <b>
+                Find ten minutes.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 02</small>
+
+              <strong>
+                "Someone already does it better."
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                Of course they do.
+              </strong>
+
+              <b>
+                They started before you.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 03</small>
+
+              <strong>
+                "I'll start Monday."
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                Monday is innocent.
+              </strong>
+
+              <b>
+                Stop blaming Monday.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 04</small>
+
+              <strong>
+                "What if people judge me?"
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                They might.
+              </strong>
+
+              <b>
+                Do it anyway.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 05</small>
+
+              <strong>
+                "I need to research more."
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                Research can hide fear.
+              </strong>
+
+              <b>
+                Make something.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+
+        <button class="flip-card reveal">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+              <small>EXCUSE 06</small>
+
+              <strong>
+                "I'm too far behind."
+              </strong>
+
+              <i>flip ↻</i>
+            </span>
+
+            <span class="flip-back">
+              <strong>
+                Behind whom?
+              </strong>
+
+              <b>
+                Begin from here.
+              </b>
+            </span>
+
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         MOTIVATION VISUAL
+    ========================================= -->
 
     <section class="motivation-section">
-      <div class="motivation-art reveal" aria-hidden="true">
-        <div class="mood-blob"><span>MOTIVATION</span></div>
-        <div class="exit-arrow">leaves ↗</div>
+
+      <div class="motivation-stage reveal">
+
+        <span class="motivation-word">
+          MOTIVATION
+        </span>
+
+        <span class="run-arrow">
+          → → →
+        </span>
+
+        <span class="exit-door">
+          🚪
+        </span>
+
       </div>
-      <div class="motivation-copy reveal">
-        <p class="eyebrow"><span>The part nobody puts on a poster</span> Motivation is unreliable</p>
-        <h2>Do not build the plan around a feeling that keeps changing.</h2>
-        <p>Motivation may introduce you to a goal. It rarely stays for the whole project. Build a tiny rhythm that still works when you are bored, busy, uncertain or not feeling particularly inspirational.</p>
-        <p class="motivation-highlight">Your mood can say “not today.” Your decision can answer, “five minutes.”</p>
+
+
+      <div class="motivation-message reveal">
+
+        <p>05 / A SMALL PROBLEM</p>
+
+        <h2>
+          It left.
+        </h2>
+
+        <strong>
+          Begin anyway.
+        </strong>
+
       </div>
+
     </section>
 
-    <section class="idea-deck section">
-      <div class="section-heading reveal">
-        <p class="eyebrow dark"><span>Stuck?</span> Borrow a first move</p>
-        <h2>Pick a card. Start badly.</h2>
-        <p>These are deliberately small. The point is not to finish. The point is to break the spell of not beginning.</p>
+
+
+    <!-- ========================================
+         PROOF I SHOWED UP
+    ========================================= -->
+
+    <section class="proof-section section">
+
+      <div class="proof-heading reveal">
+
+        <p>06 / NOT A STREAK</p>
+
+        <h2>
+          Proof I
+          <em>showed up.</em>
+        </h2>
+
       </div>
 
-      <div class="idea-grid">
-        <button class="idea-card reveal" type="button" data-action="Open the document and write one deliberately ordinary sentence."><span>01 / WORDS</span><strong>Write one ordinary sentence.</strong><i>↗</i></button>
-        <button class="idea-card reveal" type="button" data-action="Put on your shoes and walk to the end of the street."><span>02 / MOVEMENT</span><strong>Walk to the end of the street.</strong><i>↗</i></button>
-        <button class="idea-card reveal" type="button" data-action="Read one page and underline one sentence worth keeping."><span>03 / STUDY</span><strong>Read one page with a pencil.</strong><i>↗</i></button>
-        <button class="idea-card reveal" type="button" data-action="Create the folder, name the project and place one file inside it."><span>04 / PROJECT</span><strong>Make the folder. Name the thing.</strong><i>↗</i></button>
-        <button class="idea-card reveal" type="button" data-action="Write the first line of the message you have been avoiding."><span>05 / COURAGE</span><strong>Write the first line of the message.</strong><i>↗</i></button>
-        <button class="idea-card reveal" type="button" data-action="Clear one small surface and stop when the timer ends."><span>06 / HOME</span><strong>Clear one small surface.</strong><i>↗</i></button>
-      </div>
-      <p class="picked-action" id="pickedAction" aria-live="polite">Choose a card and it will become your five-minute move.</p>
-    </section>
 
-    <section class="note-section section">
-      <div class="note-grid">
-        <div class="note-copy reveal">
-          <p class="eyebrow"><span>Leave evidence</span> A note from the attempt</p>
-          <h2>Messy work still leaves clues.</h2>
-          <p>Write what happened—not what should have happened. This is a record of movement, not a performance review.</p>
+      <div class="proof-board reveal">
+
+        <div class="proof-count">
+
+          <span id="returnCount">0</span>
+
+          <p>
+            TIMES I CHOSE<br>
+            ACTION OVER EXCUSES
+          </p>
+
         </div>
 
-        <form class="note-form reveal" id="noteForm">
-          <label for="noteText">Today I began by…</label>
-          <textarea id="noteText" maxlength="280" placeholder="Opened the page. Wrote three terrible lines. Kept one."></textarea>
-          <button class="button note-button" type="submit">Keep this evidence <span>+</span></button>
-        </form>
+
+        <div class="proof-marks">
+
+          <p>
+            EACH MARK = ONE RETURN
+          </p>
+
+          <div
+            class="return-marks"
+            id="returnMarks"
+            aria-label="Your returned days"
+          ></div>
+
+        </div>
+
       </div>
 
-      <div class="note-list" id="noteList" aria-live="polite"></div>
+
+      <p class="return-message reveal">
+        No streaks here.
+        Missing a day does not erase the days you showed up.
+        <strong>You can always return.</strong>
+      </p>
+
     </section>
 
-    <section class="final-call">
-      <p>YOUR NEXT BEGINNING DOES NOT NEED ANOTHER MONDAY.</p>
-      <h2>Close this page.<br>Do the five-minute thing.</h2>
-      <a href="#currentStartSection">Read my next move <span>↑</span></a>
+
+
+    <!-- ========================================
+         FINAL
+    ========================================= -->
+
+    <section class="final-section">
+
+      <p class="reveal">
+        YOU HAVE READ ENOUGH.
+      </p>
+
+      <h2 class="reveal">
+        Go.
+      </h2>
+
+      <a
+        href="#start-studio"
+        class="final-link reveal"
+      >
+        BEGIN THE THING
+        <span>↑</span>
+      </a>
+
     </section>
+
   </main>
 
+
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+
   <footer>
-   <a class="brand footer-brand" href="index.html" aria-label="Jigyasa Verse homepage">
-  <img
-    src="images/wonder-verse-moon-pencil-logo.png"
-    alt="Jigyasa Verse"
-    class="brand-logo footer-logo"
-  >
-</a>
-    <p>For imperfect attempts, returned dreams and people willing to begin before they feel ready.</p>
-    <div class="footer-links"><a href="about.html">Our story</a><a href="questions.html">Questions</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
-    <small>© 2026 The Jigyasa Verse Project · Begin somewhere.</small>
+
+    <a
+      href="index.html"
+      class="wv-brand footer-brand"
+      aria-label="Jigyasa Verse homepage"
+    >
+
+      <span class="wv-brand-image-wrap">
+
+        <img
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+          class="wv-brand-image"
+        >
+
+      </span>
+
+      <span class="wv-brand-copy">
+
+        <span class="wv-brand-name">
+          Jigyasa Verse
+        </span>
+
+        <span class="wv-brand-note">
+          Curiosity lives here
+        </span>
+
+      </span>
+
+    </a>
+
+
+    <p>
+      For people willing to begin before
+      they feel completely ready.
+    </p>
+
+
+    <div class="footer-links">
+      <a href="about.html">Our story</a>
+      <a href="books.html">Books</a>
+      <a href="schools.html">Schools</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+
+    <small>
+      © 2026 Jigyasa Verse · Begin somewhere.
+    </small>
+
   </footer>
+
 </body>
 </html>
