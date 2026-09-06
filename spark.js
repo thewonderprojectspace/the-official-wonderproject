@@ -1,179 +1,765 @@
-const STORAGE_KEY = "wonderverse-messy-beginning-v1";
-const NOTE_KEY = "wonderverse-beginning-notes-v1";
-const RETURN_KEY = "wonderverse-return-days-v1";
+(() => {
+  "use strict";
 
-const menuButton = document.querySelector("#menuButton");
-const navLinks = document.querySelector("#navLinks");
 
-menuButton.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-  menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-});
+  /* =========================================
+     STORAGE
+  ========================================= */
 
-navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
-  navLinks.classList.remove("open");
-  menuButton.setAttribute("aria-expanded", "false");
-}));
+  const STORAGE_KEY = "jigyasa-moon-beginnings-v2";
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+
+  const getData = () => {
+    try {
+
+      return JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+      ) || {
+        goal: "",
+        move: "",
+        minutes: 5,
+        returns: []
+      };
+
+    } catch {
+
+      return {
+        goal: "",
+        move: "",
+        minutes: 5,
+        returns: []
+      };
+
     }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-
-const moodResponse = document.querySelector("#moodResponse");
-const moodMessages = {
-  Ready: "Good. Spend less time preparing to begin than beginning.",
-  Tired: "Tired is information. Choose five minutes, remove one obstacle and stop after the promise is kept.",
-  Lost: "You do not need the whole map. Choose the next physical action.",
-  Nervous: "Nerves are allowed to come. They do not get veto power.",
-  Curious: "Follow the curiosity before you ask whether it will be impressive.",
-  "Avoiding it": "Honest. Now make the task so small that avoidance becomes more work than doing it."
-};
-
-document.querySelectorAll("[data-mood]").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll("[data-mood]").forEach((item) => item.setAttribute("aria-pressed", "false"));
-    button.setAttribute("aria-pressed", "true");
-    moodResponse.textContent = moodMessages[button.dataset.mood];
-  });
-});
-
-const form = document.querySelector("#startForm");
-const bigThing = document.querySelector("#bigThing");
-const smallMove = document.querySelector("#smallMove");
-const minutes = document.querySelector("#minutes");
-const promiseType = document.querySelector("#promiseType");
-const promiseBig = document.querySelector("#promiseBig");
-const promiseSmall = document.querySelector("#promiseSmall");
-const promiseTime = document.querySelector("#promiseTime");
-const doneButton = document.querySelector("#doneButton");
-
-function readStart() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); }
-  catch { return null; }
-}
-
-function renderStart(start = readStart()) {
-  if (!start) return;
-  promiseType.textContent = start.type.toUpperCase();
-  promiseBig.textContent = start.thing;
-  promiseSmall.textContent = start.move;
-  promiseTime.textContent = `${start.minutes} honest minutes. Today—not someday.`;
-  doneButton.disabled = false;
-  bigThing.value = start.thing;
-  smallMove.value = start.move;
-  minutes.value = start.minutes;
-}
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const type = new FormData(form).get("startType");
-  const start = {
-    type,
-    thing: bigThing.value.trim(),
-    move: smallMove.value.trim(),
-    minutes: minutes.value
   };
-  if (!start.thing || !start.move) return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(start));
-  renderStart(start);
-  document.querySelector("#currentStartSection").scrollIntoView({ behavior: "smooth" });
-});
 
-const quickMoves = [
-  "Open the file and work until the five-minute timer rings.",
-  "Write the first sentence. It is allowed to be extremely average.",
-  "Put the materials you need on the table.",
-  "Read one page and keep one useful line.",
-  "Create the folder and give the project a name.",
-  "Do the first physical action before discussing it with yourself."
-];
 
-function chooseQuickMove() {
-  const move = quickMoves[Math.floor(Math.random() * quickMoves.length)];
-  smallMove.value = move;
-  document.querySelector("#restart-studio").scrollIntoView({ behavior: "smooth" });
-  window.setTimeout(() => smallMove.focus(), 500);
-}
+  const saveData = (data) => {
 
-document.querySelector("#quickStartButton").addEventListener("click", chooseQuickMove);
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
 
-document.querySelectorAll("[data-action]").forEach((card) => {
-  card.addEventListener("click", () => {
-    const action = card.dataset.action;
-    smallMove.value = action;
-    document.querySelector("#pickedAction").textContent = `Your borrowed move: ${action}`;
-    document.querySelectorAll("[data-action]").forEach((item) => item.classList.remove("picked"));
-    card.classList.add("picked");
+  };
+
+
+  let data = getData();
+
+
+
+  /* =========================================
+     MOBILE NAV
+  ========================================= */
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const navLinks =
+    document.getElementById("navLinks");
+
+
+  if (menuButton && navLinks) {
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const open =
+          navLinks.classList.toggle("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+      }
+    );
+
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+
+  /* =========================================
+     REVEAL ON SCROLL
+  ========================================= */
+
+  const revealObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (
+            entry.isIntersecting
+          ) {
+
+            entry.target
+              .classList
+              .add("visible");
+
+            revealObserver
+              .unobserve(
+                entry.target
+              );
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+  document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+      revealObserver
+        .observe(element);
+
+    });
+
+
+
+  /* =========================================
+     HONESTY CARDS
+  ========================================= */
+
+  const honestyCards =
+    document.querySelectorAll(
+      ".honesty-card"
+    );
+
+  const honestyResponse =
+    document.getElementById(
+      "honestyResponse"
+    );
+
+
+  honestyCards.forEach(card => {
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        honestyCards
+          .forEach(other => {
+
+            other
+              .classList
+              .remove("active");
+
+          });
+
+
+        card
+          .classList
+          .add("active");
+
+
+        const response =
+          card.dataset.response;
+
+
+        honestyResponse.innerHTML = `
+          <span>GOOD. NOW WE KNOW.</span>
+          <p>${response}</p>
+        `;
+
+      }
+    );
+
   });
-});
 
-function readReturns() {
-  try { return JSON.parse(localStorage.getItem(RETURN_KEY)) || []; }
-  catch { return []; }
-}
 
-function renderReturns() {
-  const returns = readReturns();
-  document.querySelector("#returnCount").textContent = returns.length;
-  document.querySelector("#returnMarks").innerHTML = returns
-    .map((date, index) => `<span title="${date}">${index % 3 === 0 ? "✦" : index % 3 === 1 ? "+" : "●"}</span>`)
-    .join("");
-}
 
-doneButton.addEventListener("click", () => {
-  const returns = readReturns();
-  const today = new Date().toISOString().slice(0, 10);
-  if (!returns.includes(today)) {
-    returns.push(today);
-    localStorage.setItem(RETURN_KEY, JSON.stringify(returns));
-    renderReturns();
+  /* =========================================
+     FLIP EXCUSE CARDS
+  ========================================= */
+
+  document
+    .querySelectorAll(".flip-card")
+    .forEach(card => {
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          card
+            .classList
+            .toggle("flipped");
+
+        }
+      );
+
+    });
+
+
+
+  /* =========================================
+     START FORM
+  ========================================= */
+
+  const startForm =
+    document.getElementById(
+      "startForm"
+    );
+
+  const bigThing =
+    document.getElementById(
+      "bigThing"
+    );
+
+  const smallMove =
+    document.getElementById(
+      "smallMove"
+    );
+
+
+  const activeBig =
+    document.getElementById(
+      "activeBig"
+    );
+
+  const activeMove =
+    document.getElementById(
+      "activeMove"
+    );
+
+  const activeSection =
+    document.getElementById(
+      "activeSection"
+    );
+
+  const timerDisplay =
+    document.getElementById(
+      "timerDisplay"
+    );
+
+  const timerButton =
+    document.getElementById(
+      "timerButton"
+    );
+
+  const doneButton =
+    document.getElementById(
+      "doneButton"
+    );
+
+
+
+  /* =========================================
+     TIMER
+  ========================================= */
+
+  let timerInterval = null;
+
+  let remainingSeconds =
+    data.minutes * 60;
+
+
+  const formatTime =
+    seconds => {
+
+      const minutes =
+        Math.floor(
+          seconds / 60
+        );
+
+      const secs =
+        seconds % 60;
+
+
+      return (
+        String(minutes)
+          .padStart(2, "0")
+        +
+        ":"
+        +
+        String(secs)
+          .padStart(2, "0")
+      );
+
+    };
+
+
+  const updateTimerDisplay =
+    () => {
+
+      timerDisplay.textContent =
+        formatTime(
+          remainingSeconds
+        );
+
+    };
+
+
+  const resetTimer =
+    () => {
+
+      if (timerInterval) {
+
+        clearInterval(
+          timerInterval
+        );
+
+      }
+
+
+      timerInterval = null;
+
+      remainingSeconds =
+        data.minutes * 60;
+
+
+      updateTimerDisplay();
+
+
+      timerButton.textContent =
+        "START TIMER";
+
+    };
+
+
+
+  /* =========================================
+     RENDER CURRENT GOAL
+  ========================================= */
+
+  const renderGoal =
+    () => {
+
+      if (
+        data.goal &&
+        data.move
+      ) {
+
+        activeBig.textContent =
+          data.goal;
+
+        activeMove.textContent =
+          data.move;
+
+
+        bigThing.value =
+          data.goal;
+
+        smallMove.value =
+          data.move;
+
+
+        const radio =
+          document.querySelector(
+            `input[name="minutes"][value="${data.minutes}"]`
+          );
+
+
+        if (radio) {
+          radio.checked = true;
+        }
+
+
+        timerButton.disabled =
+          false;
+
+        doneButton.disabled =
+          false;
+
+      } else {
+
+        activeBig.textContent =
+          "Nothing yet.";
+
+        activeMove.textContent =
+          "Give yourself one real action.";
+
+
+        timerButton.disabled =
+          true;
+
+        doneButton.disabled =
+          true;
+
+      }
+
+
+      remainingSeconds =
+        data.minutes * 60;
+
+
+      updateTimerDisplay();
+
+    };
+
+
+
+  /* =========================================
+     SUBMIT START
+  ========================================= */
+
+  if (startForm) {
+
+    startForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+
+        const selectedTime =
+          document.querySelector(
+            'input[name="minutes"]:checked'
+          );
+
+
+        data.goal =
+          bigThing.value.trim();
+
+        data.move =
+          smallMove.value.trim();
+
+        data.minutes =
+          Number(
+            selectedTime
+              ? selectedTime.value
+              : 5
+          );
+
+
+        saveData(data);
+
+        renderGoal();
+
+        resetTimer();
+
+
+        activeSection
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+      }
+    );
+
   }
-  doneButton.textContent = "You showed up today ✓";
-  doneButton.disabled = true;
-});
 
-const noteForm = document.querySelector("#noteForm");
-const noteText = document.querySelector("#noteText");
-const noteList = document.querySelector("#noteList");
 
-function readNotes() {
-  try { return JSON.parse(localStorage.getItem(NOTE_KEY)) || []; }
-  catch { return []; }
-}
 
-function renderNotes() {
-  const notes = readNotes();
-  if (!notes.length) {
-    noteList.innerHTML = '<p class="empty-note">No polished success story required. Your first scrap of evidence can live here.</p>';
-    return;
+  /* =========================================
+     TIMER BUTTON
+  ========================================= */
+
+  if (timerButton) {
+
+    timerButton.addEventListener(
+      "click",
+      () => {
+
+        if (timerInterval) {
+
+          clearInterval(
+            timerInterval
+          );
+
+          timerInterval = null;
+
+          timerButton.textContent =
+            "CONTINUE TIMER";
+
+          return;
+
+        }
+
+
+        timerButton.textContent =
+          "PAUSE";
+
+
+        timerInterval =
+          setInterval(
+            () => {
+
+              remainingSeconds--;
+
+
+              updateTimerDisplay();
+
+
+              if (
+                remainingSeconds <= 0
+              ) {
+
+                clearInterval(
+                  timerInterval
+                );
+
+                timerInterval =
+                  null;
+
+
+                remainingSeconds =
+                  0;
+
+
+                updateTimerDisplay();
+
+
+                timerButton.textContent =
+                  "TIME'S UP ✓";
+
+
+                document.title =
+                  "Time's up — Moon of Beginnings";
+
+              }
+
+            },
+            1000
+          );
+
+      }
+    );
+
   }
-  noteList.innerHTML = notes.slice().reverse().map((note) => `
-    <article>
-      <time>${note.date}</time>
-      <p>${note.text.replace(/[<>&]/g, (character) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[character]))}</p>
-    </article>
-  `).join("");
-}
 
-noteForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const text = noteText.value.trim();
-  if (!text) return;
-  const notes = readNotes();
-  notes.push({ text, date: new Date().toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" }) });
-  localStorage.setItem(NOTE_KEY, JSON.stringify(notes.slice(-12)));
-  noteText.value = "";
-  renderNotes();
-});
 
-renderStart();
-renderReturns();
-renderNotes();
+
+  /* =========================================
+     RETURN TRACKING
+  ========================================= */
+
+  const returnCount =
+    document.getElementById(
+      "returnCount"
+    );
+
+  const returnMarks =
+    document.getElementById(
+      "returnMarks"
+    );
+
+
+  const todayKey =
+    () => {
+
+      const date =
+        new Date();
+
+
+      return [
+        date.getFullYear(),
+
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0"),
+
+        String(
+          date.getDate()
+        ).padStart(2, "0")
+
+      ].join("-");
+
+    };
+
+
+  const renderReturns =
+    () => {
+
+      returnCount.textContent =
+        data.returns.length;
+
+
+      returnMarks.innerHTML =
+        "";
+
+
+      if (
+        data.returns.length === 0
+      ) {
+
+        const empty =
+          document.createElement(
+            "p"
+          );
+
+        empty.textContent =
+          "Your first mark is waiting.";
+
+        empty.style.opacity =
+          ".55";
+
+        returnMarks
+          .appendChild(
+            empty
+          );
+
+        return;
+
+      }
+
+
+      data.returns.forEach(
+        (date, index) => {
+
+          const mark =
+            document.createElement(
+              "span"
+            );
+
+          mark.className =
+            "return-mark";
+
+          mark.textContent =
+            index + 1;
+
+          mark.title =
+            date;
+
+
+          returnMarks
+            .appendChild(
+              mark
+            );
+
+        }
+      );
+
+    };
+
+
+
+  /* =========================================
+     I DID THE THING
+  ========================================= */
+
+  if (doneButton) {
+
+    doneButton.addEventListener(
+      "click",
+      () => {
+
+        const today =
+          todayKey();
+
+
+        if (
+          !data.returns.includes(
+            today
+          )
+        ) {
+
+          data.returns.push(
+            today
+          );
+
+
+          saveData(data);
+
+          renderReturns();
+
+
+          doneButton.textContent =
+            "YOU SHOWED UP ✓";
+
+        } else {
+
+          doneButton.textContent =
+            "TODAY ALREADY COUNTS ✓";
+
+        }
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================
+     RESET CURRENT START
+  ========================================= */
+
+  const resetStart =
+    document.getElementById(
+      "resetStart"
+    );
+
+
+  if (resetStart) {
+
+    resetStart.addEventListener(
+      "click",
+      () => {
+
+        data.goal = "";
+        data.move = "";
+        data.minutes = 5;
+
+
+        saveData(data);
+
+
+        bigThing.value =
+          "";
+
+        smallMove.value =
+          "";
+
+
+        const five =
+          document.querySelector(
+            'input[name="minutes"][value="5"]'
+          );
+
+
+        if (five) {
+          five.checked = true;
+        }
+
+
+        resetTimer();
+
+        renderGoal();
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================
+     INITIAL RENDER
+  ========================================= */
+
+  renderGoal();
+
+  renderReturns();
+
+})();
