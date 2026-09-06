@@ -249,3 +249,24 @@ footer small { grid-column: 1 / -1; padding-top: 2rem; color: #96a293; border-to
     height: 50px;
   }
 }
+/* ================================
+   REAL JIGYASA VERSE LOGO
+================================ */
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 58px;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .brand-logo {
+    height: 48px;
+  }
+}
