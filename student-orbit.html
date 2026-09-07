@@ -1,189 +1,1576 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Student Orbit — a grounded Wonder Verse field guide for navigating expectations, money, identity and meaningful work.">
-  <meta name="theme-color" content="#071e29">
-  <title>Student Orbit | Wonder Verse</title>
 
-  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <meta
+    name="description"
+    content="Student Orbit — real stories from students who felt behind, lost, uncertain, stuck, hopeful and everything in between."
+  >
+
+  <meta name="theme-color" content="#eff5dc">
+
+  <title>Student Orbit | Jigyasa Verse</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
 
-  <!-- Keep style.css and wonder-verse-navbar.css if they are used across your website. -->
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Caveat:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="wonder-verse-navbar.css">
   <link rel="stylesheet" href="student-orbit.css">
+
   <script src="student-orbit.js" defer></script>
 </head>
 
+
 <body>
-  <header class="wv-header">
-    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
-      <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
-        <span class="wv-brand-image-wrap">
-          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="wv-header">
+
+  <nav
+    class="wv-nav"
+    data-wv-nav
+    aria-label="Main navigation"
+  >
+
+    <a
+      href="index.html"
+      class="wv-brand"
+      aria-label="Jigyasa Verse homepage"
+    >
+
+      <span class="wv-brand-image-wrap">
+
+        <img
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+          class="wv-brand-image"
+        >
+
+      </span>
+
+
+      <span class="wv-brand-copy">
+
+        <span class="wv-brand-name">
+          Jigyasa Verse
         </span>
-        <span class="wv-brand-copy">
-          <span class="wv-brand-name">Wonder Verse</span>
-          <span class="wv-brand-note">Curiosity lives here</span>
+
+        <span class="wv-brand-note">
+          Curiosity lives here
         </span>
+
+      </span>
+
+    </a>
+
+
+    <button
+      class="wv-menu"
+      type="button"
+      data-wv-menu
+      aria-expanded="false"
+      aria-controls="wvNavLinks"
+      aria-label="Open navigation menu"
+    >
+
+      <span class="wv-menu-label">
+        Menu
+      </span>
+
+      <span
+        class="wv-menu-lines"
+        aria-hidden="true"
+      ></span>
+
+    </button>
+
+
+    <div
+      class="wv-links"
+      id="wvNavLinks"
+      data-wv-links
+    >
+
+      <a href="index.html">Start Here</a>
+
+      <a href="books.html">Books</a>
+
+      <a href="questions.html">Wonder</a>
+
+      <a href="schools.html">Schools</a>
+
+      <a href="teachers.html">Teachers</a>
+
+      <a href="contact.html">Contact</a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="student-hero" id="top">
+
+
+  <span class="floating-doodle doodle-one">
+    ✦
+  </span>
+
+  <span class="floating-doodle doodle-two">
+    ☻
+  </span>
+
+  <span class="floating-doodle doodle-three">
+    ↗
+  </span>
+
+
+  <div class="hero-copy reveal">
+
+
+    <p class="eyebrow">
+      STUDENT ORBIT
+    </p>
+
+
+    <h1>
+
+      Feel like you're
+
+      <span>behind?</span>
+
+    </h1>
+
+
+    <p class="hero-big">
+
+      Behind who?
+
+    </p>
+
+
+    <p class="hero-copy-small">
+
+      Someone will always be ahead of you.
+
+      Someone will always be starting after you.
+
+      Neither one tells you where
+      <strong>you</strong>
+      should be.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+      <a
+        href="#stories"
+        class="button dark-button"
+      >
+
+        Read student stories ↓
+
       </a>
 
-      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu">
-        <span class="wv-menu-label">Menu</span>
-        <span class="wv-menu-lines" aria-hidden="true"></span>
+
+      <a
+        href="#share"
+        class="button yellow-button"
+      >
+
+        Send us yours ✎
+
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- ORBIT VISUAL -->
+
+  <div class="orbit-art reveal">
+
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="orbit orbit-three"></div>
+
+
+    <span class="orbit-thought thought-one">
+      everyone is ahead
+    </span>
+
+    <span class="orbit-thought thought-two">
+      what am I doing?
+    </span>
+
+    <span class="orbit-thought thought-three">
+      I should know by now
+    </span>
+
+    <span class="orbit-thought thought-four">
+      maybe I can't do this
+    </span>
+
+
+    <div class="student-centre">
+
+      <small>
+        CURRENT LOCATION
+      </small>
+
+      <strong>
+        figuring<br>
+        things out
+      </strong>
+
+      <span>
+        perfectly normal
+      </span>
+
+    </div>
+
+
+    <div class="orbit-note">
+
+      <span>
+        reminder:
+      </span>
+
+      <strong>
+        lost is still
+        a location.
+      </strong>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     SMALL IMPACT STRIP
+========================================================= -->
+
+<section class="reality-strip">
+
+
+  <article>
+
+    <span>01</span>
+
+    <p>
+      Failed something?
+    </p>
+
+    <strong>
+      Still here.
+    </strong>
+
+  </article>
+
+
+
+  <article class="yellow-card">
+
+    <span>02</span>
+
+    <p>
+      Changed your mind?
+    </p>
+
+    <strong>
+      Allowed.
+    </strong>
+
+  </article>
+
+
+
+  <article>
+
+    <span>03</span>
+
+    <p>
+      Starting again?
+    </p>
+
+    <strong>
+      Counts.
+    </strong>
+
+  </article>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     STORIES INTRO
+========================================================= -->
+
+<section
+  class="stories-heading reveal"
+  id="stories"
+>
+
+
+  <div>
+
+    <p class="eyebrow">
+      STORIES FROM THE ORBIT
+    </p>
+
+    <h2>
+      Things students
+      rarely put on LinkedIn.
+    </h2>
+
+  </div>
+
+
+  <div class="stories-intro-copy">
+
+    <p>
+      The messy semester.
+    </p>
+
+    <p>
+      The rejection.
+    </p>
+
+    <p>
+      The comeback.
+    </p>
+
+    <p>
+      The moment something finally clicked.
+    </p>
+
+    <span>
+      basically... the actual story.
+    </span>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     STUDENT STORY GRID
+========================================================= -->
+
+<section class="student-stories">
+
+
+<!-- STORY 1 -->
+
+<article class="story-card story-green reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      SAMPLE STORY
+    </span>
+
+    <span class="story-number">
+      001
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    I thought everyone was ahead of me.
+  </p>
+
+
+  <h3>
+    Then I actually
+    talked to them.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      Turns out one had changed degrees.
+      One had failed two subjects.
+      One had no idea what they wanted either.
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      I spent almost a year looking at people around me
+      and assuming everyone had some secret plan.
+    </p>
+
+    <p>
+      They looked confident.
+      They had internships.
+      They seemed busy.
+    </p>
+
+    <p>
+      So obviously my brain concluded:
+      <em>everyone has figured out life except me.</em>
+    </p>
+
+    <p>
+      Eventually I started talking to people properly.
+    </p>
+
+    <p>
+      One had changed degrees twice.
+      Another had failed subjects.
+      Someone else admitted they had no idea
+      what they wanted after graduation.
+    </p>
+
+    <p>
+      Nothing changed about my life that day.
+    </p>
+
+    <p>
+      I just stopped treating other people's
+      outside appearance as evidence against myself.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card">
+
+    <small>
+      THE THOUGHT I KEPT
+    </small>
+
+    <strong>
+      “You know their update.
+      Not their whole story.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+
+<!-- STORY 2 -->
+
+<article class="story-card reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      SAMPLE STORY
+    </span>
+
+    <span class="story-number">
+      002
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    I failed.
+  </p>
+
+
+  <h3>
+    Like...
+    properly failed.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      I thought the result had confirmed
+      every bad thing I had quietly believed
+      about myself.
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      When I saw the mark,
+      I didn't immediately become resilient.
+    </p>
+
+    <p>
+      I cried.
+      Avoided everyone.
+      Ate something questionable at 1am.
+    </p>
+
+    <p>
+      Very inspiring.
+    </p>
+
+    <p>
+      A few days later I wrote down
+      everything that had actually gone wrong.
+    </p>
+
+    <p>
+      I hadn't understood two major topics.
+      I started studying too late.
+      I was exhausted.
+    </p>
+
+    <p>
+      Those were problems.
+    </p>
+
+    <p>
+      “I am stupid” wasn't one of them.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card yellow-thought">
+
+    <small>
+      THE THOUGHT I ACTED ON
+    </small>
+
+    <strong>
+      “Describe the problem
+      without becoming the problem.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+
+<!-- STORY 3 -->
+
+<article class="story-card reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      SAMPLE STORY
+    </span>
+
+    <span class="story-number">
+      003
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    Life happened.
+  </p>
+
+
+  <h3>
+    University stopped
+    being the biggest thing.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      There was stuff happening at home
+      and suddenly assignments felt incredibly unimportant.
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      I kept comparing myself to the version of me
+      that existed before everything got difficult.
+    </p>
+
+    <p>
+      That person studied more.
+      Exercised more.
+      replied to emails.
+    </p>
+
+    <p>
+      Very annoying person, honestly.
+    </p>
+
+    <p>
+      Eventually someone told me:
+    </p>
+
+    <p>
+      <em>
+        “Stop expecting your normal output
+        from an abnormal season.”
+      </em>
+    </p>
+
+    <p>
+      I didn't suddenly feel great.
+    </p>
+
+    <p>
+      But I stopped treating survival
+      like poor productivity.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card">
+
+    <small>
+      THE THOUGHT I KEPT
+    </small>
+
+    <strong>
+      “Different season.
+      Different expectations.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+
+<!-- STORY 4 -->
+
+<article class="story-card story-yellow reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      TINY TURNING POINT
+    </span>
+
+    <span class="story-number">
+      004
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    I couldn't start.
+  </p>
+
+
+  <h3>
+    So I made the goal
+    embarrassingly small.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      “Study for three hours”
+      became
+      “open the document.”
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      I was behind on everything.
+    </p>
+
+    <p>
+      So naturally I responded by creating
+      an enormous productivity plan
+      that made me want to do absolutely nothing.
+    </p>
+
+    <p>
+      Eventually my rule became:
+    </p>
+
+    <p>
+      open the file.
+    </p>
+
+    <p>
+      That was the entire task.
+    </p>
+
+    <p>
+      Sometimes I stopped there.
+      Usually I didn't.
+    </p>
+
+    <p>
+      Starting tiny didn't magically
+      make me disciplined.
+    </p>
+
+    <p>
+      It just removed the argument
+      I kept having with myself before beginning.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card white-thought">
+
+    <small>
+      THE THOUGHT I ACTED ON
+    </small>
+
+    <strong>
+      “Make starting easier
+      than avoiding.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+
+<!-- STORY 5 -->
+
+<article class="story-card reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      SAMPLE STORY
+    </span>
+
+    <span class="story-number">
+      005
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    My dream changed.
+  </p>
+
+
+  <h3>
+    I thought that meant
+    I had wasted years.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      I had spent so long telling everyone
+      what I wanted to become
+      that changing direction felt embarrassing.
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      I kept going because I didn't want
+      to explain why I had changed my mind.
+    </p>
+
+    <p>
+      Eventually I realised
+      I was choosing years of the wrong thing
+      to avoid one awkward conversation.
+    </p>
+
+    <p>
+      That felt slightly ridiculous.
+    </p>
+
+    <p>
+      The years weren't wasted.
+    </p>
+
+    <p>
+      They were how I learned
+      what I didn't want.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card yellow-thought">
+
+    <small>
+      THE THOUGHT I KEPT
+    </small>
+
+    <strong>
+      “Changing direction
+      is still movement.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+
+<!-- STORY 6 -->
+
+<article class="story-card story-dark reveal">
+
+
+  <div class="story-top">
+
+    <span class="story-tag">
+      SMALL WIN
+    </span>
+
+    <span class="story-number">
+      006
+    </span>
+
+  </div>
+
+
+  <p class="story-kicker">
+    Nothing dramatic happened.
+  </p>
+
+
+  <h3>
+    I just had
+    a good Tuesday.
+  </h3>
+
+
+  <div class="story-preview">
+
+    <p>
+      I went to class.
+      Ate properly.
+      Finished one task.
+      Called a friend.
+    </p>
+
+  </div>
+
+
+  <div class="story-full">
+
+    <p>
+      For months I kept waiting
+      for some huge turning point.
+    </p>
+
+    <p>
+      A new opportunity.
+      A perfect routine.
+      Sudden motivation.
+    </p>
+
+    <p>
+      It never arrived.
+    </p>
+
+    <p>
+      Instead there was one ordinary Tuesday
+      where things felt slightly easier.
+    </p>
+
+    <p>
+      Then another.
+    </p>
+
+    <p>
+      Apparently life improvements
+      have terrible marketing.
+    </p>
+
+  </div>
+
+
+  <div class="thought-card dark-thought">
+
+    <small>
+      THE THOUGHT I KEPT
+    </small>
+
+    <strong>
+      “A better life may begin
+      as a better afternoon.”
+    </strong>
+
+  </div>
+
+
+  <button class="story-toggle">
+    Read the rest →
+  </button>
+
+
+</article>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ONE LINE SECTION
+========================================================= -->
+
+<section class="big-pause reveal">
+
+
+  <span>
+    ✦
+  </span>
+
+
+  <h2>
+    Maybe you don't need
+    your whole life figured out.
+  </h2>
+
+
+  <p>
+    Maybe you need a slightly better next move.
+  </p>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     MINI THOUGHT WALL
+========================================================= -->
+
+<section class="thought-wall">
+
+
+  <div class="wall-heading reveal">
+
+    <p class="eyebrow">
+      THOUGHTS WORTH BORROWING
+    </p>
+
+    <h2>
+      Take one.
+    </h2>
+
+  </div>
+
+
+  <div class="thought-grid">
+
+
+    <button
+      class="borrow-thought reveal"
+      data-thought="You are allowed to be new at something."
+    >
+
+      <span>
+        01
+      </span>
+
+      <strong>
+        You are allowed
+        to be new at something.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+
+    <button
+      class="borrow-thought yellow reveal"
+      data-thought="You can begin before you feel ready."
+    >
+
+      <span>
+        02
+      </span>
+
+      <strong>
+        You can begin before
+        you feel ready.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+
+    <button
+      class="borrow-thought reveal"
+      data-thought="One difficult season does not get to narrate your whole life."
+    >
+
+      <span>
+        03
+      </span>
+
+      <strong>
+        One difficult season
+        does not narrate
+        your whole life.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+
+    <button
+      class="borrow-thought reveal"
+      data-thought="Rest is not evidence that everybody else is winning."
+    >
+
+      <span>
+        04
+      </span>
+
+      <strong>
+        Rest is not evidence
+        that everybody else
+        is winning.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+
+    <button
+      class="borrow-thought yellow reveal"
+      data-thought="Do the next useful thing. Then decide again."
+    >
+
+      <span>
+        05
+      </span>
+
+      <strong>
+        Do the next useful thing.
+        Then decide again.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+
+    <button
+      class="borrow-thought reveal"
+      data-thought="You do not need to turn every setback into a personality."
+    >
+
+      <span>
+        06
+      </span>
+
+      <strong>
+        Don't turn every setback
+        into a personality.
+      </strong>
+
+      <small>
+        tap to keep this
+      </small>
+
+    </button>
+
+
+  </div>
+
+
+  <!-- SELECTED THOUGHT -->
+
+  <div
+    class="chosen-thought"
+    id="chosenThought"
+  >
+
+    <small>
+      CURRENTLY BORROWING
+    </small>
+
+    <strong id="chosenThoughtText">
+      Pick something above.
+    </strong>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     SHARE YOUR STORY
+========================================================= -->
+
+<section
+  class="share-orbit"
+  id="share"
+>
+
+
+  <div class="share-copy reveal">
+
+
+    <p class="eyebrow">
+      YOUR STORY
+    </p>
+
+
+    <h2>
+      Something change you?
+    </h2>
+
+
+    <p>
+      Tell us the moment.
+      Not the polished version.
+    </p>
+
+
+    <p class="hand-note">
+      weird, embarrassing, wonderful
+      and unfinished stories welcome.
+    </p>
+
+
+  </div>
+
+
+
+  <div class="student-postcard reveal">
+
+
+    <form
+      id="studentStoryForm"
+      name="student-story"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+
+
+      <input
+        type="hidden"
+        name="form-name"
+        value="student-story"
+      >
+
+
+      <p hidden>
+
+        <label>
+
+          Don't fill this in:
+
+          <input name="bot-field">
+
+        </label>
+
+      </p>
+
+
+
+      <div class="postcard-top">
+
+
+        <span>
+          POSTCARD FROM THE ORBIT
+        </span>
+
+
+        <div class="stamp">
+
+          <small>
+            STUDENT
+          </small>
+
+          <strong>
+            ✦
+          </strong>
+
+          <small>
+            POST
+          </small>
+
+        </div>
+
+
+      </div>
+
+
+
+      <label class="story-field">
+
+        <span>
+          What happened?
+        </span>
+
+
+        <textarea
+          name="story"
+          required
+          placeholder="I thought I was behind because..."
+        ></textarea>
+
+      </label>
+
+
+
+      <label class="short-field">
+
+        <span>
+          One thought that changed something?
+        </span>
+
+
+        <input
+          type="text"
+          name="thought"
+          placeholder="The sentence I kept was..."
+        >
+
+      </label>
+
+
+
+      <div class="postcard-row">
+
+
+        <label>
+
+          <span>
+            Share as
+          </span>
+
+          <select
+            name="credit"
+            required
+          >
+
+            <option value="">
+              Choose
+            </option>
+
+            <option>
+              Completely anonymous
+            </option>
+
+            <option>
+              Use a pseudonym
+            </option>
+
+            <option>
+              First name is okay
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            Email
+            <small>
+              optional
+            </small>
+          </span>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Only if we may reply"
+          >
+
+        </label>
+
+
+      </div>
+
+
+
+      <label class="permission">
+
+        <input
+          type="checkbox"
+          name="permission"
+          required
+        >
+
+        <span>
+          Jigyasa Verse may adapt this
+          into an anonymous Student Orbit post.
+        </span>
+
+      </label>
+
+
+
+      <button
+        class="post-story-button"
+        type="submit"
+      >
+
+        Send into orbit
+
+        <span>
+          ↗
+        </span>
+
       </button>
 
-      <div class="wv-links" id="wvNavLinks" data-wv-links>
-        <a href="index.html">Start Here</a>
-        <a href="books.html">Books</a>
-        <a href="resources.html">Explore</a>
-        <a href="questions.html">Wonder</a>
-        <a href="schools.html">Schools</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
-  </header>
 
-  <main id="main-content">
-    <section class="hero" id="top">
-      <div class="aurora aurora-one" aria-hidden="true"></div>
-      <div class="aurora aurora-two" aria-hidden="true"></div>
-      <div class="stars" aria-hidden="true"></div>
+    </form>
 
-      <div class="hero-shell">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span>Student Orbit</span> · a field guide for becoming</p>
-          <h1>Your life is not<br>a group project.</h1>
-          <p class="hero-lead">But it is happening inside a world of family, money, expectations, algorithms and very loud opinions.</p>
-          <p class="hero-body">This is a place to hold the dream and the grocery bill in the same conversation—without pretending either one is imaginary.</p>
-          <div class="actions">
-            <a class="button primary" href="#pressures">Enter your orbit <span>↓</span></a>
-            <a class="text-link" href="#two-track">Meet the practical dreamer <span>→</span></a>
-          </div>
-        </div>
 
-        <div class="orbit-visual reveal" aria-label="A student surrounded by common pressures">
-          <div class="orbit-ring ring-one"></div>
-          <div class="orbit-ring ring-two"></div>
-          <div class="orbit-ring ring-three"></div>
-          <div class="student-core"><small>THE STUDENT</small><strong>still<br>becoming</strong><span>not behind</span></div>
-          <span class="orbit-word word-one">expectations</span>
-          <span class="orbit-word word-two">money</span>
-          <span class="orbit-word word-three">belonging</span>
-          <span class="orbit-word word-four">comparison</span>
-          <span class="orbit-word word-five">the dream</span>
-          <span class="orbit-note">current location:<br><strong>figuring it out</strong></span>
-        </div>
-      </div>
-      <div class="scroll-note">SCROLL TO NAME THE GRAVITY <span>↓</span></div>
-    </section>
 
-    <section class="manifesto reveal">
-      <p class="eyebrow dark"><span>A necessary complication</span></p>
-      <div class="manifesto-grid">
-        <h2>“Do what you love” is beautiful advice.<br><em>It is also an incomplete financial plan.</em></h2>
-        <div>
-          <p>There is magic in choosing a life that feels like yours. There is dignity in earning enough to eat, rest, help your family and stand on your own feet.</p>
-          <p>Maturity is not choosing one truth and mocking the other. It is designing a life where stability becomes infrastructure—not a cage.</p>
-        </div>
-      </div>
-    </section>
+    <!-- SENT STATE -->
 
-    <section class="section pressures" id="pressures">
-      <div class="section-heading reveal">
-        <div><p class="eyebrow dark"><span>01 · The pressure map</span></p><h2>Name what is pulling you.</h2></div>
-        <p>Choose an orbit. Pressure becomes easier to negotiate when it stops disguising itself as your own voice.</p>
-      </div>
+    <div
+      class="story-sent"
+      id="storySent"
+    >
 
-      <div class="pressure-workbench reveal">
-        <div class="pressure-list" id="pressure-list" role="tablist" aria-label="Student pressures"></div>
-        <article class="pressure-detail wash-mint" id="pressure-detail" role="tabpanel" aria-live="polite">
-          <div class="detail-top"><span id="pressure-number">ORBIT 01</span><span>PRESSURE, TRANSLATED</span></div>
-          <h3 id="pressure-title"></h3>
-          <p id="pressure-body"></p>
-          <div class="question-card"><small>ASK YOURSELF</small><strong id="pressure-question"></strong></div>
-          <div class="say-card"><small>A SENTENCE YOU CAN BORROW</small><q id="pressure-line"></q></div>
-        </article>
-      </div>
-    </section>
 
-    <section class="protest" id="conversation">
-      <div class="protest-shell">
-        <div class="protest-title reveal">
-          <p class="eyebrow"><span>02 · The mini protest</span></p>
-          <h2>You do not need a dramatic exit.<br>You may need an honest sentence.</h2>
-        </div>
+      <span class="sent-icon">
+        ✦
+      </span>
 
-        <div class="speech-card reveal">
-          <span class="quote-mark">“</span>
-          <p>Mum, Dad—I know this may not happen in a year. I may never be famous, and I am not asking you to pretend risk does not exist. I want to give this a serious try while I build the skills and income to support myself. Can we talk about a plan, not only a permission slip?</p>
-          <footer>THE PROTEST, WITH A BUDGET</footer>
-        </div>
 
-        <div class="conversation-rules">
-          <article class="reveal"><span>01</span><h3>Name the dream</h3><p>Say what you actually want to try. “Something creative” is fog; a three-month design portfolio is a plan.</p></article>
-          <article class="reveal"><span>02</span><h3>Name the risk</h3><p>Show that you understand time, money and uncertainty. Being hopeful does not require acting naïve.</p></article>
-          <article class="reveal"><span>03</span><h3>Name the experiment</h3><p>Offer a timeframe, weekly commitment, budget and review point. Ask to be judged by the work.</p></article>
-        </div>
-      </div>
-    </section>
+      <p>
+        TRANSMISSION RECEIVED
+      </p>
 
-    <section class="section two-track" id="two-track">
-      <div class="section-heading reveal">
-        <div><p class="eyebrow dark"><span>03 · The two-track life</span></p><h2>Stand on your feet.<br>Keep your eyes on the stars.</h2></div>
-        <p>A practical life and a meaningful life are not natural enemies. For many people, they are built in parallel for a while.</p>
-      </div>
 
-      <div class="route-switcher reveal" id="route-switcher" role="tablist" aria-label="Two-track plan">
-        <button class="active" type="button" data-route="anchor" role="tab" aria-selected="true"><span>A</span>Build the anchor</button>
-        <button type="button" data-route="signal" role="tab" aria-selected="false"><span>B</span>Protect the signal</button>
-      </div>
-      <div class="route-panel route-anchor" id="route-panel">
-        <div class="route-code" id="route-code">TRACK A</div>
-        <div class="route-copy"><p id="route-subtitle"></p><h3 id="route-title"></h3><div class="route-body" id="route-body"></div></div>
-        <ol id="route-actions"></ol>
-      </div>
-      <div class="parallel-line"><span>Monday–Friday</span><div></div><strong>YOUR LIFE IS ALLOWED TO HAVE MORE THAN ONE TIMELINE</strong><div></div><span>Evenings · weekends · seasons</span></div>
-    </section>
+      <h3>
+        Your story
+        made it into orbit.
+      </h3>
 
-    <section class="section truth-grid">
-      <div class="section-heading compact reveal"><div><p class="eyebrow dark"><span>04 · Reality, without cynicism</span></p><h2>Things worth remembering.</h2></div></div>
-      <div class="truths">
-        <article class="truth-large reveal"><span>01</span><h3>The system is real.<br>So are the spaces within it.</h3><p>You may work inside institutions, schedules and economies you did not design. Agency is rarely absolute—but it is rarely zero.</p></article>
-        <article class="reveal"><span>02</span><h3>A job can be a season.</h3><p>It does not need to become your whole identity to be useful, respectable work.</p></article>
-        <article class="reveal"><span>03</span><h3>Not monetised ≠ not meaningful.</h3><p>Some things can remain art, service, study, play or a private source of aliveness.</p></article>
-        <article class="reveal"><span>04</span><h3>Fame is not the unit.</h3><p>Measure skill, courage, consistency, contribution and whether you recognise yourself.</p></article>
-        <article class="reveal"><span>05</span><h3>Plans can change.</h3><p>A review date is not a threat. It is permission to learn without promising forever.</p></article>
-      </div>
-    </section>
 
-    <section class="field-note" id="field-note">
-      <div class="note-shell">
-        <div class="note-intro reveal"><p class="eyebrow"><span>05 · A note from your orbit</span></p><h2>What deserves a fair chance?</h2><p>Not a five-year manifesto. Just the next honest experiment you want to protect.</p></div>
-        <div class="note-paper reveal">
-          <label for="student-note">I want to give myself permission to…</label>
-          <textarea id="student-note" placeholder="try, make, learn, apply, begin…" rows="4"></textarea>
-          <div><small>Saved only on this device.</small><button id="save-note" type="button">Save this note <span>→</span></button></div>
-        </div>
-      </div>
-    </section>
+      <span class="sent-message">
 
-    <section class="closing reveal">
-      <div><p class="eyebrow"><span>Final coordinates</span></p><h2>You are not choosing between<br>magic and food.</h2><p>You are learning how to feed yourself without starving the part of you that wants to make a life—not merely maintain one.</p></div>
-      <a href="#top">Return to orbit <span>↑</span></a>
-    </section>
-  </main>
+        Maybe someday,
+        someone will read it
+        exactly when they need it.
 
-  <footer class="footer">
-    <span>✦ Wonder Verse</span>
-    <p>For students becoming people in public.</p>
-    <a href="index.html">Return home</a>
-  </footer>
+      </span>
 
-  <script src="wonder-verse-navbar.js"></script>
+
+      <button
+        id="sendAnother"
+        type="button"
+      >
+
+        Send another ✎
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     CLOSING
+========================================================= -->
+
+<section class="orbit-closing reveal">
+
+
+  <span class="closing-doodle">
+    ☼
+  </span>
+
+
+  <p class="eyebrow">
+    FINAL COORDINATES
+  </p>
+
+
+  <h2>
+    You don't have to
+    catch up with everyone.
+  </h2>
+
+
+  <p>
+    Just don't abandon yourself
+    while trying.
+  </p>
+
+
+  <a href="#top">
+    Back to orbit ↑
+  </a>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="student-footer">
+
+
+  <div>
+
+    <strong>
+      Jigyasa Verse
+    </strong>
+
+    <span>
+      Student Orbit
+    </span>
+
+  </div>
+
+
+  <p>
+    For students becoming people
+    at highly inconvenient speeds.
+  </p>
+
+
+  <a href="index.html">
+    Return home
+  </a>
+
+
+</footer>
+
+
+<script src="wonder-verse-navbar.js"></script>
+
 </body>
 </html>
