@@ -1,466 +1,508 @@
-document.documentElement.classList.add("js-enabled");
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+/* =========================================================
+   STUDENT ORBIT
+   JIGYASA VERSE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =====================================================
+     STORY EXPANSION
+  ====================================================== */
+
+  const storyButtons =
+    document.querySelectorAll(".story-toggle");
+
+  storyButtons.forEach((button) => {
+
+    button.dataset.original =
+      button.textContent.trim();
+
+    button.addEventListener("click", () => {
+
+      const card =
+        button.closest(".story-card");
+
+      if (!card) return;
+
+      const isOpen =
+        card.classList.toggle("open");
+
+      button.textContent =
+        isOpen
+          ? "Fold story back up ↑"
+          : button.dataset.original;
+
+    });
+
+  });
 
 
-    /* =====================================================
-       STORY EXPANSION
-    ====================================================== */
 
-    const storyButtons =
-      document.querySelectorAll(
-        ".story-toggle"
-      );
+  /* =====================================================
+     BORROW A THOUGHT
+  ====================================================== */
 
+  const thoughtButtons =
+    document.querySelectorAll(".borrow-thought");
 
-    storyButtons.forEach(
-      (button) => {
-
-        button.dataset.original =
-          button.textContent.trim();
+  const chosenText =
+    document.getElementById("chosenThoughtText");
 
 
-        button.addEventListener(
-          "click",
-          () => {
+  thoughtButtons.forEach((button) => {
 
+    button.addEventListener("click", () => {
 
-            const card =
-              button.closest(
-                ".story-card"
-              );
+      thoughtButtons.forEach((other) => {
+        other.classList.remove("selected");
+      });
 
+      button.classList.add("selected");
 
-            const open =
-              card.classList.toggle(
-                "open"
-              );
+      const thought =
+        button.dataset.thought;
 
+      if (chosenText && thought) {
+        chosenText.textContent = thought;
+      }
 
-            button.textContent =
-              open
-                ? "Fold story back up ↑"
-                : button.dataset.original;
+      try {
 
+        localStorage.setItem(
+          "student-orbit-thought",
+          thought
+        );
 
-          }
+      } catch (error) {
+
+        console.warn(
+          "Could not save thought locally:",
+          error
         );
 
       }
-    );
+
+    });
+
+  });
 
 
 
-    /* =====================================================
-       BORROW A THOUGHT
-    ====================================================== */
+  /* =====================================================
+     RESTORE SAVED THOUGHT
+  ====================================================== */
 
-    const thoughtButtons =
-      document.querySelectorAll(
-        ".borrow-thought"
-      );
-
-
-    const chosenText =
-      document.getElementById(
-        "chosenThoughtText"
-      );
-
-
-    thoughtButtons.forEach(
-      (button) => {
-
-
-        button.addEventListener(
-          "click",
-          () => {
-
-
-            thoughtButtons.forEach(
-              (other) => {
-
-                other.classList.remove(
-                  "selected"
-                );
-
-              }
-            );
-
-
-            button.classList.add(
-              "selected"
-            );
-
-
-            const thought =
-              button.dataset.thought;
-
-
-            if (
-              chosenText &&
-              thought
-            ) {
-
-              chosenText.textContent =
-                thought;
-
-            }
-
-
-            /*
-              Store locally so the student's
-              chosen thought remains if they
-              revisit the page.
-            */
-
-            localStorage.setItem(
-              "student-orbit-thought",
-              thought
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-
-    /* =====================================================
-       RESTORE SAVED THOUGHT
-    ====================================================== */
+  try {
 
     const savedThought =
       localStorage.getItem(
         "student-orbit-thought"
       );
 
-
-    if (
-      savedThought &&
-      chosenText
-    ) {
+    if (savedThought && chosenText) {
 
       chosenText.textContent =
         savedThought;
 
+      thoughtButtons.forEach((button) => {
 
-      thoughtButtons.forEach(
-        (button) => {
+        if (
+          button.dataset.thought ===
+          savedThought
+        ) {
 
-          if (
-            button.dataset.thought ===
-            savedThought
-          ) {
-
-            button.classList.add(
-              "selected"
-            );
-
-          }
+          button.classList.add(
+            "selected"
+          );
 
         }
-      );
+
+      });
 
     }
 
+  } catch (error) {
+
+    console.warn(
+      "Could not restore saved thought:",
+      error
+    );
+
+  }
 
 
-    /* =====================================================
-       STUDENT STORY POSTCARD
-    ====================================================== */
 
-    const form =
-      document.getElementById(
-        "studentStoryForm"
-      );
+  /* =====================================================
+     STUDENT STORY POSTCARD
+  ====================================================== */
 
+  const form =
+    document.getElementById(
+      "studentStoryForm"
+    );
 
-    const sent =
-      document.getElementById(
-        "storySent"
-      );
+  const sent =
+    document.getElementById(
+      "storySent"
+    );
 
-
-    const sendAnother =
-      document.getElementById(
-        "sendAnother"
-      );
-
-
-    if (
-      form &&
-      sent
-    ) {
+  const sendAnother =
+    document.getElementById(
+      "sendAnother"
+    );
 
 
-      form.addEventListener(
-        "submit",
-        async (event) => {
+  if (form && sent) {
+
+    form.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+        const submitButton =
+          form.querySelector(
+            ".post-story-button"
+          );
+
+        if (!submitButton) return;
 
 
-          event.preventDefault();
+        const originalButton =
+          submitButton.innerHTML;
 
 
-          const button =
-            form.querySelector(
-              ".post-story-button"
-            );
+        submitButton.disabled = true;
+
+        submitButton.innerHTML = `
+          Sending...
+          <span>✦</span>
+        `;
 
 
-          const originalButton =
-            button.innerHTML;
+        const formData =
+          new FormData(form);
 
 
-          button.disabled = true;
+        try {
+
+          const encoded =
+            new URLSearchParams(
+              formData
+            ).toString();
 
 
-          button.innerHTML =
-            `
-              Sending...
-              <span>✦</span>
-            `;
+          /*
+            NETLIFY FORM SUBMISSION
+
+            When hosted on Netlify,
+            the form will submit here.
+          */
+
+          const response =
+            await fetch("/", {
+
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/x-www-form-urlencoded"
+              },
+
+              body: encoded
+
+            });
 
 
-          const formData =
-            new FormData(form);
-
-
-          try {
-
-
-            const encoded =
-              new URLSearchParams(
-                formData
-              ).toString();
-
-
-            /*
-              NETLIFY FORM SUBMISSION
-
-              Once this is deployed on Netlify,
-              the submission should appear
-              inside your Netlify Forms area.
-            */
-
-            const response =
-              await fetch(
-                "/",
-                {
-
-                  method: "POST",
-
-                  headers: {
-
-                    "Content-Type":
-                      "application/x-www-form-urlencoded"
-
-                  },
-
-                  body: encoded
-
-                }
-              );
-
-
-            if (!response.ok) {
-
-              console.warn(
-                "Submission could not be confirmed."
-              );
-
-            }
-
-
-            showSentState();
-
-
-          } catch (error) {
-
-
-            /*
-              Allows you to preview the
-              animation locally even when
-              Netlify isn't available.
-            */
+          if (!response.ok) {
 
             console.warn(
-              "Local preview:",
-              error
+              "Netlify submission could not be confirmed."
             );
-
-
-            showSentState();
 
           }
 
 
-          function showSentState() {
+          showSentState();
 
 
-            form.style.opacity = "0";
+        } catch (error) {
 
+          /*
+            Useful while testing locally.
+
+            The animation will still work even
+            if the website isn't currently
+            connected to Netlify.
+          */
+
+          console.warn(
+            "Local preview / form error:",
+            error
+          );
+
+          showSentState();
+
+        }
+
+
+        function showSentState() {
+
+          form.style.transition =
+            "opacity 250ms ease, transform 250ms ease";
+
+          form.style.opacity = "0";
+
+          form.style.transform =
+            "translateY(20px)";
+
+
+          setTimeout(() => {
+
+            form.style.display =
+              "none";
+
+            sent.classList.add(
+              "visible"
+            );
+
+            sent.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+          }, 250);
+
+        }
+
+
+        submitButton.disabled = false;
+
+        submitButton.innerHTML =
+          originalButton;
+
+      }
+    );
+
+  }
+
+
+
+  /* =====================================================
+     SEND ANOTHER POSTCARD
+  ====================================================== */
+
+  if (
+    sendAnother &&
+    form &&
+    sent
+  ) {
+
+    sendAnother.addEventListener(
+      "click",
+      () => {
+
+        form.reset();
+
+        sent.classList.remove(
+          "visible"
+        );
+
+        form.style.display =
+          "block";
+
+        form.style.opacity =
+          "0";
+
+        form.style.transform =
+          "translateY(15px)";
+
+
+        requestAnimationFrame(() => {
+
+          requestAnimationFrame(() => {
+
+            form.style.opacity =
+              "1";
 
             form.style.transform =
-              "translateY(20px)";
+              "translateY(0)";
+
+          });
+
+        });
 
 
-            setTimeout(
-              () => {
+        form.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
 
+      }
+    );
 
-                form.style.display =
-                  "none";
-
-
-                sent.classList.add(
-                  "visible"
-                );
-
-
-                sent.scrollIntoView({
-
-                  behavior: "smooth",
-
-                  block: "center"
-
-                });
-
-
-              },
-              250
-            );
-
-          }
-
-
-          button.disabled = false;
-
-          button.innerHTML =
-            originalButton;
-
-
-        }
-      );
-
-    }
+  }
 
 
 
-    /* =====================================================
-       SEND ANOTHER
-    ====================================================== */
+  /* =====================================================
+     SAFE SCROLL REVEAL
+     
+     IMPORTANT:
+     Elements are visible by default.
 
-    if (
-      sendAnother &&
-      form &&
-      sent
-    ) {
+     JavaScript only hides them AFTER
+     IntersectionObserver has successfully
+     been created.
 
+     This prevents the entire site from
+     disappearing if JavaScript breaks.
+  ====================================================== */
 
-      sendAnother.addEventListener(
-        "click",
-        () => {
-
-
-          form.reset();
-
-
-          sent.classList.remove(
-            "visible"
-          );
+  const revealItems =
+    document.querySelectorAll(
+      ".reveal"
+    );
 
 
-          form.style.display =
-            "block";
-
-
-          form.style.opacity =
-            "0";
-
-
-          setTimeout(
-            () => {
-
-              form.style.opacity =
-                "1";
-
-              form.style.transform =
-                "none";
-
-            },
-            40
-          );
-
-
-        }
-      );
-
-    }
-
-
-
-    /* =====================================================
-       SCROLL REVEAL
-    ====================================================== */
-
-    const revealItems =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
+  if (
+    "IntersectionObserver"
+    in window
+  ) {
 
     const observer =
       new IntersectionObserver(
 
         (entries) => {
 
-
           entries.forEach(
             (entry) => {
-
 
               if (
                 entry.isIntersecting
               ) {
 
-
                 entry.target.classList.add(
                   "visible"
                 );
 
+                entry.target.classList.remove(
+                  "reveal-pending"
+                );
 
                 observer.unobserve(
                   entry.target
                 );
-
 
               }
 
             }
           );
 
-
         },
 
         {
-
-          threshold: 0.12
-
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -20px 0px"
         }
 
       );
 
 
     revealItems.forEach(
-      (item) => {
+      (item, index) => {
 
-        observer.observe(item);
+        /*
+          Hero should never begin invisible,
+          so elements already on screen are
+          displayed immediately.
+        */
+
+        const rect =
+          item.getBoundingClientRect();
+
+
+        if (
+          rect.top <
+          window.innerHeight * 0.95
+        ) {
+
+          item.classList.add(
+            "visible"
+          );
+
+        } else {
+
+          item.classList.add(
+            "reveal-pending"
+          );
+
+          /*
+            Tiny stagger gives the cards
+            a nicer entrance.
+          */
+
+          item.style.transitionDelay =
+            `${Math.min(index * 35, 180)}ms`;
+
+          observer.observe(item);
+
+        }
 
       }
     );
 
+  } else {
+
+    /*
+      Older browsers:
+      show everything normally.
+    */
+
+    revealItems.forEach(
+      (item) => {
+
+        item.classList.add(
+          "visible"
+        );
+
+      }
+    );
 
   }
-);
+
+
+
+  /* =====================================================
+     REDUCE MOTION ACCESSIBILITY
+  ====================================================== */
+
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+
+  if (prefersReducedMotion.matches) {
+
+    revealItems.forEach(
+      (item) => {
+
+        item.classList.remove(
+          "reveal-pending"
+        );
+
+        item.classList.add(
+          "visible"
+        );
+
+        item.style.transition =
+          "none";
+
+      }
+    );
+
+  }
+
+});
