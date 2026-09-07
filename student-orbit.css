@@ -1819,29 +1819,30 @@ a {
    REVEAL
 ========================================================= */
 
+/* =========================================================
+   SAFE SCROLL REVEAL
+   Content stays visible even if JavaScript fails
+========================================================= */
+
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+/* Only animate when JavaScript confirms it is running */
+html.js-enabled .reveal {
   opacity: 0;
-
-  transform:
-    translateY(25px);
+  transform: translateY(24px);
 
   transition:
     opacity 600ms ease,
     transform 600ms ease;
-
 }
 
-
-.reveal.visible {
-
+html.js-enabled .reveal.visible {
   opacity: 1;
-
-  transform:
-    translateY(0);
-
+  transform: translateY(0);
 }
-
 
 /* =========================================================
    TABLET
