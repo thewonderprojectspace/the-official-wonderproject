@@ -1,672 +1,345 @@
-(() => {
-  "use strict";
+document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================================================
-     TEACHER CONSTELLATION
-     Wonder Verse
+  /* =====================================================
+     BLOG STORY EXPANSION
+  ====================================================== */
 
-     Handles:
-     - Private teacher reflections
-     - Local storage
-     - Workshop selection
-     - Smooth form handoff
-     - Scroll reveal animations
-  ========================================================= */
-
-  const STORAGE_KEY = "wonder-verse-teacher-constellation-v2";
+  const storyButtons =
+    document.querySelectorAll(".read-story");
 
 
-  /* =========================================================
-     STATE
-  ========================================================= */
+  storyButtons.forEach((button) => {
 
-  let state = {
-    reflections: {}
-  };
+    button.addEventListener("click", () => {
 
+      const card =
+        button.closest(".blog-card");
 
-  /* =========================================================
-     LOAD PREVIOUS PRIVATE REFLECTIONS
-  ========================================================= */
-
-  try {
-
-    const savedState = JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "{}"
-    );
-
-    state = {
-      ...state,
-      ...savedState
-    };
-
-  } catch (error) {
-
-    console.warn(
-      "Teacher Constellation reflections could not be restored.",
-      error
-    );
-
-  }
+      const isOpen =
+        card.classList.contains("open");
 
 
-  /* =========================================================
-     PRIVATE REFLECTION STORAGE
-  ========================================================= */
-
-  const reflectionStatus =
-    document.getElementById("reflectionStatus");
-
-  let saveTimer;
+      card.classList.toggle("open");
 
 
-  function saveReflections() {
+      if (isOpen) {
 
-    clearTimeout(saveTimer);
+        const originalText =
+          button.dataset.originalText;
 
+        if (originalText) {
+          button.textContent =
+            originalText;
+        }
 
-    if (reflectionStatus) {
+      } else {
 
-      reflectionStatus.textContent =
-        "Saving your private check-in…";
+        if (!button.dataset.originalText) {
 
-    }
-
-
-    saveTimer = setTimeout(() => {
-
-      try {
-
-        localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify(state)
-        );
-
-
-        if (reflectionStatus) {
-
-          reflectionStatus.textContent =
-            "Saved privately on this device.";
+          button.dataset.originalText =
+            button.textContent;
 
         }
 
-      } catch (error) {
-
-        console.warn(
-          "Teacher Constellation could not save reflections.",
-          error
-        );
-
-
-        if (reflectionStatus) {
-
-          reflectionStatus.textContent =
-            "Your browser could not save this reflection.";
-
-        }
-
+        button.textContent =
+          "Fold story back up ↑";
       }
-
-    }, 250);
-
-  }
-
-
-  /* =========================================================
-     RESTORE REFLECTION TEXTAREAS
-  ========================================================= */
-
-  const reflectionFields =
-    document.querySelectorAll("[data-reflection]");
-
-
-  reflectionFields.forEach(field => {
-
-    const key =
-      field.dataset.reflection;
-
-
-    /* Restore saved answer */
-
-    if (
-      state.reflections &&
-      state.reflections[key]
-    ) {
-
-      field.value =
-        state.reflections[key];
-
-    }
-
-
-    /* Save as teacher types */
-
-    field.addEventListener(
-      "input",
-      () => {
-
-        state.reflections[key] =
-          field.value;
-
-        saveReflections();
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     RESTORE STATUS MESSAGE
-  ========================================================= */
-
-  const hasSavedReflections =
-    Object.values(
-      state.reflections || {}
-    ).some(
-      value =>
-        String(value).trim().length > 0
-    );
-
-
-  if (
-    hasSavedReflections &&
-    reflectionStatus
-  ) {
-
-    reflectionStatus.textContent =
-      "Your previous private check-in has been restored from this device.";
-
-  }
-
-
-  /* =========================================================
-     WORKSHOP BUTTONS
-
-     When someone clicks:
-     "Suggest a question"
-
-     the relevant workshop checkbox is automatically selected.
-  ========================================================= */
-
-  const workshopLinks =
-    document.querySelectorAll(
-      "[data-workshop-link]"
-    );
-
-
-  const interestCheckboxes =
-    [
-      ...document.querySelectorAll(
-        'input[name="interests"]'
-      )
-    ];
-
-
-  const workshopQuestion =
-    document.getElementById(
-      "workshop-question"
-    );
-
-
-  workshopLinks.forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        const requestedInterest =
-          link.dataset.workshopLink;
-
-
-        /* Find matching checkbox */
-
-        const matchingCheckbox =
-          interestCheckboxes.find(
-            checkbox =>
-              checkbox.value ===
-              requestedInterest
-          );
-
-
-        /* Select it */
-
-        if (matchingCheckbox) {
-
-          matchingCheckbox.checked = true;
-
-        }
-
-
-        /* Focus question after scrolling */
-
-        window.setTimeout(
-          () => {
-
-            if (workshopQuestion) {
-
-              workshopQuestion.focus();
-
-            }
-
-          },
-          450
-        );
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     SCROLL REVEAL ANIMATIONS
-  ========================================================= */
-
-  const revealItems =
-    document.querySelectorAll(
-      ".reveal"
-    );
-
-
-  if (
-    "IntersectionObserver" in window
-  ) {
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-
-                revealObserver.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          threshold: 0.1,
-          rootMargin:
-            "0px 0px -30px 0px"
-        }
-      );
-
-
-    revealItems.forEach(
-      item => {
-
-        revealObserver.observe(
-          item
-        );
-
-      }
-    );
-
-  } else {
-
-    /*
-      Fallback for older browsers.
-      Everything simply appears.
-    */
-
-    revealItems.forEach(
-      item => {
-
-        item.classList.add(
-          "visible"
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     SMOOTH INTERNAL LINKS
-  ========================================================= */
-
-  document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        event => {
-
-          const targetID =
-            link.getAttribute("href");
-
-
-          if (
-            !targetID ||
-            targetID === "#"
-          ) {
-
-            return;
-
-          }
-
-
-          const target =
-            document.querySelector(
-              targetID
-            );
-
-
-          if (!target) {
-
-            return;
-
-          }
-
-
-          event.preventDefault();
-
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-
-          /*
-            Update URL without jumping.
-          */
-
-          try {
-
-            history.pushState(
-              null,
-              "",
-              targetID
-            );
-
-          } catch (error) {
-
-            /* No action needed */
-
-          }
-
-      });
 
     });
 
+  });
 
-  /* =========================================================
-     FORM QUALITY CHECK
-  ========================================================= */
 
-  const teacherForm =
-    document.querySelector(
-      'form[name="teacher-workshop-interest"]'
+
+  /* =====================================================
+     POSTCARD SUBMISSION
+  ====================================================== */
+
+  const form =
+    document.getElementById(
+      "teacherPostcard"
+    );
+
+  const sentCard =
+    document.getElementById(
+      "postcardSent"
+    );
+
+  const sendAnother =
+    document.getElementById(
+      "sendAnother"
     );
 
 
-  if (teacherForm) {
+  if (form && sentCard) {
 
-    teacherForm.addEventListener(
+    form.addEventListener(
       "submit",
-      event => {
+      async (event) => {
+
+        event.preventDefault();
+
+
+        const submitButton =
+          form.querySelector(
+            ".post-button"
+          );
+
+
+        const originalButton =
+          submitButton.innerHTML;
+
+
+        submitButton.disabled = true;
+
+        submitButton.innerHTML =
+          "Sending into the constellation... ✦";
+
+
+        const formData =
+          new FormData(form);
+
 
         /*
-          Browser handles required fields.
+          NETLIFY FORM SUBMISSION
 
-          This additional check simply makes sure
-          the workshop question is not just spaces.
+          This works when the website is deployed
+          through Netlify and Netlify Forms
+          detects the HTML form.
         */
 
-        if (workshopQuestion) {
+        try {
 
-          const question =
-            workshopQuestion.value.trim();
+          const encoded =
+            new URLSearchParams(
+              formData
+            ).toString();
 
 
-          if (!question) {
+          const response =
+            await fetch("/", {
 
-            event.preventDefault();
+              method: "POST",
 
-            workshopQuestion.focus();
+              headers: {
 
-            workshopQuestion.setCustomValidity(
-              "Please share a question you would like the workshop to explore."
+                "Content-Type":
+                  "application/x-www-form-urlencoded"
+
+              },
+
+              body: encoded
+
+            });
+
+
+          /*
+            Even if you're testing locally,
+            we can still preview the
+            postcard animation.
+
+            On Netlify, response.ok
+            confirms the actual form.
+          */
+
+          if (!response.ok) {
+
+            console.warn(
+              "Form submission could not be confirmed."
             );
-
-
-            workshopQuestion.reportValidity();
-
-            return;
 
           }
 
 
-          workshopQuestion.setCustomValidity(
-            ""
+          showSentPostcard();
+
+
+        } catch (error) {
+
+          /*
+            LOCAL DEVELOPMENT FALLBACK
+
+            Netlify forms don't submit properly
+            when simply opening the HTML file
+            on your computer.
+
+            We still show the postcard animation
+            so you can test the design.
+          */
+
+          console.warn(
+            "Local preview or network error:",
+            error
           );
 
+
+          showSentPostcard();
+
         }
+
+
+        function showSentPostcard() {
+
+          form.style.opacity = "0";
+
+          form.style.transform =
+            "translateY(40px) rotate(4deg)";
+
+
+          setTimeout(() => {
+
+            form.style.display = "none";
+
+            sentCard.classList.add(
+              "visible"
+            );
+
+
+            sentCard.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+          }, 280);
+
+        }
+
+
+        submitButton.disabled = false;
+
+        submitButton.innerHTML =
+          originalButton;
 
       }
+
     );
-
-
-    /*
-      Remove custom validation warning
-      as soon as they begin typing again.
-    */
-
-    if (workshopQuestion) {
-
-      workshopQuestion.addEventListener(
-        "input",
-        () => {
-
-          workshopQuestion.setCustomValidity(
-            ""
-          );
-
-        }
-      );
-
-    }
 
   }
 
 
-  /* =========================================================
-     LITTLE SUN INTERACTION
 
-     Very subtle — clicking the hero sun changes
-     its note.
+  /* =====================================================
+     SEND ANOTHER STORY
+  ====================================================== */
 
-     This is intentionally not an emoji-heavy
-     animation or game.
-  ========================================================= */
+  if (
+    sendAnother &&
+    form &&
+    sentCard
+  ) {
 
-  const sunDisc =
-    document.querySelector(
-      ".sun-disc"
-    );
-
-
-  if (sunDisc) {
-
-    const originalText =
-      sunDisc.textContent.trim();
-
-
-    const gentleNotes = [
-
-      "You do not have to solve everything before tomorrow morning.",
-
-      "A difficult lesson is data, not a verdict.",
-
-      "The quiet wins count too.",
-
-      "You are allowed to still be learning.",
-
-      "Not everything needs to become a resource by Monday.",
-
-      "Some days, getting through the day was the work.",
-
-      "You can care deeply without carrying everything.",
-
-      "The person teaching the lesson matters too."
-
-    ];
-
-
-    let noteIndex = 0;
-
-
-    sunDisc.setAttribute(
-      "role",
-      "button"
-    );
-
-
-    sunDisc.setAttribute(
-      "tabindex",
-      "0"
-    );
-
-
-    sunDisc.setAttribute(
-      "aria-label",
-      "Show another teacher reminder"
-    );
-
-
-    function changeSunNote() {
-
-      noteIndex =
-        (noteIndex + 1) %
-        gentleNotes.length;
-
-
-      sunDisc.style.opacity =
-        "0.65";
-
-
-      window.setTimeout(
-        () => {
-
-          sunDisc.textContent =
-            gentleNotes[noteIndex];
-
-
-          sunDisc.style.opacity =
-            "1";
-
-        },
-        120
-      );
-
-    }
-
-
-    sunDisc.addEventListener(
+    sendAnother.addEventListener(
       "click",
-      changeSunNote
-    );
+      () => {
+
+        form.reset();
 
 
-    sunDisc.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Enter" ||
-          event.key === " "
-        ) {
-
-          event.preventDefault();
-
-          changeSunNote();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     CHECK-IN CARD ACTIVE STATE
-
-     Gives the reflection card a small visual response
-     when the teacher begins writing.
-  ========================================================= */
-
-  reflectionFields.forEach(
-    field => {
-
-      const card =
-        field.closest(
-          ".checkin-card"
+        sentCard.classList.remove(
+          "visible"
         );
 
 
-      if (!card) return;
+        form.style.display = "grid";
+
+        form.style.opacity = "0";
+
+        form.style.transform =
+          "translateY(30px) rotate(2deg)";
 
 
-      function updateCardState() {
+        setTimeout(() => {
 
-        if (
-          field.value.trim()
-        ) {
+          form.style.opacity = "1";
 
-          card.classList.add(
-            "has-reflection"
-          );
+          form.style.transform =
+            "rotate(0.7deg)";
 
-        } else {
+        }, 50);
 
-          card.classList.remove(
-            "has-reflection"
-          );
 
-        }
+        form.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
 
       }
 
+    );
 
-      updateCardState();
+  }
 
 
-      field.addEventListener(
-        "input",
-        updateCardState
+
+  /* =====================================================
+     SCROLL REVEAL
+  ====================================================== */
+
+  const revealTargets =
+    document.querySelectorAll(
+      `
+      .blog-card,
+      .truth-item,
+      .stories-intro,
+      .middle-quote,
+      .share-heading,
+      .postcard-wrapper
+      `
+    );
+
+
+  revealTargets.forEach(
+    (element) => {
+
+      element.classList.add(
+        "reveal-item"
       );
 
     }
   );
 
 
-  /* =========================================================
-     PAGE READY
-  ========================================================= */
+  const observer =
+    new IntersectionObserver(
 
-  document.documentElement.classList.add(
-    "teacher-constellation-ready"
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+  revealTargets.forEach(
+    (element) => {
+
+      observer.observe(element);
+
+    }
   );
 
-})();
+});
