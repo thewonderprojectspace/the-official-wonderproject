@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jigyasa Verse School — a global school for curious humans who are willing to learn, explore, build, fail and try again." />
+  <title>Jigyasa Verse School | Learning Lok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jigyasa-school-prototype.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- CINEMATIC ENTRANCE -->
+  <section class="school-entry" id="schoolEntry" aria-label="Jigyasa Verse School entrance">
+    <div class="entry-sky"></div>
+    <div class="floating-scribbles" aria-hidden="true">
+      <span>try.</span><span>ask.</span><span>build.</span><span>again.</span><span>why?</span>
+    </div>
+
+    <div class="entry-copy" id="entryCopy">
+      <div class="eyebrow-row">
+        <span class="eyebrow">LEARNING LOK • OPEN WORLD SCHOOL</span>
+        <span class="open-dot"><i></i> OPEN</span>
+      </div>
+      <h1>Jigyasa Verse <span>School</span></h1>
+      <p class="hero-lede">A global school with no border at the gate and no requirement to arrive brilliant.</p>
+      <p class="hero-sub">Bring curiosity. Bring unfinished ideas. Bring the thing you are terrible at but still want to understand.</p>
+      <div class="entry-stamps" aria-label="Admission requirements">
+        <span>curiosity</span><span>effort</span><span>questions</span><span>mistakes allowed</span>
+      </div>
+      <button class="enter-btn" id="enterSchoolBtn" type="button">
+        <span>Enter the school</span><b aria-hidden="true">→</b>
+      </button>
+      <p class="tiny-note">No entrance exam. The door sensor only checks whether you clicked the button.</p>
+    </div>
+
+    <div class="building" aria-hidden="true">
+      <div class="building-sign">
+        <small>JIGYASA VERSE</small>
+        <strong>SCHOOL</strong>
+        <em>learn • make • question</em>
+      </div>
+      <div class="window side-window left-window"><span></span><span></span></div>
+      <div class="inside-glimpse">
+        <div class="inside-light"></div>
+        <div class="inside-board">
+          <span class="preview-paper p1">7 × 8 = 54<br><b>56 ✓</b></span>
+          <span class="preview-paper p2">prototype #4<br><b>still wobbly</b></span>
+          <span class="preview-paper p3">WHY?</span>
+        </div>
+        <div class="mini-desk">RECEPTION</div>
+      </div>
+      <div class="glass-door door-left"><span class="glass-shine"></span></div>
+      <div class="glass-door door-right"><span class="glass-shine"></span></div>
+      <div class="window side-window right-window"><span></span><span></span></div>
+      <div class="door-sensor"><i></i></div>
+    </div>
+    <div class="ground-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+  </section>
+
+  <!-- RECEPTION -->
+  <main id="receptionScene" class="reception-scene">
+    <nav class="reception-nav">
+      <a class="brand" href="#receptionScene" aria-label="Jigyasa Verse School home">
+        <span class="brand-mark">JV</span>
+        <span><strong>Jigyasa Verse School</strong><small>Learning Lok</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#schools">18 Schools</a>
+        <a href="#attempts">Attempts Archive</a>
+        <a href="#library">Library</a>
+      </div>
+      <a href="#schools" class="nav-cta">Find a classroom →</a>
+    </nav>
+
+    <section class="reception-intro">
+      <div>
+        <p class="kicker">YOU MADE IT INSIDE</p>
+        <h2>Reception is a little messy.<br><span>That is not an accident.</span></h2>
+      </div>
+      <p class="intro-side">Around here, a crossed-out answer can be more interesting than a perfect one. It tells us somebody was thinking.</p>
+    </section>
+
+    <section class="reception-room" aria-label="School reception">
+      <!-- attempts wall -->
+      <aside class="attempt-wall" id="attempts">
+        <div class="board-title">THE ATTEMPTS WE KEPT</div>
+        <article class="attempt-card blue tilt-a">
+          <span class="tape"></span>
+          <small>MATHS • ATTEMPT #3</small>
+          <strong class="scribble wrong">7 × 8 = 54</strong>
+          <strong class="scribble">7 × 8 = 56 ✓</strong>
+          <p>We kept the first answer too.</p>
+        </article>
+        <article class="attempt-card pink tilt-b">
+          <span class="tape"></span>
+          <small>ART • AGE 8</small>
+          <div class="whale">﹏﹏ &lt;(((°&gt; ﹏</div>
+          <p>“The tail is gigantic.”<br><b>Correct. It is magnificent.</b></p>
+        </article>
+        <article class="attempt-card green tilt-c">
+          <span class="tape"></span>
+          <small>SCIENCE • EXPERIMENT #1</small>
+          <div class="volcano">  /\<br> /  \<br>/____\</div>
+          <p><b>Result:</b> absolutely nothing happened.</p>
+          <p class="micro">Observation quality: excellent.</p>
+        </article>
+        <article class="attempt-card orange tilt-d">
+          <span class="tape"></span>
+          <small>ENGINEERING • PROTOTYPE #1</small>
+          <div class="bridge">╲_╱  ╲_╱</div>
+          <p>Collapsed immediately.</p>
+          <p class="micro">Prototype #6 holds 14 books now.</p>
+        </article>
+        <div class="board-footer">Perfect work is welcome. So is proof that you tried.</div>
+      </aside>
+
+      <!-- receptionist -->
+      <section class="receptionist-zone" aria-label="Receptionist">
+        <div class="speech-bubble" data-speech>
+          <p>Hi. Welcome to <strong>Jigyasa Verse School.</strong></p>
+          <p>Ignore the coffee. Do not ignore your curiosity.</p>
+          <span></span>
+        </div>
+
+        <div class="receptionist-portrait" role="img" aria-label="Friendly receptionist behind a messy desk">
+          <svg viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M100 167c0-70 36-118 82-118 58 0 93 50 93 121v77H100z" fill="#312238" stroke="#201b25" stroke-width="7"/>
+            <ellipse cx="185" cy="152" rx="68" ry="78" fill="#d89f79" stroke="#201b25" stroke-width="6"/>
+            <path d="M119 115c10-54 45-79 78-79 42 0 70 29 78 71-28-2-48-10-64-30-22 24-50 35-92 38z" fill="#33243a"/>
+            <circle cx="160" cy="151" r="5" fill="#201b25"/><circle cx="212" cy="151" r="5" fill="#201b25"/>
+            <path d="M183 158l-5 21 10 3" fill="none" stroke="#201b25" stroke-width="4" stroke-linecap="round"/>
+            <path d="M165 197c13 9 29 9 42 0" fill="none" stroke="#201b25" stroke-width="4" stroke-linecap="round"/>
+            <path d="M107 254c17-34 45-52 79-52 40 0 73 17 91 52l22 155H80z" fill="#6f4bb8" stroke="#201b25" stroke-width="7"/>
+            <path d="M151 213l35 38 37-38" fill="#fffdf5" stroke="#201b25" stroke-width="5"/>
+            <g transform="rotate(6 243 272)"><rect x="215" y="247" width="64" height="47" rx="5" fill="#ffe36c" stroke="#201b25" stroke-width="4"/><text x="247" y="265" text-anchor="middle" font-size="12" font-weight="700" font-family="sans-serif">HELLO</text><text x="247" y="282" text-anchor="middle" font-size="11" font-family="sans-serif">HUMAN</text></g>
+            <path d="M106 287C53 282 37 317 29 337" fill="none" stroke="#201b25" stroke-width="28" stroke-linecap="round"/><path d="M107 287C53 282 37 317 29 337" fill="none" stroke="#d89f79" stroke-width="19" stroke-linecap="round"/>
+            <path d="M272 278c40-25 63-12 81 10" fill="none" stroke="#201b25" stroke-width="28" stroke-linecap="round"/><path d="M272 278c40-25 63-12 81 10" fill="none" stroke="#d89f79" stroke-width="19" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="reception-desk">
+          <div class="desk-clutter" aria-hidden="true">
+            <span class="cup">☕</span><span class="pencil">✎</span><span class="books">▤▤</span><span class="plane">✈</span><span class="plant">⌇</span>
+          </div>
+          <div class="desk-plaque">RECEPTION • ASK ANYTHING</div>
+          <div class="lost-note">LOST PROPERTY<br>2 pens<br>1 ruler<br>14 unfinished ideas</div>
+        </div>
+      </section>
+
+      <!-- direction wall -->
+      <aside class="direction-board">
+        <div class="directory-top">
+          <p>WHERE TO?</p>
+          <h3>Choose a school.</h3>
+          <span>You can change your mind later. We checked.</span>
+        </div>
+        <div class="quick-directions">
+          <a href="#schools"><b>18</b><span>schools to explore</span><i>→</i></a>
+          <a href="#library"><b>∞</b><span>things in the library</span><i>→</i></a>
+          <a href="#philosophy"><b>3</b><span>actual entry requirements</span><i>→</i></a>
+        </div>
+        <div class="scribbled-sign">“You do not need to know where you belong before you start walking.”</div>
+      </aside>
+    </section>
+
+    <!-- philosophy marquee -->
+    <section class="belief-strip" aria-label="School beliefs">
+      <div class="ticker">
+        <span>ACTION &gt; APPEARANCE</span><i>✦</i><span>QUESTIONS &gt; PRETENDING</span><i>✦</i><span>ATTEMPTS &gt; EXCUSES</span><i>✦</i><span>RETRY IS A SKILL</span><i>✦</i>
+        <span>ACTION &gt; APPEARANCE</span><i>✦</i><span>QUESTIONS &gt; PRETENDING</span><i>✦</i><span>ATTEMPTS &gt; EXCUSES</span><i>✦</i><span>RETRY IS A SKILL</span><i>✦</i>
+      </div>
+    </section>
+
+    <!-- 18 SCHOOLS -->
+    <section class="schools-section" id="schools">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">THE CAMPUS</p>
+          <h2>18 schools. <span>One permission slip: curiosity.</span></h2>
+        </div>
+        <p>Start with your age, your profession, your obsession, or the room whose name simply makes you want to click it.</p>
+      </div>
+
+      <div class="school-grid" id="schoolGrid">
+        <a class="school-card c-yellow" href="play-school.html"><div class="school-no">01</div><div class="school-icon">△ ○ □</div><h3>Play & Early Learning</h3><p>Serious discovery. Very unserious furniture.</p><span>Enter room →</span></a>
+        <a class="school-card c-pink" href="primary-school.html"><div class="school-no">02</div><div class="school-icon">✎ ☀</div><h3>Primary & Elementary</h3><p>Questions first. Neat handwriting eventually.</p><span>Enter room →</span></a>
+        <a class="school-card c-blue" href="middle-school.html"><div class="school-no">03</div><div class="school-icon">x + ?</div><h3>Middle School</h3><p>The age of “wait, why is everything complicated now?”</p><span>Enter room →</span></a>
+        <a class="school-card c-purple" href="high-school.html"><div class="school-no">04</div><div class="school-icon">x² ∑</div><h3>Secondary & Senior School</h3><p>Exams matter. So does the human taking them.</p><span>Enter room →</span></a>
+        <a class="school-card c-green" href="math-school.html"><div class="school-no">05</div><div class="school-icon">π ≠ 3</div><h3>Mathematics</h3><p>Patterns, proofs, wrong turns and the suspiciously satisfying click.</p><span>Enter room →</span></a>
+        <a class="school-card c-teal" href="science-school.html"><div class="school-no">06</div><div class="school-icon">⚗ ?</div><h3>Science</h3><p>Observe. Hypothesise. Accidentally make a smell.</p><span>Enter room →</span></a>
+        <a class="school-card c-orange" href="humanities-school.html"><div class="school-no">07</div><div class="school-icon">⌛ ◇</div><h3>Humanities & Society</h3><p>Humans have always been complicated. Investigate accordingly.</p><span>Enter room →</span></a>
+        <a class="school-card c-paper" href="language-school.html"><div class="school-no">08</div><div class="school-icon">Aa अ</div><h3>Language & Literature</h3><p>Read closely. Write badly first. Edit bravely.</p><span>Enter room →</span></a>
+        <a class="school-card c-pink" href="art-school.html"><div class="school-no">09</div><div class="school-icon">✎ ✦</div><h3>Art & Design</h3><p>The ugly first draft has its own locker here.</p><span>Enter room →</span></a>
+        <a class="school-card c-yellow" href="music-school.html"><div class="school-no">10</div><div class="school-icon">♪ ♫</div><h3>Music & Sound</h3><p>Practise imperfectly until your ears notice the difference.</p><span>Enter room →</span></a>
+        <a class="school-card c-blue" href="story-school.html"><div class="school-no">11</div><div class="school-icon">ACT I</div><h3>Theatre, Film & Story</h3><p>Tell it badly, loudly, strangely — then make it better.</p><span>Enter room →</span></a>
+        <a class="school-card c-purple" href="technology-school.html"><div class="school-no">12</div><div class="school-icon">{ }</div><h3>Technology & Computing</h3><p>Build. Break. Debug. Google the error. Repeat.</p><span>Enter room →</span></a>
+        <a class="school-card c-green" href="engineering-school.html"><div class="school-no">13</div><div class="school-icon">⚙ ↗</div><h3>Engineering & Making</h3><p>If prototype one works, we become suspicious.</p><span>Enter room →</span></a>
+        <a class="school-card c-red" href="medical-school.html"><div class="school-no">14</div><div class="school-icon">♡ ⚕</div><h3>Medical & Health</h3><p>Learn the science. Keep the human in the room.</p><span>Enter room →</span></a>
+        <a class="school-card c-orange" href="business-school.html"><div class="school-no">15</div><div class="school-icon">↗ idea</div><h3>Business & Entrepreneurship</h3><p>Ideas are free. Testing them is the interesting bit.</p><span>Enter room →</span></a>
+        <a class="school-card c-paper" href="trade-school.html"><div class="school-no">16</div><div class="school-icon">⌁ 🔧</div><h3>Trade & Vocational</h3><p>Knowledge you can hold in your hands.</p><span>Enter room →</span></a>
+        <a class="school-card c-teal" href="research-school.html"><div class="school-no">17</div><div class="school-icon">? → ?</div><h3>University & Research</h3><p>Better questions live here. So do unfinished theses.</p><span>Enter room →</span></a>
+        <a class="school-card c-purple" href="educator-school.html"><div class="school-no">18</div><div class="school-icon">✎ ◌</div><h3>Educator & Leadership</h3><p>Where lesson plans meet actual humans.</p><span>Enter room →</span></a>
+      </div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="library-section" id="library">
+      <div class="library-visual" aria-hidden="true">
+        <div class="book-shelf s1"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="book-shelf s2"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="book-shelf s3"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="library-doorway"><div class="door-sign">LIBRARY</div><div class="door-window">open</div></div>
+      </div>
+      <div class="library-copy">
+        <p class="kicker">THE LIBRARY</p>
+        <h2>For people who still open books in the digital generation.</h2>
+        <p>Textbooks, field guides, strange essays, visual explainers, exam resources, stories, research notes and the occasional page with coffee damage.</p>
+        <a href="books.html" class="big-link">Wander into the library <span>→</span></a>
+        <small>Warning: you may accidentally learn something unrelated to what you came for.</small>
+      </div>
+    </section>
+
+    <!-- philosophy -->
+    <section class="philosophy" id="philosophy">
+      <div class="philosophy-copy">
+        <p class="kicker">ADMISSIONS OFFICE</p>
+        <h2>Requirements for entry.</h2>
+        <p>We are global because curiosity is not owned by a country, curriculum, age group or profession.</p>
+      </div>
+      <div class="requirements">
+        <article><span>01</span><h3>Be willing to learn.</h3><p>Especially when the first explanation makes absolutely no sense.</p></article>
+        <article><span>02</span><h3>Be willing to explore.</h3><p>You do not need to know where a question is going before you follow it.</p></article>
+        <article><span>03</span><h3>Be willing to be wrong.</h3><p>A mistake is not your identity. It is information for attempt number two.</p></article>
+      </div>
+      <div class="not-required">
+        <strong>NOT REQUIRED</strong><span>passport</span><span>perfect grades</span><span>being gifted</span><span>already knowing</span><span>looking clever</span>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>JIGYASA VERSE SCHOOL</strong><span>A part of Learning Lok.</span></div>
+      <p>Come curious. Leave with better questions.</p>
+    </footer>
+  </main>
+
+  <script src="jigyasa-school-prototype.js"></script>
+</body>
+</html>
