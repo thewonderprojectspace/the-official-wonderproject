@@ -1,196 +1,948 @@
-<section class="school-entry-screen" id="schoolEntry">
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="entry-message" id="entryMessage">
-    <span class="open-badge">NOW ACCEPTING STUDENTS</span>
+<head>
+  <meta charset="UTF-8">
 
-    <h1>Welcome to Jigyasa Verse Schools</h1>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <p>
-      No applications. No borders. No perfect grades.
-    </p>
+  <meta
+    name="description"
+    content="Jigyasa Verse Schools — a global school for curious humans willing to learn, explore and make mistakes."
+  >
 
-    <div class="entry-requirements">
-      <strong>Admission requirements:</strong>
-      <span>Curiosity</span>
-      <span>Willingness to learn</span>
-      <span>Willingness to explore</span>
-      <span>Willingness to make mistakes</span>
+  <title>Jigyasa Verse Schools</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;700&family=Gaegu:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="schools.css"
+  >
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       AUTOMATIC SCHOOL ENTRANCE
+  ========================================================== -->
+
+  <section
+    class="school-entry-screen"
+    id="schoolEntry"
+  >
+
+    <div class="entry-background-text">
+      <span>learn</span>
+      <span>try</span>
+      <span>ask</span>
+      <span>again</span>
     </div>
 
-    <button id="enterSchoolBtn">
-      Enter the school →
-    </button>
-  </div>
 
+    <div
+      class="entry-message"
+      id="entryMessage"
+    >
 
-  <div class="automatic-entrance" id="automaticEntrance">
+      <span class="open-badge">
+        NOW ACCEPTING STUDENTS
+      </span>
 
-    <div class="entrance-frame">
-
-      <div class="glass-panel side-panel left-panel"></div>
-
-      <div class="door-track"></div>
-
-      <div class="auto-door door-left">
-        <div class="door-window"></div>
-        <div class="door-window"></div>
-      </div>
-
-      <div class="auto-door door-right">
-        <div class="door-window"></div>
-        <div class="door-window"></div>
-      </div>
-
-      <div class="glass-panel side-panel right-panel"></div>
-
-      <div class="sensor">
-        ●
-      </div>
-
-      <div class="inside-preview">
-        <div class="preview-light"></div>
-        <span>RECEPTION</span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="reception-scene" id="receptionScene">
-
-  <div class="reception-wall">
-
-    <div class="messy-work work-one">
-      <strong>Maths attempt #3</strong>
-      <p class="wrong">7 × 8 = 54</p>
-      <p>7 × 8 = 56 ✓</p>
-      <small>kept trying.</small>
-    </div>
-
-    <div class="messy-work work-two">
-      <strong>My whale</strong>
-      <div class="bad-whale">
-        ~~~ &lt;(((°&gt; ~~~
-      </div>
-      <small>
-        "I think the tail is too big."
-      </small>
-    </div>
-
-    <div class="messy-work work-three">
-      <strong>Science experiment</strong>
-      <p>
-        Result: absolutely nothing happened.
-      </p>
-      <small>
-        Excellent observation though.
-      </small>
-    </div>
-
-    <div class="messy-work work-four">
-      <strong>Bridge prototype #1</strong>
-      <p>
-        collapsed immediately.
-      </p>
-      <small>
-        prototype #2 is on the table.
-      </small>
-    </div>
-
-  </div>
-
-
-  <div class="receptionist-area">
-
-    <div class="speech-bubble">
-      <p>
+      <h1>
         Welcome to
-        <strong>Jigyasa Verse Schools!</strong>
+        <span>Jigyasa Verse Schools.</span>
+      </h1>
+
+      <p class="entry-intro">
+        A school with no borders, no admission rankings
+        and no requirement to already know what you're doing.
       </p>
 
-      <p>
-        Which school would you like to explore today?
+
+      <div class="entry-requirements">
+
+        <strong>
+          Admission requirements:
+        </strong>
+
+        <span>
+          curiosity
+        </span>
+
+        <span>
+          willingness to learn
+        </span>
+
+        <span>
+          willingness to explore
+        </span>
+
+        <span>
+          willingness to make mistakes
+        </span>
+
+      </div>
+
+
+      <p class="not-required">
+        Passport? No.
+        Perfect grades? No.
+        Questions? Absolutely.
       </p>
+
+
+      <button
+        id="enterSchoolBtn"
+        type="button"
+      >
+        Enter the school
+        <span aria-hidden="true">
+          →
+        </span>
+      </button>
+
     </div>
 
 
-    <div class="receptionist">
 
-      <div class="lady-head">
-        <div class="lady-hair"></div>
+    <!-- AUTOMATIC GLASS DOOR -->
 
-        <div class="lady-face">
-          <span class="eye eye-left"></span>
-          <span class="eye eye-right"></span>
-          <span class="smile"></span>
+    <div
+      class="automatic-entrance"
+      id="automaticEntrance"
+    >
+
+      <div class="entrance-frame">
+
+
+        <div class="top-frame">
+
+          <div class="school-sign">
+            JIGYASA VERSE
+          </div>
+
+          <div class="sensor">
+            <span></span>
+          </div>
+
         </div>
+
+
+        <!-- LEFT SIDE GLASS -->
+
+        <div
+          class="glass-panel side-panel left-panel"
+        >
+
+          <div class="side-window-grid">
+            <span></span>
+            <span></span>
+          </div>
+
+        </div>
+
+
+        <!-- VIEW INTO RECEPTION -->
+
+        <div class="inside-preview">
+
+          <div class="preview-ceiling-light"></div>
+
+          <div class="preview-wall">
+
+            <div class="preview-paper paper-a">
+              7 × 8 = 54
+            </div>
+
+            <div class="preview-paper paper-b">
+              TRY #4
+            </div>
+
+            <div class="preview-paper paper-c">
+              ?
+            </div>
+
+          </div>
+
+          <div class="preview-desk">
+            RECEPTION
+          </div>
+
+        </div>
+
+
+        <!-- LEFT AUTOMATIC DOOR -->
+
+        <div class="auto-door door-left">
+
+          <div class="door-metal-top"></div>
+
+          <div class="door-window door-window-top"></div>
+
+          <div class="door-window door-window-bottom"></div>
+
+          <div class="door-bottom"></div>
+
+        </div>
+
+
+        <!-- RIGHT AUTOMATIC DOOR -->
+
+        <div class="auto-door door-right">
+
+          <div class="door-metal-top"></div>
+
+          <div class="door-window door-window-top"></div>
+
+          <div class="door-window door-window-bottom"></div>
+
+          <div class="door-bottom"></div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE GLASS -->
+
+        <div
+          class="glass-panel side-panel right-panel"
+        >
+
+          <div class="side-window-grid">
+            <span></span>
+            <span></span>
+          </div>
+
+        </div>
+
+
+        <div class="floor-track"></div>
+
       </div>
 
-      <div class="lady-body">
+    </div>
 
-        <div class="lady-arm pointing-arm"></div>
 
-        <span class="reception-badge">
-          ASK ME
-          <br>
-          ANYTHING
+    <div class="entry-floor">
+
+      <div class="floor-line"></div>
+      <div class="floor-line"></div>
+      <div class="floor-line"></div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       RECEPTION
+  ========================================================== -->
+
+  <section
+    class="reception-scene"
+    id="receptionScene"
+  >
+
+
+    <div class="reception-heading">
+
+      <p class="tiny-label">
+        YOU'RE INSIDE
+      </p>
+
+      <h2>
+        Welcome to reception.
+        <span>
+          Ignore the mess.
+        </span>
+      </h2>
+
+      <p>
+        Actually, don't ignore it.
+        Most of it is here on purpose.
+      </p>
+
+    </div>
+
+
+
+    <div class="reception-room">
+
+
+      <!-- LEFT WALL OF IMPERFECTION -->
+
+      <div class="reception-wall">
+
+        <div class="wall-heading">
+          THE WALL OF THINGS THAT DIDN'T GO PERFECTLY
+        </div>
+
+
+        <article class="messy-work work-one">
+
+          <div class="tape tape-one"></div>
+
+          <strong>
+            Maths attempt #3
+          </strong>
+
+          <p class="wrong">
+            7 × 8 = 54
+          </p>
+
+          <p>
+            7 × 8 = 56 ✓
+          </p>
+
+          <small>
+            We kept both answers.
+          </small>
+
+        </article>
+
+
+        <article class="messy-work work-two">
+
+          <div class="tape tape-two"></div>
+
+          <strong>
+            My whale
+          </strong>
+
+          <div class="bad-whale">
+            ~~~ &lt;(((°&gt; ~~~
+          </div>
+
+          <small>
+            "I think the tail is too big."
+          </small>
+
+        </article>
+
+
+        <article class="messy-work work-three">
+
+          <div class="tape tape-three"></div>
+
+          <strong>
+            Volcano experiment
+          </strong>
+
+          <div class="volcano">
+            /\<br>
+            /  \<br>
+            /____\
+          </div>
+
+          <p>
+            Result:
+            nothing happened.
+          </p>
+
+          <small>
+            Excellent observation though.
+          </small>
+
+        </article>
+
+
+        <article class="messy-work work-four">
+
+          <div class="tape tape-four"></div>
+
+          <strong>
+            Bridge prototype #1
+          </strong>
+
+          <p>
+            collapsed immediately.
+          </p>
+
+          <small>
+            Prototype #2 is on the desk.
+          </small>
+
+        </article>
+
+
+        <div class="wall-note">
+          School pride ≠ only perfect work.
+        </div>
+
+      </div>
+
+
+
+      <!-- RECEPTIONIST -->
+
+      <div class="receptionist-area">
+
+
+        <div
+          class="speech-bubble"
+          data-speech
+        >
+
+          <p>
+            Hi! Welcome to
+            <strong>
+              Jigyasa Verse Schools.
+            </strong>
+          </p>
+
+          <p>
+            Which school would you like to wander into today?
+          </p>
+
+          <span class="speech-tail"></span>
+
+        </div>
+
+
+
+        <div class="receptionist">
+
+
+          <div class="receptionist-head">
+
+            <div class="hair hair-back"></div>
+
+            <div class="face">
+
+              <span class="eye eye-left"></span>
+
+              <span class="eye eye-right"></span>
+
+              <span class="nose"></span>
+
+              <span class="smile"></span>
+
+            </div>
+
+            <div class="hair hair-front"></div>
+
+          </div>
+
+
+
+          <div class="receptionist-body">
+
+            <div class="shirt-collar"></div>
+
+            <span class="name-tag">
+              HELLO<br>
+              HUMAN
+            </span>
+
+            <div class="arm arm-resting"></div>
+
+            <div class="arm arm-pointing">
+
+              <span class="hand"></span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="reception-desk">
+
+
+          <div class="desk-top">
+
+            <span class="desk-item">
+              ✏️
+            </span>
+
+            <span class="desk-item">
+              ☕
+            </span>
+
+            <span class="desk-item">
+              📚
+            </span>
+
+            <span class="desk-item paper-plane">
+              ✈
+            </span>
+
+            <span class="desk-item">
+              📝
+            </span>
+
+          </div>
+
+
+          <div class="desk-label">
+            RECEPTION
+          </div>
+
+
+          <div class="desk-note">
+            Lost property:
+            1 ruler,
+            2 pens,
+            14 unfinished ideas.
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SCHOOL DIRECTORY -->
+
+      <div class="school-directory">
+
+
+        <div class="directory-heading">
+
+          <span>
+            WHERE TO?
+          </span>
+
+          <h3>
+            Pick a school.
+          </h3>
+
+          <p>
+            There is no correct first choice.
+          </p>
+
+        </div>
+
+
+
+        <a
+          href="primary-school.html"
+          class="directory-card primary-card"
+        >
+
+          <div class="mini-art whale-art">
+            <span>
+              ~~~
+            </span>
+
+            <strong>
+              🐋
+            </strong>
+
+            <small>
+              big whale
+            </small>
+          </div>
+
+          <div>
+            <strong>
+              Primary & Elementary
+            </strong>
+
+            <span>
+              Start with wonder.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="high-school.html"
+          class="directory-card high-card"
+        >
+
+          <div class="mini-art maths-art">
+            x² + ?
+          </div>
+
+          <div>
+            <strong>
+              Secondary & High School
+            </strong>
+
+            <span>
+              Things get complicated.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="play-school.html"
+          class="directory-card play-card"
+        >
+
+          <div class="mini-art blocks-art">
+            △ ○ □
+          </div>
+
+          <div>
+            <strong>
+              Play & Early Learning
+            </strong>
+
+            <span>
+              Serious learning. Very unserious furniture.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="medical-school.html"
+          class="directory-card medical-card"
+        >
+
+          <div class="mini-art medical-art">
+            ♡ ⚗
+          </div>
+
+          <div>
+            <strong>
+              Medical & Health
+            </strong>
+
+            <span>
+              Humans before answers.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="technology-school.html"
+          class="directory-card tech-card"
+        >
+
+          <div class="mini-art robot-art">
+            [•_•]
+          </div>
+
+          <div>
+            <strong>
+              Technology & Engineering
+            </strong>
+
+            <span>
+              Build. Break. Debug.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="art-school.html"
+          class="directory-card art-card"
+        >
+
+          <div class="mini-art art-mini">
+            ✎ ✦
+          </div>
+
+          <div>
+            <strong>
+              Art & Design
+            </strong>
+
+            <span>
+              Make the ugly first draft.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="music-school.html"
+          class="directory-card music-card"
+        >
+
+          <div class="mini-art music-mini">
+            ♪ ♫
+          </div>
+
+          <div>
+            <strong>
+              Music
+            </strong>
+
+            <span>
+              Practise imperfectly.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="story-school.html"
+          class="directory-card story-card"
+        >
+
+          <div class="mini-art story-mini">
+            ACT I
+          </div>
+
+          <div>
+            <strong>
+              Theatre, Film & Story
+            </strong>
+
+            <span>
+              Tell it your way.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="trade-school.html"
+          class="directory-card trade-card"
+        >
+
+          <div class="mini-art trade-mini">
+            🔧
+          </div>
+
+          <div>
+            <strong>
+              Trade & Vocational
+            </strong>
+
+            <span>
+              Learn with your hands.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="research-school.html"
+          class="directory-card research-card"
+        >
+
+          <div class="mini-art research-mini">
+            ?
+          </div>
+
+          <div>
+            <strong>
+              University & Research
+            </strong>
+
+            <span>
+              Better questions live here.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="educator-school.html"
+          class="directory-card educator-card"
+        >
+
+          <div class="mini-art teacher-mini">
+            ✎
+          </div>
+
+          <div>
+            <strong>
+              Educator & Leadership
+            </strong>
+
+            <span>
+              Lesson plans meet reality.
+            </span>
+          </div>
+
+        </a>
+
+
+
+        <a
+          href="books.html"
+          class="directory-card library-card"
+        >
+
+          <div class="mini-art library-mini">
+            ▤
+          </div>
+
+          <div>
+            <strong>
+              The Library
+            </strong>
+
+            <span>
+              Wander in.
+            </span>
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================================
+       SCHOOL PHILOSOPHY
+  ========================================================== -->
+
+  <section class="school-noticeboard">
+
+
+    <div class="noticeboard-inner">
+
+
+      <p class="tiny-label">
+        ADMISSIONS OFFICE
+      </p>
+
+
+      <h2>
+        Requirements for entry.
+      </h2>
+
+
+      <div class="requirement-grid">
+
+
+        <article>
+
+          <span>
+            01
+          </span>
+
+          <h3>
+            Be willing to learn.
+          </h3>
+
+          <p>
+            Especially when the first explanation doesn't make sense.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            02
+          </span>
+
+          <h3>
+            Be willing to explore.
+          </h3>
+
+          <p>
+            You do not need to know where the question is going.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            03
+          </span>
+
+          <h3>
+            Be willing to get things wrong.
+          </h3>
+
+          <p>
+            Mistakes are evidence that something was attempted.
+          </p>
+
+        </article>
+
+
+      </div>
+
+
+      <div class="not-needed-board">
+
+        <strong>
+          NOT REQUIRED:
+        </strong>
+
+        <span>
+          passport
+        </span>
+
+        <span>
+          perfect grades
+        </span>
+
+        <span>
+          being gifted
+        </span>
+
+        <span>
+          already knowing
+        </span>
+
+        <span>
+          having everything figured out
         </span>
 
       </div>
 
     </div>
 
-
-    <div class="reception-desk">
-
-      <div class="desk-label">
-        RECEPTION
-      </div>
-
-      <div class="desk-mess">
-        ✏️ 📚 ☕ ✂️ 📝
-      </div>
-
-    </div>
-
-  </div>
+  </section>
 
 
-  <div class="school-direction-wall">
 
-    <h2>Where would you like to go?</h2>
+  <script src="schools.js"></script>
 
-    <a href="primary-school.html">
-      Primary School
-    </a>
+</body>
 
-    <a href="high-school.html">
-      High School
-    </a>
-
-    <a href="medical-school.html">
-      Medical School
-    </a>
-
-    <a href="technology-school.html">
-      Technology School
-    </a>
-
-    <a href="art-school.html">
-      Art School
-    </a>
-
-    <a href="research-school.html">
-      Research School
-    </a>
-
-    <a href="books.html">
-      Library
-    </a>
-
-  </div>
-
-</section>
+</html>
