@@ -1,1 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jigyasa Verse High School — a playful learning space for Years 6–12 across maths, science, humanities, English, technology and more.">
+  <meta name="theme-color" content="#6d28d9">
+  <title>High School | Jigyasa Verse</title>
 
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="stylesheet" href="high-school.css">
+  <script src="high-school.js" defer></script>
+</head>
+
+<body>
+  <div class="page-glow glow-one" aria-hidden="true"></div>
+  <div class="page-glow glow-two" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
+      <span class="brand-image-wrap">
+        <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="brand-image">
+      </span>
+      <span class="brand-copy">
+        <strong>Jigyasa Verse</strong>
+        <small>High School</small>
+      </span>
+    </a>
+
+    <button class="mobile-menu" id="mobileMenu" type="button"
+      aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation menu">☰</button>
+
+    <nav id="mainNav" aria-label="High School navigation">
+      <a href="#year-path">Your year</a>
+      <a href="#subject-worlds">Subjects</a>
+      <a href="#worksheet-lab">Worksheet lab</a>
+      <a href="#study-studio">Study studio</a>
+      <a href="#brain-break">Brain break</a>
+      <a class="nav-home" href="schools.html">All schools →</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Years 6–12 · curiosity first · panic later (preferably never)</p>
+        <h1>School gets bigger.<br><em>Your brain does too.</em></h1>
+        <p class="hero-lead">
+          Explore subjects, build study habits, generate practice worksheets and figure out
+          what you actually understand — without pretending every lesson is “easy”.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="#year-path">Start with my year →</a>
+          <a class="secondary-button" href="#worksheet-lab">Make me a worksheet</a>
+        </div>
+
+        <div class="hero-note">
+          <span class="spark">✦</span>
+          <p><strong>Important discovery:</strong> not understanding something yet is not a personality trait.</p>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="planet planet-main">
+          <span>HIGH</span>
+          <strong>SCHOOL</strong>
+          <small>but make it curious</small>
+        </div>
+        <div class="mini-card card-maths">π Maths</div>
+        <div class="mini-card card-science">⚗ Science</div>
+        <div class="mini-card card-humanities">⌛ Humanities</div>
+        <div class="mini-card card-english">Aa English</div>
+        <div class="mini-card card-tech">⌘ Tech</div>
+      </div>
+    </section>
+
+    <section class="quick-dock" aria-label="Quick actions">
+      <a href="#subject-worlds"><span>✦</span>Explore a subject</a>
+      <a href="#worksheet-lab"><span>✎</span>Build practice</a>
+      <a href="#study-studio"><span>◎</span>Fix my study plan</a>
+      <a href="#brain-break"><span>☁</span>My brain is cooked</a>
+    </section>
+
+    <section class="section year-path" id="year-path">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Your current chapter</p>
+          <h2>What does school look like for you right now?</h2>
+        </div>
+        <p>
+          Year levels differ across schools and countries. Use these as flexible learning
+          pathways, not a rigid checklist.
+        </p>
+      </div>
+
+      <div class="year-tabs" role="tablist" aria-label="School year">
+        <button role="tab" aria-selected="true" data-year="6">Year 6</button>
+        <button role="tab" aria-selected="false" data-year="7">Year 7</button>
+        <button role="tab" aria-selected="false" data-year="8">Year 8</button>
+        <button role="tab" aria-selected="false" data-year="9">Year 9</button>
+        <button role="tab" aria-selected="false" data-year="10">Year 10</button>
+        <button role="tab" aria-selected="false" data-year="11">Year 11</button>
+        <button role="tab" aria-selected="false" data-year="12">Year 12</button>
+      </div>
+
+      <div class="year-panel" id="yearPanel" role="tabpanel" aria-live="polite"></div>
+    </section>
+
+    <section class="section subject-worlds" id="subject-worlds">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The subject multiverse</p>
+          <h2>Pick a world. Get curious.</h2>
+        </div>
+        <p>
+          Each subject has a different way of thinking. The goal is not to “be a maths person”
+          or “not a science person”. Learn the moves.
+        </p>
+      </div>
+
+      <div class="subject-grid">
+        <article class="subject-card" data-subject="Mathematics">
+          <div class="subject-icon">π</div>
+          <p class="subject-label">Patterns · logic · modelling</p>
+          <h3>Mathematics</h3>
+          <p>Numbers, algebra, geometry, statistics, functions and the occasional suspiciously specific train problem.</p>
+          <button class="subject-open" type="button">Open maths world →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Science">
+          <div class="subject-icon">⚗</div>
+          <p class="subject-label">Observe · test · explain</p>
+          <h3>Science</h3>
+          <p>Biology, chemistry, physics, Earth science and the art of asking “okay, but why?” one more time.</p>
+          <button class="subject-open" type="button">Open science world →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Humanities">
+          <div class="subject-icon">⌛</div>
+          <p class="subject-label">People · power · place</p>
+          <h3>Humanities</h3>
+          <p>History, geography, economics, civics and all the evidence behind how humans made everything complicated.</p>
+          <button class="subject-open" type="button">Open humanities world →</button>
+        </article>
+
+        <article class="subject-card" data-subject="English">
+          <div class="subject-icon">Aa</div>
+          <p class="subject-label">Read · argue · create</p>
+          <h3>English</h3>
+          <p>Stories, persuasive writing, analysis, speaking, language and learning how to defend an interpretation.</p>
+          <button class="subject-open" type="button">Open English world →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Technology">
+          <div class="subject-icon">⌘</div>
+          <p class="subject-label">Design · code · build</p>
+          <h3>Digital & Technology</h3>
+          <p>Coding, design thinking, data, systems, robotics and making computers do useful things on purpose.</p>
+          <button class="subject-open" type="button">Open tech world →</button>
+        </article>
+
+        <article class="subject-card" data-subject="Creative Arts">
+          <div class="subject-icon">✦</div>
+          <p class="subject-label">Imagine · make · communicate</p>
+          <h3>Creative Arts</h3>
+          <p>Visual art, media, drama, music and the slightly terrifying experience of showing other people your ideas.</p>
+          <button class="subject-open" type="button">Open creative world →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section worksheet-lab" id="worksheet-lab">
+      <div class="worksheet-copy">
+        <p class="eyebrow">Worksheet laboratory</p>
+        <h2>Practice that does not feel photocopied from 2007.</h2>
+        <p>
+          Pick your year, subject and challenge level. The page will generate a mini practice set
+          with prerequisite prompts, core questions, reflection and an extension.
+        </p>
+
+        <div class="worksheet-controls">
+          <label>
+            Year level
+            <select id="worksheetYear">
+              <option value="6">Year 6</option>
+              <option value="7">Year 7</option>
+              <option value="8">Year 8</option>
+              <option value="9">Year 9</option>
+              <option value="10">Year 10</option>
+              <option value="11">Year 11</option>
+              <option value="12">Year 12</option>
+            </select>
+          </label>
+
+          <label>
+            Subject
+            <select id="worksheetSubject">
+              <option>Mathematics</option>
+              <option>Science</option>
+              <option>Humanities</option>
+              <option>English</option>
+              <option>Technology</option>
+            </select>
+          </label>
+
+          <label>
+            Challenge
+            <select id="worksheetLevel">
+              <option value="warm">Warm-up</option>
+              <option value="steady" selected>Steady</option>
+              <option value="stretch">Stretch me</option>
+            </select>
+          </label>
+
+          <button class="generate-button" id="generateWorksheet" type="button">
+            Generate mini worksheet ✦
+          </button>
+        </div>
+      </div>
+
+      <div class="worksheet-paper" id="worksheetPaper">
+        <div class="paper-top">
+          <span>JIGYASA VERSE · PRACTICE SHEET</span>
+          <span id="worksheetStamp">READY WHEN YOU ARE</span>
+        </div>
+        <div id="worksheetContent">
+          <p class="paper-kicker">Your practice page will appear here.</p>
+          <h3>No worksheet yet. Very peaceful.</h3>
+          <p>Choose your settings and generate one when you are ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section study-studio" id="study-studio">
+      <div class="section-heading light">
+        <div>
+          <p class="eyebrow">Study studio</p>
+          <h2>“Study harder” is terrible advice.</h2>
+        </div>
+        <p>Choose what is actually going wrong. We will give you one useful next move.</p>
+      </div>
+
+      <div class="study-layout">
+        <div class="study-buttons">
+          <button type="button" data-study="start">I cannot start</button>
+          <button type="button" data-study="forget">I keep forgetting</button>
+          <button type="button" data-study="notes">My notes are enormous</button>
+          <button type="button" data-study="exam">I panic before tests</button>
+          <button type="button" data-study="behind">I am behind</button>
+          <button type="button" data-study="bored">I am painfully bored</button>
+        </div>
+
+        <div class="study-answer" id="studyAnswer" aria-live="polite">
+          <span class="answer-number">01</span>
+          <p class="eyebrow">Pick the closest problem</p>
+          <h3>Your next move will appear here.</h3>
+          <p>You do not need twelve productivity apps. You probably need one clear task.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section challenge-zone">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Small challenge, big brain</p>
+          <h2>Try something without being graded.</h2>
+        </div>
+        <p>Learning becomes more interesting when every task is not attached to a percentage.</p>
+      </div>
+
+      <div class="challenge-grid">
+        <article>
+          <span>01</span>
+          <h3>Explain it badly first</h3>
+          <p>Choose a difficult concept and explain it in the simplest, messiest language you can. Then improve it.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Find the hidden assumption</h3>
+          <p>Take a claim from science, history or media. What needs to be true for the claim to work?</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Make the wrong answer</h3>
+          <p>Create a believable incorrect answer and explain exactly why someone might choose it.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Connect two subjects</h3>
+          <p>Can climate change become maths? Can poetry become history? Can art become technology?</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section brain-break" id="brain-break">
+      <div class="brain-card">
+        <div>
+          <p class="eyebrow">Brain break station</p>
+          <h2>Academic emergency:<br>your brain has become soup.</h2>
+          <p>
+            Pick a reset. Not a new five-hour “perfect study routine”. Just one reset.
+          </p>
+        </div>
+
+        <div class="reset-grid">
+          <button type="button" data-break="move">I have not moved in 3 hours</button>
+          <button type="button" data-break="stuck">I am stuck on one question</button>
+          <button type="button" data-break="scroll">I accidentally scrolled for 45 minutes</button>
+          <button type="button" data-break="done">I have actually done enough today</button>
+        </div>
+
+        <div class="reset-result" id="resetResult" aria-live="polite">
+          Choose your current situation. We promise not to recommend buying a new planner.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Jigyasa Verse</strong>
+      <p>Learn the thing. Question the thing. Become more curious than afraid of it.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#year-path">Years</a>
+      <a href="#subject-worlds">Subjects</a>
+      <a href="#worksheet-lab">Worksheets</a>
+      <a href="contact.html">Suggest a resource</a>
+    </div>
+    <a href="#top">Back to the beginning ↑</a>
+  </footer>
+
+  <dialog class="subject-dialog" id="subjectDialog" aria-labelledby="subjectDialogTitle">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
+    <div id="subjectDialogContent"></div>
+  </dialog>
+</body>
+</html>
