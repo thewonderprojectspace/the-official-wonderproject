@@ -1,74 +1,84 @@
 (() => {
-  const arrival = document.querySelector(".school-arrival");
-  const enterButton = document.querySelector("[data-enter-school]");
-  const reception = document.querySelector("#reception");
+  // ==================================================
+  // JIGYASA VERSE SCHOOL ENTRY
+  // ==================================================
+
+  const entryScreen = document.querySelector("#schoolEntry");
+  const enterButton = document.querySelector("#enterSchoolBtn");
+  const reception = document.querySelector("#receptionScene");
   const nav = document.querySelector(".reception-nav");
 
-  let hasEntered = false;
+  let entering = false;
 
-  function enterSchool() {
-    if (!arrival || !reception || hasEntered) return;
 
-    hasEntered = true;
+  // ==================================================
+  // ENTER THE SCHOOL
+  // ==================================================
 
-    // Opens the two school doors through the CSS animation
-    arrival.classList.add("entered");
+  function startSchoolEntry() {
+    if (!entryScreen || entering) return;
+
+    entering = true;
 
     if (enterButton) {
-      enterButton.setAttribute(
-        "aria-label",
-        "School doors opening"
-      );
+      enterButton.disabled = true;
+      enterButton.textContent = "Doors opening...";
     }
 
-    // After the doors open, move the visitor into reception
+
+    // ----------------------------------
+    // STEP 1:
+    // Automatic glass doors slide open
+    // ----------------------------------
+
+    entryScreen.classList.add("doors-open");
+
+
+    // ----------------------------------
+    // STEP 2:
+    // Zoom toward / through the doorway
+    // ----------------------------------
+
     window.setTimeout(() => {
-      reception.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 900);
-  }
+      entryScreen.classList.add("entering");
+    }, 1400);
 
-  // Main "Walk through the front doors" button
-  if (enterButton) {
-    enterButton.addEventListener("click", enterSchool);
-  }
 
-  // The illustrated school doors can also be clicked
-  const schoolDoor = document.querySelector("[data-school-door]");
+    // ----------------------------------
+    // STEP 3:
+    // Remove entrance and show reception
+    // ----------------------------------
 
-  if (schoolDoor) {
-    schoolDoor.addEventListener("click", enterSchool);
+    window.setTimeout(() => {
+      entryScreen.style.display = "none";
 
-    // Makes the illustrated door accessible by keyboard
-    schoolDoor.setAttribute("role", "button");
-    schoolDoor.setAttribute("tabindex", "0");
-    schoolDoor.setAttribute(
-      "aria-label",
-      "Open the Jigyasa Verse school doors"
-    );
-
-    schoolDoor.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        enterSchool();
+      if (reception) {
+        reception.scrollIntoView({
+          behavior: "auto",
+          block: "start"
+        });
       }
-    });
+    }, 2900);
   }
 
-  // ------------------------------------------------
-  // NAVBAR CHANGE AFTER SCROLLING
-  // ------------------------------------------------
+
+  // Main entrance button
+  if (enterButton) {
+    enterButton.addEventListener("click", startSchoolEntry);
+  }
+
+
+  // ==================================================
+  // NAVBAR
+  // ==================================================
 
   function updateNav() {
     if (!nav) return;
 
-    if (window.scrollY > 40) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
+    nav.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
   }
 
   updateNav();
@@ -79,9 +89,10 @@
     { passive: true }
   );
 
-  // ------------------------------------------------
+
+  // ==================================================
   // RECEPTIONIST SPEECH
-  // ------------------------------------------------
+  // ==================================================
 
   const speech = document.querySelector("[data-speech]");
 
@@ -93,48 +104,51 @@
 
     [
       "No admission interview, promise.",
-      "Pick the room that makes you say: <strong>“wait… how does that work?”</strong>"
+      "The only requirement is that you're willing to learn something."
     ],
 
     [
-      "The library is right there too.",
-      "Nobody will judge you for opening three books and finishing none of them."
+      "See those messy things on the wall?",
+      "Those are some of our favourite pieces of work."
     ],
 
     [
-      "You don't have to be good at something to enter.",
-      "Being curious is more than enough."
+      "That maths answer over there is wrong.",
+      "The student tried again. That's why we kept it."
     ],
 
     [
-      "Oh, and one important school rule.",
-      "<strong>Wrong answers are allowed here.</strong>"
+      "The experiment beside it completely failed.",
+      "It also taught us something. So up on the wall it went."
     ],
 
     [
-      "That messy thing on the wall?",
-      "Someone tried something difficult. We thought that deserved a frame."
+      "You don't have to already be good at something to enter.",
+      "<strong>Curiosity gets you through the door.</strong>"
+    ],
+
+    [
+      "The library is just around reception.",
+      "Open one book. Or seven. We don't keep score."
     ],
 
     [
       "Still deciding?",
-      "Pick whichever school makes you slightly nervous and very curious."
+      "Choose the school that makes you want to ask one more question."
     ]
   ];
 
   let messageIndex = 0;
 
+
   function swapSpeech() {
     if (!speech) return;
 
-    messageIndex++;
+    messageIndex =
+      (messageIndex + 1) % messages.length;
 
-    if (messageIndex >= messages.length) {
-      messageIndex = 0;
-    }
-
-    const firstLine = messages[messageIndex][0];
-    const secondLine = messages[messageIndex][1];
+    const [firstLine, secondLine] =
+      messages[messageIndex];
 
     speech.innerHTML = `
       <p>${firstLine}</p>
@@ -143,178 +157,163 @@
     `;
   }
 
-  // Receptionist changes message every 8.5 seconds
-  window.setInterval(swapSpeech, 8500);
+
+  if (speech) {
+    window.setInterval(
+      swapSpeech,
+      8500
+    );
+  }
 
 
-  // ------------------------------------------------
-  // SCHOOL CARDS - LITTLE INTERACTION
-  // ------------------------------------------------
+  // ==================================================
+  // MESSY STUDENT WORK
+  // ==================================================
 
-  const schoolFrames = document.querySelectorAll(".school-frame");
-
-  schoolFrames.forEach((frame) => {
-
-    frame.addEventListener("mouseenter", () => {
-      frame.classList.add("school-frame-active");
-    });
-
-    frame.addEventListener("mouseleave", () => {
-      frame.classList.remove("school-frame-active");
-    });
-
-  });
-
-
-  // ------------------------------------------------
-  // RANDOM CHILD-LIKE WALL MOVEMENT
-  // ------------------------------------------------
-
-  const messyPapers = document.querySelectorAll(".messy-paper");
+  const messyPapers =
+    document.querySelectorAll(".messy-paper, .messy-work");
 
   messyPapers.forEach((paper, index) => {
+    const rotations = [
+      "-5deg",
+      "4deg",
+      "-2deg",
+      "6deg"
+    ];
 
-    paper.addEventListener("mouseenter", () => {
+    paper.addEventListener(
+      "mouseenter",
+      () => {
+        paper.style.transform =
+          `rotate(${rotations[index % rotations.length]}) scale(1.04)`;
 
-      const rotations = [
-        "-5deg",
-        "4deg",
-        "-2deg",
-        "6deg"
-      ];
+        paper.style.zIndex = "10";
+      }
+    );
 
-      paper.style.transform =
-        `rotate(${rotations[index % rotations.length]}) scale(1.04)`;
 
-      paper.style.zIndex = "10";
-
-    });
-
-    paper.addEventListener("mouseleave", () => {
-
-      paper.style.transform = "";
-      paper.style.zIndex = "";
-
-    });
-
+    paper.addEventListener(
+      "mouseleave",
+      () => {
+        paper.style.transform = "";
+        paper.style.zIndex = "";
+      }
+    );
   });
 
 
-  // ------------------------------------------------
-  // LIBRARY DOOR MESSAGE
-  // ------------------------------------------------
+  // ==================================================
+  // SCHOOL LINKS
+  // ==================================================
 
-  const libraryDoor = document.querySelector(".library-door");
+  const schoolLinks =
+    document.querySelectorAll(
+      ".school-frame, .school-direction-wall a"
+    );
+
+  schoolLinks.forEach((link) => {
+    link.addEventListener(
+      "mouseenter",
+      () => {
+        link.classList.add("school-frame-active");
+      }
+    );
+
+    link.addEventListener(
+      "mouseleave",
+      () => {
+        link.classList.remove("school-frame-active");
+      }
+    );
+  });
+
+
+  // ==================================================
+  // LIBRARY
+  // ==================================================
+
+  const libraryDoor =
+    document.querySelector(".library-door");
 
   if (libraryDoor) {
-
     const libraryText =
       libraryDoor.querySelector("p");
 
-    const originalLibraryText =
-      libraryText ? libraryText.textContent : "";
+    const originalText =
+      libraryText
+        ? libraryText.textContent
+        : "";
 
-    libraryDoor.addEventListener("mouseenter", () => {
-
-      if (libraryText) {
-        libraryText.textContent =
-          "Careful. You may accidentally learn something →";
+    libraryDoor.addEventListener(
+      "mouseenter",
+      () => {
+        if (libraryText) {
+          libraryText.textContent =
+            "Careful. You may accidentally learn something →";
+        }
       }
+    );
 
-    });
-
-    libraryDoor.addEventListener("mouseleave", () => {
-
-      if (libraryText) {
-        libraryText.textContent =
-          originalLibraryText;
+    libraryDoor.addEventListener(
+      "mouseleave",
+      () => {
+        if (libraryText) {
+          libraryText.textContent =
+            originalText;
+        }
       }
-
-    });
-
+    );
   }
 
 
-  // ------------------------------------------------
-  // LITTLE SCHOOL ENTRY SOUND-FREE FEEDBACK
-  // ------------------------------------------------
+  // ==================================================
+  // SCROLL REVEALS
+  // ==================================================
 
-  if (enterButton) {
+  const revealElements =
+    document.querySelectorAll(
+      ".school-frame, .messy-paper, .messy-work, .requirements article"
+    );
 
-    enterButton.addEventListener("mouseenter", () => {
-
-      const arrow =
-        enterButton.querySelector("span");
-
-      if (arrow) {
-        arrow.textContent = "→→";
-      }
-
-    });
-
-    enterButton.addEventListener("mouseleave", () => {
-
-      const arrow =
-        enterButton.querySelector("span");
-
-      if (arrow) {
-        arrow.textContent = "→";
-      }
-
-    });
-
-  }
-
-
-  // ------------------------------------------------
-  // REVEAL SCHOOL FRAMES AS USER SCROLLS
-  // ------------------------------------------------
-
-  const revealElements = document.querySelectorAll(
-    ".school-frame, .messy-paper, .requirements article"
-  );
 
   if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
 
             entry.target.classList.add("visible");
 
             observer.unobserve(
               entry.target
             );
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
 
-          }
 
-        });
-
-      },
-      {
-        threshold: 0.12
+    revealElements.forEach(
+      (element) => {
+        observer.observe(element);
       }
     );
 
-    revealElements.forEach((element) => {
-      observer.observe(element);
-    });
-
   } else {
-
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
-
+    revealElements.forEach(
+      (element) => {
+        element.classList.add("visible");
+      }
+    );
   }
 
 
-  // ------------------------------------------------
+  // ==================================================
   // CONSOLE MESSAGE
-  // ------------------------------------------------
+  // ==================================================
 
   console.log(
     "%cWelcome to Jigyasa Verse Schools ✏️",
@@ -322,120 +321,7 @@
   );
 
   console.log(
-    "Admission requirement: willingness to make mistakes."
+    "Admission requirement: willingness to learn, explore and make mistakes."
   );
-
-})();
-(() => {
-
-  const entryScreen =
-    document.querySelector(
-      "#schoolEntry"
-    );
-
-  const enterButton =
-    document.querySelector(
-      "#enterSchoolBtn"
-    );
-
-  const reception =
-    document.querySelector(
-      "#receptionScene"
-    );
-
-
-  let entering = false;
-
-
-  function startSchoolEntry() {
-
-    if (
-      entering ||
-      !entryScreen
-    ) {
-      return;
-    }
-
-
-    entering = true;
-
-
-    /* -----------------------------
-       STEP 1
-       Automatic doors open
-    ----------------------------- */
-
-    entryScreen.classList.add(
-      "doors-open"
-    );
-
-
-    /* -----------------------------
-       STEP 2
-       Wait while doors slide apart
-    ----------------------------- */
-
-    setTimeout(() => {
-
-      /*
-        Zoom through the doorway
-      */
-
-      entryScreen.classList.add(
-        "entering"
-      );
-
-    }, 1400);
-
-
-    /* -----------------------------
-       STEP 3
-       Arrive at reception
-    ----------------------------- */
-
-    setTimeout(() => {
-
-      entryScreen.style.display =
-        "none";
-
-
-      if (reception) {
-
-        reception.scrollIntoView({
-          behavior: "auto",
-          block: "start"
-        });
-
-      }
-
-    }, 2900);
-
-  }
-
-
-  if (enterButton) {
-
-    enterButton.addEventListener(
-      "click",
-      startSchoolEntry
-    );
-
-  }
-
-
-  /* --------------------------------
-     OPTIONAL:
-     automatically open after a short
-     pause if you want it cinematic
-  -------------------------------- */
-
-  /*
-  setTimeout(() => {
-
-    startSchoolEntry();
-
-  }, 3500);
-  */
-
 
 })();
