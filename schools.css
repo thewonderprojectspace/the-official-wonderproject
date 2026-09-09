@@ -3155,3 +3155,70 @@ a {
     margin-left: 8px;
   }
 }
+/* ========================================
+   CRAYON RECEPTIONIST
+======================================== */
+
+.crayon-receptionist-wrap {
+  position: relative;
+  width: min(620px, 100%);
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.crayon-receptionist {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  /* helps the white paper merge into the page */
+  mix-blend-mode: multiply;
+
+  transform: rotate(-0.3deg);
+  transform-origin: bottom center;
+
+  transition: transform 0.3s ease;
+}
+
+.crayon-receptionist-wrap:hover .crayon-receptionist {
+  transform: rotate(0.5deg) scale(1.015);
+}
+
+
+/* Tiny receptionist wave/wobble when arriving */
+
+.reception-scene.is-visible .crayon-receptionist {
+  animation: receptionistArrive 0.75s ease-out both;
+}
+
+@keyframes receptionistArrive {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(40px)
+      rotate(-2deg)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      rotate(-0.3deg)
+      scale(1);
+  }
+}
+
+
+@media (max-width: 750px) {
+
+  .crayon-receptionist-wrap {
+    width: 100%;
+    max-width: 500px;
+  }
+
+}
