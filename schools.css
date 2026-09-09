@@ -3082,3 +3082,76 @@ a {
   }
 
 }
+/* ========================================
+   CHILD-DRAWN JIGYASA LOGO
+======================================== */
+
+.school-logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 18px 0 22px;
+}
+
+.welcome-scribble {
+  font-family: "Gaegu", cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 -8px 16px;
+  transform: rotate(-2deg);
+  color: #292129;
+}
+
+.school-crayon-logo {
+  display: block;
+  width: min(540px, 92vw);
+  height: auto;
+
+  /*
+    Makes the white background of the drawing
+    disappear visually into the cream page.
+  */
+  mix-blend-mode: multiply;
+
+  transform: rotate(-0.6deg);
+  transform-origin: center;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.school-crayon-logo:hover {
+  transform: rotate(0.7deg) scale(1.015);
+}
+
+/* Slightly imperfect handmade movement */
+@keyframes logoWiggle {
+  0% {
+    transform: rotate(-0.6deg);
+  }
+
+  50% {
+    transform: rotate(0.4deg);
+  }
+
+  100% {
+    transform: rotate(-0.6deg);
+  }
+}
+
+.school-logo-area:hover .school-crayon-logo {
+  animation: logoWiggle 1.3s ease-in-out;
+}
+
+@media (max-width: 700px) {
+  .school-crayon-logo {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .welcome-scribble {
+    font-size: 1.05rem;
+    margin-left: 8px;
+  }
+}
