@@ -122,3 +122,110 @@ footer{display:flex;justify-content:space-between;gap:2rem;padding:2rem max(24px
     rotate(0.5deg)
     scale(1.015);
 }
+/* ==================================================
+   CHILD DRAWN RECEPTION
+================================================== */
+
+.crayon-reception-wrap {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 680px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+}
+
+
+.crayon-reception {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  mix-blend-mode: multiply;
+
+  transform-origin: bottom center;
+
+  animation:
+    reception-arrive
+    0.8s
+    cubic-bezier(.2,.8,.2,1)
+    both;
+}
+
+
+@keyframes reception-arrive {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(45px)
+      rotate(-2deg)
+      scale(0.95);
+  }
+
+  65% {
+    opacity: 1;
+
+    transform:
+      translateY(-5px)
+      rotate(0.5deg)
+      scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      rotate(-0.3deg)
+      scale(1);
+  }
+
+}
+
+
+.crayon-reception-wrap:hover
+.crayon-reception {
+
+  transform:
+    rotate(0.5deg)
+    scale(1.012);
+
+}
+
+
+@media (max-width: 760px) {
+
+  .learning-lok-logo-wrap {
+    width: 100%;
+  }
+
+
+  .learning-lok-logo {
+    width: 100%;
+  }
+
+
+  .little-welcome {
+    font-size: 1.15rem;
+    margin-left: 8px;
+  }
+
+
+  .crayon-reception-wrap {
+    max-width: 520px;
+  }
+
+}
