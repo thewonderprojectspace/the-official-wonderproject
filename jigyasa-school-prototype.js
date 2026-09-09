@@ -2,74 +2,55 @@
   "use strict";
 
   // =========================================================
-  // JIGYASA VERSE SCHOOL
-  // Entrance • Reception • Animations • Interactions
+  // JIGYASA VERSE — LEARNING LOK
+  // Entrance • Reception • Filters • Scroll effects
   // =========================================================
 
   const entry = document.querySelector("#schoolEntry");
-  const enterBtn = document.querySelector("#enterSchoolBtn");
+  const enterButton = document.querySelector("#enterSchoolBtn");
   const reception = document.querySelector("#receptionScene");
-  const nav = document.querySelector(".reception-nav");
+  const nav = document.querySelector(".top-nav");
   const speech = document.querySelector("[data-speech]");
 
-  let entering = false;
-
-  const prefersReducedMotion = window.matchMedia(
+  const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
+  let entering = false;
+
 
   // =========================================================
-  // ENTER JIGYASA VERSE SCHOOL
+  // ENTER LEARNING LOK
   // =========================================================
 
-  function enterSchool() {
+  function enterLearningLok() {
     if (!entry || entering) return;
 
     entering = true;
 
-    if (enterBtn) {
-      enterBtn.disabled = true;
+    if (enterButton) {
+      enterButton.disabled = true;
 
-      const buttonText = enterBtn.querySelector("span");
+      const buttonText = enterButton.querySelector("span");
 
       if (buttonText) {
-        buttonText.textContent = "Doors opening...";
+        buttonText.textContent = "Opening the doors...";
       }
     }
 
-
-    // ---------------------------------------------------------
-    // STEP 1 — GLASS DOORS OPEN
-    // ---------------------------------------------------------
-
+    // First open the sliding doors
     entry.classList.add("doors-open");
 
+    const zoomDelay = reduceMotion ? 80 : 900;
+    const finishDelay = reduceMotion ? 180 : 2200;
 
-    // ---------------------------------------------------------
-    // STEP 2 — CAMERA MOVES THROUGH THE DOORS
-    // ---------------------------------------------------------
-
-    const zoomDelay = prefersReducedMotion
-      ? 120
-      : 1250;
-
-    const finishDelay = prefersReducedMotion
-      ? 300
-      : 2800;
-
-
+    // Then move the visitor through the entrance
     window.setTimeout(() => {
       entry.classList.add("entering");
     }, zoomDelay);
 
-
-    // ---------------------------------------------------------
-    // STEP 3 — ARRIVE AT RECEPTION
-    // ---------------------------------------------------------
-
+    // Finally reveal reception
     window.setTimeout(() => {
-
       entry.hidden = true;
 
       document.body.style.overflow = "";
@@ -80,66 +61,39 @@
           block: "start"
         });
       }
-
     }, finishDelay);
   }
 
 
-  // Lock scrolling while visitor is outside the school
-  document.body.style.overflow = "hidden";
+  // Prevent scrolling before entering Learning Lok
+  if (entry) {
+    document.body.style.overflow = "hidden";
+  }
 
 
   // Entrance button
-  if (enterBtn) {
-    enterBtn.addEventListener(
+  if (enterButton) {
+    enterButton.addEventListener(
       "click",
-      enterSchool
+      enterLearningLok
     );
-  }
-
-
-  // Keyboard accessibility
-  // Enter or Space can also open the school
-  if (entry) {
-
-    entry.addEventListener(
-      "keydown",
-      (event) => {
-
-        if (
-          (event.key === "Enter" ||
-           event.key === " ") &&
-          !entering
-        ) {
-
-          enterSchool();
-
-        }
-
-      }
-    );
-
   }
 
 
   // =========================================================
-  // RECEPTION NAVIGATION
+  // STICKY NAVIGATION
   // =========================================================
 
   function updateNav() {
-
     if (!nav) return;
 
     nav.classList.toggle(
       "scrolled",
-      window.scrollY > 28
+      window.scrollY > 20
     );
-
   }
 
-
   updateNav();
-
 
   window.addEventListener(
     "scroll",
@@ -154,16 +108,15 @@
   // RECEPTIONIST CONVERSATIONS
   // =========================================================
 
-  const messages = [
-
+  const receptionistMessages = [
     [
-      "Hi. Welcome to <strong>Jigyasa Verse School.</strong>",
-      "Ignore the coffee. Do not ignore your curiosity."
+      "Hi. Welcome to <strong>Learning Lok.</strong>",
+      "I can help you find somewhere interesting to begin."
     ],
 
     [
       "There is no admissions interview.",
-      "I barely found a working pen, so that would be ambitious."
+      "Curiosity is doing most of the paperwork."
     ],
 
     [
@@ -172,38 +125,13 @@
     ],
 
     [
-      "We like beautiful work.",
-      "We just refuse to pretend beautiful work arrives first."
+      "You do not have to look clever here.",
+      "You are allowed to actually learn."
     ],
 
     [
-      "You can enter by age, subject or obsession.",
-      "Or click the room whose name makes you curious."
-    ],
-
-    [
-      "Nobody here expects you to know everything.",
-      "That would make school rather pointless."
-    ],
-
-    [
-      "See all those crossed-out answers?",
-      "Those are not decorations. Those are evidence."
-    ],
-
-    [
-      "Evidence of what?",
-      "Someone actually tried."
-    ],
-
-    [
-      "The library is down the hall.",
-      "Open one book. Open seven. Lose the afternoon. We do not mind."
-    ],
-
-    [
-      "Around here, trying again is not a punishment.",
-      "It is one of the things we are actually teaching."
+      "No idea where you belong yet?",
+      "Excellent. Wander before you label yourself."
     ],
 
     [
@@ -213,69 +141,87 @@
 
     [
       "Ugly first draft?",
-      "Excellent. Now there is something to improve."
+      "Good. Now there is something real to improve."
     ],
 
     [
-      "You do not have to be gifted.",
-      "You do have to be willing to begin."
+      "The library is nearby.",
+      "You may enter for one thing and leave knowing seven unrelated things."
     ],
 
     [
-      "Still deciding where you belong?",
-      "Good. Wander first. Labels can catch up later."
+      "Still confused?",
+      "Confusion is usually where the interesting bit starts."
     ],
 
     [
-      "One tiny rule before you go...",
-      "<strong>Please do things.</strong> Thinking about doing them does not count."
+      "You are allowed to ask obvious questions.",
+      "Half the room was wondering the same thing anyway."
+    ],
+
+    [
+      "You do not need to know everything before you begin.",
+      "That would make Learning Lok rather pointless."
+    ],
+
+    [
+      "A mistake is not a personality trait.",
+      "It is just information for attempt number two."
+    ],
+
+    [
+      "See something interesting?",
+      "Go investigate it before your brain invents an excuse."
+    ],
+
+    [
+      "There is no perfect path through this place.",
+      "Choose a door. You can always choose another one later."
     ]
-
   ];
 
 
-  let speechIndex = 0;
+  let messageIndex = 0;
 
 
-  function changeSpeech() {
-
+  function showNextSpeech() {
     if (!speech) return;
 
+    messageIndex =
+      (messageIndex + 1) %
+      receptionistMessages.length;
 
-    speechIndex =
-      (speechIndex + 1) %
-      messages.length;
-
-
-    const [firstLine, secondLine] =
-      messages[speechIndex];
+    const [lineOne, lineTwo] =
+      receptionistMessages[messageIndex];
 
 
-    // Fade out
+    // Fade speech bubble out
     speech.style.opacity = "0";
+    speech.style.transform = "translateY(4px)";
 
 
     window.setTimeout(() => {
 
       speech.innerHTML = `
-        <p>${firstLine}</p>
-        <p>${secondLine}</p>
-        <span></span>
+        <p>${lineOne}</p>
+        <p>${lineTwo}</p>
+        <span aria-hidden="true"></span>
       `;
+
 
       // Fade back in
       speech.style.opacity = "1";
+      speech.style.transform = "translateY(0)";
 
-    }, 220);
-
+    }, 210);
   }
 
 
-  // Change receptionist message every 7.2 seconds
-  if (!prefersReducedMotion) {
+  // Change receptionist message every few seconds
+  if (speech && !reduceMotion) {
 
     window.setInterval(
-      changeSpeech,
+      showNextSpeech,
       7200
     );
 
@@ -283,24 +229,50 @@
 
 
   // =========================================================
-  // WALL OF ATTEMPTS
+  // LEARNING SPACE FILTERS
   // =========================================================
 
-  const attemptCards =
-    document.querySelectorAll(
-      ".attempt-card"
-    );
+  const filters =
+    document.querySelectorAll(".filter");
+
+  const cards =
+    document.querySelectorAll(".space-card");
 
 
-  attemptCards.forEach((card) => {
+  filters.forEach((filterButton) => {
 
-    card.addEventListener(
+    filterButton.addEventListener(
       "click",
       () => {
 
-        card.classList.toggle(
-          "pinned"
-        );
+        const selectedFilter =
+          filterButton.dataset.filter;
+
+
+        // Remove active state from all filter buttons
+        filters.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+
+        // Activate clicked button
+        filterButton.classList.add("active");
+
+
+        // Show / hide Learning Lok cards
+        cards.forEach((card) => {
+
+          const shouldShow =
+            selectedFilter === "all" ||
+            card.dataset.group === selectedFilter;
+
+
+          card.classList.toggle(
+            "hidden-card",
+            !shouldShow
+          );
+
+        });
 
       }
     );
@@ -309,25 +281,156 @@
 
 
   // =========================================================
-  // SCHOOL CARDS
-  // Little hover personality
+  // SCROLL REVEAL ANIMATIONS
   // =========================================================
 
-  const schoolCards =
-    document.querySelectorAll(
-      ".school-card"
+  const revealTargets =
+    document.querySelectorAll(`
+      .attempt-card,
+      .directory-card,
+      .receptionist-card,
+      .space-card,
+      .library-copy,
+      .library-illustration,
+      .rules-grid article
+    `);
+
+
+  revealTargets.forEach((element) => {
+    element.classList.add("reveal");
+  });
+
+
+  if (
+    "IntersectionObserver" in window &&
+    !reduceMotion
+  ) {
+
+    const observer =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entryItem) => {
+
+            if (!entryItem.isIntersecting) {
+              return;
+            }
+
+
+            entryItem.target.classList.add(
+              "visible"
+            );
+
+
+            observer.unobserve(
+              entryItem.target
+            );
+
+          });
+
+        },
+
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -30px"
+        }
+
+      );
+
+
+    revealTargets.forEach((element) => {
+      observer.observe(element);
+    });
+
+  } else {
+
+    revealTargets.forEach((element) => {
+      element.classList.add("visible");
+    });
+
+  }
+
+
+  // =========================================================
+  // SMOOTH INTERNAL PAGE LINKS
+  // =========================================================
+
+  const internalLinks =
+    document.querySelectorAll('a[href^="#"]');
+
+
+  internalLinks.forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      (event) => {
+
+        const targetId =
+          link.getAttribute("href");
+
+
+        if (
+          !targetId ||
+          targetId === "#"
+        ) {
+          return;
+        }
+
+
+        const target =
+          document.querySelector(targetId);
+
+
+        if (!target) {
+          return;
+        }
+
+
+        event.preventDefault();
+
+
+        target.scrollIntoView({
+
+          behavior:
+            reduceMotion
+              ? "auto"
+              : "smooth",
+
+          block: "start"
+
+        });
+
+      }
     );
 
+  });
 
-  schoolCards.forEach((card) => {
+
+  // =========================================================
+  // SMALL HOVER PERSONALITY
+  // =========================================================
+
+  const learningCards =
+    document.querySelectorAll(".space-card");
+
+
+  learningCards.forEach((card, index) => {
 
     card.addEventListener(
       "mouseenter",
       () => {
 
-        card.classList.add(
-          "school-card-active"
-        );
+        if (reduceMotion) return;
+
+        const rotation =
+          index % 2 === 0
+            ? "-0.35deg"
+            : "0.35deg";
+
+
+        card.style.transform =
+          `translateY(-5px) rotate(${rotation})`;
 
       }
     );
@@ -337,8 +440,31 @@
       "mouseleave",
       () => {
 
-        card.classList.remove(
-          "school-card-active"
+        card.style.transform = "";
+
+      }
+    );
+
+  });
+
+
+  // =========================================================
+  // ATTEMPT CARDS
+  // Tiny interaction when someone clicks an attempt
+  // =========================================================
+
+  const attemptCards =
+    document.querySelectorAll(".attempt-card");
+
+
+  attemptCards.forEach((card) => {
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        card.classList.toggle(
+          "attempt-selected"
         );
 
       }
@@ -348,207 +474,17 @@
 
 
   // =========================================================
-  // RANDOM SLIGHT ROTATIONS
-  // Makes papers feel less digitally perfect
+  // RECEPTIONIST IMAGE MOVEMENT
+  // Very subtle mouse movement
   // =========================================================
 
-  const messyItems =
-    document.querySelectorAll(
-      ".attempt-card, .messy-paper, .student-note"
-    );
-
-
-  messyItems.forEach(
-    (item, index) => {
-
-      const rotations = [
-        -2.5,
-        1.8,
-        -1.2,
-        2.4,
-        -3,
-        1.1
-      ];
-
-
-      const rotation =
-        rotations[
-          index %
-          rotations.length
-        ];
-
-
-      item.style.setProperty(
-        "--messy-rotation",
-        `${rotation}deg`
-      );
-
-    }
-  );
-
-
-  // =========================================================
-  // SCROLL REVEAL ANIMATIONS
-  // =========================================================
-
-  const revealTargets =
-    document.querySelectorAll(
-      `
-      .school-card,
-      .requirements article,
-      .library-copy,
-      .library-visual,
-      .attempt-card
-      `
-    );
-
-
-  revealTargets.forEach(
-    (element) => {
-
-      element.classList.add(
-        "reveal"
-      );
-
-    }
-  );
+  const receptionistImage =
+    document.querySelector(".receptionist-image");
 
 
   if (
-    "IntersectionObserver" in window &&
-    !prefersReducedMotion
-  ) {
-
-    const observer =
-      new IntersectionObserver(
-
-        (entries) => {
-
-          entries.forEach(
-            (item) => {
-
-              if (
-                !item.isIntersecting
-              ) {
-                return;
-              }
-
-
-              item.target.classList.add(
-                "visible"
-              );
-
-
-              observer.unobserve(
-                item.target
-              );
-
-            }
-          );
-
-        },
-
-        {
-          threshold: 0.14,
-
-          rootMargin:
-            "0px 0px -35px"
-        }
-
-      );
-
-
-    revealTargets.forEach(
-      (element) => {
-
-        observer.observe(
-          element
-        );
-
-      }
-    );
-
-  }
-
-  else {
-
-    revealTargets.forEach(
-      (element) => {
-
-        element.classList.add(
-          "visible"
-        );
-
-      }
-    );
-
-  }
-
-
-  // =========================================================
-  // LIBRARY DOOR
-  // =========================================================
-
-  const libraryDoor =
-    document.querySelector(
-      ".library-door"
-    );
-
-
-  if (libraryDoor) {
-
-    const libraryText =
-      libraryDoor.querySelector(
-        "[data-library-text]"
-      );
-
-
-    if (libraryText) {
-
-      const originalText =
-        libraryText.textContent;
-
-
-      libraryDoor.addEventListener(
-        "mouseenter",
-        () => {
-
-          libraryText.textContent =
-            "Warning: you may accidentally lose three hours in here →";
-
-        }
-      );
-
-
-      libraryDoor.addEventListener(
-        "mouseleave",
-        () => {
-
-          libraryText.textContent =
-            originalText;
-
-        }
-      );
-
-    }
-
-  }
-
-
-  // =========================================================
-  // CURSOR / MOUSE MOVEMENT
-  // Very subtle movement for reception objects
-  // =========================================================
-
-  const floatingObjects =
-    document.querySelectorAll(
-      "[data-float]"
-    );
-
-
-  if (
-    floatingObjects.length &&
-    !prefersReducedMotion
+    receptionistImage &&
+    !reduceMotion
   ) {
 
     window.addEventListener(
@@ -561,7 +497,6 @@
             window.innerWidth
           ) - 0.5;
 
-
         const y =
           (
             event.clientY /
@@ -569,23 +504,13 @@
           ) - 0.5;
 
 
-        floatingObjects.forEach(
-          (object, index) => {
-
-            const strength =
-              (index % 3 + 1) * 2;
-
-
-            object.style.transform =
-              `
-              translate(
-                ${x * strength}px,
-                ${y * strength}px
-              )
-              `;
-
-          }
-        );
+        receptionistImage.style.transform =
+          `
+            translate(
+              ${x * 2}px,
+              ${y * 2}px
+            )
+          `;
 
       }
     );
@@ -594,36 +519,38 @@
 
 
   // =========================================================
-  // SCHOOL DIRECTORY MESSAGE
+  // LIBRARY HOVER MESSAGE
   // =========================================================
 
-  const directory =
-    document.querySelector(
-      ".school-directory"
-    );
+  const libraryLink =
+    document.querySelector(".library-link");
 
 
-  if (directory) {
+  if (libraryLink) {
 
-    directory.addEventListener(
+    const originalLibraryText =
+      libraryLink.innerHTML;
+
+
+    libraryLink.addEventListener(
       "mouseenter",
       () => {
 
-        directory.classList.add(
-          "being-explored"
-        );
+        libraryLink.innerHTML = `
+          You may accidentally disappear in here
+          <span>→</span>
+        `;
 
       }
     );
 
 
-    directory.addEventListener(
+    libraryLink.addEventListener(
       "mouseleave",
       () => {
 
-        directory.classList.remove(
-          "being-explored"
-        );
+        libraryLink.innerHTML =
+          originalLibraryText;
 
       }
     );
@@ -632,32 +559,66 @@
 
 
   // =========================================================
-  // SECRET CONSOLE MESSAGE
-  // Because curious people inspect things.
+  // RANDOM HUMAN-LIKE ROTATIONS
+  // Makes elements feel a little less digitally perfect
+  // =========================================================
+
+  const messyElements =
+    document.querySelectorAll(
+      ".attempt-card, .handwritten-card, .welcome-note"
+    );
+
+
+  const rotations = [
+    -1.4,
+    0.8,
+    -0.6,
+    1.2,
+    -0.9,
+    0.5
+  ];
+
+
+  messyElements.forEach(
+    (element, index) => {
+
+      const rotation =
+        rotations[
+          index %
+          rotations.length
+        ];
+
+
+      element.style.setProperty(
+        "--random-rotation",
+        `${rotation}deg`
+      );
+
+    }
+  );
+
+
+  // =========================================================
+  // CONSOLE EASTER EGG
   // =========================================================
 
   console.log(
-    "%cJIGYASA VERSE SCHOOL",
+    "%cJIGYASA VERSE · LEARNING LOK",
     `
-    font-size:20px;
-    font-weight:800;
-    color:#6f4bb8;
+      font-size:18px;
+      font-weight:700;
+      color:#a46878;
     `
   );
 
 
   console.log(
-    "Oh. You opened the console."
+    "Oh... you opened the console."
   );
 
 
   console.log(
-    "That means you were curious enough to look behind the page."
-  );
-
-
-  console.log(
-    "Admission requirement satisfied. ✓"
+    "Curiosity requirement: satisfied ✓"
   );
 
 
