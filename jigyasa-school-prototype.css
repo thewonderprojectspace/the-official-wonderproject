@@ -47,3 +47,78 @@ footer{display:flex;justify-content:space-between;gap:2rem;padding:2rem max(24px
 @media(max-width:1100px){.entry-copy{left:4vw;width:46vw}.building{right:-15vw;width:73vw}.reception-room{grid-template-columns:1fr 1fr}.direction-board{grid-column:1/-1;min-height:auto}.school-grid{grid-template-columns:repeat(2,1fr)}.library-section{grid-template-columns:1fr}.library-visual{min-height:560px}.section-heading,.reception-intro{grid-template-columns:1fr}}
 @media(max-width:760px){.school-entry{position:fixed}.entry-copy{left:5%;right:5%;top:45%;width:auto;padding:1.35rem}.entry-copy h1{font-size:clamp(3rem,14vw,5rem)}.hero-sub,.entry-stamps,.tiny-note{display:none}.building{right:-48%;width:115%;height:54vh;opacity:.4}.reception-nav{padding:.8rem 1rem}.nav-links,.nav-cta{display:none}.reception-intro{padding-top:4rem}.reception-room{grid-template-columns:1fr}.attempt-wall{min-height:700px}.receptionist-zone{min-height:650px}.school-grid{grid-template-columns:1fr}.schools-section{padding-block:5rem}.section-heading{gap:1rem}.library-copy{padding:4rem 1.5rem}.requirements{grid-template-columns:1fr}footer{flex-direction:column}.board-footer{white-space:normal;text-align:center;width:90%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.ticker{animation:none}.school-entry,.glass-door,.reveal{transition:none!important}}
+/* ==================================================
+   CHILD DRAWN LEARNING LOK LOGO
+================================================== */
+
+.learning-lok-logo-wrap {
+  position: relative;
+
+  width: min(620px, 100%);
+
+  margin:
+    18px
+    0
+    24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.little-welcome {
+  margin:
+    0
+    0
+    -4px
+    20px;
+
+  font-family:
+    "Gaegu",
+    cursive;
+
+  font-size: 1.4rem;
+
+  font-weight: 700;
+
+  color: #292129;
+
+  transform: rotate(-2deg);
+}
+
+
+.learning-lok-logo {
+  display: block;
+
+  width: 100%;
+
+  max-width: 610px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  /*
+     Helps a white image background
+     blend into your cream website.
+  */
+
+  mix-blend-mode: multiply;
+
+  transform: rotate(-0.7deg);
+
+  transform-origin: center;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+.learning-lok-logo:hover {
+  transform:
+    rotate(0.5deg)
+    scale(1.015);
+}
