@@ -3,326 +3,468 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Jigyasa Verse Learning lok — a global learning platform for curious humans who are willing to learn, explore, build, fail and try again." />
+  <meta
+    name="description"
+    content="Jigyasa Verse Learning Lok — a warm, global learning centre for curious humans who learn by asking, making, trying, failing and trying again."
+  />
+
   <title>Jigyasa Verse | Learning Lok</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="jigyasa-school-prototype.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="learning-lok.css" />
 </head>
+
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="paper-noise" aria-hidden="true"></div>
 
-  <!-- CINEMATIC ENTRANCE -->
-  <section class="school-entry" id="schoolEntry" aria-label="Jigyasa Verse School entrance">
-    <div class="entry-sky"></div>
-    <div class="floating-scribbles" aria-hidden="true">
-      <span>try.</span><span>ask.</span><span>build.</span><span>again.</span><span>why?</span>
-    </div>
-<div class="entry-copy" id="entryCopy">
+  <!-- =========================================================
+       ENTRY
+  ========================================================== -->
+  <section class="entry" id="schoolEntry" aria-label="Learning Lok entrance">
+    <div class="entry-cloud cloud-one" aria-hidden="true"></div>
+    <div class="entry-cloud cloud-two" aria-hidden="true"></div>
+    <div class="entry-scribble scribble-one" aria-hidden="true">why?</div>
+    <div class="entry-scribble scribble-two" aria-hidden="true">try again →</div>
+    <div class="entry-scribble scribble-three" aria-hidden="true">hmm...</div>
 
-  <div class="eyebrow-row">
-
-    <span class="eyebrow">
-      LEARNING LOK • OPEN WORLD FOR CURIOUS HUMANS
-    </span>
-
-    <span class="open-dot">
-      <i></i> OPEN
-    </span>
-
-  </div>
-
-
-  <div class="learning-lok-logo-wrap">
-
-    <p class="little-welcome">
-      welcome to...
-    </p>
-
-    <img
-      src="images/jigyasaverse-learninglok.png"
-      alt="Jigyasa Verse Learning Lok"
-      class="learning-lok-logo"
-    >
-
-  </div>
-
-
-  <p class="hero-lede">
-    A global learning world with no border at the gate
-    and no requirement to arrive brilliant.
-  </p>
-
-  <p class="hero-sub">
-    Bring curiosity. Bring unfinished ideas.
-    Bring the thing you are terrible at but still want to understand.
-  </p>
-
-
-  <div
-    class="entry-stamps"
-    aria-label="What to bring"
-  >
-
-    <span>curiosity</span>
-    <span>effort</span>
-    <span>questions</span>
-    <span>mistakes allowed</span>
-
-  </div>
-
-
-  <button
-    class="enter-btn"
-    id="enterSchoolBtn"
-    type="button"
-  >
-
-    <span>
-      Enter Learning Lok
-    </span>
-
-    <b aria-hidden="true">
-      →
-    </b>
-
-  </button>
-
-
-  <p class="tiny-note">
-    No entrance exam. The door sensor only checks
-    whether you actually clicked the button.
-  </p>
-
-</div>
-
-    <div class="building" aria-hidden="true">
-      <div class="building-sign">
-        <small>JIGYASA VERSE</small>
-        <strong>Learning Lok</strong>
-        <em>learn • make • question</em>
+    <div class="entry-content">
+      <div class="entry-label-row">
+        <span class="tiny-label">JIGYASA VERSE · LEARNING LOK</span>
+        <span class="open-badge"><i></i> open to curious humans</span>
       </div>
-      <div class="window side-window left-window"><span></span><span></span></div>
-      <div class="inside-glimpse">
+
+      <div class="entry-logo-wrap">
+        <p class="hand-note">welcome to...</p>
+        <img
+          src="images/jigyasaverse-learninglok.png"
+          alt="Jigyasa Verse Learning Lok"
+          class="entry-logo"
+        />
+      </div>
+
+      <p class="entry-lede">
+        A learning centre for people who ask questions before they have all the answers.
+      </p>
+
+      <p class="entry-copy">
+        Come because you are curious. Stay because something made you say,
+        “wait... I want to understand that.”
+      </p>
+
+      <div class="entry-tags" aria-label="Learning Lok values">
+        <span>curiosity</span>
+        <span>messy first tries</span>
+        <span>better questions</span>
+        <span>actual learning</span>
+      </div>
+
+      <button class="enter-button" id="enterSchoolBtn" type="button">
+        <span>Walk into Learning Lok</span>
+        <b aria-hidden="true">→</b>
+      </button>
+
+      <p class="door-note">No entrance exam. We checked.</p>
+    </div>
+
+    <div class="entry-building" aria-hidden="true">
+      <div class="building-top">
+        <span>JIGYASA VERSE</span>
+        <strong>LEARNING LOK</strong>
+        <em>ask · make · learn · repeat</em>
+      </div>
+
+      <div class="window window-left"></div>
+      <div class="window window-right"></div>
+
+      <div class="inside">
         <div class="inside-light"></div>
         <div class="inside-board">
-          <span class="preview-paper p1">7 × 8 = 54<br><b>56 ✓</b></span>
-          <span class="preview-paper p2">prototype #4<br><b>still wobbly</b></span>
-          <span class="preview-paper p3">WHY?</span>
+          <span class="paper-paper p-one">7 × 8 = 54<br><b>56 ✓</b></span>
+          <span class="paper-paper p-two">prototype 04<br><b>still wobbly</b></span>
+          <span class="paper-paper p-three">WHY?</span>
         </div>
-        <div class="mini-desk">RECEPTION</div>
       </div>
-      <div class="glass-door door-left"><span class="glass-shine"></span></div>
-      <div class="glass-door door-right"><span class="glass-shine"></span></div>
-      <div class="window side-window right-window"><span></span><span></span></div>
-      <div class="door-sensor"><i></i></div>
+
+      <div class="door door-left"></div>
+      <div class="door door-right"></div>
+      <div class="sensor"><i></i></div>
     </div>
-    <div class="ground-lines" aria-hidden="true"><span></span><span></span><span></span></div>
   </section>
 
-  <!-- RECEPTION -->
-  <main id="receptionScene" class="reception-scene">
-    <nav class="reception-nav">
-      <a class="brand" href="#receptionScene" aria-label="Jigyasa Verse School home">
-        <span class="brand-mark">JV</span>
-        <span><strong>Jigyasa Verse</strong><small>Learning Lok</small></span>
+  <!-- =========================================================
+       LEARNING LOK
+  ========================================================== -->
+  <main id="receptionScene" class="learning-lok">
+    <nav class="top-nav" aria-label="Learning Lok navigation">
+      <a href="#receptionScene" class="brand" aria-label="Learning Lok home">
+        <span class="brand-doodle">JV</span>
+        <span class="brand-copy">
+          <strong>Jigyasa Verse</strong>
+          <small>Learning Lok</small>
+        </span>
       </a>
+
       <div class="nav-links">
-        <a href="#schools">18 Exploring sites</a>
-        <a href="#attempts">Attempts Archive</a>
+        <a href="#reception">Reception</a>
+        <a href="#spaces">Learning spaces</a>
         <a href="#library">Library</a>
+        <a href="#entry-rules">Entry rules</a>
       </div>
-      <a href="#schools" class="nav-cta">Find a classroom →</a>
+
+      <a href="#spaces" class="nav-button">Explore →</a>
     </nav>
 
-    <section class="reception-intro">
-      <div>
-        <p class="kicker">YOU MADE IT INSIDE</p>
-        <h2>Reception is a little messy.<br><span>That is not an accident.</span></h2>
+    <!-- =======================================================
+         RECEPTION INTRO
+    ======================================================== -->
+    <section class="welcome-section" id="reception">
+      <div class="welcome-copy">
+        <p class="section-kicker">YOU MADE IT INSIDE</p>
+        <h1>
+          This is the bit where
+          <span>learning gets less perfect.</span>
+        </h1>
+        <p>
+          Learning Lok is not trying to look like a perfect school corridor.
+          It is meant to feel lived in: questions on the wall, unfinished ideas
+          on the desk and enough room to change your mind.
+        </p>
       </div>
-      <p class="intro-side">Around here, a crossed-out answer can be more interesting than a perfect one. It tells us somebody was thinking.</p>
+
+      <div class="welcome-note">
+        <span class="pin"></span>
+        <p>
+          A crossed-out answer is not ugly here.<br>
+          It is proof that somebody was thinking.
+        </p>
+      </div>
     </section>
 
-    <section class="reception-room" aria-label="School reception">
-      <!-- attempts wall -->
-      <aside class="attempt-wall" id="attempts">
-        <div class="board-title">THE ATTEMPTS WE KEPT</div>
-        <article class="attempt-card blue tilt-a">
+    <!-- =======================================================
+         RECEPTION DESK
+    ======================================================== -->
+    <section class="reception-layout" aria-label="Learning Lok reception">
+      <aside class="attempt-board" id="attempts">
+        <div class="attempt-board-heading">
+          <p>THE ATTEMPTS WE KEPT</p>
+          <small>because version one deserves evidence too</small>
+        </div>
+
+        <article class="attempt-card pastel-blue tilt-left">
           <span class="tape"></span>
-          <small>MATHS • ATTEMPT #3</small>
-          <strong class="scribble wrong">7 × 8 = 54</strong>
-          <strong class="scribble">7 × 8 = 56 ✓</strong>
-          <p>We kept the first answer too.</p>
+          <small>MATHS · ATTEMPT 03</small>
+          <strong class="crossed">7 × 8 = 54</strong>
+          <strong>7 × 8 = 56 ✓</strong>
+          <p>We kept the first answer as well.</p>
         </article>
-        <article class="attempt-card pink tilt-b">
+
+        <article class="attempt-card pastel-pink tilt-right">
           <span class="tape"></span>
-          <small>ART • AGE 8</small>
-          <div class="whale">﹏﹏ &lt;(((°&gt; ﹏</div>
-          <p>“The tail is gigantic.”<br><b>Correct. It is magnificent.</b></p>
+          <small>DRAWING · AGE 8</small>
+          <div class="tiny-doodle">﹏ &lt;(((°&gt; ﹏</div>
+          <p>“The tail is gigantic.”</p>
+          <b>Correct. Magnificent, even.</b>
         </article>
-        <article class="attempt-card green tilt-c">
+
+        <article class="attempt-card pastel-yellow tilt-right-soft">
           <span class="tape"></span>
-          <small>SCIENCE • EXPERIMENT #1</small>
-          <div class="volcano">  /\<br> /  \<br>/____\</div>
-          <p><b>Result:</b> absolutely nothing happened.</p>
-          <p class="micro">Observation quality: excellent.</p>
+          <small>SCIENCE · EXPERIMENT 01</small>
+          <div class="tiny-doodle">△ + ? → ...nothing</div>
+          <p>Result: absolutely nothing happened.</p>
+          <b>Observation quality: excellent.</b>
         </article>
-        <article class="attempt-card orange tilt-d">
-          <span class="tape"></span>
-          <small>ENGINEERING • PROTOTYPE #1</small>
-          <div class="bridge">╲_╱  ╲_╱</div>
-          <p>Collapsed immediately.</p>
-          <p class="micro">Prototype #6 holds 14 books now.</p>
-        </article>
-        <div class="board-footer">Perfect work is welcome. So is proof that you tried.</div>
+
+        <p class="board-footer-note">
+          Perfect work is welcome. Proof that you tried is welcome too.
+        </p>
       </aside>
 
-      <!-- receptionist -->
-      <section class="receptionist-zone" aria-label="Receptionist">
+      <section class="receptionist-card">
         <div class="speech-bubble" data-speech>
-          <p>Hi. Welcome to <strong>Jigyasa Verse Learning Lok</strong></p>
-          <p>Ignore the coffee but not your curiosity.</p>
-          <span></span>
+          <p>Hi. Welcome to <strong>Learning Lok.</strong></p>
+          <p>I can help you find somewhere interesting to begin.</p>
+          <span aria-hidden="true"></span>
         </div>
 
-      <!-- receptionist -->
-
-<section
-  class="receptionist-zone"
-  aria-label="Learning Lok reception"
->
-
-  <div
-    class="speech-bubble"
-    data-speech
-  >
-
-    <p>
-      Hi little one
-      Welcome to
-      <strong>
-        Jigyasa Verse Learning Lok.
-      </strong>
-    </p>
-
-    <p>
-      I am here to help you navigate!
-    </p>
-
-    <span></span>
-
-  </div>
-
-
-  <div class="crayon-reception-wrap">
-
-    <img
-      src="images/reception-crayon.png"
-      alt="Child-drawn receptionist welcoming visitors to Jigyasa Verse Learning Lok"
-      class="crayon-reception"
-    >
-
-  </div>
-
-</section>
-
-      <!-- direction wall -->
-      <aside class="direction-board">
-        <div class="directory-top">
-          <p>WHERE TO?</p>
-          <h3>Choose a learning space.</h3>
-          <span>You can change your mind later. We checked.</span>
+        <div class="receptionist-image-wrap">
+          <img
+            src="images/reception-crayon.png"
+            alt="Child-drawn Learning Lok receptionist"
+            class="receptionist-image"
+          />
         </div>
-        <div class="quick-directions">
-          <a href="#schools"><b>18</b><span>schools to explore</span><i>→</i></a>
-          <a href="#library"><b>∞</b><span>things in the library</span><i>→</i></a>
-          <a href="#philosophy"><b>3</b><span>actual entry requirements</span><i>→</i></a>
+
+        <div class="desk-label">
+          <span>RECEPTION</span>
+          <small>questions accepted here</small>
         </div>
-        <div class="scribbled-sign">“You do not need to know where you belong before you start walking.”</div>
+      </section>
+
+      <aside class="directory-card">
+        <p class="section-kicker">WHERE TO?</p>
+        <h2>Choose a doorway.</h2>
+        <p class="directory-intro">
+          Start with your age, your subject, your future profession,
+          or simply the room that makes you curious.
+        </p>
+
+        <div class="directory-links">
+          <a href="#spaces">
+            <span class="directory-number">18</span>
+            <span>
+              <strong>Learning spaces</strong>
+              <small>from early learning to research</small>
+            </span>
+            <b>→</b>
+          </a>
+
+          <a href="#library">
+            <span class="directory-number">∞</span>
+            <span>
+              <strong>The library</strong>
+              <small>books, notes, explainers and rabbit holes</small>
+            </span>
+            <b>→</b>
+          </a>
+
+          <a href="#entry-rules">
+            <span class="directory-number">03</span>
+            <span>
+              <strong>Entry rules</strong>
+              <small>surprisingly little paperwork</small>
+            </span>
+            <b>→</b>
+          </a>
+        </div>
+
+        <div class="handwritten-card">
+          “You do not need to know where you belong before you start walking.”
+        </div>
       </aside>
     </section>
 
-    <!-- philosophy marquee -->
-    <section class="belief-strip" aria-label="School beliefs">
+    <!-- =======================================================
+         BELIEF STRIP
+    ======================================================== -->
+    <section class="belief-strip" aria-label="Learning Lok principles">
       <div class="ticker">
-        <span>ACTION &gt; APPEARANCE</span><i>✦</i><span>QUESTIONS &gt; PRETENDING</span><i>✦</i><span>ATTEMPTS &gt; EXCUSES</span><i>✦</i><span>RETRY IS A SKILL</span><i>✦</i>
-        <span>ACTION &gt; APPEARANCE</span><i>✦</i><span>QUESTIONS &gt; PRETENDING</span><i>✦</i><span>ATTEMPTS &gt; EXCUSES</span><i>✦</i><span>RETRY IS A SKILL</span><i>✦</i>
+        <span>QUESTIONS OVER PRETENDING</span><i>✦</i>
+        <span>ATTEMPTS OVER APPEARANCE</span><i>✦</i>
+        <span>TRY AGAIN IS A SKILL</span><i>✦</i>
+        <span>CURIOSITY COUNTS</span><i>✦</i>
+        <span>QUESTIONS OVER PRETENDING</span><i>✦</i>
+        <span>ATTEMPTS OVER APPEARANCE</span><i>✦</i>
+        <span>TRY AGAIN IS A SKILL</span><i>✦</i>
+        <span>CURIOSITY COUNTS</span><i>✦</i>
       </div>
     </section>
 
-    <!-- 18 SCHOOLS -->
-    <section class="schools-section" id="schools">
+    <!-- =======================================================
+         LEARNING SPACES
+    ======================================================== -->
+    <section class="spaces-section" id="spaces">
       <div class="section-heading">
         <div>
-          <p class="kicker">THE CAMPUS</p>
-          <h2>18 Learning explorations <span>One permission slip: curiosity.</span></h2>
+          <p class="section-kicker">THE LEARNING MAP</p>
+          <h2>18 places to <span>follow a question.</span></h2>
         </div>
-        <p>Start with your age, your profession, your obsession, or the room whose name simply makes you want to click it.</p>
+
+        <p>
+          You are not choosing an identity forever. You are choosing
+          what you would like to explore next.
+        </p>
       </div>
 
-      <div class="school-grid" id="schoolGrid">
-        <a class="school-card c-yellow" href="play-school.html"><div class="school-no">01</div><div class="school-icon">△ ○ □</div><h3>Play & Early Learning</h3><p>Serious discovery. Very unserious furniture.</p><span>Enter room →</span></a>
-        <a class="school-card c-pink" href="primary-school.html"><div class="school-no">02</div><div class="school-icon">✎ ☀</div><h3>Primary & Elementary</h3><p>Questions first. Neat handwriting eventually.</p><span>Enter room →</span></a>
-        <a class="school-card c-blue" href="middle-school.html"><div class="school-no">03</div><div class="school-icon">x + ?</div><h3>Middle School</h3><p>The age of “wait, why is everything complicated now?”</p><span>Enter room →</span></a>
-        <a class="school-card c-purple" href="high-school.html"><div class="school-no">04</div><div class="school-icon">x² ∑</div><h3>Secondary & Senior School</h3><p>Exams matter. So does the human taking them.</p><span>Enter room →</span></a>
-        <a class="school-card c-green" href="math-school.html"><div class="school-no">05</div><div class="school-icon">π ≠ 3</div><h3>Mathematics</h3><p>Patterns, proofs, wrong turns and the suspiciously satisfying click.</p><span>Enter room →</span></a>
-        <a class="school-card c-teal" href="science-school.html"><div class="school-no">06</div><div class="school-icon">⚗ ?</div><h3>Science</h3><p>Observe. Hypothesise. Accidentally make a smell.</p><span>Enter room →</span></a>
-        <a class="school-card c-orange" href="humanities-school.html"><div class="school-no">07</div><div class="school-icon">⌛ ◇</div><h3>Humanities & Society</h3><p>Humans have always been complicated. Investigate accordingly.</p><span>Enter room →</span></a>
-        <a class="school-card c-paper" href="language-school.html"><div class="school-no">08</div><div class="school-icon">Aa अ</div><h3>Language & Literature</h3><p>Read closely. Write badly first. Edit bravely.</p><span>Enter room →</span></a>
-        <a class="school-card c-pink" href="art-school.html"><div class="school-no">09</div><div class="school-icon">✎ ✦</div><h3>Art & Design</h3><p>The ugly first draft has its own locker here.</p><span>Enter room →</span></a>
-        <a class="school-card c-yellow" href="music-school.html"><div class="school-no">10</div><div class="school-icon">♪ ♫</div><h3>Music & Sound</h3><p>Practise imperfectly until your ears notice the difference.</p><span>Enter room →</span></a>
-        <a class="school-card c-blue" href="story-school.html"><div class="school-no">11</div><div class="school-icon">ACT I</div><h3>Theatre, Film & Story</h3><p>Tell it badly, loudly, strangely — then make it better.</p><span>Enter room →</span></a>
-        <a class="school-card c-purple" href="technology-school.html"><div class="school-no">12</div><div class="school-icon">{ }</div><h3>Technology & Computing</h3><p>Build. Break. Debug. Google the error. Repeat.</p><span>Enter room →</span></a>
-        <a class="school-card c-green" href="engineering-school.html"><div class="school-no">13</div><div class="school-icon">⚙ ↗</div><h3>Engineering & Making</h3><p>If prototype one works, we become suspicious.</p><span>Enter room →</span></a>
-        <a class="school-card c-red" href="medical-school.html"><div class="school-no">14</div><div class="school-icon">♡ ⚕</div><h3>Medical & Health</h3><p>Learn the science. Keep the human in the room.</p><span>Enter room →</span></a>
-        <a class="school-card c-orange" href="business-school.html"><div class="school-no">15</div><div class="school-icon">↗ idea</div><h3>Business & Entrepreneurship</h3><p>Ideas are free. Testing them is the interesting bit.</p><span>Enter room →</span></a>
-        <a class="school-card c-paper" href="trade-school.html"><div class="school-no">16</div><div class="school-icon">⌁ 🔧</div><h3>Trade & Vocational</h3><p>Knowledge you can hold in your hands.</p><span>Enter room →</span></a>
-        <a class="school-card c-teal" href="research-school.html"><div class="school-no">17</div><div class="school-icon">? → ?</div><h3>University & Research</h3><p>Better questions live here. So do unfinished theses.</p><span>Enter room →</span></a>
-        <a class="school-card c-purple" href="educator-school.html"><div class="school-no">18</div><div class="school-icon">✎ ◌</div><h3>Educator & Leadership</h3><p>Where lesson plans meet actual humans.</p><span>Enter room →</span></a>
+      <div class="space-filters" aria-label="Filter learning spaces">
+        <button class="filter active" type="button" data-filter="all">All spaces</button>
+        <button class="filter" type="button" data-filter="age">By age</button>
+        <button class="filter" type="button" data-filter="subject">Subjects</button>
+        <button class="filter" type="button" data-filter="profession">Professional</button>
+      </div>
+
+      <div class="space-grid" id="schoolGrid">
+        <a class="space-card yellow" data-group="age" href="play-school.html">
+          <span class="space-number">01</span><span class="space-icon">△ ○ □</span>
+          <h3>Play & Early Learning</h3><p>Big questions. Small chairs.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card pink" data-group="age" href="primary-school.html">
+          <span class="space-number">02</span><span class="space-icon">✎ ☀</span>
+          <h3>Primary & Elementary</h3><p>Wonder first. Neat handwriting eventually.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card blue" data-group="age" href="middle-school.html">
+          <span class="space-number">03</span><span class="space-icon">x + ?</span>
+          <h3>Middle School</h3><p>For the “wait, why is everything complicated now?” years.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card lavender" data-group="age" href="high-school.html">
+          <span class="space-number">04</span><span class="space-icon">x² ∑</span>
+          <h3>Secondary & Senior</h3><p>Exams matter. So does the human taking them.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card yellow" data-group="subject" href="math-school.html">
+          <span class="space-number">05</span><span class="space-icon">π ≠ 3</span>
+          <h3>Mathematics</h3><p>Patterns, proofs and satisfying little clicks.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card blue" data-group="subject" href="science-school.html">
+          <span class="space-number">06</span><span class="space-icon">⚗ ?</span>
+          <h3>Science</h3><p>Observe. Hypothesise. Test. Write down what actually happened.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card pink" data-group="subject" href="humanities-school.html">
+          <span class="space-number">07</span><span class="space-icon">⌛ ◇</span>
+          <h3>Humanities & Society</h3><p>Humans have always been complicated. Investigate accordingly.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card cream" data-group="subject" href="language-school.html">
+          <span class="space-number">08</span><span class="space-icon">Aa अ</span>
+          <h3>Language & Literature</h3><p>Read closely. Write badly first. Edit bravely.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card pink" data-group="subject" href="art-school.html">
+          <span class="space-number">09</span><span class="space-icon">✎ ✦</span>
+          <h3>Art & Design</h3><p>The ugly first draft has a chair here.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card yellow" data-group="subject" href="music-school.html">
+          <span class="space-number">10</span><span class="space-icon">♪ ♫</span>
+          <h3>Music & Sound</h3><p>Practise imperfectly until your ears notice the difference.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card blue" data-group="subject" href="story-school.html">
+          <span class="space-number">11</span><span class="space-icon">ACT I</span>
+          <h3>Theatre, Film & Story</h3><p>Tell it badly, strangely or loudly. Then shape it.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card lavender" data-group="subject" href="technology-school.html">
+          <span class="space-number">12</span><span class="space-icon">{ }</span>
+          <h3>Technology & Computing</h3><p>Build. Break. Debug. Repeat.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card yellow" data-group="profession" href="engineering-school.html">
+          <span class="space-number">13</span><span class="space-icon">⚙ ↗</span>
+          <h3>Engineering & Making</h3><p>If prototype one works perfectly, we become suspicious.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card pink" data-group="profession" href="medical-school.html">
+          <span class="space-number">14</span><span class="space-icon">♡ ⚕</span>
+          <h3>Medical & Health</h3><p>Learn the science. Keep the human in the room.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card blue" data-group="profession" href="business-school.html">
+          <span class="space-number">15</span><span class="space-icon">↗ idea</span>
+          <h3>Business & Entrepreneurship</h3><p>Ideas are free. Testing them is the interesting part.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card cream" data-group="profession" href="trade-school.html">
+          <span class="space-number">16</span><span class="space-icon">⌁ 🔧</span>
+          <h3>Trade & Vocational</h3><p>Knowledge you can hold in your hands.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card yellow" data-group="profession" href="research-school.html">
+          <span class="space-number">17</span><span class="space-icon">? → ?</span>
+          <h3>University & Research</h3><p>Better questions, unfinished theses and very specific interests.</p><b>Explore →</b>
+        </a>
+
+        <a class="space-card lavender" data-group="profession" href="educator-school.html">
+          <span class="space-number">18</span><span class="space-icon">✎ ◌</span>
+          <h3>Educator & Leadership</h3><p>Where lesson plans meet actual humans.</p><b>Explore →</b>
+        </a>
       </div>
     </section>
 
-    <!-- LIBRARY -->
+    <!-- =======================================================
+         LIBRARY
+    ======================================================== -->
     <section class="library-section" id="library">
-      <div class="library-visual" aria-hidden="true">
-        <div class="book-shelf s1"><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="book-shelf s2"><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="book-shelf s3"><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="library-doorway"><div class="door-sign">LIBRARY</div><div class="door-window">open</div></div>
+      <div class="library-illustration" aria-hidden="true">
+        <div class="library-card-note">please return books.<br>eventually.</div>
+        <div class="shelf shelf-one">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="shelf shelf-two">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="shelf shelf-three">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="library-door">
+          <b>LIBRARY</b>
+          <span>open</span>
+        </div>
       </div>
+
       <div class="library-copy">
-        <p class="kicker">THE Jigyasa Verse LIBRARY</p>
-        <h2>For people who still open books in the digital generation.</h2>
-        <p>Textbooks, field guides, strange essays, visual explainers, exam resources, stories, research notes and the occasional page with coffee damage.</p>
-        <a href="books.html" class="big-link">Wander into the library <span>→</span></a>
-        <small>Warning: you may accidentally learn something unrelated to what you came for.</small>
+        <p class="section-kicker">THE JIGYASA VERSE LIBRARY</p>
+        <h2>For people who still enjoy <span>falling into rabbit holes.</span></h2>
+        <p>
+          Books, field guides, visual explainers, exam resources, research notes,
+          strange essays and useful things you did not know you were looking for.
+        </p>
+        <a href="books.html" class="library-link">Wander into the library <span>→</span></a>
+        <small>Side effect: learning something unrelated to why you arrived.</small>
       </div>
     </section>
 
-    <!-- philosophy -->
-    <section class="philosophy" id="philosophy">
-      <div class="philosophy-copy">
-        <p class="kicker">ADMISSIONS OFFICE</p>
-        <h2>Requirements for entry.</h2>
-        <p>We are global because curiosity is not owned by a country, curriculum, age group or profession.</p>
+    <!-- =======================================================
+         ENTRY RULES
+    ======================================================== -->
+    <section class="rules-section" id="entry-rules">
+      <div class="rules-heading">
+        <p class="section-kicker">THE VERY SERIOUS ADMISSIONS OFFICE</p>
+        <h2>Three things required.</h2>
+        <p>
+          Curiosity does not belong to one age, one country, one curriculum
+          or one kind of learner.
+        </p>
       </div>
-      <div class="requirements">
-        <article><span>01</span><h3>Be willing to learn.</h3><p>Especially when the first explanation makes absolutely no sense.</p></article>
-        <article><span>02</span><h3>Be willing to explore.</h3><p>You do not need to know where a question is going before you follow it.</p></article>
-        <article><span>03</span><h3>Be willing to be wrong.</h3><p>A mistake is not your identity. It is information for attempt number two.</p></article>
+
+      <div class="rules-grid">
+        <article>
+          <span>01</span>
+          <h3>Be willing to learn.</h3>
+          <p>Especially when the first explanation makes absolutely no sense.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>Be willing to explore.</h3>
+          <p>You do not need to know where a question is going before you follow it.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Be willing to be wrong.</h3>
+          <p>A mistake is information for the next attempt, not a permanent label.</p>
+        </article>
       </div>
-      <div class="not-required">
-        <strong>NOT REQUIRED</strong><span>passport</span><span>perfect grades</span><span>being gifted</span><span>already knowing</span><span>looking clever</span>
+
+      <div class="not-needed">
+        <strong>NOT REQUIRED:</strong>
+        <span>perfect grades</span>
+        <span>already knowing</span>
+        <span>looking clever</span>
+        <span>one “correct” path</span>
       </div>
     </section>
 
-    <footer>
-      <div><strong>JIGYASA VERSE</strong><span>A part of Learning Lok.</span></div>
+    <footer class="site-footer">
+      <div>
+        <strong>JIGYASA VERSE</strong>
+        <span>Learning Lok</span>
+      </div>
       <p>Come curious. Leave with better questions.</p>
     </footer>
   </main>
 
-  <script src="jigyasa-school-prototype.js"></script>
+  <script src="learning-lok.js"></script>
 </body>
 </html>
