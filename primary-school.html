@@ -1,179 +1,146 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Analytics: remove this block if you do not want analytics on this page. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-EF9DVH7JQN');
-  </script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Playful, curriculum-aware worksheets, offline adventures and thoughtful questions for primary learners, families and educators.">
-  <meta name="theme-color" content="#0a5b50">
-  <title>Primary & Elementary schools | Jigyasa Verse</title>
-  <link rel="stylesheet" href="primary-school.css">
-  <script src="primary-school.js" defer></script>
+  <meta name="description" content="Purane Raste, Nayi Jigyasa — a primary exploration path through timeless games, stories, craft and discovery.">
+  <meta name="theme-color" content="#17120b">
+  <title>पुराने रास्ते, नई जिज्ञासा | Jigyasa Verse Learning Lok</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317120b'/%3E%3Cpath d='M12 43c13-23 26-25 40-20M13 47c12-8 23-7 38-2' fill='none' stroke='%23d6a62e' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='48' cy='22' r='5' fill='%23f1d27a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="primary-exploration.css">
+  <script src="primary-exploration.js" defer></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#activityTimeline">Skip to the activities</a>
+
   <header class="site-header">
-   <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
-  <span class="wv-brand-image-wrap">
-    <img
-      src="images/wonder-verse-moon-pencil-logo.png"
-      alt="Jigyasa Verse"
-      class="wv-brand-image"
-    >
-  </span>
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
+      <span class="brand-visual">
+        <img class="brand-logo" src="images/wonder-verse-moon-pencil-logo.png" alt="" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+        <span class="brand-mark" aria-hidden="true">JV</span>
+      </span>
+      <span class="brand-copy"><strong>Jigyasa Verse</strong><small>Learning Lok · Primary Exploration Path</small></span>
+    </a>
 
-  <span class="brand-copy">
-    <strong>Jigyasa Verse</strong>
-    <small>Schools</small>
-  </span>
-</a>
-
-    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation menu">☰</button>
-
+    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation">☰</button>
     <nav id="mainNav" aria-label="Primary navigation">
-      <a href="#library">Resource library</a>
-      <a href="#families">For families</a>
-      <a href="#educators">For educators</a>
-      <a href="#adventure">Offline adventures</a>
-      <a class="nav-home" href="schools.html">All schools <span aria-hidden="true">→</span></a>
+      <a href="#trail">The trail</a>
+      <a href="#activityTimeline">Explore activities</a>
+      <a href="#promise">Our promise</a>
+      <a class="nav-home" href="learning-lok.html">Learning Lok ↗</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-art">
-        <img src="images/primary-playground.png" alt="Children exploring a playful school playground: flying a kite, playing hide-and-seek, drawing with chalk and counting ants">
-        <span class="kite-note">Why is Ari laughing?<br><strong>Nobody knows.</strong></span>
-        <span class="hide-note">Psst… you haven’t seen us.</span>
-      </div>
-
       <div class="hero-copy">
-        <p class="kicker">Primary & elementary · approximately ages 5–12</p>
-        <h1>School for people who are <em>not 'that' familiar yet.</em></h1>
-        <p class="hero-lead">Print something. Ask a strange question. Make a mess. Go outside. Come back with evidence.</p>
-
-        <div class="role-switch" aria-label="Choose your entrance">
-          <button type="button" data-role="child">I’m a learner</button>
-          <button type="button" class="active" data-role="parent">I’m a parent or carer</button>
-          <button type="button" data-role="teacher">I’m an educator</button>
-        </div>
-
-        <div class="role-message" aria-live="polite">
-          <span id="roleIcon" aria-hidden="true">♥</span>
-          <div><h2 id="roleTitle">Ten useful minutes beats one stressful hour.</h2><p id="roleText">Find printable activities, questions to ask and guidance that helps without taking over.</p></div>
-        </div>
-
-        <a class="primary-button" href="#library">Find something useful <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <section class="quick-strip" aria-label="Quick actions">
-      <a href="#library"><span aria-hidden="true">⌕</span> Find a printable</a>
-      <a href="#tonight"><span aria-hidden="true">?</span> Ask tonight’s question</a>
-      <a href="#adventure"><span aria-hidden="true">◇</span> Generate an offline adventure</a>
-      <a href="#educators"><span aria-hidden="true">▤</span> Open the teacher studio</a>
-    </section>
-
-    <section class="library section" id="library">
-      <div class="section-heading">
-        <div><p class="kicker">The useful cupboard</p><h2>Worksheets that lead somewhere.</h2></div>
-        <p>Every resource includes adult prompts, materials, an extension and the reason behind the activity—not just a page of questions.</p>
-      </div>
-
-      <div class="library-tools">
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="resourceSearch" type="search" placeholder="Search kites, fractions, stories…" aria-label="Search resources"></label>
-        <label><span aria-hidden="true">≡</span><select id="subjectFilter" aria-label="Filter by subject"><option>All subjects</option></select></label>
-        <label><span aria-hidden="true">◎</span><select id="yearFilter" aria-label="Filter by year level"><option>All years</option><option>Years 1–2</option><option>Years 2–4</option><option>Years 3–4</option><option>Years 3–6</option><option>Years 4–6</option></select></label>
-      </div>
-
-      <div class="result-line"><span id="resultCount">12 useful things found</span><button id="clearFilters" type="button">Clear filters</button></div>
-      <div class="resource-grid" id="resourceGrid"></div>
-      <div class="empty-state" id="emptyState" hidden><span aria-hidden="true">⌕</span><h3>That cupboard is empty—for now.</h3><p>Try a wider search or clear the filters.</p></div>
-    </section>
-
-    <section class="tonight section" id="tonight">
-      <div class="tonight-card">
-        <div class="question-doodle" aria-hidden="true">?</div>
-        <p class="kicker">Ask your child tonight</p>
-        <blockquote id="tonightQuestion">“Where do you think the wind goes when it stops?”</blockquote>
-        <p>Do not rush to Google. Each person guesses first, explains why, then chooses one original source or real-world test that might help.</p>
-        <button id="anotherQuestion" type="button">Give me another question <span aria-hidden="true">✦</span></button>
-      </div>
-    </section>
-
-    <section class="families section" id="families">
-      <div class="family-image"><img src="images/family-learning.png" alt="A parent and child thinking together over a hands-on activity at a kitchen table"></div>
-      <div class="family-copy">
-        <p class="kicker">The grown-up corner</p>
-        <h2>Help without quietly doing it for them.</h2>
-        <p class="lead">Children need time to think aloud, change direction and be temporarily wrong. Your questions can protect that time.</p>
-        <div class="swap-list">
-          <div class="swap"><span><small>Instead of</small>That’s wrong. Try again.</span><span aria-hidden="true">→</span><span><small>Try</small>Show me the part that made sense first.</span></div>
-          <div class="swap"><span><small>Instead of</small>This is easy!</span><span aria-hidden="true">→</span><span><small>Try</small>Which part feels familiar, and which part feels new?</span></div>
-          <div class="swap"><span><small>Instead of</small>How don’t you know this?</span><span aria-hidden="true">→</span><span><small>Try</small>What could help us find out?</span></div>
-          <div class="swap"><span><small>Instead of</small>Let me show you the right way.</span><span aria-hidden="true">→</span><span><small>Try</small>Can you show me your way before we compare another one?</span></div>
-        </div>
-        <a class="text-button" href="#library">Browse adult-supported activities <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <section class="adventure section" id="adventure">
-      <div class="adventure-copy">
-        <p class="kicker">The couch escape hatch</p>
-        <h2>Generate an adventure that happens away from this screen.</h2>
-        <p>Choose what works today. The activity uses ordinary materials, real observation and conversation.</p>
-        <div class="adventure-form">
-          <label>Age range<select id="adventureAge"><option>5–7</option><option selected>8–10</option><option>10–12</option></select></label>
-          <label>Time<select id="adventureTime"><option>10 minutes</option><option selected>20 minutes</option><option>45 minutes</option></select></label>
-          <label>Place<select id="adventurePlace"><option>Outside</option><option>Inside</option></select></label>
-          <label>People<select id="adventurePeople"><option>Child + adult</option><option>Child independently</option><option>Two or more children</option></select></label>
-          <button id="generateAdventure" type="button">Make our adventure <span aria-hidden="true">◇</span></button>
+        <p class="eyebrow">Jigyasa Verse presents · a primary exploration path</p>
+        <h1 lang="hi">पुराने रास्ते,<br><em>नई जिज्ञासा</em></h1>
+        <p class="translation">Purane Raste, Nayi Jigyasa</p>
+        <p class="tagline">Old paths lead to new curiosity.</p>
+        <p class="hero-note">Before worksheets filled every desk, children counted with seeds, read shadows, carried stories, built useful things and learned by watching closely. Take the trail.</p>
+        <div class="hero-actions">
+          <a class="ink-button" href="#activityTimeline">Begin at the first footprint ↓</a>
+          <button class="paper-button" id="surpriseQuest" type="button">Choose a surprise quest ✦</button>
         </div>
       </div>
 
-      <div class="adventure-result" id="adventureResult" aria-live="polite">
-        <span class="result-number">01</span><p class="kicker">Your offline mission</p>
-        <h3>Your mission will appear here.</h3><p>Choose four things on the left. No account, score or streak required.</p>
+      <aside class="field-note" aria-label="How this path works">
+        <span class="pin" aria-hidden="true"></span>
+        <p class="handwritten">A note for curious humans</p>
+        <h2>No worksheet required.</h2>
+        <p>Every stop leaves behind a story, skill, object, performance or discovery.</p>
+        <ol>
+          <li><b>Notice</b> what people once needed to know.</li>
+          <li><b>Try</b> the idea with ordinary materials.</li>
+          <li><b>Tell it back</b> in your own words.</li>
+        </ol>
+      </aside>
+
+      <div class="scroll-cue" aria-hidden="true"><span></span>Follow the ink trail</div>
+    </section>
+
+    <section class="manifesto" id="trail">
+      <p class="chapter-no">FIELD NOTE 01</p>
+      <div>
+        <h2>Learning used to hide inside ordinary life.</h2>
+        <p>Mathematics lived in markets and games. Science lived in weather, soil and cooking. Language travelled through songs and stories. Design began with a useful problem. This trail brings those habits back—carefully adapted for children today.</p>
+      </div>
+      <blockquote>“Watch. Wonder. Make. Move. Explain.”</blockquote>
+    </section>
+
+    <section class="explorer-tools" aria-label="Activity filters">
+      <div class="tool-intro">
+        <p class="eyebrow">Open the archive</p>
+        <h2>What would you like to uncover?</h2>
+      </div>
+      <label class="search-field">
+        <span>Search the trail</span>
+        <input id="activitySearch" type="search" placeholder="Try seeds, stories, weather…">
+      </label>
+      <label>
+        <span>Subject</span>
+        <select id="subjectFilter"><option value="all">All subjects</option></select>
+      </label>
+      <label>
+        <span>Age</span>
+        <select id="ageFilter">
+          <option value="all">All primary ages</option>
+          <option value="5-7">Ages 5–7</option>
+          <option value="8-10">Ages 8–10</option>
+          <option value="10-12">Ages 10–12</option>
+        </select>
+      </label>
+      <button id="clearFilters" class="clear-button" type="button">Clear</button>
+    </section>
+
+    <section class="timeline-section" id="activityTimeline" aria-labelledby="timelineTitle">
+      <div class="timeline-heading">
+        <div><p class="eyebrow">The living timeline</p><h2 id="timelineTitle">Old ideas. New adventures.</h2></div>
+        <p><strong id="resultCount">0</strong> activities waiting on the trail</p>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <span aria-hidden="true">?</span>
+        <h3>No footprints here yet.</h3>
+        <p>Try another subject or clear the filters.</p>
       </div>
     </section>
 
-    <section class="educators section" id="educators">
-      <div class="educator-copy">
-        <p class="kicker">Teacher studio</p><h2>Classroom-ready, but never teacher-proof.</h2>
-        <p>Resources should respect professional judgement. Adapt the context, language, challenge and evidence to the humans in front of you.</p>
-        <ul>
-          <li><span aria-hidden="true">✓</span>Curriculum-aware learning intentions</li><li><span aria-hidden="true">✓</span>Diagnostic prompts and common misconceptions</li>
-          <li><span aria-hidden="true">✓</span>Ink-friendly printable versions</li><li><span aria-hidden="true">✓</span>Support, core and extension pathways</li>
-          <li><span aria-hidden="true">✓</span>Family follow-up questions</li><li><span aria-hidden="true">✓</span>Editable collections planned for future accounts</li>
-        </ul>
-        <a class="primary-button" href="#library">Explore teaching resources <span aria-hidden="true">→</span></a>
+    <section class="quest-builder" aria-labelledby="questTitle">
+      <div>
+        <p class="eyebrow">Too many paths?</p>
+        <h2 id="questTitle">Let the old compass choose.</h2>
+        <p>Pick a little time and a place. We will find one activity that fits.</p>
       </div>
-      <div class="teacher-image"><img src="images/teacher-classroom.png" alt="A teacher learning alongside small groups of children using books, blocks, drawings and a magnifying glass"></div>
+      <div class="quest-controls">
+        <label><span>We have</span><select id="questTime"><option value="10">10 minutes</option><option value="20" selected>20 minutes</option><option value="45">45+ minutes</option></select></label>
+        <label><span>We are</span><select id="questPlace"><option value="inside">Inside</option><option value="outside">Outside</option><option value="either">Anywhere</option></select></label>
+        <button id="makeQuest" class="ink-button" type="button">Turn the compass</button>
+      </div>
+      <article class="quest-result" id="questResult" aria-live="polite">
+        <span class="quest-number">?</span>
+        <div><p class="eyebrow">Your path will appear here</p><h3>Bring curiosity. We will choose the rest.</h3></div>
+      </article>
     </section>
 
-    <section class="principles section">
-      <div class="section-heading"><div><p class="kicker">Before anything enters the cupboard</p><h2>Useful is not the same as plentiful.</h2></div><p>Every published resource should pass these checks before a family or teacher depends on it.</p></div>
-      <div class="principle-grid">
-        <article><span>01</span><b aria-hidden="true">▤</b><h3>Curriculum clarity</h3><p>The named framework and intended learning are visible and genuinely checked.</p></article>
-        <article><span>02</span><b aria-hidden="true">✦</b><h3>Thinking value</h3><p>The activity develops understanding—not only busy hands or completed boxes.</p></article>
-        <article><span>03</span><b aria-hidden="true">◎</b><h3>Human instructions</h3><p>Children and adults know what to do, why it matters and when to pause.</p></article>
-        <article><span>04</span><b aria-hidden="true">♥</b><h3>Accessible dignity</h3><p>Different bodies, senses, languages and ways of thinking are anticipated.</p></article>
+    <section class="promise" id="promise">
+      <p class="chapter-no">FIELD NOTE 02</p>
+      <div class="promise-copy">
+        <p class="eyebrow">Our promise</p>
+        <h2>Traditions are not costumes.</h2>
+        <p>These activities are inspired by real ways people have learned across time. Living cultural knowledge deserves specific names, accurate sources and community voices. Sacred stories, symbols and practices should never be copied as classroom decoration.</p>
       </div>
+      <div class="promise-stamp" aria-label="Learn with respect">LEARN<br>WITH<br>RESPECT</div>
     </section>
   </main>
 
   <footer>
-    <div><strong>Jigyasa Verse Schools</strong><p>For little curious minds</p></div></div>
-    <div class="footer-links"><a href="#library">Resources</a><a href="#families">Families</a><a href="#educators">Educators</a><a href="contact.html">Suggest a resource</a></div>
-    <a class="back-top" href="#top">Back to the playground ↑</a>
+    <div><strong>Jigyasa Verse</strong><p>Learning Lok · Primary Exploration Path</p></div>
+    <p lang="hi">पुराने रास्ते, नई जिज्ञासा</p>
+    <a href="#top">Back to the beginning ↑</a>
   </footer>
 
   <dialog class="activity-dialog" id="activityDialog" aria-labelledby="dialogTitle">
