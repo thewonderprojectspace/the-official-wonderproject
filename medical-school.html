@@ -3,101 +3,231 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jigyasa Verse Medical School — human-centred learning pathways, exam maps and clinical reasoning resources from first year to early practice.">
-  <meta name="theme-color" content="#063f46">
-  <title>Schools | Jigyasa Verse</title>
-  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
-  <link rel="stylesheet" href="medical-school.css">
-  <script src="medical-school.js" defer></script>
+  <meta name="description" content="Chikitsa Ki Raahein, Manavta Ki Shapath — explore how medicine was learned, how ethics evolved, and how doctors train around the world.">
+  <meta name="theme-color" content="#1b0d0b">
+  <title>चिकित्सा की राहें, मानवता की शपथ | Jigyasa Verse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Kalam:wght@400;700&family=Libre+Caslon+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%231b0d0b'/%3E%3Cpath d='M32 13v38M20 23h24M20 41h24' stroke='%23d6a33a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M25 17c-7 7-7 23 7 28 14-5 14-21 7-28' fill='none' stroke='%23f0d58a' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="medical-exploration.css">
+  <script src="medical-exploration.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#history">Skip to the medical archive</a>
+  <div class="progress-rail" aria-hidden="true"><span id="scrollProgress"></span></div>
+
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Jigyasa Verse homepage">
-      <span class="brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="brand-image"></span>
-      <span class="brand-copy"><strong>Jigyasa Verse</strong><small>Schools<small></span>
+      <span class="brand-visual">
+        <span class="brand-mark">JV</span>
+      </span>
+      <span><strong>Jigyasa Verse</strong><small>Learning Lok · Medical Exploration Path</small></span>
     </a>
-    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open navigation menu">☰</button>
-    <nav id="mainNav" aria-label="Medical School navigation">
-      <a href="#year-path">Your year</a><a href="#exam-map">Exam map</a><a href="#library">Learning library</a><a href="#case-lab">Case lab</a><a href="#human-room">The human room</a>
-      <a class="nav-home" href="schools.html">All schools →</a>
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">☰ <span>Menu</span></button>
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="#history">The old wards</a>
+      <a href="#today">Medicine today</a>
+      <a href="#firstYear">First year</a>
+      <a href="#pathfinder">Find your path</a>
+      <a class="nav-home" href="#top">Medical Lok ↑</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-image">
-        <img src="images/medical-school-hero.png" alt="A diverse group of medical students learning collaboratively in an anatomy and clinical skills laboratory">
-        <span class="hero-note note-one">“Wait… which nerve was that?”</span>
-        <span class="hero-note note-two">Nobody knows everything.<br><strong>That is why rounds have teams.</strong></span>
-      </div>
+      <div class="hero-image" role="img" aria-label="A fifteenth-century manuscript scene of caregivers attending patients in a hospital ward"></div>
+      <div class="hero-scrim"></div>
       <div class="hero-copy">
-        <p class="eyebrow">From first lecture to first patient · without losing the person inside the coat</p>
-        <h1>Know the science.<em>Keep the human.</em></h1>
-        <p class="hero-lead">A calmer place to connect foundational medicine, clinical reasoning, global exam pathways and the very strange emotional experience of becoming a doctor.</p>
-        <div class="hero-actions"><a class="primary-button" href="#year-path">Start with your year →</a><a class="secondary-button" href="#exam-map">Find an exam pathway</a></div>
-        <div class="pulse-card"><span class="pulse-dot" aria-hidden="true"></span><div><strong>Quick pulse check</strong><p>You are allowed to understand this slowly. Safe medicine is built from careful thinking—not panic disguised as productivity.</p></div></div>
+        <p class="eyebrow">Jigyasa Verse presents · a medical exploration path</p>
+        <h1 lang="hi">चिकित्सा की राहें,<br><em>मानवता की शपथ</em></h1>
+        <p class="translation">Chikitsa Ki Raahein, Manavta Ki Shapath</p>
+        <p class="tagline">The paths of medicine. The promise of humanity.</p>
+        <p class="hero-note">Long before white coats, medicine was learned beside beds, through apprenticeships, manuscripts, gardens, theatres and mistakes. Enter the archive—then follow the journey to the modern ward.</p>
+        <div class="hero-actions">
+          <a class="gold-button" href="#history">Open the old casebook ↓</a>
+          <button class="ghost-button" id="openPledge" type="button">Read the healer’s pledge</button>
+        </div>
+      </div>
+      <aside class="admission-slip" aria-label="Visitor admission slip">
+        <p>CHARITABLE WARD No. 06</p>
+        <strong>ADMIT ONE</strong>
+        <span>Reason: incurable curiosity</span>
+        <span>Prescription: observe before you assume</span>
+        <b>जिज्ञासा</b>
+      </aside>
+      <a class="scroll-cue" href="#history">Proceed to rounds <span>↓</span></a>
+    </section>
+
+    <section class="opening-ledger" aria-labelledby="ledgerTitle">
+      <p class="folio">CASEBOOK · ENTRY 01</p>
+      <div>
+        <p class="eyebrow">First, an honest correction</p>
+        <h2 id="ledgerTitle">There was never one “olden way” to learn medicine.</h2>
+        <p>Across India, Greece, Egypt, China, the Islamic world, Europe and many Indigenous knowledge traditions, healing developed through different languages, beliefs and forms of evidence. Some practices were observant and humane. Others were ineffective, exclusionary or harmful. History is not a costume cupboard; it is a record we examine carefully.</p>
+      </div>
+      <blockquote>Keep the curiosity.<br>Question the certainty.</blockquote>
+    </section>
+
+    <section class="history-section" id="history" aria-labelledby="historyTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">The old wards · then & truth</p><h2 id="historyTitle">How a healer learned</h2></div>
+        <p>Turn each brass latch. Every drawer separates the useful inheritance from the myth.</p>
+      </div>
+      <div class="archive-layout">
+        <div class="timeline" id="historyTimeline" aria-label="History of medical learning"></div>
+        <aside class="anatomy-plate">
+          <div class="plate-image" role="img" aria-label="Antique anatomical illustration of a human skeleton"></div>
+          <p><span>PLATE III</span> Looking directly at the body transformed anatomy—but access to bodies was shaped by power, punishment and poverty. Modern anatomy requires consent, dignity and governance.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="quick-dock" aria-label="Quick actions">
-      <a href="#library"><span>⌕</span>Find a topic</a><a href="#case-lab"><span>＋</span>Try today’s case</a><a href="#exam-map"><span>◎</span>Map my exam</a><a href="#human-room"><span>♡</span>I need five minutes</a>
-    </section>
-
-    <section class="year-path section" id="year-path">
-      <div class="section-heading"><div><p class="eyebrow">The long corridor</p><h2>Where are you standing right now?</h2></div><p>Medical programs differ across countries and universities. These stages are learning guides—not claims about one universal curriculum.</p></div>
-      <div class="year-tabs" role="tablist" aria-label="Medical training stage">
-        <button role="tab" aria-selected="true" data-year="year1">Year 1</button><button role="tab" aria-selected="false" data-year="year2">Year 2</button><button role="tab" aria-selected="false" data-year="year3">Year 3</button><button role="tab" aria-selected="false" data-year="year4">Year 4</button><button role="tab" aria-selected="false" data-year="year5">Year 5</button><button role="tab" aria-selected="false" data-year="final">Final year</button><button role="tab" aria-selected="false" data-year="early">Internship / early practice</button>
+    <section class="clerk-truth" aria-labelledby="clerkTitle">
+      <div class="stamp">MYTH<br>EXAMINED</div>
+      <div>
+        <p class="eyebrow">The “doctor as clerk” story</p>
+        <h2 id="clerkTitle">Partly true—and much more interesting.</h2>
       </div>
-      <div class="year-panel" id="yearPanel" role="tabpanel" aria-live="polite"></div>
-    </section>
-
-    <section class="exam-map section" id="exam-map">
-      <div class="section-heading light"><div><p class="eyebrow">The passport desk</p><h2>One profession. Very different pathways.</h2></div><p>Start with purpose—not acronym. Entry tests, university assessments and licensing examinations are not interchangeable.</p></div>
-      <div class="exam-controls">
-        <label>Country or pathway<select id="countryFilter"><option value="all">Show all regions</option><option>Australia</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>India</option><option>New Zealand</option><option>Ireland</option></select></label>
-        <div class="phase-filters" aria-label="Filter exams by stage"><button class="active" data-phase="all">All stages</button><button data-phase="admission">Before medical school</button><button data-phase="degree">During the degree</button><button data-phase="licensing">Licensing / registration</button><button data-phase="postgraduate">Postgraduate entry</button></div>
-      </div>
-      <div class="exam-legend"><span><i class="admission"></i>Admission</span><span><i class="degree"></i>Degree assessment</span><span><i class="licensing"></i>Licensing / registration</span><span><i class="postgraduate"></i>Postgraduate selection</span></div>
-      <div class="exam-grid" id="examGrid"></div>
-      <p class="exam-caution">Requirements and formats change. Always confirm eligibility, dates and official preparation material with the relevant authority and your intended university or regulator.</p>
-    </section>
-
-    <section class="library section" id="library">
-      <div class="section-heading"><div><p class="eyebrow">Before the stethoscope shelf</p><h2>Learn systems—not isolated trivia.</h2></div><p>Search by discipline or learning mode. Every resource doorway is designed to connect core science, clinical relevance, reflection and active recall.</p></div>
-      <div class="library-tools"><label class="search-box">⌕ <input id="resourceSearch" type="search" placeholder="Search anatomy, ECG, inflammation…" aria-label="Search medical resources"></label><label>Discipline <select id="disciplineFilter"><option value="all">All disciplines</option></select></label><label>Mode <select id="modeFilter"><option value="all">Every mode</option><option>Concept guide</option><option>Clinical case</option><option>Active recall</option><option>Skills station</option><option>Reflection</option></select></label></div>
-      <div class="result-line"><span id="resourceCount"></span><button id="clearResourceFilters" type="button">Clear filters</button></div>
-      <div class="resource-grid" id="resourceGrid"></div>
-      <div class="empty-state" id="resourceEmpty" hidden><strong>Nothing found in this drawer.</strong><p>Try a broader topic or clear the filters.</p></div>
-    </section>
-
-    <section class="case-lab section" id="case-lab">
-      <div class="case-intro"><p class="eyebrow">Today’s case lab</p><h2>Reason before revealing.</h2><p>The goal is not to name the diagnosis in three seconds. Notice, organise, ask what is missing and choose the safest next step.</p><div class="case-rule">Educational scenario only · not patient-specific medical advice</div></div>
-      <div class="case-card">
-        <div class="case-header"><span>CASE 014</span><span>GENERAL MEDICINE · EARLY CLINICAL</span></div>
-        <h3>A 24-year-old student reports increasing fatigue, breathlessness on stairs and difficulty concentrating over several months.</h3>
-        <div class="case-vitals"><span>Alert</span><span>HR 102</span><span>BP 108/68</span><span>Afebrile</span></div>
-        <fieldset><legend>What would you do before jumping to a diagnosis?</legend><label><input type="radio" name="caseStep" value="history"> Take a focused history and clarify red flags</label><label><input type="radio" name="caseStep" value="diagnose"> Announce the most likely diagnosis immediately</label><label><input type="radio" name="caseStep" value="ignore"> Reassure without further assessment</label></fieldset>
-        <button class="case-button" id="checkCase" type="button">Check my reasoning →</button>
-        <div class="case-feedback" id="caseFeedback" aria-live="polite">Choose a step, then explain to yourself what information it could add.</div>
+      <div class="myth-grid">
+        <article><span>THE CLAIM</span><h3>“Every doctor began as a hospital clerk.”</h3><p>Not universally. Training depended on time, place, class, gender and professional tradition.</p></article>
+        <article><span>THE TRUTH</span><h3>Clinical clerkship became a powerful learning model.</h3><p>Students joined wards, recorded cases, took histories, examined patients and reported to senior physicians. It made the patient—not the lecture—the centre of learning.</p></article>
+        <article><span>WHAT SURVIVES</span><h3>Rounds, case notes, apprenticeship and supervision.</h3><p>Today’s clinical rotations, internship and residency still carry this logic, strengthened by consent, assessment, evidence and patient-safety rules.</p></article>
       </div>
     </section>
 
-    <section class="human-room section" id="human-room">
-      <div class="human-image"><img src="images/clinical-debrief.png" alt="A medical student and compassionate senior clinician reflecting together after a clinical encounter"></div>
-      <div class="human-copy"><p class="eyebrow">The human room</p><h2>You are becoming a doctor. You remain a person.</h2><p>There will be days when the content is fascinating and days when you cannot remember why you started. Neither day tells the whole story.</p>
-        <div class="human-options"><button type="button" data-reset="overwhelmed">I feel overwhelmed</button><button type="button" data-reset="behind">I feel behind</button><button type="button" data-reset="mistake">I made a mistake</button><button type="button" data-reset="numb">I feel emotionally flat</button></div>
-        <div class="reset-card" id="resetCard" aria-live="polite"><strong>Choose what is closest.</strong><p>This will not diagnose or fix you. It will give you one small, humane next step.</p></div>
+    <section class="ethics-journey" id="ethics" aria-labelledby="ethicsTitle">
+      <div class="section-heading light">
+        <div><p class="eyebrow">Not one founder · a continuing argument</p><h2 id="ethicsTitle">Who began medical ethics?</h2></div>
+        <p>No single person did. Codes emerged in different cultures, and modern ethics grew especially through confronting abuse—not merely celebrating noble promises.</p>
+      </div>
+      <div class="ethics-track">
+        <article><time>c. 5th–4th century BCE</time><h3>Hippocratic writings</h3><p>A collection linked medicine with duties, restraint and professional conduct. The famous oath is one strand, not the beginning of all ethics.</p></article>
+        <article><time>Ancient & classical South Asia</time><h3>Charaka and Sushruta traditions</h3><p>Medical learning included conduct, disciplined observation, responsibility to patients and practical training—within the social limits of their eras.</p></article>
+        <article><time>1947–1964</time><h3>Consent enters modern codes</h3><p>The Nuremberg Code foregrounded voluntary consent; the WMA’s Declaration of Geneva (1948) restated physicians’ duties; Helsinki (1964) shaped research ethics.</p></article>
+        <article><time>Now</time><h3>Safety is a system</h3><p>Consent, privacy, handovers, checklists, infection control, reporting and team communication turn good intentions into repeatable protection.</p></article>
+      </div>
+      <div class="protocol-note"><span aria-hidden="true">✚</span><div><p class="eyebrow">The lesson for the next century</p><h3>A kind doctor inside an unsafe system is not enough.</h3><p>Better medicine needs humane professionals <em>and</em> better protocols: accountable teams, equitable access, transparent evidence and learning from error without hiding it.</p></div></div>
+    </section>
+
+    <section class="today-section" id="today" aria-labelledby="todayTitle">
+      <div class="modern-photo" role="img" aria-label="Medical students learning anatomy together in a modern laboratory"></div>
+      <div class="today-copy">
+        <p class="eyebrow">The modern ward · one profession, many routes</p>
+        <h2 id="todayTitle">How long does it take now?</h2>
+        <p class="lead">“Six years” is often the medical degree—not the entire journey to independent specialist practice. Country, entry route and specialty change the clock.</p>
+        <div class="route-strip" aria-label="Typical medical training sequence">
+          <span><b>01</b>Entry pathway</span><i>→</i><span><b>02</b>Medical degree</span><i>→</i><span><b>03</b>Supervised practice</span><i>→</i><span><b>04</b>Specialty training</span><i>→</i><span><b>∞</b>Continuing learning</span>
+        </div>
+        <p class="small-note">Timelines below are orientation guides, not admissions advice. Rules change; always confirm with the national regulator and individual university.</p>
       </div>
     </section>
 
-    <section class="source-room section">
-      <div class="source-title"><p class="eyebrow">The evidence desk</p><h2>Do not memorise a screenshot of a screenshot.</h2></div>
-      <div class="source-grid"><article><span>01</span><h3>Trace the source</h3><p>Move from summary to guideline, regulator, original paper or recognised textbook.</p></article><article><span>02</span><h3>Check the date</h3><p>Clinical guidance and examination rules change. Current authority matters.</p></article><article><span>03</span><h3>Name uncertainty</h3><p>Separate what is known, suspected, context-dependent and still missing.</p></article><article><span>04</span><h3>Return to the patient</h3><p>Evidence supports care. It does not replace listening, consent or individual context.</p></article></div>
+    <section class="world-desk" aria-labelledby="worldTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">Worldwide medicine desk</p><h2 id="worldTitle">Open a country file</h2></div>
+        <p>Compare the broad structure, the major checkpoints and what happens after graduation.</p>
+      </div>
+      <div class="country-tabs" id="countryTabs" role="tablist" aria-label="Countries"></div>
+      <article class="country-file" id="countryFile" aria-live="polite"></article>
+    </section>
+
+    <section class="first-year" id="firstYear" aria-labelledby="firstYearTitle">
+      <div class="first-year-intro">
+        <p class="folio">CASEBOOK · ENTRY 02</p>
+        <p class="eyebrow">Your first year</p>
+        <h2 id="firstYearTitle">You do not learn “all of medicine.”<br>You learn how to see it.</h2>
+        <p>Some schools teach separate subjects; others use integrated organ-system blocks or problem-based cases. The labels vary, but these foundations recur.</p>
+        <p class="hand-note">Tap a drawer to peek inside →</p>
+      </div>
+      <div class="subject-cabinet" id="subjectCabinet"></div>
+      <div class="subject-detail" id="subjectDetail" aria-live="polite">
+        <p class="eyebrow">Choose a drawer</p><h3>Your first specimen note will appear here.</h3><p>No pop quiz. Yet.</p>
+      </div>
+    </section>
+
+    <section class="learning-methods" aria-labelledby="methodsTitle">
+      <div class="section-heading light">
+        <div><p class="eyebrow">What the old ward still teaches</p><h2 id="methodsTitle">Keep these. Retire the rest.</h2></div>
+      </div>
+      <div class="method-grid">
+        <article><span>KEEP 01</span><h3>Learn beside reality</h3><p>Use cases, patients, specimens and simulations to make knowledge answer a real question.</p></article>
+        <article><span>KEEP 02</span><h3>Tell the case back</h3><p>Presenting a history reveals what you understand, what you missed and what you assumed.</p></article>
+        <article><span>KEEP 03</span><h3>Watch, try, receive feedback</h3><p>Supervised practice is still the bridge between “I read it” and “I can do it safely.”</p></article>
+        <article class="retire"><span>RETIRE</span><h3>Humiliation as teaching</h3><p>Fear can silence questions. Safe learning cultures make it easier to disclose uncertainty and prevent harm.</p></article>
+      </div>
+    </section>
+
+    <section class="pathfinder" id="pathfinder" aria-labelledby="pathTitle">
+      <div class="pathfinder-copy">
+        <p class="eyebrow">The apothecary of possible futures</p>
+        <h2 id="pathTitle">Medicine is not the only way to heal.</h2>
+        <p>Choose the kind of problem you would happily keep thinking about. The compass suggests fields to investigate—not a destiny.</p>
+      </div>
+      <div class="path-choices" id="pathChoices" role="group" aria-label="Choose the work that interests you">
+        <button type="button" data-path="patient"><b>At the bedside</b><span>Listen, examine, diagnose, support</span></button>
+        <button type="button" data-path="lab"><b>Inside the evidence</b><span>Cells, microbes, medicines, discovery</span></button>
+        <button type="button" data-path="systems"><b>Across whole communities</b><span>Prevention, policy, access, data</span></button>
+        <button type="button" data-path="making"><b>Where tools meet bodies</b><span>Devices, imaging, prosthetics, design</span></button>
+      </div>
+      <article class="path-result" id="pathResult" aria-live="polite">
+        <span class="compass" aria-hidden="true">✦</span>
+        <div><p class="eyebrow">Your compass is waiting</p><h3>Which problems pull you closer?</h3><p>Pick one card. You can change your mind—good clinicians do.</p></div>
+      </article>
+    </section>
+
+    <section class="roles-section" aria-labelledby="rolesTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">A health system is an ensemble</p><h2 id="rolesTitle">Paths worth opening</h2></div>
+        <p>Titles, registration and scope differ by country. Start with the kind of contribution you want to make.</p>
+      </div>
+      <div class="role-marquee" aria-label="Healthcare study paths">
+        <span>Medicine · MD / MBBS</span><span>Nursing</span><span>Pharmacy</span><span>Dentistry</span><span>Physiotherapy</span><span>Occupational Therapy</span><span>Medical Laboratory Science</span><span>Public Health</span><span>Biomedical Science</span><span>Clinical Research</span><span>Medical Imaging</span><span>Speech Pathology</span><span>Paramedicine</span><span>Health Informatics</span><span>Bioengineering</span>
+      </div>
+    </section>
+
+    <section class="source-room" id="sources" aria-labelledby="sourceTitle">
+      <button class="source-toggle" id="sourceToggle" type="button" aria-expanded="false" aria-controls="sourceList">
+        <span><small>ARCHIVIST’S DESK</small><strong id="sourceTitle">Open the sources & cautions</strong></span><b>+</b>
+      </button>
+      <div class="source-list" id="sourceList" hidden>
+        <p>This is an orientation experience, not a credential evaluator. Course lengths and licensing rules can change. Historical sections avoid presenting any one culture as the single origin of medicine.</p>
+        <ul>
+          <li><a href="https://wfme.org/standards/" target="_blank" rel="noreferrer">WFME · Global standards for medical education</a></li>
+          <li><a href="https://www.medicalboard.gov.au/Registration/Types/Provisional-Registration/Provisional-to-General.aspx" target="_blank" rel="noreferrer">Medical Board of Australia · Provisional to general registration</a></li>
+          <li><a href="https://foundationprogramme.nhs.uk/" target="_blank" rel="noreferrer">UK Foundation Programme · Two-year work-based training</a></li>
+          <li><a href="https://www.bundesgesundheitsministerium.de/themen/gesundheitswesen/gesundheitsberufe/aerzte/seite" target="_blank" rel="noreferrer">German Federal Ministry of Health · Medical study and state examinations</a></li>
+          <li><a href="https://www.nmc.org.in/information-desk/for-colleges/ug-curriculum/" target="_blank" rel="noreferrer">National Medical Commission, India · Competency-based undergraduate curriculum</a></li>
+          <li><a href="https://www.mhlw.go.jp/kouseiroudoushou/shikaku_shiken/ishi/" target="_blank" rel="noreferrer">Japan MHLW · National medical examination</a></li>
+          <li><a href="https://mcc.ca/credentials-and-services/pathways-to-licensure/" target="_blank" rel="noreferrer">Medical Council of Canada · Pathways to licensure</a></li>
+          <li><a href="https://www.wma.net/policies-post/wma-declaration-of-geneva/" target="_blank" rel="noreferrer">World Medical Association · Declaration of Geneva</a></li>
+          <li><a href="https://www.wma.net/policies-post/wma-declaration-of-helsinki/" target="_blank" rel="noreferrer">World Medical Association · Declaration of Helsinki</a></li>
+          <li><a href="https://www.who.int/teams/integrated-health-services/patient-safety" target="_blank" rel="noreferrer">World Health Organization · Patient safety</a></li>
+        </ul>
+        <div class="image-credits"><p><strong>Image records:</strong> Medieval hospital miniature via Historias del Bajo Aragón; anatomical plate via Italy’s Ministry of Culture portal; modern anatomy class via Masaryk University. Images are linked to their source hosts.</p></div>
+      </div>
     </section>
   </main>
 
-  <footer><div><strong>Jigyasa Verse</strong><p>Know the why before the ward. Keep the human after it.</p></div></div><div class="footer-links"><a href="#year-path">Years</a><a href="#exam-map">Exams</a><a href="#library">Library</a><a href="contact.html">Suggest a resource</a></div><a href="#top">Back to the beginning ↑</a></footer>
+  <footer>
+    <div><strong>Jigyasa Verse</strong><p>Learning Lok · Medical Exploration Path</p></div>
+    <p lang="hi">चिकित्सा की राहें, मानवता की शपथ</p>
+    <a href="#top">Return to admissions ↑</a>
+  </footer>
 
-  <dialog class="resource-dialog" id="resourceDialog" aria-labelledby="dialogTitle"><button class="dialog-close" id="dialogClose" type="button" aria-label="Close resource">×</button><div id="dialogContent"></div></dialog>
+  <dialog class="pledge-dialog" id="pledgeDialog" aria-labelledby="pledgeTitle">
+    <button class="dialog-close" id="closePledge" type="button" aria-label="Close pledge">×</button>
+    <p class="folio">A PLEDGE FOR THE CURIOUS HEALER</p>
+    <h2 id="pledgeTitle">ज्ञान से पहले, इंसान।</h2>
+    <p class="translation">Before the knowledge, the human.</p>
+    <div class="pledge-lines">
+      <p>I will not confuse confidence with competence.</p>
+      <p>I will listen before I label.</p>
+      <p>I will respect the person whose body teaches me.</p>
+      <p>I will ask for help before uncertainty becomes harm.</p>
+      <p>I will keep learning because medicine keeps changing.</p>
+    </div>
+    <button class="gold-button" id="acceptPledge" type="button">Carry this into the ward</button>
+  </dialog>
 </body>
 </html>
