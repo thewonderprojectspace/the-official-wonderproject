@@ -1,26 +1,80 @@
 const activities = [
-  {
-    era: "Ancient observations",
-    period: "Long before printed lessons",
-    title: "The Rope Geometer",
-    subject: "Mathematics",
-    origin: "Surveying traditions · several ancient cultures",
-    ages: ["8-10", "10-12"],
-    time: 45,
-    place: "outside",
-    summary: "Use a knotted rope to create triangles, rectangles and reliable right angles.",
-    then: "Builders measured land and structures.",
-    now: "Explore perimeter, angles and accuracy.",
-    materials: "A long rope, chalk and an open space",
-    quest: [
-      "Tie equal gaps along a rope.",
-      "Make three-sided and four-sided shapes.",
-      "Test which knot arrangements create a right angle.",
-      "Explain why your method could help a builder."
-    ],
-    evidence: "A labelled ground diagram and a spoken explanation.",
-    respect: "Present this as a cross-cultural measurement idea rather than assigning one invention to a single civilisation."
-  },
+ {
+  era: "Ancient observations",
+  period: "Long before rulers, protractors and printed lessons",
+  title: "The Rope Geometer",
+  subject: "Mathematics",
+  origin: "Ancient surveying traditions · Egypt and other cultures",
+  ages: ["8-10", "10-12"],
+  time: 45,
+  place: "outside",
+
+  image: "images/rope-geometer-ancient.png",
+
+  imageAlt:
+    "Three ancient Egyptian surveyors stretching a knotted rope into a right-angled triangle with sides measuring 3, 4 and 5 equal sections.",
+
+  summary:
+    "Can a piece of rope create a perfectly square corner? Work as a team to build and test triangles with equally spaced knots, then uncover the special pattern hidden inside 3, 4 and 5.",
+
+  introduction:
+    "Long before rulers and protractors existed, surveyors used ropes, careful observation and shared knowledge to measure land and plan buildings. In this investigation, you will become a rope geometer. Stretch a knotted rope, test different arrangements and discover which triangle creates a reliable right angle.",
+
+  then:
+    "Ancient surveyors stretched measuring ropes to mark land and prepare building sites accurately.",
+
+  now:
+    "Explore equal lengths, triangles, perimeter, right angles and the importance of checking a result.",
+
+  materials:
+    "One long rope or thick string, 12 pegs or removable markers, chalk, a right-angle checker such as the corner of a book, and a safe open space",
+
+  quest: [
+    "Mark the rope into 12 equal sections. Use chalk, tape or loosely tied knots so that every section has the same length.",
+
+    "Join the two ends to create one continuous loop.",
+
+    "Ask three people to hold the rope while the group stretches it gently. Keep every marked section visible.",
+
+    "Arrange the rope into a triangle with 3 sections on one side, 4 sections on the next side and 5 sections on the longest side.",
+
+    "Pull the rope taut without moving the section markers.",
+
+    "Look closely at the corner where the 3-section side and the 4-section side meet.",
+
+    "Use the corner of a book or a piece of card to check the angle. Does it form a square corner?",
+
+    "Draw and label your triangle. Mark the sides as 3, 4 and 5.",
+
+    "Try another arrangement, such as 2-5-5 or 3-3-6. Does it make a triangle? Does it create the same square corner?",
+
+    "Imagine that you are planning the corner of a garden or building. Explain why the 3-4-5 arrangement could be useful."
+  ],
+
+  mathsMoment:
+    "The 3-4-5 triangle is special because 3² + 4² = 5². This means 9 + 16 = 25. Therefore, the angle between the sides measuring 3 and 4 units is a right angle.",
+
+  evidence:
+    "Create a labelled ground drawing showing the 3-, 4- and 5-section sides. Record the results of your comparison triangles and give a short spoken or written explanation of why the method works.",
+
+  historyNote:
+    "Ancient Egyptian surveyors used stretched ropes to measure land and prepare building sites. Later Greek writers called these surveyors harpedonaptai, meaning ‘rope-stretchers’. A popular story suggests that they used a rope divided into 12 sections to create a 3-4-5 right triangle. However, no surviving ancient Egyptian text clearly confirms this exact method. This activity is therefore inspired by ancient surveying traditions rather than presented as a completely proven historical event.",
+
+  reflection: [
+    "Why must all 12 sections of the rope be equal?",
+
+    "Which two sides meet to create the right angle?",
+
+    "What happened when you changed the three side lengths?",
+
+    "How could a builder check that a corner is square without using a protractor?",
+
+    "What is the difference between historical evidence and a story inspired by history?"
+  ],
+
+  respect:
+    "Mathematical ideas about measurement and right angles developed across several ancient cultures. Avoid claiming that one group definitely invented the method when the surviving evidence cannot prove it."
+},
   {
     era: "Ancient observations",
     period: "Long before printed lessons",
