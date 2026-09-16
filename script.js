@@ -1,14 +1,99 @@
-const canvas = document.querySelector('.living-sky');
-const ctx = canvas.getContext('2d');
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let frame = 0, width = 0, height = 0, pointer = { x: -999, y: -999 };
-const stars = Array.from({ length: 110 }, (_, i) => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.25 + .25, drift: (Math.random() - .5) * .00008, pulse: Math.random() * Math.PI * 2, gold: i % 13 === 0 }));
-function resizeSky(){ const dpr = Math.min(devicePixelRatio || 1, 2); width = innerWidth; height = innerHeight; canvas.width = width * dpr; canvas.height = height * dpr; canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-function drawSky(time = 0){ ctx.clearRect(0, 0, width, height); stars.forEach(star => { if(!reduceMotion) star.x = (star.x + star.drift + 1) % 1; const x = star.x * width, y = star.y * height, distance = Math.hypot(pointer.x - x, pointer.y - y), glow = distance < 120 ? 1 - distance / 120 : 0, alpha = .28 + (Math.sin(time * .0015 + star.pulse) + 1) * .18 + glow * .55; ctx.beginPath(); ctx.arc(x, y, star.r + glow * 1.5, 0, Math.PI * 2); ctx.fillStyle = star.gold ? `rgba(255,215,74,${alpha})` : `rgba(238,244,255,${alpha})`; ctx.fill(); }); if(!reduceMotion) frame = requestAnimationFrame(drawSky); }
-resizeSky(); drawSky(); addEventListener('resize', resizeSky); addEventListener('pointermove', e => pointer = { x: e.clientX, y: e.clientY }, { passive:true });
-const menuButton = document.querySelector('#menuButton'); const siteMenu = document.querySelector('#siteMenu');
-function closeMenu(){ siteMenu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); menuButton.querySelector('span').textContent='MENU'; }
-menuButton.addEventListener('click', () => { const open = siteMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(open)); menuButton.querySelector('span').textContent = open ? 'CLOSE' : 'MENU'; }); siteMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('is-visible'); reveal.unobserve(entry.target); } }), { threshold:.12 }); document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
-document.querySelector('.brand-orbit img')?.addEventListener('error', e => e.currentTarget.remove());
+(() => {
+  const canvas = document.querySelector('#livingSky');
+  const ctx = canvas?.getContext('2d');
+  const header = document.querySelector('#siteHeader');
+  const menuButton = document.querySelector('#menuButton');
+  const menu = document.querySelector('#siteMenu');
+  const planetStage = document.querySelector('#planetStage');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let stars = [];
+  let frame = 0;
 
+  document.querySelectorAll('.js-brand-logo').forEach(logo => {
+    const showFallback = () => logo.classList.add('logo-missing');
+    logo.addEventListener('error', showFallback, { once: true });
+    if (logo.complete && logo.naturalWidth === 0) showFallback();
+  });
+
+  function resizeSky() {
+    if (!canvas || !ctx) return;
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(innerWidth * ratio);
+    canvas.height = Math.floor(innerHeight * ratio);
+    canvas.style.width = `${innerWidth}px`;
+    canvas.style.height = `${innerHeight}px`;
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    const count = Math.max(80, Math.floor((innerWidth * innerHeight) / 9500));
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 1.25 + .15,
+      a: Math.random() * .55 + .12,
+      speed: Math.random() * .008 + .002,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
+
+  function drawSky(time = 0) {
+    if (!canvas || !ctx) return;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    const wash = ctx.createRadialGradient(innerWidth * .76, innerHeight * .48, 0, innerWidth * .76, innerHeight * .48, innerWidth * .7);
+    wash.addColorStop(0, 'rgba(44, 28, 66, .16)');
+    wash.addColorStop(.5, 'rgba(10, 8, 18, .08)');
+    wash.addColorStop(1, 'rgba(3, 3, 7, 1)');
+    ctx.fillStyle = wash;
+    ctx.fillRect(0, 0, innerWidth, innerHeight);
+    stars.forEach(star => {
+      const pulse = reduceMotion ? 1 : .68 + Math.sin(time * star.speed + star.phase) * .32;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(235, 229, 222, ${star.a * pulse})`;
+      ctx.fill();
+    });
+    if (!reduceMotion) frame = requestAnimationFrame(drawSky);
+  }
+
+  function toggleMenu(force) {
+    if (!menuButton || !menu) return;
+    const open = typeof force === 'boolean' ? force : menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', String(open));
+    menu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  menuButton?.addEventListener('click', () => toggleMenu());
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+  window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') toggleMenu(false);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', scrollY > 30);
+  }, { passive: true });
+
+  if (!reduceMotion && planetStage) {
+    window.addEventListener('pointermove', event => {
+      const x = (event.clientX / innerWidth - .5) * 12;
+      const y = (event.clientY / innerHeight - .5) * 10;
+      planetStage.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }, { passive: true });
+  }
+
+  resizeSky();
+  drawSky();
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(frame);
+    resizeSky();
+    drawSky();
+  }, { passive: true });
+})();
