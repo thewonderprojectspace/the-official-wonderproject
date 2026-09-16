@@ -1,122 +1,95 @@
-/* Wonder Verse shared interactions */
+(() => {
+  document.documentElement.classList.add('js-ready');
 
-document.addEventListener("DOMContentLoaded", () => {
-    /*
-     * PRIVATE REFLECTION SAVING
-     * Saves entries only in the visitor's browser.
-     */
-    document.querySelectorAll("[data-storage]").forEach((form) => {
-        const storageKey = form.dataset.storage;
-        const textArea = form.querySelector("textarea");
-        const status = form.querySelector(".status");
+  const canvas = document.querySelector('#cosmicSky');
+  const context = canvas?.getContext('2d');
+  const header = document.querySelector('.site-header');
+  const progress = document.querySelector('#scrollProgress');
+  const menuToggle = document.querySelector('#menu-toggle');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const dockLinks = [...document.querySelectorAll('.journey-dock a')];
+  const sections = [...document.querySelectorAll('main section[id]')];
+  let stars = [];
+  let animationFrame = 0;
 
-        if (!storageKey || !textArea) return;
+  function sizeSky() {
+    if (!canvas || !context) return;
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(innerWidth * ratio);
+    canvas.height = Math.floor(innerHeight * ratio);
+    canvas.style.width = `${innerWidth}px`;
+    canvas.style.height = `${innerHeight}px`;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-        try {
-            textArea.value = localStorage.getItem(storageKey) || "";
-        } catch (error) {
-            if (status) {
-                status.textContent =
-                    "Private saving is unavailable in this browser.";
-            }
-        }
+    const total = Math.max(90, Math.floor((innerWidth * innerHeight) / 8500));
+    stars = Array.from({ length: total }, () => ({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      radius: Math.random() * 1.25 + .15,
+      alpha: Math.random() * .58 + .12,
+      speed: Math.random() * .006 + .002,
+      phase: Math.random() * Math.PI * 2
+    }));
+  }
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
+  function paintSky(time = 0) {
+    if (!canvas || !context) return;
+    context.clearRect(0, 0, innerWidth, innerHeight);
 
-            try {
-                localStorage.setItem(storageKey, textArea.value);
+    const glow = context.createRadialGradient(innerWidth * .72, innerHeight * .45, 0, innerWidth * .72, innerHeight * .45, innerWidth * .75);
+    glow.addColorStop(0, 'rgba(74, 39, 126, .18)');
+    glow.addColorStop(.45, 'rgba(20, 10, 42, .1)');
+    glow.addColorStop(1, 'rgba(4, 2, 10, 1)');
+    context.fillStyle = glow;
+    context.fillRect(0, 0, innerWidth, innerHeight);
 
-                if (status) {
-                    status.textContent =
-                        "Saved privately on this device";
-
-                    window.setTimeout(() => {
-                        status.textContent =
-                            "Only you can see this entry";
-                    }, 1800);
-                }
-            } catch (error) {
-                if (status) {
-                    status.textContent =
-                        "This entry could not be saved.";
-                }
-            }
-        });
+    stars.forEach(star => {
+      const pulse = reduceMotion ? 1 : .72 + Math.sin(time * star.speed + star.phase) * .28;
+      context.beginPath();
+      context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      context.fillStyle = `rgba(239, 231, 255, ${star.alpha * pulse})`;
+      context.fill();
     });
 
-    /*
-     * SCHOOL PAGE TABS
-     * Switches between Students, Educators and School Teams.
-     */
-    const tabButtons = document.querySelectorAll("[data-tab]");
-    const tabPanels = document.querySelectorAll(".tab-panel");
+    if (!reduceMotion) animationFrame = requestAnimationFrame(paintSky);
+  }
 
-    tabButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const panelId = button.dataset.tab;
-            const selectedPanel = panelId
-                ? document.getElementById(panelId)
-                : null;
+  function updateScrollState() {
+    const scrollable = document.documentElement.scrollHeight - innerHeight;
+    const amount = scrollable > 0 ? Math.min(scrollY / scrollable, 1) : 0;
+    if (progress) progress.style.width = `${amount * 100}%`;
+    header?.classList.toggle('scrolled', scrollY > 28);
 
-            if (!selectedPanel) return;
-
-            tabButtons.forEach((item) => {
-                item.classList.remove("active");
-                item.setAttribute("aria-selected", "false");
-            });
-
-            tabPanels.forEach((panel) => {
-                panel.classList.remove("active");
-                panel.hidden = true;
-            });
-
-            button.classList.add("active");
-            button.setAttribute("aria-selected", "true");
-
-            selectedPanel.classList.add("active");
-            selectedPanel.hidden = false;
-        });
+    let current = 'top';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top <= innerHeight * .42) current = section.id;
     });
+    dockLinks.forEach(link => link.classList.toggle('active', link.dataset.section === current));
+  }
 
-    /*
-     * Keeps the tab marked "active" visible when the page opens.
-     */
-    tabPanels.forEach((panel) => {
-        panel.hidden = !panel.classList.contains("active");
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  }, { threshold: .1 });
 
-    /*
-     * MOBILE NAVIGATION
-     */
-    const menuButton = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
+  document.querySelectorAll('main section:not(.hero)').forEach(section => revealObserver.observe(section));
+  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => {
+    if (menuToggle) menuToggle.checked = false;
+  }));
 
-    if (menuButton && mobileMenu) {
-        function closeMenu() {
-            mobileMenu.classList.remove("open");
-            menuButton.classList.remove("open");
-            menuButton.setAttribute("aria-expanded", "false");
-        }
+  window.addEventListener('scroll', updateScrollState, { passive: true });
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(animationFrame);
+    sizeSky();
+    paintSky();
+    updateScrollState();
+  }, { passive: true });
 
-        menuButton.addEventListener("click", () => {
-            const isOpen = mobileMenu.classList.toggle("open");
-
-            menuButton.classList.toggle("open", isOpen);
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-        });
-
-        mobileMenu.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", closeMenu);
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeMenu();
-            }
-        });
-    }
-});
+  sizeSky();
+  paintSky();
+  updateScrollState();
+})();
