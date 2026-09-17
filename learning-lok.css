@@ -1297,4 +1297,76 @@ footer > p {
   .down span { animation: none; }
   * { transition: none !important; }
 }
+/* =========================================
+   JIGYASA VERSE HEADER LOGO
+========================================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  filter:
+    drop-shadow(0 0 8px rgba(240, 204, 105, 0.35))
+    drop-shadow(0 5px 10px rgba(0, 0, 0, 0.25));
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(-5deg) scale(1.06);
+
+  filter:
+    drop-shadow(0 0 13px rgba(240, 204, 105, 0.55))
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-text strong {
+  color: #fff4d8;
+  font-family: "Eczar", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.brand-text small {
+  margin-top: 5px;
+  color: #f0cc69;
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand-text strong {
+    font-size: 0.92rem;
+  }
+
+  .brand-text small {
+    display: none;
+  }
+}
 
