@@ -1369,4 +1369,17 @@ footer > p {
     display: none;
   }
 }
+/* Force the header logo to stay small */
+.topbar .brand > img.brand-logo,
+.site-header .brand > img.brand-logo {
+  display: block !important;
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  max-width: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  object-fit: contain !important;
+  flex: 0 0 52px !important;
+}
 
