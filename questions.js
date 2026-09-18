@@ -1,723 +1,224 @@
 (() => {
-
   "use strict";
 
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const answerKey = "jigyasa-andar-ka-kyun";
+  const audienceKey = "jigyasa-audience-answer";
+  const originKey = "jigyasa-origin-answer";
+  const finalKey = "jigyasa-honest-purpose";
 
-  /* ========================================
-     STORAGE
-  ========================================= */
-
-  const STORAGE_KEY =
-    "jigyasa-questionarium-v2";
-
-
-  const loadData = () => {
-
-    try {
-
-      return JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-      ) || {
-        voices: [],
-        audience: "",
-        answers: [],
-        finalWant: "",
-        finalWhy: ""
-      };
-
-    } catch {
-
-      return {
-        voices: [],
-        audience: "",
-        answers: [],
-        finalWant: "",
-        finalWhy: ""
-      };
-
-    }
-
+  const safeGet = key => { try { return localStorage.getItem(key); } catch { return null; } };
+  const safeSet = (key, value) => { try { localStorage.setItem(key, value); } catch { /* storage can be blocked */ } };
+  const readObject = (key, fallback = {}) => {
+    try { return JSON.parse(safeGet(key)) || fallback; } catch { return fallback; }
   };
 
-
-  const saveData = () => {
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(data)
-    );
-
-  };
-
-
-  let data = loadData();
-
-
-
-  /* ========================================
-     NAV
-  ========================================= */
-
-  const menuButton =
-    document.getElementById("menuButton");
-
-  const navLinks =
-    document.getElementById("navLinks");
-
-
+  const menuButton = $("#menuButton");
+  const navLinks = $("#navLinks");
   if (menuButton && navLinks) {
-
-    menuButton.addEventListener(
-      "click",
-      () => {
-
-        const open =
-          navLinks.classList.toggle("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          String(open)
-        );
-
-      }
-    );
-
+    menuButton.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    });
+    $$("a", navLinks).forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }));
   }
 
-
-
-  /* ========================================
-     REVEALS
-  ========================================= */
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target
-              .classList
-              .add("visible");
-
-            observer
-              .unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: .12
-      }
-    );
-
-
-  document
-    .querySelectorAll(".reveal")
-    .forEach(item => {
-
-      observer.observe(item);
-
-    });
-
-
-
-  /* ========================================
-     VOICES
-  ========================================= */
-
-  const voiceButtons =
-    document.querySelectorAll(
-      "#voiceCloud button"
-    );
-
-  const voiceResult =
-    document.getElementById(
-      "voiceResult"
-    );
-
-
-  const updateVoices = () => {
-
-    voiceButtons.forEach(button => {
-
-      const selected =
-        data.voices.includes(
-          button.dataset.voice
-        );
-
-      button.classList.toggle(
-        "active",
-        selected
-      );
-
-    });
-
-
-    if (data.voices.length) {
-
-      voiceResult.innerHTML = `
-        <small>VOICES YOU NOTICED</small>
-
-        <p>
-          ${data.voices.join(" · ")}
-        </p>
-      `;
-
-    }
-
-  };
-
-
-  voiceButtons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        const voice =
-          button.dataset.voice;
-
-
-        if (
-          data.voices.includes(voice)
-        ) {
-
-          data.voices =
-            data.voices.filter(
-              item => item !== voice
-            );
-
-        } else {
-
-          data.voices.push(voice);
-
+  const reveals = $$(".reveal");
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach(el => el.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
-
-
-        saveData();
-
-        updateVoices();
-
-      }
-    );
-
-  });
-
-
-
-  /* ========================================
-     AUDIENCE ANSWER
-  ========================================= */
-
-  const audienceAnswer =
-    document.getElementById(
-      "audienceAnswer"
-    );
-
-
-  if (audienceAnswer) {
-
-    audienceAnswer.value =
-      data.audience || "";
-
-
-    audienceAnswer.addEventListener(
-      "input",
-      () => {
-
-        data.audience =
-          audienceAnswer.value;
-
-        saveData();
-
-      }
-    );
-
+      });
+    }, { threshold: .12 });
+    reveals.forEach(el => observer.observe(el));
   }
 
-
-
-  /* ========================================
-     MOTIVE CARDS
-  ========================================= */
-
-  const motiveCards =
-    document.querySelectorAll(
-      ".motive-card"
-    );
-
-  const motiveResponse =
-    document.getElementById(
-      "motiveResponse"
-    );
-
-
-  motiveCards.forEach(card => {
-
-    card.addEventListener(
-      "click",
-      () => {
-
-        motiveCards.forEach(
-          other => {
-
-            other
-              .classList
-              .remove("active");
-
-          }
-        );
-
-
-        card
-          .classList
-          .add("active");
-
-
-        motiveResponse.textContent =
-          card.dataset.message;
-
+  const voiceResult = $("#voiceResult p");
+  const selectedVoices = new Set();
+  $$("#voiceCloud button").forEach(button => {
+    button.addEventListener("click", () => {
+      const voice = button.dataset.voice;
+      button.classList.toggle("is-selected");
+      button.classList.contains("is-selected") ? selectedVoices.add(voice) : selectedVoices.delete(voice);
+      if (!voiceResult) return;
+      if (!selectedVoices.size) {
+        voiceResult.textContent = "The goal is not to silence everyone. It is to notice who has been speaking for you.";
+      } else if (selectedVoices.size === 1 && selectedVoices.has("Myself")) {
+        voiceResult.textContent = "Good. Now stay curious: is this your quiet voice—or the version of you that learned what would be rewarded?";
+      } else {
+        voiceResult.textContent = `Right now you can hear: ${[...selectedVoices].join(", ")}. You do not have to obey every voice you can hear.`;
       }
-    );
-
+    });
   });
 
+  function bindAutosave(selector, key) {
+    const field = $(selector);
+    if (!field) return;
+    field.value = safeGet(key) || "";
+    let timer;
+    field.addEventListener("input", () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => safeSet(key, field.value.trim()), 350);
+    });
+  }
+  bindAutosave("#audienceAnswer", audienceKey);
+  bindAutosave("#originAnswer", originKey);
 
+  const motiveResponse = $("#motiveResponse");
+  $$(".motive-card").forEach(card => {
+    card.addEventListener("click", () => {
+      $$(".motive-card").forEach(item => item.classList.remove("is-active"));
+      card.classList.add("is-active");
+      if (motiveResponse) motiveResponse.textContent = card.dataset.message || "Stay with the uncomfortable answer for a moment.";
+    });
+  });
 
-  /* ========================================
-     QUESTIONS
-  ========================================= */
+  const stateCycle = ["questioning", "keep", "release"];
+  const stateLabels = { questioning: "?", keep: "KEEP", release: "RELEASE" };
+  $$("#choiceBoard button").forEach(button => {
+    button.addEventListener("click", () => {
+      const current = button.dataset.state || "questioning";
+      const next = stateCycle[(stateCycle.indexOf(current) + 1) % stateCycle.length];
+      button.dataset.state = next;
+      const label = $("strong", button);
+      if (label) label.textContent = stateLabels[next];
+    });
+  });
 
   const questions = [
-
     "If nobody could ever know you achieved it, would you still want it?",
-
-    "Do you want the life itself—or the reaction you imagine people having to it?",
-
-    "Who are you hoping will finally be impressed?",
-
-    "Who are you secretly trying to prove wrong?",
-
-    "If everyone you compare yourself with disappeared tomorrow, what would you choose?",
-
-    "What would you pursue even if you were average at it for a very long time?",
-
-    "Which dream did you inherit rather than choose?",
-
-    "What are you afraid people would think if you changed direction?",
-
-    "What are you maintaining because abandoning it would embarrass your past self?",
-
-    "What part of your ambition comes from curiosity—and what part comes from insecurity?",
-
-    "Which achievement do you imagine will finally make you feel like enough?",
-
-    "If success brought no status at all, what kind of work would still interest you?",
-
-    "What do you envy in other people—and what desire might that envy be revealing?",
-
-    "What are you pretending not to know about your current life?",
-
-    "What decision keeps returning when everything becomes quiet?",
-
-    "If you trusted yourself completely for one day, what would you do differently?",
-
-    "What would remain important if you stopped trying to look successful?",
-
-    "What are you doing because you love it—and what are you doing because you love being seen doing it?",
-
-    "What would your younger self recognise immediately as genuinely yours?",
-
-    "If your life stayed exactly like this for five years, what would you regret not questioning today?"
-
+    "Did this purpose begin as curiosity, care, fear, regret—or a need to prove something?",
+    "Are you building a life you want, or a life that photographs well?",
+    "What did you once need that you now want to create for someone else?",
+    "Which mistake taught you something worth passing forward?",
+    "If you could no longer become the person you admire, what part of this path would you still choose?",
+    "What habit, lifestyle or relationship repeatedly pulls you away from yourself?",
+    "Does this goal ask you to grow—or ask you to keep punishing an older version of yourself?",
+    "What would you practise even if you were never called naturally talented?",
+    "Who becomes safer, freer or less alone if you keep going?",
+    "What are you willing to do when inspiration disappears and only the ordinary work remains?",
+    "If this path changes shape, what deeper purpose would you refuse to lose?"
   ];
 
-
   let currentQuestion = 0;
-
-
-  const questionNumber =
-    document.getElementById(
-      "questionNumber"
-    );
-
-  const questionText =
-    document.getElementById(
-      "questionText"
-    );
-
-  const answerText =
-    document.getElementById(
-      "answerText"
-    );
-
-  const saveStatus =
-    document.getElementById(
-      "saveStatus"
-    );
-
-
-  const renderQuestion = () => {
-
-    questionNumber.textContent =
-      `QUESTION ${String(
-        currentQuestion + 1
-      ).padStart(2,"0")}`;
-
-
-    questionText.textContent =
-      questions[currentQuestion];
-
-
-    const saved =
-      data.answers.find(
-        item =>
-          item.question ===
-          questions[currentQuestion]
-      );
-
-
-    answerText.value =
-      saved
-        ? saved.answer
-        : "";
-
-
-    saveStatus.textContent = "";
-
-  };
-
-
-
-  document
-    .getElementById("nextQuestion")
-    .addEventListener(
-      "click",
-      () => {
-
-        currentQuestion =
-          (
-            currentQuestion + 1
-          )
-          %
-          questions.length;
-
-        renderQuestion();
-
-      }
-    );
-
-
-
-  document
-    .getElementById("previousQuestion")
-    .addEventListener(
-      "click",
-      () => {
-
-        currentQuestion =
-          (
-            currentQuestion -
-            1 +
-            questions.length
-          )
-          %
-          questions.length;
-
-        renderQuestion();
-
-      }
-    );
-
-
-
-  document
-    .getElementById("saveAnswer")
-    .addEventListener(
-      "click",
-      () => {
-
-        const answer =
-          answerText.value.trim();
-
-
-        if (!answer) {
-
-          saveStatus.textContent =
-            "Write something true first.";
-
-          return;
-
-        }
-
-
-        const question =
-          questions[currentQuestion];
-
-
-        const existing =
-          data.answers.find(
-            item =>
-              item.question ===
-              question
-          );
-
-
-        if (existing) {
-
-          existing.answer =
-            answer;
-
-        } else {
-
-          data.answers.push({
-            question,
-            answer,
-            date:
-              new Date()
-                .toLocaleDateString()
-          });
-
-        }
-
-
-        saveData();
-
-        renderSaved();
-
-
-        saveStatus.textContent =
-          "Kept.";
-
-      }
-    );
-
-
-
-  /* ========================================
-     MIRROR QUESTIONS
-  ========================================= */
-
-  document
-    .querySelectorAll(
-      ".mirror-prompt"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const selected =
-            button.dataset.question;
-
-
-          const index =
-            questions.findIndex(
-              question =>
-                question === selected
-            );
-
-
-          if (index >= 0) {
-
-            currentQuestion =
-              index;
-
-          } else {
-
-            questions.unshift(
-              selected
-            );
-
-            currentQuestion = 0;
-
-          }
-
-
-          renderQuestion();
-
-
-          document
-            .getElementById(
-              "questionChamber"
-            )
-            .scrollIntoView({
-              behavior: "smooth"
-            });
-
-        }
-      );
-
-    });
-
-
-
-  /* ========================================
-     FINAL ANSWER
-  ========================================= */
-
-  const finalForm =
-    document.getElementById(
-      "finalForm"
-    );
-
-  const finalAnswer =
-    document.getElementById(
-      "finalAnswer"
-    );
-
-  const whyAnswer =
-    document.getElementById(
-      "whyAnswer"
-    );
-
-  const finalResult =
-    document.getElementById(
-      "finalResult"
-    );
-
-
-  finalAnswer.value =
-    data.finalWant || "";
-
-  whyAnswer.value =
-    data.finalWhy || "";
-
-
-  finalForm.addEventListener(
-    "submit",
-    event => {
-
-      event.preventDefault();
-
-
-      data.finalWant =
-        finalAnswer
-          .value
-          .trim();
-
-      data.finalWhy =
-        whyAnswer
-          .value
-          .trim();
-
-
-      saveData();
-
-
-      finalResult.innerHTML = `
-        You said you still want
-        <strong>${escapeHTML(
-          data.finalWant
-        )}</strong>
-        because
-        <strong>${escapeHTML(
-          data.finalWhy
-        )}</strong>.
-        <br><br>
-        Keep checking whether that remains true.
-      `;
-
-    }
-  );
-
-
-
-  /* ========================================
-     SAVED
-  ========================================= */
-
-  const savedList =
-    document.getElementById(
-      "savedList"
-    );
-
-
-  function escapeHTML(value) {
-
-    const div =
-      document.createElement("div");
-
-    div.textContent = value;
-
-    return div.innerHTML;
-
+  const questionNumber = $("#questionNumber");
+  const questionText = $("#questionText");
+  const answerText = $("#answerText");
+  const saveStatus = $("#saveStatus");
+  let savedAnswers = readObject(answerKey);
+
+  function renderQuestion() {
+    if (!questionText || !answerText || !questionNumber) return;
+    questionNumber.textContent = `QUESTION ${String(currentQuestion + 1).padStart(2, "0")} / ${String(questions.length).padStart(2, "0")}`;
+    questionText.textContent = questions[currentQuestion];
+    answerText.value = savedAnswers[currentQuestion] || "";
+    if (saveStatus) saveStatus.textContent = savedAnswers[currentQuestion] ? "This answer is saved." : "";
   }
 
+  $("#previousQuestion")?.addEventListener("click", () => {
+    currentQuestion = (currentQuestion - 1 + questions.length) % questions.length;
+    renderQuestion();
+  });
+  $("#nextQuestion")?.addEventListener("click", () => {
+    currentQuestion = (currentQuestion + 1) % questions.length;
+    renderQuestion();
+  });
+  $("#saveAnswer")?.addEventListener("click", () => {
+    const answer = answerText?.value.trim();
+    if (!answer) {
+      if (saveStatus) saveStatus.textContent = "Write the unpolished answer first.";
+      return;
+    }
+    savedAnswers[currentQuestion] = answer;
+    safeSet(answerKey, JSON.stringify(savedAnswers));
+    if (saveStatus) saveStatus.textContent = "Kept. You can change your answer when you change.";
+    renderSaved();
+  });
+
+  $$(".mirror-prompt").forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const exactIndex = questions.findIndex(question => question === button.dataset.question);
+      currentQuestion = exactIndex >= 0 ? exactIndex : Math.min(index + 2, questions.length - 1);
+      if (questionText && button.dataset.question) questions[currentQuestion] = button.dataset.question;
+      renderQuestion();
+      $("#questionChamber")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  });
+
+  const finalForm = $("#finalForm");
+  const finalAnswer = $("#finalAnswer");
+  const whyAnswer = $("#whyAnswer");
+  const finalResult = $("#finalResult");
+
+  function renderFinal() {
+    const saved = readObject(finalKey, null);
+    if (!saved) return;
+    if (finalAnswer) finalAnswer.value = saved.want || "";
+    if (whyAnswer) whyAnswer.value = saved.why || "";
+    if (finalResult) finalResult.textContent = `“I still want ${saved.want}, because ${saved.why}.”`;
+  }
+
+  finalForm?.addEventListener("submit", event => {
+    event.preventDefault();
+    const want = finalAnswer.value.trim();
+    const why = whyAnswer.value.trim();
+    if (!want || !why) return;
+    safeSet(finalKey, JSON.stringify({ want, why }));
+    renderFinal();
+    renderSaved();
+  });
 
   function renderSaved() {
+    const savedList = $("#savedList");
+    if (!savedList) return;
+    const entries = Object.entries(savedAnswers).filter(([, value]) => String(value).trim());
+    const purpose = readObject(finalKey, null);
+    savedList.replaceChildren();
 
-    savedList.innerHTML = "";
-
-
-    if (!data.answers.length) {
-
-      savedList.innerHTML = `
-        <div class="saved-answer">
-          <small>NOTHING HERE YET</small>
-          <strong>
-            Some questions need silence before they need an answer.
-          </strong>
-        </div>
-      `;
-
+    if (!entries.length && !purpose) {
+      const empty = document.createElement("p");
+      empty.className = "empty-note";
+      empty.textContent = "Your honest answers will gather here.";
+      savedList.append(empty);
       return;
-
     }
 
+    entries.forEach(([index, answer]) => {
+      const article = document.createElement("article");
+      article.className = "saved-entry";
+      const label = document.createElement("small");
+      label.textContent = questions[Number(index)] || `QUESTION ${Number(index) + 1}`;
+      const text = document.createElement("p");
+      text.textContent = answer;
+      article.append(label, text);
+      savedList.append(article);
+    });
 
-    [...data.answers]
-      .reverse()
-      .forEach(item => {
-
-        const article =
-          document.createElement(
-            "article"
-          );
-
-
-        article.className =
-          "saved-answer";
-
-
-        article.innerHTML = `
-          <small>
-            ${escapeHTML(item.date)}
-          </small>
-
-          <strong>
-            ${escapeHTML(item.question)}
-          </strong>
-
-          <p>
-            ${escapeHTML(item.answer)}
-          </p>
-        `;
-
-
-        savedList
-          .appendChild(article);
-
-      });
-
+    if (purpose) {
+      const article = document.createElement("article");
+      article.className = "saved-entry";
+      const label = document.createElement("small");
+      label.textContent = "THE HONEST VERSION";
+      const text = document.createElement("p");
+      text.textContent = `I still want ${purpose.want}, because ${purpose.why}.`;
+      article.append(label, text);
+      savedList.append(article);
+    }
   }
 
-
-
-  /* ========================================
-     FIRST RENDER
-  ========================================= */
-
-  updateVoices();
-
   renderQuestion();
-
+  renderFinal();
   renderSaved();
-
 })();
+
