@@ -1,8 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,907 +10,280 @@
   </script>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Andar Ka Kyun — a private place to find the honest reason beneath what you want.">
+  <meta name="theme-color" content="#252349">
+  <title>Andar Ka Kyun | Jigyasa Verse</title>
 
-  <meta
-    name="description"
-    content="The Questionarium — a quiet place to question why you want what you want."
-  >
-
-  <meta name="theme-color" content="#9bb8c7">
-
-  <title>The Questionarium | Jigyasa Verse</title>
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="shortcut icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="apple-touch-icon" href="images/wonder-verse-moon-pencil-logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="questions.css">
   <script src="questions.js" defer></script>
-
 </head>
 
-
 <body>
-
-<!-- =========================================
-     NAV
-========================================= -->
-
-<header class="site-header">
-
-  <nav class="navbar">
-
-    <a
-      href="index.html"
-      class="wv-brand"
-      aria-label="Jigyasa Verse homepage"
-    >
-
-      <span class="wv-brand-image-wrap">
-
-        <img
-          src="images/wonder-verse-moon-pencil-logo.png"
-          alt=""
-          class="wv-brand-image"
-        >
-
-      </span>
-
-      <span class="wv-brand-copy">
-
-        <span class="wv-brand-name">
-          Jigyasa Verse
-        </span>
-
-        <span class="wv-brand-note">
-          Curiosity lives here
-        </span>
-
-      </span>
-
-    </a>
-
-
-    <button
-      class="menu-button"
-      id="menuButton"
-      type="button"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-    </button>
-
-
-    <div class="nav-links" id="navLinks">
-
-      <a href="index.html">Start here</a>
-      <a href="wonder.html">Wonder Lok</a>
-      <a href="books.html">Books</a>
-      <a href="schools.html">Schools</a>
-
-    </div>
-
-  </nav>
-
-</header>
-
-
-
-<main>
-
-
-<!-- =========================================
-     HERO
-========================================= -->
-
-<section class="hero">
-
-  <div class="hero-copy reveal">
-
-    <p class="world-label">
-      <span>WORLD 02</span>
-      THE QUESTIONARIUM
-    </p>
-
-
-    <h1>
-      You started.
-      <br>
-      Now ask
-      <em>why.</em>
-    </h1>
-
-
-    <p class="hero-question">
-      If nobody could see what you became—
-      <strong>would you still want it?</strong>
-    </p>
-
-
-    <a href="#voices" class="enter-button">
-      FIND OUT
-      <span>↓</span>
-    </a>
-
-  </div>
-
-
-
-  <!-- visual -->
-
-  <div class="hero-orbit reveal" aria-hidden="true">
-
-    <div class="orbit orbit-one"></div>
-    <div class="orbit orbit-two"></div>
-    <div class="orbit orbit-three"></div>
-
-    <span class="voice voice-one">
-      FAMILY
-    </span>
-
-    <span class="voice voice-two">
-      STATUS
-    </span>
-
-    <span class="voice voice-three">
-      FEAR
-    </span>
-
-    <span class="voice voice-four">
-      COMPARISON
-    </span>
-
-    <span class="voice voice-five">
-      APPLAUSE
-    </span>
-
-
-    <div class="inner-self">
-
-      <small>UNDER ALL THAT</small>
-
-      <strong>you.</strong>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     STRIP
-========================================= -->
-
-<section class="question-strip">
-
-  <span>REMOVE THE AUDIENCE</span>
-
-  <i>?</i>
-
-  <span>REMOVE THE COMPARISON</span>
-
-  <i>?</i>
-
-  <span>REMOVE THE PERFORMANCE</span>
-
-  <i>?</i>
-
-  <strong>WHAT REMAINS?</strong>
-
-</section>
-
-
-
-<!-- =========================================
-     WHOSE VOICE?
-========================================= -->
-
-<section
-  class="voices-section section"
-  id="voices"
->
-
-  <div class="section-intro reveal">
-
-    <p>01 / WHOSE VOICE?</p>
-
-    <h2>
-      Who taught you
-      <em>to want this?</em>
-    </h2>
-
-    <p>
-      Tap the voices that feel familiar.
-    </p>
-
-  </div>
-
-
-  <div class="voice-cloud reveal" id="voiceCloud">
-
-    <button data-voice="Myself">
-      Myself
-    </button>
-
-    <button data-voice="My parents">
-      My parents
-    </button>
-
-    <button data-voice="People online">
-      People online
-    </button>
-
-    <button data-voice="My friends">
-      My friends
-    </button>
-
-    <button data-voice="Someone I want to impress">
-      Someone I want to impress
-    </button>
-
-    <button data-voice="Someone I want to prove wrong">
-      Someone I want to prove wrong
-    </button>
-
-    <button data-voice="Fear of being ordinary">
-      Fear of being ordinary
-    </button>
-
-    <button data-voice="Money">
-      Money
-    </button>
-
-    <button data-voice="Status">
-      Status
-    </button>
-
-    <button data-voice="Curiosity">
-      Curiosity
-    </button>
-
-  </div>
-
-
-  <div
-    class="voice-result reveal"
-    id="voiceResult"
-  >
-
-    <small>
-      THERE MAY BE MORE THAN ONE VOICE.
-    </small>
-
-    <p>
-      The goal is not to silence everyone.
-      It is to notice who has been speaking for you.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     REMOVE THE AUDIENCE
-========================================= -->
-
-<section class="audience-section">
-
-  <div class="audience-visual reveal">
-
-    <div class="audience-row">
-
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
-
-    </div>
-
-
-    <div class="stage-person">
-      YOU
-    </div>
-
-  </div>
-
-
-  <div class="audience-copy reveal">
-
-    <p>02 / REMOVE THE AUDIENCE</p>
-
-    <h2>
-      Nobody
-      <br>
-      is watching.
-    </h2>
-
-    <p class="large-question">
-      What do you still want?
-    </p>
-
-
-    <textarea
-      id="audienceAnswer"
-      maxlength="500"
-      placeholder="The answer that doesn't need applause..."
-    ></textarea>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     MOTIVE CARDS
-========================================= -->
-
-<section class="motive-section section">
-
-  <div class="section-intro reveal">
-
-    <p>03 / LOOK CLOSER</p>
-
-    <h2>
-      Want it.
-      <br>
-      But know
-      <em>why.</em>
-    </h2>
-
-  </div>
-
-
-  <div class="motive-grid">
-
-
-    <button
-      class="motive-card reveal"
-      data-message="Wanting recognition is human. Just don't mistake being noticed for being fulfilled."
-    >
-
-      <small>MAYBE...</small>
-
-      <strong>
-        I want people
-        to admire me.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-
-
-    <button
-      class="motive-card reveal"
-      data-message="Winning against someone else can start the journey. It is rarely enough to sustain it."
-    >
-
-      <small>MAYBE...</small>
-
-      <strong>
-        I want to prove
-        someone wrong.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-
-
-    <button
-      class="motive-card reveal"
-      data-message="Sometimes envy is information. Ask what their life contains that yours is asking for."
-    >
-
-      <small>MAYBE...</small>
-
-      <strong>
-        I saw someone else
-        doing it.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-
-
-    <button
-      class="motive-card reveal"
-      data-message="Security matters. But money answers one question: what something pays. It cannot answer whether the life fits you."
-    >
-
-      <small>MAYBE...</small>
-
-      <strong>
-        I mainly want
-        the money.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-
-
-    <button
-      class="motive-card reveal"
-      data-message="A respected life can still feel strangely empty when respect was the destination."
-    >
-
-      <small>MAYBE...</small>
-
-      <strong>
-        I want the title.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-
-
-    <button
-      class="motive-card reveal"
-      data-message="Pay attention to the things you return to even when nobody rewards you for returning."
-    >
-
-      <small>OR MAYBE...</small>
-
-      <strong>
-        I actually love
-        the thing itself.
-      </strong>
-
-      <span>↗</span>
-
-    </button>
-
-  </div>
-
-
-  <div
-    class="motive-response"
-    id="motiveResponse"
-  >
-
-    Pick the one that makes you slightly uncomfortable.
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     MIRROR
-========================================= -->
-
-<section class="mirror-section">
-
-  <div class="mirror-wrap reveal">
-
-    <div class="mirror">
-
-      <span class="mirror-top">
-        NO AUDIENCE
-      </span>
-
-
-      <div class="mirror-question">
-
-        <small>
-          LOOK AT YOURSELF.
-        </small>
-
-        <h2>
-          Are you going
-          to tell the
-          <em>truth?</em>
-        </h2>
-
+  <div class="fog fog-one" aria-hidden="true"></div>
+  <div class="fog fog-two" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Jigyasa Verse homepage">
+        <span class="wv-brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image"></span>
+        <span class="wv-brand-copy"><span class="wv-brand-name">Jigyasa Verse</span><span class="wv-brand-note">Curiosity lives here</span></span>
+      </a>
+
+      <span class="world-stamp">DUNIYA 02 · ANDAR KA KYUN</span>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false"><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Start here</a>
+        <a href="wonderverse.html">Wonder Lok</a>
+        <a href="books.html">Books</a>
+        <a href="learning-lok.html">Learning Lok</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bridge" aria-label="Journey from the previous world">
+      <a href="spark.html">← MESSY BEGINNINGS</a>
+      <span>You made the first mark.</span>
+      <strong>Now ask what it is really for.</strong>
+    </section>
+
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="world-label"><span>WORLD 02</span> ANDAR KA KYUN</p>
+        <h1>
+          You started.
+          <span>Now sit with the</span>
+          <em>why?</em>
+        </h1>
+
+        <p class="hero-question">If nobody could see what you became—<strong>would you still want it?</strong></p>
+        <p class="hero-soft">Your reason does not need to impress anyone. But it does need to be honest enough to bring you back on the days when the work makes you question everything.</p>
+        <a href="#voices" class="enter-button">FOLLOW THE QUESTION <span>↓</span></a>
       </div>
 
-    </div>
-
-  </div>
-
-
-  <div class="mirror-copy reveal">
-
-    <p>04 / THE MIRROR</p>
-
-
-    <div class="mirror-prompts">
-
-      <button
-        class="mirror-prompt"
-        data-question="If nobody was disappointed in you, what would you change?"
-      >
-        What would you change if nobody was disappointed?
-      </button>
-
-
-      <button
-        class="mirror-prompt"
-        data-question="What part of your life looks impressive from outside but feels wrong from inside?"
-      >
-        What looks right but feels wrong?
-      </button>
-
-
-      <button
-        class="mirror-prompt"
-        data-question="Who are you still performing for?"
-      >
-        Who are you still performing for?
-      </button>
-
-
-      <button
-        class="mirror-prompt"
-        data-question="What truth would become obvious if you stopped defending your current choices?"
-      >
-        What are you still defending?
-      </button>
-
-
-      <button
-        class="mirror-prompt"
-        data-question="What do you already know but keep asking other people to confirm?"
-      >
-        What do you already know?
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     QUESTION CHAMBER
-========================================= -->
-
-<section
-  class="question-chamber section"
-  id="questionChamber"
->
-
-  <div class="chamber-label reveal">
-
-    <span>05</span>
-
-    ONE QUESTION.
-    NO PERFORMANCE.
-
-  </div>
-
-
-  <div class="question-card reveal">
-
-    <p id="questionNumber">
-      QUESTION 01
-    </p>
-
-
-    <h2 id="questionText">
-      If nobody could ever know you achieved it,
-      would you still want it?
-    </h2>
-
-
-    <textarea
-      id="answerText"
-      maxlength="900"
-      placeholder="Don't make it sound intelligent. Make it true."
-    ></textarea>
-
-
-    <div class="question-controls">
-
-      <button
-        type="button"
-        id="previousQuestion"
-      >
-        ←
-      </button>
-
-
-      <button
-        type="button"
-        id="saveAnswer"
-        class="save-answer"
-      >
-        KEEP THIS ANSWER
-      </button>
-
-
-      <button
-        type="button"
-        id="nextQuestion"
-      >
-        →
-      </button>
-
-    </div>
-
-
-    <p
-      class="save-status"
-      id="saveStatus"
-      aria-live="polite"
-    ></p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     HEART / NOISE
-========================================= -->
-
-<section class="signal-section">
-
-  <div class="noise-side reveal">
-
-    <small>THE NOISE</small>
-
-    <span>Should.</span>
-    <span>Must.</span>
-    <span>Impressive.</span>
-    <span>Successful.</span>
-    <span>Behind.</span>
-    <span>Better than them.</span>
-
-  </div>
-
-
-  <div class="signal-divider reveal">
-    →
-  </div>
-
-
-  <div class="signal-side reveal">
-
-    <small>THE SIGNAL</small>
-
-    <h2>
-      What keeps
-      whispering
-      <em>come back?</em>
-    </h2>
-
-
-    <p>
-      Pay attention to that.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     FINAL DECISION
-========================================= -->
-
-<section class="final-truth section">
-
-  <div class="final-inner reveal">
-
-    <p>
-      06 / WHAT REMAINS?
-    </p>
-
-
-    <h2>
-      Strip away
-      <br>
-      the audience.
-      <br>
-      Strip away
-      <br>
-      the ego.
-    </h2>
-
-
-    <h3>
-      What is still yours?
-    </h3>
-
-
-    <form id="finalForm">
-
-      <label for="finalAnswer">
-        The thing I still want is...
-      </label>
-
-
-      <input
-        id="finalAnswer"
-        maxlength="160"
-        placeholder="Say it plainly."
-        required
-      >
-
-
-      <label for="whyAnswer">
-        Because...
-      </label>
-
-
-      <input
-        id="whyAnswer"
-        maxlength="220"
-        placeholder="Not because it sounds good. Because it is true."
-        required
-      >
-
-
-      <button type="submit">
-
-        KEEP THE HONEST VERSION
-
-        <span>↗</span>
-
-      </button>
-
-    </form>
-
-
-    <div
-      id="finalResult"
-      class="final-result"
-      aria-live="polite"
-    ></div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================
-     SAVED TRUTHS
-========================================= -->
-
-<section class="saved-section section">
-
-  <div class="section-intro reveal">
-
-    <p>YOUR PRIVATE PAGE</p>
-
-    <h2>
-      Things you
-      <em>admitted.</em>
-    </h2>
-
-    <p>
-      Stored only in this browser.
-    </p>
-
-  </div>
-
-
-  <div
-    class="saved-list"
-    id="savedList"
-  ></div>
-
-</section>
-
-
-
-<!-- =========================================
-     EXIT
-========================================= -->
-
-<section class="exit-section">
-
-  <p>
-    YOU DON'T NEED ANOTHER QUESTION.
-  </p>
-
-  <h2>
-    You know.
-  </h2>
-
-  <a href="spark.html">
-    NOW GO DO SOMETHING WITH IT
-    <span>↗</span>
-  </a>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-  <a
-    href="index.html"
-    class="wv-brand footer-brand"
-  >
-
-    <span class="wv-brand-image-wrap">
-
-      <img
-        src="images/wonder-verse-moon-pencil-logo.png"
-        alt=""
-        class="wv-brand-image"
-      >
-
-    </span>
-
-    <span class="wv-brand-copy">
-
-      <span class="wv-brand-name">
-        Jigyasa Verse
-      </span>
-
-      <span class="wv-brand-note">
-        Curiosity lives here
-      </span>
-
-    </span>
-
-  </a>
-
-
-  <p>
-    Ask what is yours.
-    Release what isn't.
-  </p>
-
-
-  <div class="footer-links">
-
-    <a href="wonder.html">
-      Wonder Lok
+      <div class="hero-maze reveal" aria-hidden="true">
+        <div class="question-trail trail-one">why?</div>
+        <div class="question-trail trail-two">for whom?</div>
+        <div class="question-trail trail-three">still mine?</div>
+        <div class="maze-ring ring-one"></div>
+        <div class="maze-ring ring-two"></div>
+        <div class="maze-ring ring-three"></div>
+        <span class="voice voice-one">FAMILY</span>
+        <span class="voice voice-two">STATUS</span>
+        <span class="voice voice-three">FEAR</span>
+        <span class="voice voice-four">COMPARISON</span>
+        <span class="voice voice-five">APPLAUSE</span>
+        <div class="inner-self"><small>UNDER ALL THAT</small><strong>you.</strong><i>?</i></div>
+      </div>
+    </section>
+
+    <section class="question-strip" aria-label="Questions to remove outside pressure">
+      <div class="question-track">
+        <span>REMOVE THE AUDIENCE</span><i>?</i><span>REMOVE THE COMPARISON</span><i>?</i><span>REMOVE THE PERFORMANCE</span><i>?</i><strong>WHAT REMAINS?</strong><i>?</i>
+        <span aria-hidden="true">REMOVE THE AUDIENCE</span><i aria-hidden="true">?</i><span aria-hidden="true">REMOVE THE COMPARISON</span><i aria-hidden="true">?</i><span aria-hidden="true">REMOVE THE PERFORMANCE</span><i aria-hidden="true">?</i><strong aria-hidden="true">WHAT REMAINS?</strong>
+      </div>
+    </section>
+
+    <section class="voices-section section" id="voices">
+      <div class="section-intro reveal">
+        <p>01 / WHOSE VOICE?</p>
+        <h2>Who taught you <em>to want this?</em></h2>
+        <p>Tap every voice that feels familiar. More than one can be true.</p>
+      </div>
+
+      <div class="voice-cloud reveal" id="voiceCloud">
+        <button data-voice="Myself">Myself</button>
+        <button data-voice="My parents">My parents</button>
+        <button data-voice="People online">People online</button>
+        <button data-voice="My friends">My friends</button>
+        <button data-voice="Someone I want to impress">Someone I want to impress</button>
+        <button data-voice="Someone I want to prove wrong">Someone I want to prove wrong</button>
+        <button data-voice="A past mistake">A past mistake</button>
+        <button data-voice="Someone I once needed">Someone I once needed</button>
+        <button data-voice="Fear of being ordinary">Fear of being ordinary</button>
+        <button data-voice="Money">Money</button>
+        <button data-voice="Status">Status</button>
+        <button data-voice="Curiosity">Curiosity</button>
+      </div>
+
+      <div class="voice-result reveal" id="voiceResult" aria-live="polite">
+        <small>THERE MAY BE MORE THAN ONE VOICE.</small>
+        <p>The goal is not to silence everyone. It is to notice who has been speaking for you.</p>
+      </div>
+    </section>
+
+    <section class="audience-section">
+      <div class="audience-visual reveal" aria-hidden="true">
+        <div class="audience-row"><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span></div>
+        <div class="stage-light"></div>
+        <div class="stage-person">YOU</div>
+        <p class="audience-fades">the room empties...</p>
+      </div>
+
+      <div class="audience-copy reveal">
+        <p>02 / REMOVE THE AUDIENCE</p>
+        <h2>Nobody<br>is watching.</h2>
+        <p class="large-question">What do you still want?</p>
+        <textarea id="audienceAnswer" maxlength="500" placeholder="The answer that doesn't need applause..."></textarea>
+        <small>Your answer is saved only in this browser.</small>
+      </div>
+    </section>
+
+    <section class="origin-section section">
+      <div class="section-intro reveal">
+        <p>03 / WHERE DID IT BEGIN?</p>
+        <h2>Your past can explain the calling.<br><em>It does not have to control it.</em></h2>
+        <p>An experience, regret, loss or mistake can become something useful. The question is whether you are choosing the lesson—or still being chased by the wound.</p>
+      </div>
+
+      <div class="origin-grid">
+        <article class="origin-card reveal">
+          <span>THEN</span><strong>Something happened.</strong>
+          <p>You struggled, failed, stayed too long, trusted the wrong person, or became someone you no longer recognised.</p>
+        </article>
+        <article class="origin-card reveal">
+          <span>NOW</span><strong>You understand more.</strong>
+          <p>Your experience is yours. You decide what it teaches you and which patterns end with you.</p>
+        </article>
+        <article class="origin-card reveal">
+          <span>NEXT</span><strong>It may help someone else.</strong>
+          <p>Not because pain makes you special—but because what you learned may make another person's road less lonely.</p>
+        </article>
+      </div>
+
+      <div class="origin-prompt reveal">
+        <label for="originAnswer">Did this purpose grow from something you once needed?</label>
+        <textarea id="originAnswer" maxlength="600" placeholder="There was a time when I..."></textarea>
+      </div>
+    </section>
+
+    <section class="motive-section section">
+      <div class="section-intro reveal">
+        <p>04 / LOOK CLOSER</p>
+        <h2>Want it.<br>But know <em>why.</em></h2>
+      </div>
+
+      <div class="motive-grid">
+        <button class="motive-card reveal" data-message="Wanting recognition is human. Just do not mistake being noticed for being fulfilled."><small>MAYBE...</small><strong>I want people to admire me.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="Winning against someone else can begin the journey. It is rarely enough to sustain it."><small>MAYBE...</small><strong>I want to prove someone wrong.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="Inspiration can open a door. But you still need to decide whether this life fits you—not the person you watched."><small>MAYBE...</small><strong>I saw someone else doing it.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="Security matters. But money answers what something pays, not whether the life fits you."><small>MAYBE...</small><strong>I mainly want the money.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="A respected life can still feel empty when respect was the destination."><small>MAYBE...</small><strong>I want the title.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="A difficult experience can become service. Make sure you are building from what you learned, not endlessly punishing yourself for what happened."><small>MAYBE...</small><strong>I want to help who I once was.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="Talent can invite you in, but it cannot choose your life. What you practise and return to matters more than what came easily."><small>MAYBE...</small><strong>People say I am naturally good at it.</strong><span>↗</span></button>
+        <button class="motive-card reveal" data-message="Pay attention to what you return to when nobody rewards you. Quiet return is often a more honest signal than excitement."><small>OR MAYBE...</small><strong>I actually love the thing itself.</strong><span>↗</span></button>
+      </div>
+      <div class="motive-response" id="motiveResponse" aria-live="polite">Pick the one that makes you slightly uncomfortable.</div>
+    </section>
+
+    <section class="choices-section">
+      <div class="choices-copy reveal">
+        <p>05 / YOUR LIFE IS ALSO A CHOICE</p>
+        <h2>Not everything deserves continued access to you.</h2>
+        <p>You decide when a habit ends, when a lifestyle no longer feels healthy, and when distance from a person becomes necessary. Be gentle with yourself—but firm about what repeatedly pulls you away from who you are trying to become.</p>
+      </div>
+
+      <div class="choice-board reveal" id="choiceBoard">
+        <p>Tap each one until the decision feels honest.</p>
+        <button data-state="questioning"><span>A habit I have outgrown</span><strong>?</strong></button>
+        <button data-state="questioning"><span>A lifestyle that drains me</span><strong>?</strong></button>
+        <button data-state="questioning"><span>A relationship that keeps hurting me</span><strong>?</strong></button>
+        <button data-state="questioning"><span>A goal I only perform for others</span><strong>?</strong></button>
+        <small>? questioning &nbsp; → &nbsp; KEEP &nbsp; → &nbsp; RELEASE</small>
+      </div>
+    </section>
+
+    <section class="mirror-section">
+      <div class="mirror-wrap reveal">
+        <div class="mirror">
+          <span class="mirror-top">NO AUDIENCE</span>
+          <div class="mirror-question"><small>LOOK AT YOURSELF.</small><h2>Will you tell the <em>truth?</em></h2></div>
+          <span class="mirror-bottom">even if it changes the plan?</span>
+        </div>
+      </div>
+
+      <div class="mirror-copy reveal">
+        <p>06 / THE MIRROR</p>
+        <div class="mirror-prompts">
+          <button class="mirror-prompt" data-question="If nobody was disappointed in you, what would you change?">What would you change if nobody was disappointed?</button>
+          <button class="mirror-prompt" data-question="What part of your life looks impressive from outside but feels wrong from inside?">What looks right but feels wrong?</button>
+          <button class="mirror-prompt" data-question="Who are you still performing for?">Who are you still performing for?</button>
+          <button class="mirror-prompt" data-question="What truth would become obvious if you stopped defending your current choices?">What are you still defending?</button>
+          <button class="mirror-prompt" data-question="What do you already know but keep asking other people to confirm?">What do you already know?</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="question-chamber section" id="questionChamber">
+      <div class="chamber-label reveal"><span>07</span> ONE QUESTION. NO PERFORMANCE.</div>
+      <div class="question-card reveal">
+        <p id="questionNumber">QUESTION 01</p>
+        <h2 id="questionText">If nobody could ever know you achieved it, would you still want it?</h2>
+        <textarea id="answerText" maxlength="900" placeholder="Don't make it sound intelligent. Make it true."></textarea>
+        <div class="question-controls">
+          <button type="button" id="previousQuestion" aria-label="Previous question">←</button>
+          <button type="button" id="saveAnswer" class="save-answer">KEEP THIS ANSWER</button>
+          <button type="button" id="nextQuestion" aria-label="Next question">→</button>
+        </div>
+        <p class="save-status" id="saveStatus" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="signal-section">
+      <div class="noise-side reveal">
+        <small>THE NOISE</small><span>Should.</span><span>Must.</span><span>Impressive.</span><span>Successful.</span><span>Behind.</span><span>Better than them.</span>
+      </div>
+      <div class="signal-divider reveal">→</div>
+      <div class="signal-side reveal">
+        <small>THE SIGNAL</small><h2>What keeps whispering <em>come back?</em></h2><p>Pay attention to that.</p>
+      </div>
+    </section>
+
+    <section class="final-truth section">
+      <div class="final-inner reveal">
+        <p>08 / WHAT REMAINS?</p>
+        <h2>Strip away<br>the audience.<br>Strip away<br>the borrowed life.</h2>
+        <h3>What is still yours?</h3>
+        <form id="finalForm">
+          <label for="finalAnswer">The thing I still want is...</label>
+          <input id="finalAnswer" maxlength="160" placeholder="Say it plainly." required>
+          <label for="whyAnswer">Because...</label>
+          <input id="whyAnswer" maxlength="220" placeholder="Not because it sounds good. Because it is true." required>
+          <button type="submit">KEEP THE HONEST VERSION <span>↗</span></button>
+        </form>
+        <div id="finalResult" class="final-result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="saved-section section">
+      <div class="section-intro reveal"><p>YOUR PRIVATE PAGE</p><h2>Things you <em>admitted.</em></h2><p>Stored only in this browser.</p></div>
+      <div class="saved-list" id="savedList"><p class="empty-note">Your honest answers will gather here.</p></div>
+    </section>
+
+    <section class="exit-section">
+      <p>YOU DO NOT NEED A PERFECT PURPOSE.</p>
+      <h2>You need one<br>that is <em>yours.</em></h2>
+      <a href="spark.html#start-studio">RETURN TO THE THING—with your why <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="index.html" class="wv-brand footer-brand" aria-label="Jigyasa Verse homepage">
+      <span class="wv-brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image"></span>
+      <span class="wv-brand-copy"><span class="wv-brand-name">Jigyasa Verse</span><span class="wv-brand-note">Curiosity lives here</span></span>
     </a>
-
-    <a href="spark.html">
-      Beginnings
-    </a>
-
-    <a href="contact.html">
-      Contact
-    </a>
-
-  </div>
-
-
-  <small>
-    © 2026 Jigyasa Verse · Ask honestly.
-  </small>
-
-</footer>
-
-
+    <p>Ask what is yours. Release what is not.</p>
+    <div class="footer-links"><a href="wonderverse.html">Wonder Lok</a><a href="spark.html">Messy Beginnings</a><a href="contact.html">Contact</a></div>
+    <small>© 2026 Jigyasa Verse · Jawaab bahar nahi, shayad andar hai.</small>
+  </footer>
 </body>
-
 </html>
