@@ -1,7 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Jigyasa Verse Library — books, blogs, poetry and true stories for curious humans of every age.">
+  <meta name="theme-color" content="#0a0a09">
+  <title>The Library | Jigyasa Verse</title>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,476 +15,244 @@
     gtag('config', 'G-EF9DVH7JQN');
   </script>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jigyasa Verse Books — playful, rigorous books and learning pathways for students, educators, schools, universities and curious adults.">
-  <meta name="theme-color" content="#111111">
-
-  <title>Books | Jigyasa Verse</title>
-
-  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
-
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%230a0a09'/%3E%3Cpath d='M14 13h15c5 0 8 3 8 8v30c-2-4-5-6-10-6H14V13Zm36 0H35c-5 0-8 3-8 8v30c2-4 5-6 10-6h13V13Z' fill='none' stroke='%23eee9de' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="books-storyverse.css">
-  <link rel="stylesheet" href="wonder-verse-navbar.css">
-
-  <script src="books-storyverse.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="books.css">
+  <script src="books.js" defer></script>
 </head>
 
 <body>
-  <header class="wv-header">
-    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
 
-      <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
-        <span class="wv-brand-image-wrap">
-          <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
-        </span>
-        <span class="wv-brand-copy">
-          <span class="wv-brand-name">Jigyasa Verse</span>
-          <span class="wv-brand-note">Curiosity lives here</span>
-        </span>
-      </a>
 
-      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false"
-        aria-controls="wvNavLinks" aria-label="Open navigation menu">
-        <span class="wv-menu-label">Menu</span>
-        <span class="wv-menu-lines" aria-hidden="true"></span>
-      </button>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse home">
+      <span class="brand-mark" aria-hidden="true">JV</span>
+      <span><strong>Jigyasa Verse</strong><small>The Living Library</small></span>
+    </a>
 
-      <div class="wv-links" id="wvNavLinks" data-wv-links>
-        <a href="index.html">Start Here</a>
-        <a href="books.html" aria-current="page">Books</a>
-        <a href="schools.html">Schools</a>
-        <a href="contact.html">Contact</a>
-      </div>
+    <button class="menu-button" type="button" data-menu aria-expanded="false" aria-controls="mainNav">
+      <span>Menu</span><i aria-hidden="true"></i>
+    </button>
 
+    <nav class="main-nav" id="mainNav" data-nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="books.html" aria-current="page">Library</a>
+      <a href="#shelves">The shelves</a>
+      <a href="#send-story">Send your story</a>
     </nav>
   </header>
 
-  <main id="main-content">
+  <main id="main">
+    <section class="entrance" aria-labelledby="library-title">
+      <div class="entrance-architecture" aria-hidden="true"></div>
+      <div class="entrance-shade" aria-hidden="true"></div>
 
-    <!-- HERO -->
-    <section class="books-hero" id="top">
-      <div class="grain" aria-hidden="true"></div>
-
-      <div class="books-hero-copy reveal">
-        <p class="eyebrow">Jigyasa Verse Library · analogue behaviour detected</p>
-
-        <h1>
-          Oh.
-          <span>So you still read books</span>
-          <em>in the digital generation.</em>
-        </h1>
-
-        <p class="hero-lead">
-          Respect. This shelf is for people who still enjoy slowing down long enough to understand something properly —
-          whether they are nine, nineteen, teaching a class, designing a curriculum, or revising medicine at 1:14 a.m.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button ink-button" href="#bookshelf">Browse the shelf <span>→</span></a>
-          <a class="text-link" href="#pathways">Find a learning pathway <span>↓</span></a>
+      <div class="entrance-copy reveal">
+        <p class="folio">Jigyasa Verse Library · Open to every curious human</p>
+        <h1 id="library-title">Come in.<br><em>There is a shelf for the person you are today.</em></h1>
+        <p class="entrance-lead">Books, blogs, poems and honest pieces of a life. Some teach. Some comfort. Some ask the question you have been avoiding.</p>
+        <div class="entrance-actions">
+          <a class="button button-light" href="#mood-desk">Find my shelf</a>
+          <a class="quiet-link" href="#new-books">See Isha’s books <span aria-hidden="true">↓</span></a>
         </div>
-
-        <p class="hero-note">
-          <span>✎</span>
-          Warning: prolonged exposure may result in underlining, margin notes and accidentally learning something.
-        </p>
       </div>
 
-      <div class="hero-editorial reveal" aria-hidden="true">
-        <div class="poster-card poster-main">
-          <span class="poster-small">ISSUE 01</span>
-          <strong>READ<br>LIKE<br>YOU<br>MEAN IT.</strong>
-          <span class="poster-foot">Jigyasa Verse Press-ish</span>
+      <p class="door-note" aria-hidden="true">Established whenever the first human wrote something down.</p>
+    </section>
+
+    <section class="mood-desk" id="mood-desk" aria-labelledby="mood-title">
+      <div class="ladder-scene reveal">
+        <img src="assets/ladder-librarian.png" alt="An ink-drawn librarian climbing a rolling ladder with a stack of books">
+      </div>
+
+      <div class="mood-copy reveal">
+        <p class="folio">The librarian is halfway up the ladder</p>
+        <h2 id="mood-title">“What is the mood today?”</h2>
+        <p>Choose what you need. The library will move the right shelf closer.</p>
+
+        <div class="mood-picker" role="group" aria-label="Filter the library by mood">
+          <button type="button" class="mood active" data-mood="all" aria-pressed="true">Surprise me</button>
+          <button type="button" class="mood" data-mood="wonder" aria-pressed="false">I want to wonder</button>
+          <button type="button" class="mood" data-mood="learn" aria-pressed="false">I need to learn</button>
+          <button type="button" class="mood" data-mood="seen" aria-pressed="false">I want to feel seen</button>
+          <button type="button" class="mood" data-mood="brave" aria-pressed="false">I need courage</button>
+          <button type="button" class="mood" data-mood="quiet" aria-pressed="false">Something quiet</button>
         </div>
 
-        <div class="poster-card poster-side">
-          <span>BOOKS &gt; SCROLLING*</span>
-          <small>*sometimes</small>
-        </div>
-
-        <div class="scribble scribble-one">↗ apparently we still do this</div>
-        <div class="scribble scribble-two">paper: undefeated</div>
-
-        <svg class="doodle-lines" viewBox="0 0 520 520">
-          <path d="M45 345C120 235 210 420 298 260S430 125 482 215"/>
-          <path d="M62 124C152 56 238 180 352 88"/>
-          <circle cx="72" cy="119" r="7"/>
-          <circle cx="301" cy="260" r="10"/>
-          <circle cx="482" cy="215" r="7"/>
-        </svg>
+        <p class="mood-result" data-mood-result aria-live="polite">Showing every room in the library.</p>
       </div>
     </section>
 
-    <!-- MANIFESTO -->
-    <section class="books-manifesto reveal">
-      <p class="eyebrow">The library policy nobody asked for</p>
-
-      <blockquote>
-        Serious learning does not have to look serious all the time.
-      </blockquote>
-
-      <div class="manifesto-grid">
-        <p>
-          A good book can be rigorous without being sterile, funny without being shallow,
-          visual without being childish, and academically useful without reading like it was written by a committee.
-        </p>
-        <p>
-          Jigyasa Verse books are designed to make difficult ideas easier to enter — then give learners enough structure,
-          context and challenge to stay with them.
-        </p>
-      </div>
-    </section>
-
-    <!-- INSTITUTION STRIP -->
-    <section class="institution-strip reveal">
-      <span>For individual learners</span>
-      <span>For classrooms</span>
-      <span>For school libraries</span>
-      <span>For university learners</span>
-      <span>For educator resource collections</span>
-    </section>
-
-    <!-- PATHWAYS -->
-    <section class="learning-pathways" id="pathways">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Choose your shelf</p>
-          <h2>Not every reader needs the same doorway.</h2>
-        </div>
-        <p>
-          Browse by stage, not by “ability”. Each pathway is designed around what learners are likely to need next.
-        </p>
+    <section class="new-books" id="new-books" aria-labelledby="new-books-title">
+      <div class="section-intro reveal">
+        <p class="folio">New arrivals · written by Isha Tiwari</p>
+        <h2 id="new-books-title">Two books already live here.<br>More are being written.</h2>
+        <p>These doors open to Amazon Australia in a new tab.</p>
       </div>
 
-      <div class="pathway-grid">
-
-        <article class="pathway-card reveal">
-          <div class="pathway-topline">
-            <span class="pathway-code">A</span>
-            <span class="pathway-age">Approx. Years 3–6</span>
+      <div class="featured-books">
+        <a class="featured-book featured-dark reveal" href="https://www.amazon.com.au/dp/B0H8C1G3R5" target="_blank" rel="noopener noreferrer" aria-label="View Before the Stethoscope on Amazon Australia">
+          <div class="cover">
+            <span class="cover-series">Foundational medicine</span>
+            <strong>Before the<br>Stethoscope</strong>
+            <span class="cover-author">Isha Tiwari</span>
           </div>
-          <h3>Playground Scouts</h3>
-          <p class="pathway-intro">
-            For younger learners building confidence, curiosity and strong foundations without making learning feel tiny.
-          </p>
-          <ul>
-            <li>Early reading, writing and listening skills developement</li>
-            <li>Early numbers, patterns and shape identifications</li>
-            <li>Everyday science, general knowledge, cognitive thinking</li>
-            <li>Mini projects ^w^  </li>
-          </ul>
-          <a href="resources-years-3-5.html">Enter the Playground! <span>→</span></a>
-        </article>
-
-        <article class="pathway-card reveal">
-          <div class="pathway-topline">
-            <span class="pathway-code">B</span>
-            <span class="pathway-age">Approx. Years 7–10</span>
+          <div class="featured-copy">
+            <span>Medicine · students · understanding before memorising</span>
+            <h3>Before the Stethoscope</h3>
+            <p>A clearer doorway into the science that comes before the clinic.</p>
+            <b>Open the book <i aria-hidden="true">↗</i></b>
           </div>
-          <h3>Independent Thinkers</h3>
-          <p class="pathway-intro">
-            For learners moving beyond “what is the answer?” and towards “why does this work?”
-          </p>
-          <ul>
-            <li>Cognitive thinking, creative skills developement</li>
-            <li>Learning to ask questions</li>
-            <li>Moral values, kindness</li>
-            <li>Problem solving resources ^v^ </li>
-          </ul>
-         <a href="resources-years-7-10.html">Enter Independent Thinkers <span>→</span></a>
-        </article>
+        </a>
 
-        <article class="pathway-card reveal">
-          <div class="pathway-topline">
-            <span class="pathway-code">C</span>
-            <span class="pathway-age">Senior secondary · university · professional</span>
+        <a class="featured-book featured-paper reveal" href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S" target="_blank" rel="noopener noreferrer" aria-label="View Memesplained Microbiology Edition 1 on Amazon Australia">
+          <div class="cover">
+            <span class="cover-series">Microbiology · Edition 1</span>
+            <strong>Memesplained:<br>Microbiology</strong>
+            <span class="cover-author">Isha Tiwari</span>
           </div>
-          <h3>Advanced Learners</h3>
-          <p class="pathway-intro">
-            For students and professionals who need depth, clarity and a reason to keep going when the content gets dense.
-          </p>
-          <ul>
-            <li>Goals, effort and consistency approach in life</li>
-            <li>Student resources for all areas</li>
-            <li>Career and future plan making ideas</li>
-            <li>Projects that help you grow as a young adult >w< </li>
-          </ul>
-       <a href="resources-beyond.html">Enter Advanced Learners <span>→</span></a>
-        </article>
-
-        <article class="pathway-card institutional reveal">
-          <div class="pathway-topline">
-            <span class="pathway-code">D</span>
-            <span class="pathway-age">Schools · universities · educators</span>
-          </div>
-          <h3>Educators & Institutions</h3>
-          <p class="pathway-intro">
-            For teachers, faculties, libraries and learning teams looking for resources that are engaging and academically purposeful.
-          </p>
-          <ul>
-            <li>Classroom-ready ideas and reading extensions</li>
-            <li>Supplementary student resources</li>
-            <li>Workshop and teaching-resource pathways</li>
-            <li>Future institutional access and learning collections</li>
-          </ul>
-          <a href="schools.html">Explore institutional use <span>→</span></a>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- WHAT MAKES BOOKS USEFUL -->
-    <section class="useful-books">
-      <div class="useful-copy reveal">
-        <p class="eyebrow">For schools & universities wondering “but is it useful?”</p>
-        <h2>Designed to sit beside formal learning, not compete with it.</h2>
-        <p>
-          The goal is not to replace curriculum, textbooks, lectures or expert instruction. It is to give learners another way into difficult material:
-          clearer explanations, visual structure, clinical or real-world context, and a voice that sounds like a human being.
-        </p>
-      </div>
-
-      <div class="useful-grid">
-        <article class="useful-card reveal">
-          <span>01</span>
-          <h3>Accessible entry points</h3>
-          <p>Complex ideas are introduced in language that reduces cognitive friction without removing academic substance.</p>
-        </article>
-        <article class="useful-card reveal">
-          <span>02</span>
-          <h3>Structured learning</h3>
-          <p>Concepts are organised around clear explanations, examples, summaries, reflection and application.</p>
-        </article>
-        <article class="useful-card reveal">
-          <span>03</span>
-          <h3>Memorable design</h3>
-          <p>Humour, visual hierarchy and storytelling help learners remember what might otherwise become another wall of text.</p>
-        </article>
-        <article class="useful-card reveal">
-          <span>04</span>
-          <h3>Flexible use</h3>
-          <p>Suitable for independent study, supplementary reading, classroom discussion, revision or resource-library collections.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BOOKSHELF -->
-    <section class="bookshelf" id="bookshelf">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Current shelf</p>
-          <h2>Books built for brains that wander.</h2>
-        </div>
-        <p>
-          Academic enough to be useful. Human enough to make you keep turning pages.
-        </p>
-      </div>
-
-      <div class="book-list">
-
-        <article class="book-feature reveal">
-          <div class="book-mockup monochrome">
-            <div class="book-spine">MEMESPLAINED</div>
-            <div class="mock-cover">
-              <span class="mock-kicker">MICROBIOLOGY</span>
-              <strong>Memesplained:<br>Microbiology</strong>
-              <small>Edition 1</small>
-              <div class="mock-mark">MICROBES<br>BUT LESS<br>TRAUMATIC.</div>
-            </div>
-          </div>
-
-          <div class="book-copy">
-            <p class="book-type">Microbiology · introductory · visual learning</p>
+          <div class="featured-copy">
+            <span>Science · humour · the microbes are less terrifying now</span>
             <h3>Memesplained: Microbiology</h3>
-            <p>
-              A student-friendly introduction to microbiology for learners who understand better when complex science is broken into
-              clearer explanations, memorable examples and humour.
-            </p>
-
-            <div class="book-use">
-              <span>Useful for</span>
-              <p>Introductory microbiology · revision · bridging into university science · supplementary reading</p>
-            </div>
-
-            <div class="book-actions">
-              <a href="#" class="button ink-button" target="_blank" rel="noopener noreferrer">View book <span>→</span></a>
-              <a href="#" class="text-link">Read a sample</a>
-            </div>
+            <p>Complex microbiology made memorable, visual and unmistakably human.</p>
+            <b>Open the book <i aria-hidden="true">↗</i></b>
           </div>
-        </article>
-
-        <article class="book-feature reverse reveal">
-          <div class="book-mockup darkbook">
-            <div class="book-spine">BEFORE STETHOSCOPE</div>
-            <div class="mock-cover">
-              <span class="mock-kicker">FOUNDATIONAL MEDICINE</span>
-              <strong>Before<br>Stethoscope</strong>
-              <small>Learning before the clinic</small>
-              <div class="mock-mark">KNOW THE<br>WHY BEFORE<br>THE WARD.</div>
-            </div>
-          </div>
-
-          <div class="book-copy">
-            <p class="book-type">Medicine · early university · clinical foundations</p>
-            <h3>Before Stethoscope</h3>
-            <p>
-              A growing medical learning series connecting foundational science, clinical relevance and exam-focused revision
-              for students navigating the dense first years of medical education.
-            </p>
-
-            <div class="book-use">
-              <span>Useful for</span>
-              <p>Medical students · biomedical learners · foundational review · clinically contextualised revision</p>
-            </div>
-
-            <div class="book-actions">
-              <a href="#" class="button ink-button" target="_blank" rel="noopener noreferrer">Explore series <span>→</span></a>
-              <a href="#" class="text-link">See what is coming next</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-feature coming reveal">
-          <div class="book-mockup scribblebook">
-            <div class="book-spine">IN PROGRESS</div>
-            <div class="mock-cover">
-              <span class="mock-kicker">CURRENTLY BECOMING</span>
-              <strong>Future<br>Books</strong>
-              <small>School · science · medicine · education</small>
-              <div class="mock-mark">YES, THERE<br>ARE MORE<br>COMING.</div>
-            </div>
-          </div>
-
-          <div class="book-copy">
-            <p class="book-type">In development</p>
-            <h3>The shelf is still growing.</h3>
-            <p>
-              Future books, study guides and learning resources will expand across school mathematics, science,
-              medical learning, educator development and curiosity-led education.
-            </p>
-
-            <div class="book-use">
-              <span>For educators & institutions</span>
-              <p>If there is a resource gap your students repeatedly struggle with, Jigyasa Verse is interested in hearing about it.</p>
-            </div>
-
-            <div class="book-actions">
-              <a href="contact.html" class="button outline-button">Suggest a resource need <span>→</span></a>
-            </div>
-          </div>
-        </article>
-
+        </a>
       </div>
     </section>
 
-    <!-- INSTITUTIONAL USE -->
-    <section class="institution-panel reveal">
-      <div class="institution-copy">
-        <p class="eyebrow">For libraries, schools & universities</p>
-        <h2>Want to use Jigyasa Verse books with a learning community?</h2>
-        <p>
-          Schools, university faculties, libraries and education teams can enquire about recommended-use contexts,
-          workshop alignment, supplementary-resource pathways and future institutional collections.
-        </p>
+    <section class="shelf-hall" id="shelves" aria-labelledby="shelves-title">
+      <div class="hall-background" aria-hidden="true"></div>
+      <div class="section-intro light reveal">
+        <p class="folio">The long room · scroll slowly</p>
+        <h2 id="shelves-title">A library is not organised by age alone.</h2>
+        <p>It is organised by what a human might need to find.</p>
+      </div>
 
-        <div class="institution-points">
-          <span>Library acquisition enquiries</span>
-          <span>Classroom supplementary use</span>
-          <span>University learner support</span>
-          <span>Educator workshops</span>
+      <div class="library-rooms" data-library-rooms>
+        <article class="shelf-room reveal" data-moods="wonder quiet">
+          <header><span>Room 01</span><h3>The Children’s Cabinet</h3><p>For small hands and enormous questions.</p></header>
+          <div class="shelf-books">
+            <a href="resources-years-3-5.html" class="spine tall"><b>Old Paths, New Curiosity</b><small>Explore</small></a>
+            <a href="resources-years-3-5.html" class="spine short"><b>Questions That Wiggle</b><small>Activities</small></a>
+            <span class="spine lean"><b>A Pocketful of Why</b><small>Coming soon</small></span>
+            <span class="spine slim"><b>Stories Before Screens</b><small>Coming soon</small></span>
+          </div>
+        </article>
+
+        <article class="shelf-room reveal" data-moods="learn brave">
+          <header><span>Room 02</span><h3>The Student Stacks</h3><p>For the chapter that refuses to make sense.</p></header>
+          <div class="shelf-books">
+            <a href="https://www.amazon.com.au/dp/B0H8C1G3R5" target="_blank" rel="noopener noreferrer" class="spine tall black"><b>Before the Stethoscope</b><small>Medicine</small></a>
+            <a href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S" target="_blank" rel="noopener noreferrer" class="spine wide"><b>Memesplained: Microbiology</b><small>Science</small></a>
+            <a href="resources-years-7-10.html" class="spine slim"><b>Independent Thinkers</b><small>Years 7–10</small></a>
+            <a href="resources-beyond.html" class="spine short"><b>Beyond the Classroom</b><small>Senior learners</small></a>
+          </div>
+        </article>
+
+        <article class="shelf-room reveal" data-moods="seen brave quiet">
+          <header><span>Room 03</span><h3>Lives, Honestly Told</h3><p>True stories. No heroic editing required.</p></header>
+          <div class="shelf-books">
+            <span class="spine lean"><b>The Mistake I Kept</b><small>Real story</small></span>
+            <span class="spine tall"><b>Things I Couldn’t Say Then</b><small>Experience</small></span>
+            <span class="spine slim black"><b>Becoming, Slowly</b><small>Memoir</small></span>
+            <a href="#send-story" class="spine wide"><b>Your Story Could Live Here</b><small>Send it</small></a>
+          </div>
+        </article>
+
+        <article class="shelf-room reveal" data-moods="wonder seen quiet">
+          <header><span>Room 04</span><h3>Poetry in Every Tongue</h3><p>No translation required to belong here.</p></header>
+          <div class="shelf-books">
+            <span class="spine short"><b>Poems for Loud Days</b><small>Poetry</small></span>
+            <span class="spine tall black"><b>शब्द जो घर बन गए</b><small>हिन्दी</small></span>
+            <span class="spine wide"><b>Words Without Borders</b><small>Many languages</small></span>
+            <a href="#send-story" class="spine slim"><b>Add Your Voice</b><small>Submit</small></a>
+          </div>
+        </article>
+
+        <article class="shelf-room reveal" data-moods="wonder learn brave">
+          <header><span>Room 05</span><h3>Notes from the Margins</h3><p>Blogs for thoughts too restless for a textbook.</p></header>
+          <div class="shelf-books">
+            <a href="blog.html" class="spine wide black"><b>Why Adults Stop Asking Silly Questions</b><small>Curiosity</small></a>
+            <a href="blog-serious-learning-can-be-fun.html" class="spine tall"><b>Can Serious Learning Still Be Fun?</b><small>Education</small></a>
+            <a href="blog-everything-started-as-an-idea.html" class="spine lean"><b>Everything Began as an Idea</b><small>Possibility</small></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="immortal-words" aria-labelledby="immortal-title">
+      <div class="nook-image reveal">
+        <img src="assets/book-nook.png" alt="A hand-drawn corner filled from floor to ceiling with books">
+      </div>
+      <div class="immortal-copy reveal">
+        <p class="folio">The room at the end</p>
+        <h2 id="immortal-title">A life ends.<br><em>A true sentence can remain.</em></h2>
+        <p>Writing lets a thought cross a distance its writer never could. Long after we are gone, a poem, a confession or one honest paragraph can still find the person who needs it.</p>
+        <blockquote>“Do not try to sound like a writer. Tell us the thing only you could know.”</blockquote>
+        <a class="button button-dark" href="#send-story">Leave something behind</a>
+      </div>
+    </section>
+
+    <section class="submission" id="send-story" aria-labelledby="submission-title">
+      <div class="submission-intro reveal">
+        <p class="folio">Open call · original voices only</p>
+        <h2 id="submission-title">Please send us your story.</h2>
+        <p>We love original, authentic art and the stories of a life that changed you, questioned you or quietly made you who you are. Share a short true story, reflection, blog or poem—in any language.</p>
+        <ul>
+          <li>You may use your real name or a pen name.</li>
+          <li>Your work must be your own.</li>
+          <li>Nothing is published automatically. We will contact you first.</li>
+          <li>Please do not include private details about other people without their permission.</li>
+        </ul>
+      </div>
+
+      <form class="story-form reveal" name="library-submissions" method="POST" action="/books.html?submitted=true#send-story" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="library-submissions">
+        <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
+
+        <div class="form-row">
+          <label><span>Your name or pen name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
         </div>
-      </div>
 
-      <a href="contact.html" class="button paper-button">Institutional enquiry <span>→</span></a>
-    </section>
-
-    <!-- BLOG -->
-    <section class="margin-notes">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Notes from the margins</p>
-          <h2>Reading between the textbooks.</h2>
+        <div class="form-row">
+          <label><span>What are you sending?</span>
+            <select name="work-type" required>
+              <option value="">Choose one</option>
+              <option>True story</option><option>Personal reflection</option><option>Blog</option><option>Poetry</option><option>Other original work</option>
+            </select>
+          </label>
+          <label><span>Language</span><input type="text" name="language" placeholder="English, Hindi, Tamil…" required></label>
         </div>
-        <p>Shorter pieces on curiosity, learning, education and the strange business of being a person who keeps asking questions.</p>
-      </div>
 
-      <div class="article-grid">
-        <article class="article-card reveal">
-          <span class="article-number">01</span>
-          <p class="article-tag">Curiosity</p>
-          <h3>Why do adults stop asking silly questions?</h3>
-          <p>Possibly because somewhere along the line we began confusing seriousness with intelligence.</p>
-          <a href="blog.html">Read margin note →</a>
-        </article>
+        <label><span>Title of your piece</span><input type="text" name="title" required></label>
+        <label><span>Your short work</span><textarea name="work" rows="12" minlength="40" maxlength="7000" placeholder="Write or paste your work here…" required></textarea><small><span data-count>0</span> / 7,000 characters</small></label>
 
-        <article class="article-card reveal">
-          <span class="article-number">02</span>
-          <p class="article-tag">Learning</p>
-          <h3>Can serious learning still be fun?</h3>
-          <p>A small argument in favour of humour, colour, story and remembering that learners are humans.</p>
-          <a href="blog-serious-learning-can-be-fun.html">Read margin note →</a>
-        </article>
+        <label class="check"><input type="checkbox" name="original-confirmation" required><span>I confirm this is my original work and I am happy for Jigyasa Verse to contact me about possibly sharing it.</span></label>
+        <label class="check"><input type="checkbox" name="anonymous"><span>If published, I would prefer to remain anonymous.</span></label>
 
-        <article class="article-card reveal">
-          <span class="article-number">03</span>
-          <p class="article-tag">Ideas</p>
-          <h3>Everything around you started as an idea.</h3>
-          <p>Which is inconvenient evidence that some strange ideas are worth taking seriously.</p>
-          <a href="blog-everything-started-as-an-idea.html">Read margin note →</a>
-        </article>
-      </div>
+        <button class="button button-light" type="submit">Send to the library <span aria-hidden="true">→</span></button>
+        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+      </form>
     </section>
 
-    <!-- FUTURE LEARNING ACCESS -->
-    <section class="future-access reveal">
-      <div>
-        <p class="eyebrow">A future reading trail</p>
-        <h2>Books are only one part of the learning ecosystem.</h2>
-        <p>
-          Future Jigyasa Verse pathways may allow learners to save activities, continue learning trails and connect books with
-          related resources, while educators build collections for classes or learning communities.
-        </p>
-      </div>
-
-      <div class="mini-library-card">
-        <div class="library-card-top">
-          <span>JIGYASA VERSE LIBRARY CARD</span>
-          <span>NO. 0001</span>
-        </div>
-        <strong>CURIOUS HUMAN</strong>
-        <div class="barcode">|||| ||| |||| | ||||| ||</div>
-        <small>Borrow ideas. Return with questions.</small>
+    <section class="closing-room">
+      <div class="closing-image" aria-hidden="true"></div>
+      <div class="closing-copy reveal">
+        <p class="folio">Before you leave</p>
+        <h2>Borrow an idea.<br>Return with a question.</h2>
+        <a href="#main" class="quiet-link">Back to the entrance ↑</a>
       </div>
     </section>
-
-    <!-- CLOSING -->
-    <section class="books-closing reveal">
-      <span class="closing-mark">A–Z</span>
-      <div>
-        <p class="eyebrow">End paper</p>
-        <h2>Still reading?</h2>
-        <p>
-          Incredible. The algorithm has been defeated for at least three minutes.
-          Take a book, follow a question, annotate irresponsibly, and come back when you need another doorway.
-        </p>
-      </div>
-      <a href="#top" class="text-link light">Back to page one ↑</a>
-    </section>
-
   </main>
 
-  <footer class="books-footer">
-    <span> Jigyasa Verse</span>
-    <p>Books, questions and suspicious amounts of curiosity.</p>
-    <a href="index.html">Return home</a>
+  <footer>
+    <div><strong>Jigyasa Verse</strong><p>A library for the things worth remembering.</p></div>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="#shelves">Shelves</a><a href="#send-story">Submit</a><a href="contact.html">Contact</a></nav>
+    <small>© <span data-year></span> Jigyasa Verse</small>
   </footer>
-
-  <script src="wonder-verse-navbar.js"></script>
 </body>
 </html>
