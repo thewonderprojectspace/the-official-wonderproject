@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,278 +9,552 @@
     gtag('config', 'G-EF9DVH7JQN');
   </script>
 
- <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The story behind Jigyasa Verse: an honest invitation to slow down, stay curious and begin the life that keeps asking for your attention.">
+  <meta name="theme-color" content="#090909">
+  <title>Our Story | Jigyasa Verse</title>
 
-<meta
-  name="description"
-  content="The story behind The Jigyasa Verse: a gentle but honest invitation to stay curious, choose what matters and act on the life you want to create."
->
+  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-<meta name="theme-color" content="#fffaf0">
+  <style>
+    :root {
+      --night: #080909;
+      --night-soft: #101111;
+      --paper: #e9e1d2;
+      --muted: #aaa397;
+      --amber: #e2a14a;
+      --amber-soft: #f1c37c;
+      --rust: #9b4b2d;
+      --line: rgba(233, 225, 210, .15);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
 
-<title>Our Story | Jigyasa Verse</title>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 8% 20%, rgba(155,75,45,.13), transparent 26rem),
+        radial-gradient(circle at 90% 55%, rgba(226,161,74,.06), transparent 34rem),
+        var(--night);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: .2;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { color: #111; background: var(--amber-soft); }
 
-<!-- Browser-tab logo -->
-<link
-  rel="icon"
-  type="image/png"
-  href="images/wonder-verse-moon-pencil-logo.png"
->
+    .wv-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 30;
+      border-bottom: 1px solid transparent;
+      transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+    }
+    .wv-header.scrolled {
+      background: rgba(8,9,9,.82);
+      border-color: var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .wv-nav {
+      width: min(1380px, calc(100% - 48px));
+      min-height: 82px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .wv-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .wv-brand-image { width: 42px; height: 42px; object-fit: contain; }
+    .wv-brand-copy { display: grid; line-height: 1.08; }
+    .wv-brand-name { font-family: var(--serif); font-size: 1.05rem; }
+    .wv-brand-note { margin-top: 5px; color: var(--muted); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+    .wv-links { display: flex; align-items: center; gap: 28px; }
+    .wv-links a { color: #c8c0b4; font-size: .82rem; letter-spacing: .07em; text-decoration: none; }
+    .wv-links a:hover, .wv-links a[aria-current="page"] { color: var(--amber-soft); }
+    .wv-menu { display: none; color: var(--paper); background: none; border: 0; font: inherit; }
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 150px max(24px, calc((100vw - 1320px)/2)) 70px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr);
+      align-items: end;
+      gap: clamp(48px, 9vw, 150px);
+      isolation: isolate;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(90deg, transparent 0 67%, rgba(255,255,255,.025) 67% 67.1%, transparent 67.1%);
+    }
+    .hero-glow {
+      position: absolute;
+      top: -15vh;
+      right: 7vw;
+      width: 36vw;
+      aspect-ratio: 1;
+      z-index: -1;
+      border-radius: 50%;
+      background: var(--amber);
+      opacity: .08;
+      filter: blur(80px);
+    }
+    .kicker, .section-kicker {
+      margin: 0 0 22px;
+      color: var(--amber-soft);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.9rem, 8vw, 8.5rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .88;
+    }
+    .hero h1 em { color: var(--amber-soft); font-weight: 400; }
+    .hero-lead {
+      max-width: 700px;
+      margin: 38px 0 0;
+      color: #c7c0b6;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2vw, 1.8rem);
+      line-height: 1.45;
+    }
+    .scroll-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 42px;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .scroll-cue span { width: 42px; height: 1px; background: var(--amber); transition: width .25s ease; }
+    .scroll-cue:hover span { width: 64px; }
 
-<link
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
-  rel="stylesheet"
->
+    .window {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
+      border: 1px solid rgba(241,195,124,.2);
+      border-radius: 46% 46% 8px 8px / 20% 20% 8px 8px;
+      background: linear-gradient(180deg, #161817, #0c0d0d 52%, #19130f);
+      box-shadow: 0 40px 100px rgba(0,0,0,.45), inset 0 0 70px rgba(0,0,0,.8);
+    }
+    .window::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(233,225,210,.09);
+      border-radius: inherit;
+    }
+    .passing-lights { position: absolute; inset: 0; overflow: hidden; }
+    .passing-lights i {
+      position: absolute;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent, var(--amber-soft), transparent);
+      opacity: .65;
+      animation: pass 7s linear infinite;
+    }
+    .passing-lights i:nth-child(1) { top: 23%; width: 60%; animation-delay: -1s; }
+    .passing-lights i:nth-child(2) { top: 48%; width: 35%; animation-delay: -4s; }
+    .passing-lights i:nth-child(3) { top: 67%; width: 80%; animation-delay: -2.4s; }
+    @keyframes pass { from { transform: translateX(-120%); } to { transform: translateX(280%); } }
+    .route-line {
+      position: absolute;
+      left: 50%;
+      bottom: -18%;
+      width: 2px;
+      height: 63%;
+      background: linear-gradient(transparent, var(--amber));
+      transform: rotate(21deg);
+      transform-origin: bottom;
+      box-shadow: 0 0 20px var(--amber);
+    }
+    .window-words {
+      position: absolute;
+      left: 46px;
+      right: 46px;
+      bottom: 44px;
+    }
+    .window-words span { display: block; color: var(--muted); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; }
+    .window-words strong { display: block; max-width: 360px; margin-top: 12px; font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.2; }
 
-<!-- General website styling -->
-<link rel="stylesheet" href="style.css">
+    .chapter { position: relative; padding: clamp(100px, 14vw, 190px) 24px; }
+    .chapter-number { color: #746f67; font-size: .7rem; letter-spacing: .18em; }
+    .story-grid {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: clamp(40px, 10vw, 150px);
+    }
+    .sticky-note { align-self: start; position: sticky; top: 130px; }
+    .sticky-note p { max-width: 280px; color: var(--muted); font-size: .88rem; }
+    .story-copy { max-width: 760px; }
+    .story-copy h2, .split-copy h2, .letter h2 {
+      margin: 0 0 36px;
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 5.4rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.02;
+    }
+    .story-copy p, .split-copy p, .letter p { margin: 0 0 24px; color: #beb7ac; font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
+    .story-copy .large { color: var(--paper); font-family: var(--serif); font-size: clamp(1.65rem, 3vw, 2.65rem); line-height: 1.3; }
 
-<!-- About-page styling -->
-<link rel="stylesheet" href="about.css">
+    .rush-strip {
+      overflow: hidden;
+      padding: 27px 0;
+      border-block: 1px solid var(--line);
+      background: #0d0e0e;
+    }
+    .rush-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+    .rush-track span { padding-right: 52px; color: #777168; font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 2.3rem); white-space: nowrap; }
+    .rush-track em { color: var(--amber-soft); font-style: normal; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
 
-<!-- Navigation styling must remain last -->
-<link rel="stylesheet" href="wonder-verse-navbar.css">
+    .unfair {
+      border-block: 1px solid var(--line);
+      background: linear-gradient(135deg, #100e0d, #090a0a 65%);
+    }
+    .split {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(50px, 10vw, 150px);
+      align-items: center;
+    }
+    .starting-lines { position: relative; min-height: 520px; border-left: 1px solid var(--line); }
+    .line-person { position: absolute; left: 0; width: var(--w); transform: translateY(-50%); }
+    .line-person:nth-child(1) { top: 17%; --w: 48%; }
+    .line-person:nth-child(2) { top: 41%; --w: 78%; }
+    .line-person:nth-child(3) { top: 66%; --w: 34%; }
+    .line-person:nth-child(4) { top: 88%; --w: 92%; }
+    .line-person i { display: block; height: 1px; background: linear-gradient(90deg, var(--rust), var(--amber-soft)); }
+    .line-person span { display: block; margin: 9px 0 0 calc(100% + 12px); color: #777168; font-size: .68rem; letter-spacing: .1em; white-space: nowrap; text-transform: uppercase; }
+    .truth-box { margin-top: 46px; padding: 30px 32px; border-left: 2px solid var(--amber); background: rgba(226,161,74,.055); }
+    .truth-box strong { display: block; color: var(--amber-soft); font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+    .truth-box p { margin: 8px 0 0; font-size: .98rem; }
 
-<!-- About-page functionality -->
-<script src="about.js" defer></script>
+    .breaking { text-align: center; }
+    .breaking-inner { width: min(1000px, 100%); margin: auto; }
+    .breaking h2 { margin: 0; font-family: var(--serif); font-size: clamp(3.1rem, 7vw, 7rem); font-weight: 400; letter-spacing: -.05em; line-height: .95; }
+    .breaking h2 span { color: transparent; -webkit-text-stroke: 1px rgba(241,195,124,.65); }
+    .crack { width: 1px; height: 170px; margin: 48px auto; background: linear-gradient(var(--amber), transparent); transform: rotate(8deg); }
+    .breaking p { max-width: 760px; margin: 0 auto 24px; color: #bcb4a9; font-size: 1.12rem; }
+    .breaking .not-romantic { color: var(--paper); font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); }
+
+    .last-stop { min-height: 88svh; display: grid; place-items: center; background: #050606; text-align: center; }
+    .last-stop-inner { width: min(930px, 100%); }
+    .last-stop .small { color: var(--amber); font-size: .72rem; letter-spacing: .21em; text-transform: uppercase; }
+    .last-stop h2 { margin: 24px 0 34px; font-family: var(--serif); font-size: clamp(3.2rem, 7.5vw, 7.7rem); font-weight: 400; letter-spacing: -.055em; line-height: .94; }
+    .last-stop p { max-width: 690px; margin: 0 auto; color: #aaa399; font-size: 1.12rem; }
+    .last-stop strong { color: var(--paper); font-weight: 500; }
+
+    .permission { background: linear-gradient(180deg, #090a0a, #17120d); }
+    .permission-grid { width: min(1180px, 100%); margin: 64px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+    .permission-card { min-height: 310px; padding: 34px; border-right: 1px solid var(--line); }
+    .permission-card:last-child { border-right: 0; }
+    .permission-card span { color: var(--amber); font-size: .72rem; letter-spacing: .15em; }
+    .permission-card h3 { margin: 65px 0 14px; font-family: var(--serif); font-size: 2rem; font-weight: 400; }
+    .permission-card p { margin: 0; color: var(--muted); }
+
+    .letter-wrap { padding: clamp(110px, 15vw, 200px) 24px; background: #17120d; }
+    .letter {
+      position: relative;
+      width: min(880px, 100%);
+      margin: auto;
+      padding: clamp(44px, 8vw, 92px);
+      color: #26211c;
+      background: #e7dbc5;
+      box-shadow: 0 55px 110px rgba(0,0,0,.36);
+      transform: rotate(-.35deg);
+    }
+    .letter::before { content: ""; position: absolute; inset: 15px; border: 1px solid rgba(38,33,28,.16); pointer-events: none; }
+    .letter .section-kicker { color: #8a4b2d; }
+    .letter h2 { max-width: 650px; }
+    .letter p { color: #403931; }
+    .letter .letter-line { margin: 42px 0; color: #5d2f1e; font-family: var(--serif); font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.35; }
+    .signature { margin-top: 48px; }
+    .signature span { display: block; color: #6d6257; font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+    .signature strong { display: block; margin-top: 4px; font-family: var(--serif); font-size: 2.2rem; font-weight: 500; }
+
+    .final-reminder { padding: 100px 24px; text-align: center; background: var(--amber); color: #16120d; }
+    .final-reminder p { margin: 0 0 18px; font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+    .final-reminder h2 { width: min(900px, 100%); margin: auto; font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.7rem); font-weight: 500; line-height: 1.08; }
+    .final-reminder button { margin-top: 34px; padding: 13px 20px; border: 1px solid rgba(22,18,13,.45); border-radius: 999px; color: #16120d; background: transparent; font: 600 .75rem var(--sans); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+    .final-reminder button:hover { color: var(--paper); background: #16120d; }
+
+    footer { padding: 70px 24px 35px; color: #8f887f; background: #070808; text-align: center; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--paper); font-family: var(--serif); font-size: 1.3rem; text-decoration: none; }
+    .footer-brand img { width: 38px; height: 38px; object-fit: contain; }
+    footer > p { max-width: 580px; margin: 24px auto; }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 22px; margin: 32px 0 48px; }
+    .footer-links a { color: #aaa399; font-size: .82rem; text-decoration: none; }
+    footer small { font-size: .7rem; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .wv-nav { width: min(100% - 32px, 1380px); min-height: 72px; }
+      .wv-menu { display: block; cursor: pointer; }
+      .wv-links { position: absolute; top: 72px; left: 16px; right: 16px; display: none; padding: 22px; border: 1px solid var(--line); background: rgba(8,9,9,.97); flex-direction: column; align-items: flex-start; }
+      .wv-links.open { display: flex; }
+      .hero { grid-template-columns: 1fr; align-items: center; padding-top: 125px; }
+      .window { min-height: 430px; }
+      .story-grid, .split { grid-template-columns: 1fr; }
+      .sticky-note { position: static; }
+      .starting-lines { min-height: 390px; }
+      .permission-grid { grid-template-columns: 1fr; }
+      .permission-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .permission-card:last-child { border-bottom: 0; }
+      .permission-card h3 { margin-top: 32px; }
+    }
+    @media (max-width: 560px) {
+      .wv-brand-note { display: none; }
+      .hero { min-height: auto; padding-top: 120px; }
+      .hero h1 { font-size: clamp(3.5rem, 18vw, 5.2rem); }
+      .window { min-height: 370px; }
+      .window-words { left: 30px; right: 30px; bottom: 32px; }
+      .chapter { padding-inline: 20px; }
+      .letter-wrap { padding-inline: 14px; }
+      .letter { padding: 48px 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 
 <body>
-    <header class="wv-header">
-    <nav
-      class="wv-nav"
-      data-wv-nav
-      aria-label="Main navigation"
-    >
-
-      <!-- Wonder Verse brand -->
-      <a
-        href="index.html"
-        class="wv-brand"
-        aria-label="Wonder Verse homepage"
-      >
-        <span class="wv-brand-image-wrap">
-          <img
-            src="images/wonder-verse-moon-pencil-logo.png"
-            alt=""
-            class="wv-brand-image"
-          >
-        </span>
-
-        <span class="wv-brand-copy">
-          <span class="wv-brand-name">Jigyasa Verse</span>
-          <span class="wv-brand-note">Curiosity lives here</span>
-        </span>
+  <header class="wv-header">
+    <nav class="wv-nav" aria-label="Main navigation">
+      <a href="index.html" class="wv-brand" aria-label="Jigyasa Verse homepage">
+        <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
+        <span class="wv-brand-copy"><span class="wv-brand-name">Jigyasa Verse</span><span class="wv-brand-note">Curiosity lives here</span></span>
       </a>
-
-      <!-- Mobile menu button -->
-      <button
-        class="wv-menu"
-        type="button"
-        data-wv-menu
-        aria-expanded="false"
-        aria-controls="wvNavLinks"
-        aria-label="Open navigation menu"
-      >
-        <span class="wv-menu-label">Menu</span>
-        <span class="wv-menu-lines" aria-hidden="true"></span>
-      </button>
-
-      <!-- Navigation links -->
-      <div
-        class="wv-links"
-        id="wvNavLinks"
-        data-wv-links
-      >
+      <button class="wv-menu" type="button" aria-expanded="false" aria-controls="wvNavLinks">Menu</button>
+      <div class="wv-links" id="wvNavLinks">
         <a href="index.html">Start Here</a>
-
-        <!-- Current page -->
         <a href="about.html" aria-current="page">Our Story</a>
-
         <a href="books.html">Books</a>
-       
         <a href="wonderverse.html">Wonder</a>
-        <a href="schools.html">Schools</a>
+        <a href="schools.html">Learning Lok</a>
         <a href="contact.html">Contact</a>
       </div>
-
     </nav>
   </header>
 
   <main id="main-content">
     <section class="hero">
-      <div class="star-field" aria-hidden="true"></div>
-      <span class="sky-mark mark-one" aria-hidden="true">✦</span>
-      <span class="sky-mark mark-two" aria-hidden="true">· · ─ ·</span>
-
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span>Our story</span> A field note on becoming</p>
-        <h1>Where did all<br>the <em>spark</em> go?</h1>
-        <p class="hero-intro">Jigyasa Verse began with children’s questions—but it did not begin by observing children alone.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#letter">Read Isha’s letter <span>↓</span></a>
-          <a class="button secondary" href="#action">Find your next step <span>↗</span></a>
-        </div>
-        <p class="field-note"><span>01</span> Curiosity was never something you were supposed to outgrow.</p>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="reveal">
+        <p class="kicker">The reason Jigyasa Verse exists</p>
+        <h1>We are all<br>going <em>somewhere.</em></h1>
+        <p class="hero-lead">But in our hurry to reach the next stop, the next milestone, the next version of ourselves—how often do we forget to be here?</p>
+        <a class="scroll-cue" href="#observation"><span></span> Take the slower route</a>
       </div>
-
-      <div class="hero-art reveal">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <span class="orbit-word word-one">ASK</span>
-        <span class="orbit-word word-two">MAKE</span>
-        <span class="orbit-word word-three">TRY AGAIN</span>
-        <img src="images/colour-pencil-cup.png" alt="A hand-painted cup filled with colourful pencils">
-        <div class="art-note"><strong>Still in there.</strong><span>Your colour did not disappear.</span></div>
+      <div class="window reveal" aria-label="An abstract view through a bus window at night">
+        <div class="passing-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="route-line" aria-hidden="true"></div>
+        <div class="window-words"><span>Observed somewhere between stops</span><strong>Everyone looked busy. Not everyone looked alive.</strong></div>
       </div>
     </section>
 
-    <section class="opening-note section">
-      <div class="narrow reveal">
-        <p class="eyebrow dark"><span>What I noticed</span> Children, adults and everyone between</p>
-        <h2>I watched curiosity become quieter.</h2>
-        <p class="lead">Children began arriving with labels already attached: advanced, behind, difficult, distracted, gifted, average. Adults were carrying invisible labels too: successful, late, productive, unmotivated, not enough.</p>
-        <p>Isha did not only observe how children learned. She noticed how adults were slowly losing their spark in a highly aware, data-based world—a world where everybody seemed informed, optimised and completely certain of where they were going.</p>
-        <p>From the outside, everyone appeared to have it figured out. From the inside, many people quietly wondered whether they were falling behind.</p>
-      </div>
-    </section>
-
-    <section class="pressure-section">
-      <div class="section-heading reveal">
-        <p class="eyebrow"><span>The modern pressure</span> Measured, labelled, compared</p>
-        <h2>We have more information than ever.<br>That does not always mean we feel more alive.</h2>
-      </div>
-
-      <div class="pressure-grid">
-        <article class="pressure-card reveal">
-          <span class="card-index">01</span><div class="symbol">#</div>
-          <h3>The label</h3>
-          <p>A child becomes a category before they have had time to discover who they are. An adult becomes a job title, a number or a milestone.</p>
-        </article>
-        <article class="pressure-card reveal">
-          <span class="card-index">02</span><div class="symbol">≠</div>
-          <h3>The comparison</h3>
-          <p>We compare our ordinary Tuesday with somebody else’s carefully selected evidence and call ourselves late.</p>
-        </article>
-        <article class="pressure-card reveal">
-          <span class="card-index">03</span><div class="symbol">…</div>
-          <h3>The waiting</h3>
-          <p>We wait for motivation, Monday, certainty or the perfect plan—then wonder why the life we imagined has not moved.</p>
-        </article>
-      </div>
-
-      <p class="gentle-truth reveal">Your emotions deserve to be understood. They should be listened to with care. But understanding how you feel is not the end of the story; eventually, the next kind thing is to decide what you will <em>do.</em></p>
-    </section>
-
-    <section class="quote-section" id="action">
-      <div class="quote-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="quote-inner reveal">
-        <p class="eyebrow"><span>A belief at the centre</span> Knowledge must move</p>
-        <blockquote>“The highest form of knowledge is action.”</blockquote>
-        <p>You can read every book, save every post and understand every theory. But if you never act on what matters to you—if you sit, criticise, compare or wait for the right time—nothing changes by magic.</p>
-        <p class="firm-line">You have to show up for yourself, especially when motivation fades. Most of the time, it will.</p>
-      </div>
-    </section>
-
-    <section class="compass-section section">
-      <div class="section-heading ink reveal">
-        <p class="eyebrow dark"><span>The action compass</span> Gentle direction, real movement</p>
-        <h2>Consistency starts before the calendar.</h2>
-        <p>It starts with an honest decision about what matters and why it deserves a place in your life.</p>
-      </div>
-
-      <div class="compass">
-        <article class="compass-step reveal"><span>01</span><div class="step-mark">●</div><h3>Decide</h3><p>Make a strong, clear decision. A vague wish is difficult to follow.</p></article>
-        <article class="compass-step reveal"><span>02</span><div class="step-mark">↗</div><h3>Give it a why</h3><p>Name the purpose beneath the goal. Meaning carries you further than mood.</p></article>
-        <article class="compass-step reveal"><span>03</span><div class="step-mark">│</div><h3>Stay aligned</h3><p>Let small choices point in the same direction, even when the day is imperfect.</p></article>
-        <article class="compass-step reveal"><span>04</span><div class="step-mark">↻</div><h3>Review honestly</h3><p>Ask whether the goal is still worth keeping—and, if it is, keep showing up.</p></article>
-      </div>
-
-      <div class="start-now reveal">
-        <div><span class="now-symbol">NOW</span></div>
-        <div>
-          <h3>There is no “right time” waiting for you.</h3>
-          <p>There is no special Monday holding the courage you do not have today. Begin with what you know, what you have and the smallest honest action available to you now.</p>
+    <section class="chapter" id="observation">
+      <div class="story-grid">
+        <aside class="sticky-note reveal"><span class="chapter-number">01 / THE OBSERVATION</span><p>On streets, buses and roads, I kept seeing people move as though life were waiting at the destination.</p></aside>
+        <div class="story-copy reveal">
+          <p class="section-kicker">A note from the founder</p>
+          <h2>I began by watching people rush.</h2>
+          <p class="large">Shoulders leaning forward. Eyes on clocks. Hands holding coffee, phones, bags and entire private worlds.</p>
+          <p>Some were hurrying to work. Some were going home. Some were chasing a dream they had barely had time to love. Everyone seemed to be arriving somewhere—and yet so many of us appeared absent from our own lives.</p>
+          <p>I wondered when we began treating life like a race to finish. A meaningful dream does not grow well under constant panic. It asks for patience. It needs care, repetition and the courage to remain when the excitement has gone quiet.</p>
         </div>
       </div>
     </section>
 
-    <section class="you-and-you">
-      <div class="you-visual reveal" aria-hidden="true">
-        <div class="past-you"><span>THEN</span><i></i></div>
-        <div class="thread"><span>and</span></div>
-        <div class="present-you"><span>NOW</span><i></i></div>
+    <div class="rush-strip" aria-hidden="true">
+      <div class="rush-track">
+        <span>next stop · next deadline · next degree · next job · next version · <em>when do we arrive in our own life?</em> · </span>
+        <span>next stop · next deadline · next degree · next job · next version · <em>when do we arrive in our own life?</em> · </span>
       </div>
-      <div class="you-copy reveal">
-        <p class="eyebrow"><span>A kinder way to grow</span> Not you versus you</p>
-        <h2>It has always been<br><em>you and you.</em></h2>
-        <p>Your previous self is not the enemy you must defeat. That version of you survived days you no longer have to survive. They made choices, tried again, rested, failed and showed up when it mattered.</p>
-        <p>If the previous you had not kept going, the present you would not be standing here.</p>
-        <p class="featured">Thank who you were. Then help who you are becoming.</p>
-      </div>
-    </section>
+    </div>
 
-    <section class="possibility section">
-      <div class="possibility-inner reveal">
-        <p class="eyebrow dark"><span>What school rarely says aloud</span> Your life is not a fixed category</p>
-        <h2>You are capable of far more than a label can hold.</h2>
-        <p>To meet the deeper parts of yourself, stay curious. Stay teachable. Stay childlike enough to ask ridiculous questions, make messy things and begin before you are impressive.</p>
-        <div class="possibility-lines">
-          <span>Curiosity before certainty.</span>
-          <span>Action before applause.</span>
-          <span>Consistency before perfection.</span>
+    <section class="chapter unfair">
+      <div class="split">
+        <div class="starting-lines reveal" aria-hidden="true">
+          <div class="line-person"><i></i><span>support</span></div>
+          <div class="line-person"><i></i><span>opportunity</span></div>
+          <div class="line-person"><i></i><span>safety</span></div>
+          <div class="line-person"><i></i><span>time</span></div>
+        </div>
+        <div class="split-copy reveal">
+          <p class="section-kicker">No false promises</p>
+          <h2>Life is not fair. You are not imagining it.</h2>
+          <p>We do not begin at the same line. Some inherit doors held open; others spend years learning how to build a door. Some are allowed many mistakes. For someone else, one mistake can change everything.</p>
+          <p>I will not tell you that every hardship is secretly a gift. Some losses are simply devastating. Some systems are genuinely unjust. Pain does not need a pretty caption to be real.</p>
+          <div class="truth-box"><strong>Your pace is not proof of your worth.</strong><p>You deserve compassion for the distance you have had to travel—not shame because somebody else began closer.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="letter-section" id="letter">
+    <section class="chapter breaking">
+      <div class="breaking-inner reveal">
+        <p class="section-kicker">When life does what life can do</p>
+        <h2>Sometimes life does not teach gently.<br><span>Sometimes it breaks things.</span></h2>
+        <div class="crack" aria-hidden="true"></div>
+        <p class="not-romantic">Being broken is not beautiful while it is happening.</p>
+        <p>It is exhausting, lonely and often deeply unfair. I have witnessed people lose certainty, plans, relationships and pieces of themselves they thought would always be there.</p>
+        <p>I have also watched people grow around the fracture. Not because the pain was deserved. Not because loss was good. But because, little by little, they chose to remain in their own story.</p>
+      </div>
+    </section>
+
+    <section class="chapter last-stop">
+      <div class="last-stop-inner reveal">
+        <p class="small">The one certainty</p>
+        <h2>None of us gets to stay forever.</h2>
+        <p>There is one battle every human being eventually loses: time. This is not meant to frighten you. It is meant to return you to what is alive now. <strong>The days will pass whether you begin or not.</strong></p>
+      </div>
+    </section>
+
+    <section class="chapter permission">
+      <div class="story-grid">
+        <aside class="sticky-note reveal"><span class="chapter-number">02 / THE INVITATION</span><p>You do not have to sprint. You do have to participate.</p></aside>
+        <div class="story-copy reveal">
+          <p class="section-kicker">Before the real deadline</p>
+          <h2>Do the thing while you are here.</h2>
+          <p class="large">Write badly. Learn slowly. Try while scared. Rest when you need to. Return when you can.</p>
+          <p>Your dream may take longer than the version you planned. It may change shape. It may ask you to begin again. Give it the patience you so freely give to everyone else.</p>
+        </div>
+      </div>
+      <div class="permission-grid reveal">
+        <article class="permission-card"><span>01</span><h3>Begin small.</h3><p>A beginning does not need to impress anyone. It only needs to be honest enough to continue tomorrow.</p></article>
+        <article class="permission-card"><span>02</span><h3>Stay human.</h3><p>You are allowed to be tired, uncertain and unfinished. Rest is not the same as abandoning yourself.</p></article>
+        <article class="permission-card"><span>03</span><h3>Make it yours.</h3><p>Build the life that speaks to you—not the one that looks most convincing from across a crowded street.</p></article>
+      </div>
+    </section>
+
+    <section class="letter-wrap" id="letter">
       <article class="letter reveal">
-        <div class="letter-top"><span>PRIVATE FIELD NOTE</span><span>FOR THE PERSON READING THIS</span></div>
-        <p class="salutation">Dear you,</p>
-
-        <p>I hope you know that you are not late. You are not a failed version of somebody else. And you are not required to have your entire life beautifully explained before you take the next step.</p>
-
-        <p>But I also want to remind you—gently and firmly—that your life needs your participation.</p>
-
-        <p>Do not leave every meaningful idea for “someday.” Do not reach the end of your life carrying the ache of the thing you could have begun when you had the chance, the ability and this astonishingly unfinished life in front of you.</p>
-
-        <p>Choose something worthy of your effort. Understand why it matters. Make the decision. Then return to it when the motivation disappears, because motivation is a visitor; commitment is the person who stays to help clean up.</p>
-
-        <p>You do not need to transform overnight. You only need to stop abandoning yourself in tiny moments.</p>
-
-        <p class="letter-highlight">Start now. Start gently. Start imperfectly. But let this be the day your knowledge becomes movement.</p>
-
-        <p>You are already remarkable—not because you have done everything, but because there is still so much life, colour and possibility within you. Please do something with it.</p>
-
-        <div class="signature">
-          <span>With belief in your becoming,</span>
-          <strong>Isha</strong>
-          <small>Founder, Jigyasa Verse</small>
-        </div>
+        <p class="section-kicker">A letter for the person still trying</p>
+        <h2>Dear you,</h2>
+        <p>I do not know what life has asked you to carry. I do not know which starting line you were given, what you have lost, or how many times you have had to rebuild quietly while the world continued as if nothing had happened.</p>
+        <p>But I know this: you do not need another voice making you feel late.</p>
+        <p>You need room to breathe. You need permission to move at a human pace. And when you are ready, you need one honest next step—not a perfect ten-year plan.</p>
+        <p class="letter-line">Time will pass anyway. Let some of it pass while you are making, learning, loving and becoming.</p>
+        <p>Jigyasa Verse was created for that space: the space between who you have been told to become and the person your curiosity keeps asking you to meet. It is a place for questions, imperfect beginnings, difficult truths and ideas that deserve a life beyond your head.</p>
+        <p>Please do not wait until fear disappears. Please do not measure your private beginning against somebody else's public middle. Begin with what is in your hands. Begin with the life that is still here.</p>
+        <div class="signature"><span>With patience for your becoming,</span><strong>Isha</strong><small>Founder, Jigyasa Verse</small></div>
       </article>
     </section>
 
-    <section class="daily-reminder">
-      <p>YOUR REMINDER FOR TODAY</p>
-      <h2 id="reminderText">You do not need more time. You need one honest beginning.</h2>
-      <button id="newReminder" type="button">Draw another reminder <span>↻</span></button>
+    <section class="final-reminder" aria-live="polite">
+      <p>A reminder for this part of the journey</p>
+      <h2 id="reminderText">You are not late. You are living from a different starting line.</h2>
+      <button id="newReminder" type="button">Another reminder ↻</button>
     </section>
   </main>
 
   <footer>
-    <a class="brand footer-brand" href="index.html">
-      <span class="brand-moon" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span>JIGYASA<br><em>VERSE</em></span>
-    </a>
-    <p>Protecting curiosity, celebrating good questions and helping ideas become action.</p>
-    <div class="footer-links"><a href="about.html">Our story</a><a href="books.html">Books</a><a href="resources.html">Explore</a><a href="contact.html">Contact</a></div>
-    <small>© 2026 The Jigyasa Verse Project · Made somewhere between the moon and imagination.</small>
+    <a class="footer-brand" href="index.html"><img src="images/wonder-verse-moon-pencil-logo.png" alt=""><span>Jigyasa Verse</span></a>
+    <p>A home for curiosity, honest beginnings and the courage to make something of the time we have.</p>
+    <div class="footer-links"><a href="about.html">Our Story</a><a href="books.html">Books</a><a href="wonderverse.html">Wonder</a><a href="schools.html">Learning Lok</a><a href="contact.html">Contact</a></div>
+    <small>© 2026 Jigyasa Verse · Made with curiosity, somewhere between the rush and the becoming.</small>
   </footer>
-  <script src="wonder-verse-navbar.js"></script>
+
+  <script>
+    (() => {
+      const header = document.querySelector('.wv-header');
+      const menu = document.querySelector('.wv-menu');
+      const links = document.querySelector('.wv-links');
+      const revealItems = document.querySelectorAll('.reveal');
+      const reminder = document.querySelector('#reminderText');
+      const reminderButton = document.querySelector('#newReminder');
+
+      const reminders = [
+        'You are not late. You are living from a different starting line.',
+        'A slow beginning is still a beginning.',
+        'Rest if you need to. Then return to what matters.',
+        'Your life does not have to look impressive to feel true.',
+        'Give the dream time to become more than an idea.',
+        'You do not need the whole route. Take the next honest step.'
+      ];
+
+      const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+
+      menu?.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        menu.setAttribute('aria-expanded', String(isOpen));
+        menu.textContent = isOpen ? 'Close' : 'Menu';
+      });
+      links?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu?.setAttribute('aria-expanded', 'false');
+        if (menu) menu.textContent = 'Menu';
+      }));
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .12 });
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add('visible'));
+      }
+
+      let reminderIndex = 0;
+      reminderButton?.addEventListener('click', () => {
+        reminderIndex = (reminderIndex + 1) % reminders.length;
+        reminder.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, easing: 'ease-out' });
+        reminder.textContent = reminders[reminderIndex];
+      });
+    })();
+  </script>
 </body>
 </html>
