@@ -1,183 +1,1059 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <!-- Google tag (gtag.js) -->
+
+  <!-- =========================================================
+       GOOGLE ANALYTICS
+  ========================================================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'G-EF9DVH7JQN');
   </script>
+
+
+  <!-- =========================================================
+       BASIC META
+  ========================================================== -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Jigyasa Verse — a universe for curious humans who are still becoming.">
-  <meta name="theme-color" content="#05050a">
-  <title>Jigyasa Verse | There is a universe in you</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gloock&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2305050a'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23201b2e' stroke='%23f0b55b' stroke-width='2'/%3E%3Ccircle cx='25' cy='25' r='4' fill='%230b0912'/%3E%3Cpath d='M17 44C31 51 45 43 49 30' fill='none' stroke='%23ffe0a0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="JigyasaVerse — a universe for curious humans who are still becoming. Learn, wonder, make, question, get things wrong and begin somewhere."
+  >
+
+  <meta
+    name="theme-color"
+    content="#05050a"
+  >
+
+  <title>JigyasaVerse | A Universe for Curious Humans</title>
+
+
+  <!-- =========================================================
+       CANONICAL
+  ========================================================== -->
+  <link
+    rel="canonical"
+    href="https://jigyasaverse.org/"
+  >
+
+
+  <!-- =========================================================
+       SOCIAL SHARING / OPEN GRAPH
+  ========================================================== -->
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:site_name"
+    content="JigyasaVerse"
+  >
+
+  <meta
+    property="og:title"
+    content="JigyasaVerse | A Universe for Curious Humans"
+  >
+
+  <meta
+    property="og:description"
+    content="Learn something. Question something. Make something. Get something wrong. Follow your curiosity wherever it takes you."
+  >
+
+  <meta
+    property="og:url"
+    content="https://jigyasaverse.org/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://jigyasaverse.org/images/jigyasa-social-card.jpg"
+  >
+
+
+  <!-- Twitter / X preview -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="JigyasaVerse | A Universe for Curious Humans"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Learn. Wonder. Make. Question. Begin somewhere."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://jigyasaverse.org/images/jigyasa-social-card.jpg"
+  >
+
+
+  <!-- =========================================================
+       STRUCTURED DATA
+  ========================================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "JigyasaVerse",
+    "url": "https://jigyasaverse.org/",
+    "logo": "https://jigyasaverse.org/images/wonder-verse-moon-pencil-logo.png",
+    "description": "A universe for curious humans who are still becoming."
+  }
+  </script>
+
+
+  <!-- =========================================================
+       FONTS
+  ========================================================== -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gloock&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================================
+       FAVICON
+  ========================================================== -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2305050a'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23201b2e' stroke='%23f0b55b' stroke-width='2'/%3E%3Ccircle cx='25' cy='25' r='4' fill='%230b0912'/%3E%3Cpath d='M17 44C31 51 45 43 49 30' fill='none' stroke='%23ffe0a0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"
+  >
+
+
+  <!-- =========================================================
+       SITE FILES
+  ========================================================== -->
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <script
+    src="script.js"
+    defer
+  ></script>
+
 </head>
+
 
 <body>
 
-  <canvas class="living-sky" id="livingSky" aria-hidden="true"></canvas>
-  <div class="grain" aria-hidden="true"></div>
+  <!-- Accessibility -->
+  <a
+    class="skip-link"
+    href="#main"
+  >
+    Skip to main content
+  </a>
 
-  <header class="site-header" id="siteHeader">
-    <a class="brand" href="#top" aria-label="Jigyasa Verse home">
+
+  <!-- =========================================================
+       LIVING BACKGROUND
+  ========================================================== -->
+  <canvas
+    class="living-sky"
+    id="livingSky"
+    aria-hidden="true"
+  ></canvas>
+
+  <div
+    class="grain"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+  <header
+    class="site-header"
+    id="siteHeader"
+  >
+
+    <a
+      class="brand"
+      href="#top"
+      aria-label="JigyasaVerse home"
+    >
+
       <span class="brand-logo-wrap">
-        <img class="brand-logo js-brand-logo" src="images/wonder-verse-moon-pencil-logo.png" alt="Jigyasa Verse moon and pencil logo">
-         </span>
-      <span class="brand-copy"><strong>JIGYASA VERSE</strong><small>curiosity lives here</small></span>
+
+        <img
+          class="brand-logo js-brand-logo"
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt="JigyasaVerse moon and pencil logo"
+        >
+
+      </span>
+
+      <span class="brand-copy">
+
+        <strong>JIGYASAVERSE</strong>
+
+        <small>
+          curiosity lives here
+        </small>
+
+      </span>
+
     </a>
 
-    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="siteMenu">
-      <span>Menu</span><i></i><i></i>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="siteMenu"
+      aria-label="Open navigation menu"
+    >
+
+      <span>Menu</span>
+
+      <i></i>
+      <i></i>
+
     </button>
 
-    <nav class="nav-links" id="siteMenu" aria-label="Main navigation">
-      <a href="wonderverse.html">Wonder लोक</a>
-      <a href="learning-lok.html">Learning लोक</a>
-      <a href="books.html">Books</a>
-      <a href="about.html">Our story</a>
-      <a class="nav-pill" href="contact.html">Say hello <span>↗</span></a>
+
+    <nav
+      class="nav-links"
+      id="siteMenu"
+      aria-label="Main navigation"
+    >
+
+      <a href="wonderverse.html">
+        Wonder <span lang="hi">लोक</span>
+      </a>
+
+      <a href="learning-lok.html">
+        Learning <span lang="hi">लोक</span>
+      </a>
+
+      <a href="books.html">
+        The Library
+      </a>
+
+      <a href="about.html">
+        Our story
+      </a>
+
+      <a
+        class="nav-pill"
+        href="contact.html"
+      >
+        Say hello <span>↗</span>
+      </a>
+
     </nav>
+
   </header>
 
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
   <main id="main">
-    <section class="hero" id="top">
+
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+    <section
+      class="hero"
+      id="top"
+    >
+
       <div class="hero-copy">
-        <p class="hello-line"><span>नमस्ते.</span> Hello.</p>
-        <h1>Just in case<br>you forgot—</h1>
-        <p class="universe-line">There is a whole damn <em>universe</em> inside you.</p>
-        <p class="cosmic-proof">Millions live within you. You live within the cosmos.<br><strong>Your small part, that still matters!</strong></p>
+
+        <p class="hello-line">
+          <span>नमस्ते.</span>
+          Hello.
+        </p>
+
+
+        <h1>
+          Just in case<br>
+          you forgot—
+        </h1>
+
+
+        <p class="universe-line">
+          There is a whole damn
+          <em>universe</em>
+          inside you.
+        </p>
+
+
+        <p class="cosmic-proof">
+
+          JigyasaVerse is a place to learn, wonder, make,
+          question, get things wrong and follow your curiosity
+          wherever it takes you.
+
+          <br>
+
+          <strong>
+            You don't need to know where you're going.
+            Begin somewhere.
+          </strong>
+
+        </p>
+
 
         <div class="hero-actions">
-          <a class="primary-action" href="#doorways"><span>Get up. Begin somewhere.</span><b>↓</b></a>
-          <a class="quiet-action" href="#manifesto">I need one more minute <span>↘</span></a>
+
+          <a
+            class="primary-action"
+            href="#doorways"
+          >
+
+            <span>
+              Get up. Begin somewhere.
+            </span>
+
+            <b>↓</b>
+
+          </a>
+
+
+          <a
+            class="quiet-action"
+            href="#manifesto"
+          >
+
+            I need one more minute
+
+            <span>↘</span>
+
+          </a>
+
         </div>
+
       </div>
 
-      <div class="planet-stage" id="planetStage" aria-label="An imperfect Jigyasa planet, scarred but still shining">
-        <div class="planet-halo" aria-hidden="true"></div>
-        <div class="orbit orbit-one" aria-hidden="true"><span>STILL HERE</span></div>
-        <div class="orbit orbit-two" aria-hidden="true"><span>STILL BECOMING</span></div>
-        <img class="jigyasa-planet" src="images/jigyasa-planet.png" alt="A dark, weathered planet with craters, cracks and a warm light shining behind it">
-        <p class="planet-name">JIGYASA <span>जिज्ञासा</span></p>
-        <p class="planet-note"><i></i> Not untouched.<br>Still luminous.</p>
+
+      <!-- Planet -->
+      <div
+        class="planet-stage"
+        id="planetStage"
+      >
+
+        <div
+          class="planet-halo"
+          aria-hidden="true"
+        ></div>
+
+
+        <div
+          class="orbit orbit-one"
+          aria-hidden="true"
+        >
+          <span>STILL HERE</span>
+        </div>
+
+
+        <div
+          class="orbit orbit-two"
+          aria-hidden="true"
+        >
+          <span>STILL BECOMING</span>
+        </div>
+
+
+        <img
+          class="jigyasa-planet"
+          src="images/jigyasa-planet.png"
+          alt="A dark, weathered planet with craters, cracks and a warm light shining behind it"
+        >
+
+
+        <p class="planet-name">
+          JIGYASA
+          <span>जिज्ञासा</span>
+        </p>
+
+
+        <p class="planet-note">
+
+          <i></i>
+
+          Not untouched.<br>
+          Still luminous.
+
+        </p>
+
       </div>
 
-      <p class="scroll-cue">ENTER THE VERSE <span>↓</span></p>
+
+      <p class="scroll-cue">
+        ENTER THE VERSE
+        <span>^V^</span>
+      </p>
+
     </section>
 
-    <div class="pulse-strip" aria-hidden="true">
+
+
+    <!-- =======================================================
+         MOVING PHILOSOPHY STRIP
+    ======================================================== -->
+    <div
+      class="pulse-strip"
+      aria-hidden="true"
+    >
+
       <div>
-        <span>BEGIN MESSY</span><b>✦</b><span>ASK WHY</span><b>✦</b><span>WHY NOT YOU?</span><b>✦</b><span>LOSE</span><b>✦</b>
-        <span>FAIL</span><b>✦</b><span>FAIL AGAIN</span><b>✦</b><span>CHANGE YOUR MIND</span><b>✦</b><span>WIN AND EXPAND</span><b>✦</b>
+
+        <span>BEGIN MESSY</span>
+        <b>✦</b>
+
+        <span>ASK WHY</span>
+        <b>✦</b>
+
+        <span>FOLLOW THE QUESTION</span>
+        <b>✦</b>
+
+        <span>GET IT WRONG</span>
+        <b>✦</b>
+
+        <span>TRY AGAIN</span>
+        <b>✦</b>
+
+        <span>CHANGE YOUR MIND</span>
+        <b>✦</b>
+
+        <span>MAKE SOMETHING</span>
+        <b>✦</b>
+
+        <span>STAY CURIOUS</span>
+        <b>✦</b>
+
+
+        <!-- duplicated for seamless ticker -->
+
+        <span>BEGIN MESSY</span>
+        <b>✦</b>
+
+        <span>ASK WHY</span>
+        <b>✦</b>
+
+        <span>FOLLOW THE QUESTION</span>
+        <b>✦</b>
+
+        <span>GET IT WRONG</span>
+        <b>✦</b>
+
+        <span>TRY AGAIN</span>
+        <b>✦</b>
+
+        <span>CHANGE YOUR MIND</span>
+        <b>✦</b>
+
+        <span>MAKE SOMETHING</span>
+        <b>✦</b>
+
+        <span>STAY CURIOUS</span>
+        <b>✦</b>
+
       </div>
+
     </div>
 
-    <section class="manifesto reveal" id="manifesto">
-      <p class="eyebrow">A NOTE FROM THE UNIVERSE / 001</p>
+
+
+    <!-- =======================================================
+         MANIFESTO
+    ======================================================== -->
+    <section
+      class="manifesto reveal"
+      id="manifesto"
+    >
+
+      <p class="eyebrow">
+        A NOTE FROM THE UNIVERSE / 001
+      </p>
+
+
       <blockquote>
-        Are you ready to be the next super human in your chapter?<br>
-        Do you ever want to see YOUR highest potential? <em>Welcome to the club!</em>
+
+        You don't need to have<br>
+        it all
+
+        <em>
+          figured out.
+        </em>
+
       </blockquote>
+
+
       <div class="manifesto-aside">
-        <span>Today IS the day TO START!</span>
-        <p>Open the page. Make the call. Take the Risk. Start badly. You WILL be bad at it for weeks, months or even years, but you will never know until YOU start.</p>
+
+        <span>
+          Curiosity is enough to begin.
+        </span>
+
+
+        <p>
+
+          Maybe you're here because you want to learn something.
+
+          Maybe you're building something.
+
+          Maybe things haven't exactly gone to plan.
+
+          Maybe you're just bored and clicked the wrong link.
+
+          Good, Welcome!
+
+          Pick something. Start badly. See where it takes you.
+
+        </p>
+
       </div>
+
     </section>
 
- <div class="door-grid">
 
-  <!-- WONDER LOK CARD -->
-  <a class="door wonder-door reveal" href="wonderverse.html">
 
-    <img
-      class="door-image"
-      src="images/wonder.png"
-      alt="A lone person facing a vast Milky Way filled with possibilities"
+    <!-- =======================================================
+         WORLDS
+    ======================================================== -->
+    <section
+      class="doorways"
+      id="doorways"
+      aria-labelledby="worldsTitle"
     >
 
-    <div class="door-index">
-      <span>01</span>
-      <b>For FINDING your spark and purpose</b>
-    </div>
 
-    <div class="door-copy">
-      <p>LIFE · COURAGE · CURIOSITY</p>
-      <h3>Wonder <span lang="hi">लोक</span></h3>
-      <small>
-        For the beautifully complicated parts of finding your real purpose and YOUR spark!
-      </small>
-    </div>
+      <div class="section-heading reveal">
 
-    <span class="door-link">
-      ENTER <b>^W^</b>
-    </span>
-
-  </a>
+        <p class="eyebrow">
+          CHOOSE A DIRECTION
+        </p>
 
 
-  <!-- LEARNING LOK CARD -->
-  <a class="door learning-door reveal" href="learning-lok.html">
+        <h2 id="worldsTitle">
 
-    <img
-      class="door-image"
-      src="images/learninglok.png"
-      alt="A woman reaching towards constellations representing multiple paths"
-    >
+          Where are you<br>
+          going
 
-    <div class="door-index">
-      <span>02</span>
-      <b>For Executing the PURPOSE</b>
-    </div>
+          <em>today?</em>
 
-    <div class="door-copy">
-      <p>STUDENTS · TEACHERS · FAMILIES</p>
-      <h3>Learning <span lang="hi">लोक</span></h3>
-      <small>
-        For learning that spills far beyond the classroom.
-      </small>
-    </div>
+        </h2>
 
-    <span class="door-link">
-      ENTER <b>^V^</b>
-    </span>
 
-  </a>
+        <p>
 
-</div>
-    <section class="night-question reveal">
-      <span class="question-orbit" aria-hidden="true">?</span>
-      <p class="eyebrow">BEFORE YOU GO</p>
-      <h2>What deserves<br>one brave hour<br>from you today?</h2>
-      <a href="questions.html">Take a question with you <span>^W^</span></a>
-    </section>
+          Pick the door that feels closest.
 
-    <section class="closing reveal">
-      <div class="closing-logo" aria-label="Jigyasa Verse">
-        <span class="closing-logo-image-wrap">
-          <img class="closing-logo-image js-brand-logo" src="images/wonder-verse-moon-pencil-logo.png" alt="Jigyasa Verse moon and pencil logo">
+          The Verse has no required route.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="door-grid">
+
+
+        <!-- ===================================================
+             WONDER LOK
+        ==================================================== -->
+        <a
+          class="door wonder-door reveal"
+          href="wonderverse.html"
+          data-journey="wonder"
+        >
+
+
+          <img
+            class="door-image"
+            src="images/wonder.png"
+            alt="A lone person facing a vast Milky Way filled with possibilities"
+          >
+
+
+          <div class="door-shade"></div>
+
+
+          <div class="door-index">
+
+            <span>01</span>
+
+            <b>
+              FOR QUESTIONS WITHOUT EASY ANSWERS
+            </b>
+
+          </div>
+
+
+          <div class="door-copy">
+
+            <p>
+              LIFE · COURAGE · CURIOSITY
+            </p>
+
+
+            <h3>
+
+              Wonder
+
+              <span lang="hi">
+                लोक
               </span>
-        <div><strong>JIGYASA</strong><em>VERSE</em></div>
+
+            </h3>
+
+
+            <small>
+
+              For the beautifully complicated parts of being
+              human — purpose, courage, failure, identity,
+              possibility and everything in between.
+
+            </small>
+
+          </div>
+
+
+          <span class="door-link">
+
+            ENTER
+
+            <b>^w^</b>
+
+          </span>
+
+        </a>
+
+
+
+        <!-- ===================================================
+             LEARNING LOK
+        ==================================================== -->
+        <a
+          class="door learning-door reveal"
+          href="learning-lok.html"
+          data-journey="learning"
+        >
+
+
+          <img
+            class="door-image"
+            src="images/learninglok.png"
+            alt="A woman reaching towards constellations representing multiple paths"
+          >
+
+
+          <div class="door-shade"></div>
+
+
+          <div class="door-index">
+
+            <span>02</span>
+
+            <b>
+              FOR LEARNING BEYOND THE SYLLABUS
+            </b>
+
+          </div>
+
+
+          <div class="door-copy">
+
+            <p>
+              STUDENTS · TEACHERS · FAMILIES
+            </p>
+
+
+            <h3>
+
+              Learning
+
+              <span lang="hi">
+                लोक
+              </span>
+
+            </h3>
+
+
+            <small>
+
+              Science, mathematics, history, art, music,
+              medicine, old ways of learning — and things
+              nobody thought to put on the syllabus.
+
+            </small>
+
+          </div>
+
+
+          <span class="door-link">
+
+            ENTER
+
+            <b>↗</b>
+
+          </span>
+
+        </a>
+
       </div>
-      <p>Stay original. Stay you.</p>
-      <h2>The right tribe will<br>always find you and believe in your dream.</h2>
-         <a href="#top" aria-label="Back to top">↑</a>
+
     </section>
+
+
+
+    <!-- =======================================================
+         TODAY'S JIGYASA
+    ======================================================== -->
+    <section
+      class="daily-jigyasa reveal"
+      aria-labelledby="dailyJigyasaTitle"
+    >
+
+      <div class="daily-meta">
+
+        <p class="eyebrow">
+          TODAY'S JIGYASA
+        </p>
+
+        <span>
+          ONE QUESTION · NO RUSH
+        </span>
+
+      </div>
+
+
+      <div class="daily-number" aria-hidden="true">
+        ?
+      </div>
+
+
+      <h2 id="dailyJigyasaTitle">
+
+        Why do humans get some of their
+        best ideas when they're doing
+        absolutely nothing?
+
+      </h2>
+
+
+      <p class="daily-intro">
+
+        You don't have to answer it.
+
+        Carry it around for a while.
+
+        See what it bumps into.
+
+      </p>
+
+
+      <a
+        class="daily-link"
+        href="questions.html"
+        data-journey="daily-jigyasa"
+      >
+
+        Follow the question
+
+        <span>↗</span>
+
+      </a>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         RANDOM JOURNEY
+    ======================================================== -->
+    <section
+      class="random-path reveal"
+      aria-labelledby="randomTitle"
+    >
+
+      <div class="random-stars" aria-hidden="true">
+        ✦
+      </div>
+
+
+      <p class="eyebrow">
+        NO IDEA WHERE TO GO?
+      </p>
+
+
+      <h2 id="randomTitle">
+        Good.
+      </h2>
+
+
+      <p>
+
+        Curiosity rarely arrives with directions.
+
+        Give the Verse permission to choose for you.
+
+      </p>
+
+
+      <button
+        class="random-button"
+        id="randomJourney"
+        type="button"
+      >
+
+        <span>
+          ✦ Take me somewhere
+        </span>
+
+        <b>↗</b>
+
+      </button>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         BEFORE YOU GO
+    ======================================================== -->
+    <section class="night-question reveal">
+
+      <span
+        class="question-orbit"
+        aria-hidden="true"
+      >
+        ?
+      </span>
+
+
+      <p class="eyebrow">
+        BEFORE YOU GO
+      </p>
+
+
+      <h2>
+
+        What deserves<br>
+        one brave hour<br>
+        from you today?
+
+      </h2>
+
+
+      <a
+        href="questions.html"
+        data-journey="take-question"
+      >
+
+        Take a question with you
+
+        <span>↗</span>
+
+      </a>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CLOSING
+    ======================================================== -->
+    <section class="closing reveal">
+
+
+      <div
+        class="closing-logo"
+        aria-label="JigyasaVerse"
+      >
+
+        <span class="closing-logo-image-wrap">
+
+          <img
+            class="closing-logo-image js-brand-logo"
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt="JigyasaVerse moon and pencil logo"
+          >
+
+        </span>
+
+
+        <div>
+
+          <strong>
+            JIGYASA
+          </strong>
+
+          <em>
+            VERSE
+          </em>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        STAY CURIOUS. STAY UNFINISHED.
+      </p>
+
+
+      <h2>
+
+        There is still so much of you<br>
+        that you haven't met yet.
+
+      </h2>
+
+
+      <small>
+        See you somewhere in the Verse.
+      </small>
+
+
+      <a
+        href="#top"
+        aria-label="Back to top"
+      >
+        ↑
+      </a>
+
+    </section>
+
   </main>
 
-  <footer>
-    <div><strong>JIGYASA VERSE</strong><p>For curious humans who want to not stay foreign in their own body. For those who want to become their own best friend. For those who want to know who they are and not what others tell them. For those who believe.</p></div>
-    <nav aria-label="Footer navigation"><a href="about.html">Our story</a><a href="books.html">Books</a><a href="contact.html">Say hello</a></nav>
-    <small>© 2026 Jigyasa Verse · Made between survival and wonder.</small>
-  </footer>
-</body>
-</html>
 
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer>
+
+
+    <div class="footer-intro">
+
+      <strong>
+        JIGYASAVERSE
+      </strong>
+
+
+      <p>
+
+        A universe for curious humans who are still becoming.
+
+        Come to learn, wonder, make, question, get things wrong
+        and begin again.
+
+      </p>
+
+    </div>
+
+
+
+    <nav
+      class="footer-nav"
+      aria-label="Explore JigyasaVerse"
+    >
+
+      <strong>
+        EXPLORE
+      </strong>
+
+      <a href="wonderverse.html">
+        Wonder लोक
+      </a>
+
+      <a href="learning-lok.html">
+        Learning लोक
+      </a>
+
+      <a href="books.html">
+        The Library
+      </a>
+
+      <a href="about.html">
+        Our story
+      </a>
+
+      <a href="contact.html">
+        Say hello
+      </a>
+
+    </nav>
+
+
+
+    <nav
+      class="footer-nav"
+      aria-label="JigyasaVerse information"
+    >
+
+      <strong>
+        INFORMATION
+      </strong>
+
+      <a href="privacy.html">
+        Privacy
+      </a>
+
+      <a href="accessibility.html">
+        Accessibility
+      </a>
+
+      <a href="terms.html">
+        Terms
+      </a>
+
+    </nav>
+
+
+
+    <small class="footer-credit">
+
+      © 2026 JigyasaVerse · Made between survival and wonder.
+
+    </small>
+
+  </footer>
+
+
+</body>
+
+</html>
