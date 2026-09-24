@@ -1,803 +1,1109 @@
 (() => {
+
   "use strict";
 
-  const $ = (selector, root = document) =>
-    root.querySelector(selector);
 
-  const $$ = (selector, root = document) =>
-    [...root.querySelectorAll(selector)];
+  /* =========================================================
+     LEARNING WORLDS
+  ========================================================= */
 
-  /* -------------------------------------------
-     SHORTEN THE EXISTING PAGE TEXT
-  ------------------------------------------- */
+  const learningWorlds = [
 
-  const setText = (selector, text) => {
-    const element = $(selector);
-    if (element) element.textContent = text;
-  };
-
-  setText(
-    ".entry-lede",
-    "Learning once moved through fields, kitchens, studios, workshops and conversations. Enter with a question. Leave with something useful."
-  );
-
-  setText(".entry-sign h2", "Questions welcome.");
-
-  setText(
-    ".entry-sign p:not(.chalk)",
-    "No ranks. No perfect starting point."
-  );
-
-  const opening = $(".opening");
-
-  if (opening) {
-    opening.innerHTML = `
-      <p class="folio">COURTYARD NOTE · 01</p>
-
-      <div>
-        <p class="eyebrow">What we carry forward</p>
-
-        <h2>
-          Learning has never belonged to one kind of classroom.
-        </h2>
-
-        <p>
-          Across time and place, people learned by observing,
-          practising, questioning and contributing. We carry those
-          useful ideas forward—without copying the exclusion or fear
-          that also existed.
-        </p>
-      </div>
-
-      <blockquote>
-        Keep what helps people learn.<br>
-        Leave behind what limits them.
-      </blockquote>
-    `;
-  }
-
-  const copyEdits = [
-    [
-      ".world-school .section-heading h2",
-      "Many places. Many ways to learn."
-    ],
-    [
-      ".world-school .section-heading > p",
-      "Open a field note only when you want the history."
-    ],
-    [
-      ".water-copy h2",
-      "Take what you need. Return when you are ready."
-    ],
-    [
-      ".water-copy p:nth-of-type(2)",
-      "A teacher can guide, question and make practice possible. The learner builds understanding."
-    ],
-    [
-      ".water-copy p:nth-of-type(3)",
-      "Choose a cup for today, a bucket for a project, or a river to share with others."
-    ],
-    [
-      ".carry-section .section-heading h2",
-      "Carry the wisdom. Leave the harm."
-    ],
-    [
-      ".carry-section .section-heading > p",
-      "Old is not automatically better. Useful, fair and humane ideas earn their place."
-    ],
-    [
-      ".community-manifesto > p",
-      "Learning should help us understand, create and care—not decide who is worth more."
-    ],
-    [
-      ".teacher-copy h2",
-      "Teachers create encounters. Learners create understanding."
-    ],
-    [
-      ".teacher-copy p:nth-of-type(2)",
-      "A teacher places a question where it can be noticed, makes practice possible and keeps uncertainty safe."
-    ],
-    [
-      ".teacher-copy p:nth-of-type(3)",
-      "The world provides the material. The learner does the learning."
-    ],
-    [
-      ".library-copy p",
-      "Browse stories, field guides, visual explainers and questions worth following."
-    ],
-    [
-      ".paths .section-heading h2",
-      "Choose a courtyard."
-    ],
-    [
-      ".paths .section-heading > p",
-      "You only need one useful doorway. You can change direction at any time."
-    ]
-  ];
-
-  copyEdits.forEach(([selector, text]) => {
-    setText(selector, text);
-  });
-
-  /* -------------------------------------------
-     HISTORICAL FIELD NOTES
-  ------------------------------------------- */
-
-  const traditions = [
     {
-      place: "SOUTH ASIA",
-      title: "Learning close to daily life",
-      short:
-        "Dialogue, memory, observation and responsibility often sat beside formal study.",
-      more:
-        "Useful inheritance: sustained mentorship and knowledge linked to conduct. Necessary caution: access was unequal, and no single model represents all South Asian education."
-    },
-    {
-      place: "ISLAMIC WORLDS",
-      title: "Knowledge through circles",
-      short:
-        "Learners gathered around scholars, books and questions across homes, libraries, mosques and madrasas.",
-      more:
-        "Useful inheritance: dialogue, libraries and travelling communities of scholarship. Practices varied greatly across regions, eras and fields."
-    },
-    {
-      place: "EAST ASIA",
-      title: "Reflection joined practice",
-      short:
-        "Academies, local schools and craft traditions connected texts, patient practice and mentorship.",
-      more:
-        "Useful inheritance: contemplation, discipline and craft. Necessary caution: hierarchy, exam pressure and unequal access also shaped these systems."
-    },
-    {
-      place: "INDIGENOUS COMMUNITIES",
-      title: "Observe, participate, belong",
-      short:
-        "In many communities, learners watch closely, listen and gradually take meaningful responsibility.",
-      more:
-        "There is no single Indigenous pedagogy. Living knowledge belongs to specific peoples and places and must be approached through their voices and permissions."
-    },
-    {
-      place: "AFRICAN COMMUNITIES",
-      title: "Knowledge moved through people",
-      short:
-        "Oral histories, performance, apprenticeship and shared work carried skill, memory and identity.",
-      more:
-        "Africa contains countless distinct traditions. The transferable idea is that skill, memory and social responsibility can grow together."
-    },
-    {
-      place: "EUROPE & THE MEDITERRANEAN",
-      title: "Learning by making and debating",
-      short:
-        "Workshops, philosophical schools, religious centres and universities supported different forms of study.",
-      more:
-        "Useful inheritance: apprenticeship, dialogue and communities of inquiry. Necessary caution: exclusion, punishment and rigid authority were also common."
-    }
-  ];
+      id: "numbers",
 
-  const traditionHost = $("#traditions");
-
-  if (traditionHost) {
-    traditionHost.replaceChildren();
-
-    traditions.forEach((tradition, index) => {
-      const article = document.createElement("article");
-
-      article.className = "tradition-card";
-
-      article.innerHTML = `
-        <span class="place">${tradition.place}</span>
-
-        <h3>${tradition.title}</h3>
-
-        <p>${tradition.short}</p>
-
-        <button
-          type="button"
-          aria-expanded="false"
-          aria-controls="field-note-${index}"
-        >
-          Read the field note
-          <span aria-hidden="true">+</span>
-        </button>
-
-        <div
-          class="tradition-more"
-          id="field-note-${index}"
-          hidden
-        >
-          ${tradition.more}
-        </div>
-      `;
-
-      const button = $("button", article);
-      const note = $(".tradition-more", article);
-
-      button.addEventListener("click", () => {
-        const isOpen =
-          button.getAttribute("aria-expanded") === "true";
-
-        button.setAttribute(
-          "aria-expanded",
-          String(!isOpen)
-        );
-
-        button.lastElementChild.textContent =
-          isOpen ? "+" : "−";
-
-        note.hidden = isOpen;
-      });
-
-      traditionHost.appendChild(article);
-    });
-  }
-
-  /* -------------------------------------------
-     THREE EXPLORATION COURTYARDS
-  ------------------------------------------- */
-
-  const courtyards = [
-    {
-      id: "grow",
       number: "01",
-      label: "Grow",
-      hindi: "बढ़ना",
-      title: "The Courtyard of Growth",
+
+      title: "Numbers & Patterns",
+
+      hindi: "संख्या और पैटर्न",
+
+      symbol: "⌁",
+
+      accent: "#efc96c",
+
       description:
-        "Find the learning stage or role that fits where you are now.",
-      colour: "saffron",
+        "Find the patterns hiding underneath the world.",
 
       paths: [
-        [
-          "01",
-          "△ ○ □",
-          "Play & Early Learning",
-          "Begin with movement, stories and wonder.",
-          "play-school.html"
-        ],
-        [
-          "02",
-          "✎ ☀",
-          "Primary & Elementary",
-          "Build strong roots through active discovery.",
-          "primary-exploration.html"
-        ],
-        [
-          "03",
-          "x + ?",
-          "Middle School",
-          "Question, connect and find your voice.",
-          "middle-school.html"
-        ],
-        [
-          "04",
-          "x² ∑",
-          "Secondary & Senior",
-          "Prepare for exams without losing curiosity.",
-          "senior-exploration.html"
-        ],
-        [
-          "17",
-          "? → ?",
-          "University & Research",
-          "Follow better questions with honest evidence.",
-          "research-exploration.html"
-        ],
-        [
-          "18",
-          "✎ ◌",
-          "Educators & Leaders",
-          "Create conditions in which others can learn.",
-          "educator-exploration.html"
-        ]
+
+        {
+          label: "MATHEMATICS",
+          title: "Maths & Patterns",
+          description:
+            "Numbers, shapes, puzzles and the strange logic beneath everyday life.",
+          href: "maths-exploration.html"
+        },
+
+        {
+          label: "LOGIC",
+          title: "Puzzles & Reasoning",
+          description:
+            "Train your brain to notice what doesn't immediately make sense.",
+          href: "logic-exploration.html"
+        },
+
+        {
+          label: "COMPUTING",
+          title: "Code & Algorithms",
+          description:
+            "Turn instructions, patterns and ideas into things computers understand.",
+          href: "coding-exploration.html"
+        }
+
       ]
     },
 
+
     {
-      id: "explore",
+      id: "life",
+
       number: "02",
-      label: "Explore",
-      hindi: "खोजना",
-      title: "The Courtyard of Ideas",
+
+      title: "Life & Nature",
+
+      hindi: "जीवन और प्रकृति",
+
+      symbol: "❋",
+
+      accent: "#9eb67e",
+
       description:
-        "Choose a way of seeing, interpreting and understanding the world.",
-      colour: "indigo",
+        "From a cell to an ecosystem — investigate what lives.",
 
       paths: [
-        [
-          "05",
-          "π ≠ 3",
-          "Mathematics",
-          "Find patterns, test claims and build proofs.",
-          "math-exploration.html"
-        ],
-        [
-          "06",
-          "⚗ ?",
-          "Science",
-          "Observe, test and learn from the evidence.",
-          "science-exploration.html"
-        ],
-        [
-          "07",
-          "⌛ ◇",
-          "Humanities & Society",
-          "Study people, places, choices and change.",
-          "humanities-exploration.html"
-        ],
-        [
-          "08",
-          "Aa अ",
-          "Language & Literature",
-          "Read closely and express ideas with courage.",
-          "language-exploration.html"
-        ],
-        [
-          "09",
-          "✎ ✦",
-          "Art & Design",
-          "Make ideas, feelings and possibilities visible.",
-          "art-exploration.html"
-        ],
-        [
-          "10",
-          "♪ ♫",
-          "Music & Sound",
-          "Listen deeply, practise patiently and create.",
-          "music-exploration.html"
-        ]
+
+        {
+          label: "SCIENCE",
+          title: "Science",
+          description:
+            "Ask the world a question and find a way to test the answer.",
+          href: "science-exploration.html"
+        },
+
+        {
+          label: "BIOLOGY",
+          title: "Life & Biology",
+          description:
+            "Cells, bodies, ecosystems and the machinery of being alive.",
+          href: "biology-exploration.html"
+        },
+
+        {
+          label: "MEDICINE",
+          title: "Medicine & the Human Body",
+          description:
+            "Explore the systems keeping a human body alive.",
+          href: "medical-exploration.html"
+        },
+
+        {
+          label: "EARTH",
+          title: "Nature & Environment",
+          description:
+            "Follow water, weather, animals, plants and changing landscapes.",
+          href: "nature-exploration.html"
+        }
+
       ]
     },
 
+
     {
-      id: "contribute",
+      id: "people",
+
       number: "03",
-      label: "Create & Contribute",
-      hindi: "बनाना और बाँटना",
-      title: "The Courtyard of Practice",
+
+      title: "People & Worlds",
+
+      hindi: "लोग और दुनिया",
+
+      symbol: "◎",
+
+      accent: "#d28a5d",
+
       description:
-        "Turn knowledge into stories, tools, care, enterprise and skilled work.",
-      colour: "leaf",
+        "Explore how humans built, remembered and understood worlds.",
 
       paths: [
-        [
-          "11",
-          "ACT I",
-          "Theatre, Film & Story",
-          "Understand life through another point of view.",
-          "story-exploration.html"
-        ],
-        [
-          "12",
-          "{ }",
-          "Technology & Computing",
-          "Build, break, debug and improve.",
-          "technology-exploration.html"
-        ],
-        [
-          "13",
-          "⚙ ↗",
-          "Engineering & Making",
-          "Design knowledge that works in the world.",
-          "engineering-exploration.html"
-        ],
-        [
-          "14",
-          "♡ ⚕",
-          "Medical & Health",
-          "Learn the science. Keep the human.",
-          "medical-exploration.html"
-        ],
-        [
-          "15",
-          "↗ idea",
-          "Business & Enterprise",
-          "Create value without losing your values.",
-          "business-exploration.html"
-        ],
-        [
-          "16",
-          "⌁ 🔧",
-          "Trade & Vocational",
-          "Learn through skilled hands and real practice.",
-          "trade-exploration.html"
-        ]
+
+        {
+          label: "HISTORY",
+          title: "History",
+          description:
+            "Meet people who lived before us without pretending they were simple.",
+          href: "history-exploration.html"
+        },
+
+        {
+          label: "GEOGRAPHY",
+          title: "Places & Geography",
+          description:
+            "See how land, climate, movement and people shape one another.",
+          href: "geography-exploration.html"
+        },
+
+        {
+          label: "SOCIETY",
+          title: "People & Society",
+          description:
+            "Explore communities, systems, behaviour and how humans live together.",
+          href: "society-exploration.html"
+        },
+
+        {
+          label: "PHILOSOPHY",
+          title: "Big Questions",
+          description:
+            "Questions humans have argued about for thousands of years.",
+          href: "philosophy-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "making",
+
+      number: "04",
+
+      title: "Making & Creating",
+
+      hindi: "बनाना और रचना",
+
+      symbol: "✦",
+
+      accent: "#df9f56",
+
+      description:
+        "Knowledge changes when your hands get involved.",
+
+      paths: [
+
+        {
+          label: "ART",
+          title: "Art & Drawing",
+          description:
+            "Notice more closely by trying to make what you see.",
+          href: "art-exploration.html"
+        },
+
+        {
+          label: "DESIGN",
+          title: "Design",
+          description:
+            "Turn a messy human problem into something useful.",
+          href: "design-exploration.html"
+        },
+
+        {
+          label: "ENGINEERING",
+          title: "Build & Engineer",
+          description:
+            "Make it. Break it. Work out why. Build it again.",
+          href: "engineering-exploration.html"
+        },
+
+        {
+          label: "CRAFT",
+          title: "Craft & Making",
+          description:
+            "Learn what materials can teach your hands.",
+          href: "craft-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "stories",
+
+      number: "05",
+
+      title: "Words, Stories & Sound",
+
+      hindi: "शब्द, कहानी और ध्वनि",
+
+      symbol: "〰",
+
+      accent: "#c99ac8",
+
+      description:
+        "Read it. Write it. Speak it. Hear it differently.",
+
+      paths: [
+
+        {
+          label: "WORDS",
+          title: "Reading & Writing",
+          description:
+            "Use words to understand another mind — or your own.",
+          href: "language-exploration.html"
+        },
+
+        {
+          label: "STORIES",
+          title: "Stories & Literature",
+          description:
+            "Walk into lives, places and possibilities that aren't yours.",
+          href: "literature-exploration.html"
+        },
+
+        {
+          label: "LANGUAGE",
+          title: "Languages",
+          description:
+            "Discover how different sounds and structures carry human thought.",
+          href: "languages-exploration.html"
+        },
+
+        {
+          label: "SOUND",
+          title: "Music & Sound",
+          description:
+            "Train your ear through rhythm, listening and patient practice.",
+          href: "music-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "life-skills",
+
+      number: "06",
+
+      title: "Life Skills & Future",
+
+      hindi: "जीवन और आगे",
+
+      symbol: "⌂",
+
+      accent: "#8fb1a4",
+
+      description:
+        "Things worth knowing when the textbook closes.",
+
+      paths: [
+
+        {
+          label: "MONEY",
+          title: "Money & Everyday Maths",
+          description:
+            "Understand the numbers that quietly shape everyday decisions.",
+          href: "money-exploration.html"
+        },
+
+        {
+          label: "FOOD",
+          title: "Food & Cooking",
+          description:
+            "Chemistry, culture, measurement and survival meet in the kitchen.",
+          href: "food-exploration.html"
+        },
+
+        {
+          label: "FUTURE",
+          title: "Work & Possibility",
+          description:
+            "Explore what you could build, learn or contribute next.",
+          href: "career-exploration.html"
+        },
+
+        {
+          label: "EVERYDAY LIFE",
+          title: "Things Nobody Taught Me",
+          description:
+            "Practical knowledge for navigating an increasingly complicated world.",
+          href: "life-skills-exploration.html"
+        }
+
       ]
     }
+
   ];
 
-  const filters = $("#filters");
-  const pathGrid = $("#pathGrid");
-  const empty = $("#empty");
 
-  if (filters && pathGrid) {
-    filters.className = "courtyard-chooser";
-    filters.setAttribute("role", "tablist");
 
-    filters.setAttribute(
-      "aria-label",
-      "Choose an exploration courtyard"
+  /* =========================================================
+     ELEMENTS
+  ========================================================= */
+
+  const worldGrid =
+    document.querySelector("#worldGrid");
+
+  const worldDrawer =
+    document.querySelector("#worldDrawer");
+
+  const closeWorld =
+    document.querySelector("#closeWorld");
+
+  const drawerSymbol =
+    document.querySelector("#drawerSymbol");
+
+  const drawerTitle =
+    document.querySelector("#drawerTitle");
+
+  const drawerHindi =
+    document.querySelector("#drawerHindi");
+
+  const drawerDescription =
+    document.querySelector("#drawerDescription");
+
+  const explorationGrid =
+    document.querySelector("#explorationGrid");
+
+  const topbar =
+    document.querySelector("#topbar");
+
+  const menu =
+    document.querySelector("#menu");
+
+  const nav =
+    document.querySelector("#nav");
+
+  const entryDialog =
+    document.querySelector("#entryDialog");
+
+  const openNote =
+    document.querySelector("#openNote");
+
+  const closeNote =
+    document.querySelector("#closeNote");
+
+  const carryNote =
+    document.querySelector("#carryNote");
+
+  const vessels =
+    document.querySelector("#vessels");
+
+  const waterResult =
+    document.querySelector("#waterResult");
+
+
+
+  /* =========================================================
+     ANALYTICS
+  ========================================================= */
+
+  function trackEvent(name, parameters = {}) {
+
+    if (
+      typeof window.gtag !== "function"
+    ) {
+      return;
+    }
+
+    window.gtag(
+      "event",
+      name,
+      parameters
     );
 
-    filters.replaceChildren();
-
-    pathGrid.className = "courtyard-panels";
-    pathGrid.replaceChildren();
-
-    if (empty) empty.hidden = true;
-
-    courtyards.forEach((courtyard, index) => {
-      const tab = document.createElement("button");
-
-      tab.type = "button";
-
-      tab.className =
-        `courtyard-door courtyard-door--${courtyard.colour}`;
-
-      tab.id = `tab-${courtyard.id}`;
-
-      tab.setAttribute("role", "tab");
-
-      tab.setAttribute(
-        "aria-controls",
-        `panel-${courtyard.id}`
-      );
-
-      tab.setAttribute(
-        "aria-selected",
-        String(index === 0)
-      );
-
-      tab.tabIndex = index === 0 ? 0 : -1;
-
-      tab.innerHTML = `
-        <span class="door-number">
-          COURTYARD ${courtyard.number}
-        </span>
-
-        <span class="door-name">
-          ${courtyard.label}
-        </span>
-
-        <span class="door-hindi" lang="hi">
-          ${courtyard.hindi}
-        </span>
-
-        <span class="door-description">
-          ${courtyard.description}
-        </span>
-
-        <span class="door-action">
-          Enter <b aria-hidden="true">→</b>
-        </span>
-      `;
-
-      filters.appendChild(tab);
-
-      const panel = document.createElement("section");
-
-      panel.className =
-        `courtyard-panel courtyard-panel--${courtyard.colour}`;
-
-      panel.id = `panel-${courtyard.id}`;
-      panel.setAttribute("role", "tabpanel");
-      panel.setAttribute("aria-labelledby", tab.id);
-
-      panel.tabIndex = 0;
-      panel.hidden = index !== 0;
-
-      panel.innerHTML = `
-        <div class="courtyard-intro">
-          <div>
-            <p class="eyebrow">
-              ${courtyard.number} · ${courtyard.label}
-            </p>
-
-            <h3>${courtyard.title}</h3>
-          </div>
-
-          <p>${courtyard.description}</p>
-        </div>
-
-        <div class="courtyard-paths"></div>
-      `;
-
-      const cardContainer =
-        $(".courtyard-paths", panel);
-
-      courtyard.paths.forEach((path) => {
-        const card = document.createElement("a");
-
-        card.className = "path-card";
-        card.href = path[4];
-
-        card.innerHTML = `
-          <div class="path-top">
-            <span class="path-number">
-              PATH ${path[0]}
-            </span>
-
-            <span
-              class="path-icon"
-              aria-hidden="true"
-            >
-              ${path[1]}
-            </span>
-          </div>
-
-          <h4>${path[2]}</h4>
-
-          <p>${path[3]}</p>
-
-          <span class="path-link">
-            Explore this path
-            <b aria-hidden="true">→</b>
-          </span>
-        `;
-
-        cardContainer.appendChild(card);
-      });
-
-      pathGrid.appendChild(panel);
-    });
-
-    const tabs = $$(
-      "[role='tab']",
-      filters
-    );
-
-    const panels = $$(
-      "[role='tabpanel']",
-      pathGrid
-    );
-
-    const openCourtyard = (
-      selectedTab,
-      focusPanel = false
-    ) => {
-      tabs.forEach((tab) => {
-        const isSelected = tab === selectedTab;
-
-        tab.setAttribute(
-          "aria-selected",
-          String(isSelected)
-        );
-
-        tab.tabIndex = isSelected ? 0 : -1;
-      });
-
-      panels.forEach((panel) => {
-        panel.hidden =
-          panel.id !==
-          selectedTab.getAttribute("aria-controls");
-      });
-
-      if (focusPanel) {
-        const panelId =
-          selectedTab.getAttribute("aria-controls");
-
-        const selectedPanel =
-          document.getElementById(panelId);
-
-        selectedPanel?.focus({
-          preventScroll: true
-        });
-      }
-    };
-
-    tabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => {
-        openCourtyard(tab, true);
-      });
-
-      tab.addEventListener("keydown", (event) => {
-        let nextIndex = null;
-
-        if (
-          event.key === "ArrowRight" ||
-          event.key === "ArrowDown"
-        ) {
-          nextIndex = (index + 1) % tabs.length;
-        }
-
-        if (
-          event.key === "ArrowLeft" ||
-          event.key === "ArrowUp"
-        ) {
-          nextIndex =
-            (index - 1 + tabs.length) %
-            tabs.length;
-        }
-
-        if (event.key === "Home") {
-          nextIndex = 0;
-        }
-
-        if (event.key === "End") {
-          nextIndex = tabs.length - 1;
-        }
-
-        if (nextIndex === null) return;
-
-        event.preventDefault();
-
-        tabs[nextIndex].focus();
-        openCourtyard(tabs[nextIndex]);
-      });
-    });
   }
 
-  /* -------------------------------------------
-     KNOWLEDGE RIVER BUTTONS
-  ------------------------------------------- */
 
-  const vesselCopy = {
-    cup: [
-      "One idea",
-      "Choose something useful today."
-    ],
-    bucket: [
-      "One practice",
-      "Stay long enough to try, adjust and understand."
-    ],
-    river: [
-      "Something to share",
-      "Let learning move through service, teaching and care."
-    ]
-  };
 
-  $$("#vessels button").forEach((button) => {
-    button.addEventListener("click", () => {
-      $$("#vessels button").forEach((item) => {
-        item.classList.remove("active");
+  /* =========================================================
+     RENDER SIX COURTYARDS
+  ========================================================= */
+
+  function renderWorlds() {
+
+    if (!worldGrid) {
+      return;
+    }
+
+
+    worldGrid.innerHTML =
+      learningWorlds
+        .map((world) => {
+
+          return `
+            <button
+              class="world-card reveal"
+              type="button"
+              data-world="${world.id}"
+              style="--world-accent:${world.accent}"
+              aria-expanded="false"
+            >
+
+              <span class="world-number">
+                ${world.number}
+              </span>
+
+              <span
+                class="world-symbol"
+                aria-hidden="true"
+              >
+                ${world.symbol}
+              </span>
+
+              <h3>
+                ${world.title}
+              </h3>
+
+              <span class="world-hindi">
+                ${world.hindi}
+              </span>
+
+              <p>
+                ${world.description}
+              </p>
+
+              <span class="world-enter">
+                OPEN COURTYARD ↘
+              </span>
+
+            </button>
+          `;
+
+        })
+        .join("");
+
+
+    worldGrid
+      .querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.addEventListener(
+          "click",
+          () => {
+
+            openWorld(
+              card.dataset.world
+            );
+
+          }
+        );
+
       });
 
-      button.classList.add("active");
 
-      const copy =
-        vesselCopy[button.dataset.vessel];
+    observeReveals();
 
-      const result = $("#waterResult");
+  }
 
-      if (result && copy) {
-        result.innerHTML = `
-          <p class="eyebrow">YOUR CHOICE</p>
-          <h3>${copy[0]}</h3>
-          <p>${copy[1]}</p>
-        `;
-      }
-    });
-  });
 
-  /* -------------------------------------------
-     MOBILE MENU
-  ------------------------------------------- */
 
-  const menu = $("#menu");
-  const nav = $("#nav");
+  /* =========================================================
+     OPEN A COURTYARD
+  ========================================================= */
 
-  if (menu && nav) {
-    menu.addEventListener("click", () => {
-      const isOpen =
-        menu.getAttribute("aria-expanded") === "true";
+  function openWorld(worldId) {
 
-      menu.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
+    const world =
+      learningWorlds.find(
+        (item) =>
+          item.id === worldId
       );
 
-      nav.classList.toggle("open", !isOpen);
-    });
 
-    $$("a", nav).forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("open");
+    if (
+      !world ||
+      !worldDrawer
+    ) {
+      return;
+    }
 
-        menu.setAttribute(
+
+    worldGrid
+      ?.querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.setAttribute(
+          "aria-expanded",
+          String(
+            card.dataset.world ===
+            worldId
+          )
+        );
+
+      });
+
+
+    drawerSymbol.textContent =
+      world.symbol;
+
+
+    drawerSymbol.style.color =
+      world.accent;
+
+
+    drawerTitle.textContent =
+      world.title;
+
+
+    drawerHindi.textContent =
+      world.hindi;
+
+
+    drawerHindi.style.color =
+      world.accent;
+
+
+    drawerDescription.textContent =
+      world.description;
+
+
+    explorationGrid.innerHTML =
+      world.paths
+        .map((path) => {
+
+          return `
+            <a
+              class="exploration-card"
+              href="${path.href}"
+              data-exploration="${path.title}"
+            >
+
+              <small>
+                ${path.label}
+              </small>
+
+              <div>
+
+                <h3>
+                  ${path.title}
+                </h3>
+
+                <p>
+                  ${path.description}
+                </p>
+
+              </div>
+
+            </a>
+          `;
+
+        })
+        .join("");
+
+
+    worldDrawer.hidden = false;
+
+
+    trackEvent(
+      "learning_courtyard_open",
+      {
+        courtyard:
+          world.title
+      }
+    );
+
+
+    explorationGrid
+      .querySelectorAll(
+        ".exploration-card"
+      )
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            trackEvent(
+              "learning_exploration_enter",
+              {
+                exploration:
+                  link.dataset.exploration,
+
+                courtyard:
+                  world.title
+              }
+            );
+
+          }
+        );
+
+      });
+
+
+    window.setTimeout(
+      () => {
+
+        worldDrawer.scrollIntoView({
+          behavior:
+            window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth",
+
+          block: "start"
+        });
+
+      },
+      60
+    );
+
+  }
+
+
+
+  /* =========================================================
+     CLOSE COURTYARD
+  ========================================================= */
+
+  function closeWorldDrawer() {
+
+    if (!worldDrawer) {
+      return;
+    }
+
+
+    worldDrawer.hidden = true;
+
+
+    worldGrid
+      ?.querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.setAttribute(
           "aria-expanded",
           "false"
         );
+
       });
-    });
+
   }
 
-  /* -------------------------------------------
-     COURTYARD NOTE DIALOG
-  ------------------------------------------- */
 
-  const dialog = $("#entryDialog");
-  const openNote = $("#openNote");
-  const closeNote = $("#closeNote");
-  const carryNote = $("#carryNote");
+  closeWorld?.addEventListener(
+    "click",
+    closeWorldDrawer
+  );
 
-  if (
-    dialog &&
-    openNote &&
-    closeNote &&
-    carryNote
-  ) {
-    openNote.addEventListener("click", () => {
-      dialog.showModal();
-    });
 
-    closeNote.addEventListener("click", () => {
-      dialog.close();
-    });
 
-    carryNote.addEventListener("click", () => {
-      dialog.close();
+  /* =========================================================
+     KNOWLEDGE RIVER
+  ========================================================= */
 
-      openNote.textContent =
-        "Courtyard note carried ✓";
-    });
+  const vesselMessages = {
 
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) {
-        dialog.close();
-      }
-    });
-  }
+    cup: {
 
-  /* -------------------------------------------
-     SOURCES
-  ------------------------------------------- */
+      eyebrow:
+        "A CUP · ONE IDEA",
 
-  const sourceToggle = $("#sourceToggle");
-  const sourceList = $("#sourceList");
+      title:
+        "Learn one thing properly.",
 
-  if (sourceToggle && sourceList) {
-    sourceToggle.addEventListener("click", () => {
-      const isOpen =
-        sourceToggle.getAttribute("aria-expanded") ===
-        "true";
+      text:
+        "One useful idea is enough for today. Notice it. Try it once. Carry it with you."
 
-      sourceToggle.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
+    },
+
+
+    bucket: {
+
+      eyebrow:
+        "A BUCKET · PRACTICE",
+
+      title:
+        "Stay long enough to try.",
+
+      text:
+        "Understanding grows through use. Solve it, build it, explain it, test it or practise it again."
+
+    },
+
+
+    river: {
+
+      eyebrow:
+        "THE RIVER · GO DEEP",
+
+      title:
+        "Follow the question.",
+
+      text:
+        "Read sideways. Compare ideas. Make something. Find what you disagree with. Teach somebody else. Let one question become five."
+
+    }
+
+  };
+
+
+  vessels
+    ?.querySelectorAll(
+      "button[data-vessel]"
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const type =
+            button.dataset.vessel;
+
+
+          const message =
+            vesselMessages[type];
+
+
+          if (!message) {
+            return;
+          }
+
+
+          vessels
+            .querySelectorAll(
+              "button"
+            )
+            .forEach((item) => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          waterResult.innerHTML = `
+
+            <p class="eyebrow">
+              ${message.eyebrow}
+            </p>
+
+            <h3>
+              ${message.title}
+            </h3>
+
+            <p>
+              ${message.text}
+            </p>
+
+          `;
+
+
+          trackEvent(
+            "knowledge_river_choice",
+            {
+              vessel: type
+            }
+          );
+
+        }
       );
 
-      sourceList.hidden = isOpen;
-
-      const symbol = $("b", sourceToggle);
-
-      if (symbol) {
-        symbol.textContent = isOpen ? "+" : "−";
-      }
     });
-  }
 
-  /* -------------------------------------------
-     PAGE PROGRESS BAR
-  ------------------------------------------- */
 
-  const progress = $("#progress");
 
-  if (progress) {
-    const updateProgress = () => {
-      const maximum =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+  /* =========================================================
+     COURTYARD NOTE DIALOG
+  ========================================================= */
 
-      const percentage =
-        maximum > 0
-          ? (window.scrollY / maximum) * 100
-          : 0;
+  openNote?.addEventListener(
+    "click",
+    () => {
 
-      progress.style.height =
-        `${percentage}%`;
-    };
+      entryDialog?.showModal();
 
-    updateProgress();
+    }
+  );
 
-    window.addEventListener(
-      "scroll",
-      updateProgress,
-      { passive: true }
+
+  closeNote?.addEventListener(
+    "click",
+    () => {
+
+      entryDialog?.close();
+
+    }
+  );
+
+
+  carryNote?.addEventListener(
+    "click",
+    () => {
+
+      entryDialog?.close();
+
+
+      document
+        .querySelector("#explore")
+        ?.scrollIntoView({
+          behavior:
+            window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth"
+        });
+
+    }
+  );
+
+
+  entryDialog?.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target ===
+        entryDialog
+      ) {
+
+        entryDialog.close();
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     MOBILE NAV
+  ========================================================= */
+
+  function toggleMenu(force) {
+
+    if (
+      !menu ||
+      !nav
+    ) {
+      return;
+    }
+
+
+    const currentlyOpen =
+      menu.getAttribute(
+        "aria-expanded"
+      ) === "true";
+
+
+    const open =
+      typeof force === "boolean"
+        ? force
+        : !currentlyOpen;
+
+
+    menu.setAttribute(
+      "aria-expanded",
+      String(open)
     );
 
-    window.addEventListener(
-      "resize",
-      updateProgress
+
+    nav.classList.toggle(
+      "open",
+      open
     );
+
+
+    document.body.style.overflow =
+      open
+        ? "hidden"
+        : "";
+
   }
+
+
+  menu?.addEventListener(
+    "click",
+    () => {
+
+      toggleMenu();
+
+    }
+  );
+
+
+  nav
+    ?.querySelectorAll("a")
+    .forEach((link) => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          toggleMenu(false);
+
+        }
+      );
+
+    });
+
+
+  window.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (event.key === "Escape") {
+
+        toggleMenu(false);
+
+        if (
+          entryDialog?.open
+        ) {
+          entryDialog.close();
+        }
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     HEADER
+  ========================================================= */
+
+  function updateHeader() {
+
+    topbar
+      ?.classList
+      .toggle(
+        "scrolled",
+        window.scrollY > 30
+      );
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    {
+      passive: true
+    }
+  );
+
+
+  updateHeader();
+
+
+
+  /* =========================================================
+     REVEAL ANIMATIONS
+  ========================================================= */
+
+  const reduceMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+  let revealObserver;
+
+
+  function observeReveals() {
+
+    const elements =
+      document.querySelectorAll(
+        ".reveal:not(.is-visible)"
+      );
+
+
+    if (reduceMotion) {
+
+      elements.forEach(
+        (element) => {
+
+          element.classList.add(
+            "is-visible"
+          );
+
+        }
+      );
+
+      return;
+    }
+
+
+    if (
+      !(
+        "IntersectionObserver"
+        in window
+      )
+    ) {
+
+      elements.forEach(
+        (element) => {
+
+          element.classList.add(
+            "is-visible"
+          );
+
+        }
+      );
+
+      return;
+    }
+
+
+    if (!revealObserver) {
+
+      revealObserver =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach(
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  entry.target
+                    .classList
+                    .add(
+                      "is-visible"
+                    );
+
+
+                  revealObserver
+                    .unobserve(
+                      entry.target
+                    );
+
+                }
+
+              }
+            );
+
+          },
+          {
+            threshold: .12
+          }
+        );
+
+    }
+
+
+    elements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================================
+     INITIALISE
+  ========================================================= */
+
+  renderWorlds();
+
+  observeReveals();
+
 })();
-
