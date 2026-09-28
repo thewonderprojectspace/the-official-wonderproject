@@ -1,298 +1,2527 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+
+  <!-- Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
+  ></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EF9DVH7JQN');
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "G-EF9DVH7JQN");
   </script>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact Jigyasa Verse with a question, feedback, collaboration idea or a request for clarity about learning, work and becoming.">
-  <meta name="theme-color" content="#fffaf0">
-  <title>Contact | Jigyasa Verse</title>
 
-  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="wonder-verse-navbar.css">
+  <meta
+    name="description"
+    content="Send a question, collaboration idea, piece of feedback or curious signal to JigyasaVerse."
+  >
+
+  <meta
+    name="theme-color"
+    content="#05050a"
+  >
+
+  <title>
+    Communication Booth | JigyasaVerse
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://jigyasaverse.org/images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gloock&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
-    :root{
-      --ink:#102f32;
-      --ink-soft:#3f5d5d;
-      --deep:#123d43;
-      --teal:#287d79;
-      --mint:#d8eee2;
-      --lime:#e9f2b2;
-      --sky:#dcebf1;
-      --peach:#f3ded0;
-      --lavender:#e7e1f2;
-      --cream:#fffaf0;
-      --paper:#fffdf8;
-      --line:rgba(16,47,50,.16);
-      --white:#fffef9;
-      --display:"Fraunces",Georgia,serif;
-      --sans:"DM Sans",Arial,sans-serif;
+
+    :root {
+      --night: #05050a;
+      --night-two: #0b0912;
+      --panel: #100d19;
+      --cream: #fff1ca;
+      --muted: rgba(255, 241, 202, 0.66);
+      --faint: rgba(255, 241, 202, 0.4);
+      --gold: #f0b55b;
+      --coral: #ff725e;
+      --violet: #a997ff;
+      --cyan: #73d8d2;
+      --line: rgba(255, 241, 202, 0.14);
+      --display: "Gloock", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.7}
-    a{color:inherit;text-decoration:none}
-    button,input,select,textarea{font:inherit}
-    h1,h2,h3,p{margin-top:0}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .skip-link{position:fixed;top:10px;left:10px;z-index:9999;padding:10px 14px;background:var(--lime);color:var(--ink);transform:translateY(-160%)}
-    .skip-link:focus{transform:none}
-
-    .wv-header{background:rgba(255,250,240,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
-    .wv-brand-image{display:block}
-
-    .contact-hero{position:relative;min-height:820px;padding:150px max(28px,calc((100% - 1280px)/2)) 90px;display:grid;grid-template-columns:1.02fr .98fr;gap:80px;align-items:center;overflow:hidden;background:linear-gradient(145deg,#fdf8ec 0%,#eef3db 48%,#d7ece5 100%)}
-    .contact-hero::before{content:"";position:absolute;width:520px;height:520px;right:-150px;top:-180px;border:1px solid rgba(40,125,121,.18);border-radius:50%;box-shadow:0 0 0 90px rgba(40,125,121,.035),0 0 0 180px rgba(40,125,121,.025)}
-    .hero-copy,.hero-map{position:relative;z-index:1}
-    .eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
-    .eyebrow span{display:inline-block;padding:7px 11px;margin-right:9px;border:1px solid currentColor;border-radius:999px}
-    .hero-copy h1{max-width:760px;margin:28px 0 30px;font-family:var(--display);font-size:clamp(62px,7.5vw,108px);font-weight:500;line-height:.9;letter-spacing:-.055em}
-    .hero-copy h1 em{font-weight:500;color:var(--teal)}
-    .hero-intro{max-width:650px;font-family:var(--display);font-size:22px;line-height:1.5;color:#315354}
-    .hero-small{max-width:570px;color:var(--ink-soft);font-size:14px}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-    .button{display:inline-flex;align-items:center;justify-content:space-between;gap:32px;min-height:48px;padding:13px 18px;border:1px solid var(--ink);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:.2s}
-    .button.primary{background:var(--ink);color:white}.button.secondary{background:transparent;color:var(--ink)}
-    .button:hover{transform:translateY(-2px)}
-    .field-note{display:flex;gap:14px;align-items:center;margin-top:28px;color:#58716f;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-    .field-note span{font-family:var(--display);font-size:13px;color:var(--teal)}
-
-    .hero-map{min-height:560px;display:grid;place-items:center}
-    .map-ring{position:absolute;border:1px solid rgba(16,47,50,.19);border-radius:50%;transform:rotate(-12deg)}
-    .ring-one{width:470px;height:400px}.ring-two{width:330px;height:330px;border-style:dashed}.ring-three{width:205px;height:205px}
-    .map-core{width:185px;height:185px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 35% 28%,#fff,#e9f2b2 45%,#8dcfb0);box-shadow:0 20px 70px rgba(32,104,94,.22);position:relative;z-index:2}
-    .map-core small{font-size:8px;letter-spacing:.16em}.map-core strong{font-family:var(--display);font-size:29px;line-height:1;margin:7px 0}.map-core span{font-size:8px;text-transform:uppercase;letter-spacing:.14em}
-    .map-word{position:absolute;padding:8px 12px;border:1px solid var(--line);background:rgba(255,253,248,.84);backdrop-filter:blur(8px);border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .mw-one{top:86px;right:55px}.mw-two{right:0;bottom:185px}.mw-three{bottom:64px;left:105px}.mw-four{left:0;top:190px}.mw-five{top:30px;left:150px;background:var(--lime)}
-    .map-note{position:absolute;right:5px;top:270px;color:#42716e;font-family:var(--display);font-size:14px;font-style:italic}
-
-    .welcome-strip{padding:78px max(28px,calc((100% - 1180px)/2));background:var(--deep);color:white;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:end}
-    .welcome-strip h2{font-family:var(--display);font-size:clamp(40px,5vw,68px);font-weight:500;line-height:1;letter-spacing:-.04em;margin:18px 0 0}
-    .welcome-strip p:last-child{color:#c9ddda;font-size:14px;margin:0}
-
-    .pathways{padding:120px max(28px,calc((100% - 1260px)/2));background:var(--paper)}
-    .section-heading{display:flex;justify-content:space-between;gap:60px;align-items:end;margin-bottom:58px}
-    .section-heading h2{font-family:var(--display);font-size:clamp(44px,5vw,70px);font-weight:500;line-height:1;letter-spacing:-.04em;margin:22px 0 0}
-    .section-heading>p{max-width:400px;color:var(--ink-soft);font-size:13px;margin-bottom:0}
-    .pathway-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line)}
-    .pathway-card{min-height:350px;padding:36px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-    .pathway-card:nth-child(2n){border-right:0}.pathway-card:nth-child(n+3){border-bottom:0}
-    .pathway-card:nth-child(1){background:var(--mint)}.pathway-card:nth-child(2){background:var(--sky)}.pathway-card:nth-child(3){background:var(--peach)}.pathway-card:nth-child(4){background:var(--lavender)}
-    .pathway-card::after{content:"";position:absolute;width:170px;height:170px;border:1px solid rgba(16,47,50,.13);border-radius:50%;right:-85px;top:-86px}
-    .pathway-index{font-family:var(--display);font-size:12px;color:var(--teal)}
-    .pathway-card h3{max-width:470px;margin:75px 0 15px;font-family:var(--display);font-size:34px;font-weight:500;line-height:1.08}
-    .pathway-card p{max-width:530px;color:#456061;font-size:13px}
-    .pathway-card a{display:inline-block;margin-top:12px;border-bottom:1px solid rgba(16,47,50,.35);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-
-    .message-guide{padding:115px max(28px,calc((100% - 1260px)/2));background:var(--lime)}
-    .guide-heading{max-width:850px;margin-bottom:50px}
-    .guide-heading h2{font-family:var(--display);font-size:clamp(43px,5vw,68px);font-weight:500;line-height:1;letter-spacing:-.04em;margin:20px 0}
-    .guide-heading>p{max-width:680px;color:#4f635c}
-    .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(16,47,50,.2)}
-    .guide-step{padding:35px 38px 20px 0;border-right:1px solid rgba(16,47,50,.2)}
-    .guide-step:not(:first-child){padding-left:38px}.guide-step:last-child{border-right:0}
-    .guide-step span{font-family:var(--display);color:var(--teal)}
-    .guide-step h3{font-family:var(--display);font-size:25px;font-weight:500;margin:27px 0 12px}
-    .guide-step p{color:#53655e;font-size:12px}
-
-    .form-section{padding:120px max(28px,calc((100% - 1260px)/2));background:var(--cream)}
-    .form-shell{display:grid;grid-template-columns:.78fr 1.22fr;border:1px solid var(--line);background:var(--paper)}
-    .form-intro{padding:55px;background:var(--deep);color:white}
-    .form-intro .eyebrow{color:#bde6d6}.form-intro h2{font-family:var(--display);font-size:clamp(42px,5vw,63px);font-weight:500;line-height:1;letter-spacing:-.04em;margin:28px 0}
-    .form-intro>p{color:#c8dcda;font-size:13px}
-    .prompt-list{margin-top:45px;border-top:1px solid rgba(255,255,255,.2)}
-    .prompt-list p{display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.2);color:#d7e5e2;font-size:12px}
-    .prompt-list span{font-family:var(--display);color:#bce7d4}
-    .scope-note{margin-top:36px;padding:18px;background:rgba(255,255,255,.08);border-left:3px solid var(--lime);font-size:11px;color:#d7e5e2}
-
-    .wonder-form{padding:50px;display:grid;gap:19px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .form-field{display:grid;gap:7px}.form-field label{font-size:11px;font-weight:700;letter-spacing:.04em}
-    .form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid rgba(16,47,50,.22);background:#fffefa;color:var(--ink);outline:0;border-radius:0;transition:.2s}
-    .form-field input,.form-field select{min-height:52px;padding:12px 14px}.form-field textarea{min-height:145px;padding:14px;resize:vertical}
-    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(40,125,121,.1)}
-    .form-field input::placeholder,.form-field textarea::placeholder{color:#8a9b98}
-    .form-field select option{color:var(--ink);background:white}
-    .contact-consent{display:flex;gap:10px;align-items:flex-start;color:#5e7270;font-size:11px}.contact-consent input{margin-top:4px;accent-color:var(--teal)}
-    .submit-button{min-height:52px;border:0;background:var(--ink);color:white;padding:14px 18px;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:.2s}
-    .submit-button:hover{background:var(--teal);transform:translateY(-2px)}.submit-button:disabled{opacity:.55;cursor:wait;transform:none}
-    .form-note,.form-status{margin:0;text-align:center;color:#687c79;font-size:10px}.form-status{min-height:1.5em;font-weight:700}.form-status.success{color:#26744e}.form-status.error{color:#a24848}
-    .hidden-form-field{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
-    .success-card{display:none;min-height:620px;padding:40px;place-items:center;text-align:center;background:var(--mint)}.success-card.visible{display:grid}.success-card h3{font-family:var(--display);font-size:42px;font-weight:500;margin:15px 0}.success-card p{max-width:480px;color:#4d6662}
-
-    .direct-contact{padding:90px max(28px,calc((100% - 1260px)/2));background:var(--sky)}
-    .direct-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
-    .direct-card{padding:38px;border-right:1px solid var(--line)}.direct-card:last-child{border-right:0}
-    .direct-card span{font-size:9px;letter-spacing:.15em;font-weight:700;color:var(--teal)}.direct-card h3{font-family:var(--display);font-size:31px;font-weight:500;margin:30px 0 12px}.direct-card p{color:#526a68;font-size:12px}.direct-card a{display:inline-block;margin-top:8px;border-bottom:1px solid currentColor;font-size:11px;font-weight:700}
-
-    .closing{padding:120px max(28px,calc((100% - 1260px)/2));background:var(--mint);text-align:center}
-    .closing h2{max-width:900px;margin:24px auto;font-family:var(--display);font-size:clamp(48px,6vw,78px);font-weight:500;line-height:1;letter-spacing:-.045em}
-    .closing>p:last-child{max-width:700px;margin:auto;color:#4f6964}
-    .contact-footer{padding:36px max(28px,calc((100% - 1260px)/2));background:var(--deep);color:white;display:flex;justify-content:space-between;align-items:center;gap:25px}
-    .contact-footer p,.contact-footer a{margin:0;color:#c7dcda;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:none}
-
-    @media(max-width:900px){
-      .contact-hero{grid-template-columns:1fr;padding-top:125px;text-align:center}.hero-copy{margin:auto}.hero-intro,.hero-small{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}.field-note{justify-content:center}.hero-map{min-height:480px}
-      .welcome-strip,.form-shell{grid-template-columns:1fr}.section-heading{display:block}.section-heading>p{margin-top:25px}.guide-grid{grid-template-columns:1fr}.guide-step,.guide-step:not(:first-child){padding:27px 0;border-right:0;border-bottom:1px solid rgba(16,47,50,.2)}.form-intro{padding:45px}.wonder-form{padding:40px}
+    * {
+      box-sizing: border-box;
     }
-    @media(max-width:620px){
-      .contact-hero{min-height:auto;padding:120px 20px 75px}.hero-copy h1{font-size:56px}.hero-intro{font-size:19px}.hero-map{min-height:390px;transform:scale(.82);margin:0 -40px}.ring-one{width:410px;height:360px}.mw-two{right:-10px}.mw-four{left:-10px}
-      .welcome-strip,.pathways,.message-guide,.form-section,.direct-contact,.closing{padding:78px 20px}.welcome-strip{grid-template-columns:1fr;gap:25px}.pathway-grid,.direct-grid{grid-template-columns:1fr}.pathway-card:nth-child(n){border-right:0;border-bottom:1px solid var(--line)}.pathway-card:last-child,.direct-card:last-child{border-bottom:0}.pathway-card h3{margin-top:55px}.form-intro,.wonder-form{padding:30px 22px}.form-row{grid-template-columns:1fr}.direct-card{border-right:0;border-bottom:1px solid var(--line)}.contact-footer{flex-direction:column;text-align:center}.hero-actions{flex-direction:column}.button{width:100%}
+
+    html {
+      scroll-behavior: smooth;
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+
+      color: var(--cream);
+      background: var(--night);
+
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+
+      content: "";
+      pointer-events: none;
+
+      opacity: 0.045;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--cream);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 12px;
+      left: 12px;
+
+      padding: 10px 14px;
+
+      color: var(--night);
+      background: var(--cream);
+
+      transform: translateY(-170%);
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    /* Star background */
+
+    .star-field {
+      position: fixed;
+      z-index: -3;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .aurora {
+      position: fixed;
+      z-index: -2;
+      inset: -20%;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at 18% 28%,
+          rgba(169, 151, 255, 0.13),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 78% 15%,
+          rgba(115, 216, 210, 0.09),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 50% 90%,
+          rgba(240, 181, 91, 0.1),
+          transparent 27%
+        );
+    }
+
+    /* Header */
+
+    .site-header {
+      position: fixed;
+      z-index: 30;
+      top: 0;
+      right: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+
+      padding: 18px max(24px, calc((100% - 1320px) / 2));
+
+      border-bottom: 1px solid rgba(255, 241, 202, 0.09);
+
+      background: rgba(5, 5, 10, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+
+      filter:
+        drop-shadow(0 0 14px rgba(240, 181, 91, 0.23));
+    }
+
+    .brand strong,
+    .brand small {
+      display: block;
+    }
+
+    .brand strong {
+      font-size: 0.86rem;
+      letter-spacing: 0.12em;
+    }
+
+    .brand small {
+      color: var(--faint);
+      font-size: 0.63rem;
+      letter-spacing: 0.08em;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .navigation a {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .navigation a:hover,
+    .navigation a[aria-current="page"] {
+      color: var(--gold);
+    }
+
+    .home-link {
+      padding: 10px 15px;
+
+      border: 1px solid rgba(240, 181, 91, 0.35);
+      border-radius: 999px;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: center;
+      gap: 70px;
+
+      width: min(1320px, calc(100% - 48px));
+      min-height: 100vh;
+
+      margin: auto;
+      padding: 150px 0 80px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      margin: 0;
+
+      color: var(--gold);
+
+      font-size: 0.7rem;
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow span {
+      display: inline-block;
+
+      margin-right: 10px;
+      padding: 6px 10px;
+
+      border: 1px solid currentColor;
+      border-radius: 999px;
+    }
+
+    h1 {
+      max-width: 760px;
+
+      margin: 25px 0 28px;
+
+      font-family: var(--display);
+      font-size: clamp(4rem, 8vw, 8.6rem);
+      font-weight: 400;
+      line-height: 0.88;
+
+      letter-spacing: -0.055em;
+    }
+
+    h1 em {
+      display: block;
+
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-lede {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-family: var(--display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+    }
+
+    .hero-note {
+      max-width: 560px;
+
+      color: var(--faint);
+      font-size: 0.82rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 32px;
+    }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+
+      min-height: 52px;
+      padding: 13px 19px;
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      font-size: 0.71rem;
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      transition: 0.25s;
+    }
+
+    .action.primary {
+      color: var(--night);
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+
+    .action:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.24);
+    }
+
+    /* Communication booth */
+
+    .booth-wrap {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      min-height: 610px;
+
+      perspective: 1000px;
+    }
+
+    .orbit {
+      position: absolute;
+
+      border: 1px solid rgba(255, 241, 202, 0.14);
+      border-radius: 50%;
+
+      animation: spin 22s linear infinite;
+    }
+
+    .orbit-one {
+      width: 560px;
+      height: 470px;
+
+      transform: rotate(-15deg);
+    }
+
+    .orbit-two {
+      width: 420px;
+      height: 420px;
+
+      border-style: dashed;
+
+      animation-direction: reverse;
+      animation-duration: 30s;
+    }
+
+    .orbit i {
+      position: absolute;
+      top: 50%;
+      left: -5px;
+
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 20px var(--gold);
+    }
+
+    @keyframes spin {
+      to {
+        rotate: 360deg;
+      }
+    }
+
+    .booth {
+      position: relative;
+      z-index: 2;
+
+      width: min(390px, 85vw);
+      padding: 24px 24px 30px;
+
+      border: 1px solid rgba(255, 241, 202, 0.26);
+      border-radius: 150px 150px 30px 30px;
+
+      background:
+        linear-gradient(
+          155deg,
+          rgba(27, 22, 43, 0.96),
+          rgba(8, 7, 14, 0.98)
+        );
+
+      box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.55),
+        inset 0 0 50px rgba(169, 151, 255, 0.06);
+
+      transform: rotateY(-5deg);
+    }
+
+    .booth::before {
+      position: absolute;
+      inset: 10px;
+
+      content: "";
+      pointer-events: none;
+
+      border: 1px solid rgba(240, 181, 91, 0.16);
+      border-radius: 140px 140px 23px 23px;
+    }
+
+    .booth-light {
+      width: 13px;
+      height: 13px;
+
+      margin: 8px auto 17px;
+
+      border-radius: 50%;
+
+      background: #7df8ad;
+
+      box-shadow:
+        0 0 18px #7df8ad;
+
+      animation:
+        pulse 1.7s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.35;
+        transform: scale(0.78);
+      }
+    }
+
+    .booth-screen {
+      position: relative;
+
+      padding: 28px 22px;
+      overflow: hidden;
+
+      text-align: center;
+
+      border: 1px solid rgba(115, 216, 210, 0.3);
+      border-radius: 100px 100px 18px 18px;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(115, 216, 210, 0.15),
+          transparent 45%
+        ),
+        #080b11;
+    }
+
+    .booth-screen::after {
+      position: absolute;
+      inset: 0;
+
+      content: "";
+      pointer-events: none;
+
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 4px,
+          rgba(255, 255, 255, 0.025) 5px
+        );
+    }
+
+    .booth-screen small {
+      color: var(--cyan);
+      font-size: 0.61rem;
+      letter-spacing: 0.18em;
+    }
+
+    .booth-screen strong {
+      display: block;
+
+      margin: 18px 0 5px;
+
+      font-family: var(--display);
+      font-size: 2.25rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .booth-screen > span {
+      color: var(--faint);
+
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .frequency {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 5px;
+
+      height: 65px;
+      margin: 22px 0 6px;
+    }
+
+    .frequency b {
+      display: block;
+
+      width: 4px;
+      height: 18px;
+
+      border-radius: 5px;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 10px rgba(240, 181, 91, 0.6);
+
+      animation:
+        wave 1.2s ease-in-out infinite;
+    }
+
+    .frequency b:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .frequency b:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .frequency b:nth-child(4) {
+      animation-delay: 0.45s;
+    }
+
+    .frequency b:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    .frequency b:nth-child(6) {
+      animation-delay: 0.75s;
+    }
+
+    .frequency b:nth-child(7) {
+      animation-delay: 0.9s;
+    }
+
+    @keyframes wave {
+      0%,
+      100% {
+        height: 10px;
+      }
+
+      50% {
+        height: 55px;
+      }
+    }
+
+    .booth-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+
+      margin-top: 18px;
+    }
+
+    .booth-control {
+      padding: 13px 8px;
+
+      text-align: center;
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .booth-control i {
+      display: block;
+
+      width: 8px;
+      height: 8px;
+
+      margin: 0 auto 7px;
+
+      border-radius: 50%;
+
+      background: var(--coral);
+
+      box-shadow:
+        0 0 10px var(--coral);
+    }
+
+    .booth-control:nth-child(2) i {
+      background: var(--violet);
+
+      box-shadow:
+        0 0 10px var(--violet);
+    }
+
+    .booth-control:nth-child(3) i {
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 10px var(--cyan);
+    }
+
+    .booth-control span {
+      color: var(--faint);
+
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .floating-label {
+      position: absolute;
+
+      padding: 8px 12px;
+
+      color: var(--muted);
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      background: rgba(5, 5, 10, 0.72);
+      backdrop-filter: blur(10px);
+
+      font-size: 0.6rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .floating-one {
+      top: 16%;
+      right: 1%;
+    }
+
+    .floating-two {
+      bottom: 17%;
+      left: 0;
+    }
+
+    .floating-three {
+      top: 8%;
+      left: 8%;
+
+      color: var(--gold);
+    }
+
+    /* Moving message */
+
+    .ticker {
+      overflow: hidden;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        rgba(13, 10, 22, 0.84);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 38px;
+
+      width: max-content;
+      padding: 15px 0;
+
+      animation:
+        marquee 28s linear infinite;
+    }
+
+    .ticker span {
+      color: var(--faint);
+
+      font-size: 0.64rem;
+      font-weight: 700;
+
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .ticker b {
+      color: var(--gold);
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Signal types */
+
+    .signals {
+      width: min(1240px, calc(100% - 48px));
+
+      margin: auto;
+      padding: 120px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 0.55fr;
+      align-items: end;
+      gap: 60px;
+
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2,
+    .form-copy h2 {
+      margin: 20px 0 0;
+
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      font-weight: 400;
+      line-height: 0.98;
+
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading > p {
+      margin: 0;
+
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .signal-card {
+      position: relative;
+
+      min-height: 290px;
+      padding: 25px;
+      overflow: hidden;
+
+      text-align: left;
+
+      border: 1px solid var(--line);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.015)
+        );
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .signal-card::before {
+      position: absolute;
+      top: -80px;
+      right: -80px;
+
+      width: 160px;
+      height: 160px;
+
+      content: "";
+
+      border: 1px solid rgba(240, 181, 91, 0.18);
+      border-radius: 50%;
+    }
+
+    .signal-card:hover,
+    .signal-card.active {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(240, 181, 91, 0.55);
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(240, 181, 91, 0.1),
+          rgba(169, 151, 255, 0.05)
+        );
+    }
+
+    .signal-card .number {
+      color: var(--gold);
+
+      font-family: var(--display);
+      font-size: 0.78rem;
+    }
+
+    .signal-card .symbol {
+      display: block;
+
+      margin: 43px 0 20px;
+
+      color: var(--violet);
+      font-size: 2rem;
+    }
+
+    .signal-card h3 {
+      margin: 0 0 12px;
+
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .signal-card p {
+      margin: 0;
+
+      color: var(--faint);
+      font-size: 0.75rem;
+    }
+
+    /* Form */
+
+    .transmission-desk {
+      position: relative;
+
+      padding:
+        120px max(24px, calc((100% - 1240px) / 2));
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(16, 13, 25, 0.92),
+          rgba(7, 6, 12, 0.96)
+        );
+    }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 241, 202, 0.18);
+      border-radius: 30px;
+
+      background: #09080f;
+
+      box-shadow:
+        0 45px 120px rgba(0, 0, 0, 0.42);
+    }
+
+    .form-copy {
+      position: relative;
+
+      padding: clamp(35px, 5vw, 65px);
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(169, 151, 255, 0.19),
+          transparent 35%
+        ),
+        linear-gradient(
+          160deg,
+          #171123,
+          #0b0912
+        );
+    }
+
+    .form-copy::after {
+      position: absolute;
+      right: -15px;
+      bottom: -90px;
+
+      content: "?";
+
+      color: rgba(255, 241, 202, 0.035);
+
+      font-family: var(--display);
+      font-size: 25rem;
+      line-height: 1;
+    }
+
+    .form-copy > p {
+      position: relative;
+      z-index: 1;
+
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .transmission-status {
+      position: relative;
+      z-index: 1;
+
+      margin-top: 40px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .status-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding: 16px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .status-line span {
+      color: var(--faint);
+    }
+
+    .status-line strong {
+      color: #7df8ad;
+      font-weight: 600;
+    }
+
+    .scope-note {
+      position: relative;
+      z-index: 1;
+
+      margin-top: 28px;
+      padding: 17px;
+
+      color: var(--faint);
+
+      border-left: 2px solid var(--gold);
+
+      background:
+        rgba(240, 181, 91, 0.055);
+
+      font-size: 0.72rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 20px;
+
+      padding: clamp(30px, 5vw, 60px);
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(255, 255, 255, 0.035),
+          transparent
+        );
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: var(--muted);
+
+      font-size: 0.68rem;
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 54px;
+
+      padding: 14px 15px;
+
+      color: var(--cream);
+
+      border: 1px solid rgba(255, 241, 202, 0.18);
+      border-radius: 13px;
+
+      outline: 0;
+
+      background:
+        rgba(255, 255, 255, 0.035);
+
+      transition: 0.2s;
+    }
+
+    .field textarea {
+      min-height: 165px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+
+      background:
+        rgba(240, 181, 91, 0.035);
+
+      box-shadow:
+        0 0 0 3px rgba(240, 181, 91, 0.1);
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(255, 241, 202, 0.27);
+    }
+
+    .field option {
+      color: #17121e;
+      background: white;
+    }
+
+    .message-details {
+      display: flex;
+      justify-content: space-between;
+
+      color: var(--faint);
+      font-size: 0.65rem;
+    }
+
+    .signal-meter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .signal-meter i {
+      width: 16px;
+      height: 4px;
+
+      border-radius: 4px;
+
+      background:
+        rgba(255, 241, 202, 0.12);
+
+      transition: 0.25s;
+    }
+
+    .signal-meter i.on {
+      background: var(--gold);
+
+      box-shadow:
+        0 0 8px rgba(240, 181, 91, 0.55);
+    }
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+
+      color: var(--faint);
+      font-size: 0.72rem;
+    }
+
+    .consent input {
+      margin-top: 5px;
+      accent-color: var(--gold);
+    }
+
+    .bot-field {
+      position: absolute !important;
+
+      width: 1px !important;
+      height: 1px !important;
+
+      overflow: hidden !important;
+
+      clip: rect(0 0 0 0) !important;
+    }
+
+    .send-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      min-height: 58px;
+      padding: 15px 20px;
+
+      color: var(--night);
+
+      border: 0;
+      border-radius: 999px;
+
+      background: var(--gold);
+
+      font-size: 0.72rem;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .send-button:hover {
+      background: #ffd48a;
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 15px 40px rgba(240, 181, 91, 0.18);
+    }
+
+    .send-button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+      transform: none;
+    }
+
+    .form-note {
+      margin: 0;
+
+      text-align: center;
+
+      color: var(--faint);
+      font-size: 0.65rem;
+    }
+
+    /* Lower cards */
+
+    .contact-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+
+      width: min(1240px, calc(100% - 48px));
+
+      margin: auto;
+      padding: 100px 0;
+    }
+
+    .contact-card {
+      padding: 35px;
+
+      border: 1px solid var(--line);
+      border-radius: 22px;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .contact-card > span {
+      color: var(--gold);
+
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .contact-card h3 {
+      margin: 30px 0 12px;
+
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .contact-card a {
+      display: inline-block;
+
+      margin-top: 8px;
+
+      color: var(--gold);
+
+      border-bottom: 1px solid currentColor;
+
+      font-size: 0.75rem;
+    }
+
+    .closing {
+      padding: 110px 24px;
+
+      text-align: center;
+
+      border-top: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(240, 181, 91, 0.12),
+          transparent 40%
+        );
+    }
+
+    .closing h2 {
+      max-width: 900px;
+
+      margin: 20px auto;
+
+      font-family: var(--display);
+      font-size: clamp(3rem, 6vw, 6.4rem);
+      font-weight: 400;
+      line-height: 0.95;
+
+      letter-spacing: -0.04em;
+    }
+
+    .closing p:last-child {
+      max-width: 650px;
+
+      margin: auto;
+
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding:
+        28px max(24px, calc((100% - 1240px) / 2));
+
+      color: var(--faint);
+
+      border-top: 1px solid var(--line);
+
+      font-size: 0.67rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+
+      transition:
+        opacity 0.75s,
+        transform 0.75s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 150px;
+
+        text-align: center;
+      }
+
+      .hero-copy {
+        margin: auto;
+      }
+
+      .hero-lede,
+      .hero-note {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .booth-wrap {
+        min-height: 570px;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .signal-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .navigation a:not(.home-link) {
+        display: none;
+      }
+
+      .hero {
+        width: min(100% - 30px, 1320px);
+        padding-top: 125px;
+      }
+
+      h1 {
+        font-size: 3.75rem;
+      }
+
+      .booth-wrap {
+        min-height: 470px;
+
+        margin: -25px -45px;
+
+        transform: scale(0.84);
+      }
+
+      .orbit-one {
+        width: 480px;
+        height: 410px;
+      }
+
+      .signals {
+        width: min(100% - 30px, 1240px);
+        padding: 80px 0;
+      }
+
+      .signal-grid,
+      .form-row,
+      .contact-options {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        gap: 20px;
+      }
+
+      .transmission-desk {
+        padding: 75px 15px;
+      }
+
+      .form-shell {
+        border-radius: 21px;
+      }
+
+      .contact-options {
+        width: min(100% - 30px, 1240px);
+        padding: 70px 0;
+      }
+
+      footer {
+        align-items: center;
+        flex-direction: column;
+
+        text-align: center;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .action {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .orbit,
+      .frequency b,
+      .booth-light,
+      .ticker-track {
+        animation: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
   </style>
+
 </head>
 
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="wv-header">
-    <nav class="wv-nav" data-wv-nav aria-label="Main navigation">
-      <a href="index.html" class="wv-brand" aria-label="Wonder Verse homepage">
-        <span class="wv-brand-image-wrap"><img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image"></span>
-        <span class="wv-brand-copy"><span class="wv-brand-name">Jigyasa Verse</span><span class="wv-brand-note">Curiosity lives here</span></span>
+  <a
+    class="skip-link"
+    href="#main"
+  >
+    Skip to main content
+  </a>
+
+  <canvas
+    class="star-field"
+    id="starField"
+    aria-hidden="true"
+  ></canvas>
+
+  <div
+    class="aurora"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Header -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="https://jigyasaverse.org/"
+      aria-label="JigyasaVerse homepage"
+    >
+      <img
+        src="https://jigyasaverse.org/images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>
+        <strong>JIGYASAVERSE</strong>
+        <small>curiosity lives here</small>
+      </span>
+    </a>
+
+    <nav
+      class="navigation"
+      aria-label="Main navigation"
+    >
+      <a href="https://jigyasaverse.org/wonderverse.html">
+        Wonder लोक
       </a>
-      <button class="wv-menu" type="button" data-wv-menu aria-expanded="false" aria-controls="wvNavLinks" aria-label="Open navigation menu"><span class="wv-menu-label">Menu</span><span class="wv-menu-lines" aria-hidden="true"></span></button>
-      <div class="wv-links" id="wvNavLinks" data-wv-links>
-        <a href="index.html">Start Here</a><a href="about.html">Our Story</a><a href="books.html">Books</a><a href="wonderverse.html">Wonder</a><a href="schools.html">Schools</a><a href="contact.html" aria-current="page">Contact</a>
-      </div>
+
+      <a href="https://jigyasaverse.org/learning-lok.html">
+        Learning लोक
+      </a>
+
+      <a href="https://jigyasaverse.org/books.html">
+        Library
+      </a>
+
+      <a
+        href="#transmission"
+        aria-current="page"
+      >
+        Contact
+      </a>
+
+      <a
+        class="home-link"
+        href="https://jigyasaverse.org/"
+      >
+        Return home
+      </a>
     </nav>
+
   </header>
 
-  <main id="main-content">
-    <section class="contact-hero">
+  <main id="main">
+
+    <!-- Hero -->
+
+    <section class="hero">
+
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span>The clarity desk</span> Questions · feedback · possibilities</p>
-        <h1>You do not need the <em>perfect question.</em></h1>
-        <p class="hero-intro">Sometimes clarity begins with finally saying the unfinished thing out loud.</p>
-        <p class="hero-small">Write if you are trying to understand your next step, improve something in your learning or life, offer thoughtful feedback, explore a collaboration, or ask whether Wonder Verse can help your school or community.</p>
-        <div class="hero-actions"><a class="button primary" href="#message">Write your message <span>↓</span></a><a class="button secondary" href="#reasons">Find the right doorway <span>↗</span></a></div>
-        <p class="field-note"><span>01</span> You can arrive with a question before you arrive with an answer.</p>
-      </div>
 
-      <div class="hero-map reveal" aria-label="Questions and possibilities orbiting a place for clarity">
-        <div class="map-ring ring-one"></div><div class="map-ring ring-two"></div><div class="map-ring ring-three"></div>
-        <div class="map-core"><small>START HERE</small><strong>one honest<br>question</strong><span>is enough</span></div>
-        <span class="map-word mw-one">clarity</span><span class="map-word mw-two">feedback</span><span class="map-word mw-three">schools</span><span class="map-word mw-four">collaboration</span><span class="map-word mw-five">possibility</span>
-        <span class="map-note">current status:<br><strong>still figuring it out</strong></span>
-      </div>
-    </section>
+        <p class="eyebrow">
+          <span>Signal detected</span>
+          Communication booth · channel 27
+        </p>
 
-    <section class="welcome-strip">
-      <div><p class="eyebrow"><span>Before you write</span> Thank you for coming here</p><h2>Your message does not have to sound impressive. It only has to be honest enough to understand.</h2></div>
-      <p>This is not a place where every question receives a magical solution. It is a place for thoughtful conversation, useful feedback and possibilities that may become clearer once they are named.</p>
-    </section>
+        <h1>
+          Say hello to the
+          <em>other side.</em>
+        </h1>
 
-    <section class="pathways" id="reasons">
-      <div class="section-heading reveal"><div><p class="eyebrow"><span>Choose a doorway</span> What brought you here?</p><h2>Different questions need different kinds of attention.</h2></div><p>Choose the closest fit. You do not need to squeeze your whole situation into a category; this simply helps your message reach the right context.</p></div>
-      <div class="pathway-grid">
-        <article class="pathway-card reveal"><span class="pathway-index">01 · CLARITY</span><h3>I am trying to understand what to do next.</h3><p>For a student, educator, professional or curious adult who has thoughts everywhere and wants to turn them into one clearer question.</p><a href="#message" data-topic="clarity">Ask for clarity →</a></article>
-        <article class="pathway-card reveal"><span class="pathway-index">02 · FEEDBACK</span><h3>I noticed something that could make Wonder Verse better.</h3><p>Share what helped, what felt confusing, what was missing or what you would genuinely like to see next. Thoughtful criticism is welcome.</p><a href="#message" data-topic="feedback">Share feedback →</a></article>
-        <article class="pathway-card reveal"><span class="pathway-index">03 · COLLABORATION</span><h3>I have an idea that might be stronger together.</h3><p>For writers, educators, researchers, organisations and creative people interested in building something useful—not networking for the sake of appearing busy.</p><a href="#message" data-topic="collaboration">Explore an idea →</a></article>
-        <article class="pathway-card reveal"><span class="pathway-index">04 · EDUCATION</span><h3>I am writing from a school, university or learning community.</h3><p>Ask about books, workshops, learning resources, institutional use or a problem your students repeatedly face.</p><a href="#message" data-topic="education">Start an education enquiry →</a></article>
-      </div>
-    </section>
+        <p class="hero-lede">
+          Every collaboration, book, question and strange
+          little possibility begins the same way: one human
+          decides to send a signal.
+        </p>
 
-    <section class="message-guide">
-      <div class="guide-heading reveal"><p class="eyebrow"><span>A useful message</span> No corporate script required</p><h2>Clarity often appears while you are explaining the problem.</h2><p>You can write freely. If the page is blank and staring back at you, these three small anchors may help.</p></div>
-      <div class="guide-grid">
-        <article class="guide-step reveal"><span>01</span><h3>What is happening?</h3><p>Give enough context to understand the situation, without sharing private information about students, patients, colleagues or workplaces.</p></article>
-        <article class="guide-step reveal"><span>02</span><h3>What have you already tried?</h3><p>Even “I have only been thinking about it” is useful. Knowing the starting point helps avoid sending you back to step one.</p></article>
-        <article class="guide-step reveal"><span>03</span><h3>What would be useful now?</h3><p>A perspective? A resource? A collaboration conversation? A place to submit an idea? Name the kind of response you are hoping for.</p></article>
-      </div>
-    </section>
+        <p class="hero-note">
+          It does not need to sound impressive. Bring an
+          unfinished thought, a brave question, thoughtful
+          criticism or a plan that might be more interesting
+          with another mind inside it.
+        </p>
 
-    <section class="form-section" id="message">
-      <div class="form-shell reveal">
-        <div class="form-intro">
-          <p class="eyebrow"><span>The message desk</span> Start where you are</p>
-          <h2>What would you like to make clearer?</h2>
-          <p>Your message can be curious, practical, unfinished or direct. It will be read as a human message—not evaluated as an application.</p>
-          <div class="prompt-list"><p><span>01</span>“I keep wondering whether…”</p><p><span>02</span>“I am currently trying to…”</p><p><span>03</span>“Something on the website made me think…”</p><p><span>04</span>“There is a problem my learners keep facing…”</p></div>
-          <div class="scope-note"><strong>A realistic note:</strong> Jigyasa Verse can offer conversation, educational perspective and resource direction. It is not an emergency, counselling, legal, financial or medical service. If your situation is urgent or safety-related, contact an appropriate qualified service.</div>
+        <div class="hero-actions">
+
+          <a
+            class="action primary"
+            href="#transmission"
+          >
+            Open the booth
+            <span>↓</span>
+          </a>
+
+          <a
+            class="action"
+            href="#signalTypes"
+          >
+            Choose a signal
+            <span>✦</span>
+          </a>
+
         </div>
+
+      </div>
+
+      <div
+        class="booth-wrap reveal"
+        aria-label="An interstellar communication booth receiving curious signals"
+      >
+
+        <div
+          class="orbit orbit-one"
+          aria-hidden="true"
+        >
+          <i></i>
+        </div>
+
+        <div
+          class="orbit orbit-two"
+          aria-hidden="true"
+        >
+          <i></i>
+        </div>
+
+        <span class="floating-label floating-one">
+          Earth · connected
+        </span>
+
+        <span class="floating-label floating-two">
+          No perfect wording required
+        </span>
+
+        <span class="floating-label floating-three">
+          Receiving now
+        </span>
+
+        <div class="booth">
+
+          <div
+            class="booth-light"
+            aria-hidden="true"
+          ></div>
+
+          <div class="booth-screen">
+
+            <small>
+              JIGYASAVERSE SIGNAL DESK
+            </small>
+
+            <strong>
+              Hello,<br>
+              stranger.
+            </strong>
+
+            <span>
+              Your frequency is welcome here
+            </span>
+
+            <div
+              class="frequency"
+              aria-hidden="true"
+            >
+              <b></b>
+              <b></b>
+              <b></b>
+              <b></b>
+              <b></b>
+              <b></b>
+              <b></b>
+            </div>
+
+          </div>
+
+          <div
+            class="booth-controls"
+            aria-hidden="true"
+          >
+
+            <div class="booth-control">
+              <i></i>
+              <span>Wonder</span>
+            </div>
+
+            <div class="booth-control">
+              <i></i>
+              <span>Listen</span>
+            </div>
+
+            <div class="booth-control">
+              <i></i>
+              <span>Reply</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Moving message -->
+
+    <div
+      class="ticker"
+      aria-hidden="true"
+    >
+      <div class="ticker-track">
+
+        <span>Questions may arrive unfinished</span>
+        <b>✦</b>
+
+        <span>Ideas may be strange</span>
+        <b>✦</b>
+
+        <span>Feedback may be honest</span>
+        <b>✦</b>
+
+        <span>Collaboration may begin small</span>
+        <b>✦</b>
+
+        <span>Questions may arrive unfinished</span>
+        <b>✦</b>
+
+        <span>Ideas may be strange</span>
+        <b>✦</b>
+
+        <span>Feedback may be honest</span>
+        <b>✦</b>
+
+        <span>Collaboration may begin small</span>
+        <b>✦</b>
+
+      </div>
+    </div>
+
+    <!-- Signal options -->
+
+    <section
+      class="signals"
+      id="signalTypes"
+    >
+
+      <div class="section-heading reveal">
 
         <div>
-          <form class="wonder-form" id="wonderContactForm" name="wonder-contact" method="POST" action="https://endearing-cat-c1f80e.netlify.app/" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="wonder-contact">
-            <input type="hidden" name="subject" value="A new message from the Jigyasa Verse website">
-            <p class="hidden-form-field"><label>Do not fill this out:<input name="bot-field" type="text" tabindex="-1" autocomplete="off"></label></p>
 
-            <div class="form-row">
-              <div class="form-field"><label for="contactName">Your name</label><input id="contactName" name="name" type="text" autocomplete="name" placeholder="How should I address you?" required></div>
-              <div class="form-field"><label for="contactEmail">Your email</label><input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
-            </div>
+          <p class="eyebrow">
+            <span>Choose a frequency</span>
+            What brought you here?
+          </p>
 
-            <div class="form-row">
-              <div class="form-field"><label for="contactRole">I am writing as a…</label><select id="contactRole" name="role"><option value="">Choose one</option><option value="student">Student</option><option value="teacher">Teacher or educator</option><option value="parent">Parent or carer</option><option value="health-professional">Healthcare professional</option><option value="professional">Professional or career changer</option><option value="organisation">School, university or organisation</option><option value="curious-adult">Curious adult</option><option value="other">Something else</option></select></div>
-              <div class="form-field"><label for="contactTopic">My message is mainly about…</label><select id="contactTopic" name="topic" required><option value="">Choose a doorway</option><option value="clarity">Clarity or a question</option><option value="feedback">Website feedback</option><option value="education">School, university or education</option><option value="collaboration">Collaboration</option><option value="resources">Books or resources</option><option value="workshops">Workshops</option><option value="other">Something else</option></select></div>
-            </div>
+          <h2>
+            What kind of signal are you sending?
+          </h2>
 
-            <div class="form-field"><label for="contactContext">What is happening?</label><textarea id="contactContext" name="context" rows="5" placeholder="A little context about the question, idea or situation…" required></textarea></div>
-            <div class="form-field"><label for="contactTried">What have you already considered or tried? <span style="font-weight:400;color:#6b7d7a">(optional)</span></label><textarea id="contactTried" name="already-tried" rows="3" placeholder="It is completely okay if the answer is ‘not much yet’. "></textarea></div>
-            <div class="form-field"><label for="contactMessage">What kind of response would be useful?</label><textarea id="contactMessage" name="message" rows="4" placeholder="A perspective, resource direction, collaboration conversation, feedback response…" required></textarea></div>
-
-            <label class="contact-consent"><input type="checkbox" name="permission-to-reply" value="yes" required><span>I understand that Jigyasa Verse may reply to the email address provided and that response times may vary.</span></label>
-            <button type="submit" class="submit-button" id="submitButton">Send this message <span>→</span></button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            <p class="form-note">Your message will be sent privately through the existing Jigyasa Verse contact form.</p>
-          </form>
-
-          <div class="success-card" id="successCard" tabindex="-1"><div><span aria-hidden="true">✦</span><h3>Your message has somewhere to land.</h3><p>Thank you for writing with honesty. Your message has been sent and will be read with care. If a response is needed, Wonder Verse will reply when capacity allows.</p></div></div>
         </div>
+
+        <p>
+          Choosing one simply tunes the form for you.
+          Human lives rarely fit into dropdown menus,
+          so “something else” is always allowed.
+        </p>
+
       </div>
+
+      <div class="signal-grid">
+
+        <button
+          class="signal-card reveal"
+          type="button"
+          data-topic="question"
+        >
+          <span class="number">
+            01 · QUESTION
+          </span>
+
+          <span class="symbol">?</span>
+
+          <h3>
+            I keep wondering…
+          </h3>
+
+          <p>
+            A question about learning, becoming, work,
+            life or something the Verse made you notice.
+          </p>
+        </button>
+
+        <button
+          class="signal-card reveal"
+          type="button"
+          data-topic="feedback"
+        >
+          <span class="number">
+            02 · FEEDBACK
+          </span>
+
+          <span class="symbol">◉</span>
+
+          <h3>
+            I noticed something…
+          </h3>
+
+          <p>
+            Tell us what worked, what confused you or
+            which door should exist next.
+          </p>
+        </button>
+
+        <button
+          class="signal-card reveal"
+          type="button"
+          data-topic="collaboration"
+        >
+          <span class="number">
+            03 · COLLABORATION
+          </span>
+
+          <span class="symbol">∞</span>
+
+          <h3>
+            What if we built…
+          </h3>
+
+          <p>
+            For educators, writers, researchers,
+            organisations and wonderfully serious makers.
+          </p>
+        </button>
+
+        <button
+          class="signal-card reveal"
+          type="button"
+          data-topic="education"
+        >
+          <span class="number">
+            04 · EDUCATION
+          </span>
+
+          <span class="symbol">✦</span>
+
+          <h3>
+            My learners need…
+          </h3>
+
+          <p>
+            Books, workshops, resources, school
+            partnerships or a stubborn learning problem.
+          </p>
+        </button>
+
+      </div>
+
     </section>
 
-    <section class="direct-contact">
-      <div class="direct-grid">
-        <article class="direct-card reveal"><span>DIRECT EMAIL</span><h3>Prefer your own inbox?</h3><p>Use email for a straightforward enquiry, longer proposal or attachment that does not fit comfortably inside the form.</p><a href="mailto:tiwariisha72@gmail.com?subject=Hello%20from%20Wonder%20Verse">Write an email →</a></article>
-        <article class="direct-card reveal"><span>FOLLOW THE WORK</span><h3>Want to stay in the orbit?</h3><p>Follow project updates, new resources and questions from across Wonder Verse on Instagram.</p><a href="https://www.instagram.com/thewonderproject.space/" target="_blank" rel="noopener noreferrer">Visit Instagram →</a></article>
+    <!-- Netlify form -->
+
+    <section
+      class="transmission-desk"
+      id="transmission"
+    >
+
+      <div class="form-shell reveal">
+
+        <div class="form-copy">
+
+          <p class="eyebrow">
+            <span>Booth open</span>
+            Compose transmission
+          </p>
+
+          <h2>
+            Send the unfinished thing.
+          </h2>
+
+          <p>
+            Clarity often appears while we are trying to
+            explain what is unclear. Start wherever you can.
+          </p>
+
+          <div class="transmission-status">
+
+            <div class="status-line">
+              <span>Receiver</span>
+              <strong>Online</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Location</span>
+              <strong>JigyasaVerse</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Perfect wording</span>
+              <strong>Not required</strong>
+            </div>
+
+            <div class="status-line">
+              <span>Human reply</span>
+              <strong>When needed</strong>
+            </div>
+
+          </div>
+
+          <div class="scope-note">
+
+            <strong>A small boundary:</strong>
+
+            JigyasaVerse can offer educational conversation
+            and resource direction. It is not an emergency,
+            counselling, medical, legal or financial service.
+
+          </div>
+
+        </div>
+
+        <form
+          class="contact-form"
+          id="contactForm"
+          name="jigyasa-contact"
+          method="POST"
+          action="/success.html"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+
+          <input
+            type="hidden"
+            name="form-name"
+            value="jigyasa-contact"
+          >
+
+          <input
+            type="hidden"
+            name="subject"
+            value="New signal from JigyasaVerse"
+          >
+
+          <p class="bot-field">
+            <label>
+              Leave this empty:
+              <input name="bot-field">
+            </label>
+          </p>
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="name">
+                Your name
+              </label>
+
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="How should I address you?"
+                required
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label for="email">
+                Return frequency (email)
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="role">
+                I am writing as a…
+              </label>
+
+              <select
+                id="role"
+                name="role"
+              >
+                <option value="">
+                  Choose one
+                </option>
+
+                <option>
+                  Student
+                </option>
+
+                <option>
+                  Teacher or educator
+                </option>
+
+                <option>
+                  Parent or carer
+                </option>
+
+                <option>
+                  Healthcare professional
+                </option>
+
+                <option>
+                  Professional or career changer
+                </option>
+
+                <option>
+                  School, university or organisation
+                </option>
+
+                <option>
+                  Curious adult
+                </option>
+
+                <option>
+                  Something else
+                </option>
+              </select>
+
+            </div>
+
+            <div class="field">
+
+              <label for="topic">
+                Signal type
+              </label>
+
+              <select
+                id="topic"
+                name="topic"
+                required
+              >
+                <option value="">
+                  Choose a frequency
+                </option>
+
+                <option value="question">
+                  Question or clarity
+                </option>
+
+                <option value="feedback">
+                  Website feedback
+                </option>
+
+                <option value="collaboration">
+                  Collaboration
+                </option>
+
+                <option value="education">
+                  School or education
+                </option>
+
+                <option value="books">
+                  Books or resources
+                </option>
+
+                <option value="workshops">
+                  Workshops
+                </option>
+
+                <option value="other">
+                  Something else
+                </option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="field">
+
+            <label for="message">
+              Your transmission
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              maxlength="2000"
+              placeholder="I keep wondering… I noticed… What if we…"
+              required
+            ></textarea>
+
+            <div class="message-details">
+
+              <span id="characterCount">
+                0 / 2000
+              </span>
+
+              <span
+                class="signal-meter"
+                aria-label="Message signal strength"
+              >
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="field">
+
+            <label for="helpful">
+              What would be helpful now?
+              <span>(optional)</span>
+            </label>
+
+            <textarea
+              id="helpful"
+              name="helpful-response"
+              maxlength="800"
+              placeholder="A reply, a resource, a conversation, or simply knowing this was received…"
+            ></textarea>
+
+          </div>
+
+          <label class="consent">
+
+            <input
+              type="checkbox"
+              name="permission-to-reply"
+              value="yes"
+              required
+            >
+
+            <span>
+              I understand that JigyasaVerse may reply to
+              the email address provided and that response
+              times may vary.
+            </span>
+
+          </label>
+
+          <button
+            class="send-button"
+            id="sendButton"
+            type="submit"
+          >
+            <span>Transmit this message</span>
+            <b>↗</b>
+          </button>
+
+          <p class="form-note">
+            Your message travels privately through Netlify
+            Forms. Please do not include sensitive personal
+            information.
+          </p>
+
+        </form>
+
       </div>
+
     </section>
+
+    <!-- Additional contact options -->
+
+    <section class="contact-options">
+
+      <article class="contact-card reveal">
+
+        <span>Direct line</span>
+
+        <h3>
+          Prefer your own inbox?
+        </h3>
+
+        <p>
+          Use email for a longer proposal or an attachment
+          that does not fit comfortably inside the booth.
+        </p>
+
+        <a
+          href="mailto:itsnevertoolate@jigyasaverse.org?subject=A%20signal%20for%20JigyasaVerse"
+        >
+          itsnevertoolate@jigyasaverse.org →
+        </a>
+
+      </article>
+
+      <article class="contact-card reveal">
+
+        <span>Stay in orbit</span>
+
+        <h3>
+          Not ready to transmit?
+        </h3>
+
+        <p>
+          Return to the Verse. A question does not expire
+          merely because you need more time to understand it.
+        </p>
+
+        <a href="https://jigyasaverse.org/">
+          Keep exploring →
+        </a>
+
+      </article>
+
+    </section>
+
+    <!-- Closing -->
 
     <section class="closing reveal">
-      <p class="eyebrow"><span>Thank you for arriving</span> A final field note</p>
-      <h2>A clearer life is rarely built from one enormous answer.</h2>
-      <p>It is usually built through better questions, honest feedback, small experiments and conversations with people willing to listen carefully. Thank you for trusting this space with one part of yours.</p>
+
+      <p class="eyebrow">
+        <span>Signal remains open</span>
+        A final field note
+      </p>
+
+      <h2>
+        Somewhere, every idea begins as a barely audible signal.
+      </h2>
+
+      <p>
+        Thank you for trusting this small booth with yours.
+        It does not have to become enormous to matter.
+      </p>
+
     </section>
+
   </main>
 
-  <footer class="contact-footer"><p>Jigyasa Verse · Curiosity lives here</p><a href="index.html">Return home</a><p>© 2026 Jigyasa Verse</p></footer>
+  <footer>
 
-  <script src="wonder-verse-navbar.js"></script>
+    <span>
+      © <span id="year">2026</span> JigyasaVerse
+    </span>
+
+    <a href="https://jigyasaverse.org/privacy.html">
+      Privacy
+    </a>
+
+    <a href="https://jigyasaverse.org/">
+      Return to the Verse
+    </a>
+
+  </footer>
+
   <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}
+
+    (() => {
+
+      /* =====================================================
+         STAR FIELD
+      ===================================================== */
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const canvas =
+        document.getElementById("starField");
+
+      const context =
+        canvas.getContext("2d");
+
+      let stars = [];
+      let animationFrame;
+
+      function resizeStars() {
+
+        const density =
+          Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width =
+          window.innerWidth * density;
+
+        canvas.height =
+          window.innerHeight * density;
+
+        canvas.style.width =
+          window.innerWidth + "px";
+
+        canvas.style.height =
+          window.innerHeight + "px";
+
+        context.setTransform(
+          density,
+          0,
+          0,
+          density,
+          0,
+          0
+        );
+
+        stars = Array.from(
+          {
+            length:
+              Math.min(
+                190,
+                Math.floor(window.innerWidth / 7)
+              )
+          },
+          () => ({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            radius: Math.random() * 1.35 + 0.15,
+            opacity: Math.random() * 0.7 + 0.2,
+            speed: Math.random() * 0.005 + 0.001
+          })
+        );
+
+      }
+
+      function drawStars(time = 0) {
+
+        context.clearRect(
+          0,
+          0,
+          window.innerWidth,
+          window.innerHeight
+        );
+
+        stars.forEach((star) => {
+
+          const opacity = reducedMotion
+            ? star.opacity
+            : star.opacity *
+              (
+                0.62 +
+                0.38 *
+                Math.sin(
+                  time * star.speed + star.x
+                )
+              );
+
+          context.beginPath();
+
+          context.fillStyle =
+            `rgba(255,241,202,${opacity})`;
+
+          context.arc(
+            star.x,
+            star.y,
+            star.radius,
+            0,
+            Math.PI * 2
+          );
+
+          context.fill();
+
+        });
+
+        if (!reducedMotion) {
+          animationFrame =
+            requestAnimationFrame(drawStars);
+        }
+
+      }
+
+      resizeStars();
+      drawStars();
+
+      window.addEventListener("resize", () => {
+
+        cancelAnimationFrame(animationFrame);
+
+        resizeStars();
+        drawStars();
+
       });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach((element)=>revealObserver.observe(element));
 
-    const topicSelect=document.getElementById('contactTopic');
-    document.querySelectorAll('[data-topic]').forEach((link)=>{
-      link.addEventListener('click',()=>{topicSelect.value=link.dataset.topic || '';});
-    });
+      /* =====================================================
+         SCROLL REVEALS
+      ===================================================== */
 
-    const form=document.getElementById('wonderContactForm');
-    const submitButton=document.getElementById('submitButton');
-    form.addEventListener('submit',()=>{submitButton.disabled=true;submitButton.textContent='Sending…';});
+      const revealObserver =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach((entry) => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold: 0.1
+          }
+        );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((element) => {
+
+          revealObserver.observe(element);
+
+        });
+
+      /* =====================================================
+         SIGNAL TYPE CARDS
+      ===================================================== */
+
+      const topicSelect =
+        document.getElementById("topic");
+
+      document
+        .querySelectorAll("[data-topic]")
+        .forEach((card) => {
+
+          card.addEventListener("click", () => {
+
+            document
+              .querySelectorAll("[data-topic]")
+              .forEach((otherCard) => {
+
+                otherCard.classList.remove("active");
+
+              });
+
+            card.classList.add("active");
+
+            topicSelect.value =
+              card.dataset.topic;
+
+            document
+              .getElementById("transmission")
+              .scrollIntoView({
+                behavior:
+                  reducedMotion
+                    ? "auto"
+                    : "smooth"
+              });
+
+            window.setTimeout(() => {
+
+              document
+                .getElementById("name")
+                .focus({
+                  preventScroll: true
+                });
+
+            }, 500);
+
+          });
+
+        });
+
+      /* =====================================================
+         CHARACTER COUNTER AND SIGNAL METER
+      ===================================================== */
+
+      const message =
+        document.getElementById("message");
+
+      const characterCount =
+        document.getElementById("characterCount");
+
+      const signalBars = [
+        ...document.querySelectorAll(
+          ".signal-meter i"
+        )
+      ];
+
+      message.addEventListener("input", () => {
+
+        const length =
+          message.value.length;
+
+        characterCount.textContent =
+          `${length} / 2000`;
+
+        const strength =
+          Math.min(
+            4,
+            Math.ceil(length / 100)
+          );
+
+        signalBars.forEach((bar, index) => {
+
+          bar.classList.toggle(
+            "on",
+            index < strength
+          );
+
+        });
+
+      });
+
+      /* =====================================================
+         FORM SUBMISSION
+      ===================================================== */
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", () => {
+
+          const button =
+            document.getElementById("sendButton");
+
+          button.disabled = true;
+
+          button
+            .querySelector("span")
+            .textContent =
+              "Transmitting…";
+
+        });
+
+      document
+        .getElementById("year")
+        .textContent =
+          new Date().getFullYear();
+
+    })();
+
   </script>
+
 </body>
 </html>
