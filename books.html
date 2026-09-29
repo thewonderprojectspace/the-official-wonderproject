@@ -1,258 +1,1306 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The Jigyasa Verse Library — books, blogs, poetry and true stories for curious humans of every age.">
-  <meta name="theme-color" content="#0a0a09">
-  <title>The Library | Jigyasa Verse</title>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+<head>
+
+  <!-- =========================================================
+       GOOGLE ANALYTICS
+  ========================================================== -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
+  ></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-EF9DVH7JQN');
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "G-EF9DVH7JQN");
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%230a0a09'/%3E%3Cpath d='M14 13h15c5 0 8 3 8 8v30c-2-4-5-6-10-6H14V13Zm36 0H35c-5 0-8 3-8 8v30c2-4 5-6 10-6h13V13Z' fill='none' stroke='%23eee9de' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="books.css">
-  <script src="books.js" defer></script>
+
+  <!-- =========================================================
+       BASIC META
+  ========================================================== -->
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="The JigyasaVerse Living Library — books, blogs, poetry and true stories for curious humans of every age."
+  >
+
+  <meta
+    name="theme-color"
+    content="#07050e"
+  >
+
+  <title>
+    The Living Library | JigyasaVerse
+  </title>
+
+
+  <!-- =========================================================
+       FAVICON AND FONTS
+  ========================================================== -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gloock&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================================
+       LIBRARY CSS AND JAVASCRIPT
+  ========================================================== -->
+  <link
+    rel="stylesheet"
+    href="books.css"
+  >
+
+  <script
+    src="books.js"
+    defer
+  ></script>
+
 </head>
+
 
 <body>
 
+  <!-- Accessibility -->
+  <a
+    class="skip-link"
+    href="#main"
+  >
+    Skip to main content
+  </a>
 
-  <header class="site-header" data-header>
-    <a class="brand" href="index.html" aria-label="Jigyasa Verse home">
-      <span class="brand-mark" aria-hidden="true">JV</span>
-      <span><strong>Jigyasa Verse</strong><small>The Living Library</small></span>
+
+  <!-- Living star background -->
+  <canvas
+    class="star-field"
+    id="starField"
+    aria-hidden="true"
+  ></canvas>
+
+  <div
+    class="nebula"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+  <header
+    class="site-header"
+    id="siteHeader"
+  >
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="JigyasaVerse homepage"
+    >
+
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>
+
+        <strong>
+          JIGYASAVERSE
+        </strong>
+
+        <small>
+          The Living Library
+        </small>
+
+      </span>
+
     </a>
 
-    <button class="menu-button" type="button" data-menu aria-expanded="false" aria-controls="mainNav">
-      <span>Menu</span><i aria-hidden="true"></i>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav"
+    >
+
+      <span>
+        Menu
+      </span>
+
+      <i></i>
+      <i></i>
+
     </button>
 
-    <nav class="main-nav" id="mainNav" data-nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="books.html" aria-current="page">Library</a>
-      <a href="#shelves">The shelves</a>
-      <a href="#send-story">Send your story</a>
+
+    <nav
+      class="main-nav"
+      id="mainNav"
+      aria-label="Main navigation"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="wonderverse.html">
+        Wonder <span lang="hi">लोक</span>
+      </a>
+
+      <a href="learning-lok.html">
+        Learning <span lang="hi">लोक</span>
+      </a>
+
+      <a
+        href="books.html"
+        aria-current="page"
+      >
+        Library
+      </a>
+
+      <a
+        class="contact-link"
+        href="https://endearing-cat-c1f80e.netlify.app/"
+      >
+        Say hello <span>↗</span>
+      </a>
+
     </nav>
+
   </header>
 
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
   <main id="main">
-    <section class="entrance" aria-labelledby="library-title">
-      <div class="entrance-architecture" aria-hidden="true"></div>
-      <div class="entrance-shade" aria-hidden="true"></div>
+
+
+    <!-- =======================================================
+         LIBRARY ENTRANCE
+    ======================================================== -->
+    <section
+      class="entrance"
+      aria-labelledby="libraryTitle"
+    >
 
       <div class="entrance-copy reveal">
-        <p class="folio">Jigyasa Verse Library · Open to every curious human</p>
-        <h1 id="library-title">Come in.<br><em>There is a shelf for the person you are today.</em></h1>
-        <p class="entrance-lead">Books, blogs, poems and honest pieces of a life. Some teach. Some comfort. Some ask the question you have been avoiding.</p>
+
+        <p class="eyebrow">
+
+          <span>
+            Doors open
+          </span>
+
+          The Living Library · constellation 05
+
+        </p>
+
+
+        <h1 id="libraryTitle">
+
+          Not every universe is made of stars.
+
+          <em>
+            Some are made of sentences.
+          </em>
+
+        </h1>
+
+
+        <p class="entrance-lead">
+
+          Books, blogs, poems and honest pieces of a life.
+
+          Some teach. Some comfort. Some quietly ask the
+          question you have been avoiding.
+
+        </p>
+
+
         <div class="entrance-actions">
-          <a class="button button-light" href="#mood-desk">Find my shelf</a>
-          <a class="quiet-link" href="#new-books">See Isha’s books <span aria-hidden="true">↓</span></a>
+
+          <a
+            class="button primary"
+            href="#moodDesk"
+          >
+
+            Ask the librarian
+
+            <span>↓</span>
+
+          </a>
+
+
+          <a
+            class="button ghost"
+            href="#newBooks"
+          >
+
+            See Isha’s books
+
+            <span>↗</span>
+
+          </a>
+
         </div>
+
+
+        <p class="entrance-note">
+          No membership card. No late fees. Wandering encouraged.
+        </p>
+
       </div>
 
-      <p class="door-note" aria-hidden="true">Established whenever the first human wrote something down.</p>
+
+      <!-- Glowing book portal -->
+      <div
+        class="library-planet reveal"
+        aria-label="A glowing book-shaped portal surrounded by orbiting words"
+      >
+
+        <div
+          class="library-orbit orbit-one"
+          aria-hidden="true"
+        >
+
+          <span>
+            WONDER
+          </span>
+
+          <i></i>
+
+        </div>
+
+
+        <div
+          class="library-orbit orbit-two"
+          aria-hidden="true"
+        >
+
+          <span>
+            BECOME
+          </span>
+
+          <i></i>
+
+        </div>
+
+
+        <div
+          class="book-portal"
+          aria-hidden="true"
+        >
+
+          <div class="page left-page">
+
+            <b>
+              Once
+            </b>
+
+            <span>
+              upon a question…
+            </span>
+
+          </div>
+
+
+          <div class="page right-page">
+
+            <b>
+              What
+            </b>
+
+            <span>
+              will you find?
+            </span>
+
+          </div>
+
+
+          <div class="book-glow"></div>
+
+        </div>
+
+
+        <span class="floating-tag tag-one">
+          Open all night
+        </span>
+
+        <span class="floating-tag tag-two">
+          Silence optional
+        </span>
+
+        <span class="floating-tag tag-three">
+          Return with a question
+        </span>
+
+      </div>
+
     </section>
 
-    <section class="mood-desk" id="mood-desk" aria-labelledby="mood-title">
-      <div class="ladder-scene reveal">
-        <img src="images/ladderlady.png" alt="An ink-drawn librarian climbing a rolling ladder with a stack of books">
+
+    <!-- =======================================================
+         MOVING LIBRARY MESSAGE
+    ======================================================== -->
+    <div
+      class="library-ticker"
+      aria-hidden="true"
+    >
+
+      <div>
+
+        <span>Borrow an idea</span>
+        <b>✦</b>
+
+        <span>Meet a former self</span>
+        <b>✦</b>
+
+        <span>Learn something inconvenient</span>
+        <b>✦</b>
+
+        <span>Read past bedtime</span>
+        <b>✦</b>
+
+        <span>Borrow an idea</span>
+        <b>✦</b>
+
+        <span>Meet a former self</span>
+        <b>✦</b>
+
+        <span>Learn something inconvenient</span>
+        <b>✦</b>
+
+        <span>Read past bedtime</span>
+        <b>✦</b>
+
       </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         MOOD DESK
+    ======================================================== -->
+    <section
+      class="mood-desk"
+      id="moodDesk"
+      aria-labelledby="moodTitle"
+    >
+
+      <div class="librarian-scene reveal">
+
+        <div
+          class="ladder"
+          aria-hidden="true"
+        >
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+
+        <img
+          src="images/ladderlady.png"
+          alt="An illustrated librarian climbing a rolling ladder with a stack of books"
+        >
+
+
+        <div class="librarian-note">
+
+          <span>
+            Current location
+          </span>
+
+          <strong>
+            Somewhere between<br>
+            courage and wonder
+          </strong>
+
+        </div>
+
+      </div>
+
 
       <div class="mood-copy reveal">
-        <p class="folio">The librarian is halfway up the ladder</p>
-        <h2 id="mood-title">“What is the mood today?”</h2>
-        <p>Choose what you need. The library will move the right shelf closer.</p>
 
-        <div class="mood-picker" role="group" aria-label="Filter the library by mood">
-          <button type="button" class="mood active" data-mood="all" aria-pressed="true">Surprise me</button>
-          <button type="button" class="mood" data-mood="wonder" aria-pressed="false">I want to wonder</button>
-          <button type="button" class="mood" data-mood="learn" aria-pressed="false">I need to learn</button>
-          <button type="button" class="mood" data-mood="seen" aria-pressed="false">I want to feel seen</button>
-          <button type="button" class="mood" data-mood="brave" aria-pressed="false">I need courage</button>
-          <button type="button" class="mood" data-mood="quiet" aria-pressed="false">Something quiet</button>
+        <p class="eyebrow">
+
+          <span>
+            The librarian asks
+          </span>
+
+          No algorithmic judgement
+
+        </p>
+
+
+        <h2 id="moodTitle">
+          “What is the mood today?”
+        </h2>
+
+
+        <p>
+          Choose what you need. The right rooms will glow
+          a little brighter.
+        </p>
+
+
+        <div
+          class="mood-picker"
+          role="group"
+          aria-label="Filter the library by mood"
+        >
+
+          <button
+            class="mood active"
+            type="button"
+            data-mood="all"
+            aria-pressed="true"
+          >
+            Surprise me
+          </button>
+
+          <button
+            class="mood"
+            type="button"
+            data-mood="wonder"
+            aria-pressed="false"
+          >
+            I want to wonder
+          </button>
+
+          <button
+            class="mood"
+            type="button"
+            data-mood="learn"
+            aria-pressed="false"
+          >
+            I need to learn
+          </button>
+
+          <button
+            class="mood"
+            type="button"
+            data-mood="seen"
+            aria-pressed="false"
+          >
+            I want to feel seen
+          </button>
+
+          <button
+            class="mood"
+            type="button"
+            data-mood="brave"
+            aria-pressed="false"
+          >
+            I need courage
+          </button>
+
+          <button
+            class="mood"
+            type="button"
+            data-mood="quiet"
+            aria-pressed="false"
+          >
+            Something quiet
+          </button>
+
         </div>
 
-        <p class="mood-result" data-mood-result aria-live="polite">Showing every room in the library.</p>
+
+        <label class="shelf-search">
+
+          <span>
+            Search the shelves
+          </span>
+
+          <span class="search-box">
+
+            <input
+              id="shelfSearch"
+              type="search"
+              placeholder="Try medicine, poetry, courage…"
+            >
+
+            <b aria-hidden="true">
+              ⌕
+            </b>
+
+          </span>
+
+        </label>
+
+
+        <p
+          class="mood-result"
+          id="moodResult"
+          aria-live="polite"
+        >
+          Every room is currently open.
+        </p>
+
       </div>
+
     </section>
 
-    <section class="new-books" id="new-books" aria-labelledby="new-books-title">
-      <div class="section-intro reveal">
-        <p class="folio">New arrivals · written by Isha Tiwari</p>
-        <h2 id="new-books-title">Two books already live here.<br>More are being written.</h2>
-        <p>These doors open to Amazon Australia in a new tab.</p>
+
+    <!-- =======================================================
+         ISHA'S BOOKS
+    ======================================================== -->
+    <section
+      class="new-books"
+      id="newBooks"
+      aria-labelledby="newBooksTitle"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="eyebrow">
+
+            <span>
+              New arrivals
+            </span>
+
+            Written by Isha Tiwari
+
+          </p>
+
+
+          <h2 id="newBooksTitle">
+            Two books already found their shelf.
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          More are being written in notebooks, margins
+          and slightly unreasonable bursts of ambition.
+
+        </p>
+
       </div>
 
-      <div class="featured-books">
-        <a class="featured-book featured-dark reveal" href="https://www.amazon.com.au/dp/B0H8C1G3R5" target="_blank" rel="noopener noreferrer" aria-label="View Before the Stethoscope on Amazon Australia">
-          <div class="cover">
-            <span class="cover-series">Foundational medicine</span>
-            <strong>Before the<br>Stethoscope</strong>
-            <span class="cover-author">Isha Tiwari</span>
+
+      <div class="featured-grid">
+
+
+        <!-- Before the Stethoscope -->
+        <a
+          class="featured-book medicine reveal"
+          href="https://www.amazon.com.au/dp/B0H8C1G3R5"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Before the Stethoscope on Amazon Australia"
+        >
+
+          <div class="cosmic-cover">
+
+            <span>
+              FOUNDATIONAL MEDICINE
+            </span>
+
+            <strong>
+              Before the<br>
+              Stethoscope
+            </strong>
+
+            <small>
+              ISHA TIWARI
+            </small>
+
+            <i aria-hidden="true"></i>
+
           </div>
+
+
           <div class="featured-copy">
-            <span>Medicine · students · understanding before memorising</span>
-            <h3>Before the Stethoscope</h3>
-            <p>A clearer doorway into the science that comes before the clinic.</p>
-            <b>Open the book <i aria-hidden="true">↗</i></b>
+
+            <span>
+              Medicine · students · understanding before memorising
+            </span>
+
+            <h3>
+              Before the Stethoscope
+            </h3>
+
+            <p>
+              A clearer doorway into the science that
+              comes before the clinic.
+            </p>
+
+            <b>
+              Open on Amazon <i>↗</i>
+            </b>
+
           </div>
+
         </a>
 
-        <a class="featured-book featured-paper reveal" href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S" target="_blank" rel="noopener noreferrer" aria-label="View Memesplained Microbiology Edition 1 on Amazon Australia">
-          <div class="cover">
-            <span class="cover-series">Microbiology · Edition 1</span>
-            <strong>Memesplained:<br>Microbiology</strong>
-            <span class="cover-author">Isha Tiwari</span>
+
+        <!-- Memesplained -->
+        <a
+          class="featured-book microbes reveal"
+          href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Memesplained Microbiology on Amazon Australia"
+        >
+
+          <div class="cosmic-cover">
+
+            <span>
+              MICROBIOLOGY · EDITION 1
+            </span>
+
+            <strong>
+              Memesplained:<br>
+              Microbiology
+            </strong>
+
+            <small>
+              ISHA TIWARI
+            </small>
+
+            <i aria-hidden="true"></i>
+
           </div>
+
+
           <div class="featured-copy">
-            <span>Science · humour · the microbes are less terrifying now</span>
-            <h3>Memesplained: Microbiology</h3>
-            <p>Complex microbiology made memorable, visual and unmistakably human.</p>
-            <b>Open the book <i aria-hidden="true">↗</i></b>
+
+            <span>
+              Science · humour · microbes made memorable
+            </span>
+
+            <h3>
+              Memesplained: Microbiology
+            </h3>
+
+            <p>
+              Complex microbiology made visual,
+              memorable and unmistakably human.
+            </p>
+
+            <b>
+              Open on Amazon <i>↗</i>
+            </b>
+
           </div>
+
         </a>
+
       </div>
+
     </section>
 
-    <section class="shelf-hall" id="shelves" aria-labelledby="shelves-title">
-      <div class="hall-background" aria-hidden="true"></div>
-      <div class="section-intro light reveal">
-        <p class="folio">The long room · scroll slowly</p>
-        <h2 id="shelves-title">A library is not organised by age alone.</h2>
-        <p>It is organised by what a human might need to find.</p>
+
+    <!-- =======================================================
+         LIBRARY ROOMS
+    ======================================================== -->
+    <section
+      class="shelf-hall"
+      id="shelves"
+      aria-labelledby="shelvesTitle"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="eyebrow">
+
+            <span>
+              The constellation catalogue
+            </span>
+
+            Scroll slowly
+
+          </p>
+
+
+          <h2 id="shelvesTitle">
+            A library is organised by what a human might need.
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          These shelves contain finished work, doorways
+          into the website and spaces waiting for their
+          future books.
+
+        </p>
+
       </div>
 
-      <div class="library-rooms" data-library-rooms>
-        <article class="shelf-room reveal" data-moods="wonder quiet">
-          <header><span>Room 01</span><h3>The Children’s Cabinet</h3><p>For small hands and enormous questions.</p></header>
-          <div class="shelf-books">
-            <a href="resources-years-3-5.html" class="spine tall"><b>Old Paths, New Curiosity</b><small>Explore</small></a>
-            <a href="resources-years-3-5.html" class="spine short"><b>Questions That Wiggle</b><small>Activities</small></a>
-            <span class="spine lean"><b>A Pocketful of Why</b><small>Coming soon</small></span>
-            <span class="spine slim"><b>Stories Before Screens</b><small>Coming soon</small></span>
-          </div>
-        </article>
 
-        <article class="shelf-room reveal" data-moods="learn brave">
-          <header><span>Room 02</span><h3>The Student Stacks</h3><p>For the chapter that refuses to make sense.</p></header>
-          <div class="shelf-books">
-            <a href="https://www.amazon.com.au/dp/B0H8C1G3R5" target="_blank" rel="noopener noreferrer" class="spine tall black"><b>Before the Stethoscope</b><small>Medicine</small></a>
-            <a href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S" target="_blank" rel="noopener noreferrer" class="spine wide"><b>Memesplained: Microbiology</b><small>Science</small></a>
-            <a href="resources-years-7-10.html" class="spine slim"><b>Independent Thinkers</b><small>Years 7–10</small></a>
-            <a href="resources-beyond.html" class="spine short"><b>Beyond the Classroom</b><small>Senior learners</small></a>
-          </div>
-        </article>
-
-        <article class="shelf-room reveal" data-moods="seen brave quiet">
-          <header><span>Room 03</span><h3>Lives, Honestly Told</h3><p>True stories. No heroic editing required.</p></header>
-          <div class="shelf-books">
-            <span class="spine lean"><b>The Mistake I Kept</b><small>Real story</small></span>
-            <span class="spine tall"><b>Things I Couldn’t Say Then</b><small>Experience</small></span>
-            <span class="spine slim black"><b>Becoming, Slowly</b><small>Memoir</small></span>
-            <a href="#send-story" class="spine wide"><b>Your Story Could Live Here</b><small>Send it</small></a>
-          </div>
-        </article>
-
-        <article class="shelf-room reveal" data-moods="wonder seen quiet">
-          <header><span>Room 04</span><h3>Poetry in Every Tongue</h3><p>No translation required to belong here.</p></header>
-          <div class="shelf-books">
-            <span class="spine short"><b>Poems for Loud Days</b><small>Poetry</small></span>
-            <span class="spine tall black"><b>शब्द जो घर बन गए</b><small>हिन्दी</small></span>
-            <span class="spine wide"><b>Words Without Borders</b><small>Many languages</small></span>
-            <a href="#send-story" class="spine slim"><b>Add Your Voice</b><small>Submit</small></a>
-          </div>
-        </article>
-
-        <article class="shelf-room reveal" data-moods="wonder learn brave">
-          <header><span>Room 05</span><h3>Notes from the Margins</h3><p>Blogs for thoughts too restless for a textbook.</p></header>
-          <div class="shelf-books">
-            <a href="blog.html" class="spine wide black"><b>Why Adults Stop Asking Silly Questions</b><small>Curiosity</small></a>
-            <a href="blog-serious-learning-can-be-fun.html" class="spine tall"><b>Can Serious Learning Still Be Fun?</b><small>Education</small></a>
-            <a href="blog-everything-started-as-an-idea.html" class="spine lean"><b>Everything Began as an Idea</b><small>Possibility</small></a>
-          </div>
-        </article>
+      <div
+        class="room-count"
+        id="roomCount"
+        aria-live="polite"
+      >
+        Showing 5 rooms
       </div>
+
+
+      <div
+        class="library-rooms"
+        id="libraryRooms"
+      >
+
+
+        <!-- Room 01 -->
+        <article
+          class="shelf-room children reveal"
+          data-moods="wonder quiet"
+          data-search="children curiosity questions years 3 5 activities old paths"
+        >
+
+          <header>
+
+            <span>
+              ROOM 01 · ORBIT OF BEGINNINGS
+            </span>
+
+            <h3>
+              The Children’s Cabinet
+            </h3>
+
+            <p>
+              For small hands and enormous questions.
+            </p>
+
+          </header>
+
+
+          <div class="shelf-books">
+
+            <a
+              href="resources-years-3-5.html"
+              class="spine tall gold"
+            >
+              <b>
+                Old Paths, New Curiosity
+              </b>
+
+              <small>
+                Explore
+              </small>
+            </a>
+
+
+            <a
+              href="resources-years-3-5.html"
+              class="spine short coral"
+            >
+              <b>
+                Questions That Wiggle
+              </b>
+
+              <small>
+                Activities
+              </small>
+            </a>
+
+
+            <span class="spine lean violet">
+
+              <b>
+                A Pocketful of Why
+              </b>
+
+              <small>
+                Coming soon
+              </small>
+
+            </span>
+
+
+            <span class="spine slim cyan">
+
+              <b>
+                Stories Before Screens
+              </b>
+
+              <small>
+                Coming soon
+              </small>
+
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- Room 02 -->
+        <article
+          class="shelf-room students reveal"
+          data-moods="learn brave"
+          data-search="students medicine microbiology science learning years 7 10 senior classroom"
+        >
+
+          <header>
+
+            <span>
+              ROOM 02 · ORBIT OF LEARNING
+            </span>
+
+            <h3>
+              The Student Stacks
+            </h3>
+
+            <p>
+              For the chapter that refuses to make sense.
+            </p>
+
+          </header>
+
+
+          <div class="shelf-books">
+
+            <a
+              href="https://www.amazon.com.au/dp/B0H8C1G3R5"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="spine tall navy"
+            >
+              <b>
+                Before the Stethoscope
+              </b>
+
+              <small>
+                Medicine
+              </small>
+            </a>
+
+
+            <a
+              href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="spine wide gold"
+            >
+              <b>
+                Memesplained: Microbiology
+              </b>
+
+              <small>
+                Science
+              </small>
+            </a>
+
+
+            <a
+              href="resources-years-7-10.html"
+              class="spine slim coral"
+            >
+              <b>
+                Independent Thinkers
+              </b>
+
+              <small>
+                Years 7–10
+              </small>
+            </a>
+
+
+            <a
+              href="resources-beyond.html"
+              class="spine short violet"
+            >
+              <b>
+                Beyond the Classroom
+              </b>
+
+              <small>
+                Senior learners
+              </small>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- Room 03 -->
+        <article
+          class="shelf-room lives reveal"
+          data-moods="seen brave quiet"
+          data-search="real stories life mistakes identity memoir becoming courage reflection"
+        >
+
+          <header>
+
+            <span>
+              ROOM 03 · ORBIT OF BECOMING
+            </span>
+
+            <h3>
+              Lives, Honestly Told
+            </h3>
+
+            <p>
+              True stories. No heroic editing required.
+            </p>
+
+          </header>
+
+
+          <div class="shelf-books">
+
+            <span class="spine lean coral">
+
+              <b>
+                The Mistake I Kept
+              </b>
+
+              <small>
+                Real story
+              </small>
+
+            </span>
+
+
+            <span class="spine tall violet">
+
+              <b>
+                Things I Couldn’t Say Then
+              </b>
+
+              <small>
+                Experience
+              </small>
+
+            </span>
+
+
+            <span class="spine slim navy">
+
+              <b>
+                Becoming, Slowly
+              </b>
+
+              <small>
+                Memoir
+              </small>
+
+            </span>
+
+
+            <a
+              href="#sendStory"
+              class="spine wide cyan"
+            >
+              <b>
+                Your Story Could Live Here
+              </b>
+
+              <small>
+                Send it
+              </small>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- Room 04 -->
+        <article
+          class="shelf-room poetry reveal"
+          data-moods="wonder seen quiet"
+          data-search="poetry poems language hindi words multilingual quiet"
+        >
+
+          <header>
+
+            <span>
+              ROOM 04 · ORBIT OF VOICES
+            </span>
+
+            <h3>
+              Poetry in Every Tongue
+            </h3>
+
+            <p>
+              No translation required to belong here.
+            </p>
+
+          </header>
+
+
+          <div class="shelf-books">
+
+            <span class="spine short gold">
+
+              <b>
+                Poems for Loud Days
+              </b>
+
+              <small>
+                Poetry
+              </small>
+
+            </span>
+
+
+            <span class="spine tall navy">
+
+              <b lang="hi">
+                शब्द जो घर बन गए
+              </b>
+
+              <small lang="hi">
+                हिन्दी
+              </small>
+
+            </span>
+
+
+            <span class="spine wide violet">
+
+              <b>
+                Words Without Borders
+              </b>
+
+              <small>
+                Many languages
+              </small>
+
+            </span>
+
+
+            <a
+              href="#sendStory"
+              class="spine slim coral"
+            >
+              <b>
+                Add Your Voice
+              </b>
+
+              <small>
+                Submit
+              </small>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- Room 05 -->
+        <article
+          class="shelf-room margins reveal"
+          data-moods="wonder learn brave"
+          data-search="blog questions adults learning fun ideas possibility education curiosity"
+        >
+
+          <header>
+
+            <span>
+              ROOM 05 · ORBIT OF RESTLESS THOUGHTS
+            </span>
+
+            <h3>
+              Notes from the Margins
+            </h3>
+
+            <p>
+              Blogs for thoughts too restless for a textbook.
+            </p>
+
+          </header>
+
+
+          <div class="shelf-books">
+
+            <a
+              href="blog.html"
+              class="spine wide navy"
+            >
+              <b>
+                Why Adults Stop Asking Silly Questions
+              </b>
+
+              <small>
+                Curiosity
+              </small>
+            </a>
+
+
+            <a
+              href="blog-serious-learning-can-be-fun.html"
+              class="spine tall cyan"
+            >
+              <b>
+                Can Serious Learning Still Be Fun?
+              </b>
+
+              <small>
+                Education
+              </small>
+            </a>
+
+
+            <a
+              href="blog-everything-started-as-an-idea.html"
+              class="spine lean gold"
+            >
+              <b>
+                Everything Began as an Idea
+              </b>
+
+              <small>
+                Possibility
+              </small>
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <!-- No search results -->
+      <div
+        class="no-results"
+        id="noResults"
+        hidden
+      >
+
+        <span>
+          ☾
+        </span>
+
+        <h3>
+          That shelf has not appeared yet.
+        </h3>
+
+        <p>
+          Try another word—or send the missing book idea
+          into the Verse.
+        </p>
+
+        <a href="https://endearing-cat-c1f80e.netlify.app/">
+          Send a signal ↗
+        </a>
+
+      </div>
+
     </section>
 
-    <section class="immortal-words" aria-labelledby="immortal-title">
-      <div class="nook-image reveal">
-        <img src="images/grandlibrary.png" alt="A hand-drawn corner filled from floor to ceiling with books">
+
+    <!-- =======================================================
+         IMMORTAL WORDS
+    ======================================================== -->
+    <section
+      class="immortal-words"
+      aria-labelledby="immortalTitle"
+    >
+
+      <div
+        class="immortal-visual reveal"
+        aria-hidden="true"
+      >
+
+        <div class="memory-moon">
+
+          <span>
+            WORDS<br>
+            OUTLIVE<br>
+            US
+          </span>
+
+        </div>
+
+
+        <div class="paper-orbit paper-one">
+          “I was here.”
+        </div>
+
+        <div class="paper-orbit paper-two">
+          “This mattered.”
+        </div>
+
+        <div class="paper-orbit paper-three">
+          “You are not alone.”
+        </div>
+
       </div>
+
+
       <div class="immortal-copy reveal">
-        <p class="folio">The room at the end</p>
-        <h2 id="immortal-title">A life ends.<br><em>A true sentence can remain.</em></h2>
-        <p>Writing lets a thought cross a distance its writer never could. Long after we are gone, a poem, a confession or one honest paragraph can still find the person who needs it.</p>
-        <blockquote>“Do not try to sound like a writer. Tell us the thing only you could know.”</blockquote>
-        <a class="button button-dark" href="#send-story">Leave something behind</a>
-      </div>
-    </section>
 
-    <section class="submission" id="send-story" aria-labelledby="submission-title">
-      <div class="submission-intro reveal">
-        <p class="folio">Open call · original voices only</p>
-        <h2 id="submission-title">Please send us your story.</h2>
-        <p>We love original, authentic art and the stories of a life that changed you, questioned you or quietly made you who you are. Share a short true story, reflection, blog or poem—in any language.</p>
-        <ul>
-          <li>You may use your real name or a pen name.</li>
-          <li>Your work must be your own.</li>
-          <li>Nothing is published automatically. We will contact you first.</li>
-          <li>Please do not include private details about other people without their permission.</li>
-        </ul>
-      </div>
+        <p class="eyebrow">
 
-      <form class="story-form reveal" name="library-submissions" method="POST" action="/books.html?submitted=true#send-story" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="library-submissions">
-        <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
+          <span>
+            The room at the end
+          </span>
 
-        <div class="form-row">
-          <label><span>Your name or pen name</span><input type="text" name="name" autocomplete="name" required></label>
-          <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
-        </div>
+          Archive of human traces
 
-        <div class="form-row">
-          <label><span>What are you sending?</span>
-            <select name="work-type" required>
-              <option value="">Choose one</option>
-              <option>True story</option><option>Personal reflection</option><option>Blog</option><option>Poetry</option><option>Other original work</option>
-            </select>
-          </label>
-          <label><span>Language</span><input type="text" name="language" placeholder="English, Hindi, Tamil…" required></label>
-        </div>
+        </p>
 
-        <label><span>Title of your piece</span><input type="text" name="title" required></label>
-        <label><span>Your short work</span><textarea name="work" rows="12" minlength="40" maxlength="7000" placeholder="Write or paste your work here…" required></textarea><small><span data-count>0</span> / 7,000 characters</small></label>
 
-        <label class="check"><input type="checkbox" name="original-confirmation" required><span>I confirm this is my original work and I am happy for Jigyasa Verse to contact me about possibly sharing it.</span></label>
-        <label class="check"><input type="checkbox" name="anonymous"><span>If published, I would prefer to remain anonymous.</span></label>
+        <h2 id="immortalTitle">
 
-        <button class="button button-light" type="submit">Send to the library <span aria-hidden="true">→</span></button>
-        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-      </form>
-    </section>
+          A life ends.
 
-    <section class="closing-room">
-      <div class="closing-image" aria-hidden="true"></div>
-      <div class="closing-copy reveal">
-        <p class="folio">Before you leave</p>
-        <h2>Borrow an idea.<br>Return with a question.</h2>
-        <a href="#main" class="quiet-link">Back to the entrance ↑</a>
-      </div>
-    </section>
-  </main>
+          <em>
+            A true sentence can remain.
+          </em>
 
-  <footer>
-    <div><strong>Jigyasa Verse</strong><p>A library for the things worth remembering.</p></div>
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="#shelves">Shelves</a><a href="#send-story">Submit</a><a href="endearing-cat-c1f80e.netlify.app">Contact</a></nav>
-    <small>© <span data-year></span> Jigyasa Verse</small>
-  </footer>
-</body>
-</html>
+        </h2>
+
+
+        <p>
+
+          Writing lets a thought cross a distance its
+          writer never could.
+
+          Long after we are gone, a poem,
