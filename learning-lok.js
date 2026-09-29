@@ -165,13 +165,11 @@
     }
   ];
 
-  /* ========================================================
-     LEARNING COURTYARD CARDS
-  ======================================================== */
+  /* LEARNING COURTYARDS */
 
   const grid = document.querySelector("#worldGrid");
   const drawer = document.querySelector("#worldDrawer");
-  const closeWorldButton = document.querySelector("#closeWorld");
+  const closeWorld = document.querySelector("#closeWorld");
 
   if (grid && drawer) {
     courtyards.forEach((world, index) => {
@@ -191,15 +189,12 @@
         >
 
         <span class="world-card-copy">
-
           <span class="world-index">
             COURTYARD ${String(index + 1).padStart(2, "0")}
             · ${world.symbol}
           </span>
 
-          <h3>
-            ${world.title}
-          </h3>
+          <h3>${world.title}</h3>
 
           <p>
             ${world.hindi} · ${world.description}
@@ -208,7 +203,6 @@
           <span class="world-enter">
             OPEN THIS COURTYARD ↗
           </span>
-
         </span>
       `;
 
@@ -237,30 +231,36 @@
       world.accent
     );
 
-    const symbol = document.querySelector("#drawerSymbol");
-    const title = document.querySelector("#drawerTitle");
-    const hindi = document.querySelector("#drawerHindi");
-    const description = document.querySelector(
-      "#drawerDescription"
-    );
-    const explorationGrid = document.querySelector(
-      "#explorationGrid"
-    );
+    const drawerSymbol =
+      document.querySelector("#drawerSymbol");
 
-    if (symbol) {
-      symbol.textContent = world.symbol;
+    const drawerTitle =
+      document.querySelector("#drawerTitle");
+
+    const drawerHindi =
+      document.querySelector("#drawerHindi");
+
+    const drawerDescription =
+      document.querySelector("#drawerDescription");
+
+    const explorationGrid =
+      document.querySelector("#explorationGrid");
+
+    if (drawerSymbol) {
+      drawerSymbol.textContent = world.symbol;
     }
 
-    if (title) {
-      title.textContent = world.title;
+    if (drawerTitle) {
+      drawerTitle.textContent = world.title;
     }
 
-    if (hindi) {
-      hindi.textContent = world.hindi;
+    if (drawerHindi) {
+      drawerHindi.textContent = world.hindi;
     }
 
-    if (description) {
-      description.textContent = world.description;
+    if (drawerDescription) {
+      drawerDescription.textContent =
+        world.description;
     }
 
     if (explorationGrid) {
@@ -268,19 +268,9 @@
         .map(
           (path) => `
             <article class="exploration-card">
-
-              <span>
-                ${path[0]}
-              </span>
-
-              <h3>
-                ${path[1]}
-              </h3>
-
-              <p>
-                ${path[2]}
-              </p>
-
+              <span>${path[0]}</span>
+              <h3>${path[1]}</h3>
+              <p>${path[2]}</p>
             </article>
           `
         )
@@ -297,7 +287,7 @@
     });
   }
 
-  closeWorldButton?.addEventListener("click", () => {
+  closeWorld?.addEventListener("click", () => {
     if (drawer) {
       drawer.hidden = true;
     }
@@ -305,72 +295,65 @@
     grid
       ?.querySelectorAll(".world-card")
       .forEach((card) => {
-        card.setAttribute("aria-expanded", "false");
+        card.setAttribute(
+          "aria-expanded",
+          "false"
+        );
       });
   });
 
-  /* ========================================================
-     MOBILE MENU
-  ======================================================== */
+  /* MOBILE NAVIGATION */
 
-  const menuButton = document.querySelector("#menu");
-  const navigation = document.querySelector("#nav");
+  const menu = document.querySelector("#menu");
+  const nav = document.querySelector("#nav");
 
-  menuButton?.addEventListener("click", () => {
+  menu?.addEventListener("click", () => {
     const isOpen =
-      menuButton.getAttribute("aria-expanded") === "true";
+      menu.getAttribute("aria-expanded") === "true";
 
-    menuButton.setAttribute(
+    menu.setAttribute(
       "aria-expanded",
       String(!isOpen)
     );
 
-    navigation?.classList.toggle("open", !isOpen);
+    nav?.classList.toggle("open", !isOpen);
   });
 
-  navigation
-    ?.querySelectorAll("a")
-    .forEach((link) => {
-      link.addEventListener("click", () => {
-        menuButton?.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
-        navigation.classList.remove("open");
-      });
+      nav.classList.remove("open");
     });
-
-  /* ========================================================
-     NOTE BENEATH THE TREE
-  ======================================================== */
-
-  const entryDialog = document.querySelector(
-    "#entryDialog"
-  );
-
-  const openNoteButton = document.querySelector(
-    "#openNote"
-  );
-
-  const closeNoteButton = document.querySelector(
-    "#closeNote"
-  );
-
-  const carryNoteButton = document.querySelector(
-    "#carryNote"
-  );
-
-  openNoteButton?.addEventListener("click", () => {
-    entryDialog?.showModal();
   });
 
-  closeNoteButton?.addEventListener("click", () => {
-    entryDialog?.close();
+  /* NOTE BENEATH THE TREE */
+
+  const dialog =
+    document.querySelector("#entryDialog");
+
+  const openNote =
+    document.querySelector("#openNote");
+
+  const closeNote =
+    document.querySelector("#closeNote");
+
+  const carryNote =
+    document.querySelector("#carryNote");
+
+  openNote?.addEventListener("click", () => {
+    dialog?.showModal();
   });
 
-  carryNoteButton?.addEventListener("click", () => {
-    entryDialog?.close();
+  closeNote?.addEventListener("click", () => {
+    dialog?.close();
+  });
+
+  carryNote?.addEventListener("click", () => {
+    dialog?.close();
 
     document
       .querySelector("#courtyard")
@@ -379,15 +362,13 @@
       });
   });
 
-  entryDialog?.addEventListener("click", (event) => {
-    if (event.target === entryDialog) {
-      entryDialog.close();
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      dialog.close();
     }
   });
 
-  /* ========================================================
-     KNOWLEDGE RIVER
-  ======================================================== */
+  /* KNOWLEDGE RIVER */
 
   const vesselMessages = {
     cup: [
@@ -406,9 +387,8 @@
     ]
   };
 
-  const waterResult = document.querySelector(
-    "#waterResult"
-  );
+  const waterResult =
+    document.querySelector("#waterResult");
 
   document
     .querySelectorAll("[data-vessel]")
@@ -423,11 +403,8 @@
             );
           });
 
-        const selectedVessel =
-          button.dataset.vessel;
-
         const message =
-          vesselMessages[selectedVessel];
+          vesselMessages[button.dataset.vessel];
 
         if (!waterResult || !message) {
           return;
@@ -438,25 +415,20 @@
             NO WRONG CHOICE
           </p>
 
-          <h3>
-            ${message[0]}
-          </h3>
+          <h3>${message[0]}</h3>
 
-          <p>
-            ${message[1]}
-          </p>
+          <p>${message[1]}</p>
         `;
       });
     });
 
-  /* ========================================================
-     HEADER AND SCROLL PROGRESS
-  ======================================================== */
+  /* HEADER AND PROGRESS BAR */
 
-  const topbar = document.querySelector("#topbar");
-  const progress = document.querySelector(
-    "#scrollProgress"
-  );
+  const topbar =
+    document.querySelector("#topbar");
+
+  const progress =
+    document.querySelector("#scrollProgress");
 
   function updateScroll() {
     topbar?.classList.toggle(
@@ -468,14 +440,13 @@
       document.documentElement.scrollHeight -
       window.innerHeight;
 
-    if (progress) {
-      const progressAmount =
-        scrollable > 0
-          ? (window.scrollY / scrollable) * 100
-          : 0;
+    const amount =
+      scrollable > 0
+        ? (window.scrollY / scrollable) * 100
+        : 0;
 
-      progress.style.width =
-        `${progressAmount}%`;
+    if (progress) {
+      progress.style.width = `${amount}%`;
     }
   }
 
@@ -487,9 +458,7 @@
 
   updateScroll();
 
-  /* ========================================================
-     SECTION REVEAL ANIMATIONS
-  ======================================================== */
+  /* REVEAL ANIMATIONS */
 
   if ("IntersectionObserver" in window) {
     const revealObserver =
@@ -525,4 +494,126 @@
       });
   }
 
-  /* =================================================
+  /* COSMIC STAR BACKGROUND */
+
+  drawStars();
+
+  let resizeTimer;
+
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+
+    resizeTimer = window.setTimeout(() => {
+      drawStars();
+    }, 120);
+  });
+
+  function drawStars() {
+    const canvas =
+      document.querySelector("#cosmicSky");
+
+    if (!canvas) {
+      return;
+    }
+
+    const context =
+      canvas.getContext("2d");
+
+    if (!context) {
+      return;
+    }
+
+    const ratio = Math.min(
+      window.devicePixelRatio || 1,
+      2
+    );
+
+    canvas.width = Math.floor(
+      window.innerWidth * ratio
+    );
+
+    canvas.height = Math.floor(
+      window.innerHeight * ratio
+    );
+
+    context.setTransform(
+      ratio,
+      0,
+      0,
+      ratio,
+      0,
+      0
+    );
+
+    context.clearRect(
+      0,
+      0,
+      window.innerWidth,
+      window.innerHeight
+    );
+
+    const starCount = Math.min(
+      180,
+      Math.floor(
+        (
+          window.innerWidth *
+          window.innerHeight
+        ) / 6500
+      )
+    );
+
+    const random = seededRandom(90817);
+
+    for (
+      let index = 0;
+      index < starCount;
+      index += 1
+    ) {
+      const x =
+        random() * window.innerWidth;
+
+      const y =
+        random() * window.innerHeight;
+
+      const radius =
+        random() * 1.35 + 0.25;
+
+      const alpha =
+        random() * 0.68 + 0.18;
+
+      const starColour =
+        random() > 0.78
+          ? "158,225,255"
+          : "255,255,255";
+
+      context.beginPath();
+
+      context.fillStyle =
+        `rgba(${starColour}, ${alpha})`;
+
+      context.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
+      context.fill();
+    }
+  }
+
+  function seededRandom(seed) {
+    let value = seed % 2147483647;
+
+    return () => {
+      value =
+        (value * 16807) % 2147483647;
+
+      return (
+        (value - 1) /
+        2147483646
+      );
+    };
+  }
+})();
