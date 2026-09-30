@@ -7,15 +7,15 @@
 
   const courtyards = [
     {
-      title: "Numbers & Patterns",
-      hindi: "संख्या और आकार",
+      title: "Patterns of the Universe",
+      hindi: "ब्रह्मांड के प्रतिरूप",
 
       description:
         "Follow numbers into patterns, puzzles, measurement and the hidden structures around us.",
 
       symbol: "∞",
 
-      image: "images/thewhy.png",
+      image: "images/numbersandpatterns.png",
 
       accent: "#ffd56a",
 
@@ -49,7 +49,7 @@
 
       symbol: "✦",
 
-      image: "images/wonder.png",
+      image: "images/natureandcosmos.png",
 
       accent: "#6de7ff",
 
@@ -83,7 +83,7 @@
 
       symbol: "◎",
 
-      image: "images/student.png",
+      image: "images/peopleandsociety.png",
 
       accent: "#ff8e9d",
 
@@ -117,7 +117,7 @@
 
       symbol: "⌁",
 
-      image: "images/Iamamess.png",
+      image: "images/createmake.png",
 
       accent: "#b9ff8a",
 
@@ -177,7 +177,7 @@
     },
 
     {
-      title: "Beyond the Syllabus",
+      title: "Beyond the courses",
       hindi: "पाठ्यक्रम के आगे",
 
       description:
