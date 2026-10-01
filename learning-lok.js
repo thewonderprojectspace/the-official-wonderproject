@@ -1,404 +1,363 @@
 (() => {
+
   "use strict";
 
-  /*
-   * LEARNING COURTYARD INFORMATION
-   */
 
-  const courtyards = [
-    {
-      title: "Patterns of the Universe",
-      hindi: "ब्रह्मांड के प्रतिरूप",
+  /* =========================================================
+     LEARNING WORLDS
+  ========================================================= */
 
-      description:
-        "Follow numbers into patterns, puzzles, measurement and the hidden structures around us.",
-
-      symbol: "∞",
-
-      image: "images/numbersandpatterns.png",
-
-      accent: "#ffd56a",
-
-      paths: [
-        [
-          "NOTICE",
-          "Pattern hunt",
-          "Look for repetition, rhythm and symmetry in an ordinary day."
-        ],
-
-        [
-          "TRY",
-          "Estimate first",
-          "Make a guess before measuring. The gap is part of the lesson."
-        ],
-
-        [
-          "FOLLOW",
-          "Numbers in the world",
-          "Explore how trade, music, buildings and maps use maths."
-        ]
-      ]
-    },
+  const learningWorlds = [
 
     {
-      title: "Nature & Cosmos",
-      hindi: "प्रकृति और ब्रह्मांड",
+      id: "numbers",
 
-      description:
-        "Look closely at living systems, weather, matter, the Earth and the sky beyond it.",
+      number: "01",
 
-      symbol: "✦",
+      title: "Numbers & Patterns",
 
-      image: "images/natureandcosmos.png",
-
-      accent: "#6de7ff",
-
-      paths: [
-        [
-          "NOTICE",
-          "One small ecosystem",
-          "Watch a plant, puddle or patch of soil change over time."
-        ],
-
-        [
-          "TRY",
-          "Ask the sky",
-          "Track the Moon, clouds or sunset from the same place."
-        ],
-
-        [
-          "FOLLOW",
-          "Scale of everything",
-          "Travel from the smallest cells to the widest galaxies."
-        ]
-      ]
-    },
-
-    {
-      title: "People & Society",
-      hindi: "लोग और समाज",
-
-      description:
-        "Explore how humans live together, make choices, build cultures and change history.",
-
-      symbol: "◎",
-
-      image: "images/peopleandsociety.png",
-
-      accent: "#ff8e9d",
-
-      paths: [
-        [
-          "NOTICE",
-          "Whose voice?",
-          "Ask who is speaking, who is missing and who gets remembered."
-        ],
-
-        [
-          "TRY",
-          "Map a decision",
-          "Trace how one public choice can affect many different people."
-        ],
-
-        [
-          "FOLLOW",
-          "Everyday history",
-          "Find the larger story hidden inside an ordinary object."
-        ]
-      ]
-    },
-
-    {
-      title: "Making & Tinkering",
-      hindi: "बनाना और आज़माना",
-
-      description:
-        "Let the hands think through materials, mechanisms, experiments and useful mistakes.",
+      hindi: "संख्या और पैटर्न",
 
       symbol: "⌁",
 
-      image: "images/createmake.png",
+      accent: "#efc96c",
 
-      accent: "#b9ff8a",
+      description:
+        "Find the patterns hiding underneath the world.",
 
       paths: [
-        [
-          "NOTICE",
-          "How is it held?",
-          "Study the joints, folds and fasteners in something nearby."
-        ],
 
-        [
-          "TRY",
-          "Build a rough version",
-          "Use what you have. Make it work before making it beautiful."
-        ],
+        {
+          label: "MATHEMATICS",
+          title: "Maths & Patterns",
+          description:
+            "Numbers, shapes, puzzles and the strange logic beneath everyday life.",
+          href: "maths-exploration.html"
+        },
 
-        [
-          "FOLLOW",
-          "Learn from failure",
-          "Record what broke, why it broke and what changed next."
-        ]
+        {
+          label: "LOGIC",
+          title: "Puzzles & Reasoning",
+          description:
+            "Train your brain to notice what doesn't immediately make sense.",
+          href: "logic-exploration.html"
+        },
+
+        {
+          label: "COMPUTING",
+          title: "Code & Algorithms",
+          description:
+            "Turn instructions, patterns and ideas into things computers understand.",
+          href: "coding-exploration.html"
+        }
+
       ]
     },
 
+
     {
-      title: "Stories & Language",
-      hindi: "कहानियाँ और भाषा",
+      id: "life",
+
+      number: "02",
+
+      title: "Life & Nature",
+
+      hindi: "जीवन और प्रकृति",
+
+      symbol: "❋",
+
+      accent: "#9eb67e",
 
       description:
-        "Enter poems, histories, myths and the many ways language holds a human life.",
-
-      symbol: "❦",
-
-      image: "images/becoming.png",
-
-      accent: "#d4a7ff",
+        "From a cell to an ecosystem — investigate what lives.",
 
       paths: [
-        [
-          "NOTICE",
-          "A word with a past",
-          "Choose one familiar word and follow where it came from."
-        ],
 
-        [
-          "TRY",
-          "Change the narrator",
-          "Retell a moment from another person’s point of view."
-        ],
+        {
+          label: "SCIENCE",
+          title: "Science",
+          description:
+            "Ask the world a question and find a way to test the answer.",
+          href: "science-exploration.html"
+        },
 
-        [
-          "FOLLOW",
-          "Stories that travel",
-          "Compare how one idea changes across places and generations."
-        ]
+        {
+          label: "BIOLOGY",
+          title: "Life & Biology",
+          description:
+            "Cells, bodies, ecosystems and the machinery of being alive.",
+          href: "biology-exploration.html"
+        },
+
+        {
+          label: "MEDICINE",
+          title: "Medicine & the Human Body",
+          description:
+            "Explore the systems keeping a human body alive.",
+          href: "medical-exploration.html"
+        },
+
+        {
+          label: "EARTH",
+          title: "Nature & Environment",
+          description:
+            "Follow water, weather, animals, plants and changing landscapes.",
+          href: "nature-exploration.html"
+        }
+
       ]
     },
 
+
     {
-      title: "Beyond the courses",
-      hindi: "पाठ्यक्रम के आगे",
+      id: "people",
+
+      number: "03",
+
+      title: "People & Worlds",
+
+      hindi: "लोग और दुनिया",
+
+      symbol: "◎",
+
+      accent: "#d28a5d",
 
       description:
-        "Make room for money, care, work, emotions, media and everything life forgot to timetable.",
-
-      symbol: "↗",
-
-      image: "images/teaching.png",
-
-      accent: "#ffad66",
+        "Explore how humans built, remembered and understood worlds.",
 
       paths: [
-        [
-          "NOTICE",
-          "A life skill",
-          "Name something useful you learned outside a classroom."
-        ],
 
-        [
-          "TRY",
-          "Read the fine print",
-          "Examine one bill, label, form or claim that shapes daily life."
-        ],
+        {
+          label: "HISTORY",
+          title: "History",
+          description:
+            "Meet people who lived before us without pretending they were simple.",
+          href: "history-exploration.html"
+        },
 
-        [
-          "FOLLOW",
-          "Ask someone experienced",
-          "Invite a person to explain what practice taught them."
-        ]
+        {
+          label: "GEOGRAPHY",
+          title: "Places & Geography",
+          description:
+            "See how land, climate, movement and people shape one another.",
+          href: "geography-exploration.html"
+        },
+
+        {
+          label: "SOCIETY",
+          title: "People & Society",
+          description:
+            "Explore communities, systems, behaviour and how humans live together.",
+          href: "society-exploration.html"
+        },
+
+        {
+          label: "PHILOSOPHY",
+          title: "Big Questions",
+          description:
+            "Questions humans have argued about for thousands of years.",
+          href: "philosophy-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "making",
+
+      number: "04",
+
+      title: "Making & Creating",
+
+      hindi: "बनाना और रचना",
+
+      symbol: "✦",
+
+      accent: "#df9f56",
+
+      description:
+        "Knowledge changes when your hands get involved.",
+
+      paths: [
+
+        {
+          label: "ART",
+          title: "Art & Drawing",
+          description:
+            "Notice more closely by trying to make what you see.",
+          href: "art-exploration.html"
+        },
+
+        {
+          label: "DESIGN",
+          title: "Design",
+          description:
+            "Turn a messy human problem into something useful.",
+          href: "design-exploration.html"
+        },
+
+        {
+          label: "ENGINEERING",
+          title: "Build & Engineer",
+          description:
+            "Make it. Break it. Work out why. Build it again.",
+          href: "engineering-exploration.html"
+        },
+
+        {
+          label: "CRAFT",
+          title: "Craft & Making",
+          description:
+            "Learn what materials can teach your hands.",
+          href: "craft-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "stories",
+
+      number: "05",
+
+      title: "Words, Stories & Sound",
+
+      hindi: "शब्द, कहानी और ध्वनि",
+
+      symbol: "〰",
+
+      accent: "#c99ac8",
+
+      description:
+        "Read it. Write it. Speak it. Hear it differently.",
+
+      paths: [
+
+        {
+          label: "WORDS",
+          title: "Reading & Writing",
+          description:
+            "Use words to understand another mind — or your own.",
+          href: "language-exploration.html"
+        },
+
+        {
+          label: "STORIES",
+          title: "Stories & Literature",
+          description:
+            "Walk into lives, places and possibilities that aren't yours.",
+          href: "literature-exploration.html"
+        },
+
+        {
+          label: "LANGUAGE",
+          title: "Languages",
+          description:
+            "Discover how different sounds and structures carry human thought.",
+          href: "languages-exploration.html"
+        },
+
+        {
+          label: "SOUND",
+          title: "Music & Sound",
+          description:
+            "Train your ear through rhythm, listening and patient practice.",
+          href: "music-exploration.html"
+        }
+
+      ]
+    },
+
+
+    {
+      id: "life-skills",
+
+      number: "06",
+
+      title: "Life Skills & Future",
+
+      hindi: "जीवन और आगे",
+
+      symbol: "⌂",
+
+      accent: "#8fb1a4",
+
+      description:
+        "Things worth knowing when the textbook closes.",
+
+      paths: [
+
+        {
+          label: "MONEY",
+          title: "Money & Everyday Maths",
+          description:
+            "Understand the numbers that quietly shape everyday decisions.",
+          href: "money-exploration.html"
+        },
+
+        {
+          label: "FOOD",
+          title: "Food & Cooking",
+          description:
+            "Chemistry, culture, measurement and survival meet in the kitchen.",
+          href: "food-exploration.html"
+        },
+
+        {
+          label: "FUTURE",
+          title: "Work & Possibility",
+          description:
+            "Explore what you could build, learn or contribute next.",
+          href: "career-exploration.html"
+        },
+
+        {
+          label: "EVERYDAY LIFE",
+          title: "Things Nobody Taught Me",
+          description:
+            "Practical knowledge for navigating an increasingly complicated world.",
+          href: "life-skills-exploration.html"
+        }
+
       ]
     }
+
   ];
 
-  /*
-   * LEARNING COURTYARD CARDS
-   */
 
-  const grid = document.querySelector("#worldGrid");
-  const drawer = document.querySelector("#worldDrawer");
-  const closeWorld = document.querySelector("#closeWorld");
 
-  courtyards.forEach((world, index) => {
-    if (!grid) {
-      return;
-    }
+  /* =========================================================
+     ELEMENTS
+  ========================================================= */
 
-    const card = document.createElement("button");
+  const worldGrid =
+    document.querySelector("#worldGrid");
 
-    card.type = "button";
-    card.className = "world-card reveal";
+  const worldDrawer =
+    document.querySelector("#worldDrawer");
 
-    card.style.setProperty(
-      "--accent",
-      world.accent
-    );
+  const closeWorld =
+    document.querySelector("#closeWorld");
 
-    card.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+  const drawerSymbol =
+    document.querySelector("#drawerSymbol");
 
-    card.innerHTML = `
-      <img
-        src="${world.image}"
-        alt=""
-        loading="lazy"
-        decoding="async"
-      >
+  const drawerTitle =
+    document.querySelector("#drawerTitle");
 
-      <span class="world-card-copy">
-        <span class="world-index">
-          COURTYARD ${String(index + 1).padStart(2, "0")}
-          · ${world.symbol}
-        </span>
+  const drawerHindi =
+    document.querySelector("#drawerHindi");
 
-        <h3>${world.title}</h3>
+  const drawerDescription =
+    document.querySelector("#drawerDescription");
 
-        <p>
-          ${world.hindi} · ${world.description}
-        </p>
+  const explorationGrid =
+    document.querySelector("#explorationGrid");
 
-        <span class="world-enter">
-          OPEN THIS COURTYARD ↗
-        </span>
-      </span>
-    `;
-
-    card.addEventListener("click", () => {
-      openCourtyard(world, card);
-    });
-
-    grid.appendChild(card);
-  });
-
-  /*
-   * OPEN A COURTYARD
-   */
-
-  function openCourtyard(world, activeCard) {
-    if (!grid || !drawer) {
-      return;
-    }
-
-    grid
-      .querySelectorAll(".world-card")
-      .forEach((card) => {
-        card.setAttribute(
-          "aria-expanded",
-          String(card === activeCard)
-        );
-      });
-
-    drawer.style.setProperty(
-      "--drawer-accent",
-      world.accent
-    );
-
-    const drawerSymbol =
-      document.querySelector("#drawerSymbol");
-
-    const drawerTitle =
-      document.querySelector("#drawerTitle");
-
-    const drawerHindi =
-      document.querySelector("#drawerHindi");
-
-    const drawerDescription =
-      document.querySelector(
-        "#drawerDescription"
-      );
-
-    const explorationGrid =
-      document.querySelector(
-        "#explorationGrid"
-      );
-
-    if (drawerSymbol) {
-      drawerSymbol.textContent =
-        world.symbol;
-    }
-
-    if (drawerTitle) {
-      drawerTitle.textContent =
-        world.title;
-    }
-
-    if (drawerHindi) {
-      drawerHindi.textContent =
-        world.hindi;
-    }
-
-    if (drawerDescription) {
-      drawerDescription.textContent =
-        world.description;
-    }
-
-    if (explorationGrid) {
-      explorationGrid.innerHTML =
-        world.paths
-          .map(
-            (path) => `
-              <article class="exploration-card">
-                <span>${path[0]}</span>
-
-                <h3>${path[1]}</h3>
-
-                <p>${path[2]}</p>
-              </article>
-            `
-          )
-          .join("");
-    }
-
-    drawer.hidden = false;
-
-    requestAnimationFrame(() => {
-      drawer.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    });
-
-    closeWorld?.focus({
-      preventScroll: true
-    });
-  }
-
-  /*
-   * CLOSE A COURTYARD
-   */
-
-  closeWorld?.addEventListener(
-    "click",
-    () => {
-      if (drawer) {
-        drawer.hidden = true;
-      }
-
-      const activeCard =
-        grid?.querySelector(
-          '[aria-expanded="true"]'
-        );
-
-      grid
-        ?.querySelectorAll(".world-card")
-        .forEach((card) => {
-          card.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-        });
-
-      activeCard?.focus({
-        preventScroll: true
-      });
-    }
-  );
-
-  /*
-   * MOBILE NAVIGATION
-   */
+  const topbar =
+    document.querySelector("#topbar");
 
   const menu =
     document.querySelector("#menu");
@@ -406,437 +365,745 @@
   const nav =
     document.querySelector("#nav");
 
-  function closeMenu() {
-    menu?.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    nav?.classList.remove("open");
-  }
-
-  menu?.addEventListener("click", () => {
-    const nextState =
-      menu.getAttribute(
-        "aria-expanded"
-      ) !== "true";
-
-    menu.setAttribute(
-      "aria-expanded",
-      String(nextState)
-    );
-
-    nav?.classList.toggle(
-      "open",
-      nextState
-    );
-  });
-
-  nav
-    ?.querySelectorAll("a")
-    .forEach((link) => {
-      link.addEventListener(
-        "click",
-        closeMenu
-      );
-    });
-
-  document.addEventListener(
-    "click",
-    (event) => {
-      const menuIsOpen =
-        nav?.classList.contains("open");
-
-      const clickedInsideNavigation =
-        nav?.contains(event.target);
-
-      const clickedMenuButton =
-        menu?.contains(event.target);
-
-      if (
-        menuIsOpen &&
-        !clickedInsideNavigation &&
-        !clickedMenuButton
-      ) {
-        closeMenu();
-      }
-    }
-  );
-
-  /*
-   * NOTE BENEATH THE TREE
-   */
-
-  const dialog =
-    document.querySelector(
-      "#entryDialog"
-    );
+  const entryDialog =
+    document.querySelector("#entryDialog");
 
   const openNote =
     document.querySelector("#openNote");
 
   const closeNote =
-    document.querySelector(
-      "#closeNote"
-    );
+    document.querySelector("#closeNote");
 
   const carryNote =
-    document.querySelector(
-      "#carryNote"
+    document.querySelector("#carryNote");
+
+  const vessels =
+    document.querySelector("#vessels");
+
+  const waterResult =
+    document.querySelector("#waterResult");
+
+
+
+  /* =========================================================
+     ANALYTICS
+  ========================================================= */
+
+  function trackEvent(name, parameters = {}) {
+
+    if (
+      typeof window.gtag !== "function"
+    ) {
+      return;
+    }
+
+    window.gtag(
+      "event",
+      name,
+      parameters
     );
+
+  }
+
+
+
+  /* =========================================================
+     RENDER SIX COURTYARDS
+  ========================================================= */
+
+  function renderWorlds() {
+
+    if (!worldGrid) {
+      return;
+    }
+
+
+    worldGrid.innerHTML =
+      learningWorlds
+        .map((world) => {
+
+          return `
+            <button
+              class="world-card reveal"
+              type="button"
+              data-world="${world.id}"
+              style="--world-accent:${world.accent}"
+              aria-expanded="false"
+            >
+
+              <span class="world-number">
+                ${world.number}
+              </span>
+
+              <span
+                class="world-symbol"
+                aria-hidden="true"
+              >
+                ${world.symbol}
+              </span>
+
+              <h3>
+                ${world.title}
+              </h3>
+
+              <span class="world-hindi">
+                ${world.hindi}
+              </span>
+
+              <p>
+                ${world.description}
+              </p>
+
+              <span class="world-enter">
+                OPEN COURTYARD ↘
+              </span>
+
+            </button>
+          `;
+
+        })
+        .join("");
+
+
+    worldGrid
+      .querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.addEventListener(
+          "click",
+          () => {
+
+            openWorld(
+              card.dataset.world
+            );
+
+          }
+        );
+
+      });
+
+
+    observeReveals();
+
+  }
+
+
+
+  /* =========================================================
+     OPEN A COURTYARD
+  ========================================================= */
+
+  function openWorld(worldId) {
+
+    const world =
+      learningWorlds.find(
+        (item) =>
+          item.id === worldId
+      );
+
+
+    if (
+      !world ||
+      !worldDrawer
+    ) {
+      return;
+    }
+
+
+    worldGrid
+      ?.querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.setAttribute(
+          "aria-expanded",
+          String(
+            card.dataset.world ===
+            worldId
+          )
+        );
+
+      });
+
+
+    drawerSymbol.textContent =
+      world.symbol;
+
+
+    drawerSymbol.style.color =
+      world.accent;
+
+
+    drawerTitle.textContent =
+      world.title;
+
+
+    drawerHindi.textContent =
+      world.hindi;
+
+
+    drawerHindi.style.color =
+      world.accent;
+
+
+    drawerDescription.textContent =
+      world.description;
+
+
+    explorationGrid.innerHTML =
+      world.paths
+        .map((path) => {
+
+          return `
+            <a
+              class="exploration-card"
+              href="${path.href}"
+              data-exploration="${path.title}"
+            >
+
+              <small>
+                ${path.label}
+              </small>
+
+              <div>
+
+                <h3>
+                  ${path.title}
+                </h3>
+
+                <p>
+                  ${path.description}
+                </p>
+
+              </div>
+
+            </a>
+          `;
+
+        })
+        .join("");
+
+
+    worldDrawer.hidden = false;
+
+
+    trackEvent(
+      "learning_courtyard_open",
+      {
+        courtyard:
+          world.title
+      }
+    );
+
+
+    explorationGrid
+      .querySelectorAll(
+        ".exploration-card"
+      )
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            trackEvent(
+              "learning_exploration_enter",
+              {
+                exploration:
+                  link.dataset.exploration,
+
+                courtyard:
+                  world.title
+              }
+            );
+
+          }
+        );
+
+      });
+
+
+    window.setTimeout(
+      () => {
+
+        worldDrawer.scrollIntoView({
+          behavior:
+            window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth",
+
+          block: "start"
+        });
+
+      },
+      60
+    );
+
+  }
+
+
+
+  /* =========================================================
+     CLOSE COURTYARD
+  ========================================================= */
+
+  function closeWorldDrawer() {
+
+    if (!worldDrawer) {
+      return;
+    }
+
+
+    worldDrawer.hidden = true;
+
+
+    worldGrid
+      ?.querySelectorAll(".world-card")
+      .forEach((card) => {
+
+        card.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+  }
+
+
+  closeWorld?.addEventListener(
+    "click",
+    closeWorldDrawer
+  );
+
+
+
+  /* =========================================================
+     KNOWLEDGE RIVER
+  ========================================================= */
+
+  const vesselMessages = {
+
+    cup: {
+
+      eyebrow:
+        "A CUP · ONE IDEA",
+
+      title:
+        "Learn one thing properly.",
+
+      text:
+        "One useful idea is enough for today. Notice it. Try it once. Carry it with you."
+
+    },
+
+
+    bucket: {
+
+      eyebrow:
+        "A BUCKET · PRACTICE",
+
+      title:
+        "Stay long enough to try.",
+
+      text:
+        "Understanding grows through use. Solve it, build it, explain it, test it or practise it again."
+
+    },
+
+
+    river: {
+
+      eyebrow:
+        "THE RIVER · GO DEEP",
+
+      title:
+        "Follow the question.",
+
+      text:
+        "Read sideways. Compare ideas. Make something. Find what you disagree with. Teach somebody else. Let one question become five."
+
+    }
+
+  };
+
+
+  vessels
+    ?.querySelectorAll(
+      "button[data-vessel]"
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const type =
+            button.dataset.vessel;
+
+
+          const message =
+            vesselMessages[type];
+
+
+          if (!message) {
+            return;
+          }
+
+
+          vessels
+            .querySelectorAll(
+              "button"
+            )
+            .forEach((item) => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          waterResult.innerHTML = `
+
+            <p class="eyebrow">
+              ${message.eyebrow}
+            </p>
+
+            <h3>
+              ${message.title}
+            </h3>
+
+            <p>
+              ${message.text}
+            </p>
+
+          `;
+
+
+          trackEvent(
+            "knowledge_river_choice",
+            {
+              vessel: type
+            }
+          );
+
+        }
+      );
+
+    });
+
+
+
+  /* =========================================================
+     COURTYARD NOTE DIALOG
+  ========================================================= */
 
   openNote?.addEventListener(
     "click",
     () => {
-      dialog?.showModal();
+
+      entryDialog?.showModal();
+
     }
   );
+
 
   closeNote?.addEventListener(
     "click",
     () => {
-      dialog?.close();
+
+      entryDialog?.close();
+
     }
   );
+
 
   carryNote?.addEventListener(
     "click",
     () => {
-      dialog?.close();
+
+      entryDialog?.close();
+
 
       document
-        .querySelector("#courtyard")
+        .querySelector("#explore")
         ?.scrollIntoView({
-          behavior: "smooth"
+          behavior:
+            window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth"
         });
+
     }
   );
 
-  /*
-   * Close dialog when the user
-   * clicks the dark backdrop
-   */
 
-  dialog?.addEventListener(
+  entryDialog?.addEventListener(
     "click",
     (event) => {
-      if (event.target === dialog) {
-        dialog.close();
+
+      if (
+        event.target ===
+        entryDialog
+      ) {
+
+        entryDialog.close();
+
       }
+
     }
   );
 
-  /*
-   * KNOWLEDGE RIVER
-   */
 
-  const vesselMessages = {
-    cup: [
-      "One useful idea is enough.",
 
-      "Choose one courtyard. Notice one thing. Write down the question it leaves behind."
-    ],
+  /* =========================================================
+     MOBILE NAV
+  ========================================================= */
 
-    bucket: [
-      "Practise changes understanding.",
+  function toggleMenu(force) {
 
-      "Choose one small activity and repeat it. Pay attention to what becomes easier—and what becomes more interesting."
-    ],
+    if (
+      !menu ||
+      !nav
+    ) {
+      return;
+    }
 
-    river: [
-      "Follow the question further.",
 
-      "Connect ideas across courtyards. Read, test, ask someone, make something and return with a better question."
-    ]
-  };
+    const currentlyOpen =
+      menu.getAttribute(
+        "aria-expanded"
+      ) === "true";
 
-  const waterResult =
-    document.querySelector(
-      "#waterResult"
+
+    const open =
+      typeof force === "boolean"
+        ? force
+        : !currentlyOpen;
+
+
+    menu.setAttribute(
+      "aria-expanded",
+      String(open)
     );
 
-  document
-    .querySelectorAll("[data-vessel]")
-    .forEach((button) => {
-      button.addEventListener(
+
+    nav.classList.toggle(
+      "open",
+      open
+    );
+
+
+    document.body.style.overflow =
+      open
+        ? "hidden"
+        : "";
+
+  }
+
+
+  menu?.addEventListener(
+    "click",
+    () => {
+
+      toggleMenu();
+
+    }
+  );
+
+
+  nav
+    ?.querySelectorAll("a")
+    .forEach((link) => {
+
+      link.addEventListener(
         "click",
         () => {
-          document
-            .querySelectorAll(
-              "[data-vessel]"
-            )
-            .forEach((item) => {
-              item.classList.toggle(
-                "active",
-                item === button
-              );
-            });
 
-          const vessel =
-            button.dataset.vessel;
+          toggleMenu(false);
 
-          const message =
-            vesselMessages[vessel];
-
-          if (
-            !waterResult ||
-            !message
-          ) {
-            return;
-          }
-
-          waterResult.innerHTML = `
-            <p class="eyebrow">
-              NO WRONG CHOICE
-            </p>
-
-            <h3>
-              ${message[0]}
-            </h3>
-
-            <p>
-              ${message[1]}
-            </p>
-          `;
         }
       );
+
     });
 
-  /*
-   * HEADER AND SCROLL PROGRESS
-   */
 
-  const topbar =
-    document.querySelector("#topbar");
+  window.addEventListener(
+    "keydown",
+    (event) => {
 
-  const progress =
-    document.querySelector(
-      "#scrollProgress"
-    );
+      if (event.key === "Escape") {
 
-  function updateScroll() {
-    topbar?.classList.toggle(
-      "scrolled",
-      window.scrollY > 24
-    );
+        toggleMenu(false);
 
-    const scrollable =
-      document.documentElement
-        .scrollHeight -
-      window.innerHeight;
+        if (
+          entryDialog?.open
+        ) {
+          entryDialog.close();
+        }
 
-    const amount =
-      scrollable > 0
-        ? (window.scrollY /
-            scrollable) *
-          100
-        : 0;
+      }
 
-    if (progress) {
-      progress.style.width =
-        `${amount}%`;
     }
+  );
+
+
+
+  /* =========================================================
+     HEADER
+  ========================================================= */
+
+  function updateHeader() {
+
+    topbar
+      ?.classList
+      .toggle(
+        "scrolled",
+        window.scrollY > 30
+      );
+
   }
+
 
   window.addEventListener(
     "scroll",
-    updateScroll,
+    updateHeader,
     {
       passive: true
     }
   );
 
-  updateScroll();
 
-  /*
-   * REVEAL ANIMATIONS
-   */
+  updateHeader();
 
-  if (
-    "IntersectionObserver" in window
-  ) {
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
-          entries.forEach(
-            (entry) => {
-              if (
-                entry.isIntersecting
-              ) {
-                entry.target.classList.add(
-                  "visible"
-                );
 
-                revealObserver.unobserve(
-                  entry.target
-                );
-              }
-            }
+
+  /* =========================================================
+     REVEAL ANIMATIONS
+  ========================================================= */
+
+  const reduceMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+  let revealObserver;
+
+
+  function observeReveals() {
+
+    const elements =
+      document.querySelectorAll(
+        ".reveal:not(.is-visible)"
+      );
+
+
+    if (reduceMotion) {
+
+      elements.forEach(
+        (element) => {
+
+          element.classList.add(
+            "is-visible"
           );
-        },
 
-        {
-          threshold: 0.1
         }
       );
 
-    document
-      .querySelectorAll(".reveal")
-      .forEach((item) => {
-        revealObserver.observe(item);
-      });
-  } else {
-    document
-      .querySelectorAll(".reveal")
-      .forEach((item) => {
-        item.classList.add(
-          "visible"
-        );
-      });
-  }
-
-  /*
-   * COSMIC STAR BACKGROUND
-   */
-
-  function seededRandom(seed) {
-    let value =
-      seed % 2147483647;
-
-    return () => {
-      value =
-        (value * 16807) %
-        2147483647;
-
-      return (
-        (value - 1) /
-        2147483646
-      );
-    };
-  }
-
-  function drawStars() {
-    const canvas =
-      document.querySelector(
-        "#cosmicSky"
-      );
-
-    if (!canvas) {
       return;
     }
 
-    const context =
-      canvas.getContext("2d");
 
-    if (!context) {
-      return;
-    }
-
-    const ratio = Math.min(
-      window.devicePixelRatio || 1,
-      2
-    );
-
-    canvas.width = Math.floor(
-      window.innerWidth * ratio
-    );
-
-    canvas.height = Math.floor(
-      window.innerHeight * ratio
-    );
-
-    context.setTransform(
-      ratio,
-      0,
-      0,
-      ratio,
-      0,
-      0
-    );
-
-    context.clearRect(
-      0,
-      0,
-      window.innerWidth,
-      window.innerHeight
-    );
-
-    const starCount = Math.min(
-      180,
-
-      Math.floor(
-        (
-          window.innerWidth *
-          window.innerHeight
-        ) / 6500
+    if (
+      !(
+        "IntersectionObserver"
+        in window
       )
+    ) {
+
+      elements.forEach(
+        (element) => {
+
+          element.classList.add(
+            "is-visible"
+          );
+
+        }
+      );
+
+      return;
+    }
+
+
+    if (!revealObserver) {
+
+      revealObserver =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach(
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  entry.target
+                    .classList
+                    .add(
+                      "is-visible"
+                    );
+
+
+                  revealObserver
+                    .unobserve(
+                      entry.target
+                    );
+
+                }
+
+              }
+            );
+
+          },
+          {
+            threshold: .12
+          }
+        );
+
+    }
+
+
+    elements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
     );
 
-    const random =
-      seededRandom(90817);
-
-    for (
-      let index = 0;
-      index < starCount;
-      index += 1
-    ) {
-      const x =
-        random() *
-        window.innerWidth;
-
-      const y =
-        random() *
-        window.innerHeight;
-
-      const radius =
-        random() * 1.35 + 0.25;
-
-      const alpha =
-        random() * 0.68 + 0.18;
-
-      const starColour =
-        random() > 0.78
-          ? "158,225,255"
-          : "255,255,255";
-
-      context.beginPath();
-
-      context.fillStyle =
-        `rgba(${starColour}, ${alpha})`;
-
-      context.arc(
-        x,
-        y,
-        radius,
-        0,
-        Math.PI * 2
-      );
-
-      context.fill();
-    }
   }
 
-  drawStars();
 
-  /*
-   * Redraw stars when the
-   * browser size changes
-   */
 
-  let resizeTimer;
+  /* =========================================================
+     INITIALISE
+  ========================================================= */
 
-  window.addEventListener(
-    "resize",
-    () => {
-      window.clearTimeout(
-        resizeTimer
-      );
+  renderWorlds();
 
-      resizeTimer =
-        window.setTimeout(
-          drawStars,
-          120
-        );
-    }
-  );
+  observeReveals();
+
 })();
