@@ -1,356 +1,904 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-EF9DVH7JQN");
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Learning Lok — five worlds and eighteen pathways for curious humans who want to learn, create and contribute."
-    />
-    <meta name="theme-color" content="#06030f" />
-    <title>Learning Lok | JigyasaVerse</title>
-    <link rel="canonical" href="https://jigyasaverse.org/learning-lok.html" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="images/wonder-verse-moon-pencil-logo.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gloock&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="learning-lok.css" />
-    <script src="learning-lok.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to the five worlds</a>
-    <canvas class="cosmic-sky" id="cosmicSky" aria-hidden="true"></canvas>
-    <div class="cosmic-grain" aria-hidden="true"></div>
-    <div class="scroll-progress" aria-hidden="true">
-      <span id="scrollProgress"></span>
-    </div>
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-EF9DVH7JQN");
+  </script>
 
-    <div class="learning-lok">
-      <div class="bloom bloom-one" aria-hidden="true"></div>
-      <div class="bloom bloom-two" aria-hidden="true"></div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <header class="site-header" id="siteHeader">
-        <a class="brand" href="index.html" aria-label="JigyasaVerse homepage">
-          <img
-            src="images/wonder-verse-moon-pencil-logo.png"
-            alt="JigyasaVerse moon and pencil logo"
-          />
-          <span
-            ><strong>JIGYASAVERSE</strong
-            ><small>Curiosity lives here</small></span
+  <meta
+    name="description"
+    content="Learning Lok — five worlds and eighteen pathways for curious humans who want to learn, create and contribute."
+  >
+
+  <meta name="theme-color" content="#05030d">
+
+  <title>Learning Lok | JigyasaVerse</title>
+
+  <link
+    rel="canonical"
+    href="https://jigyasaverse.org/learning-lok.html"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gloock&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="learning-lok.css">
+  <script src="learning-lok.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Accessibility -->
+  <a class="skip-link" href="#worlds">
+    Skip to the five worlds
+  </a>
+
+  <!-- Cosmic background -->
+  <canvas
+    id="cosmicSky"
+    class="cosmic-sky"
+    aria-hidden="true"
+  ></canvas>
+
+  <div class="cosmic-nebula" aria-hidden="true"></div>
+  <div class="cosmic-grain" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scrollProgress"></span>
+  </div>
+
+
+  <!-- ==================================================
+       HEADER
+  =================================================== -->
+
+  <header class="site-header" id="siteHeader">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="JigyasaVerse homepage"
+    >
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span class="brand-copy">
+        <strong>JIGYASAVERSE</strong>
+        <small>Curiosity lives here</small>
+      </span>
+    </a>
+
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="siteNav"
+    >
+      <span>Menu</span>
+
+      <i></i>
+      <i></i>
+    </button>
+
+
+    <nav
+      class="nav-links"
+      id="siteNav"
+      aria-label="Learning Lok navigation"
+    >
+      <a href="index.html">Home</a>
+      <a href="about.html">Our Story</a>
+      <a href="#worlds">Five Worlds</a>
+      <a href="books.html">Library</a>
+
+      <a
+        class="wonder-link"
+        href="wonderverse.html"
+      >
+        Wonder Lok
+      </a>
+    </nav>
+
+  </header>
+
+
+  <main id="main-content">
+
+
+    <!-- ==================================================
+         HERO
+    =================================================== -->
+
+    <section class="hero" id="top">
+
+      <img
+        class="hero-cosmos"
+        src="images/wonder.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-stars" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">
+          JIGYASAVERSE
+          <span>•</span>
+          LEARNING LOK
+        </p>
+
+        <h1>
+          There is more than
+          <em>one way</em>
+          to learn.
+        </h1>
+
+        <p class="hero-intro">
+          Five worlds. Eighteen pathways.
+          No pressure to know exactly where
+          you are going.
+        </p>
+
+        <p class="hero-subtext">
+          Start with whatever makes you
+          curious enough to click.
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            class="primary-button"
+            href="#worlds"
           >
+            Choose a world
+            <span>↓</span>
+          </a>
+
+          <a
+            class="text-button"
+            href="#how-it-works"
+          >
+            How does this work?
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Orbit -->
+      <div
+        class="learning-orbit"
+        aria-hidden="true"
+      >
+
+        <div class="orbit-ring orbit-ring-one"></div>
+        <div class="orbit-ring orbit-ring-two"></div>
+        <div class="orbit-ring orbit-ring-three"></div>
+
+        <div class="orbit-core">
+          <strong>5</strong>
+          <span>WORLDS</span>
+        </div>
+
+        <div class="orbit-node node-one">
+          01
+        </div>
+
+        <div class="orbit-node node-two">
+          02
+        </div>
+
+        <div class="orbit-node node-three">
+          03
+        </div>
+
+        <div class="orbit-node node-four">
+          04
+        </div>
+
+        <div class="orbit-node node-five">
+          05
+        </div>
+
+      </div>
+
+
+      <div class="scroll-cue">
+        <span>SCROLL TO ENTER</span>
+        <i></i>
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         INTRO
+    =================================================== -->
+
+    <section
+      class="learning-philosophy reveal"
+      id="how-it-works"
+    >
+
+      <div class="philosophy-label">
+        <span>01</span>
+        <p>BEFORE YOU CHOOSE</p>
+      </div>
+
+
+      <div class="philosophy-copy">
+
+        <h2>
+          Learning was never
+          supposed to be a
+          <em>straight line.</em>
+        </h2>
+
+        <p>
+          You might enter through mathematics
+          and somehow end up fascinated by music.
+          You might begin with medicine and
+          discover design, history or engineering.
+        </p>
+
+        <p>
+          Good.
+        </p>
+
+        <p>
+          The worlds below organise knowledge.
+          They do not put walls around it.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         WORLD NAVIGATION STRIP
+    =================================================== -->
+
+    <section
+      class="world-map reveal"
+      aria-label="Quick navigation between worlds"
+    >
+
+      <p>CHOOSE YOUR ENTRY POINT</p>
+
+      <div class="world-map-links">
+
+        <a href="#world-growth">
+          <span>01</span>
+          Growing Minds
         </a>
-        <input
-          class="menu-toggle"
-          type="checkbox"
-          id="menu-toggle"
-          aria-label="Open navigation menu"
-        />
-        <label class="menu-button" for="menu-toggle"
-          ><span>Menu</span><i></i><i></i
-        ></label>
-        <nav class="nav-links" aria-label="Learning Lok navigation">
-          <a href="index.html">Home</a>
-          <a href="about.html">Our story</a>
-          <a href="#worlds">Five worlds</a>
-          <a href="books.html">Library</a>
-          <a class="wonder-link" href="wonderverse.html">Wonder Lok</a>
-        </nav>
-      </header>
 
-      <main id="main-content">
-        <section class="hero" id="top">
-          <img
-            class="hero-cosmos"
-            src="images/wonder.png"
-            alt="A person looking into a vast cosmos of possible learning paths"
-          />
-          <div class="hero-veil" aria-hidden="true"></div>
-          <div class="hero-copy">
-            <p class="eyebrow">YOU HAVE ENTERED <span>•</span> LEARNING LOK</p>
-            <h1>Knowledge has<br /><em>many doors.</em><br />Choose one.</h1>
-            <p class="hero-intro">
-              Eighteen pathways live inside five worlds. You do not need to
-              choose your entire future today—only the doorway that makes you
-              curious enough to take one more step.
-            </p>
-            <a class="primary-button" href="#worlds"
-              >Explore the five worlds <span>↓</span></a
-            >
-          </div>
-          <div class="learning-orbit" aria-hidden="true">
-            <div class="orbit-core"><strong>5</strong><span>WORLDS</span></div>
-            <div class="orbit-path orbit-one"><span>18</span></div>
-            <div class="orbit-path orbit-two"></div>
-            <div class="orbit-path orbit-three"></div>
-            <p>18 PATHWAYS<br />NO SINGLE RIGHT DOOR</p>
-          </div>
-        </section>
+        <a href="#world-patterns">
+          <span>02</span>
+          Patterns
+        </a>
 
-        <section class="learning-note" aria-labelledby="learning-note-title">
-          <p class="section-label">A NOTE BEFORE YOU CHOOSE</p>
-          <div>
-            <h2 id="learning-note-title">Learning is not a straight line.</h2>
-            <p>
-              You may enter through mathematics and leave thinking about music.
-              You may begin with medicine and discover design. The worlds
-              organise the pathways; they do not place walls between them.
-            </p>
-          </div>
-        </section>
+        <a href="#world-stories">
+          <span>03</span>
+          Human Stories
+        </a>
 
-        <section
-          class="worlds-section"
-          id="worlds"
-          aria-labelledby="worlds-title"
+        <a href="#world-impact">
+          <span>04</span>
+          Life & Impact
+        </a>
+
+        <a href="#world-leadership">
+          <span>05</span>
+          Knowledge
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FIVE WORLDS
+    =================================================== -->
+
+    <section
+      class="worlds-section"
+      id="worlds"
+      aria-labelledby="worlds-title"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="section-label">
+            THE FIVE LEARNING WORLDS
+          </p>
+
+          <h2 id="worlds-title">
+            Where does your
+            <em>curiosity pull you?</em>
+          </h2>
+
+        </div>
+
+        <p>
+          Each world contains pathways,
+          resources, questions and places
+          to begin.
+        </p>
+
+      </div>
+
+
+
+      <div class="world-stack">
+
+
+        <!-- WORLD 01 -->
+
+        <a
+          class="learning-world world-growth reveal"
+          id="world-growth"
+          href="growing-minds.html"
         >
-          <div class="section-heading">
-            <div>
-              <p>THE FIVE LEARNING WORLDS</p>
-              <h2 id="worlds-title">
-                Where does your<br /><em>curiosity pull you?</em>
-              </h2>
+
+          <div class="world-image">
+
+            <img
+              src="images/student.png"
+              alt="A learner beginning a journey of growth"
+              loading="lazy"
+            >
+
+            <div class="world-image-overlay"></div>
+
+            <span class="giant-number">
+              01
+            </span>
+
+          </div>
+
+
+          <div class="world-content">
+
+            <div class="world-meta">
+
+              <span>WORLD 01</span>
+              <span>4 PATHWAYS</span>
+
             </div>
-            <p>
-              Open a world to find its pathways, resources and places to begin.
+
+
+            <div class="world-title">
+
+              <p class="world-hindi">
+                बढ़ते मन · BADHTE MAN
+              </p>
+
+              <h3>
+                Growing
+                <em>Minds</em>
+              </h3>
+
+            </div>
+
+
+            <p class="world-description">
+              Learning changes as we grow.
+              Explore childhood, school years
+              and the strange journey of
+              becoming capable.
             </p>
+
+
+            <div class="pathway-list">
+
+              <span>Play & Early Learning</span>
+              <span>Primary & Elementary</span>
+              <span>Middle School</span>
+              <span>Secondary & Senior</span>
+
+            </div>
+
+
+            <div class="enter-world">
+              <span>ENTER THIS WORLD</span>
+              <b>↗</b>
+            </div>
+
           </div>
 
-          <div class="world-grid">
-            <a class="learning-world growth" href="growing-minds.html">
-              <div class="world-art">
-                <img
-                  src="images/student.png"
-                  alt="A learner beginning a journey of growth"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="world-copy">
-                <span class="world-index">WORLD 01 · 4 PATHWAYS</span>
-                <h3>Growing Minds</h3>
-                <p class="world-hindi">बढ़ते मन · Badhte Man</p>
-                <p class="world-description">
-                  Learning through the different stages of growing up—without
-                  rushing anyone past where they are.
-                </p>
-                <ul
-                  class="pathway-preview"
-                  aria-label="Pathways inside Growing Minds"
-                >
-                  <li>Play & Early Learning</li>
-                  <li>Primary & Elementary</li>
-                  <li>Middle School</li>
-                  <li>Secondary & Senior</li>
-                </ul>
-                <span class="world-enter"
-                  >ENTER GROWING MINDS <span aria-hidden="true">↗</span></span
-                >
-              </div>
-            </a>
+        </a>
 
-            <a
-              class="learning-world cosmos"
-              href="patterns-of-the-universe.html"
-            >
-              <div class="world-art">
-                <img
-                  src="images/wonder.png"
-                  alt="A vast universe filled with hidden mathematical and scientific patterns"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="world-copy">
-                <span class="world-index">WORLD 02 · 4 PATHWAYS</span>
-                <h3>Patterns of the Universe</h3>
-                <p class="world-hindi">ब्रह्मांड की लय · Brahmand Ki Lay</p>
-                <p class="world-description">
-                  Follow numbers, natural systems, machines and code into the
-                  structures connecting everything.
-                </p>
-                <ul
-                  class="pathway-preview"
-                  aria-label="Pathways inside Patterns of the Universe"
-                >
-                  <li>Mathematics</li>
-                  <li>Science</li>
-                  <li>Technology & Computing</li>
-                  <li>Engineering & Making</li>
-                </ul>
-                <span class="world-enter"
-                  >ENTER THE PATTERNS <span aria-hidden="true">↗</span></span
-                >
-              </div>
-            </a>
 
-            <a class="learning-world stories" href="human-stories.html">
-              <div class="world-art">
-                <img
-                  src="images/becoming.png"
-                  alt="A dreamlike world of stories, language and creative expression"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="world-copy">
-                <span class="world-index">WORLD 03 · 5 PATHWAYS</span>
-                <h3>Human Stories & Expression</h3>
-                <p class="world-hindi">मानव कथाएँ और अभिव्यक्ति</p>
-                <p class="world-description">
-                  Explore how humans remember, communicate, question, perform
-                  and make meaning together.
-                </p>
-                <ul
-                  class="pathway-preview"
-                  aria-label="Pathways inside Human Stories and Expression"
-                >
-                  <li>Humanities & Society</li>
-                  <li>Language & Literature</li>
-                  <li>Art & Design</li>
-                  <li>Music & Sound</li>
-                  <li>Theatre, Film & Story</li>
-                </ul>
-                <span class="world-enter"
-                  >ENTER HUMAN STORIES <span aria-hidden="true">↗</span></span
-                >
-              </div>
-            </a>
 
-            <a class="learning-world impact" href="life-work-impact.html">
-              <div class="world-art">
-                <img
-                  src="images/Iamamess.png"
-                  alt="A maker turning an unfinished idea into useful work"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="world-copy">
-                <span class="world-index">WORLD 04 · 3 PATHWAYS</span>
-                <h3>Life, Work & Impact</h3>
-                <p class="world-hindi">जीवन, कर्म और प्रभाव</p>
-                <p class="world-description">
-                  See how knowledge becomes care, enterprise, practical skill
-                  and contribution in the real world.
-                </p>
-                <ul
-                  class="pathway-preview"
-                  aria-label="Pathways inside Life, Work and Impact"
-                >
-                  <li>Medical & Health</li>
-                  <li>Business & Enterprise</li>
-                  <li>Trade & Vocational</li>
-                </ul>
-                <span class="world-enter"
-                  >ENTER LIFE & WORK <span aria-hidden="true">↗</span></span
-                >
-              </div>
-            </a>
+        <!-- WORLD 02 -->
 
-            <a
-              class="learning-world leadership"
-              href="knowledge-leadership.html"
-            >
-              <div class="world-art">
-                <img
-                  src="images/teaching.png"
-                  alt="Teachers and researchers sharing knowledge across generations"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="world-copy">
-                <span class="world-index">WORLD 05 · 2 PATHWAYS</span>
-                <h3>Knowledge & Leadership</h3>
-                <p class="world-hindi">ज्ञान और नेतृत्व · Gyaan Aur Netritva</p>
-                <p class="world-description">
-                  For people ready to investigate difficult questions, guide
-                  others and shape the future of learning.
-                </p>
-                <ul
-                  class="pathway-preview"
-                  aria-label="Pathways inside Knowledge and Leadership"
-                >
-                  <li>University & Research</li>
-                  <li>Educators & Leaders</li>
-                </ul>
-                <span class="world-enter"
-                  >ENTER KNOWLEDGE & LEADERSHIP
-                  <span aria-hidden="true">↗</span></span
-                >
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <section class="river-section" aria-labelledby="river-title">
-          <div class="river-number" aria-hidden="true">∞</div>
-          <div class="river-copy">
-            <p class="section-label">THE KNOWLEDGE RIVER</p>
-            <h2 id="river-title">Take what is useful today.</h2>
-            <p>
-              You do not need to carry the whole river. Take one idea, practise
-              one skill or follow one question as deeply as you wish. You can
-              always return.
-            </p>
-          </div>
-          <div class="vessels" aria-label="Ways to explore Learning Lok">
-            <article>
-              <span>01</span>
-              <h3>A cup</h3>
-              <p>One useful idea.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>A bucket</h3>
-              <p>A little practice.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>The river</h3>
-              <p>A question explored deeply.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="crossroads">
-          <p>WRONG WORLD? IMPOSSIBLE.</p>
-          <h2>Curiosity can change direction.</h2>
-          <div>
-            <a href="index.html">Back to the Verse</a
-            ><a href="wonderverse.html">Enter Wonder Lok ↗</a>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <a href="index.html">JIGYASAVERSE</a>
-        <p>Five worlds. Eighteen pathways. No single right door.</p>
-        <small
-          >© 2026 · Made somewhere between a question and a possibility.</small
+        <a
+          class="learning-world world-patterns reveal"
+          id="world-patterns"
+          href="patterns-of-the-universe.html"
         >
-      </footer>
-    </div>
-  </body>
+
+          <div class="world-image">
+
+            <img
+              src="images/wonder.png"
+              alt="A cosmic universe representing mathematics, science and discovery"
+              loading="lazy"
+            >
+
+            <div class="world-image-overlay"></div>
+
+            <span class="giant-number">
+              02
+            </span>
+
+          </div>
+
+
+          <div class="world-content">
+
+            <div class="world-meta">
+
+              <span>WORLD 02</span>
+              <span>4 PATHWAYS</span>
+
+            </div>
+
+
+            <div class="world-title">
+
+              <p class="world-hindi">
+                ब्रह्मांड की लय · BRAHMAND KI LAY
+              </p>
+
+              <h3>
+                Patterns of
+                <em>the Universe</em>
+              </h3>
+
+            </div>
+
+
+            <p class="world-description">
+              Numbers. Cells. Machines. Code.
+              Forces. Systems. Follow the
+              patterns hiding underneath
+              almost everything.
+            </p>
+
+
+            <div class="pathway-list">
+
+              <span>Mathematics</span>
+              <span>Science</span>
+              <span>Technology & Computing</span>
+              <span>Engineering & Making</span>
+
+            </div>
+
+
+            <div class="enter-world">
+              <span>ENTER THIS WORLD</span>
+              <b>↗</b>
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- WORLD 03 -->
+
+        <a
+          class="learning-world world-stories reveal"
+          id="world-stories"
+          href="human-stories.html"
+        >
+
+          <div class="world-image">
+
+            <img
+              src="images/becoming.png"
+              alt="A dreamlike world representing language, art and human stories"
+              loading="lazy"
+            >
+
+            <div class="world-image-overlay"></div>
+
+            <span class="giant-number">
+              03
+            </span>
+
+          </div>
+
+
+          <div class="world-content">
+
+            <div class="world-meta">
+
+              <span>WORLD 03</span>
+              <span>5 PATHWAYS</span>
+
+            </div>
+
+
+            <div class="world-title">
+
+              <p class="world-hindi">
+                मानव कथाएँ और अभिव्यक्ति
+              </p>
+
+              <h3>
+                Human Stories
+                <em>& Expression</em>
+              </h3>
+
+            </div>
+
+
+            <p class="world-description">
+              Humans have always painted,
+              argued, written, performed,
+              remembered and told stories.
+              Come find out why.
+            </p>
+
+
+            <div class="pathway-list">
+
+              <span>Humanities & Society</span>
+              <span>Language & Literature</span>
+              <span>Art & Design</span>
+              <span>Music & Sound</span>
+              <span>Theatre, Film & Story</span>
+
+            </div>
+
+
+            <div class="enter-world">
+              <span>ENTER THIS WORLD</span>
+              <b>↗</b>
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- WORLD 04 -->
+
+        <a
+          class="learning-world world-impact reveal"
+          id="world-impact"
+          href="life-work-impact.html"
+        >
+
+          <div class="world-image">
+
+            <img
+              src="images/Iamamess.png"
+              alt="A person creating something from an unfinished idea"
+              loading="lazy"
+            >
+
+            <div class="world-image-overlay"></div>
+
+            <span class="giant-number">
+              04
+            </span>
+
+          </div>
+
+
+          <div class="world-content">
+
+            <div class="world-meta">
+
+              <span>WORLD 04</span>
+              <span>3 PATHWAYS</span>
+
+            </div>
+
+
+            <div class="world-title">
+
+              <p class="world-hindi">
+                जीवन, कर्म और प्रभाव
+              </p>
+
+              <h3>
+                Life, Work
+                <em>& Impact</em>
+              </h3>
+
+            </div>
+
+
+            <p class="world-description">
+              Knowledge eventually meets the
+              real world. Build something.
+              Care for someone. Solve a problem.
+              Make yourself useful.
+            </p>
+
+
+            <div class="pathway-list">
+
+              <span>Medical & Health</span>
+              <span>Business & Enterprise</span>
+              <span>Trade & Vocational</span>
+
+            </div>
+
+
+            <div class="enter-world">
+              <span>ENTER THIS WORLD</span>
+              <b>↗</b>
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- WORLD 05 -->
+
+        <a
+          class="learning-world world-leadership reveal"
+          id="world-leadership"
+          href="knowledge-leadership.html"
+        >
+
+          <div class="world-image">
+
+            <img
+              src="images/teaching.png"
+              alt="Teachers and researchers sharing knowledge"
+              loading="lazy"
+            >
+
+            <div class="world-image-overlay"></div>
+
+            <span class="giant-number">
+              05
+            </span>
+
+          </div>
+
+
+          <div class="world-content">
+
+            <div class="world-meta">
+
+              <span>WORLD 05</span>
+              <span>2 PATHWAYS</span>
+
+            </div>
+
+
+            <div class="world-title">
+
+              <p class="world-hindi">
+                ज्ञान और नेतृत्व · GYAAN AUR NETRITVA
+              </p>
+
+              <h3>
+                Knowledge
+                <em>& Leadership</em>
+              </h3>
+
+            </div>
+
+
+            <p class="world-description">
+              Some questions need years.
+              Some ideas need teachers.
+              Some discoveries need people
+              willing to go further.
+            </p>
+
+
+            <div class="pathway-list">
+
+              <span>University & Research</span>
+              <span>Educators & Leaders</span>
+
+            </div>
+
+
+            <div class="enter-world">
+              <span>ENTER THIS WORLD</span>
+              <b>↗</b>
+            </div>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         KNOWLEDGE RIVER
+    =================================================== -->
+
+    <section class="knowledge-river reveal">
+
+      <div class="river-symbol">
+        ∞
+      </div>
+
+
+      <div class="river-content">
+
+        <p class="section-label">
+          THE KNOWLEDGE RIVER
+        </p>
+
+        <h2>
+          You don't have to
+          learn everything.
+        </h2>
+
+        <p>
+          Take what you need today.
+          Come back when another question
+          finds you.
+        </p>
+
+      </div>
+
+
+      <div class="river-options">
+
+        <article>
+          <span>01</span>
+          <h3>A sip</h3>
+          <p>Learn one thing.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3>A cup</h3>
+          <p>Practise something.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3>Dive in</h3>
+          <p>Follow the question.</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FINAL CTA
+    =================================================== -->
+
+    <section class="crossroads reveal">
+
+      <div class="crossroads-glow"></div>
+
+      <p>
+        STILL DON'T KNOW WHICH WORLD?
+      </p>
+
+      <h2>
+        Perfect.
+        <em>Pick the interesting one.</em>
+      </h2>
+
+      <span>
+        You are allowed to change direction later.
+      </span>
+
+
+      <div class="crossroad-actions">
+
+        <a href="#worlds">
+          Explore the worlds ↑
+        </a>
+
+        <a href="wonderverse.html">
+          Enter Wonder Lok ↗
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==================================================
+       FOOTER
+  =================================================== -->
+
+  <footer>
+
+    <a
+      class="footer-brand"
+      href="index.html"
+    >
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>JIGYASAVERSE</span>
+    </a>
+
+
+    <p>
+      Five worlds.
+      Eighteen pathways.
+      No single right door.
+    </p>
+
+
+    <small>
+      © 2026 · Made somewhere between
+      a question and a possibility.
+    </small>
+
+  </footer>
+
+</body>
 </html>
