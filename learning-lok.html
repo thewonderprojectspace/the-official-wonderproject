@@ -1,737 +1,1194 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+<head>
 
-    <meta
-      name="description"
-      content="Learning Lok — an open courtyard for curious humans. Explore numbers, nature, people, making, stories and life beyond the syllabus."
-    />
+  <!-- ======================================================
+       GOOGLE ANALYTICS
+  ======================================================= -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <meta name="theme-color" content="#07051b" />
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-    <title>Learning Lok | JigyasaVerse</title>
+    gtag("js", new Date());
+    gtag("config", "G-EF9DVH7JQN");
+  </script>
 
-    <link
-      rel="canonical"
-      href="https://jigyasaverse.org/learning-lok.html"
-    />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- ======================================================
+       META
+  ======================================================= -->
+  <meta charset="utf-8">
 
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Kalam:wght@400;700&family=Libre+Caslon+Text:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
+  <meta
+    name="description"
+    content="Learning Lok — an open courtyard for curious humans. Explore numbers, nature, people, making, stories and the things worth knowing beyond the syllabus."
+  >
 
-    <!-- Learning Lok CSS -->
-    <link rel="stylesheet" href="learning-lok.css" />
+  <meta
+    name="theme-color"
+    content="#1b1109"
+  >
 
-    <!-- Learning Lok JavaScript -->
-    <script src="learning-lok.js" defer></script>
-  </head>
+  <title>Learning Lok | JigyasaVerse</title>
 
-  <body>
-    <!-- Cosmic background -->
-    <canvas
-      class="cosmic-sky"
-      id="cosmicSky"
-      aria-hidden="true"
-    ></canvas>
+  <link
+    rel="canonical"
+    href="https://jigyasaverse.org/learning-lok.html"
+  >
 
-    <div
-      class="cosmic-grain"
-      aria-hidden="true"
-    ></div>
 
-    <!-- Scroll progress -->
-    <div
-      class="scroll-progress"
-      aria-hidden="true"
+  <!-- ======================================================
+       SOCIAL
+  ======================================================= -->
+  <meta
+    property="og:title"
+    content="Learning Lok | JigyasaVerse"
+  >
+
+  <meta
+    property="og:description"
+    content="You were learning long before someone called it a subject."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jigyasaverse.org/learning-lok.html"
+  >
+
+
+  <!-- ======================================================
+       FONTS
+  ======================================================= -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Kalam:wght@400;700&family=Libre+Caslon+Text:ital@0;1&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- ======================================================
+       FAVICON
+  ======================================================= -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%2322150d'/%3E%3Cpath d='M12 48c13-20 26-24 40-30M16 20c10 5 20 5 31-2' fill='none' stroke='%23d49a28' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='18' cy='18' r='6' fill='%23efcf73'/%3E%3C/svg%3E"
+  >
+
+
+  <!-- ======================================================
+       SITE FILES
+  ======================================================= -->
+  <link
+    rel="stylesheet"
+    href="learning-lok.css"
+  >
+
+  <script
+    src="learning-lok.js"
+    defer
+  ></script>
+
+</head>
+
+
+<body>
+
+  <!-- ======================================================
+       ACCESSIBILITY
+  ======================================================= -->
+  <a
+    class="skip-link"
+    href="#main"
+  >
+    Skip to the courtyard
+  </a>
+
+
+  <!-- ======================================================
+       TEXTURE
+  ======================================================= -->
+  <div
+    class="paper-grain"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- ======================================================
+       HEADER
+  ======================================================= -->
+  <header
+    class="topbar"
+    id="topbar"
+  >
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="JigyasaVerse homepage"
     >
-      <span id="scrollProgress"></span>
-    </div>
 
-    <!-- Accessibility link -->
-    <a class="skip-link" href="#main">
-      Skip to the courtyard
-    </a>
-
-    <!-- Header -->
-    <header class="topbar" id="topbar">
-      <a
-        class="brand"
-        href="index.html"
-        aria-label="JigyasaVerse homepage"
+      <img
+        class="brand-logo"
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt="JigyasaVerse moon and pencil logo"
       >
-        <img
-          class="brand-logo"
-          src="images/wonder-verse-moon-pencil-logo.png"
-          alt="JigyasaVerse moon and pencil logo"
-        />
 
-        <span class="brand-text">
-          <strong>JIGYASAVERSE</strong>
-          <small>Learning Lok</small>
-        </span>
-      </a>
-
-      <button
-        class="menu"
-        id="menu"
-        type="button"
-        aria-expanded="false"
-        aria-controls="nav"
-      >
-        <span aria-hidden="true">☰</span>
-        Menu
-      </button>
-
-      <nav id="nav" aria-label="Learning Lok navigation">
-        <a href="#courtyard">The courtyard</a>
-        <a href="#explore">Explore</a>
-        <a href="#river">Knowledge river</a>
-        <a href="#wisdom">Old wisdom</a>
-        <a href="books.html">Library</a>
-
-        <a href="https://endearing-cat-c1f80e.netlify.app/">
-          Contact
-        </a>
-
-        <a class="nav-home" href="index.html">
-          JigyasaVerse homepage
-        </a>
-      </nav>
-    </header>
-
-    <main id="main">
-      <!-- Hero entrance -->
-      <section class="entry" id="top">
-        <div class="entry-bg" aria-hidden="true"></div>
-        <div class="entry-shade" aria-hidden="true"></div>
-
-        <img
-          class="entry-cosmos"
-          src="images/learninglok.png"
-          alt=""
-          aria-hidden="true"
-        />
-
-        <div class="threshold">
-          <div class="entrance-copy">
-            <p class="eyebrow">
-              JIGYASAVERSE · LEARNING LOK
-            </p>
-
-            <h1 lang="hi">
-              सीखने का
-              <br />
-              <em>आँगन</em>
-            </h1>
-
-            <p class="roman">
-              Seekhne Ka Aangan
-            </p>
-
-            <p class="tagline">
-              You were learning long before someone called it
-              a subject.
-            </p>
-
-            <p class="entry-lede">
-              Come in.
-              <br />
-              Wander around like a child.
-              <br />
-              Follow what makes you curious.
-            </p>
-
-            <div class="entry-actions">
-              <a class="primary" href="#explore">
-                Find something to explore ^w^
-              </a>
-
-              <button
-                class="secondary"
-                id="openNote"
-                type="button"
-              >
-                Read the note beneath the tree
-              </button>
-            </div>
-          </div>
-
-          <!-- Admissions sign -->
-          <aside class="entry-sign">
-            <small>
-              THE VERY SERIOUS ADMISSIONS OFFICE
-            </small>
-
-            <h2>Entry requirement:</h2>
-
-            <strong>Curiosity.</strong>
-
-            <p>That's it.</p>
-
-            <p class="chalk">
-              ask · notice · try · make · return
-            </p>
-          </aside>
-        </div>
-
-        <a class="down" href="#courtyard">
-          Walk into the aangan (courtyard)
-          <span>↓</span>
-        </a>
-      </section>
-
-      <!-- Courtyard philosophy -->
-      <section
-        class="courtyard-intro reveal"
-        id="courtyard"
-      >
-        <p class="folio">
-          COURTYARD NOTE · 01
-        </p>
-
-        <div class="courtyard-statement">
-          <p class="eyebrow">
-            BEFORE SUBJECTS HAD LABELS
-          </p>
-
-          <h2>
-            Learning was
-            <em>everywhere.</em>
-          </h2>
-
-          <div class="learning-lines">
-            <p>
-              <span>Maths</span>
-              lived in trade, measurement and architecture.
-            </p>
-
-            <p>
-              <span>Science</span>
-              lived in fields, kitchens, bodies and stars.
-            </p>
-
-            <p>
-              <span>Stories</span>
-              carried memory across generations.
-            </p>
-
-            <p>
-              <span>Arts and crafts</span>
-              taught the hands what words could not.
-            </p>
-          </div>
-
-          <p class="courtyard-close">
-            Learning never stopped being everywhere. We just
-            got very good at putting it into boxes.
-          </p>
-        </div>
-
-        <div class="tree-mark" aria-hidden="true">
-          वृक्ष
-        </div>
-      </section>
-
-      <!-- Learning courtyards -->
-      <section class="explore-section" id="explore">
-        <div class="section-heading reveal">
-          <div>
-            <p class="eyebrow">
-              WHERE TO TODAY?
-            </p>
-
-            <h2>
-              Choose a
-              <em>courtyard.</em>
-            </h2>
-          </div>
-
-          <p>
-            Did you ever have the wish of learning something close to you but never could?
-            <br />
-            You may just find something here that reminds it to you today.
-          </p>
-        </div>
-
-        <!-- Generated by learning-lok.js -->
-        <div
-          class="world-grid"
-          id="worldGrid"
-        ></div>
-
-        <!-- Expanded courtyard -->
-        <section
-          class="world-drawer"
-          id="worldDrawer"
-          aria-live="polite"
-          hidden
-        >
-          <button
-            class="drawer-close"
-            id="closeWorld"
-            type="button"
-            aria-label="Close exploration courtyard"
-          >
-            ×
-          </button>
-
-          <div class="drawer-heading">
-            <p class="eyebrow">
-              INSIDE THE COURTYARD
-            </p>
-
-            <span
-              class="drawer-symbol"
-              id="drawerSymbol"
-              aria-hidden="true"
-            ></span>
-
-            <h2 id="drawerTitle"></h2>
-
-            <p
-              class="drawer-hindi"
-              id="drawerHindi"
-            ></p>
-
-            <p
-              class="drawer-description"
-              id="drawerDescription"
-            ></p>
-          </div>
-
-          <div
-            class="exploration-grid"
-            id="explorationGrid"
-          ></div>
-        </section>
-      </section>
-
-      <!-- Knowledge River -->
-      <section class="river-section" id="river">
-        <div class="river-copy reveal">
-          <p class="eyebrow">
-            THE KNOWLEDGE RIVER
-          </p>
-
-          <h2>
-            How much do you
-            <em>need today?</em>
-          </h2>
-
-          <p>
-            You don't have to learn everything all at once.
-            <br />
-            Take what is useful.
-            <br />
-            The river will still be here tomorrow.
-          </p>
-        </div>
-
-        <div class="river-interaction reveal">
-          <div
-            class="river-line"
-            aria-hidden="true"
-          ></div>
-
-          <div class="vessel-choices" id="vessels">
-            <button
-              type="button"
-              data-vessel="cup"
-            >
-              <span class="vessel-icon">◡</span>
-              <b>एक प्याला</b>
-              <strong>A cup</strong>
-              <small>Give me one useful idea.</small>
-            </button>
-
-            <button
-              type="button"
-              data-vessel="bucket"
-            >
-              <span class="vessel-icon">◯</span>
-              <b>एक बाल्टी</b>
-              <strong>A bucket</strong>
-              <small>Let me practise.</small>
-            </button>
-
-            <button
-              type="button"
-              data-vessel="river"
-            >
-              <span class="vessel-icon">≋</span>
-              <b>एक नदी</b>
-              <strong>The river</strong>
-              <small>I want to go deep and make a new technique or art!</small>
-            </button>
-          </div>
-
-          <article
-            class="water-result"
-            id="waterResult"
-            aria-live="polite"
-          >
-            <p class="eyebrow">
-              CHOICE is ALL YOURS
-            </p>
-
-            <h3>
-              Take what helps you begin.
-            </h3>
-
-            <p>
-              You do not have to collect everything to prove
-              you were here.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Old wisdom -->
-      <section class="wisdom-section" id="wisdom">
-        <div class="section-heading reveal">
-          <div>
-            <p class="eyebrow">
-              OLD WISDOM · NEW EYES
-            </p>
-
-            <h2>
-              Keep the useful.
-              <br />
-              <em>Leave the rest.</em>
-            </h2>
-          </div>
-
-          <p>
-            Old does not automatically mean better.
-            <br />
-            New does not automatically mean wiser.
-            <br />
-            We can choose.
-          </p>
-        </div>
-
-        <div class="wisdom-grid">
-          <!-- We carry -->
-          <article class="wisdom-panel carry reveal">
-            <p class="panel-label">
-              WE CARRY
-            </p>
-
-            <div class="wisdom-item">
-              <span>01</span>
-
-              <div>
-                <h3>Observation</h3>
-
-                <p>
-                  Notice before someone tells you what to see.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>02</span>
-
-              <div>
-                <h3>Practice</h3>
-
-                <p>
-                  Understanding changes when your hands get
-                  involved.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>03</span>
-
-              <div>
-                <h3>Story</h3>
-
-                <p>
-                  Knowledge becomes memorable when it becomes
-                  human.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>04</span>
-
-              <div>
-                <h3>Community</h3>
-
-                <p>
-                  Learn something. Pass something on.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- We leave -->
-          <article class="wisdom-panel leave reveal">
-            <p class="panel-label">
-              WE LEAVE
-            </p>
-
-            <div class="wisdom-item">
-              <span>×</span>
-
-              <div>
-                <h3>Exclusion</h3>
-
-                <p>
-                  Curiosity belongs to everybody.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>×</span>
-
-              <div>
-                <h3>Fear</h3>
-
-                <p>
-                  Silence is not the same thing as
-                  understanding.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>×</span>
-
-              <div>
-                <h3>Knowledge as rank</h3>
-
-                <p>
-                  Knowing more does not make a person worth
-                  more.
-                </p>
-              </div>
-            </div>
-
-            <div class="wisdom-item">
-              <span>×</span>
-
-              <div>
-                <h3>One right way</h3>
-
-                <p>
-                  Different minds often need different routes.
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <p class="history-note reveal">
-          Historical learning traditions were diverse and
-          imperfect. Learning was often restricted by class,
-          caste, gender, race, religion or wealth.
-
-          <br />
-          <br />
-
-          We are not rebuilding the past.
-
-          <strong>
-            We are borrowing what still helps us learn.
-          </strong>
-        </p>
-      </section>
-
-      <!-- Teacher moment -->
-      <section class="teacher-moment reveal">
-        <p class="eyebrow">
-          TEACHER · LEARNER · WORLD
-        </p>
-
-        <h2>
-          A teacher can show you the door.
-          <br />
-          <em>You still have to notice it.</em>
-        </h2>
-
-        <p>
-          Ask. Observe. Try. Get confused. Ask again.
-          <br />
-          That's learning too.
-        </p>
-      </section>
-
-      <!-- Library -->
-      <section class="library-section reveal">
-        <div
-          class="book-stack"
-          aria-hidden="true"
-        >
-          <span>QUESTIONS</span>
-          <span>STORIES</span>
-          <span>FIELD NOTES</span>
-          <span>MISTAKES</span>
-          <span>WONDER</span>
-        </div>
-
-        <div class="library-copy">
-          <p class="eyebrow">
-            THE JIGYASAVERSE LIBRARY
-          </p>
-
-          <h2>
-            Get lost
-            <em>on purpose.</em>
-          </h2>
-
-          <p>
-            Books, stories, experiences, rabbit holes and
-            things worth carrying around in your head.
-          </p>
-
-          <a
-            class="library-link"
-            href="books.html"
-          >
-            Wander into the Library 
-          </a>
-        </div>
-      </section>
-
-      <!-- Final rule -->
-      <section class="final-rule reveal">
-        <p class="eyebrow">
-          THE ONLY ENTRY RULE
-        </p>
-
-        <h2>
-          Bring
-          <em>curiosity.</em>
-        </h2>
-
-        <p>
-          Everything else can be learned.
-        </p>
-
-        <div class="not-required">
-          <span>perfect grades</span>
-          <span>already knowing</span>
-          <span>looking clever</span>
-          <span>choosing one path forever</span>
-        </div>
-
-        <a
-          href="#explore"
-          class="return-explore"
-        >
-          Find another courtyard ↑
-        </a>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div>
-        <strong>JIGYASAVERSE</strong>
-
-        <p>
-          Learning Lok · सीखने का आँगन
-        </p>
-      </div>
-
-      <p lang="hi">
-        सीखना बहता रहता है।
-      </p>
-
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-
-        <a href="wonderverse.html">
-          Wonder लोक
-        </a>
-
-        <a href="books.html">Library</a>
-
-        <a href="https://endearing-cat-c1f80e.netlify.app/">
-          Contact
-        </a>
-
-        <a href="#top">Gate</a>
-      </div>
-    </footer>
-
-    <!-- Note beneath the tree -->
-    <dialog
-      class="entry-dialog"
-      id="entryDialog"
-      aria-labelledby="dialogTitle"
-    >
-      <button
-        class="close"
-        id="closeNote"
-        type="button"
-        aria-label="Close note"
-      >
-        ×
-      </button>
-
-      <p class="folio">
-        A NOTE LEFT BENEATH THE BANYAN TREE
-      </p>
-
-      <h2 id="dialogTitle" lang="hi">
-        ज्ञान बहता है।
-      </h2>
-
-      <p class="roman">
-        Knowledge keeps flowing.
-      </p>
-
-      <blockquote>
-        Take a cup if you need one idea.
-
-        <br />
-        <br />
-
-        Take a bucket if you're ready to practise.
-
-        <br />
-        <br />
-
-        Follow the river if curiosity refuses to let you go.
-
-        <br />
-        <br />
+      <span class="brand-text">
 
         <strong>
-          You can always come back.
+          JIGYASAVERSE
         </strong>
-      </blockquote>
 
-      <button
-        class="primary"
-        id="carryNote"
-        type="button"
+        <small>
+          Learning Lok
+        </small>
+
+      </span>
+
+    </a>
+
+
+    <button
+      class="menu"
+      id="menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav"
+    >
+      ☰ Menu
+    </button>
+
+
+    <nav
+      id="nav"
+      aria-label="Learning Lok navigation"
+    >
+
+      <a href="#courtyard">
+        The courtyard
+      </a>
+
+      <a href="#explore">
+        Explore
+      </a>
+
+      <a href="#river">
+        Knowledge river
+      </a>
+
+      <a href="#wisdom">
+        Old wisdom
+      </a>
+
+      <a href="books.html">
+        Library
+      </a>
+
+      <a
+        class="nav-home"
+        href="index.html"
       >
-        Carry this into the courtyard
-      </button>
-    </dialog>
-  </body>
+        JigyasaVerse ↗
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- ======================================================
+       MAIN
+  ======================================================= -->
+  <main id="main">
+
+
+    <!-- ====================================================
+         ENTRANCE
+    ===================================================== -->
+    <section
+      class="entry"
+      id="top"
+    >
+
+      <div
+        class="entry-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="entry-shade"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="threshold">
+
+
+        <div class="entrance-copy">
+
+          <p class="eyebrow">
+            JIGYASAVERSE · LEARNING LOK
+          </p>
+
+
+          <h1 lang="hi">
+            सीखने का
+            <br>
+            <em>आँगन</em>
+          </h1>
+
+
+          <p class="roman">
+            Seekhne Ka Aangan
+          </p>
+
+
+          <p class="tagline">
+            You were learning long before
+            someone called it a subject.
+          </p>
+
+
+          <p class="entry-lede">
+
+            Come in.
+
+            There is no correct door.
+
+            Follow what makes you curious.
+
+          </p>
+
+
+          <div class="entry-actions">
+
+            <a
+              class="primary"
+              href="#explore"
+            >
+              Find something to explore ↓
+            </a>
+
+            <button
+              class="secondary"
+              id="openNote"
+              type="button"
+            >
+              Read the note beneath the tree
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Admissions sign -->
+
+        <aside class="entry-sign">
+
+          <small>
+            THE VERY SERIOUS ADMISSIONS OFFICE
+          </small>
+
+
+          <h2>
+            Entry requirement:
+          </h2>
+
+
+          <strong>
+            Curiosity.
+          </strong>
+
+
+          <p>
+            That's it.
+          </p>
+
+
+          <p class="chalk">
+            ask · notice · try · make · return
+          </p>
+
+        </aside>
+
+      </div>
+
+
+      <a
+        class="down"
+        href="#courtyard"
+      >
+        Walk into the aangan
+        <span>↓</span>
+      </a>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         SHORT COURTYARD PHILOSOPHY
+    ===================================================== -->
+    <section
+      class="courtyard-intro reveal"
+      id="courtyard"
+    >
+
+      <p class="folio">
+        COURTYARD NOTE · 01
+      </p>
+
+
+      <div class="courtyard-statement">
+
+        <p class="eyebrow">
+          BEFORE SUBJECTS HAD LABELS
+        </p>
+
+
+        <h2>
+          Learning was
+          <em>everywhere.</em>
+        </h2>
+
+
+        <div class="learning-lines">
+
+          <p>
+            <span>Maths</span>
+            lived in trade, measurement and architecture.
+          </p>
+
+          <p>
+            <span>Science</span>
+            lived in fields, kitchens, bodies and stars.
+          </p>
+
+          <p>
+            <span>Stories</span>
+            carried memory across generations.
+          </p>
+
+          <p>
+            <span>Making</span>
+            taught the hands what words could not.
+          </p>
+
+        </div>
+
+
+        <p class="courtyard-close">
+          Learning never stopped being everywhere.
+          We just got very good at putting it into boxes.
+        </p>
+
+      </div>
+
+
+      <div
+        class="tree-mark"
+        aria-hidden="true"
+      >
+        वृक्ष
+      </div>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         SIX LEARNING COURTYARDS
+    ===================================================== -->
+    <section
+      class="explore-section"
+      id="explore"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            WHERE TO TODAY?
+          </p>
+
+          <h2>
+            Choose a
+            <em>courtyard.</em>
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          Not a career.
+
+          Not a lifelong commitment.
+
+          Just something that makes you wonder today.
+
+        </p>
+
+      </div>
+
+
+      <div
+        class="world-grid"
+        id="worldGrid"
+      >
+
+        <!-- Generated by JavaScript -->
+
+      </div>
+
+
+      <!-- Expanded category -->
+
+      <section
+        class="world-drawer"
+        id="worldDrawer"
+        aria-live="polite"
+        hidden
+      >
+
+        <button
+          class="drawer-close"
+          id="closeWorld"
+          type="button"
+          aria-label="Close exploration courtyard"
+        >
+          ×
+        </button>
+
+
+        <div class="drawer-heading">
+
+          <p
+            class="eyebrow"
+            id="drawerEyebrow"
+          >
+            INSIDE THE COURTYARD
+          </p>
+
+
+          <span
+            class="drawer-symbol"
+            id="drawerSymbol"
+            aria-hidden="true"
+          ></span>
+
+
+          <h2 id="drawerTitle"></h2>
+
+
+          <p
+            class="drawer-hindi"
+            id="drawerHindi"
+          ></p>
+
+
+          <p
+            class="drawer-description"
+            id="drawerDescription"
+          ></p>
+
+        </div>
+
+
+        <div
+          class="exploration-grid"
+          id="explorationGrid"
+        ></div>
+
+      </section>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         KNOWLEDGE RIVER
+    ===================================================== -->
+    <section
+      class="river-section"
+      id="river"
+    >
+
+
+      <div class="river-copy reveal">
+
+        <p class="eyebrow">
+          THE KNOWLEDGE RIVER
+        </p>
+
+
+        <h2>
+          How much do you
+          <em>need today?</em>
+        </h2>
+
+
+        <p>
+
+          You don't have to learn everything.
+
+          Take what is useful.
+
+          The river will still be here tomorrow.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="river-interaction reveal">
+
+
+        <div
+          class="river-line"
+          aria-hidden="true"
+        ></div>
+
+
+        <div
+          class="vessel-choices"
+          id="vessels"
+        >
+
+
+          <button
+            type="button"
+            data-vessel="cup"
+          >
+
+            <span class="vessel-icon">
+              ◡
+            </span>
+
+            <b>
+              एक प्याला
+            </b>
+
+            <strong>
+              A cup
+            </strong>
+
+            <small>
+              Give me one useful idea.
+            </small>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            data-vessel="bucket"
+          >
+
+            <span class="vessel-icon">
+              ◯
+            </span>
+
+            <b>
+              एक बाल्टी
+            </b>
+
+            <strong>
+              A bucket
+            </strong>
+
+            <small>
+              Let me practise.
+            </small>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            data-vessel="river"
+          >
+
+            <span class="vessel-icon">
+              ≋
+            </span>
+
+            <b>
+              एक नदी
+            </b>
+
+            <strong>
+              The river
+            </strong>
+
+            <small>
+              I want to go deep.
+            </small>
+
+          </button>
+
+        </div>
+
+
+
+        <article
+          class="water-result"
+          id="waterResult"
+          aria-live="polite"
+        >
+
+          <p class="eyebrow">
+            NO WRONG CHOICE
+          </p>
+
+
+          <h3>
+            Take what helps you begin.
+          </h3>
+
+
+          <p>
+            You do not have to collect everything
+            to prove you were here.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         OLD WISDOM / NEW EYES
+    ===================================================== -->
+    <section
+      class="wisdom-section"
+      id="wisdom"
+    >
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            OLD WISDOM · NEW EYES
+          </p>
+
+          <h2>
+            Keep the useful.
+            <br>
+            <em>Leave the rest.</em>
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          Old does not automatically mean better.
+
+          New does not automatically mean wiser.
+
+          We can choose.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="wisdom-grid">
+
+
+        <!-- Carry -->
+
+        <article class="wisdom-panel carry reveal">
+
+          <p class="panel-label">
+            WE CARRY
+          </p>
+
+
+          <div class="wisdom-item">
+
+            <span>01</span>
+
+            <div>
+
+              <h3>
+                Observation
+              </h3>
+
+              <p>
+                Notice before someone tells you what to see.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>02</span>
+
+            <div>
+
+              <h3>
+                Practice
+              </h3>
+
+              <p>
+                Understanding changes when your hands get involved.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>03</span>
+
+            <div>
+
+              <h3>
+                Story
+              </h3>
+
+              <p>
+                Knowledge becomes memorable when it becomes human.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>04</span>
+
+            <div>
+
+              <h3>
+                Community
+              </h3>
+
+              <p>
+                Learn something. Pass something on.
+              </p>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Leave -->
+
+        <article class="wisdom-panel leave reveal">
+
+          <p class="panel-label">
+            WE LEAVE
+          </p>
+
+
+          <div class="wisdom-item">
+
+            <span>×</span>
+
+            <div>
+
+              <h3>
+                Exclusion
+              </h3>
+
+              <p>
+                Curiosity belongs to everybody.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>×</span>
+
+            <div>
+
+              <h3>
+                Fear
+              </h3>
+
+              <p>
+                Silence is not the same thing as understanding.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>×</span>
+
+            <div>
+
+              <h3>
+                Knowledge as rank
+              </h3>
+
+              <p>
+                Knowing more does not make a person worth more.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="wisdom-item">
+
+            <span>×</span>
+
+            <div>
+
+              <h3>
+                One right way
+              </h3>
+
+              <p>
+                Different minds often need different routes.
+              </p>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <p class="history-note reveal">
+
+        Historical learning traditions were diverse and imperfect.
+        Learning was often restricted by class, caste, gender,
+        race, religion or wealth.
+
+        We are not rebuilding the past.
+
+        <strong>
+          We are borrowing what still helps us learn.
+        </strong>
+
+      </p>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         TEACHER MOMENT
+    ===================================================== -->
+    <section class="teacher-moment reveal">
+
+      <p class="eyebrow">
+        TEACHER · LEARNER · WORLD
+      </p>
+
+
+      <h2>
+        A teacher can show you the door.
+        <br>
+        <em>You still have to notice it.</em>
+      </h2>
+
+
+      <p>
+
+        Ask.
+
+        Observe.
+
+        Try.
+
+        Get confused.
+
+        Ask again.
+
+        That's learning too.
+
+      </p>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         LIBRARY
+    ===================================================== -->
+    <section class="library-section reveal">
+
+
+      <div
+        class="book-stack"
+        aria-hidden="true"
+      >
+
+        <span>QUESTIONS</span>
+
+        <span>STORIES</span>
+
+        <span>FIELD NOTES</span>
+
+        <span>MISTAKES</span>
+
+        <span>WONDER</span>
+
+      </div>
+
+
+      <div class="library-copy">
+
+        <p class="eyebrow">
+          THE JIGYASAVERSE LIBRARY
+        </p>
+
+
+        <h2>
+          Get lost
+          <em>on purpose.</em>
+        </h2>
+
+
+        <p>
+
+          Books, stories, experiences, rabbit holes
+          and things worth carrying around in your head.
+
+        </p>
+
+
+        <a
+          class="library-link"
+          href="books.html"
+        >
+          Wander into the Library →
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ====================================================
+         FINAL RULE
+    ===================================================== -->
+    <section class="final-rule reveal">
+
+      <p class="eyebrow">
+        THE ONLY ENTRY RULE
+      </p>
+
+
+      <h2>
+        Bring
+        <em>curiosity.</em>
+      </h2>
+
+
+      <p>
+        Everything else can be learned.
+      </p>
+
+
+      <div class="not-required">
+
+        <span>
+          perfect grades
+        </span>
+
+        <span>
+          already knowing
+        </span>
+
+        <span>
+          looking clever
+        </span>
+
+        <span>
+          choosing one path forever
+        </span>
+
+      </div>
+
+
+      <a
+        href="#explore"
+        class="return-explore"
+      >
+        Find another courtyard ↑
+      </a>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
+  <footer>
+
+    <div>
+
+      <strong>
+        JIGYASAVERSE
+      </strong>
+
+      <p>
+        Learning Lok · सीखने का आँगन
+      </p>
+
+    </div>
+
+
+    <p lang="hi">
+      सीखना बहता रहता है।
+    </p>
+
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="wonderverse.html">
+        Wonder लोक
+      </a>
+
+      <a href="books.html">
+        Library
+      </a>
+
+      <a href="#top">
+        Gate ↑
+      </a>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ======================================================
+       COURTYARD NOTE
+  ======================================================= -->
+  <dialog
+    class="entry-dialog"
+    id="entryDialog"
+    aria-labelledby="dialogTitle"
+  >
+
+    <button
+      class="close"
+      id="closeNote"
+      type="button"
+      aria-label="Close note"
+    >
+      ×
+    </button>
+
+
+    <p class="folio">
+      A NOTE LEFT BENEATH THE BANYAN TREE
+    </p>
+
+
+    <h2
+      id="dialogTitle"
+      lang="hi"
+    >
+      ज्ञान बहता है।
+    </h2>
+
+
+    <p class="roman">
+      Knowledge keeps flowing.
+    </p>
+
+
+    <blockquote>
+
+      Take a cup if you need one idea.
+
+      Take a bucket if you're ready to practise.
+
+      Follow the river if curiosity refuses to let you go.
+
+      <strong>
+        You can always come back.
+      </strong>
+
+    </blockquote>
+
+
+    <button
+      class="primary"
+      id="carryNote"
+      type="button"
+    >
+      Carry this into the courtyard
+    </button>
+
+  </dialog>
+
+</body>
+
 </html>
