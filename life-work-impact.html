@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Life, Work & Impact — a human-centred Jigyasa Verse space for health, trades, customer service, business, operations and marketing."
+  >
+
+  <meta name="theme-color" content="#183f3a">
+
+  <title>
+    Life, Work & Impact | Jigyasa Verse
+  </title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23183f3a'/%3E%3Cpath d='M12 43c13-23 26-25 40-20M13 47c12-8 23-7 38-2' fill='none' stroke='%23f2bd68' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='48' cy='22' r='5' fill='%23ffe5a8'/%3E%3C/svg%3E"
+  >
+
+  <link
+    rel="stylesheet"
+    href="life-work-impact.css"
+  >
+
+  <script
+    src="life-work-impact.js"
+    defer
+  ></script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#pathways">
+    Skip to career pathways
+  </a>
+
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- HEADER -->
+
+  <header class="site-header" id="siteHeader">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Jigyasa Verse homepage"
+    >
+      <span class="brand-visual">
+
+        <img
+          class="brand-logo"
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+        >
+
+        <span
+          class="brand-fallback"
+          aria-hidden="true"
+        >
+          JV
+        </span>
+
+      </span>
+
+      <span class="brand-copy">
+        <strong>Jigyasa Verse</strong>
+        <small>Learning Lok · Life, Work & Impact</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav"
+      aria-label="Open navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="mainNav"
+      aria-label="Primary navigation"
+    >
+      <a href="#studentNote">For students</a>
+      <a href="#pathways">Explore pathways</a>
+      <a href="#humanMoment">The human moment</a>
+      <a href="#teacherNote">For educators</a>
+
+      <a
+        class="nav-home"
+        href="learning-lok.html"
+      >
+        Learning Lok ↗
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="top">
+
+      <div
+        class="notice-wall"
+        aria-hidden="true"
+      >
+        <span class="sticky sticky-one">
+          CALL SUPPLIER<br>
+          before 3!
+        </span>
+
+        <span class="sticky sticky-two">
+          appointment moved<br>
+          10:30 → 11
+        </span>
+
+        <span class="sticky sticky-three">
+          ORDER<br>
+          oat milk ☕
+        </span>
+
+        <span class="sticky sticky-four">
+          invoice??
+        </span>
+
+        <span class="scribble scribble-one">
+          remember to breathe
+        </span>
+
+        <span class="scribble scribble-two">
+          quality check ✓
+        </span>
+      </div>
+
+      <div
+        class="notification-stack"
+        aria-hidden="true"
+      >
+
+        <div class="notification phone-alert">
+          <span>☎</span>
+
+          <p>
+            <b>Incoming call</b>
+            <small>Probably important</small>
+          </p>
+        </div>
+
+        <div class="notification email-alert">
+          <span>✉</span>
+
+          <p>
+            <b>47 unread emails</b>
+            <small>Three marked “urgent”</small>
+          </p>
+        </div>
+
+        <div class="notification message-alert">
+          <span>•••</span>
+
+          <p>
+            <b>Customer typing…</b>
+            <small>For quite a while now</small>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          Jigyasa Verse presents · the people-facing world
+        </p>
+
+        <h1>
+          Life,<br>
+          <em>Work & Impact</em>
+        </h1>
+
+        <p class="hero-lead">
+          For the people who fix, care, organise, listen,
+          build, explain, sell, calm the chaos—and remember
+          there is always a human being on the other side.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="warm-button"
+            href="#pathways"
+          >
+            Find your pathway ↓
+          </a>
+
+          <a
+            class="outline-button"
+            href="#studentNote"
+          >
+            Read your letter
+          </a>
+
+        </div>
+      </div>
+
+      <aside
+        class="daily-board reveal"
+        aria-label="Today's very realistic list"
+      >
+
+        <div class="board-top">
+          <span>TODAY</span>
+          <b>8:04 AM</b>
+        </div>
+
+        <h2>
+          A perfectly calm day.
+        </h2>
+
+        <ul>
+          <li>
+            <span class="done">✓</span>
+            Open the door
+          </li>
+
+          <li>
+            <span>○</span>
+            Help six people at once
+          </li>
+
+          <li>
+            <span>○</span>
+            Find the missing form
+          </li>
+
+          <li>
+            <span>○</span>
+            Call the person who called twice
+          </li>
+
+          <li>
+            <span>○</span>
+            Solve the thing nobody predicted
+          </li>
+
+          <li>
+            <span>○</span>
+            Drink the coffee while it is warm
+          </li>
+        </ul>
+
+        <p>
+          Update: the phone is ringing.
+        </p>
+
+      </aside>
+
+    </section>
+
+    <!-- CHAOS TICKER -->
+
+    <section
+      class="chaos-strip"
+      aria-label="A busy service day"
+    >
+      <div class="ticker-track">
+
+        <span>PHONE RINGING</span>
+        <i>✦</i>
+
+        <span>ORDER DELAYED</span>
+        <i>✦</i>
+
+        <span>PATIENT WAITING</span>
+        <i>✦</i>
+
+        <span>EMAIL MARKED URGENT</span>
+        <i>✦</i>
+
+        <span>PIPE STILL LEAKING</span>
+        <i>✦</i>
+
+        <span>CUSTOMER NEEDS HELP</span>
+        <i>✦</i>
+
+        <span>CAMPAIGN DUE TODAY</span>
+        <i>✦</i>
+
+        <span>TAKE ONE BREATH</span>
+
+      </div>
+    </section>
+
+    <!-- STUDENT NOTE -->
+
+    <section
+      class="student-note"
+      id="studentNote"
+    >
+
+      <div class="note-intro reveal">
+
+        <p class="eyebrow">
+          A note for the person choosing people
+        </p>
+
+        <h2>
+          Your work will enter somebody else's day.
+        </h2>
+
+        <div
+          class="human-line"
+          aria-hidden="true"
+        >
+          <span></span>
+          <i></i>
+          <b></b>
+        </div>
+
+      </div>
+
+      <article class="letter reveal">
+
+        <p>
+          Dear student,
+        </p>
+
+        <p>
+          Thank you for choosing work that asks for more than
+          technical skill. You are choosing patience—because
+          even when the procedure, repair, order or campaign
+          looks straightforward on paper, the human being
+          involved rarely arrives as a neat checklist.
+        </p>
+
+        <p>
+          You may fix a leaking pipe and give a family their
+          kitchen back. You may help repair a heart and return
+          somebody to the people waiting for them. You may
+          answer the fifth frustrated call with the same care
+          as the first. You may chase a supplier, check the
+          beans, redesign the packaging and make sure the
+          coffee served by your little business is something
+          a customer will come back for.
+        </p>
+
+        <blockquote>
+          The task may be technical.
+          The impact is always human.
+        </blockquote>
+
+        <p>
+          Some days will be chaotic. A customer will be angry
+          about something you did not cause. A patient may be
+          frightened. A delivery will vanish. A machine will
+          stop cooperating five minutes before closing. You
+          will need to solve the practical problem without
+          forgetting the emotional one.
+        </p>
+
+        <p>
+          That is difficult work. It also matters. Competence
+          builds trust; patience protects dignity; consistency
+          makes people feel safe. You will not handle every
+          moment perfectly, but you can learn to pause, listen,
+          clarify and try the next useful thing.
+        </p>
+
+        <p class="signoff">
+          Thank you for choosing a life where your skill
+          becomes part of somebody else's relief, confidence,
+          comfort or joy.<br>
+          <strong>— Jigyasa Verse</strong>
+        </p>
+
+      </article>
+
+    </section>
+
+    <!-- PATHWAY INTRODUCTION -->
+
+    <section
+      class="pathway-intro"
+      id="pathways"
+    >
+
+      <p class="eyebrow reveal">
+        Five doors into meaningful work
+      </p>
+
+      <h2 class="reveal">
+        Different tools.<br>
+        The same human promise.
+      </h2>
+
+      <p class="reveal">
+        Learn the knowledge. Practise the skill. Understand
+        the system. Then remember whom all that work is for.
+      </p>
+
+    </section>
+
+    <!-- PATHWAYS -->
+
+    <section
+      class="pathway-grid"
+      aria-label="Career and study pathways"
+    >
+
+      <!-- HEALTH AND CARE -->
+
+      <a
+        class="path-card health-card reveal"
+        href="health-and-care.html"
+      >
+
+        <span class="path-number">01</span>
+
+        <div
+          class="path-art health-art"
+          aria-hidden="true"
+        >
+          <span>♥</span>
+          <i></i>
+          <b></b>
+        </div>
+
+        <p class="path-kicker">
+          Knowledge with compassion
+        </p>
+
+        <h3>Health & Care</h3>
+
+        <p>
+          Medicine, nursing, allied health, aged care,
+          community care and the responsibility of meeting
+          people when they feel vulnerable.
+        </p>
+
+        <strong>
+          Enter Health & Care →
+        </strong>
+
+      </a>
+
+      <!-- TRADES -->
+
+      <a
+        class="path-card trade-card reveal"
+        href="trades-and-vocational.html"
+      >
+
+        <span class="path-number">02</span>
+
+        <div
+          class="path-art trade-art"
+          aria-hidden="true"
+        >
+          <span>⌁</span>
+          <i></i>
+          <b></b>
+        </div>
+
+        <p class="path-kicker">
+          Skill you can see working
+        </p>
+
+        <h3>
+          Trades & Vocational
+        </h3>
+
+        <p>
+          Plumbing, electrical, building, automotive,
+          hospitality and the practical intelligence that
+          keeps everyday life moving.
+        </p>
+
+        <strong>
+          Enter the Workshop →
+        </strong>
+
+      </a>
+
+      <!-- CUSTOMER SERVICE -->
+
+      <a
+        class="path-card service-card reveal"
+        href="customer-service.html"
+      >
+
+        <span class="path-number">03</span>
+
+        <div
+          class="path-art service-art"
+          aria-hidden="true"
+        >
+          <span>☎</span>
+          <i>!</i>
+          <b>☺</b>
+        </div>
+
+        <p class="path-kicker">
+          Listen before solving
+        </p>
+
+        <h3>
+          Customer Service
+        </h3>
+
+        <p>
+          Communication, conflict, hospitality and the art
+          of making a difficult interaction feel clear,
+          fair and human.
+        </p>
+
+        <strong>
+          Answer the Call →
+        </strong>
+
+      </a>
+
+      <!-- BUSINESS -->
+
+      <a
+        class="path-card business-card reveal"
+        href="business-and-operations.html"
+      >
+
+        <span class="path-number">04</span>
+
+        <div
+          class="path-art business-art"
+          aria-hidden="true"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <i>✓</i>
+        </div>
+
+        <p class="path-kicker">
+          Turn effort into a system
+        </p>
+
+        <h3>
+          Business & Operations
+        </h3>
+
+        <p>
+          People, suppliers, quality, finance, logistics
+          and the thousand quiet decisions behind a
+          reliable organisation.
+        </p>
+
+        <strong>
+          Open the Operations Room →
+        </strong>
+
+      </a>
+
+      <!-- MARKETING -->
+
+      <a
+        class="path-card marketing-card reveal"
+        href="marketing.html"
+      >
+
+        <span class="path-number">05</span>
+
+        <div
+          class="path-art marketing-art"
+          aria-hidden="true"
+        >
+          <span>GOOD</span>
+          <i>STORY</i>
+          <b>↗</b>
+        </div>
+
+        <p class="path-kicker">
+          Attention with responsibility
+        </p>
+
+        <h3>Marketing</h3>
+
+        <p>
+          Research, storytelling, strategy, brand and the
+          responsibility to understand people without
+          reducing them to numbers.
+        </p>
+
+        <strong>
+          Build the Message →
+        </strong>
+
+      </a>
+
+    </section>
+
+    <!-- ANGRY CUSTOMER -->
+
+    <section
+      class="human-moment"
+      id="humanMoment"
+    >
+
+      <div class="angry-customer reveal">
+
+        <div
+          class="phone"
+          aria-hidden="true"
+        >
+          <span>☎</span>
+          <i></i>
+        </div>
+
+        <p class="caller-label">
+          INCOMING: VERY FRUSTRATED HUMAN
+        </p>
+
+        <div class="speech-bubble">
+          “I have already explained this THREE TIMES!”
+        </div>
+
+        <button
+          id="calmCall"
+          class="calm-button"
+          type="button"
+        >
+          Take one breath before answering
+        </button>
+
+      </div>
+
+      <div
+        class="response-panel reveal"
+        id="responsePanel"
+        aria-live="polite"
+      >
+
+        <p class="eyebrow">
+          The human moment
+        </p>
+
+        <h2>
+          You do not need to absorb the anger
+          to address the problem.
+        </h2>
+
+        <ol>
+
+          <li>
+            <span>01</span>
+
+            <div>
+              <strong>Regulate</strong>
+              <p>
+                Slow your breath and lower your pace.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span>02</span>
+
+            <div>
+              <strong>Acknowledge</strong>
+              <p>
+                “I can hear how frustrating this has been.”
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span>03</span>
+
+            <div>
+              <strong>Clarify</strong>
+              <p>
+                Separate what happened from what is
+                needed now.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <span>04</span>
+
+            <div>
+              <strong>Act or escalate</strong>
+              <p>
+                Offer the next honest step—without promising
+                what you cannot deliver.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+      </div>
+
+    </section>
+
+    <!-- QUIET IMPACT -->
+
+    <section class="quiet-impact">
+
+      <div class="impact-heading reveal">
+
+        <p class="eyebrow">
+          What the job description rarely says
+        </p>
+
+        <h2>
+          Impact often looks ordinary from the outside.
+        </h2>
+
+      </div>
+
+      <div class="impact-list">
+
+        <article class="reveal">
+          <span>01</span>
+
+          <p>
+            A repaired tap means a parent can finally stop
+            worrying about the water bill.
+          </p>
+        </article>
+
+        <article class="reveal">
+          <span>02</span>
+
+          <p>
+            A clearly explained appointment helps a
+            frightened patient feel less lost.
+          </p>
+        </article>
+
+        <article class="reveal">
+          <span>03</span>
+
+          <p>
+            A careful stock check means a small café can
+            open tomorrow morning.
+          </p>
+        </article>
+
+        <article class="reveal">
+          <span>04</span>
+
+          <p>
+            A respectful response may change the entire
+            memory of a difficult day.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- TEACHER NOTE -->
+
+    <section
+      class="teacher-note"
+      id="teacherNote"
+    >
+
+      <div
+        class="desk-chaos reveal"
+        aria-hidden="true"
+      >
+
+        <span class="desk-note dn-one">
+          assessment<br>
+          feedback
+        </span>
+
+        <span class="desk-note dn-two">
+          book guest<br>
+          speaker
+        </span>
+
+        <span class="desk-note dn-three">
+          student needs<br>
+          extra practice
+        </span>
+
+        <div class="coffee">
+          <i></i>
+          <b>TEA?</b>
+        </div>
+
+        <div class="pen"></div>
+
+        <div class="paper-stack">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+      </div>
+
+      <article class="teacher-copy reveal">
+
+        <p class="eyebrow">
+          A note for teachers, trainers and mentors
+        </p>
+
+        <h2>
+          You teach the skill—and the person carrying it.
+        </h2>
+
+        <p>
+          You demonstrate the procedure, correct the
+          technique and explain the system. Then you do
+          something harder: you prepare students for the
+          unpredictable human moments no textbook can
+          fully rehearse.
+        </p>
+
+        <p>
+          You teach an apprentice to respect a customer's
+          home. You remind a health student that the person
+          is more than the case. You help a new team member
+          hear the question beneath the complaint. You show
+          future business owners that quality is a promise
+          made repeatedly, especially when nobody is
+          watching.
+        </p>
+
+        <p>
+          Your classroom, workshop, clinic and training floor
+          are where confidence becomes competence. Thank you
+          for repeating the explanation, supervising the
+          awkward first attempt and holding a standard high
+          enough to protect the people your students will
+          one day serve.
+        </p>
+
+        <blockquote>
+          Every patient helped, home repaired, customer
+          heard and business built will carry a little
+          of what you taught.
+        </blockquote>
+
+      </article>
+
+    </section>
+
+    <!-- CLOSING -->
+
+    <section class="closing">
+
+      <div
+        class="closing-notes"
+        aria-hidden="true"
+      >
+        <span>call back ✓</span>
+        <span>order sent ✓</span>
+        <span>patient safe ✓</span>
+        <span>coffee still cold</span>
+      </div>
+
+      <p class="reveal">
+        The day may be messy.
+      </p>
+
+      <h2 class="reveal">
+        Your care can still be clear.
+      </h2>
+
+      <a
+        class="warm-button reveal"
+        href="#pathways"
+      >
+        Choose your pathway ↑
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      <strong>Jigyasa Verse</strong>
+      <p>Learning Lok · Life, Work & Impact</p>
+    </div>
+
+    <p>
+      For people learning how to help people.
+    </p>
+
+    <a href="#top">
+      Back to the busy desk ↑
+    </a>
+
+  </footer>
+
+</body>
+</html>
