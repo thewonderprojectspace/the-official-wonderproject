@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="The Living Arts — a warm and dramatic Jigyasa Verse home for students and educators exploring art, design, humanities, theatre, music and living traditions."
+  >
+
+  <meta name="theme-color" content="#40161f">
+
+  <title>The Living Arts | Jigyasa Verse</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2340161f'/%3E%3Cpath d='M12 43c13-23 26-25 40-20M13 47c12-8 23-7 38-2' fill='none' stroke='%23f0bd64' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='48' cy='22' r='5' fill='%23ffe4a5'/%3E%3C/svg%3E"
+  >
+
+  <link
+    rel="stylesheet"
+    href="the-living-arts.css"
+  >
+
+  <script
+    src="the-living-arts.js"
+    defer
+  ></script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#artForms">
+    Skip to the art forms
+  </a>
+
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- HEADER -->
+
+  <header class="site-header" id="siteHeader">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Jigyasa Verse homepage"
+    >
+      <span class="brand-visual">
+
+        <img
+          class="brand-logo"
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+        >
+
+        <span
+          class="brand-fallback"
+          aria-hidden="true"
+        >
+          JV
+        </span>
+
+      </span>
+
+      <span class="brand-copy">
+        <strong>Jigyasa Verse</strong>
+        <small>Learning Lok · The Living Arts</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainNav"
+      aria-label="Open navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="mainNav" aria-label="Primary navigation">
+      <a href="#studentLetter">For students</a>
+      <a href="#artForms">Explore the arts</a>
+      <a href="#legacy">Living legacies</a>
+      <a href="#teacherLetter">For educators</a>
+
+      <a class="nav-home" href="learning-lok.html">
+        Learning Lok ↗
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="top">
+
+      <div
+        class="curtain curtain-left"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="curtain curtain-right"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="spotlight"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="paint-blob blob-one"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="paint-blob blob-two"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="floating-note note-one"
+        aria-hidden="true"
+      >
+        ♪
+      </div>
+
+      <div
+        class="floating-note note-two"
+        aria-hidden="true"
+      >
+        ♫
+      </div>
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          Jigyasa Verse presents · a home for brave makers
+        </p>
+
+        <h1>
+          The<br>
+          <em>Living Arts</em>
+        </h1>
+
+        <p class="hero-lead">
+          Art, design, music, theatre and human stories are
+          not decorations around life. They are how humanity
+          remembers, questions, mourns, celebrates and
+          imagines what comes next.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="gold-button"
+            href="#artForms"
+          >
+            Enter the living gallery ↓
+          </a>
+
+          <a
+            class="outline-button"
+            href="#studentLetter"
+          >
+            A letter for you
+          </a>
+
+        </div>
+      </div>
+
+      <aside
+        class="admission-ticket reveal"
+        aria-label="Your admission ticket"
+      >
+
+        <div class="ticket-stub">
+          <span>ADMIT</span>
+          <strong>ONE</strong>
+        </div>
+
+        <div class="ticket-main">
+          <p>THE LIVING ARTS</p>
+
+          <h2>
+            Your idea belongs here.
+          </h2>
+
+          <small>
+            No certainty required · curiosity essential
+          </small>
+        </div>
+
+      </aside>
+
+      <a
+        class="scroll-cue"
+        href="#familyScene"
+      >
+        The show is beginning
+        <span>↓</span>
+      </a>
+
+    </section>
+
+    <!-- THE FAMILY CONVERSATION -->
+
+    <section
+      class="family-scene"
+      id="familyScene"
+      aria-labelledby="sceneTitle"
+    >
+
+      <div class="scene-heading reveal">
+
+        <p>
+          SCENE ONE · THE ANNOUNCEMENT
+        </p>
+
+        <h2 id="sceneTitle">
+          You told your family you wanted to pursue art.
+        </h2>
+
+      </div>
+
+      <div class="stage reveal">
+
+        <div
+          class="stage-lights"
+          aria-hidden="true"
+        >
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+        <div class="dialogue dialogue-student">
+          <span>YOU</span>
+
+          <p>
+            “I think I want to study art.”
+          </p>
+        </div>
+
+        <div class="dialogue dialogue-family">
+          <span>THE WELL-MEANING CHORUS</span>
+
+          <p>
+            “Wonderful! As a side hobby… obviously?”
+          </p>
+        </div>
+
+        <div
+          class="dramatic-pause"
+          aria-label="Dramatic pause"
+        >
+          DRAMATIC PAUSE
+        </div>
+
+        <div class="dialogue dialogue-student final-line">
+          <span>
+            YOU, WITH CHARACTER DEVELOPMENT
+          </span>
+
+          <p>
+            “No. I mean I want to build a life with it.”
+          </p>
+        </div>
+
+      </div>
+
+      <div class="scene-after reveal">
+
+        <strong>
+          And somewhere, an orchestra begins.
+        </strong>
+
+        <p>
+          Choosing art in a world obsessed with certainty
+          is not naïve. It is a brave decision to develop
+          your voice, master a craft and contribute
+          something that did not exist before you made it.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- STUDENT LETTER -->
+
+    <section
+      class="student-letter"
+      id="studentLetter"
+    >
+
+      <div class="letter-title reveal">
+
+        <p class="eyebrow">
+          A letter for the artist who is doubting
+        </p>
+
+        <h2>
+          This is not “just a hobby” anymore.
+        </h2>
+
+        <div
+          class="brush-stroke"
+          aria-hidden="true"
+        ></div>
+
+      </div>
+
+      <article class="paper-letter reveal">
+
+        <p>
+          Dear artist, designer, musician, performer,
+          writer and keeper of stories,
+        </p>
+
+        <p>
+          You chose a path without the neat certainty other
+          people understand. That does not make your choice
+          smaller. It makes your courage visible. You are
+          deciding to study how humans have expressed love,
+          resistance, faith, grief, identity and imagination
+          across generations.
+        </p>
+
+        <p>
+          You are not beginning from nothing. Every
+          brushstroke, rhythm, costume, building, poem,
+          movement and story carries an echo of someone who
+          worked before you. By learning older techniques and
+          understanding their histories, you are not becoming
+          trapped in the past. You are receiving something
+          precious enough to transform.
+        </p>
+
+        <blockquote>
+          Tradition survives when each generation loves it
+          enough to learn it—and trusts itself enough to let
+          it evolve.
+        </blockquote>
+
+        <p>
+          Things will become difficult. Inspiration will
+          disappear precisely when a deadline arrives. You
+          will compare your beginning to somebody else's
+          middle. You will create something terrible, then
+          something almost right, then something unmistakably
+          yours. You will doubt whether you belong.
+        </p>
+
+        <p>
+          Keep going. Greatness is not waiting on the
+          comfortable side of the barrier. Skill grows
+          through drafts, rehearsals, awkward attempts,
+          patient observation and the courage to show your
+          work again. The barrier is not evidence that you
+          chose incorrectly. It is often evidence that you
+          have reached the place where growth begins.
+        </p>
+
+        <p class="signature">
+          You made a beautiful choice.<br>
+          <strong>— Jigyasa Verse</strong>
+        </p>
+
+      </article>
+
+    </section>
+
+    <!-- GALLERY INTRODUCTION -->
+
+    <section
+      class="gallery-intro"
+      id="artForms"
+    >
+
+      <p class="eyebrow reveal">
+        Six rooms · countless ways of seeing
+      </p>
+
+      <h2 class="reveal">
+        Choose a door.<br>
+        Then leave it open.
+      </h2>
+
+      <p class="reveal">
+        The arts have never stayed politely inside
+        categories. Music becomes theatre. History shapes
+        design. Traditional craft meets technology.
+        Wander freely.
+      </p>
+
+    </section>
+
+    <!-- ART GALLERY -->
+
+    <section
+      class="art-gallery"
+      aria-label="Creative study areas"
+    >
+
+      <!-- VISUAL ART -->
+
+      <a
+        class="art-room visual-room reveal"
+        href="visual-art.html"
+      >
+
+        <div
+          class="room-art canvas-art"
+          aria-hidden="true"
+        >
+          <i></i>
+          <i></i>
+          <i></i>
+          <span></span>
+        </div>
+
+        <span class="room-number">01</span>
+
+        <p class="room-kicker">
+          See · Make · Reimagine
+        </p>
+
+        <h3>Visual Art</h3>
+
+        <p>
+          Painting, drawing, sculpture, printmaking,
+          photography and the radical act of seeing closely.
+        </p>
+
+        <b>Enter the studio →</b>
+
+      </a>
+
+      <!-- DESIGN -->
+
+      <a
+        class="art-room design-room reveal"
+        href="design.html"
+      >
+
+        <div
+          class="room-art design-art"
+          aria-hidden="true"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <span class="room-number">02</span>
+
+        <p class="room-kicker">
+          Notice · Shape · Solve
+        </p>
+
+        <h3>Design</h3>
+
+        <p>
+          Objects, spaces, graphics, fashion and
+          experiences made more meaningful through
+          intention.
+        </p>
+
+        <b>Open the design workshop →</b>
+
+      </a>
+
+      <!-- HUMANITIES -->
+
+      <a
+        class="art-room humanities-room reveal"
+        href="humanities.html"
+      >
+
+        <div
+          class="room-art manuscript-art"
+          aria-hidden="true"
+        >
+          <span>Once, we asked…</span>
+        </div>
+
+        <span class="room-number">03</span>
+
+        <p class="room-kicker">
+          Remember · Question · Interpret
+        </p>
+
+        <h3>Humanities</h3>
+
+        <p>
+          History, literature, philosophy, language and the
+          long, complicated story of being human.
+        </p>
+
+        <b>Enter the archive →</b>
+
+      </a>
+
+      <!-- THEATRE -->
+
+      <a
+        class="art-room theatre-room reveal"
+        href="theatre.html"
+      >
+
+        <div
+          class="room-art masks-art"
+          aria-hidden="true"
+        >
+          <span>◡</span>
+          <span>⌢</span>
+        </div>
+
+        <span class="room-number">04</span>
+
+        <p class="room-kicker">
+          Embody · Risk · Transform
+        </p>
+
+        <h3>Theatre</h3>
+
+        <p>
+          Acting, directing, writing, costume, production
+          and the electric moment before the curtain rises.
+        </p>
+
+        <b>Step onto the stage →</b>
+
+      </a>
+
+      <!-- MUSIC -->
+
+      <a
+        class="art-room music-room reveal"
+        href="music.html"
+      >
+
+        <div
+          class="room-art music-art"
+          aria-hidden="true"
+        >
+          <span>♪</span>
+          <span>♫</span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+        <span class="room-number">05</span>
+
+        <p class="room-kicker">
+          Listen · Practise · Resonate
+        </p>
+
+        <h3>Music</h3>
+
+        <p>
+          Voice, instruments, composition, sound and the
+          mathematics we can feel before we understand.
+        </p>
+
+        <b>Follow the sound →</b>
+
+      </a>
+
+      <!-- LIVING TRADITIONS -->
+
+      <a
+        class="art-room tradition-room reveal"
+        href="living-traditions.html"
+      >
+
+        <div
+          class="room-art pattern-art"
+          aria-hidden="true"
+        >
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+        <span class="room-number">06</span>
+
+        <p class="room-kicker">
+          Receive · Respect · Continue
+        </p>
+
+        <h3>Living Traditions</h3>
+
+        <p>
+          Craft, dance, oral history and cultural practices
+          held by communities—not frozen in museums.
+        </p>
+
+        <b>Meet the living legacy →</b>
+
+      </a>
+
+    </section>
+
+    <!-- LIVING LEGACY -->
+
+    <section class="legacy" id="legacy">
+
+      <div
+        class="legacy-wheel"
+        aria-hidden="true"
+      >
+        <span></span>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+
+      <div class="legacy-copy reveal">
+
+        <p class="eyebrow">
+          The past is not silent
+        </p>
+
+        <h2>
+          You are carrying something forward.
+        </h2>
+
+        <p>
+          Technology can reproduce an image in a second.
+          It cannot replace the human memory inside a
+          technique, the relationship between a teacher and
+          apprentice, or the meaning a community gives to
+          a form.
+        </p>
+
+        <p>
+          Study origins carefully. Name cultures
+          specifically. Learn from community voices. Credit
+          the people whose knowledge you enter. The goal is
+          not to borrow a beautiful surface—it is to
+          understand the living world beneath it.
+        </p>
+
+        <a
+          class="dark-button"
+          href="arts-archive.html"
+        >
+          Explore techniques through time →
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- TEACHER LETTER -->
+
+    <section
+      class="teacher-letter"
+      id="teacherLetter"
+    >
+
+      <div
+        class="teacher-portrait reveal"
+        aria-hidden="true"
+      >
+
+        <div class="hands">
+          <span></span>
+          <i></i>
+        </div>
+
+        <p>
+          skill<br>
+          to<br>
+          skill
+        </p>
+
+      </div>
+
+      <article class="teacher-copy reveal">
+
+        <p class="eyebrow">
+          A letter for art teachers and creative mentors
+        </p>
+
+        <h2>
+          You keep the flame moving.
+        </h2>
+
+        <p>
+          You teach what cannot be learned from instructions
+          alone: how much pressure a material can hold, how
+          to hear when a note settles, how to wait through a
+          silence on stage and how to recognise when a work
+          has finally said enough.
+        </p>
+
+        <p>
+          Your knowledge arrived through your own teachers,
+          communities, ancestors, practice, failure and
+          attention. Each time you demonstrate a technique,
+          tell its history or encourage a frightened student
+          to try again, you prevent that knowledge from
+          disappearing.
+        </p>
+
+        <p>
+          You do not keep tradition alive by forcing it to
+          remain unchanged. You give students roots deep
+          enough to understand what they have inherited and
+          wings brave enough to evolve it with care.
+        </p>
+
+        <blockquote>
+          Thank you for passing on more than skill.
+          Thank you for passing on memory, discipline,
+          permission and possibility.
+        </blockquote>
+
+      </article>
+
+    </section>
+
+    <!-- CREATIVE COURAGE -->
+
+    <section
+      class="creative-courage"
+      id="courage"
+    >
+
+      <div class="courage-heading reveal">
+
+        <p class="eyebrow">
+          When doubt enters stage left
+        </p>
+
+        <h2>
+          Give it one line.<br>
+          Do not give it the whole play.
+        </h2>
+
+      </div>
+
+      <div class="prompt-machine reveal">
+
+        <p
+          id="creativePrompt"
+          aria-live="polite"
+        >
+          Make the smallest possible version of the thing
+          you are afraid to begin.
+        </p>
+
+        <button
+          id="newPrompt"
+          class="gold-button"
+          type="button"
+        >
+          Give me another creative nudge ✦
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- FINALE -->
+
+    <section class="finale">
+
+      <div
+        class="confetti"
+        aria-hidden="true"
+      >
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+
+      <p class="reveal">
+        The world has enough spectators.
+      </p>
+
+      <h2 class="reveal">
+        Make something only you could make.
+      </h2>
+
+      <a
+        class="gold-button reveal"
+        href="#artForms"
+      >
+        Choose your first room ↑
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      <strong>Jigyasa Verse</strong>
+      <p>Learning Lok · The Living Arts</p>
+    </div>
+
+    <p>
+      For makers, teachers and keepers of human stories.
+    </p>
+
+    <a href="#top">
+      Back to the curtain ↑
+    </a>
+
+  </footer>
+
+</body>
+</html>
