@@ -1,17 +1,10 @@
 (() => {
-
   "use strict";
 
 
   /* ==========================================================
-     ELEMENTS
+     SELECT ELEMENTS
   ========================================================== */
-
-  const canvas =
-    document.querySelector("#livingSky");
-
-  const ctx =
-    canvas?.getContext("2d");
 
   const header =
     document.querySelector("#siteHeader");
@@ -19,533 +12,48 @@
   const menuButton =
     document.querySelector("#menuButton");
 
-  const menu =
-    document.querySelector("#siteMenu");
+  const siteNav =
+    document.querySelector("#siteNav");
 
-  const planetStage =
-    document.querySelector("#planetStage");
+  const canvas =
+    document.querySelector("#starCanvas");
 
-  const randomJourney =
-    document.querySelector("#randomJourney");
+  const questionButton =
+    document.querySelector("#questionButton");
 
+  const questionOutput =
+    document.querySelector("#questionOutput");
 
-  /* ==========================================================
-     USER PREFERENCES
-  ========================================================== */
+  const newFinalQuestion =
+    document.querySelector("#newFinalQuestion");
 
-  const reduceMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  const finalQuestion =
+    document.querySelector("#finalQuestion");
 
+  const mysteryButton =
+    document.querySelector("#mysteryButton");
 
-  /* ==========================================================
-     STATE
-  ========================================================== */
+  const mysteryPopup =
+    document.querySelector("#mysteryPopup");
 
-  let stars = [];
-
-  let frame = 0;
-
-  let resizeTimer;
-
-  let skyRunning = false;
+  const closeMystery =
+    document.querySelector("#closeMystery");
 
 
   /* ==========================================================
-     ANALYTICS HELPER
-  ========================================================== */
-
-  function trackEvent(eventName, parameters = {}) {
-
-    if (typeof window.gtag !== "function") {
-      return;
-    }
-
-    window.gtag(
-      "event",
-      eventName,
-      parameters
-    );
-
-  }
-
-
-  /* ==========================================================
-     LOGO FALLBACK
-  ========================================================== */
-
-  document
-    .querySelectorAll(".js-brand-logo")
-    .forEach((logo) => {
-
-      const showFallback = () => {
-        logo.classList.add("logo-missing");
-      };
-
-
-      logo.addEventListener(
-        "error",
-        showFallback,
-        { once: true }
-      );
-
-
-      if (
-        logo.complete &&
-        logo.naturalWidth === 0
-      ) {
-        showFallback();
-      }
-
-    });
-
-
-  /* ==========================================================
-     LIVING SKY
-  ========================================================== */
-
-  function resizeSky() {
-
-    if (!canvas || !ctx) {
-      return;
-    }
-
-
-    const ratio =
-      Math.min(
-        window.devicePixelRatio || 1,
-        2
-      );
-
-
-    canvas.width =
-      Math.floor(
-        window.innerWidth * ratio
-      );
-
-
-    canvas.height =
-      Math.floor(
-        window.innerHeight * ratio
-      );
-
-
-    canvas.style.width =
-      `${window.innerWidth}px`;
-
-
-    canvas.style.height =
-      `${window.innerHeight}px`;
-
-
-    ctx.setTransform(
-      ratio,
-      0,
-      0,
-      ratio,
-      0,
-      0
-    );
-
-
-    const count =
-      Math.max(
-        80,
-        Math.floor(
-          (
-            window.innerWidth *
-            window.innerHeight
-          ) / 9500
-        )
-      );
-
-
-    stars =
-      Array.from(
-        { length: count },
-        () => ({
-          x:
-            Math.random() *
-            window.innerWidth,
-
-          y:
-            Math.random() *
-            window.innerHeight,
-
-          r:
-            Math.random() *
-            1.25 +
-            .15,
-
-          a:
-            Math.random() *
-            .55 +
-            .12,
-
-          speed:
-            Math.random() *
-            .008 +
-            .002,
-
-          phase:
-            Math.random() *
-            Math.PI *
-            2
-        })
-      );
-
-  }
-
-
-  function drawSky(time = 0) {
-
-    if (
-      !canvas ||
-      !ctx ||
-      document.hidden
-    ) {
-      skyRunning = false;
-      return;
-    }
-
-
-    skyRunning = true;
-
-
-    ctx.clearRect(
-      0,
-      0,
-      window.innerWidth,
-      window.innerHeight
-    );
-
-
-    /* cosmic background wash */
-
-    const wash =
-      ctx.createRadialGradient(
-        window.innerWidth * .76,
-        window.innerHeight * .48,
-        0,
-
-        window.innerWidth * .76,
-        window.innerHeight * .48,
-
-        window.innerWidth * .7
-      );
-
-
-    wash.addColorStop(
-      0,
-      "rgba(44, 28, 66, .16)"
-    );
-
-
-    wash.addColorStop(
-      .5,
-      "rgba(10, 8, 18, .08)"
-    );
-
-
-    wash.addColorStop(
-      1,
-      "rgba(3, 3, 7, 1)"
-    );
-
-
-    ctx.fillStyle = wash;
-
-
-    ctx.fillRect(
-      0,
-      0,
-      window.innerWidth,
-      window.innerHeight
-    );
-
-
-    /* stars */
-
-    stars.forEach((star) => {
-
-      const pulse =
-        reduceMotion
-          ? 1
-          : .68 +
-            Math.sin(
-              time *
-              star.speed +
-              star.phase
-            ) *
-            .32;
-
-
-      ctx.beginPath();
-
-
-      ctx.arc(
-        star.x,
-        star.y,
-        star.r,
-        0,
-        Math.PI * 2
-      );
-
-
-      ctx.fillStyle =
-        `rgba(
-          235,
-          229,
-          222,
-          ${star.a * pulse}
-        )`;
-
-
-      ctx.fill();
-
-    });
-
-
-    if (!reduceMotion) {
-
-      frame =
-        requestAnimationFrame(
-          drawSky
-        );
-
-    } else {
-
-      skyRunning = false;
-
-    }
-
-  }
-
-
-  /* ==========================================================
-     PAUSE SKY WHEN TAB IS HIDDEN
-  ========================================================== */
-
-  document.addEventListener(
-    "visibilitychange",
-    () => {
-
-      if (document.hidden) {
-
-        cancelAnimationFrame(frame);
-
-        skyRunning = false;
-
-        return;
-      }
-
-
-      if (
-        !reduceMotion &&
-        !skyRunning
-      ) {
-
-        drawSky();
-
-      }
-
-    }
-  );
-
-
-  /* ==========================================================
-     MOBILE MENU
-  ========================================================== */
-
-  function toggleMenu(force) {
-
-    if (
-      !menuButton ||
-      !menu
-    ) {
-      return;
-    }
-
-
-    const currentlyOpen =
-      menuButton.getAttribute(
-        "aria-expanded"
-      ) === "true";
-
-
-    const open =
-      typeof force === "boolean"
-        ? force
-        : !currentlyOpen;
-
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      String(open)
-    );
-
-
-    menuButton.setAttribute(
-      "aria-label",
-      open
-        ? "Close navigation menu"
-        : "Open navigation menu"
-    );
-
-
-    menu.classList.toggle(
-      "open",
-      open
-    );
-
-
-    document.body.style.overflow =
-      open
-        ? "hidden"
-        : "";
-
-
-    if (open) {
-
-      window.setTimeout(
-        () => {
-          menu
-            .querySelector("a")
-            ?.focus();
-        },
-        50
-      );
-
-    }
-
-  }
-
-
-  menuButton?.addEventListener(
-    "click",
-    () => {
-
-      toggleMenu();
-
-    }
-  );
-
-
-  menu
-    ?.querySelectorAll("a")
-    .forEach((link) => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          toggleMenu(false);
-
-        }
-      );
-
-    });
-
-
-  window.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (event.key === "Escape") {
-
-        toggleMenu(false);
-
-        menuButton?.focus();
-
-      }
-
-    }
-  );
-
-
-  /* ==========================================================
-     REVEAL ELEMENTS
-  ========================================================== */
-
-  if (
-    "IntersectionObserver" in window &&
-    !reduceMotion
-  ) {
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach(
-            (entry) => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target
-                  .classList
-                  .add(
-                    "is-visible"
-                  );
-
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          threshold: .12
-        }
-      );
-
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach(
-        (item) => {
-
-          observer.observe(item);
-
-        }
-      );
-
-  } else {
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach(
-        (item) => {
-
-          item.classList.add(
-            "is-visible"
-          );
-
-        }
-      );
-
-  }
-
-
-  /* ==========================================================
-     HEADER SCROLL STATE
+     HEADER
   ========================================================== */
 
   function updateHeader() {
 
-    header
-      ?.classList
-      .toggle(
-        "scrolled",
-        window.scrollY > 30
-      );
+    if (!header) {
+      return;
+    }
+
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
 
   }
 
@@ -553,7 +61,9 @@
   window.addEventListener(
     "scroll",
     updateHeader,
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
 
@@ -561,49 +71,258 @@
 
 
   /* ==========================================================
-     PLANET POINTER MOVEMENT
+     MOBILE MENU
   ========================================================== */
 
-  if (
-    !reduceMotion &&
-    planetStage &&
-    window.matchMedia(
-      "(pointer: fine)"
-    ).matches
-  ) {
+  if (menuButton && siteNav) {
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          siteNav.classList.toggle("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      }
+    );
+
+
+    siteNav
+      .querySelectorAll("a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            siteNav.classList.remove("open");
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* ==========================================================
+     STAR FIELD
+  ========================================================== */
+
+  if (canvas) {
+
+    const ctx =
+      canvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+
+    let stars = [];
+
+    const STAR_COUNT = 150;
+
+
+    function resizeCanvas() {
+
+      const ratio =
+        Math.min(
+          window.devicePixelRatio || 1,
+          2
+        );
+
+      width =
+        window.innerWidth;
+
+      height =
+        window.innerHeight;
+
+      canvas.width =
+        width * ratio;
+
+      canvas.height =
+        height * ratio;
+
+      canvas.style.width =
+        `${width}px`;
+
+      canvas.style.height =
+        `${height}px`;
+
+      ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+      );
+
+      createStars();
+
+    }
+
+
+    function createStars() {
+
+      stars =
+        Array.from(
+          {
+            length: STAR_COUNT
+          },
+          () => ({
+            x:
+              Math.random() * width,
+
+            y:
+              Math.random() * height,
+
+            radius:
+              Math.random() * 1.4 + 0.2,
+
+            opacity:
+              Math.random() * 0.7 + 0.15,
+
+            speed:
+              Math.random() * 0.004 + 0.001,
+
+            phase:
+              Math.random() * Math.PI * 2
+          })
+        );
+
+    }
+
+
+    function drawStars(time = 0) {
+
+      ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+      );
+
+
+      stars.forEach((star) => {
+
+        const pulse =
+          Math.sin(
+            time * star.speed +
+            star.phase
+          );
+
+        const opacity =
+          Math.max(
+            0.08,
+            star.opacity +
+            pulse * 0.18
+          );
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+          star.x,
+          star.y,
+          star.radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(255, 244, 220, ${opacity})`;
+
+        ctx.fill();
+
+      });
+
+
+      requestAnimationFrame(drawStars);
+
+    }
+
 
     window.addEventListener(
-      "pointermove",
-      (event) => {
-
-        const x =
-          (
-            event.clientX /
-            window.innerWidth -
-            .5
-          ) *
-          12;
+      "resize",
+      resizeCanvas
+    );
 
 
-        const y =
-          (
-            event.clientY /
-            window.innerHeight -
-            .5
-          ) *
-          10;
+    resizeCanvas();
+
+    requestAnimationFrame(drawStars);
+
+  }
 
 
-        planetStage.style.transform =
-          `translate3d(
-            ${x}px,
-            ${y}px,
-            0
-          )`;
+  /* ==========================================================
+     SCROLL REVEALS
+  ========================================================== */
 
-      },
-      {
-        passive: true
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+  if (
+    "IntersectionObserver" in window
+  ) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target
+              .classList
+              .add("visible");
+
+            observer.unobserve(
+              entry.target
+            );
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+  } else {
+
+    revealElements.forEach(
+      (element) => {
+
+        element
+          .classList
+          .add("visible");
+
       }
     );
 
@@ -611,87 +330,133 @@
 
 
   /* ==========================================================
-     RANDOM JIGYASAVERSE JOURNEY
+     WONDER QUESTIONS
   ========================================================== */
 
-  const journeys = [
+  const wonderQuestions = [
 
-    "wonderverse.html",
+    "When was the last time you changed your mind about something important?",
 
-    "learning-lok.html",
+    "Why do humans care so much about what strangers think of them?",
 
-    "books.html",
+    "What would you attempt if the first version were allowed to be terrible?",
 
-    "questions.html"
+    "What ordinary thing around you would look extraordinary to someone from 500 years ago?",
+
+    "Who were you before you started trying to impress anybody?",
+
+    "What is something everybody seems to accept that you still don't understand?",
+
+    "If nobody could see the result, what would you still want to make?",
+
+    "What question did you ask constantly as a child that you stopped asking?",
+
+    "Why do some memories stay while entire years disappear?",
+
+    "If you could become a beginner at something tomorrow, what would you choose?",
+
+    "What have you been calling failure that might actually just be an unfinished attempt?",
+
+    "What would your twelve-year-old self find completely unbelievable about your life now?",
+
+    "Why do humans decorate spaces they know they will eventually leave?",
+
+    "What is something you believe only because somebody told you it was normal?",
+
+    "If your life had no audience, what would you do differently?",
+
+    "What have you walked past a hundred times without actually noticing?",
+
+    "Which version of yourself are you still trying to prove something to?",
+
+    "What would happen if you stopped trying to become impressive and became interested instead?",
+
+    "Why do we remember embarrassing moments at 2am but forget where we left our keys?",
+
+    "What deserves one brave hour from you today?",
+
+    "What would you investigate if nobody asked whether it was useful?",
+
+    "Which question would you rather live with than immediately answer?",
+
+    "What is one thing you are completely wrong about right now — without knowing it?",
+
+    "What have humans invented that would be impossible to explain to a confused pigeon?",
+
+    "If curiosity had a physical shape, what would yours look like?"
 
   ];
 
 
-  randomJourney?.addEventListener(
-    "click",
-    () => {
-
-      const destination =
-        journeys[
-          Math.floor(
-            Math.random() *
-            journeys.length
-          )
-        ];
+  let previousQuestion = -1;
 
 
-      trackEvent(
-        "random_explore",
-        {
-          destination
-        }
-      );
+  function getRandomQuestion() {
 
-
-      /*
-        Tiny delay gives analytics
-        a chance to register without
-        making the site feel slow.
-      */
-
-      window.setTimeout(
-        () => {
-
-          window.location.href =
-            destination;
-
-        },
-        120
-      );
-
+    if (
+      wonderQuestions.length === 0
+    ) {
+      return "";
     }
-  );
+
+
+    let index;
+
+
+    do {
+
+      index =
+        Math.floor(
+          Math.random() *
+          wonderQuestions.length
+        );
+
+    } while (
+      index === previousQuestion &&
+      wonderQuestions.length > 1
+    );
+
+
+    previousQuestion =
+      index;
+
+
+    return wonderQuestions[index];
+
+  }
 
 
   /* ==========================================================
-     JOURNEY ANALYTICS
+     WONDER MACHINE
   ========================================================== */
 
-  document
-    .querySelectorAll(
-      "[data-journey]"
-    )
-    .forEach(
-      (link) => {
+  if (
+    questionButton &&
+    questionOutput
+  ) {
 
-        link.addEventListener(
-          "click",
+    questionButton.addEventListener(
+      "click",
+      () => {
+
+        questionOutput.classList.remove(
+          "question-arrived"
+        );
+
+
+        const question =
+          getRandomQuestion();
+
+
+        questionOutput.innerHTML =
+          `<span>${question}</span>`;
+
+
+        requestAnimationFrame(
           () => {
 
-            const journey =
-              link.dataset.journey;
-
-
-            trackEvent(
-              "journey_enter",
-              {
-                journey
-              }
+            questionOutput.classList.add(
+              "question-arrived"
             );
 
           }
@@ -700,42 +465,257 @@
       }
     );
 
+  }
+
 
   /* ==========================================================
-     RESIZE
+     FINAL QUESTION
   ========================================================== */
 
-  window.addEventListener(
-    "resize",
-    () => {
+  if (
+    newFinalQuestion &&
+    finalQuestion
+  ) {
 
-      clearTimeout(
-        resizeTimer
-      );
+    newFinalQuestion.addEventListener(
+      "click",
+      () => {
+
+        finalQuestion.style.opacity =
+          "0";
 
 
-      resizeTimer =
         window.setTimeout(
           () => {
 
-            cancelAnimationFrame(
-              frame
-            );
+            finalQuestion.textContent =
+              getRandomQuestion();
 
-
-            skyRunning = false;
-
-
-            resizeSky();
-
-
-            drawSky();
+            finalQuestion.style.opacity =
+              "1";
 
           },
-          150
+          180
         );
 
-    },
+      }
+    );
+
+  }
+
+
+  /* ==========================================================
+     MYSTERY BUTTON
+  ========================================================== */
+
+  function openMystery() {
+
+    if (!mysteryPopup) {
+      return;
+    }
+
+    mysteryPopup
+      .classList
+      .add("open");
+
+    mysteryPopup.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+
+  function closeMysteryPopup() {
+
+    if (!mysteryPopup) {
+      return;
+    }
+
+    mysteryPopup
+      .classList
+      .remove("open");
+
+    mysteryPopup.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+
+  if (mysteryButton) {
+
+    mysteryButton.addEventListener(
+      "click",
+      openMystery
+    );
+
+  }
+
+
+  if (closeMystery) {
+
+    closeMystery.addEventListener(
+      "click",
+      closeMysteryPopup
+    );
+
+  }
+
+
+  if (mysteryPopup) {
+
+    mysteryPopup.addEventListener(
+      "click",
+      (event) => {
+
+        if (
+          event.target ===
+          mysteryPopup
+        ) {
+
+          closeMysteryPopup();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closeMysteryPopup();
+
+      }
+
+    }
+  );
+
+
+  /* ==========================================================
+     LITTLE PAPER MOVEMENT
+  ========================================================== */
+
+  const paper =
+    document.querySelector(".paper-main");
+
+
+  if (
+    paper &&
+    window.matchMedia(
+      "(pointer: fine)"
+    ).matches
+  ) {
+
+    paper.addEventListener(
+      "mousemove",
+      (event) => {
+
+        const rect =
+          paper.getBoundingClientRect();
+
+
+        const x =
+          (
+            event.clientX -
+            rect.left
+          ) /
+          rect.width;
+
+
+        const y =
+          (
+            event.clientY -
+            rect.top
+          ) /
+          rect.height;
+
+
+        const rotateX =
+          (0.5 - y) * 1.2;
+
+
+        const rotateY =
+          (x - 0.5) * 1.2;
+
+
+        paper.style.transform =
+          `
+            rotate(-1deg)
+            perspective(1200px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+          `;
+
+      }
+    );
+
+
+    paper.addEventListener(
+      "mouseleave",
+      () => {
+
+        paper.style.transform =
+          "rotate(-1deg)";
+
+      }
+    );
+
+  }
+
+
+  /* ==========================================================
+     RANDOM FALLING SCRAP PARALLAX
+  ========================================================== */
+
+  const fallScraps =
+    document.querySelectorAll(
+      ".falling-scraps span"
+    );
+
+
+  function updateFallScraps() {
+
+    const scroll =
+      window.scrollY;
+
+
+    fallScraps.forEach(
+      (scrap, index) => {
+
+        const direction =
+          index % 2 === 0
+            ? 1
+            : -1;
+
+
+        const movement =
+          scroll *
+          0.018 *
+          (index + 1);
+
+
+        scrap.style.translate =
+          `0 ${movement * direction}px`;
+
+      }
+    );
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateFallScraps,
     {
       passive: true
     }
@@ -743,443 +723,22 @@
 
 
   /* ==========================================================
-     INITIALISE
+     CONSOLE MESSAGE
   ========================================================== */
 
-  resizeSky();
-
-  drawSky();
-
-})();
-/* =========================================================
-   DAILY JIGYASA GAME
-========================================================= */
-
-(() => {
-  const game = document.getElementById("jigyasaQuest");
-
-  if (!game) {
-    return;
-  }
-
-  const missions = {
-    notice: [
-      "Find an object you use every day. What problem was it originally created to solve?",
-
-      "Look out of the nearest window for one full minute. Notice something that would usually escape you.",
-
-      "Choose one sound around you. Follow it carefully and work out where it begins and where it disappears.",
-
-      "Find something worn, cracked or repaired. Imagine the story of how it survived.",
-
-      "Notice three different kinds of light around you. How does each one change the feeling of the space?",
-
-      "Watch how someone uses their hands while doing an ordinary task. What knowledge do their hands carry?",
-
-      "Find a tiny sign of change: dust, a new leaf, an unfinished building or a fading mark. What is it becoming?"
-    ],
-
-    learn: [
-      "Choose one ordinary object near you and discover one fact about it that you did not know five minutes ago.",
-
-      "Why can the Moon sometimes be seen during the day? Follow the question until you can explain it simply.",
-
-      "Find the origin of one word you use often. What journey did that word take before reaching you?",
-
-      "Learn how one animal senses the world differently from humans. What might its reality feel like?",
-
-      "Pick something you once believed but later changed your mind about. What new evidence changed it?",
-
-      "Ask someone older than you to teach you one thing that is rarely written in a textbook.",
-
-      "Find one question a child might ask about your surroundings. Try to answer it without using jargon."
-    ],
-
-    make: [
-      "Draw an impossible school and give it one rule that would make its students more curious.",
-
-      "Create a six-word story about beginning again. Awkward first attempts are completely welcome.",
-
-      "Use three objects near you to build a tiny monument to something ordinary that deserves appreciation.",
-
-      "Write a terrible first sentence for the book you secretly wish existed. Do not improve it yet.",
-
-      "Invent a tool for a problem nobody takes seriously. Give your invention an unnecessarily dramatic name.",
-
-      "Make a map of your day using only shapes, arrows and colours. Accuracy is optional; honesty is not.",
-
-      "Turn one mistake you made into a small instruction for another human: “If this happens, try…”"
-    ]
-  };
-
-  const categoryLabels = {
-    notice: "Notice mission",
-    learn: "Learning mission",
-    make: "Making mission"
-  };
-
-  const storageKey = "jigyasaverse-curiosity-passport-v1";
-
-  const choiceButtons = [
-    ...game.querySelectorAll("[data-jq-category]")
-  ];
-
-  const missionPanel =
-    document.getElementById("jqMission");
-
-  const missionLabel =
-    document.getElementById("jqMissionLabel");
-
-  const prompt =
-    document.getElementById("jqPrompt");
-
-  const reflection =
-    document.getElementById("jqReflection");
-
-  const completeButton =
-    document.getElementById("jqComplete");
-
-  const anotherButton =
-    document.getElementById("jqAnother");
-
-  const finished =
-    document.getElementById("jqFinished");
-
-  const finishedCopy =
-    document.getElementById("jqFinishedCopy");
-
-  const count =
-    document.getElementById("jqCount");
-
-  const starElements = [
-    ...document.querySelectorAll("#jqStars .jq-star")
-  ];
-
-  const live =
-    document.getElementById("jqLive");
-
-  const returnNote =
-    document.getElementById("jqReturnNote");
-
-  const dateElement =
-    document.getElementById("jqDate");
-
-  let selectedCategory = "";
-  let selectedMission = "";
-
-  /* Create a local date key without UTC changing the day */
-
-  function getLocalDateKey(date = new Date()) {
-    const year = date.getFullYear();
-
-    const month = String(
-      date.getMonth() + 1
-    ).padStart(2, "0");
-
-    const day = String(
-      date.getDate()
-    ).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-  }
-
-  const today = getLocalDateKey();
-
-  /* Read the visitor's saved passport */
-
-  function readPassport() {
-    try {
-      const savedPassport = JSON.parse(
-        localStorage.getItem(storageKey)
-      );
-
-      if (
-        !savedPassport ||
-        !Array.isArray(savedPassport.completedDates)
-      ) {
-        throw new Error("Create a new passport");
-      }
-
-      return savedPassport;
-    } catch (error) {
-      return {
-        completedDates: [],
-        entries: []
-      };
-    }
-  }
-
-  /* Save progress privately in this browser */
-
-  function writePassport(passport) {
-    try {
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify(passport)
-      );
-    } catch (error) {
-      /*
-        The game still works if a visitor's browser
-        does not permit local storage.
-      */
-    }
-  }
-
-  /* Turn today's date into a repeatable mission number */
-
-  function hashText(text) {
-    let hash = 0;
-
-    for (let index = 0; index < text.length; index += 1) {
-      hash =
-        ((hash << 5) - hash + text.charCodeAt(index)) | 0;
-    }
-
-    return Math.abs(hash);
-  }
-
-  /* Draw the visitor's seven-star constellation */
-
-  function renderProgress(totalStars) {
-    const currentConstellation =
-      totalStars === 0
-        ? 0
-        : ((totalStars - 1) % 7) + 1;
-
-    const constellationNumber =
-      totalStars === 0
-        ? 1
-        : Math.ceil(totalStars / 7);
-
-    starElements.forEach((star, index) => {
-      star.classList.toggle(
-        "is-earned",
-        index < currentConstellation
-      );
-    });
-
-    if (totalStars > 7) {
-      count.textContent =
-        `${currentConstellation} of 7 · ` +
-        `constellation ${constellationNumber}`;
-    } else {
-      count.textContent =
-        `${currentConstellation} of 7 stars`;
-    }
-  }
-
-  /* Open a particular mission pathway */
-
-  function chooseCategory(category) {
-    selectedCategory = category;
-
-    const categoryMissions = missions[category];
-
-    const missionIndex =
-      hashText(`${today}-${category}`) %
-      categoryMissions.length;
-
-    selectedMission =
-      categoryMissions[missionIndex];
-
-    choiceButtons.forEach((button) => {
-      const isSelected =
-        button.dataset.jqCategory === category;
-
-      button.setAttribute(
-        "aria-pressed",
-        String(isSelected)
-      );
-    });
-
-    missionLabel.textContent =
-      categoryLabels[category];
-
-    prompt.textContent =
-      selectedMission;
-
-    reflection.value = "";
-
-    missionPanel.classList.add("is-visible");
-    finished.classList.remove("is-visible");
-
-    live.textContent =
-      `${categoryLabels[category]} opened.`;
-
-    window.setTimeout(() => {
-      missionPanel.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
-    }, 80);
-  }
-
-  /* Show the completed screen */
-
-  function showCompletedToday(passport) {
-    choiceButtons.forEach((button) => {
-      button.hidden = true;
-    });
-
-    missionPanel.classList.remove("is-visible");
-    finished.classList.add("is-visible");
-
-    const totalStars =
-      passport.completedDates.length;
-
-    const formedConstellation =
-      totalStars > 0 &&
-      totalStars % 7 === 0;
-
-    if (formedConstellation) {
-      finishedCopy.textContent =
-        "Seven small acts of curiosity have formed a " +
-        "constellation. Tomorrow, a new patch of sky begins.";
-    } else {
-      finishedCopy.textContent =
-        "Your star is safe here. Come back tomorrow for " +
-        "another small mission—no streak anxiety required.";
-    }
-  }
-
-  /* Display today's date */
-
-  dateElement.textContent =
-    new Intl.DateTimeFormat(undefined, {
-      weekday: "long",
-      day: "numeric",
-      month: "long"
-    }).format(new Date());
-
-  let passport = readPassport();
-
-  const hasCompletedToday =
-    passport.completedDates.includes(today);
-
-  renderProgress(
-    passport.completedDates.length
+  console.log(
+    "%cYou opened the console.",
+    "font-size:18px; font-weight:bold;"
   );
 
-  /* Welcome returning visitors */
+  console.log(
+    "%cCurious human detected.",
+    "font-size:14px;"
+  );
 
-  if (
-    passport.completedDates.length > 0 &&
-    !hasCompletedToday
-  ) {
-    returnNote.classList.add("is-visible");
-  }
+  console.log(
+    "%cThere is nothing useful hidden here. Probably.",
+    "font-size:12px; font-style:italic;"
+  );
 
-  if (hasCompletedToday) {
-    showCompletedToday(passport);
-  }
-
-  /* Pathway buttons */
-
-  choiceButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      chooseCategory(
-        button.dataset.jqCategory
-      );
-    });
-  });
-
-  /* Give the visitor a different type of mission */
-
-  anotherButton.addEventListener("click", () => {
-    const categoryOrder = [
-      "notice",
-      "learn",
-      "make"
-    ];
-
-    const currentIndex =
-      selectedCategory
-        ? categoryOrder.indexOf(selectedCategory)
-        : -1;
-
-    const nextIndex =
-      (currentIndex + 1) % categoryOrder.length;
-
-    chooseCategory(
-      categoryOrder[nextIndex]
-    );
-  });
-
-  /* Complete today's mission */
-
-  completeButton.addEventListener("click", () => {
-    if (
-      !selectedCategory ||
-      !selectedMission
-    ) {
-      return;
-    }
-
-    passport = readPassport();
-
-    const alreadyCompleted =
-      passport.completedDates.includes(today);
-
-    if (!alreadyCompleted) {
-      passport.completedDates.push(today);
-
-      if (!Array.isArray(passport.entries)) {
-        passport.entries = [];
-      }
-
-      passport.entries.unshift({
-        date: today,
-        category: selectedCategory,
-        mission: selectedMission,
-        reflection: reflection.value
-          .trim()
-          .slice(0, 280)
-      });
-
-      /*
-        Keep only the visitor's 30 most recent entries
-        so browser storage does not grow indefinitely.
-      */
-
-      passport.entries =
-        passport.entries.slice(0, 30);
-
-      writePassport(passport);
-    }
-
-    renderProgress(
-      passport.completedDates.length
-    );
-
-    showCompletedToday(passport);
-
-    live.textContent =
-      "Mission complete. One curiosity star was added.";
-
-    finished.focus({
-      preventScroll: true
-    });
-
-    finished.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
-    });
-
-    /*
-      Send an anonymous completion event to your
-      existing Google Analytics account.
-    */
-
-    if (typeof window.gtag === "function") {
-      window.gtag(
-        "event",
-        "daily_jigyasa_complete",
-        {
-          quest_category: selectedCategory,
-          total_stars:
-            passport.completedDates.length
-        }
-      );
-    }
-  });
 })();
