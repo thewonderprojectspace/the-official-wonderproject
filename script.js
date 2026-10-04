@@ -2,236 +2,682 @@
   "use strict";
 
 
-  /* ==========================================================
-     SELECT ELEMENTS
-  ========================================================== */
+  /* =======================================================
+     IMPORTANT ELEMENTS
+  ======================================================= */
 
   const header =
-    document.querySelector("#siteHeader");
-
-  const menuButton =
-    document.querySelector("#menuButton");
-
-  const siteNav =
-    document.querySelector("#siteNav");
-
-  const canvas =
-    document.querySelector("#starCanvas");
-
-  const questionButton =
-    document.querySelector("#questionButton");
-
-  const questionOutput =
-    document.querySelector("#questionOutput");
-
-  const newFinalQuestion =
-    document.querySelector("#newFinalQuestion");
-
-  const finalQuestion =
-    document.querySelector("#finalQuestion");
-
-  const mysteryButton =
-    document.querySelector("#mysteryButton");
-
-  const mysteryPopup =
-    document.querySelector("#mysteryPopup");
-
-  const closeMystery =
-    document.querySelector("#closeMystery");
-
-
-  /* ==========================================================
-     HEADER
-  ========================================================== */
-
-  function updateHeader() {
-
-    if (!header) {
-      return;
-    }
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 40
+    document.querySelector(
+      "#siteHeader"
     );
 
+  const menuButton =
+    document.querySelector(
+      "#menuButton"
+    );
+
+  const siteNav =
+    document.querySelector(
+      "#siteNav"
+    );
+
+  const year =
+    document.querySelector(
+      "#year"
+    );
+
+  const cursorLight =
+    document.querySelector(
+      "#cursorLight"
+    );
+
+  const toast =
+    document.querySelector(
+      "#toast"
+    );
+
+
+  /* =======================================================
+     AUTOMATIC FOOTER YEAR
+  ======================================================= */
+
+  year.textContent =
+    new Date().getFullYear();
+
+
+  /* =======================================================
+     MOBILE MENU
+  ======================================================= */
+
+  function closeMenu() {
+    siteNav.classList.remove(
+      "open"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    document.body.classList.remove(
+      "menu-open"
+    );
   }
 
 
+  menuButton.addEventListener(
+    "click",
+    () => {
+      const willOpen =
+        !siteNav.classList.contains(
+          "open"
+        );
+
+      siteNav.classList.toggle(
+        "open",
+        willOpen
+      );
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(willOpen)
+      );
+
+      document.body.classList.toggle(
+        "menu-open",
+        willOpen
+      );
+    }
+  );
+
+
+  siteNav
+    .querySelectorAll("a")
+    .forEach((link) => {
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+    });
+
+
+  /* =======================================================
+     HEADER AFTER SCROLLING
+  ======================================================= */
+
   window.addEventListener(
     "scroll",
-    updateHeader,
+    () => {
+      header.classList.toggle(
+        "scrolled",
+        window.scrollY > 30
+      );
+    },
     {
       passive: true
     }
   );
 
 
-  updateHeader();
+  /* =======================================================
+     SCROLL REVEALS
+  ======================================================= */
 
+  const revealObserver =
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach(
+          (entry) => {
+            if (
+              entry.isIntersecting
+            ) {
+              entry.target
+                .classList
+                .add("visible");
 
-  /* ==========================================================
-     MOBILE MENU
-  ========================================================== */
-
-  if (menuButton && siteNav) {
-
-    menuButton.addEventListener(
-      "click",
-      () => {
-
-        const isOpen =
-          siteNav.classList.toggle("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          String(isOpen)
+              revealObserver
+                .unobserve(
+                  entry.target
+                );
+            }
+          }
         );
-
+      },
+      {
+        threshold: 0.12
       }
     );
 
 
-    siteNav
-      .querySelectorAll("a")
-      .forEach((link) => {
+  document
+    .querySelectorAll(
+      ".reveal"
+    )
+    .forEach(
+      (element, index) => {
+        element.style
+          .transitionDelay =
+          `${
+            Math.min(
+              index % 5,
+              3
+            ) * 80
+          }ms`;
 
-        link.addEventListener(
-          "click",
-          () => {
-
-            siteNav.classList.remove("open");
-
-            menuButton.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-          }
+        revealObserver.observe(
+          element
         );
+      }
+    );
 
-      });
 
+  /* =======================================================
+     CURSOR SUNLIGHT
+  ======================================================= */
+
+  const hasFinePointer =
+    window.matchMedia(
+      "(pointer: fine)"
+    ).matches;
+
+
+  if (hasFinePointer) {
+    window.addEventListener(
+      "pointermove",
+      (event) => {
+        cursorLight.style.left =
+          `${event.clientX}px`;
+
+        cursorLight.style.top =
+          `${event.clientY}px`;
+      },
+      {
+        passive: true
+      }
+    );
   }
 
 
-  /* ==========================================================
-     STAR FIELD
-  ========================================================== */
+  /* =======================================================
+     REFLECTION QUESTIONS
+  ======================================================= */
 
-  if (canvas) {
+  const questions = [
+    "What part of you stays constant, even while everything visible changes?",
 
-    const ctx =
-      canvas.getContext("2d");
+    "Which question have you made smaller so other people would feel comfortable?",
 
-    let width = 0;
-    let height = 0;
+    "What are you becoming that cannot yet be measured?",
 
-    let stars = [];
+    "If nobody demanded proof today, what would you keep building?",
 
-    const STAR_COUNT = 150;
+    "Which bruise taught you something success never could?",
+
+    "What do you know logically but still struggle to believe emotionally?",
+
+    "Where in your life are you mistaking a phase for a permanent identity?",
+
+    "What would curiosity ask if fear stopped answering first?",
+
+    "What light are you reflecting, even on a difficult day?",
+
+    "Which version of you deserves patience, not pressure?"
+  ];
 
 
-    function resizeCanvas() {
+  let questionIndex = 0;
 
-      const ratio =
-        Math.min(
-          window.devicePixelRatio || 1,
-          2
+
+  const questionOutput =
+    document.querySelector(
+      "#questionOutput"
+    );
+
+  const questionButton =
+    document.querySelector(
+      "#questionButton"
+    );
+
+
+  questionButton.addEventListener(
+    "click",
+    () => {
+      const disappearAnimation =
+        questionOutput.animate(
+          [
+            {
+              opacity: 1,
+              transform:
+                "translateY(0)"
+            },
+            {
+              opacity: 0,
+              transform:
+                "translateY(-12px)"
+            }
+          ],
+          {
+            duration: 220,
+            easing: "ease",
+            fill: "forwards"
+          }
         );
 
-      width =
-        window.innerWidth;
 
-      height =
-        window.innerHeight;
+      disappearAnimation
+        .finished
+        .then(() => {
+          questionIndex =
+            (
+              questionIndex + 1
+            ) % questions.length;
 
-      canvas.width =
-        width * ratio;
+          questionOutput.textContent =
+            questions[
+              questionIndex
+            ];
 
-      canvas.height =
-        height * ratio;
 
-      canvas.style.width =
-        `${width}px`;
+          questionOutput.animate(
+            [
+              {
+                opacity: 0,
+                transform:
+                  "translateY(12px)"
+              },
+              {
+                opacity: 1,
+                transform:
+                  "translateY(0)"
+              }
+            ],
+            {
+              duration: 330,
+              easing: "ease",
+              fill: "forwards"
+            }
+          );
+        });
+    }
+  );
 
-      canvas.style.height =
-        `${height}px`;
 
-      ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
+  /* =======================================================
+     TAKE ME SOMEWHERE
+  ======================================================= */
+
+  const destinations = [
+    "observatory.html",
+    "question-graveyard.html",
+    "oops-observatory.html",
+    "messy-beginnings.html",
+    "books.html",
+    "mirror.html",
+    "mind.html",
+    "tiny-worlds.html",
+    "unknown.html",
+    "human-wall.html"
+  ];
+
+
+  const anywhereButton =
+    document.querySelector(
+      "#anywhereButton"
+    );
+
+
+  anywhereButton.addEventListener(
+    "click",
+    () => {
+      const randomIndex =
+        Math.floor(
+          Math.random() *
+          destinations.length
+        );
+
+      const destination =
+        destinations[
+          randomIndex
+        ];
+
+      showToast(
+        "the orbit has chosen…"
       );
 
-      createStars();
-
+      window.setTimeout(
+        () => {
+          window.location.href =
+            destination;
+        },
+        650
+      );
     }
+  );
 
 
-    function createStars() {
+  /* =======================================================
+     SMALL MESSAGE POPUP
+  ======================================================= */
 
-      stars =
-        Array.from(
-          {
-            length: STAR_COUNT
-          },
-          () => ({
+  function showToast(message) {
+    toast.textContent =
+      message;
+
+    toast.classList.add(
+      "show"
+    );
+
+    window.clearTimeout(
+      showToast.timer
+    );
+
+    showToast.timer =
+      window.setTimeout(
+        () => {
+          toast.classList.remove(
+            "show"
+          );
+        },
+        1800
+      );
+  }
+
+
+  /* =======================================================
+     OPTIONAL ATMOSPHERIC SOUND
+
+     Sound only begins after the visitor presses
+     the button. Browsers do not permit websites
+     to autoplay sound without permission.
+  ======================================================= */
+
+  let audioContext = null;
+  let atmosphere = null;
+
+
+  const soundButton =
+    document.querySelector(
+      "#soundToggle"
+    );
+
+
+  soundButton.addEventListener(
+    "click",
+    async () => {
+      if (!audioContext) {
+        audioContext =
+          new (
+            window.AudioContext ||
+            window.webkitAudioContext
+          )();
+
+        atmosphere =
+          createAtmosphere(
+            audioContext
+          );
+      }
+
+
+      if (
+        audioContext.state ===
+        "suspended"
+      ) {
+        await audioContext.resume();
+      }
+
+
+      const isOn =
+        soundButton.getAttribute(
+          "aria-pressed"
+        ) === "true";
+
+
+      atmosphere
+        .gain
+        .gain
+        .cancelScheduledValues(
+          audioContext.currentTime
+        );
+
+
+      atmosphere
+        .gain
+        .gain
+        .linearRampToValueAtTime(
+          isOn ? 0 : 0.035,
+          audioContext.currentTime +
+          0.8
+        );
+
+
+      soundButton.setAttribute(
+        "aria-pressed",
+        String(!isOn)
+      );
+
+
+      soundButton.lastChild
+        .textContent =
+        isOn
+          ? " atmosphere off"
+          : " atmosphere on";
+    }
+  );
+
+
+  function createAtmosphere(
+    context
+  ) {
+    const master =
+      context.createGain();
+
+    master.gain.value = 0;
+
+    master.connect(
+      context.destination
+    );
+
+
+    const frequencies = [
+      110,
+      164.81,
+      220
+    ];
+
+
+    frequencies.forEach(
+      (
+        frequency,
+        index
+      ) => {
+        const oscillator =
+          context.createOscillator();
+
+        const voiceGain =
+          context.createGain();
+
+
+        oscillator.type =
+          index === 1
+            ? "triangle"
+            : "sine";
+
+
+        oscillator.frequency.value =
+          frequency;
+
+
+        voiceGain.gain.value =
+          index === 1
+            ? 0.12
+            : 0.08;
+
+
+        oscillator
+          .connect(
+            voiceGain
+          )
+          .connect(
+            master
+          );
+
+
+        oscillator.start();
+      }
+    );
+
+
+    return {
+      gain: master
+    };
+  }
+
+
+  /* =======================================================
+     HAND-DRAWN STAR CANVAS
+  ======================================================= */
+
+  const canvas =
+    document.querySelector(
+      "#skyCanvas"
+    );
+
+  const context =
+    canvas.getContext(
+      "2d"
+    );
+
+
+  const reducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+  let stars = [];
+
+
+  function resizeSky() {
+    const ratio =
+      Math.min(
+        window.devicePixelRatio ||
+        1,
+        2
+      );
+
+
+    canvas.width =
+      window.innerWidth *
+      ratio;
+
+
+    canvas.height =
+      window.innerHeight *
+      ratio;
+
+
+    canvas.style.width =
+      `${window.innerWidth}px`;
+
+
+    canvas.style.height =
+      `${window.innerHeight}px`;
+
+
+    context.setTransform(
+      ratio,
+      0,
+      0,
+      ratio,
+      0,
+      0
+    );
+
+
+    const numberOfStars =
+      Math.min(
+        90,
+        Math.floor(
+          window.innerWidth /
+          14
+        )
+      );
+
+
+    stars =
+      Array.from(
+        {
+          length:
+            numberOfStars
+        },
+        () => {
+          return {
             x:
-              Math.random() * width,
+              Math.random() *
+              window.innerWidth,
 
             y:
-              Math.random() * height,
+              Math.random() *
+              window.innerHeight,
 
             radius:
-              Math.random() * 1.4 + 0.2,
-
-            opacity:
-              Math.random() * 0.7 + 0.15,
+              Math.random() *
+              1.4 +
+              0.2,
 
             speed:
-              Math.random() * 0.004 + 0.001,
+              Math.random() *
+              0.035 +
+              0.008,
 
             phase:
-              Math.random() * Math.PI * 2
-          })
-        );
-
-    }
-
-
-    function drawStars(time = 0) {
-
-      ctx.clearRect(
-        0,
-        0,
-        width,
-        height
+              Math.random() *
+              Math.PI *
+              2
+          };
+        }
       );
+  }
 
 
-      stars.forEach((star) => {
+  function drawSky(
+    time = 0
+  ) {
+    context.clearRect(
+      0,
+      0,
+      window.innerWidth,
+      window.innerHeight
+    );
 
+
+    context.fillStyle =
+      "#17140f";
+
+
+    stars.forEach(
+      (star) => {
         const pulse =
-          Math.sin(
-            time * star.speed +
-            star.phase
-          );
+          reducedMotion
+            ? 1
+            : 0.45 +
+              Math.sin(
+                time *
+                star.speed *
+                0.01 +
+                star.phase
+              ) *
+              0.3;
 
-        const opacity =
-          Math.max(
-            0.08,
-            star.opacity +
-            pulse * 0.18
-          );
+
+        context.globalAlpha =
+          pulse;
 
 
-        ctx.beginPath();
+        context.beginPath();
 
-        ctx.arc(
+
+        context.arc(
           star.x,
           star.y,
           star.radius,
@@ -239,506 +685,33 @@
           Math.PI * 2
         );
 
-        ctx.fillStyle =
-          `rgba(255, 244, 220, ${opacity})`;
 
-        ctx.fill();
-
-      });
-
-
-      requestAnimationFrame(drawStars);
-
-    }
-
-
-    window.addEventListener(
-      "resize",
-      resizeCanvas
+        context.fill();
+      }
     );
 
 
-    resizeCanvas();
-
-    requestAnimationFrame(drawStars);
-
-  }
+    context.globalAlpha = 1;
 
 
-  /* ==========================================================
-     SCROLL REVEALS
-  ========================================================== */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-  if (
-    "IntersectionObserver" in window
-  ) {
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach((entry) => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target
-              .classList
-              .add("visible");
-
-            observer.unobserve(
-              entry.target
-            );
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
+    if (!reducedMotion) {
+      window.requestAnimationFrame(
+        drawSky
       );
-
-
-    revealElements.forEach(
-      (element) => {
-
-        revealObserver.observe(
-          element
-        );
-
-      }
-    );
-
-  } else {
-
-    revealElements.forEach(
-      (element) => {
-
-        element
-          .classList
-          .add("visible");
-
-      }
-    );
-
-  }
-
-
-  /* ==========================================================
-     WONDER QUESTIONS
-  ========================================================== */
-
-  const wonderQuestions = [
-
-    "When was the last time you changed your mind about something important?",
-
-    "Why do humans care so much about what strangers think of them?",
-
-    "What would you attempt if the first version were allowed to be terrible?",
-
-    "What ordinary thing around you would look extraordinary to someone from 500 years ago?",
-
-    "Who were you before you started trying to impress anybody?",
-
-    "What is something everybody seems to accept that you still don't understand?",
-
-    "If nobody could see the result, what would you still want to make?",
-
-    "What question did you ask constantly as a child that you stopped asking?",
-
-    "Why do some memories stay while entire years disappear?",
-
-    "If you could become a beginner at something tomorrow, what would you choose?",
-
-    "What have you been calling failure that might actually just be an unfinished attempt?",
-
-    "What would your twelve-year-old self find completely unbelievable about your life now?",
-
-    "Why do humans decorate spaces they know they will eventually leave?",
-
-    "What is something you believe only because somebody told you it was normal?",
-
-    "If your life had no audience, what would you do differently?",
-
-    "What have you walked past a hundred times without actually noticing?",
-
-    "Which version of yourself are you still trying to prove something to?",
-
-    "What would happen if you stopped trying to become impressive and became interested instead?",
-
-    "Why do we remember embarrassing moments at 2am but forget where we left our keys?",
-
-    "What deserves one brave hour from you today?",
-
-    "What would you investigate if nobody asked whether it was useful?",
-
-    "Which question would you rather live with than immediately answer?",
-
-    "What is one thing you are completely wrong about right now — without knowing it?",
-
-    "What have humans invented that would be impossible to explain to a confused pigeon?",
-
-    "If curiosity had a physical shape, what would yours look like?"
-
-  ];
-
-
-  let previousQuestion = -1;
-
-
-  function getRandomQuestion() {
-
-    if (
-      wonderQuestions.length === 0
-    ) {
-      return "";
     }
-
-
-    let index;
-
-
-    do {
-
-      index =
-        Math.floor(
-          Math.random() *
-          wonderQuestions.length
-        );
-
-    } while (
-      index === previousQuestion &&
-      wonderQuestions.length > 1
-    );
-
-
-    previousQuestion =
-      index;
-
-
-    return wonderQuestions[index];
-
-  }
-
-
-  /* ==========================================================
-     WONDER MACHINE
-  ========================================================== */
-
-  if (
-    questionButton &&
-    questionOutput
-  ) {
-
-    questionButton.addEventListener(
-      "click",
-      () => {
-
-        questionOutput.classList.remove(
-          "question-arrived"
-        );
-
-
-        const question =
-          getRandomQuestion();
-
-
-        questionOutput.innerHTML =
-          `<span>${question}</span>`;
-
-
-        requestAnimationFrame(
-          () => {
-
-            questionOutput.classList.add(
-              "question-arrived"
-            );
-
-          }
-        );
-
-      }
-    );
-
-  }
-
-
-  /* ==========================================================
-     FINAL QUESTION
-  ========================================================== */
-
-  if (
-    newFinalQuestion &&
-    finalQuestion
-  ) {
-
-    newFinalQuestion.addEventListener(
-      "click",
-      () => {
-
-        finalQuestion.style.opacity =
-          "0";
-
-
-        window.setTimeout(
-          () => {
-
-            finalQuestion.textContent =
-              getRandomQuestion();
-
-            finalQuestion.style.opacity =
-              "1";
-
-          },
-          180
-        );
-
-      }
-    );
-
-  }
-
-
-  /* ==========================================================
-     MYSTERY BUTTON
-  ========================================================== */
-
-  function openMystery() {
-
-    if (!mysteryPopup) {
-      return;
-    }
-
-    mysteryPopup
-      .classList
-      .add("open");
-
-    mysteryPopup.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-  }
-
-
-  function closeMysteryPopup() {
-
-    if (!mysteryPopup) {
-      return;
-    }
-
-    mysteryPopup
-      .classList
-      .remove("open");
-
-    mysteryPopup.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-  }
-
-
-  if (mysteryButton) {
-
-    mysteryButton.addEventListener(
-      "click",
-      openMystery
-    );
-
-  }
-
-
-  if (closeMystery) {
-
-    closeMystery.addEventListener(
-      "click",
-      closeMysteryPopup
-    );
-
-  }
-
-
-  if (mysteryPopup) {
-
-    mysteryPopup.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target ===
-          mysteryPopup
-        ) {
-
-          closeMysteryPopup();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (
-        event.key === "Escape"
-      ) {
-
-        closeMysteryPopup();
-
-      }
-
-    }
-  );
-
-
-  /* ==========================================================
-     LITTLE PAPER MOVEMENT
-  ========================================================== */
-
-  const paper =
-    document.querySelector(".paper-main");
-
-
-  if (
-    paper &&
-    window.matchMedia(
-      "(pointer: fine)"
-    ).matches
-  ) {
-
-    paper.addEventListener(
-      "mousemove",
-      (event) => {
-
-        const rect =
-          paper.getBoundingClientRect();
-
-
-        const x =
-          (
-            event.clientX -
-            rect.left
-          ) /
-          rect.width;
-
-
-        const y =
-          (
-            event.clientY -
-            rect.top
-          ) /
-          rect.height;
-
-
-        const rotateX =
-          (0.5 - y) * 1.2;
-
-
-        const rotateY =
-          (x - 0.5) * 1.2;
-
-
-        paper.style.transform =
-          `
-            rotate(-1deg)
-            perspective(1200px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-          `;
-
-      }
-    );
-
-
-    paper.addEventListener(
-      "mouseleave",
-      () => {
-
-        paper.style.transform =
-          "rotate(-1deg)";
-
-      }
-    );
-
-  }
-
-
-  /* ==========================================================
-     RANDOM FALLING SCRAP PARALLAX
-  ========================================================== */
-
-  const fallScraps =
-    document.querySelectorAll(
-      ".falling-scraps span"
-    );
-
-
-  function updateFallScraps() {
-
-    const scroll =
-      window.scrollY;
-
-
-    fallScraps.forEach(
-      (scrap, index) => {
-
-        const direction =
-          index % 2 === 0
-            ? 1
-            : -1;
-
-
-        const movement =
-          scroll *
-          0.018 *
-          (index + 1);
-
-
-        scrap.style.translate =
-          `0 ${movement * direction}px`;
-
-      }
-    );
-
   }
 
 
   window.addEventListener(
-    "scroll",
-    updateFallScraps,
+    "resize",
+    resizeSky,
     {
       passive: true
     }
   );
 
 
-  /* ==========================================================
-     CONSOLE MESSAGE
-  ========================================================== */
-
-  console.log(
-    "%cYou opened the console.",
-    "font-size:18px; font-weight:bold;"
-  );
-
-  console.log(
-    "%cCurious human detected.",
-    "font-size:14px;"
-  );
-
-  console.log(
-    "%cThere is nothing useful hidden here. Probably.",
-    "font-size:12px; font-style:italic;"
-  );
+  resizeSky();
+  drawSky();
 
 })();
