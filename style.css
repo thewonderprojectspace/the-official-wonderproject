@@ -1,27 +1,24 @@
 :root {
-  --paper: #f3ead7;
-  --paper-light: #fffaf0;
-  --ink: #17140f;
-  --muted: #6f675b;
-
+  --night: #07080d;
+  --night-2: #0b0e16;
+  --night-3: #111827;
+  --ink: #f4eddf;
+  --muted: #aaa398;
+  --faint: #777a83;
   --sun: #efaa19;
   --sun-soft: #ffd86d;
-
-  --moon: #1d2a3a;
-  --moon-soft: #71829a;
-  --bruise: #756682;
-
-  --line: rgba(23, 20, 15, 0.2);
-
+  --moon: #8292a9;
+  --bruise: #9682a5;
+  --line: rgba(244, 237, 223, 0.15);
+  --line-strong: rgba(244, 237, 223, 0.32);
   --serif: "Gloock", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
   --hand: "Caveat", cursive;
+  --page-pad: clamp(1.2rem, 5vw, 5.5rem);
+  --section-pad: clamp(5rem, 9vw, 9rem);
 }
 
-
-/* =========================================================
-   BASE
-========================================================= */
+/* ---------- Reset ---------- */
 
 *,
 *::before,
@@ -30,15 +27,21 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
+  background: var(--night);
 }
 
 body {
   margin: 0;
-  color: var(--ink);
-  background: var(--paper);
-  font-family: var(--sans);
   overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(239, 170, 25, 0.08), transparent 28%),
+    radial-gradient(circle at 88% 30%, rgba(130, 146, 169, 0.09), transparent 30%),
+    var(--night);
+  font-family: var(--sans);
+  line-height: 1.5;
 }
 
 body.menu-open {
@@ -55,213 +58,189 @@ a {
 }
 
 button {
+  color: inherit;
   font: inherit;
+}
+
+img {
+  max-width: 100%;
 }
 
 h1,
 h2,
 h3,
-p {
+p,
+figure,
+blockquote {
   margin-top: 0;
 }
 
+::selection {
+  color: var(--night);
+  background: var(--sun-soft);
+}
 
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
+:focus-visible {
+  outline: 2px solid var(--sun-soft);
+  outline-offset: 5px;
+}
+
+/* ---------- Accessibility ---------- */
 
 .skip-link {
   position: fixed;
   top: -5rem;
   left: 1rem;
-  z-index: 1000;
-
+  z-index: 999;
   padding: 0.8rem 1rem;
-
-  color: white;
-  background: var(--ink);
+  color: var(--night);
+  background: var(--sun);
+  text-decoration: none;
 }
 
 .skip-link:focus {
   top: 1rem;
 }
 
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
+/* ---------- Background atmosphere ---------- */
 
 #skyCanvas {
   position: fixed;
   inset: 0;
-  z-index: -3;
-
+  z-index: 0;
   width: 100%;
   height: 100%;
-
-  opacity: 0.2;
+  opacity: 0.28;
   pointer-events: none;
 }
 
 .paper-noise {
   position: fixed;
   inset: 0;
-  z-index: 50;
-
+  z-index: 200;
   pointer-events: none;
-  opacity: 0.16;
-
-  background-image:
-    url(
-      "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"
-    );
-
-  mix-blend-mode: multiply;
+  opacity: 0.055;
+  filter: invert(1);
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
 }
 
 .cursor-light {
   position: fixed;
-  z-index: -2;
-
-  width: 28rem;
+  z-index: 0;
+  width: 26rem;
   aspect-ratio: 1;
-
   border-radius: 50%;
   transform: translate(-50%, -50%);
-
   pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(245, 185, 41, 0.14),
-      transparent 68%
-    );
+  background: radial-gradient(circle, rgba(239, 170, 25, 0.11), transparent 68%);
 }
 
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* ---------- Header ---------- */
 
 .site-header {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 40;
-
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  min-height: 78px;
-
-  padding:
-    0.8rem
-    clamp(1rem, 4vw, 4.5rem);
-
-  transition:
-    background 0.3s,
-    box-shadow 0.3s;
+  min-height: 76px;
+  padding: 0.75rem var(--page-pad);
+  transition: background 250ms ease, border-color 250ms ease;
 }
 
 .site-header.scrolled {
-  background: rgba(243, 234, 215, 0.9);
-
-  box-shadow:
-    0 1px 0 var(--line);
-
-  backdrop-filter: blur(12px);
+  background: rgba(7, 8, 13, 0.88);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
 }
 
 .brand {
   display: flex;
-  gap: 0.7rem;
   align-items: center;
-
+  gap: 0.75rem;
+  min-width: 0;
   text-decoration: none;
 }
 
 .brand-art {
   position: relative;
-
   display: grid;
+  flex: 0 0 46px;
   place-items: center;
-
   width: 46px;
   height: 46px;
 }
 
 .brand-art img {
-  position: absolute;
+  position: relative;
   z-index: 2;
-
   width: 100%;
   height: 100%;
-
   object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(239, 170, 25, 0.2));
 }
 
 .brand-fallback {
-  font-family: var(--hand);
-  font-size: 1.8rem;
-
+  position: absolute;
+  font: 1.8rem var(--hand);
   transform: rotate(-8deg);
 }
 
 .brand-name {
   display: grid;
-
+  min-width: 0;
   line-height: 1;
 }
 
 .brand-name strong {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 
 .brand-name strong span,
 .footer-brand span {
-  color: #936a10;
+  color: var(--sun);
 }
 
 .brand-name small {
   margin-top: 0.35rem;
-
   color: var(--muted);
-
-  font-family: var(--hand);
-  font-size: 0.95rem;
+  font: 0.95rem var(--hand);
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-
-  gap: clamp(1rem, 2.3vw, 2.5rem);
+  gap: clamp(1rem, 2.1vw, 2.2rem);
 }
 
 .site-nav a {
   position: relative;
-
-  font-size: 0.76rem;
-  letter-spacing: 0.06em;
-
+  font-size: 0.74rem;
+  letter-spacing: 0.055em;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .site-nav a:not(.nav-random)::after {
   content: "";
-
   position: absolute;
   right: 100%;
   bottom: -0.4rem;
   left: 0;
-
-  border-bottom: 1px solid;
-
-  transition: right 0.25s;
+  border-bottom: 1px solid var(--sun-soft);
+  transition: right 200ms ease;
 }
 
 .site-nav a:hover::after {
@@ -269,165 +248,107 @@ p {
 }
 
 .nav-random {
-  padding: 0.65rem 0.9rem;
+  padding: 0.62rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.02);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
 
-  border: 1px solid var(--ink);
-
-  transform: rotate(-1deg);
+.nav-random:hover {
+  color: var(--night);
+  border-color: var(--sun);
+  background: var(--sun);
 }
 
 .menu-button {
   display: none;
-
-  padding: 0.5rem;
-
+  padding: 0.4rem;
   border: 0;
-  background: none;
-
+  background: transparent;
   cursor: pointer;
 }
 
 .menu-button span {
   display: block;
-
   width: 26px;
-
   margin: 6px 0;
-
-  border-top: 1.5px solid;
+  border-top: 1.5px solid currentColor;
 }
 
 .menu-button em {
-  font-family: var(--hand);
-  font-size: 0.8rem;
-  font-style: normal;
+  font: 0.8rem var(--hand);
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
+/* ---------- Hero ---------- */
 
 .hero {
   position: relative;
   isolation: isolate;
-
   display: grid;
-  grid-template-columns:
-    minmax(320px, 0.78fr)
-    minmax(480px, 1.22fr);
-
-  grid-template-rows:
-    auto
-    1fr;
-
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  grid-template-rows: auto auto;
   align-items: center;
-
+  gap: 2.5rem clamp(2.5rem, 5vw, 6.5rem);
   min-height: 100svh;
-
-  padding:
-    9rem
-    clamp(1.2rem, 5vw, 6rem)
-    5rem;
-
-  gap: 1rem 2vw;
-
+  padding: 8.5rem var(--page-pad) 5rem;
   background:
-    linear-gradient(
-      105deg,
-      rgba(255, 248, 231, 0.8),
-      rgba(255, 248, 231, 0.15) 55%,
-      rgba(56, 66, 81, 0.07)
-    );
-}
-
-.hero::after {
-  content: "";
-
-  position: absolute;
-  right: 4%;
-  bottom: 5%;
-
-  width: 120px;
-
-  border-top: 1px solid var(--line);
-
-  transform: rotate(-8deg);
+    radial-gradient(circle at 72% 42%, rgba(239, 170, 25, 0.14), transparent 24%),
+    radial-gradient(circle at 88% 54%, rgba(130, 146, 169, 0.12), transparent 28%),
+    rgba(7, 8, 13, 0.92);
 }
 
 .hero-kicker {
   grid-column: 1 / -1;
-
   justify-self: center;
-
+  max-width: 42rem;
   color: var(--muted);
+  font: clamp(1.05rem, 1.6vw, 1.35rem) var(--hand);
+  text-align: center;
+}
 
-  font-family: var(--hand);
-  font-size:
-    clamp(1.05rem, 1.5vw, 1.4rem);
+.hero-copy,
+.hero-art {
+  min-width: 0;
 }
 
 .hero-copy {
-  position: relative;
-  z-index: 2;
-
-  max-width: 640px;
+  max-width: 610px;
 }
 
 .hand-note {
-  position: absolute;
-  top: -2.6rem;
-  right: 4%;
-
-  color: #826215;
-
-  font-family: var(--hand);
-  font-size: 1.2rem;
-
-  transform: rotate(-5deg);
+  margin-bottom: 1rem;
+  color: var(--sun-soft);
+  font: 1.2rem var(--hand);
+  transform: rotate(-2deg);
+  transform-origin: left center;
 }
 
 h1 {
-  margin:
-    0
-    0
-    2rem;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(4.1rem, 7.5vw, 8.6rem);
-  font-weight: 400;
-  line-height: 0.82;
-
-  letter-spacing: -0.055em;
+  margin: 0 0 1.8rem;
+  font: clamp(3.8rem, 7.3vw, 8rem) / 0.86 var(--serif);
+  letter-spacing: -0.05em;
 }
 
 h1 .and {
   color: var(--sun);
-
   font-size: 0.74em;
   font-style: italic;
 }
 
 .hero-intro {
   margin-bottom: 1rem;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(1.2rem, 1.7vw, 1.7rem);
-  line-height: 1.5;
+  font: clamp(1.15rem, 1.65vw, 1.6rem) / 1.5 var(--serif);
 }
 
 .hero-intro strong:first-child {
-  color: #936a10;
+  color: var(--sun-soft);
 }
 
 .hero-body {
-  max-width: 38rem;
-
+  max-width: 37rem;
+  margin-bottom: 0;
   color: var(--muted);
-
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   line-height: 1.75;
 }
 
@@ -435,993 +356,633 @@ h1 .and {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
-  margin-top: 2rem;
-
-  gap: 1.5rem;
+  gap: 1rem 1.5rem;
+  margin-top: 1.8rem;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-
   min-width: 190px;
-
   padding: 0.85rem 1rem;
-
   font-size: 0.78rem;
   letter-spacing: 0.08em;
-
   text-decoration: none;
 }
 
 .button-dark {
-  color: var(--paper-light);
-  background: var(--ink);
+  color: var(--night);
+  background: var(--sun);
+  box-shadow: 0 10px 34px rgba(239, 170, 25, 0.14);
 }
 
 .button span {
-  transition: transform 0.2s;
+  transition: transform 180ms ease;
 }
 
-.button-dark:hover span {
+.button:hover span {
   transform: translateY(4px);
 }
 
 .sound-toggle {
+  padding: 0;
   color: var(--muted);
-  background: transparent;
-
   border: 0;
-
+  background: transparent;
   font-size: 0.72rem;
-
   cursor: pointer;
 }
 
 .sound-icon {
   display: inline-grid;
   place-items: center;
-
   width: 2rem;
   height: 2rem;
-
   margin-right: 0.4rem;
-
-  border: 1px solid var(--line);
+  color: var(--sun-soft);
+  border: 1px solid var(--line-strong);
   border-radius: 50%;
 }
 
 .hero-art {
   position: relative;
-  z-index: 1;
-
   margin: 0;
 }
 
 .hero-art img {
   display: block;
-
-  width: min(100%, 960px);
-
-  filter:
-    saturate(0.92)
-    contrast(1.02);
-
-  mix-blend-mode: multiply;
-}
-
-.hero-art::before {
-  content: "the soul / the self";
-
-  position: absolute;
-  top: 3%;
-  left: 40%;
-  z-index: 3;
-
-  font-family: var(--hand);
-  font-size: 1.1rem;
-
-  transform: rotate(-3deg);
+  width: min(100%, 900px);
+  margin-inline: auto;
+  border-radius: 46%;
+  filter: saturate(0.92) contrast(1.05) brightness(0.9);
+  -webkit-mask-image: radial-gradient(ellipse 96% 90% at 50% 50%, #000 62%, rgba(0, 0, 0, 0.88) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 96% 90% at 50% 50%, #000 62%, rgba(0, 0, 0, 0.88) 78%, transparent 100%);
 }
 
 .hero-art figcaption {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: var(--muted);
-
-  font-family: var(--hand);
-  font-size: 1rem;
-
   gap: 1rem;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font: 1rem var(--hand);
 }
 
 .hero-art figcaption i {
-  width: 80px;
-
-  border-top:
-    1px dashed var(--line);
+  width: 70px;
+  border-top: 1px dashed var(--line-strong);
 }
 
 .orbit {
   position: absolute;
   z-index: -1;
-
-  border:
-    1px dashed
-    rgba(23, 20, 15, 0.2);
-
+  border: 1px dashed rgba(244, 237, 223, 0.17);
   border-radius: 50%;
-
-  animation:
-    orbit 28s linear infinite;
+  animation: orbit 32s linear infinite;
 }
 
 .orbit-one {
   inset: 8% 0 15% 1%;
-
   transform: rotate(-7deg);
 }
 
 .orbit-two {
-  inset: 1% 8% 6% 12%;
-
+  inset: 2% 8% 7% 12%;
   transform: rotate(12deg);
-
   animation-direction: reverse;
-  animation-duration: 35s;
+  animation-duration: 40s;
 }
 
-.scroll-note {
-  position: absolute;
-  right: 2.5rem;
-  bottom: 5rem;
-
-  color: var(--muted);
-
-  font-family: var(--hand);
-  font-size: 1rem;
-
-  writing-mode: vertical-rl;
+.scroll-note,
+.hero-art::before {
+  display: none;
 }
 
-.scroll-note span {
-  margin-top: 0.8rem;
-}
-
-
-/* =========================================================
-   THESIS
-========================================================= */
+/* ---------- Manifesto ---------- */
 
 .thesis {
   position: relative;
-
-  min-height: 78vh;
-
-  padding:
-    clamp(6rem, 12vw, 11rem)
-    clamp(1.4rem, 12vw, 13rem);
-
-  color: var(--paper);
-  background: var(--ink);
-
   overflow: hidden;
+  padding: var(--section-pad) clamp(1.4rem, 11vw, 12rem);
+  background:
+    radial-gradient(circle at 80% 26%, rgba(239, 170, 25, 0.09), transparent 30%),
+    rgba(5, 7, 11, 0.96);
 }
 
 .thesis::before {
   content: "";
-
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 41px, rgba(255, 255, 255, 0.022) 42px);
+}
 
-  background:
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(240, 171, 29, 0.12),
-      transparent 27%
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 41px,
-      rgba(255, 255, 255, 0.025) 42px
-    );
+.thesis > * {
+  position: relative;
 }
 
 .thesis-number,
 .section-number {
-  position: relative;
-
   color: #b7aa96;
-
   font-size: 0.67rem;
   letter-spacing: 0.16em;
 }
 
 .thesis blockquote {
-  position: relative;
-
-  max-width: 1040px;
-
-  margin: 3rem 0;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(2.5rem, 5vw, 5.6rem);
-  line-height: 1.06;
-
+  max-width: 1050px;
+  margin: 2.5rem 0 3rem;
+  font: clamp(2.5rem, 5vw, 5.4rem) / 1.06 var(--serif);
   letter-spacing: -0.03em;
 }
 
 .thesis-copy {
-  position: relative;
-
   display: grid;
-  grid-template-columns:
-    1fr
-    1fr;
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
   max-width: 760px;
-
   margin-left: auto;
-
-  color: #cfc4b3;
-
+  color: #bcb5aa;
   font-size: 0.9rem;
   line-height: 1.8;
-
-  gap: 2rem;
 }
 
 .margin-scribble {
-  position: absolute;
-  right: 5%;
-  bottom: 8%;
-
+  width: max-content;
+  max-width: 100%;
+  margin: 2.5rem 0 0 auto;
   color: var(--sun-soft);
-
-  font-family: var(--hand);
-  font-size: 1.4rem;
-
-  transform: rotate(-5deg);
+  font: 1.35rem var(--hand);
+  transform: rotate(-3deg);
 }
 
-
-/* =========================================================
-   SUN AND MOON PORTALS
-========================================================= */
+/* ---------- Two portals ---------- */
 
 .two-sides {
-  position: relative;
-
   display: grid;
-  grid-template-columns:
-    1fr
-    100px
-    1fr;
-
-  background: #eee4d1;
+  grid-template-columns: minmax(0, 1fr) 84px minmax(0, 1fr);
+  background: rgba(9, 11, 17, 0.96);
 }
 
 .section-heading {
   grid-column: 1 / -1;
-
-  padding:
-    7rem
-    1.5rem
-    4rem;
-
+  padding: var(--section-pad) 1.5rem 4rem;
   text-align: center;
 }
 
 .section-heading > p {
   color: var(--muted);
-
   font-size: 0.66rem;
   letter-spacing: 0.18em;
 }
 
 .section-heading h2 {
   margin-bottom: 1rem;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(2.5rem, 4.5vw, 5rem);
-  font-weight: 400;
-  line-height: 1;
+  font: clamp(2.5rem, 4.5vw, 4.8rem) / 1 var(--serif);
 }
 
 .section-heading > span {
   color: var(--muted);
-
-  font-family: var(--hand);
-  font-size: 1.15rem;
+  font: 1.15rem var(--hand);
 }
 
 .portal {
   position: relative;
-
-  min-height: 830px;
-
-  padding:
-    5rem
-    clamp(2rem, 6vw, 7rem);
-
+  isolation: isolate;
   overflow: hidden;
+  padding: clamp(4rem, 7vw, 7rem) clamp(1.7rem, 5.5vw, 6rem);
+}
+
+.portal > * {
+  position: relative;
+  z-index: 1;
 }
 
 .portal-sun {
-  background: #efb02b;
+  color: #f8e9c7;
+  background:
+    radial-gradient(circle at 84% 10%, rgba(239, 170, 25, 0.32), transparent 28%),
+    linear-gradient(145deg, #201707, #120f0b 58%, #0c0c0e);
 }
 
 .portal-sun::before {
   content: "";
-
   position: absolute;
-  top: -230px;
-  right: -210px;
-
+  top: -240px;
+  right: -220px;
+  z-index: 0;
   width: 520px;
   height: 520px;
-
-  border:
-    1px dashed
-    rgba(23, 20, 15, 0.28);
-
+  border: 1px dashed rgba(255, 216, 109, 0.3);
   border-radius: 50%;
-
-  box-shadow:
-    0 0 0 45px
-    rgba(255, 255, 255, 0.05),
-    0 0 0 95px
-    rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 48px rgba(239, 170, 25, 0.03), 0 0 0 98px rgba(239, 170, 25, 0.02);
 }
 
 .portal-moon {
-  color: #f0e9da;
-  background: var(--moon);
+  color: #eee9e1;
+  background:
+    radial-gradient(circle at 82% 11%, rgba(130, 146, 169, 0.2), transparent 28%),
+    linear-gradient(145deg, #111b2a, #090e17 62%, #080a10);
 }
 
 .portal-moon::before {
   content: "";
-
   position: absolute;
   top: -135px;
   right: -120px;
-
+  z-index: 0;
   width: 410px;
   height: 410px;
-
   border-radius: 50%;
-
-  opacity: 0.28;
-
+  opacity: 0.34;
   background:
-    radial-gradient(
-      circle at 30% 30%,
-      #9fa9b8 0 8%,
-      transparent 9%
-    ),
-    radial-gradient(
-      circle at 60% 60%,
-      #5c6676 0 13%,
-      transparent 14%
-    ),
-    radial-gradient(
-      circle at 40% 75%,
-      #9fa9b8 0 5%,
-      transparent 6%
-    ),
+    radial-gradient(circle at 30% 30%, #9fa9b8 0 8%, transparent 9%),
+    radial-gradient(circle at 60% 60%, #5c6676 0 13%, transparent 14%),
+    radial-gradient(circle at 40% 75%, #9fa9b8 0 5%, transparent 6%),
     #707c8c;
 }
 
 .portal-symbol {
-  position: relative;
-
   display: grid;
   place-items: center;
-
-  width: 110px;
-  height: 110px;
-
-  margin-bottom: 4rem;
-
-  border: 1px solid currentColor;
+  width: 102px;
+  height: 102px;
+  margin-bottom: 3.5rem;
+  border: 1px solid rgba(244, 237, 223, 0.4);
   border-radius: 50%;
 }
 
 .portal-symbol span {
-  font-size: 4rem;
+  font-size: 3.7rem;
 }
 
 .portal-label {
   font-size: 0.67rem;
   letter-spacing: 0.2em;
-
   opacity: 0.72;
 }
 
 .portal h3 {
-  margin-bottom: 1.5rem;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(3rem, 5vw, 5.8rem);
-  font-weight: 400;
-  line-height: 0.95;
+  margin-bottom: 1.4rem;
+  font: clamp(3rem, 5vw, 5.5rem) / 0.96 var(--serif);
 }
 
 .portal-question {
-  font-family: var(--hand);
-  font-size: 1.4rem;
-  line-height: 1.4;
+  font: 1.35rem / 1.4 var(--hand);
 }
 
 .portal-description {
   max-width: 520px;
-  min-height: 145px;
-
+  color: currentColor;
   font-size: 0.92rem;
   line-height: 1.8;
-
-  opacity: 0.78;
+  opacity: 0.76;
 }
 
 .portal-values {
   display: flex;
   flex-wrap: wrap;
-
-  margin: 2rem 0;
-  padding: 0;
-
-  list-style: none;
-
   gap: 0.5rem;
+  margin: 1.8rem 0;
+  padding: 0;
+  list-style: none;
 }
 
 .portal-values li {
-  padding:
-    0.42rem
-    0.7rem;
-
-  border: 1px solid currentColor;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid rgba(244, 237, 223, 0.3);
   border-radius: 100px;
-
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-
-  opacity: 0.75;
+  opacity: 0.78;
 }
 
 .portal-link {
   display: flex;
   justify-content: space-between;
-
   max-width: 360px;
-
   padding: 1rem 0;
-
-  border-bottom:
-    1px solid currentColor;
-
+  border-bottom: 1px solid currentColor;
   font-weight: 600;
-
   text-decoration: none;
 }
 
 .portal-link span {
-  transition: transform 0.2s;
+  transition: transform 180ms ease;
 }
 
 .portal-link:hover span {
-  transform:
-    translate(5px, -5px);
+  transform: translate(5px, -5px);
 }
 
 .portal-note {
-  position: absolute;
-  bottom: 3rem;
-  left: clamp(2rem, 6vw, 7rem);
-
-  font-family: var(--hand);
-  font-size: 1.08rem;
-
-  opacity: 0.72;
-
-  transform: rotate(-2deg);
+  margin: 2.8rem 0 0;
+  font: 1.05rem var(--hand);
+  opacity: 0.7;
+  transform: rotate(-1deg);
 }
 
 .shared-light {
-  position: relative;
-  z-index: 3;
-
-  display: grid;
-  place-items: center;
-
-  background:
-    linear-gradient(
-      90deg,
-      #efb02b 0 50%,
-      var(--moon) 50%
-    );
-}
-
-.shared-light i {
-  height: 68%;
-
-  border-left:
-    1px dashed
-    rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: linear-gradient(90deg, #120f0b 0 50%, #090e17 50%);
 }
 
 .shared-light span {
-  position: absolute;
-  top: 6rem;
-
-  width: 130px;
-
+  width: 128px;
   padding: 0.5rem;
-
-  color: var(--ink);
-  background: var(--paper);
-
-  font-family: var(--hand);
-  font-size: 1rem;
-
+  color: #14110c;
+  background: #e8dcc5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  font: 1rem var(--hand);
   text-align: center;
-
-  transform: rotate(-5deg);
+  transform: rotate(-3deg);
 }
 
+.shared-light i {
+  height: 50%;
+  border-left: 1px dashed rgba(255, 255, 255, 0.45);
+}
 
-/* =========================================================
-   ECLIPSE SECTION
-========================================================= */
+/* ---------- Space between ---------- */
 
 .eclipse-section {
   display: grid;
-  grid-template-columns:
-    0.9fr
-    1.1fr;
-
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
-
-  min-height: 90vh;
-
-  padding:
-    8rem
-    clamp(1.5rem, 9vw, 10rem);
-
-  background: #e7dbc5;
-
-  gap: 8vw;
+  gap: clamp(3rem, 8vw, 8rem);
+  padding: var(--section-pad) clamp(1.5rem, 8vw, 9rem);
+  background:
+    radial-gradient(circle at 26% 50%, rgba(239, 170, 25, 0.08), transparent 28%),
+    linear-gradient(120deg, rgba(13, 14, 20, 0.97), rgba(19, 23, 34, 0.97));
 }
 
 .eclipse-art {
   position: relative;
-
-  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  min-height: 360px;
 }
 
 .eclipse-sun,
 .eclipse-moon {
-  position: absolute;
-  top: 50%;
-
-  width: min(29vw, 360px);
+  position: relative;
+  flex: 0 1 210px;
+  width: min(17vw, 210px);
   aspect-ratio: 1;
-
   border-radius: 50%;
-
-  transform: translateY(-50%);
 }
 
 .eclipse-sun {
-  left: 5%;
-
   background: var(--sun);
-
-  box-shadow:
-    0 0 0 22px
-    rgba(239, 170, 25, 0.12),
-    0 0 0 48px
-    rgba(239, 170, 25, 0.07);
+  box-shadow: 0 0 0 20px rgba(239, 170, 25, 0.08), 0 0 70px rgba(239, 170, 25, 0.2);
 }
 
 .eclipse-moon {
-  left: 32%;
-
   background:
-    radial-gradient(
-      circle at 28% 28%,
-      #8793a3 0 7%,
-      transparent 8%
-    ),
-    radial-gradient(
-      circle at 68% 64%,
-      #4d5968 0 14%,
-      transparent 15%
-    ),
-    radial-gradient(
-      circle at 32% 72%,
-      #9da7b3 0 5%,
-      transparent 6%
-    ),
+    radial-gradient(circle at 28% 28%, #8793a3 0 7%, transparent 8%),
+    radial-gradient(circle at 68% 64%, #4d5968 0 14%, transparent 15%),
+    radial-gradient(circle at 32% 72%, #9da7b3 0 5%, transparent 6%),
     #293747;
-
-  box-shadow:
-    -22px 0 55px
-    rgba(244, 178, 36, 0.4);
+  box-shadow: 0 0 42px rgba(130, 146, 169, 0.23);
 }
 
 .eclipse-moon::after {
   content: "";
-
   position: absolute;
   inset: 18% 12%;
-
-  border-left:
-    2px solid #c18b21;
-
+  border-left: 2px solid #c18b21;
   border-radius: 45%;
-
   transform: rotate(18deg);
 }
 
 .eclipse-thread {
   position: absolute;
-  top: 18%;
-  right: 0;
-  bottom: 18%;
-  left: 19%;
-
-  border:
-    1px dashed var(--line);
-
+  inset: 18% 4%;
+  z-index: -1;
+  border: 1px dashed var(--line);
   border-radius: 50%;
-
-  transform: rotate(-12deg);
+  transform: rotate(-8deg);
 }
 
 .eclipse-copy h2 {
-  margin: 2rem 0;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(2.6rem, 4.2vw, 5rem);
-  font-weight: 400;
-  line-height: 1.08;
+  margin: 1.8rem 0;
+  font: clamp(2.5rem, 4.2vw, 4.7rem) / 1.08 var(--serif);
 }
 
 .eclipse-copy h2 em {
   color: var(--bruise);
-
   font-weight: 400;
 }
 
-.eclipse-copy
-> p:not(.section-number):not(.ink-note) {
+.eclipse-copy > p:not(.section-number):not(.ink-note) {
   max-width: 640px;
-
   color: var(--muted);
-
-  line-height: 1.9;
+  line-height: 1.85;
 }
 
 .ink-note {
   display: inline-block;
-
-  margin-top: 2rem;
-
-  border-bottom:
-    2px solid var(--sun);
-
-  font-family: var(--hand);
-  font-size: 1.6rem;
-
+  margin-top: 1.7rem;
+  border-bottom: 2px solid var(--sun);
+  font: 1.55rem var(--hand);
   transform: rotate(-2deg);
 }
 
-
-/* =========================================================
-   CONSTELLATION
-========================================================= */
+/* ---------- Places ---------- */
 
 .constellation {
-  padding:
-    1rem
-    clamp(1rem, 6vw, 7rem)
-    8rem;
-
-  background: var(--paper-light);
+  padding: 1rem var(--page-pad) var(--section-pad);
+  background:
+    radial-gradient(circle at 50% 6%, rgba(130, 146, 169, 0.08), transparent 26%),
+    rgba(8, 10, 15, 0.97);
 }
 
 .constellation-grid {
   display: grid;
-  grid-template-columns:
-    repeat(5, 1fr);
-
-  border-top:
-    1px solid var(--line);
-
-  border-left:
-    1px solid var(--line);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .place {
   position: relative;
-
-  min-height: 290px;
-
-  padding: 1.4rem;
-
-  border-right:
-    1px solid var(--line);
-
-  border-bottom:
-    1px solid var(--line);
-
+  min-width: 0;
+  min-height: 250px;
+  padding: 1.35rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.012);
   text-decoration: none;
-
-  overflow: hidden;
-
-  transition:
-    transform 0.25s,
-    background 0.25s,
-    color 0.25s;
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .place::after {
   content: "↗";
-
   position: absolute;
-  right: 1.3rem;
+  right: 1.2rem;
   bottom: 1rem;
-
-  opacity: 0.3;
+  opacity: 0.35;
 }
 
 .place:hover {
   z-index: 2;
-
-  box-shadow:
-    0 14px 30px
-    rgba(23, 20, 15, 0.12);
-
-  transform:
-    translateY(-7px)
-    rotate(-0.4deg);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+  transform: translateY(-5px);
 }
 
 .sun-place:hover {
+  color: #171109;
   background: var(--sun-soft);
 }
 
 .moon-place:hover {
-  color: var(--paper-light);
-  background: var(--moon);
+  color: #f5eee2;
+  background: #1a2738;
 }
 
 .shared-place:hover {
-  color: white;
-  background: var(--bruise);
+  color: #fff;
+  background: #4f435b;
 }
 
 .place b {
   font-size: 0.62rem;
   font-weight: 400;
-
   opacity: 0.45;
 }
 
 .place > span {
   display: block;
-
-  margin:
-    3.5rem
-    0
-    1.3rem;
-
-  font-size: 2.3rem;
-
-  filter: grayscale(0.25);
+  margin: 2.8rem 0 1.15rem;
+  font-size: 2.2rem;
+  filter: grayscale(0.22);
 }
 
 .place h3 {
-  margin-bottom: 0.8rem;
-
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 400;
+  margin-bottom: 0.7rem;
+  font: 1.35rem var(--serif);
 }
 
 .place p {
-  font-size: 0.78rem;
+  margin-bottom: 0;
+  font-size: 0.77rem;
   line-height: 1.55;
-
   opacity: 0.66;
 }
 
 .anywhere-button {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-
-  margin:
-    4rem
-    auto
-    0;
-
-  padding:
-    1rem
-    1.6rem;
-
-  border: 1px solid var(--ink);
-
+  gap: 0.15rem 0.9rem;
+  margin: 3.5rem auto 0;
+  padding: 0.9rem 1.3rem;
   color: var(--ink);
-  background: transparent;
-
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.02);
   cursor: pointer;
-
-  gap: 1rem;
-
   transform: rotate(-1deg);
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
 .anywhere-button:hover {
-  color: white;
-  background: var(--ink);
+  color: var(--night);
+  border-color: var(--sun);
+  background: var(--sun);
 }
 
 .anywhere-button > span:first-child {
+  grid-row: 1 / 3;
   font-size: 1.6rem;
 }
 
 .anywhere-button strong,
 .anywhere-button small {
   display: block;
+  grid-column: 2;
+  text-align: left;
 }
 
 .anywhere-button small {
-  font-family: var(--hand);
-  font-size: 1rem;
-
-  opacity: 0.65;
+  font: 1rem var(--hand);
+  opacity: 0.68;
 }
 
-
-/* =========================================================
-   REFLECTION QUESTION
-========================================================= */
+/* ---------- Question ---------- */
 
 .question-section {
-  position: relative;
-
-  display: grid;
-  place-items: center;
-
-  min-height: 72vh;
-
-  padding:
-    6rem
-    1.5rem;
-
-  color: var(--paper);
-  background: var(--ink);
-}
-
-.question-section::before,
-.question-section::after {
-  content: "✦";
-
-  position: absolute;
-
-  color: var(--sun);
-
-  font-size: 1.2rem;
-}
-
-.question-section::before {
-  top: 18%;
-  left: 12%;
-}
-
-.question-section::after {
-  right: 14%;
-  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: var(--section-pad) 1.5rem;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(130, 146, 169, 0.09), transparent 36%),
+    rgba(5, 7, 11, 0.97);
+  text-align: center;
 }
 
 .question-card {
-  width: min(900px, 90vw);
-
-  text-align: center;
+  width: min(900px, 92vw);
 }
 
 .question-card > p {
   color: #a99c87;
-
   font-size: 0.65rem;
   letter-spacing: 0.2em;
 }
 
 .question-card h2 {
-  min-height: 3em;
-
-  margin: 3rem 0;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(2.5rem, 5vw, 5.4rem);
-  font-weight: 400;
-  line-height: 1.08;
+  margin: 2.5rem 0;
+  font: clamp(2.4rem, 5vw, 5.1rem) / 1.08 var(--serif);
 }
 
 .question-card button {
-  padding: 0.8rem 0;
-
-  color: var(--paper);
-  background: transparent;
-
+  padding: 0.7rem 0;
+  color: var(--ink);
   border: 0;
-  border-bottom:
-    1px solid #a99c87;
-
+  border-bottom: 1px solid #a99c87;
+  background: transparent;
   cursor: pointer;
 }
 
 .question-card button span {
-  transition: transform 0.3s;
+  display: inline-block;
+  transition: transform 250ms ease;
 }
 
 .question-card button:hover span {
-  display: inline-block;
-
   transform: rotate(90deg);
 }
 
 .question-side-note {
-  position: absolute;
-  right: 8%;
-  bottom: 9%;
-
+  margin: 0;
   color: var(--sun-soft);
-
-  font-family: var(--hand);
-  font-size: 1.1rem;
-
-  transform: rotate(5deg);
+  font: 1.08rem var(--hand);
+  transform: rotate(2deg);
 }
 
-
-/* =========================================================
-   CLOSING
-========================================================= */
+/* ---------- Closing ---------- */
 
 .closing {
-  position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  min-height: 82vh;
-
-  padding:
-    8rem
-    1.5rem;
-
-  text-align: center;
-
+  padding: var(--section-pad) 1.5rem;
   background:
-    radial-gradient(
-      circle at 50% 45%,
-      rgba(240, 174, 39, 0.28),
-      transparent 22%
-    ),
-    var(--paper);
+    radial-gradient(circle at 50% 43%, rgba(239, 174, 39, 0.14), transparent 22%),
+    radial-gradient(circle at 50% 43%, rgba(130, 146, 169, 0.06), transparent 44%),
+    rgba(10, 12, 18, 0.97);
+  text-align: center;
 }
 
 .closing-eyebrow {
@@ -1431,152 +992,98 @@ h1 .and {
 
 .closing h2 {
   max-width: 1100px;
-
-  font-family: var(--serif);
-  font-size:
-    clamp(3rem, 6vw, 6.8rem);
-  font-weight: 400;
-  line-height: 0.98;
+  margin-bottom: 1.8rem;
+  font: clamp(3rem, 6vw, 6.3rem) / 0.99 var(--serif);
 }
 
-.closing
-> p:not(.closing-eyebrow) {
+.closing > p:not(.closing-eyebrow) {
   color: var(--muted);
-
   line-height: 1.8;
 }
 
 .back-to-sky {
-  margin-top: 2rem;
-
-  padding: 0.5rem 0;
-
+  margin-top: 1.8rem;
+  padding: 0.45rem 0;
   border-bottom: 1px solid;
-
   font-size: 0.8rem;
-
   text-decoration: none;
 }
 
 .closing-signature {
-  position: absolute;
-  right: 5%;
-  bottom: 6%;
-
-  font-family: var(--hand);
-  font-size: 1.2rem;
-
-  transform: rotate(-5deg);
+  margin-top: 3.5rem;
+  font: 1.15rem var(--hand);
+  transform: rotate(-3deg);
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* ---------- Footer ---------- */
 
 footer {
   display: grid;
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    auto;
-
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
-
-  min-height: 160px;
-
-  padding:
-    2rem
-    clamp(1.5rem, 5vw, 5rem);
-
-  color: var(--paper);
-  background: var(--ink);
-
   gap: 2rem;
+  min-height: 150px;
+  padding: 2rem var(--page-pad);
+  border-top: 1px solid rgba(244, 237, 223, 0.08);
+  background: #030407;
 }
 
 .footer-brand {
   font-weight: 600;
   letter-spacing: 0.12em;
-
   text-decoration: none;
 }
 
 footer p {
   margin: 0;
-
   color: #a99c87;
-
-  font-family: var(--hand);
-  font-size: 1rem;
+  font: 1rem var(--hand);
 }
 
 footer nav {
   display: flex;
-
   gap: 1.2rem;
 }
 
 footer nav a,
 footer small {
   color: #c5b9a6;
-
   font-size: 0.68rem;
 }
-
-
-/* =========================================================
-   TOAST
-========================================================= */
 
 .toast {
   position: fixed;
   bottom: 2rem;
   left: 50%;
-  z-index: 100;
-
-  padding:
-    0.8rem
-    1rem;
-
-  color: white;
-  background: var(--ink);
-
-  font-family: var(--hand);
-  font-size: 1rem;
-
-  transform:
-    translate(-50%, 150%);
-
-  transition:
-    transform 0.3s;
+  z-index: 300;
+  padding: 0.8rem 1rem;
+  color: var(--night);
+  background: var(--sun-soft);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  font: 1rem var(--hand);
+  transform: translate(-50%, 150%);
+  transition: transform 250ms ease;
 }
 
 .toast.show {
-  transform:
-    translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
-
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
+/* Content remains visible without JavaScript. */
 
 .reveal {
-  opacity: 0;
-
-  transform:
-    translateY(26px);
-
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+  opacity: 1;
+  transform: none;
 }
 
-.reveal.visible {
-  opacity: 1;
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
 
+.js-ready .reveal.visible {
+  opacity: 1;
   transform: none;
 }
 
@@ -1586,122 +1093,54 @@ footer small {
   }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-
-    transition-duration: 0.001ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+/* ---------- Tablet and mobile navigation ---------- */
 
 @media (max-width: 1100px) {
-
   .hero {
     grid-template-columns: 1fr;
-
+    gap: 3rem;
     padding-top: 8rem;
   }
 
-  .hero-art {
-    grid-row: 3;
-
-    max-width: 850px;
-
-    justify-self: center;
-  }
-
   .hero-copy {
-    margin-top: 3rem;
+    max-width: 720px;
   }
 
-  .scroll-note {
-    display: none;
+  .hero-art {
+    width: 100%;
+    max-width: 850px;
+    margin-inline: auto;
   }
 
   .constellation-grid {
-    grid-template-columns:
-      repeat(3, 1fr);
-  }
-
-  .two-sides {
-    grid-template-columns:
-      1fr
-      70px
-      1fr;
-  }
-
-  .portal {
-    padding-right: 3rem;
-    padding-left: 3rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   footer {
-    grid-template-columns:
-      1fr
-      1fr;
+    grid-template-columns: 1fr 1fr;
   }
-
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .site-header {
-    min-height: 66px;
-  }
-
+@media (max-width: 980px) {
   .menu-button {
-    display: block;
-
+    position: relative;
     z-index: 3;
+    display: block;
   }
 
   .site-nav {
     position: fixed;
     inset: 0;
-
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-
-    padding:
-      5rem
-      2rem;
-
-    background: var(--paper);
-
-    transform:
-      translateX(100%);
-
-    transition:
-      transform 0.35s;
+    padding: 5rem 2rem;
+    background:
+      radial-gradient(circle at 80% 15%, rgba(239, 170, 25, 0.12), transparent 28%),
+      #090b11;
+    transform: translateX(100%);
+    transition: transform 300ms ease;
   }
 
   .site-nav.open {
@@ -1709,61 +1148,59 @@ footer small {
   }
 
   .site-nav a {
-    padding:
-      0.7rem
-      0;
-
-    border-bottom:
-      1px solid var(--line);
-
-    font-family: var(--serif);
-    font-size: 2rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font: clamp(1.6rem, 4vw, 2.1rem) var(--serif);
   }
 
   .nav-random {
     margin-top: 1rem;
+    font: 1rem var(--sans) !important;
+  }
 
-    font-family:
-      var(--sans) !important;
+  .two-sides {
+    display: block;
+  }
 
-    font-size:
-      1rem !important;
+  .shared-light {
+    flex-direction: row;
+    height: 100px;
+    background: linear-gradient(#120f0b 0 50%, #090e17 50%);
+  }
+
+  .shared-light i {
+    width: 40%;
+    height: 0;
+    border-top: 1px dashed rgba(255, 255, 255, 0.45);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --section-pad: 5.5rem;
+  }
+
+  .brand-name small {
+    display: none;
   }
 
   .hero {
     display: block;
-
-    padding:
-      8rem
-      1.2rem
-      4rem;
+    min-height: auto;
+    padding: 7.5rem 1.2rem 4.5rem;
   }
 
   .hero-kicker {
-    text-align: center;
-  }
-
-  .hero-copy {
-    margin-top: 5rem;
-  }
-
-  h1 {
-    font-size:
-      clamp(4rem, 20vw, 6.5rem);
-  }
-
-  .hand-note {
-    top: -3.5rem;
+    margin-bottom: 4rem;
   }
 
   .hero-art {
     margin-top: 3rem;
   }
 
-  .thesis {
-    padding:
-      7rem
-      1.4rem;
+  h1 {
+    font-size: clamp(3.8rem, 18vw, 6rem);
   }
 
   .thesis-copy {
@@ -1771,118 +1208,80 @@ footer small {
   }
 
   .margin-scribble {
-    position: relative;
-    right: auto;
-    bottom: auto;
-
-    margin-top: 3rem;
-  }
-
-  .two-sides {
-    display: block;
+    width: auto;
+    margin-left: 0;
   }
 
   .portal {
-    min-height: 750px;
-
-    padding:
-      4rem
-      1.5rem;
-  }
-
-  .portal-note {
-    left: 1.5rem;
-  }
-
-  .shared-light {
-    height: 100px;
-
-    background:
-      linear-gradient(
-        #efb02b 0 50%,
-        var(--moon) 50%
-      );
-  }
-
-  .shared-light span {
-    top: 1rem;
-  }
-
-  .shared-light i {
-    width: 70%;
-    height: 0;
-
-    border-top:
-      1px dashed
-      rgba(255, 255, 255, 0.6);
-
-    border-left: 0;
+    padding: 4.5rem 1.5rem;
   }
 
   .eclipse-section {
     grid-template-columns: 1fr;
-
-    padding:
-      6rem
-      1.5rem;
+    padding: var(--section-pad) 1.5rem;
   }
 
   .eclipse-art {
-    min-height: 360px;
+    min-height: 300px;
   }
 
   .eclipse-sun,
   .eclipse-moon {
-    width:
-      min(58vw, 280px);
+    flex-basis: min(34vw, 170px);
+    width: min(34vw, 170px);
   }
 
   .constellation {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: 1rem;
   }
 
   .constellation-grid {
-    grid-template-columns:
-      1fr
-      1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .place {
-    min-height: 260px;
-  }
-
-  .question-side-note {
-    display: none;
-  }
-
-  .closing-signature {
-    position: static;
-
-    margin-top: 5rem;
+    min-height: 225px;
   }
 
   footer {
     grid-template-columns: 1fr;
-
     text-align: center;
   }
 
   footer nav {
     justify-content: center;
   }
-
 }
 
+@media (max-width: 480px) {
+  .brand-art {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
-@media (max-width: 470px) {
+  .hero-art figcaption {
+    flex-wrap: wrap;
+  }
 
-  .brand-name small {
+  .portal-note br {
     display: none;
+  }
+
+  .eclipse-art {
+    min-height: 250px;
+    gap: 1rem;
+  }
+
+  .eclipse-sun,
+  .eclipse-moon {
+    flex-basis: min(31vw, 135px);
+    width: min(31vw, 135px);
   }
 
   .constellation-grid {
@@ -1890,1123 +1289,26 @@ footer small {
   }
 
   .place {
-    min-height: 220px;
+    min-height: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .place > span {
-    margin-top: 2rem;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
+  .reveal,
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
   }
-
-  .eclipse-art {
-    min-height: 290px;
-  }
-
-}
-/* =========================================================
-   JIGYASAVERSE — DARK SUN AND MOON THEME
-
-   Add this entire section to the bottom of style.css.
-   It replaces the earlier light colours and removes
-   overlapping content positioning.
-========================================================= */
-
-
-/* =========================================================
-   DARK COLOUR SYSTEM
-========================================================= */
-
-:root {
-  --paper: #0b0d14;
-  --paper-light: #11141d;
-
-  --ink: #f4eddf;
-  --muted: #aaa399;
-
-  --sun: #efaa19;
-  --sun-soft: #ffd86d;
-
-  --moon: #0c1421;
-  --moon-soft: #8494ad;
-
-  --bruise: #9682a5;
-
-  --line:
-    rgba(244, 237, 223, 0.17);
-
-  --serif:
-    "Gloock",
-    Georgia,
-    serif;
-
-  --sans:
-    "DM Sans",
-    Arial,
-    sans-serif;
-
-  --hand:
-    "Caveat",
-    cursive;
-}
-
-
-html {
-  color-scheme: dark;
-
-  background: #07080c;
-}
-
-
-body {
-  color: var(--ink);
-
-  background:
-    radial-gradient(
-      circle at 16% 8%,
-      rgba(239, 170, 25, 0.08),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 86% 26%,
-      rgba(113, 130, 154, 0.1),
-      transparent 28%
-    ),
-    #090b11;
-}
-
-
-::selection {
-  color: #090b11;
-
-  background:
-    var(--sun-soft);
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-.skip-link {
-  color: #080a0f;
-
-  background:
-    var(--sun);
-}
-
-
-/* =========================================================
-   DARK PAPER TEXTURE
-========================================================= */
-
-.paper-noise {
-  opacity: 0.09;
-
-  filter: invert(1);
-
-  mix-blend-mode: screen;
-}
-
-
-.cursor-light {
-  background:
-    radial-gradient(
-      circle,
-      rgba(239, 170, 25, 0.13),
-      transparent 68%
-    );
-
-  mix-blend-mode: screen;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.site-header.scrolled {
-  background:
-    rgba(8, 10, 15, 0.86);
-
-  box-shadow:
-    0 1px 0
-    rgba(255, 255, 255, 0.1);
-
-  backdrop-filter: blur(12px);
-}
-
-
-.brand-name strong span,
-.footer-brand span {
-  color: var(--sun);
-}
-
-
-.brand-name small {
-  color: var(--muted);
-}
-
-
-.brand-art img {
-  filter:
-    drop-shadow(
-      0 0 12px
-      rgba(239, 170, 25, 0.22)
-    );
-}
-
-
-.nav-random {
-  border-color:
-    rgba(244, 237, 223, 0.45);
-
-  background:
-    rgba(255, 255, 255, 0.025);
-}
-
-
-.nav-random:hover {
-  color: #090b11;
-
-  border-color: var(--sun);
-
-  background: var(--sun);
-}
-
-
-/* =========================================================
-   HERO — NO OVERLAPPING CONTENT
-========================================================= */
-
-.hero {
-  grid-template-columns:
-    minmax(320px, 0.78fr)
-    minmax(480px, 1.22fr);
-
-  grid-template-rows:
-    auto
-    1fr;
-
-  align-items: center;
-
-  gap:
-    2.5rem
-    clamp(2rem, 5vw, 7rem);
-
-  background:
-    linear-gradient(
-      105deg,
-      rgba(6, 7, 11, 0.98),
-      rgba(11, 14, 22, 0.93) 52%,
-      rgba(25, 31, 44, 0.9)
-    ),
-    #090b11;
-}
-
-
-.hero::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle at 72% 40%,
-      rgba(239, 170, 25, 0.15),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 88% 52%,
-      rgba(113, 130, 154, 0.13),
-      transparent 28%
-    );
-}
-
-
-.hero-copy {
-  position: relative;
-  z-index: 2;
-
-  min-width: 0;
-  max-width: 640px;
-}
-
-
-.hero-art {
-  position: relative;
-  z-index: 1;
-
-  min-width: 0;
-
-  margin: 0;
-}
-
-
-.hero-kicker,
-.hero-body,
-.hero-art figcaption {
-  color: var(--muted);
-}
-
-
-/*
-   The note now remains in normal layout flow.
-   It will not sit over the heading.
-*/
-
-.hand-note {
-  position: static;
-
-  margin-bottom: 1.2rem;
-
-  color: var(--sun-soft);
-
-  font-family: var(--hand);
-  font-size: 1.2rem;
-
-  transform: rotate(-2deg);
-}
-
-
-.hero-intro strong:first-child {
-  color: var(--sun-soft);
-}
-
-
-.button-dark {
-  color: #0b0d13;
-
-  background: var(--sun);
-
-  box-shadow:
-    0 10px 38px
-    rgba(239, 170, 25, 0.14);
-}
-
-
-.sound-icon {
-  color: var(--sun-soft);
-}
-
-
-/*
-   The illustration receives a soft faded edge
-   so its rectangular background does not look
-   harsh against the dark page.
-*/
-
-.hero-art img {
-  display: block;
-
-  width: min(100%, 960px);
-
-  border-radius: 48%;
-
-  filter:
-    saturate(0.92)
-    contrast(1.06)
-    brightness(0.91);
-
-  mix-blend-mode: normal;
-
-  -webkit-mask-image:
-    radial-gradient(
-      ellipse 95% 88%
-      at 50% 50%,
-      #000 64%,
-      rgba(0, 0, 0, 0.9) 78%,
-      transparent 100%
-    );
-
-  mask-image:
-    radial-gradient(
-      ellipse 95% 88%
-      at 50% 50%,
-      #000 64%,
-      rgba(0, 0, 0, 0.9) 78%,
-      transparent 100%
-    );
-
-  box-shadow:
-    0 0 70px
-    rgba(239, 170, 25, 0.09);
-}
-
-
-/*
-   Remove text that previously floated
-   over the hero image.
-*/
-
-.hero-art::before {
-  display: none;
-}
-
-
-.scroll-note {
-  display: none;
-}
-
-
-.orbit {
-  border-color:
-    rgba(244, 237, 223, 0.2);
-}
-
-
-/* =========================================================
-   MANIFESTO
-========================================================= */
-
-.thesis {
-  color: var(--ink);
-
-  background:
-    radial-gradient(
-      circle at 78% 28%,
-      rgba(239, 170, 25, 0.09),
-      transparent 30%
-    ),
-    #05070b;
-}
-
-
-.thesis::before {
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 41px,
-      rgba(255, 255, 255, 0.025) 42px
-    ),
-    linear-gradient(
-      115deg,
-      transparent,
-      rgba(69, 81, 104, 0.08)
-    );
-}
-
-
-.thesis-copy {
-  color: #bcb5aa;
-}
-
-
-/*
-   The handwritten note is no longer
-   absolutely positioned.
-*/
-
-.margin-scribble {
-  position: relative;
-
-  width: max-content;
-
-  margin:
-    3rem
-    0
-    0
-    auto;
-
-  color: var(--sun-soft);
-
-  transform: rotate(-3deg);
-}
-
-
-/* =========================================================
-   SUN AND MOON PORTALS
-========================================================= */
-
-.two-sides {
-  background: #090b11;
-}
-
-
-.section-heading > p,
-.section-heading > span {
-  color: var(--muted);
-}
-
-
-/* Sun / Wonder Lok */
-
-.portal-sun {
-  color: #f8e9c7;
-
-  background:
-    radial-gradient(
-      circle at 82% 12%,
-      rgba(239, 170, 25, 0.33),
-      transparent 28%
-    ),
-    linear-gradient(
-      145deg,
-      #201707,
-      #120f0b 58%,
-      #0c0c0e
-    );
-}
-
-
-.portal-sun::before {
-  border-color:
-    rgba(255, 216, 109, 0.3);
-
-  box-shadow:
-    0 0 0 45px
-    rgba(239, 170, 25, 0.035),
-
-    0 0 0 95px
-    rgba(239, 170, 25, 0.025),
-
-    0 0 120px
-    rgba(239, 170, 25, 0.12);
-}
-
-
-/* Moon / Human Side */
-
-.portal-moon {
-  color: #eee9e1;
-
-  background:
-    radial-gradient(
-      circle at 80% 10%,
-      rgba(113, 130, 154, 0.2),
-      transparent 27%
-    ),
-    linear-gradient(
-      145deg,
-      #111b2a,
-      #090e17 62%,
-      #080a10
-    );
-}
-
-
-.portal-moon::before {
-  opacity: 0.36;
-
-  box-shadow:
-    0 0 80px
-    rgba(113, 130, 154, 0.18);
-}
-
-
-.portal-symbol {
-  border-color:
-    rgba(244, 237, 223, 0.45);
-
-  box-shadow:
-    inset 0 0 30px
-    rgba(255, 255, 255, 0.03);
-}
-
-
-.portal-values li {
-  border-color:
-    rgba(244, 237, 223, 0.32);
-}
-
-
-/*
-   Portal notes now occupy their own space
-   beneath each portal button.
-*/
-
-.portal-note {
-  position: relative;
-
-  margin:
-    3rem
-    0
-    0;
-
-  transform: rotate(-1deg);
-}
-
-
-/* Space between Sun and Moon */
-
-.shared-light {
-  background:
-    linear-gradient(
-      90deg,
-      #120f0b 0 50%,
-      #090e17 50%
-    );
-}
-
-
-.shared-light span {
-  position: relative;
-
-  width: 130px;
-
-  padding: 0.5rem;
-
-  color: #14110c;
-  background: #e8dcc5;
-
-  text-align: center;
-
-  box-shadow:
-    0 8px 25px
-    rgba(0, 0, 0, 0.35);
-
-  transform: rotate(-3deg);
-}
-
-
-/* =========================================================
-   ECLIPSE SECTION — SEPARATED CIRCLES
-========================================================= */
-
-.eclipse-section {
-  background:
-    radial-gradient(
-      circle at 28% 50%,
-      rgba(239, 170, 25, 0.08),
-      transparent 28%
-    ),
-    linear-gradient(
-      120deg,
-      #0d0e14,
-      #131722 55%,
-      #0a0c12
-    );
-}
-
-
-.eclipse-art {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 480px;
-
-  gap:
-    clamp(1rem, 2.5vw, 2.5rem);
-}
-
-
-/*
-   The Sun and Moon now sit next to each other.
-   They do not overlap.
-*/
-
-.eclipse-sun,
-.eclipse-moon {
-  position: relative;
-
-  top: auto;
-  left: auto;
-
-  flex:
-    0
-    1
-    220px;
-
-  width:
-    min(17vw, 220px);
-
-  aspect-ratio: 1;
-
-  border-radius: 50%;
-
-  transform: none;
-}
-
-
-.eclipse-sun {
-  background: var(--sun);
-
-  box-shadow:
-    0 0 0 22px
-    rgba(239, 170, 25, 0.09),
-
-    0 0 0 48px
-    rgba(239, 170, 25, 0.045),
-
-    0 0 95px
-    rgba(239, 170, 25, 0.24);
-}
-
-
-.eclipse-moon {
-  background:
-    radial-gradient(
-      circle at 28% 28%,
-      #8793a3 0 7%,
-      transparent 8%
-    ),
-    radial-gradient(
-      circle at 68% 64%,
-      #4d5968 0 14%,
-      transparent 15%
-    ),
-    radial-gradient(
-      circle at 32% 72%,
-      #9da7b3 0 5%,
-      transparent 6%
-    ),
-    #293747;
-
-  box-shadow:
-    0 0 45px
-    rgba(113, 130, 154, 0.25);
-}
-
-
-.eclipse-thread {
-  border-color:
-    rgba(244, 237, 223, 0.18);
-}
-
-
-.eclipse-copy
-> p:not(.section-number):not(.ink-note) {
-  color: var(--muted);
-}
-
-
-/* =========================================================
-   CONSTELLATION
-========================================================= */
-
-.constellation {
-  background:
-    radial-gradient(
-      circle at 50% 6%,
-      rgba(113, 130, 154, 0.09),
-      transparent 25%
-    ),
-    #080a0f;
-}
-
-
-.constellation-grid {
-  border-color:
-    rgba(244, 237, 223, 0.14);
-}
-
-
-.place {
-  color: var(--ink);
-
-  border-color:
-    rgba(244, 237, 223, 0.14);
-
-  background:
-    rgba(255, 255, 255, 0.012);
-}
-
-
-.place:hover {
-  box-shadow:
-    0 18px 42px
-    rgba(0, 0, 0, 0.48);
-}
-
-
-.sun-place:hover {
-  color: #171109;
-
-  background:
-    var(--sun-soft);
-}
-
-
-.moon-place:hover {
-  color: #f5eee2;
-
-  background: #1a2738;
-}
-
-
-.shared-place:hover {
-  color: white;
-
-  background: #4f435b;
-}
-
-
-.anywhere-button {
-  color: var(--ink);
-
-  border-color:
-    rgba(244, 237, 223, 0.45);
-
-  background:
-    rgba(255, 255, 255, 0.02);
-}
-
-
-.anywhere-button:hover {
-  color: #0a0b10;
-
-  border-color: var(--sun);
-
-  background: var(--sun);
-}
-
-
-/* =========================================================
-   QUESTION SECTION
-========================================================= */
-
-.question-section {
-  color: var(--ink);
-
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(113, 130, 154, 0.1),
-      transparent 34%
-    ),
-    #05070b;
-}
-
-
-.question-card button {
-  color: var(--ink);
-}
-
-
-/*
-   This note now appears beneath the question.
-   It will not float over the question text.
-*/
-
-.question-side-note {
-  position: relative;
-
-  margin:
-    2rem
-    0
-    0;
-
-  color: var(--sun-soft);
-
-  text-align: center;
-
-  transform: rotate(2deg);
-}
-
-
-/* =========================================================
-   CLOSING
-========================================================= */
-
-.closing {
-  background:
-    radial-gradient(
-      circle at 50% 43%,
-      rgba(239, 174, 39, 0.15),
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 50% 43%,
-      rgba(113, 130, 154, 0.07),
-      transparent 42%
-    ),
-    #0a0c12;
-}
-
-
-/*
-   The signature remains in the document flow.
-*/
-
-.closing-signature {
-  position: relative;
-
-  margin-top: 4rem;
-
-  transform: rotate(-3deg);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-  color: var(--ink);
-
-  border-top:
-    1px solid
-    rgba(244, 237, 223, 0.09);
-
-  background: #030407;
-}
-
-
-.toast {
-  color: #080a0f;
-
-  background:
-    var(--sun-soft);
-
-  box-shadow:
-    0 12px 35px
-    rgba(0, 0, 0, 0.4);
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-  .hero {
-    grid-template-columns: 1fr;
-
-    gap: 3rem;
-  }
-
-
-  .hero-copy {
-    max-width: 720px;
-
-    margin:
-      3rem
-      0
-      0;
-  }
-
-
-  .hero-art {
-    grid-row: 3;
-
-    width: 100%;
-    max-width: 850px;
-
-    margin: 0 auto;
-
-    justify-self: center;
-  }
-
-
-  .two-sides {
-    grid-template-columns:
-      1fr
-      70px
-      1fr;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .site-nav {
-    color: var(--ink);
-
-    background:
-      radial-gradient(
-        circle at 80% 15%,
-        rgba(239, 170, 25, 0.12),
-        transparent 28%
-      ),
-      #090b11;
-  }
-
-
-  .hero {
-    display: block;
-
-    padding:
-      8rem
-      1.2rem
-      4rem;
-  }
-
-
-  .hero-copy {
-    width: 100%;
-
-    margin-top: 4rem;
-  }
-
-
-  .hero-art {
-    width: 100%;
-
-    margin-top: 3rem;
-  }
-
-
-  .hand-note {
-    margin-bottom: 1.2rem;
-  }
-
-
-  .margin-scribble {
-    width: auto;
-
-    margin:
-      3rem
-      0
-      0;
-  }
-
-
-  .two-sides {
-    display: block;
-  }
-
-
-  .portal {
-    min-height: auto;
-
-    padding:
-      4rem
-      1.5rem;
-  }
-
-
-  .portal-description {
-    min-height: auto;
-  }
-
-
-  .portal-note {
-    margin-top: 2.5rem;
-  }
-
-
-  .shared-light {
-    height: 100px;
-
-    background:
-      linear-gradient(
-        #120f0b 0 50%,
-        #090e17 50%
-      );
-  }
-
-
-  .shared-light span {
-    position: relative;
-  }
-
-
-  .shared-light i {
-    width: 70%;
-    height: 0;
-
-    border-left: 0;
-
-    border-top:
-      1px dashed
-      rgba(255, 255, 255, 0.6);
-  }
-
-
-  .eclipse-section {
-    grid-template-columns: 1fr;
-
-    padding:
-      6rem
-      1.5rem;
-  }
-
-
-  .eclipse-art {
-    min-height: 360px;
-
-    gap: 1.4rem;
-  }
-
-
-  .eclipse-sun,
-  .eclipse-moon {
-    flex-basis:
-      min(34vw, 180px);
-
-    width:
-      min(34vw, 180px);
-  }
-
-
-  .question-side-note {
-    display: block;
-  }
-
-
-  .closing-signature {
-    margin-top: 5rem;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 470px) {
-
-  .hero {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-
-
-  .hero-copy {
-    margin-top: 3rem;
-  }
-
-
-  .hero-art figcaption {
-    flex-wrap: wrap;
-
-    text-align: center;
-  }
-
-
-  .eclipse-art {
-    min-height: 290px;
-
-    gap: 1rem;
-  }
-
-
-  .eclipse-sun,
-  .eclipse-moon {
-    flex-basis:
-      min(32vw, 140px);
-
-    width:
-      min(32vw, 140px);
-  }
-
-
-  .portal {
-    padding:
-      3.5rem
-      1.2rem;
-  }
-
-
-  .portal-note br {
-    display: none;
-  }
-
 }
