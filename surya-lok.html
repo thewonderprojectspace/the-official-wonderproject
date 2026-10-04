@@ -1,0 +1,2410 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Surya Lok — The Constant Light. Seven colours of truth revealed through the prism of curiosity."
+  >
+
+  <meta name="theme-color" content="#f4efe3">
+
+  <title>
+    Surya Lok — The Constant Light | Jigyasa Verse
+  </title>
+
+  <script>
+    document.documentElement.classList.replace(
+      "no-js",
+      "js"
+    );
+  </script>
+
+  <style>
+    :root {
+      --paper: #f4efe3;
+      --paper-deep: #e9dfcd;
+      --ink: #181711;
+      --muted: #716b5f;
+
+      --sun: #f5ad19;
+      --sun-hot: #ffe76a;
+
+      --red: #c93b2f;
+      --orange: #df6f22;
+      --yellow: #d7a80b;
+      --green: #4d7d4b;
+      --blue: #37769b;
+      --indigo: #50548e;
+      --violet: #75518b;
+
+      --border: rgba(24, 23, 17, 0.18);
+      --shadow:
+        0 24px 80px rgba(72, 52, 20, 0.12);
+
+      --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    /*
+      OFF-WHITE PAPER TEXTURE
+    */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+
+      mix-blend-mode: multiply;
+      opacity: 0.11;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    ::selection {
+      background: #f7ca58;
+      color: #16130c;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 5px;
+    }
+
+    /*
+      ACCESSIBILITY
+    */
+
+    .skip {
+      position: fixed;
+      left: 1rem;
+      top: -6rem;
+      z-index: 200;
+
+      padding: 0.8rem 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    /*
+      RAINBOW SCROLL PROGRESS
+    */
+
+    .progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 180;
+
+      width: 100%;
+      height: 3px;
+
+      transform-origin: left;
+      transform: scaleX(0);
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--red),
+          var(--orange),
+          var(--yellow),
+          var(--green),
+          var(--blue),
+          var(--indigo),
+          var(--violet)
+        );
+    }
+
+    /*
+      NAVIGATION
+    */
+
+    .masthead {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 80;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding:
+        1.15rem
+        clamp(1.2rem, 4vw, 4.5rem);
+
+      mix-blend-mode: multiply;
+    }
+
+    .brand {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .brand span {
+      margin-left: 0.5rem;
+
+      color: var(--muted);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .nav-link::before {
+      content: "";
+      width: 1.8rem;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::before {
+      width: 3rem;
+    }
+
+    /*
+      HERO
+    */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+
+      min-height: 100svh;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 0.82fr)
+        minmax(420px, 1.18fr);
+
+      align-items: center;
+      gap: clamp(1rem, 3vw, 4rem);
+
+      padding:
+        7.5rem
+        clamp(1.2rem, 5vw, 6rem)
+        4rem;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 4;
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin: 0 0 1.6rem;
+
+      color: #7c5b10;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "☀";
+      color: var(--sun);
+      font-size: 1rem;
+    }
+
+    h1 {
+      max-width: 9ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(4rem, 8.7vw, 8.8rem);
+      font-weight: 400;
+      line-height: 0.78;
+      letter-spacing: -0.065em;
+    }
+
+    h1 em {
+      display: block;
+      padding-left: clamp(1rem, 5vw, 5rem);
+
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--ink);
+      font-weight: 400;
+    }
+
+    .hero-lede {
+      max-width: 36rem;
+
+      margin: 2.2rem 0 0;
+      padding-left: clamp(0rem, 5vw, 5rem);
+
+      color: #484238;
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.65vw, 1.45rem);
+      line-height: 1.55;
+    }
+
+    .hero-action {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      margin: 2.2rem 0 0;
+      padding-left: clamp(0rem, 5vw, 5rem);
+    }
+
+    .solar-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+
+      padding:
+        0.9rem
+        1.2rem
+        0.9rem
+        1.35rem;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      background: var(--ink);
+      color: var(--paper);
+
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.67rem;
+      font-weight: 800;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .solar-button span {
+      display: grid;
+      place-items: center;
+
+      width: 2.1rem;
+      height: 2.1rem;
+
+      border-radius: 50%;
+      background: var(--sun);
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    .solar-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 24px rgba(24, 23, 17, 0.18);
+    }
+
+    .instruction {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      font-style: italic;
+    }
+
+    /*
+      SOLAR ARTWORK
+    */
+
+    .solar-stage {
+      position: relative;
+      min-width: 0;
+
+      display: grid;
+      place-items: center;
+
+      filter:
+        drop-shadow(
+          0 40px 55px rgba(110, 74, 5, 0.12)
+        );
+    }
+
+    .solar-stage svg {
+      width: min(100%, 840px);
+      height: auto;
+      overflow: visible;
+    }
+
+    .stage-caption {
+      position: absolute;
+      right: 2%;
+      bottom: 4%;
+
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.8rem;
+      font-style: italic;
+
+      transform: rotate(-4deg);
+    }
+
+    .stage-caption::before {
+      content: "";
+      display: block;
+
+      width: 4rem;
+      margin-left: -2rem;
+      margin-bottom: 0.4rem;
+
+      border-top: 1px solid currentColor;
+      transform: rotate(-14deg);
+    }
+
+    .halo {
+      transform-origin: 500px 430px;
+      animation: halo 18s linear infinite;
+    }
+
+    .halo-reverse {
+      transform-origin: 500px 430px;
+      animation: halo 26s linear infinite reverse;
+    }
+
+    .chest-sun {
+      transform-origin: center;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .ray {
+      stroke-dasharray: 1150;
+      stroke-dashoffset: 1150;
+
+      animation:
+        draw
+        1.6s
+        cubic-bezier(0.2, 0.7, 0.2, 1)
+        forwards;
+
+      animation-delay: var(--delay);
+    }
+
+    .spectrum-label {
+      opacity: 0;
+
+      animation:
+        appear
+        0.7s
+        ease
+        forwards;
+
+      animation-delay:
+        calc(var(--delay) + 1s);
+    }
+
+    /*
+      MANIFESTO
+    */
+
+    .manifesto {
+      position: relative;
+
+      min-height: 84svh;
+
+      display: grid;
+      grid-template-columns:
+        minmax(180px, 0.45fr)
+        minmax(0, 1.55fr);
+
+      align-items: start;
+      gap: clamp(2rem, 8vw, 9rem);
+
+      padding:
+        clamp(6rem, 12vw, 11rem)
+        clamp(1.2rem, 8vw, 9rem);
+
+      border-top: 1px solid var(--border);
+    }
+
+    .manifesto-kicker {
+      position: sticky;
+      top: 8rem;
+
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.66rem;
+      font-weight: 800;
+    }
+
+    .manifesto-kicker strong {
+      display: block;
+
+      margin-bottom: 1rem;
+
+      color: var(--sun);
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .manifesto blockquote {
+      max-width: 16ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5.4vw, 6rem);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .manifesto blockquote span {
+      color: var(--muted);
+    }
+
+    .manifesto-note {
+      max-width: 34rem;
+
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+
+      margin: 3rem 0 0 auto;
+
+      color: #514c42;
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .manifesto-note::before {
+      content: "01";
+      color: var(--sun);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+    }
+
+    /*
+      SEVEN COLOURS
+    */
+
+    .prism-section {
+      position: relative;
+
+      padding:
+        7rem
+        clamp(1.2rem, 5vw, 6rem)
+        9rem;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--paper),
+          #f8f4ec
+        );
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 3rem;
+      align-items: end;
+
+      margin-bottom: 4rem;
+    }
+
+    .section-heading h2 {
+      max-width: 8ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 7.5rem);
+      font-weight: 400;
+      line-height: 0.86;
+      letter-spacing: -0.055em;
+    }
+
+    .section-heading p {
+      max-width: 34rem;
+      margin: 0 0 0.6rem;
+
+      color: #514b40;
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .prism-word {
+      display: inline-block;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--ink);
+    }
+
+    .spectrum {
+      border-top: 1px solid var(--border);
+    }
+
+    .truth-link {
+      --c: var(--red);
+
+      position: relative;
+      isolation: isolate;
+
+      width: 100%;
+
+      display: grid;
+      grid-template-columns:
+        6.5rem
+        minmax(190px, 0.7fr)
+        minmax(260px, 1.1fr)
+        3rem;
+
+      gap: clamp(1rem, 3vw, 4rem);
+      align-items: center;
+
+      padding: 1.65rem 0.75rem;
+
+      appearance: none;
+      border: 0;
+      border-bottom:
+        1px solid var(--border);
+
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+
+      transition:
+        color 0.35s ease,
+        padding 0.35s ease;
+    }
+
+    .truth-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background: var(--c);
+      opacity: 0.93;
+
+      transform: scaleY(0);
+      transform-origin: bottom;
+
+      transition:
+        transform
+        0.35s
+        cubic-bezier(0.22, 0.8, 0.22, 1);
+    }
+
+    .truth-link:hover,
+    .truth-link:focus-visible {
+      padding-left: 1.35rem;
+      padding-right: 1.35rem;
+      color: #ffffff;
+    }
+
+    .truth-link:hover::before,
+    .truth-link:focus-visible::before {
+      transform: scaleY(1);
+    }
+
+    .truth-link[data-color="orange"] {
+      --c: var(--orange);
+    }
+
+    .truth-link[data-color="yellow"] {
+      --c: var(--yellow);
+    }
+
+    .truth-link[data-color="green"] {
+      --c: var(--green);
+    }
+
+    .truth-link[data-color="blue"] {
+      --c: var(--blue);
+    }
+
+    .truth-link[data-color="indigo"] {
+      --c: var(--indigo);
+    }
+
+    .truth-link[data-color="violet"] {
+      --c: var(--violet);
+    }
+
+    .truth-number {
+      font-family: var(--serif);
+      font-size: 0.86rem;
+    }
+
+    .truth-name {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 3vw, 3.1rem);
+      letter-spacing: -0.035em;
+    }
+
+    .truth-question {
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .truth-arrow {
+      font-size: 1.5rem;
+      transition: transform 0.35s ease;
+    }
+
+    .truth-link:hover .truth-arrow {
+      transform:
+        rotate(-35deg)
+        scale(1.2);
+    }
+
+    /*
+      CLOSING SUN
+    */
+
+    .closing {
+      position: relative;
+      min-height: 96svh;
+
+      display: grid;
+      place-items: center;
+
+      padding: 8rem 1.2rem;
+
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .closing-sun {
+      position: absolute;
+
+      width: min(76vw, 800px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          #fffbd0 0 5%,
+          #ffe56a 18%,
+          #f6aa1b 53%,
+          rgba(246, 170, 27, 0.34) 67%,
+          transparent 68%
+        );
+
+      filter: blur(0.2px);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .closing::before,
+    .closing::after {
+      content: "";
+      position: absolute;
+
+      width: min(88vw, 960px);
+      aspect-ratio: 1;
+
+      border:
+        1px solid rgba(201, 145, 12, 0.3);
+
+      border-radius: 50%;
+    }
+
+    .closing::after {
+      width: min(96vw, 1080px);
+      border-style: dashed;
+      animation: halo 40s linear infinite;
+    }
+
+    .closing-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .closing-copy p:first-child {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .closing-copy h2 {
+      margin: 2rem 0;
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 8.5rem);
+      font-weight: 400;
+      line-height: 0.84;
+      letter-spacing: -0.06em;
+    }
+
+    .closing-copy h2 em {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--ink);
+      font-weight: 400;
+    }
+
+    .closing-copy p:last-child {
+      max-width: 32rem;
+      margin: 0 auto;
+
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      line-height: 1.55;
+    }
+
+    /*
+      FOOTER
+    */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+
+      padding:
+        1.5rem
+        clamp(1.2rem, 4vw, 4rem);
+
+      border-top: 1px solid var(--border);
+
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.68rem;
+    }
+
+    footer em {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /*
+      TRUTH DIALOG
+    */
+
+    dialog {
+      width:
+        min(
+          760px,
+          calc(100% - 2rem)
+        );
+
+      max-height:
+        min(
+          88svh,
+          820px
+        );
+
+      padding: 0;
+
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    dialog::backdrop {
+      background: rgba(20, 17, 10, 0.54);
+      backdrop-filter: blur(6px);
+    }
+
+    dialog[open] {
+      animation: dialogIn 0.35s ease both;
+    }
+
+    .dialog-bar {
+      height: 0.7rem;
+      background:
+        var(--dialog-color, var(--sun));
+    }
+
+    .dialog-inner {
+      position: relative;
+      padding: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .dialog-close {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.15rem;
+
+      width: 2.4rem;
+      height: 2.4rem;
+
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .dialog-index {
+      color:
+        var(--dialog-color, var(--sun));
+
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .dialog-inner h3 {
+      margin: 1.6rem 0;
+
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .dialog-quote {
+      margin: 0 0 2rem;
+      padding-left: 1rem;
+
+      border-left:
+        2px solid
+        var(--dialog-color, var(--sun));
+
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .dialog-body {
+      max-width: 62ch;
+
+      color: #4d483f;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .dialog-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 2rem;
+    }
+
+    .dialog-topics span {
+      padding: 0.5rem 0.75rem;
+
+      border: 1px solid var(--border);
+      border-radius: 99px;
+
+      background:
+        rgba(255, 255, 255, 0.25);
+
+      letter-spacing: 0.04em;
+      font-size: 0.7rem;
+    }
+
+    /*
+      SCROLL REVEALS
+    */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+
+      transition:
+        opacity 0.8s ease,
+        transform
+        0.8s
+        cubic-bezier(0.2, 0.75, 0.2, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /*
+      ANIMATIONS
+    */
+
+    @keyframes halo {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(0.97);
+        filter: brightness(0.98);
+      }
+
+      50% {
+        transform: scale(1.04);
+        filter: brightness(1.08);
+      }
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes dialogIn {
+      from {
+        opacity: 0;
+        transform:
+          translateY(18px)
+          scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /*
+      TABLET
+    */
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 8rem;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      h1 {
+        font-size:
+          clamp(4rem, 16vw, 8rem);
+      }
+
+      .solar-stage {
+        margin-top: -2rem;
+      }
+
+      .manifesto {
+        grid-template-columns: 1fr;
+      }
+
+      .manifesto-kicker {
+        position: static;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .truth-link {
+        grid-template-columns:
+          3.4rem
+          1fr
+          2rem;
+      }
+
+      .truth-question {
+        grid-column: 2 / 3;
+        margin-top: -0.7rem;
+      }
+
+      .truth-arrow {
+        grid-column: 3;
+        grid-row: 1 / 3;
+      }
+    }
+
+    /*
+      MOBILE
+    */
+
+    @media (max-width: 620px) {
+      .masthead {
+        padding: 1rem;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero-lede,
+      .hero-action {
+        padding-left: 0;
+      }
+
+      .hero-action {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .solar-stage {
+        width: 112%;
+        margin-left: -6%;
+      }
+
+      .stage-caption {
+        display: none;
+      }
+
+      .manifesto {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .manifesto blockquote {
+        font-size:
+          clamp(2.3rem, 11vw, 4.4rem);
+      }
+
+      .prism-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .truth-link {
+        grid-template-columns:
+          2.2rem
+          1fr
+          1.8rem;
+
+        gap: 0.7rem;
+        padding: 1.3rem 0.25rem;
+      }
+
+      .truth-question {
+        font-size: 0.87rem;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /*
+      REDUCED MOTION
+    */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .ray {
+        stroke-dashoffset: 0;
+      }
+
+      .spectrum-label {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">
+    Skip to the light
+  </a>
+
+  <div
+    class="progress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- NAVIGATION -->
+
+  <header class="masthead">
+    <a
+      class="brand"
+      href="#top"
+      aria-label="Jigyasa Verse, Surya Lok"
+    >
+      Jigyasa Verse
+
+      <span>
+        — curiosity lives here
+      </span>
+    </a>
+
+    <a
+      class="nav-link"
+      href="#spectrum"
+    >
+      Seven truths
+    </a>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+
+    <section
+      class="hero"
+      id="top"
+    >
+      <div class="hero-copy">
+        <p class="eyebrow">
+          Enter Surya Lok
+        </p>
+
+        <h1>
+          The Constant
+
+          <em>
+            Light.
+          </em>
+        </h1>
+
+        <p class="hero-lede">
+          The external world does not shift
+          with our moods. It remains a steady
+          anchor—a reliable surface of pure
+          being. Step into the solar path,
+          where the mind rests upon things
+          that do not fade.
+        </p>
+
+        <div class="hero-action">
+          <a
+            class="solar-button"
+            href="#spectrum"
+          >
+            Enter the spectrum
+
+            <span aria-hidden="true">
+              ↓
+            </span>
+          </a>
+
+          <span class="instruction">
+            Seven colours. One light.
+          </span>
+        </div>
+      </div>
+
+      <!--
+        ORIGINAL SVG ARTWORK:
+        HUMAN + SUN + PRISM + SPECTRUM
+      -->
+
+      <figure
+        class="solar-stage"
+        aria-label="A human figure radiates a sun from within. Its light passes through a prism and becomes seven colours."
+      >
+        <svg
+          viewBox="0 0 1000 900"
+          role="img"
+          aria-labelledby="solarTitle solarDesc"
+        >
+          <title id="solarTitle">
+            The human vessel and the constant sun
+          </title>
+
+          <desc id="solarDesc">
+            An abstract human silhouette stands
+            before a solar halo. A bright light
+            in the chest radiates seven coloured
+            paths.
+          </desc>
+
+          <defs>
+            <radialGradient id="sunFill">
+              <stop
+                offset="0"
+                stop-color="#fffbd6"
+              />
+
+              <stop
+                offset=".22"
+                stop-color="#ffe56b"
+              />
+
+              <stop
+                offset=".58"
+                stop-color="#f4ab18"
+              />
+
+              <stop
+                offset="1"
+                stop-color="#d8780f"
+                stop-opacity="0"
+              />
+            </radialGradient>
+
+            <linearGradient
+              id="bodyFill"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="1"
+            >
+              <stop
+                offset="0"
+                stop-color="#2e2a20"
+              />
+
+              <stop
+                offset=".55"
+                stop-color="#14130f"
+              />
+
+              <stop
+                offset="1"
+                stop-color="#393225"
+              />
+            </linearGradient>
+
+            <filter id="rough">
+              <feTurbulence
+                baseFrequency=".015"
+                numOctaves="2"
+                seed="9"
+                result="noise"
+              />
+
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="8"
+              />
+            </filter>
+
+            <filter id="glow">
+              <feGaussianBlur
+                stdDeviation="13"
+                result="blurredLight"
+              />
+
+              <feMerge>
+                <feMergeNode
+                  in="blurredLight"
+                />
+
+                <feMergeNode
+                  in="SourceGraphic"
+                />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- ORBITAL LINES -->
+
+          <circle
+            class="halo"
+            cx="500"
+            cy="430"
+            r="328"
+            fill="none"
+            stroke="#c38a1e"
+            stroke-opacity=".16"
+            stroke-width="1"
+            stroke-dasharray="3 11"
+          />
+
+          <circle
+            class="halo-reverse"
+            cx="500"
+            cy="430"
+            r="270"
+            fill="none"
+            stroke="#c38a1e"
+            stroke-opacity=".22"
+            stroke-width="1"
+            stroke-dasharray="70 10 4 18"
+          />
+
+          <!-- LARGE SUN -->
+
+          <circle
+            cx="500"
+            cy="430"
+            r="230"
+            fill="url(#sunFill)"
+            opacity=".88"
+          />
+
+          <!-- SOLAR LINES -->
+
+          <g
+            class="halo"
+            stroke="#c98412"
+            stroke-opacity=".3"
+            stroke-width="2"
+            filter="url(#rough)"
+          >
+            <path
+              d="
+                M500 92v105
+                M500 663v104
+                M162 430h108
+                M730 430h108
+                M260 190l77 76
+                M663 594l78 78
+                M741 190l-78 76
+                M337 594l-78 78
+              "
+            />
+          </g>
+
+          <!-- SEVEN RAYS -->
+
+          <g
+            aria-hidden="true"
+            fill="none"
+            stroke-linecap="round"
+            filter="url(#rough)"
+          >
+            <path
+              class="ray"
+              style="--delay: .2s"
+              d="
+                M505 427
+                C650 395
+                735 265
+                930 162
+              "
+              stroke="#c93b2f"
+              stroke-width="17"
+              opacity=".78"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .32s"
+              d="
+                M508 432
+                C680 425
+                785 340
+                955 295
+              "
+              stroke="#df6f22"
+              stroke-width="15"
+              opacity=".76"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .44s"
+              d="
+                M508 437
+                C700 455
+                810 430
+                973 430
+              "
+              stroke="#d7a80b"
+              stroke-width="14"
+              opacity=".76"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .56s"
+              d="
+                M505 441
+                C675 490
+                790 520
+                952 562
+              "
+              stroke="#4d7d4b"
+              stroke-width="14"
+              opacity=".75"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .68s"
+              d="
+                M502 445
+                C650 530
+                748 622
+                908 687
+              "
+              stroke="#37769b"
+              stroke-width="15"
+              opacity=".74"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .8s"
+              d="
+                M498 448
+                C615 570
+                680 700
+                810 790
+              "
+              stroke="#50548e"
+              stroke-width="16"
+              opacity=".72"
+            />
+
+            <path
+              class="ray"
+              style="--delay: .92s"
+              d="
+                M494 448
+                C540 590
+                560 740
+                625 840
+              "
+              stroke="#75518b"
+              stroke-width="17"
+              opacity=".72"
+            />
+          </g>
+
+          <!-- HUMAN FIGURE -->
+
+          <g
+            fill="#181711"
+            filter="url(#rough)"
+          >
+            <ellipse
+              cx="489"
+              cy="292"
+              rx="48"
+              ry="57"
+            />
+
+            <path
+              d="
+                M421 365
+                C430 332 459 325 488 326
+                C528 325 556 341 565 374
+                L592 535
+                C604 593 584 675 560 787
+                L507 787
+                L492 588
+                L477 787
+                L422 787
+                C401 670 380 592 392 531
+                Z
+              "
+              fill="url(#bodyFill)"
+            />
+
+            <path
+              d="
+                M414 375
+                C390 407 359 483 334 581
+                C328 604 341 613 351 588
+                L430 442
+                Z
+              "
+            />
+
+            <path
+              d="
+                M561 375
+                C594 419 624 488 651 579
+                C658 600 644 614 634 588
+                L548 442
+                Z
+              "
+            />
+          </g>
+
+          <!-- PRISM -->
+
+          <polygon
+            points="534,400 572,432 532,468"
+            fill="#f4efe3"
+            fill-opacity=".65"
+            stroke="#fff8dc"
+            stroke-width="3"
+          />
+
+          <!-- INNER SUN -->
+
+          <circle
+            class="chest-sun"
+            cx="496"
+            cy="432"
+            r="62"
+            fill="url(#sunFill)"
+            filter="url(#glow)"
+          />
+
+          <circle
+            cx="496"
+            cy="432"
+            r="18"
+            fill="#fffbd3"
+          />
+
+          <!-- GROUND -->
+
+          <path
+            d="M298 824 Q500 846 700 824"
+            fill="none"
+            stroke="#181711"
+            stroke-width="2"
+            stroke-dasharray="4 9"
+            opacity=".45"
+          />
+
+          <!-- LABELS -->
+
+          <g
+            class="spectrum-label"
+            style="--delay: .9s"
+            font-family="Georgia, serif"
+            font-size="15"
+            font-style="italic"
+            fill="#554e42"
+          >
+            <text x="846" y="136">
+              survival
+            </text>
+
+            <text x="874" y="278">
+              change
+            </text>
+
+            <text x="898" y="414">
+              evidence
+            </text>
+
+            <text x="864" y="553">
+              connection
+            </text>
+
+            <text x="825" y="690">
+              pattern
+            </text>
+
+            <text x="714" y="795">
+              perception
+            </text>
+
+            <text x="558" y="862">
+              unknown
+            </text>
+          </g>
+        </svg>
+
+        <figcaption class="stage-caption">
+          the light was always within it
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SOLAR PREMISE -->
+
+    <section class="manifesto">
+      <div class="manifesto-kicker reveal">
+        <strong>☉</strong>
+        The solar premise
+      </div>
+
+      <div>
+        <blockquote class="reveal">
+          Reality does not rearrange itself
+          around our comfort.
+
+          <span>
+            We learn to see it more clearly.
+          </span>
+        </blockquote>
+
+        <p class="manifesto-note reveal">
+          The Sun is not optimism. It is not
+          motivation. It is the symbol of what
+          continues to be true whether we
+          celebrate it, fear it, misunderstand
+          it or refuse to look.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEVEN COLOURS -->
+
+    <section
+      class="prism-section"
+      id="spectrum"
+    >
+      <div class="section-heading reveal">
+        <h2>
+          The seven colours of truth.
+        </h2>
+
+        <p>
+          White light appears singular, yet it
+          carries an entire spectrum. The
+
+          <span class="prism-word">
+            prism
+          </span>
+
+          does not invent the colours—it
+          reveals what was already there.
+          Curiosity works the same way.
+        </p>
+      </div>
+
+      <div
+        class="spectrum"
+        aria-label="Explore the seven colours of truth"
+      >
+        <button
+          class="truth-link reveal"
+          data-truth="survival"
+          data-color="red"
+        >
+          <span class="truth-number">
+            650–700 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Survival
+          </span>
+
+          <span class="truth-question">
+            What endures when the world
+            refuses to bend?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="change"
+          data-color="orange"
+        >
+          <span class="truth-number">
+            590–650 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Change
+          </span>
+
+          <span class="truth-question">
+            What must transform in order
+            to continue?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="evidence"
+          data-color="yellow"
+        >
+          <span class="truth-number">
+            570–590 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Evidence
+          </span>
+
+          <span class="truth-question">
+            How do we know what is
+            actually true?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="connection"
+          data-color="green"
+        >
+          <span class="truth-number">
+            495–570 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Connection
+          </span>
+
+          <span class="truth-question">
+            How does one life alter
+            another?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="pattern"
+          data-color="blue"
+        >
+          <span class="truth-number">
+            450–495 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Pattern
+          </span>
+
+          <span class="truth-question">
+            What hidden order exists
+            beneath what we see?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="perception"
+          data-color="indigo"
+        >
+          <span class="truth-number">
+            425–450 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of Perception
+          </span>
+
+          <span class="truth-question">
+            How much of reality are we
+            capable of seeing?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+
+        <button
+          class="truth-link reveal"
+          data-truth="unknown"
+          data-color="violet"
+        >
+          <span class="truth-number">
+            380–425 nm
+          </span>
+
+          <span class="truth-name">
+            Truth of the Unknown
+          </span>
+
+          <span class="truth-question">
+            What remains beyond human
+            understanding?
+          </span>
+
+          <span
+            class="truth-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+
+    <section class="closing">
+      <div
+        class="closing-sun"
+        aria-hidden="true"
+      ></div>
+
+      <div class="closing-copy reveal">
+        <p>
+          Return to the source
+        </p>
+
+        <h2>
+          Seven colours.
+
+          <br>
+
+          <em>
+            One light.
+          </em>
+        </h2>
+
+        <p>
+          Survival, change, evidence,
+          connection, pattern, perception
+          and the unknown are not separate
+          realities. They are different ways
+          the same world becomes visible.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <span>
+      Jigyasa Verse © 2026
+    </span>
+
+    <em>
+      Curiosity does not invent truth.
+      It reveals it.
+    </em>
+
+    <a href="#top">
+      Back to the Sun ↑
+    </a>
+  </footer>
+
+  <!-- TRUTH POPUP -->
+
+  <dialog
+    id="truthDialog"
+    aria-labelledby="dialogTitle"
+  >
+    <div class="dialog-bar"></div>
+
+    <div class="dialog-inner">
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <p
+        class="dialog-index"
+        id="dialogIndex"
+      ></p>
+
+      <h3 id="dialogTitle"></h3>
+
+      <p
+        class="dialog-quote"
+        id="dialogQuote"
+      ></p>
+
+      <p
+        class="dialog-body"
+        id="dialogBody"
+      ></p>
+
+      <div
+        class="dialog-topics"
+        id="dialogTopics"
+        aria-label="Ideas inside this path"
+      ></div>
+    </div>
+  </dialog>
+
+  <script>
+    /*
+      CONTENT FOR THE SEVEN TRUTHS
+    */
+
+    const truths = {
+      survival: {
+        index: "Colour 01 · Red",
+        color: "#c93b2f",
+        title: "The Truth of Survival",
+
+        quote:
+          "Life does not survive because reality becomes kinder. It survives by responding to reality as it is.",
+
+        body:
+          "Meet organisms that make homes in volcanic vents, frozen deserts, acid lakes and crushing darkness. Extremophiles expose an unyielding fact: life persists through chemistry, adaptation and time—not through wishing the environment were different.",
+
+        topics: [
+          "Extremophiles",
+          "Adaptation",
+          "Antibiotic resistance",
+          "The living body"
+        ]
+      },
+
+      change: {
+        index: "Colour 02 · Orange",
+        color: "#df6f22",
+        title: "The Truth of Change",
+
+        quote:
+          "Change is not the opposite of truth. Sometimes change is the consequence of truth.",
+
+        body:
+          "Follow mutation, natural selection, continental drift, ageing and the arrow of time. Reality can be governed by stable laws while everything within it transforms. Continuity does not always mean remaining the same.",
+
+        topics: [
+          "Evolution",
+          "Deep time",
+          "Metamorphosis",
+          "Entropy"
+        ]
+      },
+
+      evidence: {
+        index: "Colour 03 · Yellow",
+        color: "#d7a80b",
+        title: "The Truth of Evidence",
+
+        quote:
+          "The universe did not change when our beliefs changed. We became capable of seeing it more clearly.",
+
+        body:
+          "Revisit the collisions between human certainty and physical evidence—from geocentrism to germ theory and moving continents. Science is not trustworthy because it never errs; it is trustworthy because it contains ways for error to be exposed.",
+
+        topics: [
+          "Scientific correction",
+          "Light as information",
+          "Misinformation",
+          "Cause and correlation"
+        ]
+      },
+
+      connection: {
+        index: "Colour 04 · Green",
+        color: "#4d7d4b",
+        title: "The Truth of Connection",
+
+        quote:
+          "Nothing living exists entirely alone.",
+
+        body:
+          "Trace the visible and invisible relationships between bodies, microbes, ecosystems and climates. Connection here is not a sentimental promise. It is a physical chain of exchanges, dependencies and consequences.",
+
+        topics: [
+          "Ecosystems",
+          "Microbiomes",
+          "Symbiosis",
+          "Consequences"
+        ]
+      },
+
+      pattern: {
+        index: "Colour 05 · Blue",
+        color: "#37769b",
+        title: "The Truth of Pattern",
+
+        quote:
+          "Beneath the noise of the visible world, structure continues.",
+
+        body:
+          "Enter the architecture of tiny worlds: crystal lattices, DNA, molecular bonds, symmetry and recurring mathematics. Even uncertainty and chaos unfold within conditions that human preference cannot rewrite.",
+
+        topics: [
+          "Tiny worlds",
+          "DNA",
+          "Mathematics",
+          "Symmetry"
+        ]
+      },
+
+      perception: {
+        index: "Colour 06 · Indigo",
+        color: "#50548e",
+        title: "The Truth of Perception",
+
+        quote:
+          "We do not experience all of reality. We experience what our minds can construct from it.",
+
+        body:
+          "Test the limits of senses, attention and memory. Optical illusions and cognitive biases do not mean reality is unknowable; they remind us why evidence must extend beyond personal certainty.",
+
+        topics: [
+          "Optical illusions",
+          "False memory",
+          "Cognitive bias",
+          "Invisible wavelengths"
+        ]
+      },
+
+      unknown: {
+        index: "Colour 07 · Violet",
+        color: "#75518b",
+        title: "The Truth of the Unknown",
+
+        quote:
+          "“We do not know” is the most honest place from which discovery can begin.",
+
+        body:
+          "Stand at the edge of dark matter, consciousness, time, infinity and the origin of life. The unknown is not an invitation to invent certainty. It is a boundary—and an opening.",
+
+        topics: [
+          "Dark matter",
+          "Consciousness",
+          "Time",
+          "The Fermi paradox"
+        ]
+      }
+    };
+
+    /*
+      IMPORTANT ELEMENTS
+    */
+
+    const progress =
+      document.querySelector(
+        ".progress"
+      );
+
+    const dialog =
+      document.querySelector(
+        "#truthDialog"
+      );
+
+    const closeDialog =
+      dialog.querySelector(
+        ".dialog-close"
+      );
+
+    const reducedMotion =
+      matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    /*
+      RAINBOW SCROLL PROGRESS
+    */
+
+    function updateProgress() {
+      const maximumScroll =
+        document.documentElement
+          .scrollHeight -
+        innerHeight;
+
+      const amount =
+        maximumScroll > 0
+          ? scrollY / maximumScroll
+          : 0;
+
+      progress.style.transform =
+        `scaleX(${amount})`;
+    }
+
+    addEventListener(
+      "scroll",
+      updateProgress,
+      {
+        passive: true
+      }
+    );
+
+    updateProgress();
+
+    /*
+      SCROLL REVEALS
+    */
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                entry.isIntersecting
+              ) {
+                entry.target.classList.add(
+                  "is-visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+              }
+            }
+          );
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    document
+      .querySelectorAll(
+        ".reveal"
+      )
+      .forEach(
+        (element) => {
+          observer.observe(
+            element
+          );
+        }
+      );
+
+    /*
+      OPEN THE SEVEN TRUTH POPUPS
+    */
+
+    document
+      .querySelectorAll(
+        ".truth-link"
+      )
+      .forEach(
+        (button) => {
+          button.addEventListener(
+            "click",
+            () => {
+              const selectedTruth =
+                truths[
+                  button.dataset.truth
+                ];
+
+              dialog.style.setProperty(
+                "--dialog-color",
+                selectedTruth.color
+              );
+
+              dialog
+                .querySelector(
+                  "#dialogIndex"
+                )
+                .textContent =
+                  selectedTruth.index;
+
+              dialog
+                .querySelector(
+                  "#dialogTitle"
+                )
+                .textContent =
+                  selectedTruth.title;
+
+              dialog
+                .querySelector(
+                  "#dialogQuote"
+                )
+                .textContent =
+                  selectedTruth.quote;
+
+              dialog
+                .querySelector(
+                  "#dialogBody"
+                )
+                .textContent =
+                  selectedTruth.body;
+
+              const topicElements =
+                selectedTruth.topics.map(
+                  (topic) => {
+                    const chip =
+                      document.createElement(
+                        "span"
+                      );
+
+                    chip.textContent =
+                      topic;
+
+                    return chip;
+                  }
+                );
+
+              dialog
+                .querySelector(
+                  "#dialogTopics"
+                )
+                .replaceChildren(
+                  ...topicElements
+                );
+
+              dialog.showModal();
+            }
+          );
+        }
+      );
+
+    /*
+      CLOSE THE POPUP
+    */
+
+    closeDialog.addEventListener(
+      "click",
+      () => {
+        dialog.close();
+      }
+    );
+
+    dialog.addEventListener(
+      "click",
+      (event) => {
+        const rectangle =
+          dialog.getBoundingClientRect();
+
+        const clickedOutside =
+          event.clientX <
+            rectangle.left ||
+          event.clientX >
+            rectangle.right ||
+          event.clientY <
+            rectangle.top ||
+          event.clientY >
+            rectangle.bottom;
+
+        if (clickedOutside) {
+          dialog.close();
+        }
+      }
+    );
+
+    /*
+      SUBTLE POINTER MOVEMENT
+    */
+
+    if (!reducedMotion) {
+      const solarArtwork =
+        document.querySelector(
+          ".solar-stage svg"
+        );
+
+      addEventListener(
+        "pointermove",
+        (event) => {
+          const horizontalMovement =
+            (
+              event.clientX /
+              innerWidth -
+              0.5
+            ) * 8;
+
+          const verticalMovement =
+            (
+              event.clientY /
+              innerHeight -
+              0.5
+            ) * 8;
+
+          solarArtwork.style.transform =
+            `translate(
+              ${horizontalMovement}px,
+              ${verticalMovement}px
+            )`;
+        },
+        {
+          passive: true
+        }
+      );
+    }
+  </script>
+</body>
+</html>
