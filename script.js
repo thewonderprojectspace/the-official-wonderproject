@@ -651,8 +651,7 @@
     );
 
 
-    context.fillStyle =
-      "#17140f";
+   context.fillStyle = "#f2c458";
 
 
     stars.forEach(
