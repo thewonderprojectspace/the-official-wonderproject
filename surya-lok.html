@@ -9,32 +9,19 @@
     content="Surya Lok — The Constant Light. Seven colours of truth revealed through the prism of curiosity."
   >
 
-  <meta name="theme-color" content="#f4efe3">
+  <meta name="theme-color" content="#f8f3e9">
 
   <title>
     Surya Lok — The Constant Light | Jigyasa Verse
   </title>
-  <!-- Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN">
-  </script>
 
-  <script>
-    window.dataLayer =
-      window.dataLayer || [];
+  <!-- JIGYASA VERSE FAVICON -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/wonder-verse-moon-pencil-logo.png"
+  >
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-
-    gtag(
-      "config",
-      "G-EF9DVH7JQN"
-    );
-  </script>
   <script>
     document.documentElement.classList.replace(
       "no-js",
@@ -44,10 +31,10 @@
 
   <style>
     :root {
-      --paper: #f4efe3;
-      --paper-deep: #e9dfcd;
-      --ink: #181711;
-      --muted: #716b5f;
+      --paper: #f8f3e9;
+      --paper-deep: #eadfcb;
+      --ink: #201b15;
+      --muted: #756b5e;
 
       --sun: #f5ad19;
       --sun-hot: #ffe76a;
@@ -61,8 +48,10 @@
       --violet: #75518b;
 
       --border: rgba(24, 23, 17, 0.18);
+
       --shadow:
-        0 24px 80px rgba(72, 52, 20, 0.12);
+        0 24px 80px
+        rgba(72, 52, 20, 0.12);
 
       --serif:
         Georgia,
@@ -90,14 +79,27 @@
 
     body {
       margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: var(--sans);
       overflow-x: hidden;
+
+      color: var(--ink);
+      font-family: var(--sans);
+
+      background:
+        radial-gradient(
+          circle at 82% 12%,
+          rgba(244, 190, 75, 0.12),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #fbf7ef 0%,
+          var(--paper) 38%,
+          #f3ecdf 100%
+        );
     }
 
     /*
-      OFF-WHITE PAPER TEXTURE
+      SUBTLE PAPER TEXTURE
     */
 
     body::before {
@@ -105,13 +107,13 @@
       position: fixed;
       inset: 0;
       z-index: 100;
+
       pointer-events: none;
+      opacity: 0.11;
+      mix-blend-mode: multiply;
 
       background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
-
-      mix-blend-mode: multiply;
-      opacity: 0.11;
     }
 
     a {
@@ -128,8 +130,8 @@
     }
 
     ::selection {
-      background: #f7ca58;
       color: #16130c;
+      background: #f7ca58;
     }
 
     :focus-visible {
@@ -148,8 +150,9 @@
       z-index: 200;
 
       padding: 0.8rem 1rem;
-      background: var(--ink);
+
       color: var(--paper);
+      background: var(--ink);
       text-decoration: none;
     }
 
@@ -170,8 +173,8 @@
       width: 100%;
       height: 3px;
 
-      transform-origin: left;
       transform: scaleX(0);
+      transform-origin: left;
 
       background:
         linear-gradient(
@@ -209,21 +212,58 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+
       text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.72rem;
-      font-weight: 800;
     }
 
-    .brand span {
-      margin-left: 0.5rem;
+    .brand-mark {
+      width: 3.15rem;
+      height: 3.15rem;
+      flex: 0 0 auto;
 
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255, 255, 255, 0.4);
+
+      box-shadow:
+        0 7px 24px
+        rgba(100, 67, 12, 0.11);
+    }
+
+    .brand-mark img {
+      display: block;
+
+      width: 3rem;
+      height: 3rem;
+
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.12rem;
+    }
+
+    .brand-name {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .brand-note {
       color: var(--muted);
       font-family: var(--serif);
+      font-size: 0.75rem;
       font-style: italic;
       font-weight: 400;
-      text-transform: none;
       letter-spacing: 0;
     }
 
@@ -232,17 +272,19 @@
       align-items: center;
       gap: 0.55rem;
 
+      font-size: 0.65rem;
+      font-weight: 800;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.65rem;
-      font-weight: 800;
     }
 
     .nav-link::before {
       content: "";
+
       width: 1.8rem;
       height: 1px;
+
       background: currentColor;
       transition: width 0.25s ease;
     }
@@ -278,6 +320,7 @@
     .hero-copy {
       position: relative;
       z-index: 4;
+
       max-width: 680px;
     }
 
@@ -289,14 +332,15 @@
       margin: 0 0 1.6rem;
 
       color: #7c5b10;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
       font-size: 0.68rem;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
     }
 
     .eyebrow::before {
       content: "☀";
+
       color: var(--sun);
       font-size: 1rem;
     }
@@ -314,10 +358,14 @@
 
     h1 em {
       display: block;
-      padding-left: clamp(1rem, 5vw, 5rem);
+
+      padding-left:
+        clamp(1rem, 5vw, 5rem);
 
       color: transparent;
-      -webkit-text-stroke: 1.5px var(--ink);
+      -webkit-text-stroke:
+        1.5px var(--ink);
+
       font-weight: 400;
     }
 
@@ -325,11 +373,13 @@
       max-width: 36rem;
 
       margin: 2.2rem 0 0;
-      padding-left: clamp(0rem, 5vw, 5rem);
+      padding-left:
+        clamp(0rem, 5vw, 5rem);
 
       color: #484238;
       font-family: var(--serif);
-      font-size: clamp(1.1rem, 1.65vw, 1.45rem);
+      font-size:
+        clamp(1.1rem, 1.65vw, 1.45rem);
       line-height: 1.55;
     }
 
@@ -339,7 +389,8 @@
       gap: 1rem;
 
       margin: 2.2rem 0 0;
-      padding-left: clamp(0rem, 5vw, 5rem);
+      padding-left:
+        clamp(0rem, 5vw, 5rem);
     }
 
     .solar-button {
@@ -356,14 +407,14 @@
       border: 1px solid var(--ink);
       border-radius: 999px;
 
-      background: var(--ink);
       color: var(--paper);
+      background: var(--ink);
 
+      font-size: 0.67rem;
+      font-weight: 800;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.67rem;
-      font-weight: 800;
 
       transition:
         transform 0.25s ease,
@@ -371,23 +422,26 @@
     }
 
     .solar-button span {
-      display: grid;
-      place-items: center;
-
       width: 2.1rem;
       height: 2.1rem;
 
+      display: grid;
+      place-items: center;
+
       border-radius: 50%;
-      background: var(--sun);
+
       color: var(--ink);
+      background: var(--sun);
       font-size: 1rem;
     }
 
     .solar-button:hover {
-      transform: translateY(-3px);
+      transform:
+        translateY(-3px);
 
       box-shadow:
-        0 12px 24px rgba(24, 23, 17, 0.18);
+        0 12px 24px
+        rgba(24, 23, 17, 0.18);
     }
 
     .instruction {
@@ -410,7 +464,8 @@
 
       filter:
         drop-shadow(
-          0 40px 55px rgba(110, 74, 5, 0.12)
+          0 40px 55px
+          rgba(110, 74, 5, 0.12)
         );
     }
 
@@ -441,23 +496,29 @@
       margin-left: -2rem;
       margin-bottom: 0.4rem;
 
-      border-top: 1px solid currentColor;
+      border-top:
+        1px solid currentColor;
+
       transform: rotate(-14deg);
     }
 
     .halo {
       transform-origin: 500px 430px;
-      animation: halo 18s linear infinite;
+      animation:
+        halo 18s linear infinite;
     }
 
     .halo-reverse {
       transform-origin: 500px 430px;
-      animation: halo 26s linear infinite reverse;
+      animation:
+        halo 26s linear infinite reverse;
     }
 
     .chest-sun {
       transform-origin: center;
-      animation: pulse 4s ease-in-out infinite;
+
+      animation:
+        pulse 4s ease-in-out infinite;
     }
 
     .ray {
@@ -507,7 +568,8 @@
         clamp(6rem, 12vw, 11rem)
         clamp(1.2rem, 8vw, 9rem);
 
-      border-top: 1px solid var(--border);
+      border-top:
+        1px solid var(--border);
     }
 
     .manifesto-kicker {
@@ -515,10 +577,10 @@
       top: 8rem;
 
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
       font-size: 0.66rem;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
     }
 
     .manifesto-kicker strong {
@@ -538,7 +600,8 @@
       margin: 0;
 
       font-family: var(--serif);
-      font-size: clamp(2.25rem, 5.4vw, 6rem);
+      font-size:
+        clamp(2.25rem, 5.4vw, 6rem);
       line-height: 1.03;
       letter-spacing: -0.045em;
     }
@@ -563,6 +626,7 @@
 
     .manifesto-note::before {
       content: "01";
+
       color: var(--sun);
       font-family: var(--serif);
       font-size: 1.1rem;
@@ -590,9 +654,11 @@
 
     .section-heading {
       display: grid;
-      grid-template-columns: 0.7fr 1.3fr;
-      gap: 3rem;
+      grid-template-columns:
+        0.7fr 1.3fr;
+
       align-items: end;
+      gap: 3rem;
 
       margin-bottom: 4rem;
     }
@@ -602,7 +668,8 @@
       margin: 0;
 
       font-family: var(--serif);
-      font-size: clamp(3rem, 7vw, 7.5rem);
+      font-size:
+        clamp(3rem, 7vw, 7.5rem);
       font-weight: 400;
       line-height: 0.86;
       letter-spacing: -0.055em;
@@ -614,18 +681,22 @@
 
       color: #514b40;
       font-family: var(--serif);
-      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      font-size:
+        clamp(1.05rem, 1.6vw, 1.35rem);
       line-height: 1.55;
     }
 
     .prism-word {
       display: inline-block;
+
       color: transparent;
-      -webkit-text-stroke: 1px var(--ink);
+      -webkit-text-stroke:
+        1px var(--ink);
     }
 
     .spectrum {
-      border-top: 1px solid var(--border);
+      border-top:
+        1px solid var(--border);
     }
 
     .truth-link {
@@ -643,8 +714,8 @@
         minmax(260px, 1.1fr)
         3rem;
 
-      gap: clamp(1rem, 3vw, 4rem);
       align-items: center;
+      gap: clamp(1rem, 3vw, 4rem);
 
       padding: 1.65rem 0.75rem;
 
@@ -653,7 +724,9 @@
       border-bottom:
         1px solid var(--border);
 
+      color: inherit;
       background: transparent;
+
       cursor: pointer;
       text-align: left;
 
@@ -664,6 +737,7 @@
 
     .truth-link::before {
       content: "";
+
       position: absolute;
       inset: 0;
       z-index: -1;
@@ -684,6 +758,7 @@
     .truth-link:focus-visible {
       padding-left: 1.35rem;
       padding-right: 1.35rem;
+
       color: #ffffff;
     }
 
@@ -723,20 +798,24 @@
 
     .truth-name {
       font-family: var(--serif);
-      font-size: clamp(1.55rem, 3vw, 3.1rem);
+      font-size:
+        clamp(1.55rem, 3vw, 3.1rem);
       letter-spacing: -0.035em;
     }
 
     .truth-question {
       font-family: var(--serif);
-      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      font-size:
+        clamp(0.95rem, 1.3vw, 1.1rem);
       font-style: italic;
       line-height: 1.4;
     }
 
     .truth-arrow {
       font-size: 1.5rem;
-      transition: transform 0.35s ease;
+
+      transition:
+        transform 0.35s ease;
     }
 
     .truth-link:hover .truth-arrow {
@@ -746,20 +825,23 @@
     }
 
     /*
-      CLOSING SUN
+      CLOSING
     */
 
     .closing {
       position: relative;
+
       min-height: 96svh;
 
       display: grid;
       place-items: center;
 
       padding: 8rem 1.2rem;
-
       overflow: hidden;
-      border-top: 1px solid var(--border);
+
+      border-top:
+        1px solid var(--border);
+
       text-align: center;
     }
 
@@ -781,7 +863,9 @@
         );
 
       filter: blur(0.2px);
-      animation: pulse 6s ease-in-out infinite;
+
+      animation:
+        pulse 6s ease-in-out infinite;
     }
 
     .closing::before,
@@ -793,7 +877,8 @@
       aspect-ratio: 1;
 
       border:
-        1px solid rgba(201, 145, 12, 0.3);
+        1px solid
+        rgba(201, 145, 12, 0.3);
 
       border-radius: 50%;
     }
@@ -801,27 +886,31 @@
     .closing::after {
       width: min(96vw, 1080px);
       border-style: dashed;
-      animation: halo 40s linear infinite;
+
+      animation:
+        halo 40s linear infinite;
     }
 
     .closing-copy {
       position: relative;
       z-index: 2;
+
       max-width: 800px;
     }
 
     .closing-copy p:first-child {
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
       font-size: 0.68rem;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
     }
 
     .closing-copy h2 {
       margin: 2rem 0;
 
       font-family: var(--serif);
-      font-size: clamp(3rem, 8vw, 8.5rem);
+      font-size:
+        clamp(3rem, 8vw, 8.5rem);
       font-weight: 400;
       line-height: 0.84;
       letter-spacing: -0.06em;
@@ -829,7 +918,9 @@
 
     .closing-copy h2 em {
       color: transparent;
-      -webkit-text-stroke: 1px var(--ink);
+      -webkit-text-stroke:
+        1px var(--ink);
+
       font-weight: 400;
     }
 
@@ -838,7 +929,8 @@
       margin: 0 auto;
 
       font-family: var(--serif);
-      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      font-size:
+        clamp(1.05rem, 1.5vw, 1.3rem);
       line-height: 1.55;
     }
 
@@ -856,11 +948,12 @@
         1.5rem
         clamp(1.2rem, 4vw, 4rem);
 
-      border-top: 1px solid var(--border);
+      border-top:
+        1px solid var(--border);
 
+      font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.68rem;
     }
 
     footer em {
@@ -872,7 +965,7 @@
     }
 
     /*
-      TRUTH DIALOG
+      TRUTH POPUP
     */
 
     dialog {
@@ -891,29 +984,36 @@
       padding: 0;
 
       border: 1px solid var(--ink);
-      background: var(--paper);
+
       color: var(--ink);
+      background: var(--paper);
       box-shadow: var(--shadow);
     }
 
     dialog::backdrop {
-      background: rgba(20, 17, 10, 0.54);
+      background:
+        rgba(20, 17, 10, 0.54);
+
       backdrop-filter: blur(6px);
     }
 
     dialog[open] {
-      animation: dialogIn 0.35s ease both;
+      animation:
+        dialogIn 0.35s ease both;
     }
 
     .dialog-bar {
       height: 0.7rem;
+
       background:
         var(--dialog-color, var(--sun));
     }
 
     .dialog-inner {
       position: relative;
-      padding: clamp(1.5rem, 5vw, 4rem);
+
+      padding:
+        clamp(1.5rem, 5vw, 4rem);
     }
 
     .dialog-close {
@@ -929,6 +1029,7 @@
 
       background: transparent;
       cursor: pointer;
+
       font-size: 1.2rem;
       line-height: 1;
     }
@@ -937,17 +1038,18 @@
       color:
         var(--dialog-color, var(--sun));
 
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
       font-size: 0.65rem;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
     }
 
     .dialog-inner h3 {
       margin: 1.6rem 0;
 
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size:
+        clamp(2.5rem, 6vw, 5rem);
       font-weight: 400;
       line-height: 0.9;
       letter-spacing: -0.05em;
@@ -962,7 +1064,8 @@
         var(--dialog-color, var(--sun));
 
       font-family: var(--serif);
-      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-size:
+        clamp(1.15rem, 2vw, 1.45rem);
       font-style: italic;
       line-height: 1.5;
     }
@@ -979,6 +1082,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.55rem;
+
       margin-top: 2rem;
     }
 
@@ -991,8 +1095,8 @@
       background:
         rgba(255, 255, 255, 0.25);
 
-      letter-spacing: 0.04em;
       font-size: 0.7rem;
+      letter-spacing: 0.04em;
     }
 
     /*
@@ -1001,7 +1105,9 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(34px);
+
+      transform:
+        translateY(34px);
 
       transition:
         opacity 0.8s ease,
@@ -1053,6 +1159,7 @@
     @keyframes dialogIn {
       from {
         opacity: 0;
+
         transform:
           translateY(18px)
           scale(0.98);
@@ -1126,8 +1233,18 @@
         padding: 1rem;
       }
 
-      .brand span {
+      .brand-note {
         display: none;
+      }
+
+      .brand-mark {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
+
+      .brand-mark img {
+        width: 2.6rem;
+        height: 2.6rem;
       }
 
       .hero {
@@ -1203,9 +1320,14 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
       }
 
       .ray {
@@ -1237,10 +1359,24 @@
       href="#top"
       aria-label="Jigyasa Verse, Surya Lok"
     >
-      Jigyasa Verse
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      >
+        <img
+          src="assets/wonder-verse-moon-pencil-logo.png"
+          alt=""
+        >
+      </span>
 
-      <span>
-        — curiosity lives here
+      <span class="brand-copy">
+        <span class="brand-name">
+          Jigyasa Verse
+        </span>
+
+        <span class="brand-note">
+          Curiosity lives here
+        </span>
       </span>
     </a>
 
@@ -1262,7 +1398,7 @@
     >
       <div class="hero-copy">
         <p class="eyebrow">
-          The light that does not dim for anyone
+          The light that never dims for ANYONE!
         </p>
 
         <h1>
@@ -1279,7 +1415,7 @@
           anchor—a reliable surface of pure
           being. Step into the solar path,
           where the mind rests upon things
-          that do not fade.
+          that do not fade! Welcome.
         </p>
 
         <div class="hero-action">
@@ -1290,19 +1426,20 @@
             Enter the spectrum
 
             <span aria-hidden="true">
-              ✿◠‿◠✿
+              ↓
             </span>
           </a>
 
           <span class="instruction">
-            To know the Sun, is to embrace all of its colours.
+            To know the sun, is also to embrace all its colours.
           </span>
         </div>
       </div>
 
       <!--
         ORIGINAL SVG ARTWORK:
-        HUMAN + SUN + PRISM + SPECTRUM
+        HUMAN + INNER SUN + PRISM
+        + SEVEN COLOURS
       -->
 
       <figure
@@ -1319,13 +1456,15 @@
           </title>
 
           <desc id="solarDesc">
-            An abstract human silhouette stands
-            before a solar halo. A bright light
-            in the chest radiates seven coloured
-            paths.
+            A softly drawn human figure stands
+            inside a golden solar aura. A bright
+            inner sun radiates seven coloured
+            paths through a prism.
           </desc>
 
           <defs>
+            <!-- INNER SUN -->
+
             <radialGradient id="sunFill">
               <stop
                 offset="0"
@@ -1349,6 +1488,8 @@
               />
             </radialGradient>
 
+            <!-- HUMAN BODY -->
+
             <linearGradient
               id="bodyFill"
               x1="0"
@@ -1358,19 +1499,50 @@
             >
               <stop
                 offset="0"
-                stop-color="#2e2a20"
+                stop-color="#d8bd8c"
+                stop-opacity=".78"
               />
 
               <stop
-                offset=".55"
-                stop-color="#14130f"
+                offset=".43"
+                stop-color="#8e7052"
+                stop-opacity=".92"
               />
 
               <stop
                 offset="1"
-                stop-color="#393225"
+                stop-color="#4a3a2e"
+                stop-opacity=".96"
               />
             </linearGradient>
+
+            <linearGradient
+              id="bodyLight"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop
+                offset="0"
+                stop-color="#fff4c2"
+                stop-opacity=".64"
+              />
+
+              <stop
+                offset=".42"
+                stop-color="#f2bb54"
+                stop-opacity=".18"
+              />
+
+              <stop
+                offset="1"
+                stop-color="#6f5845"
+                stop-opacity="0"
+              />
+            </linearGradient>
+
+            <!-- HAND-DRAWN TEXTURE -->
 
             <filter id="rough">
               <feTurbulence
@@ -1386,6 +1558,8 @@
                 scale="8"
               />
             </filter>
+
+            <!-- SUN GLOW -->
 
             <filter id="glow">
               <feGaussianBlur
@@ -1403,9 +1577,48 @@
                 />
               </feMerge>
             </filter>
+
+            <!-- HUMAN AURA -->
+
+            <filter
+              id="bodyGlow"
+              x="-60%"
+              y="-40%"
+              width="220%"
+              height="190%"
+            >
+              <feGaussianBlur
+                stdDeviation="24"
+                result="softAura"
+              />
+
+              <feMerge>
+                <feMergeNode
+                  in="softAura"
+                />
+
+                <feMergeNode
+                  in="SourceGraphic"
+                />
+              </feMerge>
+            </filter>
+
+            <!-- SOFT SOLAR MIST -->
+
+            <filter
+              id="solarMist"
+              x="-100%"
+              y="-100%"
+              width="300%"
+              height="300%"
+            >
+              <feGaussianBlur
+                stdDeviation="30"
+              />
+            </filter>
           </defs>
 
-          <!-- ORBITAL LINES -->
+          <!-- OUTER ORBITS -->
 
           <circle
             class="halo"
@@ -1431,7 +1644,7 @@
             stroke-dasharray="70 10 4 18"
           />
 
-          <!-- LARGE SUN -->
+          <!-- LARGE BACKGROUND SUN -->
 
           <circle
             cx="500"
@@ -1441,7 +1654,7 @@
             opacity=".88"
           />
 
-          <!-- SOLAR LINES -->
+          <!-- SOLAR DIRECTIONS -->
 
           <g
             class="halo"
@@ -1464,7 +1677,7 @@
             />
           </g>
 
-          <!-- SEVEN RAYS -->
+          <!-- SEVEN RAYS OF TRUTH -->
 
           <g
             aria-hidden="true"
@@ -1571,83 +1784,267 @@
             />
           </g>
 
-          <!-- HUMAN FIGURE -->
+          <!-- SOFT GOLDEN HUMAN AURA -->
 
           <g
-            fill="#181711"
+            opacity=".32"
+            filter="url(#solarMist)"
+          >
+            <ellipse
+              cx="490"
+              cy="490"
+              rx="138"
+              ry="270"
+              fill="#efac2b"
+            />
+          </g>
+
+          <!-- AURA RINGS -->
+
+          <g
+            fill="none"
+            stroke="#d99a26"
+            opacity=".38"
             filter="url(#rough)"
           >
             <ellipse
-              cx="489"
-              cy="292"
-              rx="48"
-              ry="57"
+              cx="490"
+              cy="430"
+              rx="126"
+              ry="268"
+              stroke-width="2"
             />
+
+            <ellipse
+              cx="490"
+              cy="430"
+              rx="151"
+              ry="298"
+              stroke-width="1"
+              stroke-dasharray="5 12"
+            />
+          </g>
+
+          <!-- WIDE GLOWING BODY OUTLINE -->
+
+          <path
+            d="
+              M445 342
+              C419 350 389 372 379 418
+              C365 482 390 548 414 616
+              C429 659 433 719 442 789
+              L478 789
+              L490 593
+              L502 789
+              L540 789
+              C549 719 553 659 567 616
+              C591 548 616 482 602 418
+              C592 372 562 350 536 342
+              C520 337 508 331 505 319
+              L475 319
+              C472 331 461 337 445 342
+              Z
+            "
+            fill="none"
+            stroke="#e0a32a"
+            stroke-width="34"
+            stroke-opacity=".22"
+            filter="url(#bodyGlow)"
+          />
+
+          <!-- HUMAN FIGURE -->
+
+          <g filter="url(#rough)">
+
+            <!-- HEAD -->
+
+            <ellipse
+              cx="490"
+              cy="278"
+              rx="47"
+              ry="59"
+              fill="url(#bodyFill)"
+              stroke="#6f5844"
+              stroke-width="1.4"
+            />
+
+            <!-- NECK -->
 
             <path
               d="
-                M421 365
-                C430 332 459 325 488 326
-                C528 325 556 341 565 374
-                L592 535
-                C604 593 584 675 560 787
-                L507 787
-                L492 588
-                L477 787
-                L422 787
-                C401 670 380 592 392 531
+                M474 320
+                C474 339 463 341 445 347
+                L536 347
+                C518 341 506 339 506 320
                 Z
               "
               fill="url(#bodyFill)"
             />
 
-            <path
-              d="
-                M414 375
-                C390 407 359 483 334 581
-                C328 604 341 613 351 588
-                L430 442
-                Z
-              "
-            />
+            <!-- TORSO AND LEGS -->
 
             <path
               d="
-                M561 375
-                C594 419 624 488 651 579
-                C658 600 644 614 634 588
-                L548 442
+                M445 342
+                C419 350 389 372 379 418
+                C365 482 390 548 414 616
+                C429 659 433 719 442 789
+                L478 789
+                L490 593
+                L502 789
+                L540 789
+                C549 719 553 659 567 616
+                C591 548 616 482 602 418
+                C592 372 562 350 536 342
+                C520 337 508 331 505 319
+                L475 319
+                C472 331 461 337 445 342
                 Z
               "
+              fill="url(#bodyFill)"
+              stroke="#5f4a39"
+              stroke-width="2"
+            />
+
+            <!-- LIGHT OVER THE BODY -->
+
+            <path
+              d="
+                M450 348
+                C469 339 511 339 531 348
+                C552 371 558 422 548 485
+                C539 545 513 579 490 610
+                C467 579 441 545 432 485
+                C422 422 429 371 450 348
+                Z
+              "
+              fill="url(#bodyLight)"
+              opacity=".72"
+            />
+
+            <!-- LEFT ARM -->
+
+            <path
+              d="
+                M418 370
+                C383 406 363 480 344 575
+                C340 596 352 608 362 585
+                C389 521 410 462 446 421
+              "
+              fill="none"
+              stroke="#715844"
+              stroke-width="30"
+              stroke-linecap="round"
+            />
+
+            <!-- RIGHT ARM -->
+
+            <path
+              d="
+                M562 370
+                C597 406 617 480 636 575
+                C640 596 628 608 618 585
+                C591 521 570 462 534 421
+              "
+              fill="none"
+              stroke="#715844"
+              stroke-width="30"
+              stroke-linecap="round"
+            />
+
+            <!-- CLOSED EYES -->
+
+            <path
+              d="
+                M467 275 Q477 270 484 276
+                M496 276 Q504 270 514 275
+              "
+              fill="none"
+              stroke="#5c4939"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              opacity=".7"
+            />
+
+            <!-- NOSE -->
+
+            <path
+              d="
+                M491 278
+                Q486 296 492 299
+              "
+              fill="none"
+              stroke="#5c4939"
+              stroke-width="1.7"
+              opacity=".54"
+            />
+
+            <!-- MOUTH -->
+
+            <path
+              d="
+                M477 309
+                Q490 316 503 309
+              "
+              fill="none"
+              stroke="#5c4939"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity=".65"
             />
           </g>
-
-          <!-- PRISM -->
-
-          <polygon
-            points="534,400 572,432 532,468"
-            fill="#f4efe3"
-            fill-opacity=".65"
-            stroke="#fff8dc"
-            stroke-width="3"
-          />
 
           <!-- INNER SUN -->
 
           <circle
+            cx="490"
+            cy="430"
+            r="104"
+            fill="#f1a81d"
+            opacity=".17"
+            filter="url(#solarMist)"
+          />
+
+          <circle
             class="chest-sun"
-            cx="496"
-            cy="432"
-            r="62"
+            cx="490"
+            cy="430"
+            r="72"
             fill="url(#sunFill)"
             filter="url(#glow)"
           />
 
           <circle
-            cx="496"
-            cy="432"
-            r="18"
-            fill="#fffbd3"
+            cx="490"
+            cy="430"
+            r="35"
+            fill="#ffe56a"
+            opacity=".78"
+            filter="url(#glow)"
+          />
+
+          <circle
+            cx="490"
+            cy="430"
+            r="13"
+            fill="#fffce0"
+          />
+
+          <!-- PRISM -->
+
+          <polygon
+            points="526,394 576,430 526,469"
+            fill="#fffaf0"
+            fill-opacity=".48"
+            stroke="#fff8dc"
+            stroke-width="3"
+          />
+
+          <path
+            d="M526 394 L526 469"
+            stroke="#7f684e"
+            stroke-opacity=".38"
+            stroke-width="1"
           />
 
           <!-- GROUND -->
@@ -1661,7 +2058,7 @@
             opacity=".45"
           />
 
-          <!-- LABELS -->
+          <!-- SEVEN LABELS -->
 
           <g
             class="spectrum-label"
@@ -1672,37 +2069,37 @@
             fill="#554e42"
           >
             <text x="846" y="136">
-              survival
+              Survival
             </text>
 
             <text x="874" y="278">
-              change
+              Change
             </text>
 
             <text x="898" y="414">
-              evidence
+              Evidence
             </text>
 
             <text x="864" y="553">
-              connection
+              Connection
             </text>
 
             <text x="825" y="690">
-              pattern
+              Pattern
             </text>
 
             <text x="714" y="795">
-              perception
+              Perception
             </text>
 
             <text x="558" y="862">
-              unknown
+              The Unknown
             </text>
           </g>
         </svg>
 
         <figcaption class="stage-caption">
-          the light was always within it
+          the light was always within us
         </figcaption>
       </figure>
     </section>
@@ -1721,16 +2118,16 @@
           around our comfort.
 
           <span>
-            We learn to see it more clearly.
+            We simply learn to see it more clearly.
           </span>
         </blockquote>
 
         <p class="manifesto-note reveal">
-          The Sun is not optimism. It is not
+          The Sun is not optimism or
           motivation. It is the symbol of what
           continues to be true whether we
           celebrate it, fear it, misunderstand
-          it or refuse to look.
+          it or refuse to look. An unyielding light that burns on, whether we choose to worship it, or choose to close our eyes.
         </p>
       </div>
     </section>
@@ -1756,7 +2153,7 @@
 
           does not invent the colours—it
           reveals what was already there.
-          Curiosity works the same way.
+          Curiosity works the same way!
         </p>
       </div>
 
@@ -1786,7 +2183,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            >_<
           </span>
         </button>
 
@@ -1812,7 +2209,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            (*^.^*)
           </span>
         </button>
 
@@ -1838,7 +2235,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            (✿◡‿◡)
           </span>
         </button>
 
@@ -1864,7 +2261,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            (｡♥‿♥｡)
           </span>
         </button>
 
@@ -1890,7 +2287,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            ʕ·͡ᴥ·ʔ
           </span>
         </button>
 
@@ -1916,7 +2313,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            ＼(＾▽＾)／
           </span>
         </button>
 
@@ -1942,7 +2339,7 @@
             class="truth-arrow"
             aria-hidden="true"
           >
-            ↗
+            ¯\_(ツ)_/¯
           </span>
         </button>
       </div>
@@ -1995,11 +2392,11 @@
     </em>
 
     <a href="#top">
-      Back to the Sun ↑
+      Back to the Sun ^v^
     </a>
   </footer>
 
-  <!-- TRUTH POPUP -->
+  <!-- INTERACTIVE TRUTH POPUP -->
 
   <dialog
     id="truthDialog"
@@ -2275,7 +2672,7 @@
       );
 
     /*
-      OPEN THE SEVEN TRUTH POPUPS
+      OPEN TRUTH POPUPS
     */
 
     document
@@ -2355,7 +2752,7 @@
       );
 
     /*
-      CLOSE THE POPUP
+      CLOSE POPUP
     */
 
     closeDialog.addEventListener(
