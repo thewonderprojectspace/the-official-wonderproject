@@ -1,0 +1,2760 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Chandra Lok — The Human Becoming. Eight phases of living, changing, carrying and returning."
+  >
+
+  <meta
+    name="theme-color"
+    content="#f7f1e7"
+  >
+
+  <title>
+    Chandra Lok — The Becoming | Jigyasa Verse
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <script>
+    document.documentElement.classList.replace(
+      "no-js",
+      "js"
+    );
+  </script>
+
+  <style>
+    :root {
+      --paper: #f7f1e7;
+      --paper-deep: #e9dfd0;
+      --ink: #211d25;
+      --soft-ink: #5e5663;
+      --moon: #fff9e8;
+      --moon-shadow: #554c62;
+      --violet: #74627f;
+      --plum: #55405f;
+      --gold: #c39138;
+      --rose: #a86270;
+      --blue: #667b94;
+      --line: rgba(33, 29, 37, 0.18);
+
+      --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+
+      color: var(--ink);
+      font-family: var(--sans);
+
+      background:
+        radial-gradient(
+          circle at 70% 8%,
+          rgba(116, 98, 127, 0.14),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #fbf7ef,
+          var(--paper) 45%,
+          #eee5d9
+        );
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+
+      pointer-events: none;
+      opacity: 0.1;
+      mix-blend-mode: multiply;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    ::selection {
+      color: var(--ink);
+      background: #d8c6dd;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--violet);
+      outline-offset: 5px;
+    }
+
+    .skip {
+      position: fixed;
+      left: 1rem;
+      top: -6rem;
+      z-index: 200;
+
+      padding: 0.85rem 1rem;
+
+      color: var(--paper);
+      background: var(--ink);
+      text-decoration: none;
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 160;
+
+      width: 100%;
+      height: 3px;
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      background:
+        linear-gradient(
+          90deg,
+          #211d25,
+          #74627f,
+          #c39138,
+          #f2d48f,
+          #74627f,
+          #211d25
+        );
+    }
+
+    /*
+      HEADER
+    */
+
+    .masthead {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 80;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding:
+        1rem
+        clamp(1rem, 4vw, 4rem);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(247, 241, 231, 0.94),
+          rgba(247, 241, 231, 0)
+        );
+
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.72rem;
+
+      text-decoration: none;
+    }
+
+    .brand img {
+      display: block;
+
+      width: 3rem;
+      height: 3rem;
+
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.08rem;
+    }
+
+    .brand-name {
+      font-size: 0.74rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.19em;
+    }
+
+    .brand-note {
+      color: var(--soft-ink);
+      font-family: var(--serif);
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .top-links a {
+      font-size: 0.75rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.11em;
+    }
+
+    .top-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.35rem;
+    }
+
+    /*
+      HERO
+    */
+
+    .hero {
+      min-height: 100svh;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 0.78fr)
+        minmax(520px, 1.22fr);
+
+      align-items: center;
+      gap: clamp(2rem, 5vw, 7rem);
+
+      padding:
+        8rem
+        clamp(1.2rem, 5vw, 6rem)
+        5rem;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+
+      margin: 0 0 1.4rem;
+
+      color: var(--plum);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 2.8rem;
+      height: 1px;
+
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 8ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(4rem, 8vw, 8.3rem);
+      font-weight: 400;
+      line-height: 0.82;
+      letter-spacing: -0.065em;
+    }
+
+    h1 em {
+      display: block;
+
+      padding-left:
+        clamp(1rem, 4vw, 4rem);
+
+      color: transparent;
+      font-weight: 400;
+
+      -webkit-text-stroke:
+        1.4px var(--ink);
+    }
+
+    .hero-copy > p:last-of-type {
+      max-width: 38rem;
+
+      margin: 2rem 0 0;
+      padding-left:
+        clamp(0rem, 4vw, 4rem);
+
+      color: #514a55;
+      font-family: var(--serif);
+      font-size:
+        clamp(1.08rem, 1.6vw, 1.4rem);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+
+      margin: 2rem 0 0;
+      padding-left:
+        clamp(0rem, 4vw, 4rem);
+    }
+
+    .primary-link {
+      display: inline-flex;
+      align-items: center;
+
+      padding: 0.95rem 1.25rem;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      color: var(--paper);
+      background: var(--ink);
+
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.11em;
+
+      transition:
+        transform 0.25s ease;
+    }
+
+    .primary-link:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-whisper {
+      color: var(--soft-ink);
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      font-style: italic;
+    }
+
+    /*
+      INTERACTIVE LUNAR MAP
+    */
+
+    .lunar-map {
+      position: relative;
+
+      width: min(100%, 720px);
+      aspect-ratio: 1;
+
+      margin: auto;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 9%;
+
+      border:
+        1px solid rgba(85, 64, 95, 0.24);
+
+      border-radius: 50%;
+    }
+
+    .orbit::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+
+      border:
+        1px dashed
+        rgba(85, 64, 95, 0.16);
+
+      border-radius: 50%;
+    }
+
+    .main-moon {
+      position: absolute;
+      inset: 25%;
+
+      display: grid;
+      place-items: center;
+
+      overflow: hidden;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 36% 30%,
+          #fffdf2 0 9%,
+          #f3e8cf 45%,
+          #cbbba9 100%
+        );
+
+      box-shadow:
+        inset -2.5rem -1.5rem 5rem
+        rgba(66, 54, 76, 0.22),
+        0 0 0 1px
+        rgba(60, 49, 67, 0.12),
+        0 2rem 6rem
+        rgba(63, 48, 73, 0.2);
+
+      animation:
+        moonBreathe
+        7s ease-in-out infinite;
+    }
+
+    .main-moon::before,
+    .main-moon::after {
+      content: "";
+      position: absolute;
+
+      border:
+        1px solid rgba(95, 82, 96, 0.18);
+
+      border-radius: 50%;
+    }
+
+    .main-moon::before {
+      left: 20%;
+      top: 27%;
+
+      width: 22%;
+      aspect-ratio: 1;
+
+      box-shadow:
+        5.4rem 5rem 0 1rem
+        rgba(105, 91, 104, 0.08),
+        2.5rem 8rem 0 0.3rem
+        rgba(105, 91, 104, 0.1);
+    }
+
+    .main-moon::after {
+      right: 24%;
+      top: 18%;
+
+      width: 13%;
+      aspect-ratio: 1;
+
+      box-shadow:
+        -1rem 8rem 0 0.7rem
+        rgba(105, 91, 104, 0.08);
+    }
+
+    .moon-message {
+      position: relative;
+      z-index: 2;
+
+      width: 66%;
+
+      color: #4f4653;
+      font-family: var(--serif);
+      font-size:
+        clamp(0.82rem, 1.5vw, 1.05rem);
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .moon-message strong {
+      display: block;
+
+      margin-bottom: 0.45rem;
+
+      font-size:
+        clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+    }
+
+    .orbit-link {
+      --x: 50%;
+      --y: 0%;
+
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 4;
+
+      width: 5.4rem;
+
+      display: grid;
+      justify-items: center;
+      gap: 0.38rem;
+
+      color: var(--ink);
+      text-decoration: none;
+
+      transform:
+        translate(-50%, -50%);
+    }
+
+    .orbit-link:nth-of-type(1) {
+      --x: 50%;
+      --y: 5%;
+    }
+
+    .orbit-link:nth-of-type(2) {
+      --x: 82%;
+      --y: 18%;
+    }
+
+    .orbit-link:nth-of-type(3) {
+      --x: 95%;
+      --y: 50%;
+    }
+
+    .orbit-link:nth-of-type(4) {
+      --x: 82%;
+      --y: 82%;
+    }
+
+    .orbit-link:nth-of-type(5) {
+      --x: 50%;
+      --y: 95%;
+    }
+
+    .orbit-link:nth-of-type(6) {
+      --x: 18%;
+      --y: 82%;
+    }
+
+    .orbit-link:nth-of-type(7) {
+      --x: 5%;
+      --y: 50%;
+    }
+
+    .orbit-link:nth-of-type(8) {
+      --x: 18%;
+      --y: 18%;
+    }
+
+    .orbit-link span:last-child {
+      padding: 0.2rem 0.45rem;
+
+      border-radius: 99px;
+
+      background:
+        rgba(247, 241, 231, 0.83);
+
+      font-family: var(--serif);
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+
+    .orbit-link:hover .phase-icon {
+      transform:
+        scale(1.12)
+        rotate(7deg);
+    }
+
+    /*
+      MOON PHASE ICONS
+    */
+
+    .phase-icon {
+      --lit: 0%;
+
+      position: relative;
+
+      width: 3.35rem;
+      height: 3.35rem;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(33, 29, 37, 0.3);
+
+      border-radius: 50%;
+
+      background: var(--moon-shadow);
+
+      box-shadow:
+        0 0.5rem 1.4rem
+        rgba(38, 29, 42, 0.16);
+
+      transition:
+        transform 0.25s ease;
+    }
+
+    .phase-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      border-radius: 50%;
+
+      background: var(--moon);
+
+      transform:
+        translateX(
+          calc(-100% + var(--lit))
+        );
+
+      box-shadow:
+        inset -10px 0 18px
+        rgba(103, 88, 110, 0.18);
+    }
+
+    .phase-new {
+      --lit: 0%;
+    }
+
+    .phase-waxing-crescent {
+      --lit: 28%;
+    }
+
+    .phase-first-quarter {
+      --lit: 50%;
+    }
+
+    .phase-waxing-gibbous {
+      --lit: 78%;
+    }
+
+    .phase-full {
+      --lit: 100%;
+      background: var(--moon);
+    }
+
+    .phase-full::after {
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #fffdf4,
+          #eadfc9
+        );
+
+      transform: none;
+    }
+
+    .phase-waning-gibbous {
+      --lit: 78%;
+      transform: scaleX(-1);
+    }
+
+    .phase-last-quarter {
+      --lit: 50%;
+      transform: scaleX(-1);
+    }
+
+    .phase-waning-crescent {
+      --lit: 28%;
+      transform: scaleX(-1);
+    }
+
+    /*
+      GENERAL SECTIONS
+    */
+
+    .section {
+      padding:
+        clamp(6rem, 10vw, 10rem)
+        clamp(1.2rem, 7vw, 8rem);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns:
+        0.72fr 1.28fr;
+
+      align-items: end;
+      gap: clamp(2rem, 6vw, 7rem);
+
+      margin-bottom: 4rem;
+    }
+
+    .section-head h2 {
+      max-width: 9ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(3rem, 6.5vw, 7rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+    }
+
+    .section-head p {
+      max-width: 37rem;
+      margin: 0;
+
+      color: var(--soft-ink);
+      font-family: var(--serif);
+      font-size:
+        clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.6;
+    }
+
+    /*
+      PHASE DIRECTORY
+    */
+
+    .phase-directory {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      border-top:
+        1px solid var(--line);
+
+      border-left:
+        1px solid var(--line);
+    }
+
+    .phase-card {
+      min-height: 22rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+
+      padding: 1.5rem;
+
+      border-right:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+      text-decoration: none;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .phase-card:hover {
+      z-index: 2;
+
+      color: var(--paper);
+      background: var(--plum);
+
+      transform: translateY(-5px);
+    }
+
+    .phase-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .phase-card .phase-icon {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .phase-index {
+      font-family: var(--serif);
+      font-size: 0.78rem;
+    }
+
+    .phase-card h3 {
+      margin: 0 0 0.65rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(1.5rem, 2.6vw, 2.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+    }
+
+    .phase-card p {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    /*
+      PHASE DETAILS
+    */
+
+    .phase-details {
+      padding:
+        0
+        clamp(1.2rem, 7vw, 8rem)
+        8rem;
+    }
+
+    .phase-detail {
+      scroll-margin-top: 6rem;
+
+      display: grid;
+      grid-template-columns:
+        minmax(180px, 0.45fr)
+        minmax(0, 1.55fr);
+
+      gap: clamp(2rem, 7vw, 8rem);
+
+      padding:
+        clamp(5rem, 8vw, 8rem)
+        0;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .phase-symbol {
+      position: sticky;
+      top: 8rem;
+
+      height: max-content;
+
+      display: grid;
+      justify-items: start;
+      gap: 1.2rem;
+    }
+
+    .phase-symbol .phase-icon {
+      width:
+        clamp(6rem, 10vw, 9rem);
+
+      height:
+        clamp(6rem, 10vw, 9rem);
+    }
+
+    .phase-symbol span:last-child {
+      color: var(--soft-ink);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+    }
+
+    .phase-content h2 {
+      max-width: 13ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(2.8rem, 5.6vw, 6rem);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+    }
+
+    .phase-question {
+      max-width: 36rem;
+
+      margin: 1.5rem 0 2.5rem;
+
+      color: var(--plum);
+      font-family: var(--serif);
+      font-size:
+        clamp(1.25rem, 2vw, 1.65rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .phase-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+    }
+
+    .phase-columns p {
+      margin: 0;
+
+      color: #504954;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .phase-columns ul {
+      margin: 0;
+      padding: 0;
+
+      border-top:
+        1px solid var(--line);
+
+      list-style: none;
+    }
+
+    .phase-columns li {
+      padding: 0.75rem 0;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-size: 0.9rem;
+    }
+
+    .copy-link {
+      display: inline-flex;
+
+      margin-top: 2rem;
+
+      color: var(--soft-ink);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-underline-offset: 0.3rem;
+      letter-spacing: 0.12em;
+    }
+
+    /*
+      PERMANENT SPACES
+    */
+
+    .permanent {
+      color: var(--paper);
+      background: #252029;
+    }
+
+    .permanent .section-head p {
+      color: #d9cfdb;
+    }
+
+    .place-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+      border-left:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+    }
+
+    .place-card {
+      min-height: 20rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 1.5rem;
+
+      border-right:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+      text-decoration: none;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .place-card:hover {
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .place-glyph {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+    }
+
+    .place-card h3 {
+      margin: 0 0 0.7rem;
+
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .place-card p {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.8;
+    }
+
+    /*
+      DEEP CONTENT SPACES
+    */
+
+    .deep-space {
+      scroll-margin-top: 6rem;
+
+      padding:
+        clamp(6rem, 10vw, 10rem)
+        clamp(1.2rem, 7vw, 8rem);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .deep-space > div {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .deep-label {
+      margin: 0 0 1.2rem;
+
+      color: var(--rose);
+      font-size: 0.75rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .deep-space h2 {
+      max-width: 13ch;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(3rem, 6vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+    }
+
+    .deep-intro {
+      max-width: 45rem;
+
+      margin: 2rem 0 3rem;
+
+      color: var(--soft-ink);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .topic-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .topic-cloud span {
+      padding: 0.65rem 0.85rem;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 99px;
+
+      background:
+        rgba(255, 255, 255, 0.25);
+
+      font-size: 0.82rem;
+    }
+
+    .care-note {
+      max-width: 46rem;
+
+      margin: 3rem 0 0;
+      padding: 1.4rem;
+
+      border-left:
+        3px solid var(--rose);
+
+      background:
+        rgba(168, 98, 112, 0.08);
+
+      font-family: var(--serif);
+      line-height: 1.6;
+    }
+
+    /*
+      MIRROR
+    */
+
+    .mirror-panel {
+      display: grid;
+      grid-template-columns:
+        0.65fr 1.35fr;
+
+      align-items: center;
+      gap: clamp(2rem, 7vw, 8rem);
+    }
+
+    .mirror-disc {
+      aspect-ratio: 1;
+
+      display: grid;
+      place-items: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 42% 32%,
+          rgba(255, 255, 255, 0.9),
+          rgba(116, 98, 127, 0.2)
+        );
+
+      box-shadow:
+        inset -2rem -2rem 5rem
+        rgba(85, 64, 95, 0.16);
+    }
+
+    .mirror-disc span {
+      font-family: var(--serif);
+      font-size:
+        clamp(3rem, 7vw, 7rem);
+    }
+
+    .prompt-box {
+      min-height: 16rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding:
+        clamp(1.5rem, 4vw, 3rem);
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.25);
+    }
+
+    #mirrorPrompt {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(1.7rem, 3.5vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .prompt-button {
+      align-self: flex-start;
+
+      margin-top: 2rem;
+      padding: 0.8rem 1rem;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      background: transparent;
+      cursor: pointer;
+
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .prompt-button:hover {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    /*
+      HUMAN WALL
+    */
+
+    .human-wall {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1rem;
+    }
+
+    .note {
+      min-height: 13rem;
+
+      padding: 1.4rem;
+
+      background: #fff9e9;
+
+      box-shadow:
+        0 1rem 2.5rem
+        rgba(57, 44, 62, 0.09);
+
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.5;
+
+      transform:
+        rotate(var(--tilt));
+    }
+
+    .note:nth-child(1) {
+      --tilt: -1.5deg;
+    }
+
+    .note:nth-child(2) {
+      --tilt: 1deg;
+    }
+
+    .note:nth-child(3) {
+      --tilt: -0.4deg;
+    }
+
+    /*
+      BORROWED LIGHT
+    */
+
+    .borrowed {
+      color: var(--paper);
+
+      background:
+        linear-gradient(
+          135deg,
+          #2a222e,
+          #54405f
+        );
+    }
+
+    .borrowed-inner {
+      max-width: 900px;
+
+      margin: auto;
+      text-align: center;
+    }
+
+    .borrowed h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(3rem, 7vw, 7rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+    }
+
+    .borrowed p {
+      max-width: 42rem;
+
+      margin: 2rem auto;
+
+      color: #e2d8e3;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .sun-link {
+      display: inline-flex;
+
+      padding: 0.95rem 1.25rem;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.6);
+
+      border-radius: 99px;
+
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.12em;
+    }
+
+    .sun-link:hover {
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    /*
+      FOOTER AND REVEALS
+    */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+
+      padding:
+        1.5rem
+        clamp(1.2rem, 4vw, 4rem);
+
+      border-top:
+        1px solid var(--line);
+
+      font-size: 0.75rem;
+    }
+
+    footer em {
+      color: var(--soft-ink);
+      font-family: var(--serif);
+    }
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(28px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes moonBreathe {
+      0%,
+      100% {
+        transform: scale(0.985);
+      }
+
+      50% {
+        transform: scale(1.02);
+      }
+    }
+
+    /*
+      TABLET
+    */
+
+    @media (max-width: 1050px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 8rem;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .lunar-map {
+        width: min(90vw, 700px);
+      }
+
+      .phase-directory {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .place-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+    /*
+      MOBILE
+    */
+
+    @media (max-width: 720px) {
+      .brand-note,
+      .top-links a:first-child {
+        display: none;
+      }
+
+      .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero-copy > p:last-of-type,
+      .hero-actions {
+        padding-left: 0;
+      }
+
+      .hero-actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .lunar-map {
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      .orbit-link {
+        width: 4.2rem;
+      }
+
+      .orbit-link span:last-child {
+        display: none;
+      }
+
+      .phase-icon {
+        width: 2.8rem;
+        height: 2.8rem;
+      }
+
+      .section,
+      .deep-space {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .section-head,
+      .phase-detail,
+      .mirror-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-symbol {
+        position: static;
+      }
+
+      .phase-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .human-wall {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .phase-directory,
+      .place-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-card {
+        min-height: 17rem;
+      }
+
+      .main-moon {
+        inset: 24%;
+      }
+
+      .moon-message {
+        font-size: 0.68rem;
+      }
+
+      .moon-message strong {
+        font-size: 1.15rem;
+      }
+    }
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">
+    Skip to the phases
+  </a>
+
+  <div
+    class="progress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- HEADER -->
+
+  <header class="masthead">
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Jigyasa Verse homepage"
+    >
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span class="brand-copy">
+        <span class="brand-name">
+          Jigyasa Verse
+        </span>
+
+        <span class="brand-note">
+          Curiosity lives here
+        </span>
+      </span>
+    </a>
+
+    <nav
+      class="top-links"
+      aria-label="World navigation"
+    >
+      <a href="index.html">
+        Surya Lok
+      </a>
+
+      <a href="#phases">
+        Moon phases
+      </a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          The light that is carried from the sun through every phase
+        </p>
+
+        <h1>
+          The Chandra
+
+          <em>
+            Lok
+          </em>
+        </h1>
+
+        <p>
+          You are not one permanent version
+          of yourself. You appear, disappear,
+          begin, resist, become, break, reflect
+          and return. Like the Moon, you may
+          carry marks. Like the Moon, you
+          remain whole.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="primary-link"
+            href="#phases"
+          >
+            Find your current phase
+          </a>
+
+          <span class="hero-whisper">
+            The sun was for the truth and the moon is for 'What does it feel like living the truth?'
+          </span>
+        </div>
+      </div>
+
+      <!-- LUNAR MAP -->
+
+      <div
+        class="lunar-map"
+        aria-label="Eight linked phases surround the central Moon"
+      >
+        <div
+          class="orbit"
+          aria-hidden="true"
+        ></div>
+
+        <div class="main-moon">
+          <div class="moon-message">
+            <strong>
+              The light has not left.
+            </strong>
+
+            It is simply being carried
+            differently.
+          </div>
+        </div>
+
+        <a
+          class="orbit-link"
+          href="#new-moon"
+          aria-label="New Moon — The Unseen Self"
+        >
+          <span
+            class="phase-icon phase-new"
+            aria-hidden="true"
+          ></span>
+
+          <span>Unseen</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#waxing-crescent"
+          aria-label="Waxing Crescent — The First Attempt"
+        >
+          <span
+            class="phase-icon phase-waxing-crescent"
+            aria-hidden="true"
+          ></span>
+
+          <span>First attempt</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#first-quarter"
+          aria-label="First Quarter — The Resistance"
+        >
+          <span
+            class="phase-icon phase-first-quarter"
+            aria-hidden="true"
+          ></span>
+
+          <span>Resistance</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#waxing-gibbous"
+          aria-label="Waxing Gibbous — The Weight of Becoming"
+        >
+          <span
+            class="phase-icon phase-waxing-gibbous"
+            aria-hidden="true"
+          ></span>
+
+          <span>Becoming</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#full-moon"
+          aria-label="Full Moon — The Seen Self"
+        >
+          <span
+            class="phase-icon phase-full"
+            aria-hidden="true"
+          ></span>
+
+          <span>Seen self</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#waning-gibbous"
+          aria-label="Waning Gibbous — The Reflection"
+        >
+          <span
+            class="phase-icon phase-waning-gibbous"
+            aria-hidden="true"
+          ></span>
+
+          <span>Reflection</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#last-quarter"
+          aria-label="Last Quarter — The Letting Go"
+        >
+          <span
+            class="phase-icon phase-last-quarter"
+            aria-hidden="true"
+          ></span>
+
+          <span>Letting go</span>
+        </a>
+
+        <a
+          class="orbit-link"
+          href="#waning-crescent"
+          aria-label="Waning Crescent — The Quiet Return"
+        >
+          <span
+            class="phase-icon phase-waning-crescent"
+            aria-hidden="true"
+          ></span>
+
+          <span>Quiet return</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PHASE DIRECTORY -->
+
+    <section
+      class="section"
+      id="phases"
+    >
+      <div class="section-head reveal">
+        <h2>
+          Eight phases. No hierarchy.
+        </h2>
+
+        <p>
+          The lunar cycle is not a staircase.
+          A Full Moon is not more complete than
+          a New Moon. Choose the phase that
+          resembles where you are—not where
+          you think you should be.
+        </p>
+      </div>
+
+      <div class="phase-directory">
+
+        <a
+          class="phase-card reveal"
+          href="#new-moon"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-new"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              01
+            </span>
+          </div>
+
+          <div>
+            <h3>New Moon</h3>
+            <p>The Unseen Self</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#waxing-crescent"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-waxing-crescent"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              02
+            </span>
+          </div>
+
+          <div>
+            <h3>Waxing Crescent</h3>
+            <p>The First Attempt</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#first-quarter"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-first-quarter"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              03
+            </span>
+          </div>
+
+          <div>
+            <h3>First Quarter</h3>
+            <p>The Resistance</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#waxing-gibbous"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-waxing-gibbous"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              04
+            </span>
+          </div>
+
+          <div>
+            <h3>Waxing Gibbous</h3>
+            <p>The Weight of Becoming</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#full-moon"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-full"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              05
+            </span>
+          </div>
+
+          <div>
+            <h3>Full Moon</h3>
+            <p>The Seen Self</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#waning-gibbous"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-waning-gibbous"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              06
+            </span>
+          </div>
+
+          <div>
+            <h3>Waning Gibbous</h3>
+            <p>The Reflection</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#last-quarter"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-last-quarter"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              07
+            </span>
+          </div>
+
+          <div>
+            <h3>Last Quarter</h3>
+            <p>The Letting Go</p>
+          </div>
+        </a>
+
+        <a
+          class="phase-card reveal"
+          href="#waning-crescent"
+        >
+          <div class="phase-card-top">
+            <span
+              class="phase-icon phase-waning-crescent"
+              aria-hidden="true"
+            ></span>
+
+            <span class="phase-index">
+              08
+            </span>
+          </div>
+
+          <div>
+            <h3>Waning Crescent</h3>
+            <p>The Quiet Return</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- PHASE DETAILS -->
+
+    <div class="phase-details">
+
+      <article
+        class="phase-detail"
+        id="new-moon"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-new"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 01 · New Moon
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Unseen Self
+          </h2>
+
+          <p class="phase-question">
+            Who are you when nobody is looking?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Some parts of us exist long before
+              we can explain them. This phase is
+              for hidden dreams, private grief,
+              silence, loneliness and the versions
+              of ourselves that have not yet found
+              language.
+            </p>
+
+            <ul>
+              <li>Feeling invisible</li>
+              <li>Masking emotions</li>
+              <li>Identity and private becoming</li>
+              <li>The truth behind “I’m fine”</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#new-moon"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="waxing-crescent"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-waxing-crescent"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 02 · Waxing Crescent
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The First Attempt
+          </h2>
+
+          <p class="phase-question">
+            What if courage begins before
+            confidence?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Not every beginning looks brave.
+              Sometimes it is answering one
+              message, asking for help, returning
+              after failure or trying again while
+              a part of you still expects to fall.
+            </p>
+
+            <ul>
+              <li>Starting again</li>
+              <li>Fragile hope</li>
+              <li>First boundaries</li>
+              <li>Learning badly before learning well</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#waxing-crescent"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="first-quarter"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-first-quarter"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 03 · First Quarter
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Resistance
+          </h2>
+
+          <p class="phase-question">
+            What do you protect when the world
+            asks you to abandon it?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Becoming creates friction. This
+              phase holds criticism, rejection,
+              family expectations, peer pressure,
+              misunderstood choices and the
+              difficult work of saying no without
+              losing yourself.
+            </p>
+
+            <ul>
+              <li>Conflict and opposition</li>
+              <li>Pressure to conform</li>
+              <li>Holding a boundary</li>
+              <li>Choosing an unfamiliar path</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#first-quarter"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="waxing-gibbous"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-waxing-gibbous"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 04 · Waxing Gibbous
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Weight of Becoming
+          </h2>
+
+          <p class="phase-question">
+            Can progress be real before it
+            becomes visible?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              This is the exhausting middle:
+              too far from the beginning to feel
+              new, but too far from the result to
+              feel certain. It holds comparison,
+              invisible effort and the pressure
+              to prove that your work matters.
+            </p>
+
+            <ul>
+              <li>Burnout and perfectionism</li>
+              <li>Feeling behind</li>
+              <li>Invisible discipline</li>
+              <li>Carrying several dreams</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#waxing-gibbous"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="full-moon"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-full"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 05 · Full Moon
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Seen Self
+          </h2>
+
+          <p class="phase-question">
+            What changes when the world
+            begins to notice you?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Visibility can bring joy, connection
+              and recognition. It can also create
+              pressure to remain impressive. A
+              Full Moon is completely visible,
+              but visibility is not the same as
+              being understood.
+            </p>
+
+            <ul>
+              <li>Achievement and recognition</li>
+              <li>Confidence and belonging</li>
+              <li>Body image</li>
+              <li>Fear of losing success</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#full-moon"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="waning-gibbous"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-waning-gibbous"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 06 · Waning Gibbous
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Reflection
+          </h2>
+
+          <p class="phase-question">
+            What did the experience reveal
+            about you?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Reflection begins after the loudest
+              moment has passed. Here we make
+              space for memory, gratitude, regret,
+              responsibility and the difficult
+              discovery that we may also have
+              caused harm.
+            </p>
+
+            <ul>
+              <li>Accountability</li>
+              <li>Changing your mind</li>
+              <li>Lessons after success</li>
+              <li>Forgiveness without entitlement</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#waning-gibbous"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="last-quarter"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-last-quarter"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 07 · Last Quarter
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Letting Go
+          </h2>
+
+          <p class="phase-question">
+            What remains when an old version
+            of your life ends?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              Some endings are chosen and some
+              arrive without permission. This
+              phase holds grief, changing
+              relationships, leaving familiar
+              places and accepting that not
+              everything can be repaired.
+            </p>
+
+            <ul>
+              <li>Grief and endings</li>
+              <li>Outgrowing an identity</li>
+              <li>Relationships that change</li>
+              <li>Releasing expectations</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#last-quarter"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+
+      <article
+        class="phase-detail"
+        id="waning-crescent"
+      >
+        <div class="phase-symbol">
+          <span
+            class="phase-icon phase-waning-crescent"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            Phase 08 · Waning Crescent
+          </span>
+        </div>
+
+        <div class="phase-content">
+          <h2>
+            The Quiet Return
+          </h2>
+
+          <p class="phase-question">
+            Can you rest without believing
+            you have disappeared?
+          </p>
+
+          <div class="phase-columns">
+            <p>
+              The quiet is not emptiness. This
+              phase is for rest, recovery,
+              solitude and the slow preparation
+              for another beginning. The cycle
+              does not restart because you
+              failed; it continues because you
+              are alive.
+            </p>
+
+            <ul>
+              <li>Rest without guilt</li>
+              <li>Healing and solitude</li>
+              <li>Rebuilding trust</li>
+              <li>Beginning again</li>
+            </ul>
+          </div>
+
+          <a
+            class="copy-link"
+            href="#waning-crescent"
+          >
+            Direct link to this phase
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- PERMANENT SPACES -->
+
+    <section class="section permanent">
+      <div class="section-head reveal">
+        <h2>
+          What phases alone cannot hold.
+        </h2>
+
+        <p>
+          Some experiences do not belong to
+          one point in the cycle. They can
+          appear at any time, shape several
+          phases and leave lasting marks.
+        </p>
+      </div>
+
+      <div class="place-grid">
+        <a
+          class="place-card"
+          href="#craters"
+        >
+          <span class="place-glyph">
+            ◌
+          </span>
+
+          <div>
+            <h3>The Craters</h3>
+
+            <p>
+              Bullying, harm, power and the
+              experiences that leave marks.
+            </p>
+          </div>
+        </a>
+
+        <a
+          class="place-card"
+          href="#mirror"
+        >
+          <span class="place-glyph">
+            ◐
+          </span>
+
+          <div>
+            <h3>The Mirror</h3>
+
+            <p>
+              Private questions without scores,
+              judgement or forced answers.
+            </p>
+          </div>
+        </a>
+
+        <a
+          class="place-card"
+          href="#human-wall"
+        >
+          <span class="place-glyph">
+            ✎
+          </span>
+
+          <div>
+            <h3>The Human Wall</h3>
+
+            <p>
+              Small truths left behind by humans
+              who were here before you.
+            </p>
+          </div>
+        </a>
+
+        <a
+          class="place-card"
+          href="#borrowed-light"
+        >
+          <span class="place-glyph">
+            ☀
+          </span>
+
+          <div>
+            <h3>Borrowed Light</h3>
+
+            <p>
+              A bridge from emotional experience
+              back to evidence and reality.
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CRATERS -->
+
+    <section
+      class="deep-space"
+      id="craters"
+    >
+      <div>
+        <p class="deep-label">
+          Permanent place · Sensitive subjects
+        </p>
+
+        <h2>
+          The Craters — What Leaves a Mark
+        </h2>
+
+        <p class="deep-intro">
+          A crater is not the whole Moon. It
+          is evidence that something happened.
+          This space examines harm without
+          turning suffering into an identity
+          or treating it as a necessary phase
+          of growth.
+        </p>
+
+        <div class="topic-cloud">
+          <span>Bullying</span>
+          <span>Cyberbullying</span>
+          <span>Harassment</span>
+          <span>Consent</span>
+          <span>Discrimination</span>
+          <span>Racism and casteism</span>
+          <span>Body shaming</span>
+          <span>Social exclusion</span>
+          <span>Abuse and control</span>
+          <span>School and workplace power</span>
+          <span>Poverty and inequality</span>
+          <span>Grief and traumatic loss</span>
+          <span>Mental-health struggles</span>
+          <span>Bystander silence</span>
+        </div>
+
+        <p class="care-note">
+          <strong>Care note:</strong>
+          Detailed Crater pages should include
+          content notices, practical bystander
+          guidance and links to appropriate
+          professional or emergency support.
+          Jigyasa Verse can hold reflection,
+          but it should never pretend to replace
+          qualified help.
+        </p>
+      </div>
+    </section>
+
+    <!-- MIRROR -->
+
+    <section
+      class="deep-space"
+      id="mirror"
+    >
+      <div class="mirror-panel">
+        <div
+          class="mirror-disc"
+          aria-hidden="true"
+        >
+          <span>◐</span>
+        </div>
+
+        <div>
+          <p class="deep-label">
+            Private space
+          </p>
+
+          <h2>
+            The Mirror
+          </h2>
+
+          <p class="deep-intro">
+            Nothing is graded, saved or made
+            public. Sit with one question for
+            as long as you need.
+          </p>
+
+          <div class="prompt-box">
+            <p id="mirrorPrompt">
+              What have you been pretending
+              does not hurt?
+            </p>
+
+            <button
+              class="prompt-button"
+              id="newPrompt"
+              type="button"
+            >
+              Give me another question
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUMAN WALL -->
+
+    <section
+      class="deep-space"
+      id="human-wall"
+    >
+      <div>
+        <p class="deep-label">
+          Shared space
+        </p>
+
+        <h2>
+          The Human Wall
+        </h2>
+
+        <p class="deep-intro">
+          Not advice. Not inspiration. Just
+          honest sentences that remind us
+          another human has stood somewhere
+          nearby.
+        </p>
+
+        <div class="human-wall">
+          <blockquote class="note">
+            “I achieved the thing and still
+            felt empty.”
+          </blockquote>
+
+          <blockquote class="note">
+            “Nobody knew that starting again
+            was the bravest thing I had done.”
+          </blockquote>
+
+          <blockquote class="note">
+            “I am becoming someone my younger
+            self would feel safe with.”
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- BORROWED LIGHT -->
+
+    <section
+      class="section borrowed"
+      id="borrowed-light"
+    >
+      <div class="borrowed-inner">
+        <p class="deep-label">
+          The bridge between worlds
+        </p>
+
+        <h2>
+          Borrowed Light
+        </h2>
+
+        <p>
+          What you feel is real. But a feeling
+          is not always the entirety of reality.
+          When you are ready, carry the question
+          into Surya Lok and examine it through
+          evidence, pattern, connection and
+          perception.
+        </p>
+
+        <a
+          class="sun-link"
+          href="index.html"
+        >
+          Enter Surya Lok
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>
+      Jigyasa Verse © 2026
+    </span>
+
+    <em>
+      The Moon changes. The light does not leave.
+    </em>
+
+    <a href="#main">
+      Return to the Moon
+    </a>
+  </footer>
+
+  <script>
+    /*
+      SCROLL PROGRESS
+    */
+
+    const progress =
+      document.querySelector(
+        ".progress"
+      );
+
+    function updateProgress() {
+      const maximumScroll =
+        document.documentElement
+          .scrollHeight -
+        innerHeight;
+
+      const amount =
+        maximumScroll > 0
+          ? scrollY / maximumScroll
+          : 0;
+
+      progress.style.transform =
+        `scaleX(${amount})`;
+    }
+
+    addEventListener(
+      "scroll",
+      updateProgress,
+      {
+        passive: true
+      }
+    );
+
+    updateProgress();
+
+    /*
+      SCROLL REVEALS
+    */
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                entry.isIntersecting
+              ) {
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+              }
+            }
+          );
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    document
+      .querySelectorAll(
+        ".reveal"
+      )
+      .forEach(
+        (element) => {
+          observer.observe(
+            element
+          );
+        }
+      );
+
+    /*
+      MIRROR QUESTIONS
+    */
+
+    const prompts = [
+      "What have you been pretending does not hurt?",
+
+      "Where are you shrinking to remain acceptable?",
+
+      "Which version of yourself are you still trying to prove?",
+
+      "What are you carrying that was never yours?",
+
+      "What would honesty sound like without self-punishment?",
+
+      "What part of you needs witnessing rather than fixing?",
+
+      "What are you afraid will happen if you finally rest?"
+    ];
+
+    let promptIndex = 0;
+
+    const prompt =
+      document.querySelector(
+        "#mirrorPrompt"
+      );
+
+    const promptButton =
+      document.querySelector(
+        "#newPrompt"
+      );
+
+    promptButton.addEventListener(
+      "click",
+      () => {
+        promptIndex =
+          (promptIndex + 1) %
+          prompts.length;
+
+        prompt.animate(
+          [
+            {
+              opacity: 0,
+              transform:
+                "translateY(8px)"
+            },
+            {
+              opacity: 1,
+              transform: "none"
+            }
+          ],
+          {
+            duration: 350,
+            easing: "ease-out"
+          }
+        );
+
+        prompt.textContent =
+          prompts[promptIndex];
+      }
+    );
+  </script>
+</body>
+</html>
