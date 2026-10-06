@@ -1,559 +1,2823 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EF9DVH7JQN');
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The story behind Jigyasa Verse: an honest invitation to slow down, stay curious and begin the life that keeps asking for your attention.">
-  <meta name="theme-color" content="#090909">
-  <title>Our Story | Jigyasa Verse</title>
+  <meta
+    name="description"
+    content="Why Jigyasa Verse exists: a universe where curiosity leaves the page, meets reality and becomes a lived life."
+  >
 
-  <link rel="icon" type="image/png" href="images/wonder-verse-moon-pencil-logo.png">
+  <meta name="theme-color" content="#07080d">
+
+  <title>Why This Exists | Jigyasa Verse</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    document.documentElement.classList.replace(
+      "no-js",
+      "js"
+    );
+  </script>
 
   <style>
     :root {
-      --night: #080909;
-      --night-soft: #101111;
-      --paper: #e9e1d2;
-      --muted: #aaa397;
-      --amber: #e2a14a;
-      --amber-soft: #f1c37c;
-      --rust: #9b4b2d;
-      --line: rgba(233, 225, 210, .15);
-      --serif: "Fraunces", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
+      --night: #07080d;
+      --night-soft: #0d1019;
+      --night-blue: #11172a;
+
+      --paper: #eee8dc;
+      --muted: #aca9b0;
+
+      --sun: #ecad49;
+      --sun-soft: #f6d18a;
+
+      --moon: #b9b6ce;
+      --violet: #9b85b4;
+      --rust: #9d4f30;
+
+      --line:
+        rgba(238, 232, 220, 0.15);
+
+      --serif:
+        "Fraunces",
+        Georgia,
+        serif;
+
+      --sans:
+        "DM Sans",
+        Arial,
+        sans-serif;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--night);
+    }
+
     body {
       margin: 0;
       overflow-x: hidden;
+
       color: var(--paper);
+
       background:
-        radial-gradient(circle at 8% 20%, rgba(155,75,45,.13), transparent 26rem),
-        radial-gradient(circle at 90% 55%, rgba(226,161,74,.06), transparent 34rem),
+        radial-gradient(
+          circle at 8% 20%,
+          rgba(157, 79, 48, 0.13),
+          transparent 28rem
+        ),
+        radial-gradient(
+          circle at 90% 46%,
+          rgba(120, 112, 161, 0.12),
+          transparent 35rem
+        ),
         var(--night);
+
       font-family: var(--sans);
       line-height: 1.7;
     }
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: 20;
-      pointer-events: none;
-      opacity: .2;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-    }
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    ::selection { color: #111; background: var(--amber-soft); }
+      z-index: 100;
 
-    .wv-header {
+      pointer-events: none;
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      font: inherit;
+
+      -webkit-tap-highlight-color:
+        transparent;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    ::selection {
+      color: #111217;
+      background: var(--sun-soft);
+    }
+
+    :focus-visible {
+      outline:
+        3px solid var(--sun-soft);
+
+      outline-offset: 5px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -6rem;
+      z-index: 300;
+
+      padding: 0.8rem 1rem;
+
+      color: #111217;
+      background: var(--paper);
+
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* STAR FIELD */
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+
+      pointer-events: none;
+      opacity: 0.55;
+
+      background-image:
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(255, 255, 255, 0.8) 0 1px,
+          transparent 1.4px
+        ),
+        radial-gradient(
+          circle at 28% 72%,
+          rgba(255, 255, 255, 0.5) 0 1px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle at 48% 14%,
+          rgba(255, 229, 177, 0.7) 0 1px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle at 67% 40%,
+          rgba(206, 211, 255, 0.6) 0 1px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle at 88% 77%,
+          rgba(255, 255, 255, 0.55) 0 1px,
+          transparent 1.4px
+        );
+
+      background-size:
+        330px 330px,
+        460px 460px,
+        570px 570px,
+        680px 680px,
+        750px 750px;
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* SCROLL PROGRESS */
+
+    .progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 250;
+
+      width: 100%;
+      height: 3px;
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--sun),
+          var(--sun-soft),
+          var(--violet),
+          var(--moon)
+        );
+    }
+
+    /* HEADER */
+
+    .site-header {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      z-index: 30;
-      border-bottom: 1px solid transparent;
-      transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+      right: 0;
+      z-index: 200;
+
+      border-bottom:
+        1px solid transparent;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        backdrop-filter 0.3s ease;
     }
-    .wv-header.scrolled {
-      background: rgba(8,9,9,.82);
+
+    .site-header.scrolled {
+      background:
+        rgba(7, 8, 13, 0.84);
+
       border-color: var(--line);
+
       backdrop-filter: blur(16px);
     }
-    .wv-nav {
-      width: min(1380px, calc(100% - 48px));
+
+    .nav {
+      width:
+        min(
+          1380px,
+          calc(100% - 48px)
+        );
+
       min-height: 82px;
+
       margin: auto;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
     }
-    .wv-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .wv-brand-image { width: 42px; height: 42px; object-fit: contain; }
-    .wv-brand-copy { display: grid; line-height: 1.08; }
-    .wv-brand-name { font-family: var(--serif); font-size: 1.05rem; }
-    .wv-brand-note { margin-top: 5px; color: var(--muted); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
-    .wv-links { display: flex; align-items: center; gap: 28px; }
-    .wv-links a { color: #c8c0b4; font-size: .82rem; letter-spacing: .07em; text-decoration: none; }
-    .wv-links a:hover, .wv-links a[aria-current="page"] { color: var(--amber-soft); }
-    .wv-menu { display: none; color: var(--paper); background: none; border: 0; font: inherit; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: grid;
+
+      line-height: 1.08;
+    }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+    }
+
+    .brand-note {
+      margin-top: 5px;
+
+      color: var(--muted);
+
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #c9c4bc;
+
+      font-size: 0.8rem;
+      letter-spacing: 0.07em;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--sun-soft);
+    }
+
+    .menu-button {
+      display: none;
+
+      padding: 0;
+
+      border: 0;
+
+      color: var(--paper);
+      background: none;
+
+      cursor: pointer;
+    }
+
+    /* HERO */
 
     .hero {
       position: relative;
-      min-height: 100svh;
-      padding: 150px max(24px, calc((100vw - 1320px)/2)) 70px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr);
-      align-items: end;
-      gap: clamp(48px, 9vw, 150px);
       isolation: isolate;
+
+      min-height: 100svh;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(420px, 0.92fr);
+
+      align-items: center;
+      gap:
+        clamp(3rem, 7vw, 8rem);
+
+      padding:
+        9rem
+        max(
+          24px,
+          calc((100vw - 1320px) / 2)
+        )
+        5rem;
+
+      border-bottom:
+        1px solid var(--line);
     }
+
     .hero::after {
       content: "";
+
       position: absolute;
       inset: 0;
       z-index: -2;
-      background: linear-gradient(90deg, transparent 0 67%, rgba(255,255,255,.025) 67% 67.1%, transparent 67.1%);
+
+      background:
+        radial-gradient(
+          circle at 76% 44%,
+          rgba(236, 173, 73, 0.08),
+          transparent 28rem
+        ),
+        radial-gradient(
+          circle at 88% 64%,
+          rgba(120, 107, 154, 0.09),
+          transparent 27rem
+        ),
+        linear-gradient(
+          90deg,
+          transparent 0 64%,
+          rgba(255, 255, 255, 0.025)
+          64% 64.1%,
+          transparent 64.1%
+        );
     }
-    .hero-glow {
-      position: absolute;
-      top: -15vh;
-      right: 7vw;
-      width: 36vw;
-      aspect-ratio: 1;
-      z-index: -1;
-      border-radius: 50%;
-      background: var(--amber);
-      opacity: .08;
-      filter: blur(80px);
-    }
-    .kicker, .section-kicker {
+
+    .kicker,
+    .section-kicker {
       margin: 0 0 22px;
-      color: var(--amber-soft);
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .2em;
+
+      color: var(--sun-soft);
+
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
+
     .hero h1 {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0;
+
       font-family: var(--serif);
-      font-size: clamp(3.9rem, 8vw, 8.5rem);
+      font-size:
+        clamp(4rem, 8vw, 8.8rem);
       font-weight: 400;
-      letter-spacing: -.055em;
-      line-height: .88;
+      letter-spacing: -0.06em;
+      line-height: 0.86;
     }
-    .hero h1 em { color: var(--amber-soft); font-weight: 400; }
+
+    .hero h1 em {
+      color: var(--sun-soft);
+      font-weight: 400;
+    }
+
     .hero-lead {
-      max-width: 700px;
+      max-width: 710px;
+
       margin: 38px 0 0;
-      color: #c7c0b6;
+
+      color: #c9c4bd;
+
       font-family: var(--serif);
-      font-size: clamp(1.25rem, 2vw, 1.8rem);
-      line-height: 1.45;
+      font-size:
+        clamp(1.2rem, 2vw, 1.75rem);
+      line-height: 1.5;
     }
-    .scroll-cue {
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      margin-top: 2.2rem;
+    }
+
+    .primary-action,
+    .secondary-action {
+      min-height: 48px;
+
       display: inline-flex;
       align-items: center;
-      gap: 13px;
-      margin-top: 42px;
-      color: var(--muted);
-      font-size: .72rem;
-      letter-spacing: .14em;
+      justify-content: center;
+
+      padding: 0.85rem 1.2rem;
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
       text-decoration: none;
       text-transform: uppercase;
-    }
-    .scroll-cue span { width: 42px; height: 1px; background: var(--amber); transition: width .25s ease; }
-    .scroll-cue:hover span { width: 64px; }
 
-    .window {
+      transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .primary-action {
+      color: #16120d;
+
+      border-color: var(--sun-soft);
+
+      background: var(--sun-soft);
+    }
+
+    .secondary-action {
+      color: var(--paper);
+
+      background:
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .primary-action:hover,
+    .secondary-action:hover {
+      transform: translateY(-3px);
+    }
+
+    .secondary-action:hover {
+      color: #16120d;
+      background: var(--paper);
+    }
+
+    /* SUN AND MOON ORRERY */
+
+    .orrery {
       position: relative;
-      min-height: 560px;
-      overflow: hidden;
-      border: 1px solid rgba(241,195,124,.2);
-      border-radius: 46% 46% 8px 8px / 20% 20% 8px 8px;
-      background: linear-gradient(180deg, #161817, #0c0d0d 52%, #19130f);
-      box-shadow: 0 40px 100px rgba(0,0,0,.45), inset 0 0 70px rgba(0,0,0,.8);
+
+      width: min(100%, 590px);
+      aspect-ratio: 1;
+
+      margin: auto;
     }
-    .window::before {
+
+    .orbit {
+      position: absolute;
+      inset: 9%;
+
+      border:
+        1px solid
+        rgba(238, 232, 220, 0.17);
+
+      border-radius: 50%;
+
+      animation:
+        rotate 40s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
       content: "";
+
       position: absolute;
-      inset: 22px;
-      border: 1px solid rgba(233,225,210,.09);
-      border-radius: inherit;
+
+      border:
+        1px dashed
+        rgba(238, 232, 220, 0.11);
+
+      border-radius: 50%;
     }
-    .passing-lights { position: absolute; inset: 0; overflow: hidden; }
-    .passing-lights i {
+
+    .orbit::before {
+      inset: 12%;
+    }
+
+    .orbit::after {
+      inset: 27%;
+    }
+
+    .sun-orb,
+    .moon-orb {
       position: absolute;
-      height: 2px;
-      border-radius: 99px;
-      background: linear-gradient(90deg, transparent, var(--amber-soft), transparent);
-      opacity: .65;
-      animation: pass 7s linear infinite;
+
+      border-radius: 50%;
     }
-    .passing-lights i:nth-child(1) { top: 23%; width: 60%; animation-delay: -1s; }
-    .passing-lights i:nth-child(2) { top: 48%; width: 35%; animation-delay: -4s; }
-    .passing-lights i:nth-child(3) { top: 67%; width: 80%; animation-delay: -2.4s; }
-    @keyframes pass { from { transform: translateX(-120%); } to { transform: translateX(280%); } }
-    .route-line {
+
+    .sun-orb {
+      left: 9%;
+      top: 22%;
+
+      width: 42%;
+      aspect-ratio: 1;
+
+      background:
+        radial-gradient(
+          circle at 38% 34%,
+          #fffbd2 0 7%,
+          #ffd96f 24%,
+          #ecad49 56%,
+          #a45428 100%
+        );
+
+      box-shadow:
+        0 0 5rem
+        rgba(236, 173, 73, 0.28),
+        0 0 9rem
+        rgba(236, 173, 73, 0.12);
+
+      animation:
+        breathe
+        6s ease-in-out infinite;
+    }
+
+    .moon-orb {
+      right: 8%;
+      bottom: 18%;
+
+      width: 35%;
+      aspect-ratio: 1;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 30% 31%,
+          rgba(75, 70, 70, 0.28)
+          0 5%,
+          transparent 6%
+        ),
+        radial-gradient(
+          circle at 68% 63%,
+          rgba(62, 60, 63, 0.25)
+          0 8%,
+          transparent 9%
+        ),
+        radial-gradient(
+          circle at 35% 28%,
+          #f8f2e3,
+          #b8b3ae 62%,
+          #5d606c 100%
+        );
+
+      box-shadow:
+        inset -2.5rem -1.4rem 4rem
+        rgba(5, 7, 14, 0.7),
+        0 0 3.5rem
+        rgba(190, 195, 220, 0.16);
+    }
+
+    .moon-orb::after {
+      content: "";
+
+      position: absolute;
+      inset: -3%;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 48% 42%,
+          #171a27,
+          #06070d 70%
+        );
+
+      transform:
+        translateX(-47%);
+
+      box-shadow:
+        1rem 0 2rem
+        rgba(0, 0, 0, 0.45);
+    }
+
+    .human-point {
+      position: absolute;
+      left: 49%;
+      top: 50%;
+
+      width: 11px;
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background: var(--paper);
+
+      box-shadow:
+        0 0 0 8px
+        rgba(238, 232, 220, 0.06),
+        0 0 2rem var(--paper);
+    }
+
+    .human-point::after {
+      content: "YOU";
+
       position: absolute;
       left: 50%;
-      bottom: -18%;
-      width: 2px;
-      height: 63%;
-      background: linear-gradient(transparent, var(--amber));
-      transform: rotate(21deg);
-      transform-origin: bottom;
-      box-shadow: 0 0 20px var(--amber);
+      top: 1.7rem;
+
+      color: var(--muted);
+
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+
+      transform:
+        translateX(-50%);
     }
-    .window-words {
+
+    .axis-line {
       position: absolute;
-      left: 46px;
-      right: 46px;
-      bottom: 44px;
-    }
-    .window-words span { display: block; color: var(--muted); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; }
-    .window-words strong { display: block; max-width: 360px; margin-top: 12px; font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.2; }
+      left: 25%;
+      top: 32%;
 
-    .chapter { position: relative; padding: clamp(100px, 14vw, 190px) 24px; }
-    .chapter-number { color: #746f67; font-size: .7rem; letter-spacing: .18em; }
-    .story-grid {
-      width: min(1180px, 100%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: .65fr 1.35fr;
-      gap: clamp(40px, 10vw, 150px);
+      width: 53%;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--sun-soft),
+          rgba(255, 255, 255, 0.7),
+          var(--moon)
+        );
+
+      transform:
+        rotate(36deg);
+
+      transform-origin: left;
+
+      box-shadow:
+        0 0 1rem
+        rgba(238, 232, 220, 0.22);
     }
-    .sticky-note { align-self: start; position: sticky; top: 130px; }
-    .sticky-note p { max-width: 280px; color: var(--muted); font-size: .88rem; }
-    .story-copy { max-width: 760px; }
-    .story-copy h2, .split-copy h2, .letter h2 {
-      margin: 0 0 36px;
+
+    .orrery-note {
+      position: absolute;
+      left: 50%;
+      bottom: 1%;
+
+      width: min(90%, 420px);
+
+      margin: 0;
+
+      color: var(--muted);
+
       font-family: var(--serif);
-      font-size: clamp(2.6rem, 5vw, 5.4rem);
-      font-weight: 400;
-      letter-spacing: -.04em;
-      line-height: 1.02;
-    }
-    .story-copy p, .split-copy p, .letter p { margin: 0 0 24px; color: #beb7ac; font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
-    .story-copy .large { color: var(--paper); font-family: var(--serif); font-size: clamp(1.65rem, 3vw, 2.65rem); line-height: 1.3; }
+      font-size: 0.9rem;
+      font-style: italic;
+      text-align: center;
 
-    .rush-strip {
-      overflow: hidden;
-      padding: 27px 0;
-      border-block: 1px solid var(--line);
-      background: #0d0e0e;
+      transform:
+        translateX(-50%);
     }
-    .rush-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
-    .rush-track span { padding-right: 52px; color: #777168; font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 2.3rem); white-space: nowrap; }
-    .rush-track em { color: var(--amber-soft); font-style: normal; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
 
-    .unfair {
-      border-block: 1px solid var(--line);
-      background: linear-gradient(135deg, #100e0d, #090a0a 65%);
+    /* GENERAL SECTIONS */
+
+    .section {
+      position: relative;
+
+      padding:
+        clamp(7rem, 12vw, 12rem)
+        24px;
     }
-    .split {
+
+    .content-grid {
       width: min(1180px, 100%);
       margin: auto;
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(50px, 10vw, 150px);
-      align-items: center;
+      grid-template-columns:
+        0.65fr
+        1.35fr;
+
+      gap:
+        clamp(3rem, 9vw, 9rem);
     }
-    .starting-lines { position: relative; min-height: 520px; border-left: 1px solid var(--line); }
-    .line-person { position: absolute; left: 0; width: var(--w); transform: translateY(-50%); }
-    .line-person:nth-child(1) { top: 17%; --w: 48%; }
-    .line-person:nth-child(2) { top: 41%; --w: 78%; }
-    .line-person:nth-child(3) { top: 66%; --w: 34%; }
-    .line-person:nth-child(4) { top: 88%; --w: 92%; }
-    .line-person i { display: block; height: 1px; background: linear-gradient(90deg, var(--rust), var(--amber-soft)); }
-    .line-person span { display: block; margin: 9px 0 0 calc(100% + 12px); color: #777168; font-size: .68rem; letter-spacing: .1em; white-space: nowrap; text-transform: uppercase; }
-    .truth-box { margin-top: 46px; padding: 30px 32px; border-left: 2px solid var(--amber); background: rgba(226,161,74,.055); }
-    .truth-box strong { display: block; color: var(--amber-soft); font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
-    .truth-box p { margin: 8px 0 0; font-size: .98rem; }
 
-    .breaking { text-align: center; }
-    .breaking-inner { width: min(1000px, 100%); margin: auto; }
-    .breaking h2 { margin: 0; font-family: var(--serif); font-size: clamp(3.1rem, 7vw, 7rem); font-weight: 400; letter-spacing: -.05em; line-height: .95; }
-    .breaking h2 span { color: transparent; -webkit-text-stroke: 1px rgba(241,195,124,.65); }
-    .crack { width: 1px; height: 170px; margin: 48px auto; background: linear-gradient(var(--amber), transparent); transform: rotate(8deg); }
-    .breaking p { max-width: 760px; margin: 0 auto 24px; color: #bcb4a9; font-size: 1.12rem; }
-    .breaking .not-romantic { color: var(--paper); font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); }
+    .section-aside {
+      position: sticky;
+      top: 130px;
 
-    .last-stop { min-height: 88svh; display: grid; place-items: center; background: #050606; text-align: center; }
-    .last-stop-inner { width: min(930px, 100%); }
-    .last-stop .small { color: var(--amber); font-size: .72rem; letter-spacing: .21em; text-transform: uppercase; }
-    .last-stop h2 { margin: 24px 0 34px; font-family: var(--serif); font-size: clamp(3.2rem, 7.5vw, 7.7rem); font-weight: 400; letter-spacing: -.055em; line-height: .94; }
-    .last-stop p { max-width: 690px; margin: 0 auto; color: #aaa399; font-size: 1.12rem; }
-    .last-stop strong { color: var(--paper); font-weight: 500; }
+      align-self: start;
+    }
 
-    .permission { background: linear-gradient(180deg, #090a0a, #17120d); }
-    .permission-grid { width: min(1180px, 100%); margin: 64px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
-    .permission-card { min-height: 310px; padding: 34px; border-right: 1px solid var(--line); }
-    .permission-card:last-child { border-right: 0; }
-    .permission-card span { color: var(--amber); font-size: .72rem; letter-spacing: .15em; }
-    .permission-card h3 { margin: 65px 0 14px; font-family: var(--serif); font-size: 2rem; font-weight: 400; }
-    .permission-card p { margin: 0; color: var(--muted); }
+    .section-number {
+      color: #77727a;
 
-    .letter-wrap { padding: clamp(110px, 15vw, 200px) 24px; background: #17120d; }
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-aside p {
+      max-width: 290px;
+
+      margin-top: 1rem;
+
+      color: var(--muted);
+
+      font-size: 0.88rem;
+    }
+
+    .section-copy {
+      max-width: 790px;
+    }
+
+    .section-copy h2,
+    .center-heading h2,
+    .letter h2 {
+      margin: 0 0 2rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(2.8rem, 5.5vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .section-copy p,
+    .letter p {
+      margin: 0 0 1.5rem;
+
+      color: #c3bfc1;
+
+      font-size:
+        clamp(1.02rem, 1.4vw, 1.17rem);
+    }
+
+    .section-copy .large {
+      color: var(--paper);
+
+      font-family: var(--serif);
+      font-size:
+        clamp(1.65rem, 3vw, 2.8rem);
+      line-height: 1.3;
+    }
+
+    .inline-truth {
+      margin-top: 3rem;
+      padding: 1.5rem 1.8rem;
+
+      border-left:
+        2px solid var(--sun);
+
+      background:
+        rgba(236, 173, 73, 0.055);
+    }
+
+    .inline-truth strong {
+      display: block;
+
+      color: var(--sun-soft);
+
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .inline-truth p {
+      margin: 0.5rem 0 0;
+
+      font-size: 0.98rem;
+    }
+
+    /* POTENTIAL CONTRAST */
+
+    .contrast-section {
+      border-block:
+        1px solid var(--line);
+
+      background:
+        linear-gradient(
+          135deg,
+          #0d0e13,
+          #08090e 62%,
+          #111019
+        );
+    }
+
+    .center-heading {
+      width: min(1040px, 100%);
+
+      margin: 0 auto 4rem;
+
+      text-align: center;
+    }
+
+    .center-heading p {
+      max-width: 690px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 1.05rem;
+    }
+
+    .contrast-grid {
+      width: min(1180px, 100%);
+
+      margin: auto;
+
+      display: grid;
+      grid-template-columns:
+        1fr 1fr;
+
+      border: 1px solid var(--line);
+    }
+
+    .contrast-card {
+      position: relative;
+
+      min-height: 540px;
+
+      padding:
+        clamp(2rem, 5vw, 4.5rem);
+
+      overflow: hidden;
+    }
+
+    .contrast-card + .contrast-card {
+      border-left:
+        1px solid var(--line);
+    }
+
+    .contrast-card.passive {
+      color: #aaa5a1;
+
+      background:
+        linear-gradient(
+          145deg,
+          #101013,
+          #090a0e
+        );
+    }
+
+    .contrast-card.lived {
+      background:
+        radial-gradient(
+          circle at 80% 16%,
+          rgba(236, 173, 73, 0.16),
+          transparent 18rem
+        ),
+        linear-gradient(
+          145deg,
+          #17130e,
+          #0a0b10 65%
+        );
+    }
+
+    .contrast-label {
+      color: var(--sun-soft);
+
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .contrast-card h3 {
+      max-width: 12ch;
+
+      margin: 5rem 0 1.5rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(2.2rem, 4vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .contrast-card p {
+      max-width: 490px;
+
+      margin: 0;
+
+      color: inherit;
+      font-size: 1rem;
+    }
+
+    .contrast-list {
+      margin: 3rem 0 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    .contrast-list li {
+      padding: 0.75rem 0;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-family: var(--serif);
+    }
+
+    .pulse-dot {
+      position: absolute;
+      right: 3rem;
+      bottom: 3rem;
+
+      width: 12px;
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background: var(--sun-soft);
+
+      box-shadow:
+        0 0 0 0
+        rgba(246, 209, 138, 0.4);
+
+      animation:
+        pulse
+        2.4s ease-out infinite;
+    }
+
+    /* CENTRAL DECLARATION */
+
+    .declaration {
+      min-height: 92svh;
+
+      display: grid;
+      place-items: center;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(236, 173, 73, 0.11),
+          transparent 27rem
+        ),
+        #05060a;
+    }
+
+    .declaration-inner {
+      width: min(1050px, 100%);
+    }
+
+    .declaration h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(3.4rem, 8vw, 8.5rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    .declaration h2 span {
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px
+        rgba(246, 209, 138, 0.75);
+    }
+
+    .declaration p {
+      max-width: 710px;
+
+      margin: 2.5rem auto 0;
+
+      color: var(--muted);
+
+      font-size: 1.1rem;
+    }
+
+    /* TWO LOKS */
+
+    .loks-section {
+      background:
+        linear-gradient(
+          180deg,
+          #08090e,
+          #0c0d15
+        );
+    }
+
+    .lok-grid {
+      width: min(1180px, 100%);
+
+      margin: 4rem auto 0;
+
+      display: grid;
+      grid-template-columns:
+        1fr 1fr;
+
+      border: 1px solid var(--line);
+    }
+
+    .lok-card {
+      position: relative;
+      isolation: isolate;
+
+      min-height: 560px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding:
+        clamp(2rem, 5vw, 4rem);
+
+      overflow: hidden;
+
+      text-decoration: none;
+    }
+
+    .lok-card + .lok-card {
+      border-left:
+        1px solid var(--line);
+    }
+
+    .lok-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      transition:
+        transform 0.55s ease,
+        filter 0.55s ease;
+    }
+
+    .lok-card:hover::before {
+      transform: scale(1.035);
+      filter: brightness(1.15);
+    }
+
+    .surya-card::before {
+      background:
+        radial-gradient(
+          circle at 78% 20%,
+          rgba(255, 216, 116, 0.38),
+          transparent 18rem
+        ),
+        linear-gradient(
+          145deg,
+          #26180c,
+          #0d0d10 68%
+        );
+    }
+
+    .chandra-card::before {
+      background:
+        radial-gradient(
+          circle at 78% 20%,
+          rgba(183, 181, 211, 0.24),
+          transparent 18rem
+        ),
+        linear-gradient(
+          145deg,
+          #15182a,
+          #090a11 68%
+        );
+    }
+
+    .lok-card-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .surya-card .lok-card-label {
+      color: var(--sun-soft);
+    }
+
+    .chandra-card .lok-card-label {
+      color: #ccc5e1;
+    }
+
+    .lok-glyph {
+      align-self: flex-end;
+
+      width: 9rem;
+      aspect-ratio: 1;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      font-family: var(--serif);
+      font-size: 3rem;
+    }
+
+    .surya-card .lok-glyph {
+      color: #3a240c;
+
+      background:
+        radial-gradient(
+          circle at 38% 35%,
+          #fffbd2,
+          #f2be5c 52%,
+          #9b4b24 100%
+        );
+
+      box-shadow:
+        0 0 4rem
+        rgba(236, 173, 73, 0.28);
+    }
+
+    .chandra-card .lok-glyph {
+      color: #252533;
+
+      background:
+        radial-gradient(
+          circle at 28% 31%,
+          rgba(72, 69, 73, 0.28)
+          0 6%,
+          transparent 7%
+        ),
+        radial-gradient(
+          circle at 68% 65%,
+          rgba(67, 64, 68, 0.23)
+          0 9%,
+          transparent 10%
+        ),
+        radial-gradient(
+          circle at 35% 29%,
+          #f7f1e3,
+          #aaa8ab 64%,
+          #4f5362 100%
+        );
+
+      box-shadow:
+        inset -2rem -1.2rem 3rem
+        rgba(8, 9, 16, 0.6),
+        0 0 3rem
+        rgba(184, 187, 212, 0.15);
+    }
+
+    .lok-card h3 {
+      margin: 0 0 1rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(2.7rem, 5vw, 5.2rem);
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      line-height: 0.92;
+    }
+
+    .lok-card p {
+      max-width: 500px;
+
+      margin: 0;
+
+      color: #c3bec3;
+    }
+
+    .lok-enter {
+      display: inline-block;
+
+      margin-top: 1.5rem;
+
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    /* METHOD */
+
+    .method-section {
+      background:
+        linear-gradient(
+          180deg,
+          #0c0d15,
+          #100d0c
+        );
+    }
+
+    .method-grid {
+      width: min(1180px, 100%);
+
+      margin: 4rem auto 0;
+
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      border: 1px solid var(--line);
+    }
+
+    .method-card {
+      min-height: 350px;
+
+      padding: 2rem;
+
+      border-right:
+        1px solid var(--line);
+    }
+
+    .method-card:last-child {
+      border-right: 0;
+    }
+
+    .method-card span {
+      color: var(--sun);
+
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .method-card h3 {
+      margin: 5rem 0 1rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(2rem, 3vw, 3rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .method-card p {
+      margin: 0;
+
+      color: var(--muted);
+    }
+
+    /* FOUNDER LETTER */
+
+    .letter-wrap {
+      padding:
+        clamp(7rem, 14vw, 13rem)
+        24px;
+
+      background:
+        radial-gradient(
+          circle at 50% 0,
+          rgba(236, 173, 73, 0.13),
+          transparent 32rem
+        ),
+        #17120d;
+    }
+
     .letter {
       position: relative;
-      width: min(880px, 100%);
+
+      width: min(900px, 100%);
+
       margin: auto;
-      padding: clamp(44px, 8vw, 92px);
-      color: #26211c;
-      background: #e7dbc5;
-      box-shadow: 0 55px 110px rgba(0,0,0,.36);
-      transform: rotate(-.35deg);
+
+      padding:
+        clamp(3rem, 8vw, 6rem);
+
+      color: #28221c;
+      background: #e9dec8;
+
+      box-shadow:
+        0 55px 110px
+        rgba(0, 0, 0, 0.42);
+
+      transform:
+        rotate(-0.25deg);
     }
-    .letter::before { content: ""; position: absolute; inset: 15px; border: 1px solid rgba(38,33,28,.16); pointer-events: none; }
-    .letter .section-kicker { color: #8a4b2d; }
-    .letter h2 { max-width: 650px; }
-    .letter p { color: #403931; }
-    .letter .letter-line { margin: 42px 0; color: #5d2f1e; font-family: var(--serif); font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.35; }
-    .signature { margin-top: 48px; }
-    .signature span { display: block; color: #6d6257; font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
-    .signature strong { display: block; margin-top: 4px; font-family: var(--serif); font-size: 2.2rem; font-weight: 500; }
 
-    .final-reminder { padding: 100px 24px; text-align: center; background: var(--amber); color: #16120d; }
-    .final-reminder p { margin: 0 0 18px; font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-    .final-reminder h2 { width: min(900px, 100%); margin: auto; font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.7rem); font-weight: 500; line-height: 1.08; }
-    .final-reminder button { margin-top: 34px; padding: 13px 20px; border: 1px solid rgba(22,18,13,.45); border-radius: 999px; color: #16120d; background: transparent; font: 600 .75rem var(--sans); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
-    .final-reminder button:hover { color: var(--paper); background: #16120d; }
+    .letter::before {
+      content: "";
 
-    footer { padding: 70px 24px 35px; color: #8f887f; background: #070808; text-align: center; }
-    .footer-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--paper); font-family: var(--serif); font-size: 1.3rem; text-decoration: none; }
-    .footer-brand img { width: 38px; height: 38px; object-fit: contain; }
-    footer > p { max-width: 580px; margin: 24px auto; }
-    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 22px; margin: 32px 0 48px; }
-    .footer-links a { color: #aaa399; font-size: .82rem; text-decoration: none; }
-    footer small { font-size: .7rem; }
+      position: absolute;
+      inset: 15px;
 
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
-    .reveal.visible { opacity: 1; transform: none; }
+      border:
+        1px solid
+        rgba(40, 34, 28, 0.16);
 
-    @media (max-width: 900px) {
-      .wv-nav { width: min(100% - 32px, 1380px); min-height: 72px; }
-      .wv-menu { display: block; cursor: pointer; }
-      .wv-links { position: absolute; top: 72px; left: 16px; right: 16px; display: none; padding: 22px; border: 1px solid var(--line); background: rgba(8,9,9,.97); flex-direction: column; align-items: flex-start; }
-      .wv-links.open { display: flex; }
-      .hero { grid-template-columns: 1fr; align-items: center; padding-top: 125px; }
-      .window { min-height: 430px; }
-      .story-grid, .split { grid-template-columns: 1fr; }
-      .sticky-note { position: static; }
-      .starting-lines { min-height: 390px; }
-      .permission-grid { grid-template-columns: 1fr; }
-      .permission-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .permission-card:last-child { border-bottom: 0; }
-      .permission-card h3 { margin-top: 32px; }
+      pointer-events: none;
     }
+
+    .letter .section-kicker {
+      color: #87492c;
+    }
+
+    .letter p {
+      color: #433b33;
+    }
+
+    .letter-line {
+      margin: 2.5rem 0 !important;
+
+      color: #64331f !important;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(
+          1.55rem,
+          3vw,
+          2.3rem
+        ) !important;
+
+      line-height: 1.35;
+    }
+
+    .signature {
+      margin-top: 3rem;
+    }
+
+    .signature span,
+    .signature small {
+      display: block;
+
+      color: #6e6358;
+    }
+
+    .signature span {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .signature strong {
+      display: block;
+
+      margin-top: 0.3rem;
+
+      font-family: var(--serif);
+      font-size: 2.3rem;
+      font-weight: 500;
+    }
+
+    /* ACTION CHALLENGE */
+
+    .challenge {
+      min-height: 86svh;
+
+      display: grid;
+      place-items: center;
+
+      padding: 7rem 24px;
+
+      color: #17120d;
+
+      background:
+        radial-gradient(
+          circle at 50% 0,
+          rgba(255, 255, 255, 0.24),
+          transparent 24rem
+        ),
+        var(--sun);
+
+      text-align: center;
+    }
+
+    .challenge-inner {
+      width: min(930px, 100%);
+    }
+
+    .challenge-label {
+      margin: 0;
+
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .challenge h2 {
+      margin: 1.5rem 0 2rem;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(3.2rem, 7vw, 7rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 0.92;
+    }
+
+    .challenge-prompt {
+      max-width: 720px;
+      min-height: 5rem;
+
+      margin: 0 auto;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(1.35rem, 2.5vw, 2.2rem);
+      line-height: 1.35;
+    }
+
+    .challenge button {
+      margin-top: 2.5rem;
+
+      padding: 0.85rem 1.15rem;
+
+      border:
+        1px solid
+        rgba(23, 18, 13, 0.5);
+
+      border-radius: 999px;
+
+      color: #17120d;
+      background: transparent;
+
+      cursor: pointer;
+
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .challenge button:hover {
+      color: var(--paper);
+      background: #17120d;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 4.5rem 24px 2rem;
+
+      color: #8f8a87;
+      background: #05060a;
+
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      color: var(--paper);
+
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+
+    .footer-brand img {
+      width: 40px;
+      height: 40px;
+
+      object-fit: contain;
+    }
+
+    footer > p {
+      max-width: 610px;
+
+      margin: 1.5rem auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+
+      margin: 2rem 0 3rem;
+    }
+
+    .footer-links a {
+      color: #aaa5a3;
+
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    footer small {
+      font-size: 0.68rem;
+    }
+
+    /* REVEALS */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+        opacity 0.8s ease,
+        transform
+        0.8s
+        cubic-bezier(
+          0.2,
+          0.7,
+          0.2,
+          1
+        );
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes breathe {
+      0%,
+      100% {
+        transform: scale(0.97);
+        filter: brightness(0.98);
+      }
+
+      50% {
+        transform: scale(1.025);
+        filter: brightness(1.08);
+      }
+    }
+
+    @keyframes pulse {
+      70% {
+        box-shadow:
+          0 0 0 22px
+          rgba(246, 209, 138, 0);
+      }
+
+      100% {
+        box-shadow:
+          0 0 0 0
+          rgba(246, 209, 138, 0);
+      }
+    }
+
+    /* TABLET */
+
+    @media (max-width: 950px) {
+      .nav {
+        width:
+          min(
+            100% - 32px,
+            1380px
+          );
+
+        min-height: 72px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 16px;
+        right: 16px;
+
+        display: none;
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 1.4rem;
+
+        border:
+          1px solid var(--line);
+
+        background:
+          rgba(7, 8, 13, 0.98);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 8rem;
+      }
+
+      .orrery {
+        width:
+          min(90vw, 590px);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-aside {
+        position: static;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-card {
+        min-height: 0;
+
+        border-right: 0;
+        border-bottom:
+          1px solid var(--line);
+      }
+
+      .method-card:last-child {
+        border-bottom: 0;
+      }
+
+      .method-card h3 {
+        margin-top: 2.5rem;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 720px) {
+      .contrast-grid,
+      .lok-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contrast-card + .contrast-card,
+      .lok-card + .lok-card {
+        border-left: 0;
+        border-top:
+          1px solid var(--line);
+      }
+
+      .contrast-card,
+      .lok-card {
+        min-height: 480px;
+      }
+    }
+
     @media (max-width: 560px) {
-      .wv-brand-note { display: none; }
-      .hero { min-height: auto; padding-top: 120px; }
-      .hero h1 { font-size: clamp(3.5rem, 18vw, 5.2rem); }
-      .window { min-height: 370px; }
-      .window-words { left: 30px; right: 30px; bottom: 32px; }
-      .chapter { padding-inline: 20px; }
-      .letter-wrap { padding-inline: 14px; }
-      .letter { padding: 48px 30px; }
+      .brand-note {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+
+        padding-top: 7.5rem;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            3.6rem,
+            18vw,
+            5.3rem
+          );
+      }
+
+      .orrery {
+        margin-top: 1rem;
+      }
+
+      .letter-wrap {
+        padding-inline: 14px;
+      }
+
+      .letter {
+        padding: 3rem 1.8rem;
+      }
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header class="wv-header">
-    <nav class="wv-nav" aria-label="Main navigation">
-      <a href="index.html" class="wv-brand" aria-label="Jigyasa Verse homepage">
-        <img src="images/wonder-verse-moon-pencil-logo.png" alt="" class="wv-brand-image">
-        <span class="wv-brand-copy"><span class="wv-brand-name">Jigyasa Verse</span><span class="wv-brand-note">Curiosity lives here</span></span>
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to the story
+  </a>
+
+  <div
+    class="stars"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="progress"
+    id="progress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- HEADER -->
+
+  <header
+    class="site-header"
+    id="siteHeader"
+  >
+    <nav
+      class="nav"
+      aria-label="Main navigation"
+    >
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Jigyasa Verse homepage"
+      >
+        <img
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+        >
+
+        <span class="brand-copy">
+          <span class="brand-name">
+            Jigyasa Verse
+          </span>
+
+          <span class="brand-note">
+            Curiosity lives here
+          </span>
+        </span>
       </a>
-      <button class="wv-menu" type="button" aria-expanded="false" aria-controls="wvNavLinks">Menu</button>
-      <div class="wv-links" id="wvNavLinks">
-        <a href="index.html">Home</a>
-        <a href="about.html" aria-current="page">Our Story</a>
-        <a href="books.html">Books</a>
-        <a href="wonderverse.html">Wonder Lok</a>
-        <a href="learning-lok.html">Learning Lok</a>
-        <a href="endearing-cat-c1f80e.netlify.app">Contact</a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        Menu
+      </button>
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+        <a href="index.html">
+          Home
+        </a>
+
+        <a
+          href="about.html"
+          aria-current="page"
+        >
+          Why this exists?
+        </a>
+
+        <a href="surya-lok.html">
+          Surya Lok
+        </a>
+
+        <a href="chandra-lok.html">
+          Chandra Lok
+        </a>
+
+        <a href="endearing-cat-c1f80e.netlify.app">
+          Contact
+        </a>
       </div>
     </nav>
   </header>
 
   <main id="main-content">
+
+    <!-- HERO -->
+
     <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
       <div class="reveal">
-        <p class="kicker">The reason Jigyasa Verse exists</p>
-        <h1>We are all<br>going <em>somewhere.</em></h1>
-        <p class="hero-lead">But in our hurry to reach the next stop, the next milestone, the next version of ourselves—how often do we forget to be here?</p>
-        <a class="scroll-cue" href="#observation"><span></span> Take the slower route</a>
+        <p class="kicker">
+          Why Jigyasa Verse exists
+        </p>
+
+        <h1>
+         We don't meet potential by
+
+          <em>
+            talking about it
+          </em>
+        </h1>
+
+        <p class="hero-lead">
+          We meet it at the edge—where curiosity leaps off the page, where the body enters the experiment, 
+          and where we finally begin the uncomfortable work we spent so long merely imagining.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="primary-action"
+            href="#why"
+          >
+            Understand the idea
+          </a>
+
+          <a
+            class="secondary-action"
+            href="#challenge"
+          >
+            Give me something to do
+          </a>
+        </div>
       </div>
-      <div class="window reveal" aria-label="An abstract view through a bus window at night">
-        <div class="passing-lights" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="route-line" aria-hidden="true"></div>
-        <div class="window-words"><span>Observed somewhere between stops</span><strong>Everyone looked busy. Not everyone looked alive.</strong></div>
+
+      <div
+        class="orrery reveal"
+        aria-label="The Sun, the Moon and a human point connected by light"
+      >
+        <div
+          class="orbit"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="axis-line"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="sun-orb"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="moon-orb"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="human-point"
+          aria-hidden="true"
+        ></div>
+
+        <p class="orrery-note">
+          The Sun reveals what is true.
+          The Moon reveals what living
+          through it changes within us.
+        </p>
       </div>
     </section>
 
-    <section class="chapter" id="observation">
-      <div class="story-grid">
-        <aside class="sticky-note reveal"><span class="chapter-number">01 / THE OBSERVATION</span><p>On streets, buses and roads, I kept seeing people move as though life were waiting at the destination.</p></aside>
-        <div class="story-copy reveal">
-          <p class="section-kicker">A note from the founder</p>
-          <h2>I began by watching people rush.</h2>
-          <p class="large">Shoulders leaning forward. Eyes on clocks. Hands holding coffee, phones, bags and thier entire private worlds.</p>
-          <p>Especially during the late nights, at the last bus. I observed people and looked as though they lost the battle of even trying. Some were going home to rest and start again tomorrow. Some were chasing a dream they had barely had time to love. Everyone seemed to be arriving somewhere, and yet so many of us appeared absent from our own lives.</p>
-          <p>I wondered when we began treating life like a race to finish. A meaningful dream does not grow well under constant panic. It asks for patience. It needs care, repetition and the courage to remain when the excitement has gone quiet.</p>
+    <!-- WHY THIS EXISTS -->
+
+    <section
+      class="section"
+      id="why"
+    >
+      <div class="content-grid">
+        <aside class="section-aside reveal">
+          <span class="section-number">
+            01 / THE REASON
+          </span>
+
+          <p>
+            This is not a productivity system,
+            a course or another place to collect
+            beautiful sentences about the
+            person you could become.
+          </p>
+        </aside>
+
+        <div class="section-copy reveal">
+          <p class="section-kicker">
+            The gap between Being and Becoming
+          </p>
+
+          <h2>
+            We can understand everything—and
+            still remain unchanged.
+          </h2>
+
+          <p class="large">
+         A library of courage will not dial the phone,
+Twenty pages of a dream will not begin it.
+
+          </p>
+
+          <p>
+            A map of the mountain will not climb the peak,
+A blueprint of the bridge will not cross the river.
+          </p>
+
+          <p>
+            No page can discover your capacity
+            for you. There are parts of you that
+            only become visible when reality
+            pushes back—when the attempt is
+            awkward, when your plan meets
+            evidence, when you are rejected,
+            when you are surprised by yourself,
+            and when you return after failing.
+          </p>
+
+          <div class="inline-truth">
+            <strong>
+              Your true potential is not a
+              personality description.
+            </strong>
+
+            <p>
+              It is evidence gathered by
+              participating in your own life.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="rush-strip" aria-hidden="true">
-      <div class="rush-track">
-        <span>next stop · next deadline · next degree · next job · next version · <em>when do we arrive in our own life?</em> · </span>
-        <span>unknown stop · unknown deadline · unknown degree · new job · next version · <em>when do we arrive in our own life?</em> · </span>
-      </div>
-    </div>
+    <!-- IMAGINED VS ENCOUNTERED -->
 
-    <section class="chapter unfair">
-      <div class="split">
-        <div class="starting-lines reveal" aria-hidden="true">
-          <div class="line-person"><i></i><span>support</span></div>
-          <div class="line-person"><i></i><span>opportunity</span></div>
-          <div class="line-person"><i></i><span>safety</span></div>
-          <div class="line-person"><i></i><span>time</span></div>
+    <section class="section contrast-section">
+      <div class="center-heading reveal">
+        <p class="section-kicker">
+          The difference this universe protects
+        </p>
+
+        <h2>
+          Reading about the fire is not the
+          same as standing near it.
+        </h2>
+
+        <p>
+          Jigyasa Verse does not reject books,
+          ideas or reflection. It asks them to
+          lead somewhere: into an encounter
+          with reality.
+        </p>
+      </div>
+
+      <div class="contrast-grid reveal">
+        <article class="contrast-card passive">
+          <span class="contrast-label">
+            Potential imagined
+          </span>
+
+          <h3>
+            “I think I could.”
+          </h3>
+
+          <p>
+            Safe, private and endlessly editable.
+            Nothing has yet contradicted the
+            fantasy—but nothing has confirmed
+            it either.
+          </p>
+
+          <ul class="contrast-list">
+            <li>Save the idea</li>
+            <li>Explain the plan</li>
+            <li>Wait to feel ready</li>
+            <li>Protect the imagined self</li>
+          </ul>
+        </article>
+
+        <article class="contrast-card lived">
+          <span class="contrast-label">
+            Potential encountered
+          </span>
+
+          <h3>
+            “I tried. Now I know more.”
+          </h3>
+
+          <p>
+           Messy, physical, and real.
+The attempt teaches you what imagination never could:
+where it works, where it hurts,
+how you change, and what still calls you home
+          </p>
+
+          <ul class="contrast-list">
+            <li>Make the first version</li>
+            <li>Meet resistance</li>
+            <li>Study the evidence</li>
+            <li>Return as someone altered</li>
+          </ul>
+
+          <span
+            class="pulse-dot"
+            aria-hidden="true"
+          ></span>
+        </article>
+      </div>
+    </section>
+
+    <!-- CENTRAL BELIEF -->
+
+    <section class="section declaration">
+      <div class="declaration-inner reveal">
+        <p class="section-kicker">
+          The central belief
+        </p>
+
+        <h2>
+          Potential is a
+
+          <span>
+            hypothesis.
+          </span>
+
+          <br>
+
+          Action is the experiment.
+        </h2>
+
+        <p>
+         The outcome may not be the one you hoped for, but the mark it leaves is real. 
+          Reality has answered. In place of a quiet fantasy, you now possess something infinitely more useful: contact. 
+          It is the raw collision between who you imagined you might be and the world as it is—the difficult, 
+          beautiful weight of no longer watching from the sidelines, but finally entering the game.
+        </p>
+      </div>
+    </section>
+
+    <!-- TWO LOKS -->
+
+    <section
+      class="section loks-section"
+      id="the-loks"
+    >
+      <div class="center-heading reveal">
+        <p class="section-kicker">
+          Two Loks · One human life
+        </p>
+
+        <h2>
+          Truth outside you.
+          Becoming within you.
+        </h2>
+
+        <p>
+          Jigyasa Verse moves between two
+          inseparable realities. One keeps us
+          honest. The other keeps us human.
+        </p>
+      </div>
+
+      <div class="lok-grid reveal">
+
+        <!-- SURYA LOK -->
+
+        <a
+          class="lok-card surya-card"
+          href="surya-lok.html"
+        >
+          <span class="lok-card-label">
+            Surya Lok · The Constant Light
+          </span>
+
+          <span
+            class="lok-glyph"
+            aria-hidden="true"
+          >
+            ☀
+          </span>
+
+          <div>
+            <h3>
+              What remains true?
+            </h3>
+
+            <p>
+              Reality does not rearrange itself
+              around our comfort. Surya Lok
+              follows evidence, pattern,
+              connection and the truths that
+              continue whether we accept them
+              or not.
+            </p>
+
+            <span class="lok-enter">
+              Enter Surya Lok 
+            </span>
+          </div>
+        </a>
+
+        <!-- CHANDRA LOK -->
+
+        <a
+          class="lok-card chandra-card"
+          href="chandra-lok.html"
+        >
+          <span class="lok-card-label">
+            Chandra Lok · The Human Becoming
+          </span>
+
+          <span
+            class="lok-glyph"
+            aria-hidden="true"
+          >
+            ◐
+          </span>
+
+          <div>
+            <h3>
+              What does living it change?
+            </h3>
+
+            <p>
+              Human life is cyclical, marked and
+              unfinished. Chandra Lok holds
+              beginnings, resistance, visibility,
+              grief, reflection, rest and the
+              courage to return.
+            </p>
+
+            <span class="lok-enter">
+              Enter Chandra Lok 
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- THE MOVEMENT -->
+
+    <section class="section method-section">
+      <div class="content-grid">
+        <aside class="section-aside reveal">
+          <span class="section-number">
+            02 / THE MOVEMENT
+          </span>
+
+          <p>
+            There are no ranks here and no
+            perfect route. You may begin
+            anywhere—but eventually, the
+            question must touch your life.
+          </p>
+        </aside>
+
+        <div class="section-copy reveal">
+          <p class="section-kicker">
+            How curiosity becomes a life
+          </p>
+
+          <h2>
+            Ask. Move. Meet what answers.
+          </h2>
+
+          <p class="large">
+            Curiosity is not complete when it
+            produces more information. It becomes
+            powerful when it changes how you
+            participate.
+          </p>
         </div>
-        <div class="split-copy reveal">
-          <p class="section-kicker"> I am not here to give you false promises</p>
-          <h2>Life is not fair. You are not imagining it.</h2>
-          <p>We do not begin at the same line. Some inherit doors held open; others spend years learning how to build a door. Some are allowed many mistakes. For someone else, one mistake can change everything.</p>
-          <p>I will not tell you that every hardship is secretly a gift. Some losses are simply devastating and have no reason or meaning. Some systems are genuinely unjust. Pain does not need a pretty caption to be real. You don't have to go around and explain or analyse the pain, you can just feel it and let it out, cry it out.</p>
-          <div class="truth-box"><strong>Your pace is not proof of your worth.</strong><p>You deserve compassion for the distance you have had to travel.</p></div>
+      </div>
+
+      <div class="method-grid reveal">
+        <article class="method-card">
+          <span>
+            01 / ASK
+          </span>
+
+          <h3>
+            Follow the question that will
+            not leave.
+          </h3>
+
+          <p>
+           The one that keeps
+            returning when the room becomes
+            quiet.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>
+            02 / MOVE
+          </span>
+
+          <h3>
+            Give the question a body.
+          </h3>
+
+          <p>
+            Build a rough version. Attend the
+            class. Send the message. Train.
+            Apply. Ask for help. Let the idea
+            encounter friction.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>
+            03 / MEET
+          </span>
+
+          <h3>
+            Let reality change the story.
+          </h3>
+
+          <p>
+            Study what happened without turning
+            one result into your entire identity.
+            Keep what is true. Change what is
+            not. Return.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHAT THIS IS NOT -->
+
+    <section class="section">
+      <div class="content-grid">
+        <aside class="section-aside reveal">
+          <span class="section-number">
+            03 / WHAT THIS IS NOT
+          </span>
+
+          <p>
+            No performance is required.
+            But participation is.
+          </p>
+        </aside>
+
+        <div class="section-copy reveal">
+          <p class="section-kicker">
+            A boundary around the idea
+          </p>
+
+          <h2>
+            This is not motivation dressed
+            as a universe.
+          </h2>
+
+          <p class="large">
+           The Sun reveals what must be faced.  
+The Moon honours the pace of your becoming.  
+Curiosity is how you move between them.
+          </p>
+
+          <p>
+            Jigyasa Verse will not promise that
+            wanting something intensely makes
+            it inevitable. Life is unequal.
+            Bodies have limits. Systems can be
+            unjust. Grief does not always contain
+            a lesson, and effort does not
+            guarantee the outcome we deserve.
+          </p>
+
+          <p>
+            But while we are here, we can refuse
+            to abandon our entire life to
+            prediction, comparison and fear. We
+            can ask honest questions. We can
+            gather evidence. We can act with what
+            is in our hands. We can discover
+            capacities that comfort would never
+            have revealed.
+          </p>
+
+          <div class="inline-truth">
+            <strong>
+              You do not have to feel ready.
+            </strong>
+
+            <p>
+              You only need one action honest
+              enough to teach you something real.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="chapter breaking">
-      <div class="breaking-inner reveal">
-        <p class="section-kicker">When life does what life can do</p>
-        <h2>Sometimes life does not teach gently.<br><span>Sometimes it breaks things.</span></h2>
-        <div class="crack" aria-hidden="true"></div>
-        <p class="not-romantic">Being broken is not beautiful while it is happening.</p>
-        <p>It is exhausting, lonely and often deeply unfair. I have witnessed people lose certainty, plans, relationships and pieces of themselves they thought would always be there.</p>
-        <p>I have also watched people grow around the fracture, because little by little, they still chose to remain in their own story.</p>
-      </div>
-    </section>
+    <!-- FOUNDER LETTER -->
 
-    <section class="chapter last-stop">
-      <div class="last-stop-inner reveal">
-        <p class="small">The one certainty</p>
-        <h2>None of us gets to stay forever.</h2>
-        <p>There is one battle every human being eventually loses: time. This is not meant to frighten you. It is meant to return you to what is alive now. <strong>The days will pass whether you begin or not.</strong></p>
-      </div>
-    </section>
-
-    <section class="chapter permission">
-      <div class="story-grid">
-        <aside class="sticky-note reveal"><span class="chapter-number">02 / THE INVITATION</span><p>You do not have to sprint. You just have to participate.</p></aside>
-        <div class="story-copy reveal">
-          <p class="section-kicker">Before the real deadline</p>
-          <h2>Do the thing while you are here.</h2>
-          <p class="large">Start badly. Learn slowly. Try while scared. Rest when you need to. Return when you can.</p>
-          <p>Your dream may take longer than the version you planned. It may change shape. It may ask you to begin again. Give it the patience you so freely give to everyone else.</p>
-        </div>
-      </div>
-      <div class="permission-grid reveal">
-        <article class="permission-card"><span>01</span><h3>Begin small.</h3><p>A beginning does not need to impress anyone. It only needs to be honest enough to continue tomorrow.</p></article>
-        <article class="permission-card"><span>02</span><h3>Stay human.</h3><p>You are allowed to be tired, uncertain and unfinished. Rest is not the same as abandoning yourself.</p></article>
-        <article class="permission-card"><span>03</span><h3>Make it yours.</h3><p>Build the life that speaks to you—not the one that looks most convincing from across a crowded street.</p></article>
-      </div>
-    </section>
-
-    <section class="letter-wrap" id="letter">
+    <section
+      class="letter-wrap"
+      id="founder-letter"
+    >
       <article class="letter reveal">
-        <p class="section-kicker">A letter for the person still trying</p>
-        <h2>Dear you,</h2>
-        <p>I do not know what life has asked you to carry. I do not know which starting line you were given, what you have lost, or how many times you have had to rebuild quietly while the world continued as if nothing had happened.</p>
-        <p>But I know this: you do not need another voice making you feel late.</p>
-        <p>You need room to breathe. You need permission to move at a human pace. And when you are ready, you need one honest next step—not a perfect ten-year plan.</p>
-        <p class="letter-line">Time will pass anyway. Let some of it pass while you are making, learning, loving and becoming.</p>
-        <p>Jigyasa Verse was created for that space: the space between who you have been told to become and the person your curiosity and your inner self keeps asking you to meet. It is a place for questions, imperfect beginnings, difficult truths and ideas that deserve a life beyond your head.</p>
-        <p>Please do not wait until fear disappears. Please do not measure your private beginning against somebody else's public middle. Begin with what is in your hands. Begin with the life that is still here.</p>
-        <div class="signature"><span>With patience for your becoming,</span><strong>Isha</strong><small>Founder, Jigyasa Verse</small></div>
+        <p class="section-kicker">
+          A note from Jigyasa Verse
+        </p>
+
+        <h2>
+          Dear curious human,
+        </h2>
+
+        <p>
+          We built Jigyasa Verse because we kept
+          seeing how much life can remain trapped
+          inside a person: ideas they will begin
+          one day, questions they silence because
+          they seem impractical, and versions of
+          themselves they describe beautifully
+          but never allow to exist.
+        </p>
+
+        <p>
+          We do not believe we discover ourselves
+          only by looking inward. Sometimes we
+          discover ourselves by lifting the
+          weight, entering the room, making the
+          mistake, studying the organism,
+          learning the skill, creating the work,
+          losing, adapting and trying again.
+        </p>
+
+        <p class="letter-line">
+          There is a light within you that
+          thought alone cannot fully reveal.
+          Some of it only appears under pressure,
+          movement and contact with the world.
+        </p>
+
+        <p>
+          This universe is not here to tell you
+          that you are secretly capable of
+          everything. It is here to invite you
+          to stop guessing. Choose a question.
+          Give it a real attempt. Let the world
+          answer. Then meet the person who
+          returns from the experience.
+        </p>
+
+        <p>
+          Start badly if you must. Start
+          frightened. Start without applause.
+          Read the books, write the notes and
+          think deeply—but when the moment
+          comes, close the notebook and live
+          one line of it.
+        </p>
+
+        <div class="signature">
+          <span>
+            With faith in what action can reveal,
+          </span>
+
+          <strong>
+            Isha
+          </strong>
+
+          <small>
+            Jigyasa Verse
+          </small>
+        </div>
       </article>
     </section>
 
-    <section class="final-reminder" aria-live="polite">
-      <p>A reminder for this part of the journey</p>
-      <h2 id="reminderText">You are not late.</h2>
-      <button id="newReminder" type="button">Another reminder ↻</button>
+    <!-- INTERACTIVE CHALLENGE -->
+
+    <section
+      class="challenge"
+      id="challenge"
+      aria-live="polite"
+    >
+      <div class="challenge-inner">
+        <p class="challenge-label">
+          Leave this page with evidence
+        </p>
+
+        <h2>
+          Do one thing your notes cannot
+          do for you.
+        </h2>
+
+        <p
+          class="challenge-prompt"
+          id="challengePrompt"
+        >
+          Spend fifteen minutes making the
+          first bad version of the thing you
+          keep saying you want to create.
+        </p>
+
+        <button
+          id="newChallenge"
+          type="button"
+        >
+          Give me another action ↻
+        </button>
+      </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
+
   <footer>
-    <a class="footer-brand" href="index.html"><img src="images/wonder-verse-moon-pencil-logo.png" alt=""><span>Jigyasa Verse</span></a>
-    <p>A home for curiosity, honest beginnings and the courage to make something of the time we have.</p>
-    <div class="footer-links"><a href="about.html">Our Story</a><a href="books.html">Books</a><a href="wonderverse.html">Wonder</a><a href="schools.html">Learning Lok</a><a href="endearing-cat-c1f80e.netlify.app">Contact</a></div>
-    <small>© 2026 Jigyasa Verse · Made with curiosity, somewhere between the rush and the becoming.</small>
+    <a
+      class="footer-brand"
+      href="index.html"
+    >
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>
+        Jigyasa Verse
+      </span>
+    </a>
+
+    <p>
+      A universe where curiosity leaves the
+      page, meets reality and becomes a
+      lived life.
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        Why this exists
+      </a>
+
+      <a href="surya-lok.html">
+        Surya Lok
+      </a>
+
+      <a href="chandra-lok.html">
+        Chandra Lok
+      </a>
+
+      <a href="endearing-cat-c1f80e.netlify.app">
+        Contact
+      </a>
+    </div>
+
+    <small>
+      © 2026 Jigyasa Verse · Ask honestly.
+      Act bravely. Return changed.
+    </small>
   </footer>
 
   <script>
     (() => {
-      const header = document.querySelector('.wv-header');
-      const menu = document.querySelector('.wv-menu');
-      const links = document.querySelector('.wv-links');
-      const revealItems = document.querySelectorAll('.reveal');
-      const reminder = document.querySelector('#reminderText');
-      const reminderButton = document.querySelector('#newReminder');
+      "use strict";
 
-      const reminders = [
-        'You are not late.',
-        'A slow beginning is still a beginning.',
-        'Rest if you need to. Then return to what matters.',
-        'Your life does not have to look impressive to feel true.',
-        'Give the dream time to become more than an idea.',
-        'Take the honest step forward.'
+      const header =
+        document.querySelector(
+          "#siteHeader"
+        );
+
+      const menuButton =
+        document.querySelector(
+          "#menuButton"
+        );
+
+      const navLinks =
+        document.querySelector(
+          "#navLinks"
+        );
+
+      const progress =
+        document.querySelector(
+          "#progress"
+        );
+
+      const revealItems =
+        document.querySelectorAll(
+          ".reveal"
+        );
+
+      const challengePrompt =
+        document.querySelector(
+          "#challengePrompt"
+        );
+
+      const challengeButton =
+        document.querySelector(
+          "#newChallenge"
+        );
+
+      /*
+        ACTIONS SHOWN AT THE END
+      */
+
+      const challenges = [
+        "Spend fifteen minutes making the first bad version of the thing you keep saying you want to create.",
+
+        "Send the message you have been rewriting in your head. Make it honest, kind and real.",
+
+        "Try the physical skill for twenty minutes instead of watching another person explain it.",
+
+        "Ask one question you have avoided because you are afraid of appearing inexperienced.",
+
+        "Apply for the opportunity before your confidence has time to manufacture another excuse.",
+
+        "Choose one saved idea and give it a date, a place and a first physical action.",
+
+        "Return to something you abandoned after being bad at it once.",
+
+        "Replace thirty minutes of planning with thirty minutes of direct practice.",
+
+        "Show a trustworthy person the unfinished work instead of waiting until it feels impressive.",
+
+        "Go somewhere unfamiliar and observe what becomes visible when your routine cannot protect you."
       ];
 
-      const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 24);
-      updateHeader();
-      window.addEventListener('scroll', updateHeader, { passive: true });
+      /*
+        HEADER AND SCROLL PROGRESS
+      */
 
-      menu?.addEventListener('click', () => {
-        const isOpen = links.classList.toggle('open');
-        menu.setAttribute('aria-expanded', String(isOpen));
-        menu.textContent = isOpen ? 'Close' : 'Menu';
-      });
-      links?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-        links.classList.remove('open');
-        menu?.setAttribute('aria-expanded', 'false');
-        if (menu) menu.textContent = 'Menu';
-      }));
+      function updatePagePosition() {
+        header?.classList.toggle(
+          "scrolled",
+          window.scrollY > 24
+        );
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: .12 });
-        revealItems.forEach(item => observer.observe(item));
-      } else {
-        revealItems.forEach(item => item.classList.add('visible'));
+        const maximumScroll =
+          document.documentElement
+            .scrollHeight -
+          window.innerHeight;
+
+        const amount =
+          maximumScroll > 0
+            ? window.scrollY /
+              maximumScroll
+            : 0;
+
+        if (progress) {
+          progress.style.transform =
+            `scaleX(${amount})`;
+        }
       }
 
-      let reminderIndex = 0;
-      reminderButton?.addEventListener('click', () => {
-        reminderIndex = (reminderIndex + 1) % reminders.length;
-        reminder.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, easing: 'ease-out' });
-        reminder.textContent = reminders[reminderIndex];
-      });
+      updatePagePosition();
+
+      window.addEventListener(
+        "scroll",
+        updatePagePosition,
+        {
+          passive: true
+        }
+      );
+
+      /*
+        MOBILE MENU
+      */
+
+      menuButton?.addEventListener(
+        "click",
+        () => {
+          const open =
+            navLinks.classList.toggle(
+              "open"
+            );
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            String(open)
+          );
+
+          menuButton.textContent =
+            open
+              ? "Close"
+              : "Menu";
+        }
+      );
+
+      navLinks
+        ?.querySelectorAll("a")
+        .forEach(
+          (link) => {
+            link.addEventListener(
+              "click",
+              () => {
+                navLinks.classList.remove(
+                  "open"
+                );
+
+                menuButton?.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+                if (menuButton) {
+                  menuButton.textContent =
+                    "Menu";
+                }
+              }
+            );
+          }
+        );
+
+      /*
+        SCROLL REVEALS
+      */
+
+      if (
+        "IntersectionObserver" in window
+      ) {
+        const observer =
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach(
+                (entry) => {
+                  if (
+                    entry.isIntersecting
+                  ) {
+                    entry.target
+                      .classList.add(
+                        "visible"
+                      );
+
+                    observer.unobserve(
+                      entry.target
+                    );
+                  }
+                }
+              );
+            },
+            {
+              threshold: 0.12
+            }
+          );
+
+        revealItems.forEach(
+          (item) => {
+            observer.observe(item);
+          }
+        );
+      } else {
+        revealItems.forEach(
+          (item) => {
+            item.classList.add(
+              "visible"
+            );
+          }
+        );
+      }
+
+      /*
+        RANDOM ACTION GENERATOR
+      */
+
+      let previousChallenge = -1;
+
+      challengeButton
+        ?.addEventListener(
+          "click",
+          () => {
+            let nextChallenge;
+
+            do {
+              nextChallenge =
+                Math.floor(
+                  Math.random() *
+                  challenges.length
+                );
+            } while (
+              nextChallenge ===
+                previousChallenge &&
+              challenges.length > 1
+            );
+
+            previousChallenge =
+              nextChallenge;
+
+            challengePrompt.textContent =
+              challenges[
+                nextChallenge
+              ];
+
+            challengePrompt.animate(
+              [
+                {
+                  opacity: 0,
+                  transform:
+                    "translateY(10px)"
+                },
+                {
+                  opacity: 1,
+                  transform:
+                    "translateY(0)"
+                }
+              ],
+              {
+                duration: 420,
+                easing: "ease-out"
+              }
+            );
+          }
+        );
+
+      /*
+        SUBTLE ORRERY MOVEMENT
+      */
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (!reducedMotion) {
+        const orrery =
+          document.querySelector(
+            ".orrery"
+          );
+
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            const horizontal =
+              (
+                event.clientX /
+                window.innerWidth -
+                0.5
+              ) * 7;
+
+            const vertical =
+              (
+                event.clientY /
+                window.innerHeight -
+                0.5
+              ) * 7;
+
+            if (orrery) {
+              orrery.style.transform =
+                `translate(
+                  ${horizontal}px,
+                  ${vertical}px
+                )`;
+            }
+          },
+          {
+            passive: true
+          }
+        );
+      }
     })();
   </script>
 </body>
