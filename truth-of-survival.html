@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Survival Archive — stories of extremophiles, resistance, adaptation and life under pressure."
+  >
+
+  <title>
+    The Survival Archive | Surya Lok | Jigyasa Verse
+  </title>
+
+  <style>
+    /* ========================================
+       1. ROOT SETTINGS
+    ======================================== */
+
+    :root {
+      --black: #070202;
+      --coal: #110505;
+      --charcoal: #1d0907;
+
+      --deep-red: #650b08;
+      --blood-red: #9f150e;
+      --survival-red: #d4311e;
+
+      --fire-orange: #ff6627;
+      --ember: #ff9a4c;
+
+      --cream: #fff1e4;
+      --ash: #cbb8ad;
+      --muted: #927b72;
+
+      --border:
+        rgba(255, 218, 193, 0.16);
+
+      --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      --maximum-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      color: var(--cream);
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(207, 43, 23, 0.18),
+          transparent 32rem
+        ),
+        radial-gradient(
+          circle at 5% 45%,
+          rgba(255, 93, 28, 0.08),
+          transparent 28rem
+        ),
+        linear-gradient(
+          180deg,
+          #130505 0%,
+          var(--black) 48%,
+          #100504 100%
+        );
+
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+
+      pointer-events: none;
+
+      opacity: 0.3;
+
+      background-image:
+        repeating-linear-gradient(
+          112deg,
+          transparent 0 41px,
+          rgba(255, 255, 255, 0.018) 42px 43px
+        ),
+        repeating-linear-gradient(
+          17deg,
+          transparent 0 67px,
+          rgba(255, 87, 34, 0.022) 68px 69px
+        );
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      inset: auto 0 0;
+      z-index: -1;
+
+      height: 28vh;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(170, 22, 9, 0.22),
+          transparent
+        );
+
+      animation:
+        horizonPulse 6s ease-in-out infinite;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    /* ========================================
+       2. ACCESSIBILITY
+    ======================================== */
+
+    .skip-link {
+      position: fixed;
+      top: 0.8rem;
+      left: 0.8rem;
+      z-index: 1000;
+
+      padding: 0.75rem 1rem;
+
+      color: var(--black);
+      background: var(--cream);
+
+      transform: translateY(-160%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       3. HEADER
+    ======================================== */
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+      padding: 1.25rem 0;
+
+      border-bottom:
+        1px solid
+        rgba(255, 239, 222, 0.14);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+    }
+
+    .brand-mark {
+      position: relative;
+
+      width: 1.9rem;
+      aspect-ratio: 1;
+
+      border:
+        1px solid
+        rgba(255, 198, 151, 0.58);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 24px
+        rgba(255, 66, 20, 0.35);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--cream),
+          var(--fire-orange)
+        );
+
+      transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+    }
+
+    .brand-mark::before {
+      width: 3px;
+      height: 70%;
+    }
+
+    .brand-mark::after {
+      width: 70%;
+      height: 3px;
+    }
+
+    .back-link {
+      color: #e7d7cc;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+
+      transition: color 0.25s ease;
+    }
+
+    .back-link:hover {
+      color: var(--ember);
+    }
+
+    /* ========================================
+       4. HERO
+    ======================================== */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+
+      display: grid;
+      place-items: end center;
+
+      min-height: 94vh;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 2, 2, 0.2),
+          rgba(8, 3, 3, 0.4) 50%,
+          var(--black) 100%
+        ),
+        url(
+          "../images/surya/survival/survival-hero.jpg"
+        )
+        center 44% / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background:
+        radial-gradient(
+          circle at 72% 46%,
+          rgba(255, 112, 20, 0.25),
+          transparent 28%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(10, 2, 2, 0.94) 0%,
+          rgba(10, 2, 2, 0.25) 58%,
+          rgba(10, 2, 2, 0.76) 100%
+        );
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+
+      height: 34%;
+
+      background:
+        radial-gradient(
+          ellipse at 15% 100%,
+          rgba(255, 58, 15, 0.3),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 70% 100%,
+          rgba(255, 104, 18, 0.18),
+          transparent 48%
+        );
+
+      filter: blur(18px);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      padding: 10rem 0 6.5rem;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin: 0 0 1.2rem;
+
+      color: #ffad73;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 2.5rem;
+      height: 1px;
+
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 1000px;
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(
+          4rem,
+          11vw,
+          9.6rem
+        );
+
+      font-weight: 400;
+      line-height: 0.8;
+      letter-spacing: -0.065em;
+
+      text-wrap: balance;
+
+      text-shadow:
+        0 12px 44px
+        rgba(0, 0, 0, 0.62);
+    }
+
+    .outlined-word {
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px
+        rgba(255, 237, 220, 0.92);
+    }
+
+    .hero-copy {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(270px, 440px);
+
+      align-items: end;
+      gap: 3rem;
+
+      margin-top: 2.8rem;
+    }
+
+    .hero-number {
+      margin: 0;
+
+      color:
+        rgba(255, 255, 255, 0.35);
+
+      font-family: var(--serif);
+      font-size:
+        clamp(
+          4rem,
+          9vw,
+          8rem
+        );
+
+      line-height: 0.8;
+    }
+
+    .hero-introduction {
+      margin: 0;
+
+      color: #eadbd1;
+
+      font-family: var(--serif);
+      font-size:
+        clamp(
+          1.1rem,
+          2.3vw,
+          1.55rem
+        );
+
+      line-height: 1.58;
+    }
+
+    .hero-introduction strong {
+      color: #ff8f59;
+      font-weight: 400;
+    }
+
+    /* ========================================
+       5. EMBERS
+    ======================================== */
+
+    .ember-field {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .ember-particle {
+      position: absolute;
+      bottom: -1rem;
+
+      width: var(--size);
+      height: var(--size);
+
+      border-radius: 50%;
+
+      background: #ff9b45;
+
+      box-shadow:
+        0 0 8px #ff3d16,
+        0 0 16px
+        rgba(255, 79, 22, 0.5);
+
+      opacity: 0;
+
+      animation:
+        rise
+        var(--duration)
+        linear
+        var(--delay)
+        infinite;
+    }
+
+    /* ========================================
+       6. MANIFESTO
+    ======================================== */
+
+    .manifesto {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(86, 8, 5, 0.25),
+          transparent 62%
+        );
+    }
+
+    .manifesto-inner {
+      display: grid;
+
+      grid-template-columns:
+        0.7fr
+        1.6fr;
+
+      gap:
+        clamp(
+          2rem,
+          7vw,
+          8rem
+        );
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          4rem,
+          9vw,
+          8rem
+        )
+        0;
+    }
+
+    .section-label {
+      margin: 0.35rem 0 0;
+
+      color: #bca9a0;
+
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .manifesto blockquote {
+      max-width: 820px;
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.75rem,
+          4vw,
+          3.55rem
+        );
+
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+    }
+
+    .manifesto blockquote em {
+      color: #ef5b32;
+      font-style: normal;
+    }
+
+    /* ========================================
+       7. ARCHIVE
+    ======================================== */
+
+    .archive {
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          5rem,
+          9vw,
+          9rem
+        )
+        0;
+    }
+
+    .archive-heading {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      align-items: end;
+      gap: 2rem;
+
+      margin-bottom: 2.5rem;
+    }
+
+    .archive-heading h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.7rem,
+          6vw,
+          5.4rem
+        );
+
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    .archive-description {
+      justify-self: end;
+
+      max-width: 500px;
+      margin: 0;
+
+      color: #c8b6ac;
+
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       8. FILTERS AND SEARCH
+    ======================================== */
+
+    .archive-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      margin-bottom: 2.3rem;
+      padding: 1rem 0;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .filter-button {
+      padding: 0.65rem 0.95rem;
+
+      border:
+        1px solid
+        rgba(255, 222, 201, 0.18);
+
+      border-radius: 999px;
+
+      color: #cdbdb4;
+      background:
+        rgba(255, 255, 255, 0.025);
+
+      cursor: pointer;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button[aria-pressed="true"] {
+      color: var(--cream);
+
+      border-color:
+        rgba(255, 87, 32, 0.85);
+
+      background:
+        rgba(201, 45, 32, 0.22);
+    }
+
+    .search-wrapper {
+      position: relative;
+    }
+
+    .search-wrapper input {
+      width: min(100%, 18rem);
+
+      padding:
+        0.7rem
+        2rem
+        0.7rem
+        0;
+
+      border: 0;
+
+      border-bottom:
+        1px solid
+        rgba(255, 222, 201, 0.26);
+
+      outline: none;
+
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .search-wrapper input:focus {
+      border-bottom-color:
+        var(--fire-orange);
+    }
+
+    .search-wrapper input::placeholder {
+      color: #8f7e76;
+    }
+
+    .search-wrapper::after {
+      content: "⌕";
+
+      position: absolute;
+      top: 0.35rem;
+      right: 0.25rem;
+
+      color: #b89381;
+      font-size: 1.25rem;
+    }
+
+    /* ========================================
+       9. ARTICLE GRID
+    ======================================== */
+
+    .article-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      gap: 1rem;
+    }
+
+    .article-card {
+      --accent: #df3a1d;
+
+      position: relative;
+      isolation: isolate;
+
+      grid-column: span 4;
+
+      min-height: 440px;
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255, 224, 204, 0.13);
+
+      background:
+        linear-gradient(
+          135deg,
+          #3f0a07,
+          #120403
+        );
+
+      transition:
+        transform 0.45s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.3s ease;
+    }
+
+    .article-card:nth-child(1),
+    .article-card:nth-child(6) {
+      grid-column: span 8;
+    }
+
+    .article-card:nth-child(1) {
+      min-height: 550px;
+    }
+
+    .article-card[hidden] {
+      display: none;
+    }
+
+    .article-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(255, 89, 37, 0.58);
+    }
+
+    .article-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 4, 3, 0.1),
+          rgba(10, 4, 3, 0.43) 48%,
+          rgba(9, 3, 3, 0.97) 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(88, 9, 5, 0.34),
+          transparent 64%
+        );
+    }
+
+    .article-card::after {
+      content: "";
+
+      position: absolute;
+      inset: auto 0 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+
+      opacity: 0;
+      transform: scaleX(0.25);
+
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    }
+
+    .article-card:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .card-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(0.22)
+        saturate(0.82)
+        contrast(1.12);
+
+      transform: scale(1.025);
+
+      transition:
+        filter 0.6s ease,
+        transform 0.8s ease;
+    }
+
+    .article-card:hover .card-image {
+      filter:
+        grayscale(0)
+        saturate(1.12)
+        contrast(1.12);
+
+      transform: scale(1.09);
+    }
+
+    .card-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      min-height: inherit;
+      padding: 1.3rem;
+    }
+
+    .card-top,
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+    }
+
+    .card-number,
+    .card-category {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .card-number {
+      color: #f07149;
+    }
+
+    .card-category {
+      color: #d7c5ba;
+    }
+
+    .card-content {
+      margin-top: 8rem;
+    }
+
+    .card-kicker {
+      margin: 0 0 0.65rem;
+
+      color: #ff8251;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      max-width: 720px;
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.75rem,
+          3vw,
+          3rem
+        );
+
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+
+    .article-card:not(
+      :nth-child(1)
+    ):not(
+      :nth-child(6)
+    )
+    .card-title {
+      font-size:
+        clamp(
+          1.65rem,
+          2.6vw,
+          2.35rem
+        );
+    }
+
+    .card-summary {
+      max-width: 650px;
+
+      margin:
+        1rem
+        0
+        1.4rem;
+
+      color: #cebdb3;
+
+      font-size: 0.9rem;
+      line-height: 1.68;
+    }
+
+    .read-link,
+    .quick-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+
+      border: 0;
+      padding: 0;
+
+      color: #fff1e8;
+      background: transparent;
+
+      cursor: pointer;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+
+      transition: color 0.25s ease;
+    }
+
+    .read-link::after {
+      content: "↗";
+
+      color: #ff7a43;
+      font-size: 1rem;
+    }
+
+    .quick-view {
+      color: #aa9790;
+    }
+
+    .read-link:hover,
+    .quick-view:hover {
+      color: #ff966b;
+    }
+
+    .empty-state {
+      display: none;
+
+      padding: 4rem 1rem;
+
+      border:
+        1px solid
+        var(--border);
+
+      color: #bca9a0;
+
+      text-align: center;
+
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    /* ========================================
+       10. CLOSING SECTION
+    ======================================== */
+
+    .closing {
+      position: relative;
+
+      overflow: hidden;
+
+      border-top:
+        1px solid
+        var(--border);
+
+      background:
+        radial-gradient(
+          circle at 50% 115%,
+          rgba(220, 48, 19, 0.38),
+          transparent 40%
+        ),
+        #080303;
+    }
+
+    .closing-inner {
+      width:
+        min(
+          calc(100% - 2rem),
+          940px
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          6rem,
+          13vw,
+          12rem
+        )
+        0;
+
+      text-align: center;
+    }
+
+    .closing .eyebrow {
+      justify-content: center;
+    }
+
+    .closing h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.8rem,
+          7vw,
+          6.6rem
+        );
+
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .closing p {
+      max-width: 670px;
+
+      margin:
+        1.8rem
+        auto
+        0;
+
+      color: #c7b4aa;
+
+      line-height: 1.8;
+    }
+
+    .closing-link {
+      display: inline-block;
+
+      margin-top: 2.3rem;
+      padding: 0.9rem 1.3rem;
+
+      border:
+        1px solid
+        rgba(255, 89, 37, 0.58);
+
+      color: #ffe9dc;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .closing-link:hover {
+      color: #180706;
+      background: #ef5b2c;
+    }
+
+    /* ========================================
+       11. FOOTER
+    ======================================== */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+      padding: 1.5rem 0;
+
+      border-top:
+        1px solid
+        var(--border);
+
+      color: #88736a;
+
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ========================================
+       12. ARTICLE POPUP
+    ======================================== */
+
+    dialog {
+      width:
+        min(
+          calc(100% - 2rem),
+          940px
+        );
+
+      max-height:
+        min(
+          88vh,
+          850px
+        );
+
+      padding: 0;
+      overflow: auto;
+
+      border:
+        1px solid
+        rgba(255, 112, 68, 0.45);
+
+      color: var(--cream);
+      background: #100605;
+
+      box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, 0.76),
+        0 0 60px
+        rgba(132, 16, 7, 0.2);
+    }
+
+    dialog::backdrop {
+      background:
+        rgba(3, 1, 1, 0.83);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-layout {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      min-height: 570px;
+    }
+
+    .modal-media {
+      position: relative;
+
+      min-height: 360px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4a0c08,
+          #160605
+        );
+    }
+
+    .modal-media img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        saturate(0.9)
+        contrast(1.08);
+    }
+
+    .modal-media::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(12, 4, 3, 0.72)
+        );
+    }
+
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding:
+        clamp(
+          2rem,
+          5vw,
+          4.5rem
+        );
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 5;
+
+      width: 2.7rem;
+      aspect-ratio: 1;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.3);
+
+      border-radius: 50%;
+
+      color: white;
+      background:
+        rgba(10, 3, 3, 0.68);
+
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .modal-meta {
+      margin: 0 0 1rem;
+
+      color: #f17b50;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.2rem,
+          4vw,
+          4.2rem
+        );
+
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .modal-summary {
+      margin: 1.4rem 0;
+
+      color: #ccb9af;
+
+      line-height: 1.75;
+    }
+
+    .modal-question {
+      margin:
+        0
+        0
+        1.6rem;
+
+      padding-left: 1rem;
+
+      border-left:
+        2px solid
+        var(--survival-red);
+
+      color: #f2d5c5;
+
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    .modal-link {
+      align-self: flex-start;
+
+      padding: 0.82rem 1rem;
+
+      border:
+        1px solid
+        rgba(255, 90, 40, 0.65);
+
+      color: #fff0e8;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .modal-link:hover {
+      color: var(--black);
+      background: var(--fire-orange);
+    }
+
+    /* ========================================
+       13. SCROLL REVEAL
+    ======================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s
+        cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       14. ANIMATIONS
+    ======================================== */
+
+    @keyframes rise {
+      0% {
+        opacity: 0;
+
+        transform:
+          translate3d(0, 0, 0)
+          scale(0.4);
+      }
+
+      12% {
+        opacity: 0.9;
+      }
+
+      75% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 0;
+
+        transform:
+          translate3d(
+            var(--drift),
+            -105vh,
+            0
+          )
+          scale(1.4);
+      }
+    }
+
+    @keyframes horizonPulse {
+      0%,
+      100% {
+        opacity: 0.55;
+      }
+
+      50% {
+        opacity: 0.95;
+      }
+    }
+
+    /* ========================================
+       15. RESPONSIVE DESIGN
+    ======================================== */
+
+    @media (max-width: 900px) {
+      .hero-copy,
+      .archive-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-number {
+        display: none;
+      }
+
+      .archive-description {
+        justify-self: start;
+      }
+
+      .article-card,
+      .article-card:nth-child(1),
+      .article-card:nth-child(6) {
+        grid-column: span 6;
+        min-height: 470px;
+      }
+
+      .modal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-media {
+        min-height: 300px;
+        max-height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .brand-text {
+        max-width: 9rem;
+        line-height: 1.5;
+      }
+
+      .back-link {
+        max-width: 8rem;
+
+        text-align: right;
+        line-height: 1.5;
+      }
+
+      .hero {
+        min-height: 860px;
+      }
+
+      .hero-inner {
+        padding-bottom: 4rem;
+      }
+
+      .manifesto-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-controls {
+        align-items: stretch;
+      }
+
+      .search-wrapper,
+      .search-wrapper input {
+        width: 100%;
+      }
+
+      .article-card,
+      .article-card:nth-child(1),
+      .article-card:nth-child(6) {
+        grid-column: 1 / -1;
+        min-height: 480px;
+      }
+
+      .card-content {
+        margin-top: 6rem;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .ember-field {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a
+    class="skip-link"
+    href="#archive"
+  >
+    Skip to the archive
+  </a>
+
+  <!-- ======================================
+       HEADER
+  ======================================= -->
+
+  <header class="site-header">
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Jigyasa Verse home"
+    >
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      ></span>
+
+      <span class="brand-text">
+        Jigyasa Verse
+      </span>
+    </a>
+
+    <a
+      class="back-link"
+      href="../surya-lok.html"
+    >
+      ← Return to Surya Lok
+    </a>
+  </header>
+
+  <main>
+    <!-- ====================================
+         HERO
+    ===================================== -->
+
+    <section
+      class="hero"
+      aria-labelledby="page-title"
+    >
+      <div
+        class="ember-field"
+        id="emberField"
+        aria-hidden="true"
+      ></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow">
+          Surya Lok · Colour 01 · Red
+        </p>
+
+        <h1 id="page-title">
+          The
+          <span class="outlined-word">
+            Survival
+          </span>
+
+          <br>
+
+          Archive
+        </h1>
+
+        <div class="hero-copy">
+          <p
+            class="hero-number"
+            aria-hidden="true"
+          >
+            01
+          </p>
+
+          <p class="hero-introduction">
+            Life does not survive because
+            reality becomes kinder.
+
+            It survives by
+
+            <strong>
+              meeting reality as it is
+            </strong>
+
+            —and changing before it is erased.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================
+         SURVIVAL MANIFESTO
+    ===================================== -->
+
+    <section
+      class="manifesto reveal"
+      aria-label="The truth of survival"
+    >
+      <div class="manifesto-inner">
+        <p class="section-label">
+          The first truth
+          <br>
+          Pressure reveals structure
+        </p>
+
+        <blockquote>
+          Survival is not a promise of safety.
+
+          It is the ancient, unfinished art
+          of becoming
+
+          <em>
+            capable of the conditions.
+          </em>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ====================================
+         ARTICLE ARCHIVE
+    ===================================== -->
+
+    <section
+      class="archive"
+      id="archive"
+      aria-labelledby="archive-title"
+    >
+      <div class="archive-heading reveal">
+        <h2 id="archive-title">
+          Ten records
+          <br>
+          from the edge.
+        </h2>
+
+        <p class="archive-description">
+          From boiling vents to hospital
+          wards, these stories examine what
+          persists, what adapts and what
+          resistance costs.
+
+          Every article is a different
+          collision between life and pressure.
+        </p>
+      </div>
+
+      <!-- FILTER AND SEARCH CONTROLS -->
+
+      <div class="archive-controls reveal">
+        <div
+          class="filters"
+          aria-label="Filter articles"
+        >
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All records
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="extreme-life"
+            aria-pressed="false"
+          >
+            Extreme life
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="medicine"
+            aria-pressed="false"
+          >
+            Medicine
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="ecology"
+            aria-pressed="false"
+          >
+            Ecology
+          </button>
+
+          <button
+            class="filter-button"
+            type="button"
+            data-filter="human"
+            aria-pressed="false"
+          >
+            Human
+          </button>
+        </div>
+
+        <label class="search-wrapper">
+          <span class="skip-link">
+            Search the survival archive
+          </span>
+
+          <input
+            id="archiveSearch"
+            type="search"
+            placeholder="Search the wreckage…"
+            autocomplete="off"
+          >
+        </label>
+      </div>
+
+      <!-- JAVASCRIPT INSERTS THE ARTICLES HERE -->
+
+      <div
+        class="article-grid"
+        id="articleGrid"
+        aria-live="polite"
+      ></div>
+
+      <p
+        class="empty-state"
+        id="emptyState"
+      >
+        No record survived that search.
+        Try another word.
+      </p>
+    </section>
+
+    <!-- ====================================
+         CLOSING
+    ===================================== -->
+
+    <section class="closing reveal">
+      <div class="closing-inner">
+        <p class="eyebrow">
+          Carry the truth with you
+        </p>
+
+        <h2>
+          You are not asked
+          <br>
+          to feel ready.
+        </h2>
+
+        <p>
+          The outcome may not be the one you
+          wanted, but the evidence it leaves
+          is real.
+
+          Reality has answered.
+
+          You have exchanged a quiet fantasy
+          for something infinitely more
+          useful: contact with the world as
+          it is—and the undeniable weight of
+          finally entering the game.
+        </p>
+
+        <a
+          class="closing-link"
+          href="../surya-lok.html"
+        >
+          Continue through the seven truths
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+
+  <footer>
+    <span>
+      Jigyasa Verse · The Constant Light
+    </span>
+
+    <span>
+      Survival is response, not certainty.
+    </span>
+  </footer>
+
+  <!-- ======================================
+       ARTICLE PREVIEW POPUP
+  ======================================= -->
+
+  <dialog
+    id="articleDialog"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      class="modal-close"
+      id="modalClose"
+      type="button"
+      aria-label="Close article preview"
+    >
+      ×
+    </button>
+
+    <div class="modal-layout">
+      <div class="modal-media">
+        <img
+          id="modalImage"
+          src=""
+          alt=""
+        >
+      </div>
+
+      <div class="modal-content">
+        <p
+          class="modal-meta"
+          id="modalMeta"
+        ></p>
+
+        <h2
+          class="modal-title"
+          id="modalTitle"
+        ></h2>
+
+        <p
+          class="modal-summary"
+          id="modalSummary"
+        ></p>
+
+        <p
+          class="modal-question"
+          id="modalQuestion"
+        ></p>
+
+        <a
+          class="modal-link"
+          id="modalLink"
+          href="#"
+        >
+          Enter the full record ↗
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    /* ========================================
+       ARTICLE INFORMATION
+
+       Change your article titles, images,
+       descriptions and links here.
+    ======================================== */
+
+    const survivalArticles = [
+      {
+        number: "Record 01",
+
+        category: "extreme-life",
+
+        categoryLabel: "Extreme life",
+
+        kicker: "Fire is an address",
+
+        title:
+          "Extremophiles: Life Where Life Should End",
+
+        summary:
+          "Inside boiling acid, crushing pressure and water colder than blood should tolerate, organisms do more than endure. They build a home from the threat.",
+
+        question:
+          "If life can rewrite its limits, which of yours have you mistaken for laws?",
+
+        readTime: "8 min read",
+
+        image:
+          "../images/surya/survival/extremophiles.jpg",
+
+        imageAlt:
+          "A volcanic hydrothermal environment representing heat-loving extremophiles",
+
+        href:
+          "articles/extremophiles-life-at-the-edge.html",
+
+        accent: "#ff3d1f"
+      },
+
+      {
+        number: "Record 02",
+
+        category: "medicine",
+
+        categoryLabel: "Medicine",
+
+        kicker: "The enemy learns",
+
+        title:
+          "Antibiotic Resistance: The War We Taught Bacteria to Win",
+
+        summary:
+          "Every careless dose becomes a lesson. Under chemical attack, bacterial populations evolve, exchange defences and turn yesterday’s cure into tomorrow’s relic.",
+
+        question:
+          "What happens when the force meant to save us becomes the pressure that strengthens the threat?",
+
+        readTime: "10 min read",
+
+        image:
+          "../images/surya/survival/antibiotic-resistance.jpg",
+
+        imageAlt:
+          "Bacteria under a microscope in a red scientific visualisation",
+
+        href:
+          "articles/antibiotic-resistance.html",
+
+        accent: "#c61518"
+      },
+
+      {
+        number: "Record 03",
+
+        category: "extreme-life",
+
+        categoryLabel: "Extreme life",
+
+        kicker: "The sleeping survivor",
+
+        title:
+          "Tardigrades and the Art of Almost Dying",
+
+        summary:
+          "When conditions become impossible, the water bear folds into a tun, suspends its metabolism and waits at the border between life and death.",
+
+        question:
+          "Is survival always forward motion—or can retreat become a form of intelligence?",
+
+        readTime: "6 min read",
+
+        image:
+          "../images/surya/survival/tardigrades.jpg",
+
+        imageAlt:
+          "A microscopic tardigrade shown in dramatic red light",
+
+        href:
+          "articles/tardigrades-almost-dying.html",
+
+        accent: "#ee5330"
+      },
+
+      {
+        number: "Record 04",
+
+        category: "extreme-life",
+
+        categoryLabel: "Extreme life",
+
+        kicker: "Kingdoms without sunlight",
+
+        title:
+          "Black Smokers: Cities Beneath a Crushing Sea",
+
+        summary:
+          "At hydrothermal vents, life builds food chains without sunlight—powered by chemistry, surrounded by poison and held beneath kilometres of pressure.",
+
+        question:
+          "What worlds become visible when we stop assuming that our conditions are universal?",
+
+        readTime: "9 min read",
+
+        image:
+          "../images/surya/survival/hydrothermal-vents.jpg",
+
+        imageAlt:
+          "A deep-sea hydrothermal vent releasing mineral-rich water",
+
+        href:
+          "articles/black-smokers-deep-sea-life.html",
+
+        accent: "#ff6b26"
+      },
+
+      {
+        number: "Record 05",
+
+        category: "ecology",
+
+        categoryLabel: "Ecology",
+
+        kicker: "The forest after flame",
+
+        title:
+          "Born to Burn: When Destruction Becomes Renewal",
+
+        summary:
+          "Some seeds need heat to open. Some ecosystems depend on fire to clear decay. Destruction is not always the opposite of life; sometimes it is one of life’s oldest tools.",
+
+        question:
+          "What must end for dormant possibility to break open?",
+
+        readTime: "7 min read",
+
+        image:
+          "../images/surya/survival/fire-ecology.jpg",
+
+        imageAlt:
+          "A forest burning while new growth emerges from blackened ground",
+
+        href:
+          "articles/fire-ecology-renewal.html",
+
+        accent: "#ff7b1c"
+      },
+
+      {
+        number: "Record 06",
+
+        category: "extreme-life",
+
+        categoryLabel: "Extreme life",
+
+        kicker: "Repair under radiation",
+
+        title:
+          "Conan the Bacterium: Rebuilding After Ruin",
+
+        summary:
+          "Deinococcus radiodurans can reassemble a genome shattered by radiation. Its power is not invulnerability, but an extraordinary capacity to repair what damage leaves behind.",
+
+        question:
+          "What if resilience is not remaining whole, but learning how to rebuild?",
+
+        readTime: "8 min read",
+
+        image:
+          "../images/surya/survival/radiation-resistance.jpg",
+
+        imageAlt:
+          "A microscopic environment representing radiation-resistant bacteria",
+
+        href:
+          "articles/deinococcus-rebuilding-after-ruin.html",
+
+        accent: "#f2432d"
+      },
+
+      {
+        number: "Record 07",
+
+        category: "ecology",
+
+        categoryLabel: "Ecology",
+
+        kicker: "A continent without mercy",
+
+        title:
+          "Desert Intelligence: The Mathematics of Every Drop",
+
+        summary:
+          "In the desert, waste is death. Plants, insects and mammals turn shade, timing and water storage into precise technologies of persistence.",
+
+        question:
+          "What becomes possible when attention replaces abundance?",
+
+        readTime: "7 min read",
+
+        image:
+          "../images/surya/survival/desert-survival.jpg",
+
+        imageAlt:
+          "A solitary organism crossing cracked red desert earth",
+
+        href:
+          "articles/desert-intelligence.html",
+
+        accent: "#d84a20"
+      },
+
+      {
+        number: "Record 08",
+
+        category: "extreme-life",
+
+        categoryLabel: "Extreme life",
+
+        kicker: "Alive beneath zero",
+
+        title:
+          "Frozen, Not Finished: Life in Suspended Time",
+
+        summary:
+          "From Antarctic microbes to frogs that survive ice inside their bodies, cold-adapted life reveals that stillness can conceal an active strategy.",
+
+        question:
+          "Can a pause protect the future without becoming a refusal to return?",
+
+        readTime: "6 min read",
+
+        image:
+          "../images/surya/survival/frozen-life.jpg",
+
+        imageAlt:
+          "Cracked ice containing microscopic signs of life",
+
+        href:
+          "articles/frozen-not-finished.html",
+
+        accent: "#c93232"
+      },
+
+      {
+        number: "Record 09",
+
+        category: "medicine",
+
+        categoryLabel: "Medicine",
+
+        kicker: "The war inside",
+
+        title:
+          "Your Immune System Is a Battlefield With a Memory",
+
+        summary:
+          "Every infection forces recognition, escalation and restraint. Survival depends not only on destroying an invader, but on knowing when the attack must stop.",
+
+        question:
+          "When does protection become damage—and who tells the defenders to stand down?",
+
+        readTime: "11 min read",
+
+        image:
+          "../images/surya/survival/immune-system.jpg",
+
+        imageAlt:
+          "Immune cells surrounding a pathogen in a biological visualisation",
+
+        href:
+          "articles/immune-system-battlefield.html",
+
+        accent: "#e12525"
+      },
+
+      {
+        number: "Record 10",
+
+        category: "human",
+
+        categoryLabel: "Human",
+
+        kicker:
+          "The body under consequence",
+
+        title:
+          "After the Impact: What Humans Do When the Plan Is Gone",
+
+        summary:
+          "Disaster strips away the imagined future. What remains is improvisation, cooperation and the next action taken before certainty arrives.",
+
+        question:
+          "Who do you become when preparation ends and contact with reality begins?",
+
+        readTime: "9 min read",
+
+        image:
+          "../images/surya/survival/after-impact.jpg",
+
+        imageAlt:
+          "A person walking through smoke and ruined structures toward red light",
+
+        href:
+          "articles/after-the-impact-human-survival.html",
+
+        accent: "#ff4024"
+      }
+    ];
+
+    /* ========================================
+       ELEMENTS
+    ======================================== */
+
+    const articleGrid =
+      document.getElementById(
+        "articleGrid"
+      );
+
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
+
+    const archiveSearch =
+      document.getElementById(
+        "archiveSearch"
+      );
+
+    const filterButtons = [
+      ...document.querySelectorAll(
+        "[data-filter]"
+      )
+    ];
+
+    const articleDialog =
+      document.getElementById(
+        "articleDialog"
+      );
+
+    const modalClose =
+      document.getElementById(
+        "modalClose"
+      );
+
+    const modalImage =
+      document.getElementById(
+        "modalImage"
+      );
+
+    const modalMeta =
+      document.getElementById(
+        "modalMeta"
+      );
+
+    const modalTitle =
+      document.getElementById(
+        "modalTitle"
+      );
+
+    const modalSummary =
+      document.getElementById(
+        "modalSummary"
+      );
+
+    const modalQuestion =
+      document.getElementById(
+        "modalQuestion"
+      );
+
+    const modalLink =
+      document.getElementById(
+        "modalLink"
+      );
+
+    let activeFilter = "all";
+
+    /* ========================================
+       CREATE ARTICLE BOXES
+    ======================================== */
+
+    function createArticleCards() {
+      articleGrid.innerHTML =
+        survivalArticles
+          .map((article, index) => {
+            const searchableText = `
+              ${article.title}
+              ${article.summary}
+              ${article.categoryLabel}
+              ${article.kicker}
+            `
+              .toLowerCase()
+              .replace(/\s+/g, " ");
+
+            return `
+              <article
+                class="article-card reveal"
+                data-index="${index}"
+                data-category="${article.category}"
+                data-search="${searchableText}"
+                style="--accent: ${article.accent};"
+              >
+                <img
+                  class="card-image"
+                  src="${article.image}"
+                  alt="${article.imageAlt}"
+                  loading="lazy"
+                >
+
+                <div class="card-inner">
+                  <div class="card-top">
+                    <span class="card-number">
+                      ${article.number}
+                    </span>
+
+                    <span class="card-category">
+                      ${article.categoryLabel}
+                    </span>
+                  </div>
+
+                  <div class="card-content">
+                    <p class="card-kicker">
+                      ${article.kicker}
+                    </p>
+
+                    <h3 class="card-title">
+                      ${article.title}
+                    </h3>
+
+                    <p class="card-summary">
+                      ${article.summary}
+                    </p>
+
+                    <div class="card-actions">
+                      <a
+                        class="read-link"
+                        href="${article.href}"
+                        aria-label="Read ${article.title}"
+                      >
+                        Read · ${article.readTime}
+                      </a>
+
+                      <button
+                        class="quick-view"
+                        type="button"
+                        data-preview="${index}"
+                        aria-label="Preview ${article.title}"
+                      >
+                        Quick view
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+      /* Hide broken images without
+         destroying the card design. */
+
+      articleGrid
+        .querySelectorAll(
+          ".card-image"
+        )
+        .forEach((image) => {
+          image.addEventListener(
+            "error",
+            () => {
+              image.style.display =
+                "none";
+            }
+          );
+        });
+
+      /* Add popup behaviour. */
+
+      articleGrid
+        .querySelectorAll(
+          "[data-preview]"
+        )
+        .forEach((button) => {
+          button.addEventListener(
+            "click",
+            () => {
+              const index =
+                Number(
+                  button.dataset.preview
+                );
+
+              openArticlePreview(index);
+            }
+          );
+        });
+
+      observeRevealElements();
+    }
+
+    /* ========================================
+       FILTER AND SEARCH
+    ======================================== */
+
+    function filterArticles() {
+      const searchTerm =
+        archiveSearch.value
+          .trim()
+          .toLowerCase();
+
+      let visibleArticles = 0;
+
+      articleGrid
+        .querySelectorAll(
+          ".article-card"
+        )
+        .forEach((card) => {
+          const categoryMatches =
+            activeFilter === "all" ||
+            card.dataset.category ===
+              activeFilter;
+
+          const searchMatches =
+            searchTerm === "" ||
+            card.dataset.search.includes(
+              searchTerm
+            );
+
+          const shouldShow =
+            categoryMatches &&
+            searchMatches;
+
+          card.hidden = !shouldShow;
+
+          if (shouldShow) {
+            visibleArticles += 1;
+          }
+        });
+
+      emptyState.style.display =
+        visibleArticles > 0
+          ? "none"
+          : "block";
+    }
+
+    filterButtons.forEach(
+      (button) => {
+        button.addEventListener(
+          "click",
+          () => {
+            activeFilter =
+              button.dataset.filter;
+
+            filterButtons.forEach(
+              (filterButton) => {
+                const isSelected =
+                  filterButton === button;
+
+                filterButton.setAttribute(
+                  "aria-pressed",
+                  String(isSelected)
+                );
+              }
+            );
+
+            filterArticles();
+          }
+        );
+      }
+    );
+
+    archiveSearch.addEventListener(
+      "input",
+      filterArticles
+    );
+
+    /* ========================================
+       ARTICLE PREVIEW POPUP
+    ======================================== */
+
+    function openArticlePreview(index) {
+      const article =
+        survivalArticles[index];
+
+      if (!article) {
+        return;
+      }
+
+      modalImage.src =
+        article.image;
+
+      modalImage.alt =
+        article.imageAlt;
+
+      modalMeta.textContent = `
+        ${article.number}
+        ·
+        ${article.categoryLabel}
+        ·
+        ${article.readTime}
+      `;
+
+      modalTitle.textContent =
+        article.title;
+
+      modalSummary.textContent =
+        article.summary;
+
+      modalQuestion.textContent =
+        article.question;
+
+      modalLink.href =
+        article.href;
+
+      modalImage.onerror = () => {
+        modalImage.style.display =
+          "none";
+      };
+
+      modalImage.onload = () => {
+        modalImage.style.display =
+          "block";
+      };
+
+      if (
+        typeof articleDialog.showModal ===
+        "function"
+      ) {
+        articleDialog.showModal();
+      }
+    }
+
+    modalClose.addEventListener(
+      "click",
+      () => {
+        articleDialog.close();
+      }
+    );
+
+    articleDialog.addEventListener(
+      "click",
+      (event) => {
+        if (
+          event.target ===
+          articleDialog
+        ) {
+          articleDialog.close();
+        }
+      }
+    );
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+
+    function observeRevealElements() {
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      const revealElements =
+        document.querySelectorAll(
+          ".reveal:not(.visible)"
+        );
+
+      if (
+        reducedMotion ||
+        !(
+          "IntersectionObserver"
+          in window
+        )
+      ) {
+        revealElements.forEach(
+          (element) => {
+            element.classList.add(
+              "visible"
+            );
+          }
+        );
+
+        return;
+      }
+
+      const observer =
+        new IntersectionObserver(
+          (
+            entries,
+            currentObserver
+          ) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target.classList.add(
+                    "visible"
+                  );
+
+                  currentObserver.unobserve(
+                    entry.target
+                  );
+                }
+              }
+            );
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+      revealElements.forEach(
+        (element) => {
+          observer.observe(element);
+        }
+      );
+    }
+
+    /* ========================================
+       CREATE FIRE EMBERS
+    ======================================== */
+
+    function createEmbers() {
+      const emberField =
+        document.getElementById(
+          "emberField"
+        );
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (reducedMotion) {
+        return;
+      }
+
+      for (
+        let emberNumber = 0;
+        emberNumber < 34;
+        emberNumber += 1
+      ) {
+        const ember =
+          document.createElement(
+            "span"
+          );
+
+        ember.className =
+          "ember-particle";
+
+        ember.style.left =
+          `${Math.random() * 100}%`;
+
+        ember.style.setProperty(
+          "--size",
+          `${2 + Math.random() * 4}px`
+        );
+
+        ember.style.setProperty(
+          "--duration",
+          `${7 + Math.random() * 10}s`
+        );
+
+        ember.style.setProperty(
+          "--delay",
+          `${Math.random() * -14}s`
+        );
+
+        ember.style.setProperty(
+          "--drift",
+          `${-70 + Math.random() * 140}px`
+        );
+
+        emberField.appendChild(ember);
+      }
+    }
+
+    /* ========================================
+       START THE PAGE
+    ======================================== */
+
+    createArticleCards();
+    createEmbers();
+    observeRevealElements();
+  </script>
+</body>
+</html>
