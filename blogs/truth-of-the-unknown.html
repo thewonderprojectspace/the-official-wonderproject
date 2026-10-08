@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Unknown Archive — ten frontiers where honest uncertainty becomes the beginning of discovery."
+  >
+
+  <title>
+    The Unknown Archive | Surya Lok | Jigyasa Verse
+  </title>
+
+  <style>
+    :root {
+      --void: #020105;
+      --deep: #10051c;
+
+      --violet: #75518b;
+      --bold: #a348d0;
+      --flare: #d57aff;
+      --starlight: #f0d9ff;
+
+      --cream: #f7effb;
+      --ash: #cdbbd5;
+      --muted: #907a9b;
+
+      --line:
+        rgba(213, 137, 247, 0.16);
+
+      --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      --maximum-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      color: var(--cream);
+      font-family: var(--sans);
+
+      background:
+        radial-gradient(
+          circle at 78% 7%,
+          rgba(140, 56, 177, 0.19),
+          transparent 35rem
+        ),
+        radial-gradient(
+          circle at 5% 51%,
+          rgba(94, 39, 120, 0.15),
+          transparent 30rem
+        ),
+        linear-gradient(
+          180deg,
+          #130620 0%,
+          var(--void) 47%,
+          #0d0315 100%
+        );
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+
+      pointer-events: none;
+      opacity: 0.48;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(242, 213, 255, 0.55) 0 1px,
+          transparent 1.5px
+        ),
+        radial-gradient(
+          circle,
+          rgba(190, 119, 222, 0.35) 0 1px,
+          transparent 1.6px
+        );
+
+      background-size:
+        83px 83px,
+        137px 137px;
+
+      background-position:
+        0 0,
+        27px 41px;
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      inset: auto 0 0;
+      z-index: -1;
+
+      height: 30vh;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(99, 33, 126, 0.22),
+          transparent
+        );
+
+      animation:
+        horizonPulse 8s ease-in-out infinite;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 1000;
+
+      padding: 0.75rem 1rem;
+
+      color: #100417;
+      background: var(--cream);
+
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       JIGYASA VERSE LOGO
+    ======================================== */
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+    }
+
+    .jv-logo {
+      position: relative;
+
+      display: inline-block;
+
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+    }
+
+    .jv-orbit {
+      position: absolute;
+      inset: 2px;
+
+      border:
+        1px solid
+        rgba(222, 163, 248, 0.52);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 24px
+        rgba(164, 72, 208, 0.34);
+    }
+
+    .jv-moon {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+
+      width: 17px;
+      height: 17px;
+
+      border-radius: 50%;
+
+      background: var(--cream);
+
+      box-shadow:
+        0 0 12px
+        rgba(211, 120, 251, 0.42);
+    }
+
+    .jv-moon::after {
+      content: "";
+
+      position: absolute;
+      top: -2px;
+      left: 5px;
+
+      width: 15px;
+      height: 15px;
+
+      border-radius: 50%;
+
+      background: #0d0315;
+    }
+
+    .jv-pencil {
+      position: absolute;
+      top: 14px;
+      left: 17px;
+
+      width: 4px;
+      height: 23px;
+
+      border-radius: 2px 2px 0 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          #f2ddfa 0 72%,
+          #75518b 72% 88%,
+          #291034 88%
+        );
+
+      transform-origin: 50% 75%;
+    }
+
+    .jv-pencil.one {
+      transform: rotate(42deg);
+    }
+
+    .jv-pencil.two {
+      transform: rotate(-42deg);
+    }
+
+    .jv-star {
+      position: absolute;
+      top: 5px;
+      right: 4px;
+
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background: var(--flare);
+
+      box-shadow:
+        0 0 10px
+        var(--flare);
+    }
+
+    /* ========================================
+       HEADER
+    ======================================== */
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+      padding: 1.2rem 0;
+
+      border-bottom:
+        1px solid
+        rgba(238, 218, 247, 0.14);
+    }
+
+    .back-link {
+      color: #e6d8eb;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+
+      transition: color 0.25s ease;
+    }
+
+    .back-link:hover {
+      color: var(--flare);
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+
+      display: grid;
+      place-items: end center;
+
+      min-height: 98vh;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(2, 1, 5, 0.08),
+          rgba(2, 1, 5, 0.32) 54%,
+          var(--void) 100%
+        ),
+        url(
+          "../images/surya/unknown/unknown-hero.jpg"
+        )
+        center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background:
+        radial-gradient(
+          circle at 67% 42%,
+          rgba(172, 68, 214, 0.25),
+          transparent 28%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(2, 1, 5, 0.96),
+          rgba(2, 1, 5, 0.2) 64%,
+          rgba(2, 1, 5, 0.75)
+        );
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      inset: auto -10% -13%;
+      z-index: -1;
+
+      height: 48%;
+
+      filter: blur(20px);
+
+      background:
+        radial-gradient(
+          ellipse at 18% 100%,
+          rgba(139, 45, 178, 0.28),
+          transparent 49%
+        ),
+        radial-gradient(
+          ellipse at 75% 100%,
+          rgba(203, 88, 244, 0.18),
+          transparent 46%
+        );
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      padding: 10rem 0 6.5rem;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin: 0 0 1.2rem;
+
+      color: #d07af1;
+
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 2.5rem;
+      height: 1px;
+
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 1150px;
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          4rem,
+          11vw,
+          9.3rem
+        );
+
+      font-weight: 400;
+      line-height: 0.8;
+      letter-spacing: -0.065em;
+
+      text-wrap: balance;
+
+      text-shadow:
+        0 12px 44px
+        rgba(0, 0, 0, 0.72);
+    }
+
+    .outline {
+      color: transparent;
+
+      -webkit-text-stroke:
+        1px
+        rgba(239, 217, 248, 0.92);
+    }
+
+    .hero-copy {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 500px);
+
+      align-items: end;
+      gap: 3rem;
+
+      margin-top: 2.8rem;
+    }
+
+    .hero-number {
+      margin: 0;
+
+      color:
+        rgba(255, 255, 255, 0.28);
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          4rem,
+          9vw,
+          8rem
+        );
+
+      line-height: 0.8;
+    }
+
+    .hero-intro {
+      margin: 0;
+
+      color: #e2d5e8;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.1rem,
+          2.3vw,
+          1.55rem
+        );
+
+      line-height: 1.58;
+    }
+
+    .hero-intro strong {
+      color: #d079f1;
+      font-weight: 400;
+    }
+
+    /* ========================================
+       STARS AND EVENT HORIZON
+    ======================================== */
+
+    .star-field {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+
+      width: var(--size);
+      height: var(--size);
+
+      border-radius: 50%;
+
+      background: #f4dcff;
+
+      box-shadow:
+        0 0 12px
+        rgba(216, 126, 255, 0.8);
+
+      opacity: var(--opacity);
+
+      animation:
+        starTwinkle
+        var(--duration)
+        ease-in-out
+        var(--delay)
+        infinite;
+    }
+
+    .black-hole {
+      position: absolute;
+      top: 15%;
+      right: 3vw;
+      z-index: 2;
+
+      width:
+        min(
+          39vw,
+          430px
+        );
+
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #000 0 27%,
+          #08010d 28% 36%,
+          rgba(93, 25, 124, 0.68) 37% 40%,
+          rgba(204, 82, 242, 0.52) 42% 44%,
+          rgba(50, 12, 69, 0.15) 50%,
+          transparent 67%
+        );
+
+      filter:
+        drop-shadow(
+          0 0 55px
+          rgba(167, 57, 210, 0.24)
+        );
+
+      pointer-events: none;
+
+      animation:
+        voidFloat 9s ease-in-out infinite;
+    }
+
+    .black-hole::before,
+    .black-hole::after {
+      content: "";
+
+      position: absolute;
+      inset: 16%;
+
+      border:
+        1px solid
+        rgba(221, 117, 255, 0.42);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 22px
+        rgba(195, 70, 239, 0.32);
+
+      transform:
+        scaleY(0.31)
+        rotate(-16deg);
+
+      animation:
+        diskSpin 15s linear infinite;
+    }
+
+    .black-hole::after {
+      inset: 7%;
+
+      border-color:
+        rgba(169, 78, 207, 0.19);
+
+      animation-duration: 23s;
+      animation-direction: reverse;
+    }
+
+    /* ========================================
+       MANIFESTO
+    ======================================== */
+
+    .manifesto {
+      border-top:
+        1px solid
+        var(--line);
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(91, 31, 118, 0.23),
+          transparent 65%
+        );
+    }
+
+    .manifesto-inner {
+      display: grid;
+
+      grid-template-columns:
+        0.7fr
+        1.6fr;
+
+      gap:
+        clamp(
+          2rem,
+          7vw,
+          8rem
+        );
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          4rem,
+          9vw,
+          8rem
+        )
+        0;
+    }
+
+    .section-label {
+      margin: 0.35rem 0 0;
+
+      color: #a68dad;
+
+      font-size: 0.67rem;
+      letter-spacing: 0.22em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    blockquote {
+      max-width: 910px;
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.8rem,
+          4vw,
+          3.6rem
+        );
+
+      line-height: 1.17;
+      letter-spacing: -0.026em;
+    }
+
+    blockquote em {
+      color: #bd61e2;
+      font-style: normal;
+    }
+
+    /* ========================================
+       FRONTIER MAP
+    ======================================== */
+
+    .frontier {
+      overflow: hidden;
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(127, 43, 161, 0.14),
+          transparent 40%
+        );
+    }
+
+    .frontier-wrap {
+      display: grid;
+
+      grid-template-columns:
+        0.9fr
+        1.1fr;
+
+      align-items: center;
+
+      gap:
+        clamp(
+          3rem,
+          8vw,
+          8rem
+        );
+
+      width:
+        min(
+          calc(100% - 2rem),
+          1120px
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          5rem,
+          10vw,
+          9rem
+        )
+        0;
+    }
+
+    .frontier-copy h2 {
+      margin: 0 0 1.2rem;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.7rem,
+          5vw,
+          4.9rem
+        );
+
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .frontier-copy p {
+      max-width: 520px;
+      margin: 0;
+
+      color: #c4b2cb;
+      line-height: 1.8;
+    }
+
+    .unknown-map {
+      position: relative;
+
+      width:
+        min(
+          86vw,
+          480px
+        );
+
+      aspect-ratio: 1;
+      margin: auto;
+
+      border:
+        1px solid
+        rgba(214, 123, 250, 0.16);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(162, 62, 202, 0.1),
+          transparent 52%
+        );
+
+      box-shadow:
+        inset 0 0 90px
+        rgba(108, 27, 140, 0.12),
+        0 0 80px
+        rgba(99, 25, 130, 0.08);
+    }
+
+    .map-ring {
+      position: absolute;
+
+      border:
+        1px solid
+        rgba(216, 129, 251, 0.2);
+
+      border-radius: 50%;
+
+      animation:
+        ringPulse 7s ease-in-out infinite;
+    }
+
+    .map-ring.one {
+      inset: 10%;
+    }
+
+    .map-ring.two {
+      inset: 24%;
+
+      animation-delay: -2s;
+    }
+
+    .map-ring.three {
+      inset: 38%;
+
+      animation-delay: -4s;
+    }
+
+    .map-centre {
+      position: absolute;
+      inset: 44%;
+
+      border-radius: 50%;
+
+      background: #000;
+
+      box-shadow:
+        0 0 30px
+        rgba(203, 81, 243, 0.4);
+    }
+
+    .map-label {
+      position: absolute;
+
+      padding: 0.5rem 0.65rem;
+
+      border:
+        1px solid
+        rgba(211, 123, 246, 0.22);
+
+      border-radius: 999px;
+
+      color: #d9c5df;
+
+      background:
+        rgba(10, 3, 16, 0.74);
+
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .label-one {
+      top: 5%;
+      left: 38%;
+    }
+
+    .label-two {
+      top: 43%;
+      right: -2%;
+    }
+
+    .label-three {
+      bottom: 9%;
+      left: 36%;
+    }
+
+    .label-four {
+      top: 44%;
+      left: -4%;
+    }
+
+    /* ========================================
+       ARCHIVE
+    ======================================== */
+
+    .archive {
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          5rem,
+          9vw,
+          9rem
+        )
+        0;
+    }
+
+    .archive-heading {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      align-items: end;
+      gap: 2rem;
+
+      margin-bottom: 2.5rem;
+    }
+
+    .archive h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.7rem,
+          6vw,
+          5.4rem
+        );
+
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    .archive-description {
+      justify-self: end;
+
+      max-width: 550px;
+      margin: 0;
+
+      color: #c4b2cb;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FILTERS
+    ======================================== */
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      margin-bottom: 2.3rem;
+      padding: 1rem 0;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .filter {
+      padding: 0.65rem 0.95rem;
+
+      border:
+        1px solid
+        rgba(218, 143, 249, 0.18);
+
+      border-radius: 999px;
+
+      color: #cab7d0;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+
+      cursor: pointer;
+
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .filter:hover,
+    .filter[aria-pressed="true"] {
+      color: var(--cream);
+
+      border-color:
+        rgba(183, 82, 224, 0.88);
+
+      background:
+        rgba(117, 81, 139, 0.27);
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: min(100%, 18rem);
+
+      padding:
+        0.7rem
+        2rem
+        0.7rem
+        0;
+
+      border: 0;
+
+      border-bottom:
+        1px solid
+        rgba(217, 142, 248, 0.26);
+
+      outline: 0;
+
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .search input:focus {
+      border-bottom-color:
+        var(--flare);
+    }
+
+    .search input::placeholder {
+      color: #8e7898;
+    }
+
+    .search::after {
+      content: "⌕";
+
+      position: absolute;
+      top: 0.3rem;
+      right: 0.2rem;
+
+      color: #ad86ba;
+      font-size: 1.25rem;
+    }
+
+    /* ========================================
+       ARTICLE CARDS
+    ======================================== */
+
+    .article-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      gap: 1rem;
+    }
+
+    .article-card {
+      --accent: #a348d0;
+
+      position: relative;
+      isolation: isolate;
+
+      grid-column: span 4;
+
+      min-height: 440px;
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(218, 143, 249, 0.13);
+
+      background:
+        linear-gradient(
+          135deg,
+          #371145,
+          #09020e
+        );
+
+      transition:
+        transform 0.45s
+        cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.3s ease;
+    }
+
+    .article-card:nth-child(1),
+    .article-card:nth-child(6) {
+      grid-column: span 8;
+    }
+
+    .article-card:nth-child(1) {
+      min-height: 550px;
+    }
+
+    .article-card[hidden] {
+      display: none;
+    }
+
+    .article-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(195, 91, 236, 0.58);
+    }
+
+    .article-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(2, 1, 5, 0.04),
+          rgba(2, 1, 5, 0.4) 48%,
+          rgba(2, 1, 5, 0.97)
+        ),
+        linear-gradient(
+          90deg,
+          rgba(96, 30, 124, 0.34),
+          transparent 67%
+        );
+    }
+
+    .article-card::after {
+      content: "";
+
+      position: absolute;
+      inset: auto 0 0;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+
+      opacity: 0;
+      transform: scaleX(0.25);
+
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    }
+
+    .article-card:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .card-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(0.17)
+        saturate(0.8)
+        contrast(1.12);
+
+      transform: scale(1.025);
+
+      transition:
+        filter 0.6s ease,
+        transform 0.8s ease;
+    }
+
+    .article-card:hover .card-image {
+      filter:
+        grayscale(0)
+        saturate(1.08)
+        contrast(1.1);
+
+      transform: scale(1.09);
+    }
+
+    .card-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      min-height: inherit;
+      padding: 1.3rem;
+    }
+
+    .card-top,
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+    }
+
+    .card-number,
+    .card-category {
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .card-number {
+      color: #d17af1;
+    }
+
+    .card-category {
+      color: #e2d2e7;
+    }
+
+    .card-content {
+      margin-top: 8rem;
+    }
+
+    .card-kicker {
+      margin: 0 0 0.65rem;
+
+      color: #d17af1;
+
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      max-width: 770px;
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.75rem,
+          3vw,
+          3rem
+        );
+
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+
+    .article-card:not(
+      :nth-child(1)
+    ):not(
+      :nth-child(6)
+    )
+    .card-title {
+      font-size:
+        clamp(
+          1.65rem,
+          2.6vw,
+          2.35rem
+        );
+    }
+
+    .card-summary {
+      max-width: 700px;
+
+      margin:
+        1rem
+        0
+        1.4rem;
+
+      color: #d0bed6;
+
+      font-size: 0.9rem;
+      line-height: 1.68;
+    }
+
+    .read-link,
+    .quick-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+
+      border: 0;
+      padding: 0;
+
+      color: #f5ebf9;
+      background: transparent;
+
+      cursor: pointer;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+
+      transition: color 0.25s ease;
+    }
+
+    .read-link::after {
+      content: "↗";
+
+      color: #cb6bed;
+      font-size: 1rem;
+    }
+
+    .quick-view {
+      color: #a992b0;
+    }
+
+    .read-link:hover,
+    .quick-view:hover {
+      color: #e39cff;
+    }
+
+    .empty-state {
+      display: none;
+
+      padding: 4rem 1rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      color: #a68dad;
+
+      text-align: center;
+
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    /* ========================================
+       CLOSING
+    ======================================== */
+
+    .closing {
+      position: relative;
+
+      overflow: hidden;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      background:
+        radial-gradient(
+          circle at 50% 108%,
+          rgba(133, 40, 170, 0.35),
+          transparent 40%
+        ),
+        #020105;
+    }
+
+    .closing-inner {
+      width:
+        min(
+          calc(100% - 2rem),
+          1000px
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(
+          7rem,
+          15vw,
+          13rem
+        )
+        0;
+
+      text-align: center;
+    }
+
+    .closing .eyebrow {
+      justify-content: center;
+    }
+
+    .closing h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          3rem,
+          7vw,
+          6.8rem
+        );
+
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .closing p {
+      max-width: 750px;
+
+      margin:
+        1.8rem
+        auto
+        0;
+
+      color: #c8b6ce;
+      line-height: 1.8;
+    }
+
+    .closing-mark {
+      width: 12px;
+      height: 12px;
+
+      margin:
+        2.4rem
+        auto
+        0;
+
+      border-radius: 50%;
+
+      background: var(--flare);
+
+      box-shadow:
+        0 0 18px
+        var(--flare),
+        0 0 60px
+        rgba(203, 85, 241, 0.55);
+
+      animation:
+        markPulse 3s ease-in-out infinite;
+    }
+
+    .closing-link {
+      display: inline-block;
+
+      margin-top: 2.3rem;
+      padding: 0.95rem 1.35rem;
+
+      border:
+        1px solid
+        rgba(202, 96, 239, 0.62);
+
+      color: #f6eafb;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .closing-link:hover {
+      color: #120418;
+      background: var(--flare);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      width:
+        min(
+          calc(100% - 2rem),
+          var(--maximum-width)
+        );
+
+      margin: auto;
+      padding: 1.5rem 0;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      color: #846f8d;
+
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ========================================
+       POPUP
+    ======================================== */
+
+    dialog {
+      width:
+        min(
+          calc(100% - 2rem),
+          940px
+        );
+
+      max-height:
+        min(
+          88vh,
+          850px
+        );
+
+      padding: 0;
+      overflow: auto;
+
+      border:
+        1px solid
+        rgba(195, 91, 236, 0.47);
+
+      color: var(--cream);
+      background: #0c0313;
+
+      box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, 0.82),
+        0 0 60px
+        rgba(124, 35, 158, 0.22);
+    }
+
+    dialog::backdrop {
+      background:
+        rgba(1, 0, 3, 0.88);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-layout {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      min-height: 570px;
+    }
+
+    .modal-media {
+      position: relative;
+
+      min-height: 360px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #3a124a,
+          #0c0313
+        );
+    }
+
+    .modal-media img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .modal-media::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(4, 1, 7, 0.76)
+        );
+    }
+
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding:
+        clamp(
+          2rem,
+          5vw,
+          4.5rem
+        );
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 5;
+
+      width: 2.7rem;
+      aspect-ratio: 1;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.3);
+
+      border-radius: 50%;
+
+      color: white;
+      background:
+        rgba(4, 1, 7, 0.72);
+
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .modal-meta {
+      margin: 0 0 1rem;
+
+      color: #d079f1;
+
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.2rem,
+          4vw,
+          4.2rem
+        );
+
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .modal-summary {
+      margin: 1.4rem 0;
+
+      color: #cab8d0;
+      line-height: 1.75;
+    }
+
+    .modal-question {
+      margin: 0 0 1.6rem;
+      padding-left: 1rem;
+
+      border-left:
+        2px solid
+        var(--bold);
+
+      color: #ead8ef;
+
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    .modal-link {
+      align-self: flex-start;
+
+      padding: 0.82rem 1rem;
+
+      border:
+        1px solid
+        rgba(197, 91, 238, 0.67);
+
+      color: #f6ebfa;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+    }
+
+    .modal-link:hover {
+      color: #120418;
+      background: var(--flare);
+    }
+
+    /* ========================================
+       ANIMATIONS
+    ======================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s
+        cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes starTwinkle {
+      0%,
+      100% {
+        opacity: 0.15;
+        transform: scale(0.65);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.35);
+      }
+    }
+
+    @keyframes horizonPulse {
+      0%,
+      100% {
+        opacity: 0.55;
+      }
+
+      50% {
+        opacity: 0.95;
+      }
+    }
+
+    @keyframes voidFloat {
+      0%,
+      100% {
+        transform:
+          translateY(-8px)
+          rotate(-3deg);
+      }
+
+      50% {
+        transform:
+          translateY(12px)
+          rotate(3deg);
+      }
+    }
+
+    @keyframes diskSpin {
+      to {
+        transform:
+          scaleY(0.31)
+          rotate(344deg);
+      }
+    }
+
+    @keyframes ringPulse {
+      0%,
+      100% {
+        opacity: 0.28;
+        transform: scale(0.96);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.04);
+      }
+    }
+
+    @keyframes markPulse {
+      0%,
+      100% {
+        opacity: 0.65;
+        transform: scale(0.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.25);
+      }
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media (max-width: 900px) {
+      .hero-copy,
+      .archive-heading,
+      .frontier-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-number {
+        display: none;
+      }
+
+      .black-hole {
+        top: 18%;
+        right: -65px;
+
+        width: 330px;
+        opacity: 0.5;
+      }
+
+      .archive-description {
+        justify-self: start;
+      }
+
+      .article-card,
+      .article-card:nth-child(1),
+      .article-card:nth-child(6) {
+        grid-column: span 6;
+        min-height: 470px;
+      }
+
+      .modal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-media {
+        min-height: 300px;
+        max-height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .brand-text {
+        max-width: 9rem;
+        line-height: 1.5;
+      }
+
+      .back-link {
+        max-width: 8rem;
+
+        text-align: right;
+        line-height: 1.5;
+      }
+
+      .hero {
+        min-height: 880px;
+      }
+
+      .hero-inner {
+        padding-bottom: 4rem;
+      }
+
+      .black-hole {
+        top: 21%;
+        right: -100px;
+
+        width: 260px;
+      }
+
+      .manifesto-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        align-items: stretch;
+      }
+
+      .search,
+      .search input {
+        width: 100%;
+      }
+
+      .article-card,
+      .article-card:nth-child(1),
+      .article-card:nth-child(6) {
+        grid-column: 1 / -1;
+        min-height: 480px;
+      }
+
+      .card-content {
+        margin-top: 6rem;
+      }
+
+      .map-label {
+        font-size: 0.48rem;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .star-field {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a
+    class="skip-link"
+    href="#archive"
+  >
+    Skip to the archive
+  </a>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Jigyasa Verse home"
+    >
+      <span
+        class="jv-logo"
+        aria-hidden="true"
+      >
+        <span class="jv-orbit"></span>
+        <span class="jv-moon"></span>
+        <span class="jv-pencil one"></span>
+        <span class="jv-pencil two"></span>
+        <span class="jv-star"></span>
+      </span>
+
+      <span class="brand-text">
+        Jigyasa Verse
+      </span>
+    </a>
+
+    <a
+      class="back-link"
+      href="../surya-lok.html"
+    >
+      ← Return to Surya Lok
+    </a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+
+    <section
+      class="hero"
+      aria-labelledby="page-title"
+    >
+      <div
+        class="star-field"
+        id="starField"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="black-hole"
+        aria-hidden="true"
+      ></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow">
+          Surya Lok · Colour 07 · Violet
+        </p>
+
+        <h1 id="page-title">
+          The
+
+          <span class="outline">
+            Unknown
+          </span>
+
+          <br>
+
+          Archive
+        </h1>
+
+        <div class="hero-copy">
+          <p
+            class="hero-number"
+            aria-hidden="true"
+          >
+            07
+          </p>
+
+          <p class="hero-intro">
+            <strong>
+              “We do not know”
+            </strong>
+
+            is not the end of thought.
+
+            It is the most honest place
+            from which discovery can begin.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+
+    <section
+      class="manifesto reveal"
+      aria-label="The truth of the unknown"
+    >
+      <div class="manifesto-inner">
+        <p class="section-label">
+          The seventh truth
+          <br>
+          The boundary remains open
+        </p>
+
+        <blockquote>
+          Darkness is not empty simply
+          because our instruments cannot
+          yet resolve what fills it.
+
+          The unknown is not permission
+          to invent certainty.
+
+          It is
+
+          <em>
+            a frontier with consequences.
+          </em>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FRONTIER MAP -->
+
+    <section
+      class="frontier reveal"
+      aria-labelledby="frontier-title"
+    >
+      <div class="frontier-wrap">
+        <div class="frontier-copy">
+          <p class="eyebrow">
+            A map made of questions
+          </p>
+
+          <h2 id="frontier-title">
+            The edge moves
+            <br>
+            when we approach it.
+          </h2>
+
+          <p>
+            Each answer changes the shape
+            of what remains unanswered.
+
+            The frontier is not a wall
+            around knowledge; it is the
+            active boundary where
+            observation, imagination and
+            intellectual restraint must
+            work together.
+          </p>
+        </div>
+
+        <div
+          class="unknown-map"
+          aria-label="Concentric map of unknown scientific frontiers"
+        >
+          <span class="map-ring one"></span>
+          <span class="map-ring two"></span>
+          <span class="map-ring three"></span>
+          <span class="map-centre"></span>
+
+          <span class="map-label label-one">
+            Cosmos
+          </span>
+
+          <span class="map-label label-two">
+            Consciousness
+          </span>
+
+          <span class="map-label label-three">
+            Origin
+          </span>
+
+          <span class="map-label label-four">
+            Infinity
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <section
+      class="archive"
+      id="archive"
+      aria-labelledby="archive-title"
+    >
+      <div class="archive-heading reveal">
+        <h2 id="archive-title">
+          Ten records
+          <br>
+          from the frontier.
+        </h2>
+
+        <p class="archive-description">
+          These records do not pretend to
+          resolve the questions.
+
+          They show what we have observed,
+          what remains uncertain and where
+          evidence ends before speculation
+          begins.
+        </p>
+      </div>
+
+      <div class="controls reveal">
+        <div
+          class="filters"
+          aria-label="Filter articles"
+        >
+          <button
+            class="filter"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All records
+          </button>
+
+          <button
+            class="filter"
+            type="button"
+            data-filter="cosmos"
+            aria-pressed="false"
+          >
+            Cosmos
+          </button>
+
+          <button
+            class="filter"
+            type="button"
+            data-filter="life"
+            aria-pressed="false"
+          >
+            Life
+          </button>
+
+          <button
+            class="filter"
+            type="button"
+            data-filter="reality"
+            aria-pressed="false"
+          >
+            Reality
+          </button>
+
+          <button
+            class="filter"
+            type="button"
+            data-filter="mind"
+            aria-pressed="false"
+          >
+            Mind
+          </button>
+        </div>
+
+        <label class="search">
+          <span class="skip-link">
+            Search the unknown archive
+          </span>
+
+          <input
+            id="archiveSearch"
+            type="search"
+            placeholder="Search the frontier…"
+            autocomplete="off"
+          >
+        </label>
+      </div>
+
+      <div
+        class="article-grid"
+        id="articleGrid"
+        aria-live="polite"
+      ></div>
+
+      <p
+        class="empty-state"
+        id="emptyState"
+      >
+        That question has not appeared here
+        yet. Search another frontier.
+      </p>
+    </section>
+
+    <!-- CLOSING -->
+
+    <section class="closing reveal">
+      <div class="closing-inner">
+        <p class="eyebrow">
+          The final colour is not a conclusion
+        </p>
+
+        <h2>
+          Leave room
+          <br>
+          for what is real.
+        </h2>
+
+        <p>
+          The unknown does not become
+          smaller when we cover it with
+          confidence.
+
+          Let the unanswered question
+          remain sharp.
+
+          Let it disturb certainty, refine
+          the instrument and demand another
+          attempt.
+
+          Curiosity begins where performance
+          ends and honest contact with
+          mystery is allowed to remain.
+        </p>
+
+        <div
+          class="closing-mark"
+          aria-hidden="true"
+        ></div>
+
+        <a
+          class="closing-link"
+          href="../surya-lok.html"
+        >
+          Return to the seven truths
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>
+      Jigyasa Verse · The Constant Light
+    </span>
+
+    <span>
+      The unknown is a boundary—and an opening.
+    </span>
+  </footer>
+
+  <!-- POPUP -->
+
+  <dialog
+    id="articleDialog"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      class="modal-close"
+      id="modalClose"
+      type="button"
+      aria-label="Close article preview"
+    >
+      ×
+    </button>
+
+    <div class="modal-layout">
+      <div class="modal-media">
+        <img
+          id="modalImage"
+          src=""
+          alt=""
+        >
+      </div>
+
+      <div class="modal-content">
+        <p
+          class="modal-meta"
+          id="modalMeta"
+        ></p>
+
+        <h2
+          class="modal-title"
+          id="modalTitle"
+        ></h2>
+
+        <p
+          class="modal-summary"
+          id="modalSummary"
+        ></p>
+
+        <p
+          class="modal-question"
+          id="modalQuestion"
+        ></p>
+
+        <a
+          class="modal-link"
+          id="modalLink"
+          href="#"
+        >
+          Enter the full record ↗
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    /* ========================================
+       YOUR TEN UNKNOWN ARTICLES
+    ======================================== */
+
+    const unknownArticles = [
+      {
+        number: "Record 01",
+
+        category: "cosmos",
+
+        categoryLabel: "Cosmos",
+
+        kicker:
+          "Gravity without visible matter",
+
+        title:
+          "Dark Matter: The Invisible Weight Holding Galaxies Together",
+
+        summary:
+          "Galaxies rotate and clusters bend light as if far more mass exists than telescopes can see. Dark matter names the gravitational evidence—not a confirmed identity for whatever produces it.",
+
+        question:
+          "How do we investigate something known primarily through the influence it leaves behind?",
+
+        readTime: "11 min read",
+
+        image:
+          "../images/surya/unknown/dark-matter.jpg",
+
+        imageAlt:
+          "A violet galaxy warped by an invisible gravitational field",
+
+        href:
+          "articles/dark-matter-invisible-weight.html",
+
+        accent: "#cf70f0"
+      },
+
+      {
+        number: "Record 02",
+
+        category: "cosmos",
+
+        categoryLabel: "Cosmos",
+
+        kicker:
+          "The expansion accelerates",
+
+        title:
+          "Dark Energy: The Name Given to a Cosmic Acceleration",
+
+        summary:
+          "Distant supernova observations indicate that cosmic expansion is accelerating. Dark energy describes the unknown cause associated with this behaviour, which dominates current models of the universe.",
+
+        question:
+          "What does it mean when most of the cosmic energy budget belongs to something we cannot yet explain?",
+
+        readTime: "11 min read",
+
+        image:
+          "../images/surya/unknown/dark-energy.jpg",
+
+        imageAlt:
+          "Violet galaxies separating as space expands between them",
+
+        href:
+          "articles/dark-energy-cosmic-acceleration.html",
+
+        accent: "#b650df"
+      },
+
+      {
+        number: "Record 03",
+
+        category: "cosmos",
+
+        categoryLabel: "Cosmos",
+
+        kicker:
+          "The horizon that keeps no witness",
+
+        title:
+          "Black Holes: Where Information Meets an Edge",
+
+        summary:
+          "Black holes unite extreme gravity, horizons and quantum questions. We can detect their effects and image surrounding matter, yet their interiors remain beyond direct observation.",
+
+        question:
+          "What can science say about a region from which no signal returns?",
+
+        readTime: "12 min read",
+
+        image:
+          "../images/surya/unknown/black-holes.jpg",
+
+        imageAlt:
+          "A bold violet accretion disk surrounding a black hole",
+
+        href:
+          "articles/black-holes-information-edge.html",
+
+        accent: "#df7cff"
+      },
+
+      {
+        number: "Record 04",
+
+        category: "mind",
+
+        categoryLabel: "Mind",
+
+        kicker:
+          "Matter becomes experience",
+
+        title:
+          "Consciousness: Why Processing Feels Like Something",
+
+        summary:
+          "Brains integrate information, guide behaviour and report inner states, but explaining why neural activity is accompanied by subjective experience remains a profound open problem.",
+
+        question:
+          "What kind of explanation could connect electrical activity with the existence of an inner world?",
+
+        readTime: "12 min read",
+
+        image:
+          "../images/surya/unknown/consciousness.jpg",
+
+        imageAlt:
+          "A human profile opening into a violet field of awareness",
+
+        href:
+          "articles/consciousness-inner-experience.html",
+
+        accent: "#bd63e1"
+      },
+
+      {
+        number: "Record 05",
+
+        category: "life",
+
+        categoryLabel: "Life",
+
+        kicker:
+          "Chemistry crosses a threshold",
+
+        title:
+          "The Origin of Life: Before Inheritance Began",
+
+        summary:
+          "Research explores how self-replication, compartments, metabolism and information could emerge from prebiotic chemistry. No single pathway has yet been established as the historical answer.",
+
+        question:
+          "At what point does complex chemistry become a system capable of evolving?",
+
+        readTime: "11 min read",
+
+        image:
+          "../images/surya/unknown/origin-of-life.jpg",
+
+        imageAlt:
+          "Violet molecular forms gathering into a primitive cell",
+
+        href:
+          "articles/origin-of-life-threshold.html",
+
+        accent: "#a94bd3"
+      },
+
+      {
+        number: "Record 06",
+
+        category: "reality",
+
+        categoryLabel: "Reality",
+
+        kicker:
+          "The direction we cannot reverse",
+
+        title:
+          "Time: Why Does the Universe Remember One Direction?",
+
+        summary:
+          "Many fundamental equations work in either temporal direction, yet entropy increases and experience distinguishes past from future. The nature of time remains physically and philosophically unsettled.",
+
+        question:
+          "Is time a fundamental feature of reality, an emergent relationship—or something else entirely?",
+
+        readTime: "10 min read",
+
+        image:
+          "../images/surya/unknown/time.jpg",
+
+        imageAlt:
+          "Violet rings of time bending across a dark cosmos",
+
+        href:
+          "articles/time-arrow-and-reality.html",
+
+        accent: "#c576e5"
+      },
+
+      {
+        number: "Record 07",
+
+        category: "reality",
+
+        categoryLabel: "Reality",
+
+        kicker:
+          "A measurement chooses an outcome",
+
+        title:
+          "Quantum Measurement: When Possibility Becomes a Result",
+
+        summary:
+          "Quantum theory predicts probabilities with extraordinary accuracy, yet interpretations disagree about what the mathematical state represents and what physically occurs during measurement.",
+
+        question:
+          "Does measurement reveal a property, create an outcome or place the observer inside a larger process?",
+
+        readTime: "12 min read",
+
+        image:
+          "../images/surya/unknown/quantum-measurement.jpg",
+
+        imageAlt:
+          "A violet quantum wave resolving into a single point",
+
+        href:
+          "articles/quantum-measurement-outcome.html",
+
+        accent: "#d68bf1"
+      },
+
+      {
+        number: "Record 08",
+
+        category: "cosmos",
+
+        categoryLabel: "Cosmos",
+
+        kicker:
+          "The beginning behind the observable beginning",
+
+        title:
+          "Cosmic Origins: What Came Before the Hot Big Bang?",
+
+        summary:
+          "The hot early universe is strongly supported, while inflation and other models address earlier conditions. Whether “before” is meaningful—and what set the initial state—remains open.",
+
+        question:
+          "Can an explanation of the universe avoid assuming something that itself requires explanation?",
+
+        readTime: "11 min read",
+
+        image:
+          "../images/surya/unknown/cosmic-origins.jpg",
+
+        imageAlt:
+          "A violet point expanding into the structure of the cosmos",
+
+        href:
+          "articles/cosmic-origins-before.html",
+
+        accent: "#e08df7"
+      },
+
+      {
+        number: "Record 09",
+
+        category: "life",
+
+        categoryLabel: "Life",
+
+        kicker:
+          "A silent galaxy",
+
+        title:
+          "The Fermi Paradox: Where Is Everybody?",
+
+        summary:
+          "The galaxy contains vast numbers of stars and planets, yet no confirmed evidence of extraterrestrial technology has reached us. The silence may reflect rarity, distance, timing, detection limits—or assumptions we have not recognised.",
+
+        question:
+          "Is the silence evidence about life, or evidence about the limits of how we search?",
+
+        readTime: "10 min read",
+
+        image:
+          "../images/surya/unknown/fermi-paradox.jpg",
+
+        imageAlt:
+          "A lone violet signal travelling through a silent star field",
+
+        href:
+          "articles/fermi-paradox-silent-galaxy.html",
+
+        accent: "#9e45c7"
+      },
+
+      {
+        number: "Record 10",
+
+        category: "reality",
+
+        categoryLabel: "Reality",
+
+        kicker:
+          "Beyond every finite boundary",
+
+        title:
+          "Infinity: A Tool, a Limit or Something Real?",
+
+        summary:
+          "Different infinities are rigorously studied in mathematics, while physics confronts infinities as limits, idealisations and possible signs that a theory has reached its domain boundary.",
+
+        question:
+          "When an equation produces infinity, has reality spoken—or has the model stopped knowing what to say?",
+
+        readTime: "9 min read",
+
+        image:
+          "../images/surya/unknown/infinity.jpg",
+
+        imageAlt:
+          "A luminous violet infinity form disappearing into darkness",
+
+        href:
+          "articles/infinity-tool-limit-reality.html",
+
+        accent: "#ef9aff"
+      }
+    ];
+
+    /* ========================================
+       SELECT ELEMENTS
+    ======================================== */
+
+    const articleGrid =
+      document.getElementById(
+        "articleGrid"
+      );
+
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
+
+    const archiveSearch =
+      document.getElementById(
+        "archiveSearch"
+      );
+
+    const filterButtons = [
+      ...document.querySelectorAll(
+        "[data-filter]"
+      )
+    ];
+
+    const articleDialog =
+      document.getElementById(
+        "articleDialog"
+      );
+
+    const modalImage =
+      document.getElementById(
+        "modalImage"
+      );
+
+    const modalMeta =
+      document.getElementById(
+        "modalMeta"
+      );
+
+    const modalTitle =
+      document.getElementById(
+        "modalTitle"
+      );
+
+    const modalSummary =
+      document.getElementById(
+        "modalSummary"
+      );
+
+    const modalQuestion =
+      document.getElementById(
+        "modalQuestion"
+      );
+
+    const modalLink =
+      document.getElementById(
+        "modalLink"
+      );
+
+    let activeFilter = "all";
+
+    /* ========================================
+       CREATE ARTICLE CARDS
+    ======================================== */
+
+    function createArticleCards() {
+      articleGrid.innerHTML =
+        unknownArticles
+          .map((article, index) => {
+            const searchableText = `
+              ${article.title}
+              ${article.summary}
+              ${article.categoryLabel}
+              ${article.kicker}
+            `
+              .toLowerCase()
+              .replace(/\s+/g, " ");
+
+            return `
+              <article
+                class="article-card reveal"
+                data-category="${article.category}"
+                data-search="${searchableText}"
+                style="--accent: ${article.accent};"
+              >
+                <img
+                  class="card-image"
+                  src="${article.image}"
+                  alt="${article.imageAlt}"
+                  loading="lazy"
+                >
+
+                <div class="card-inner">
+                  <div class="card-top">
+                    <span class="card-number">
+                      ${article.number}
+                    </span>
+
+                    <span class="card-category">
+                      ${article.categoryLabel}
+                    </span>
+                  </div>
+
+                  <div class="card-content">
+                    <p class="card-kicker">
+                      ${article.kicker}
+                    </p>
+
+                    <h3 class="card-title">
+                      ${article.title}
+                    </h3>
+
+                    <p class="card-summary">
+                      ${article.summary}
+                    </p>
+
+                    <div class="card-actions">
+                      <a
+                        class="read-link"
+                        href="${article.href}"
+                        aria-label="Read ${article.title}"
+                      >
+                        Read · ${article.readTime}
+                      </a>
+
+                      <button
+                        class="quick-view"
+                        type="button"
+                        data-preview="${index}"
+                        aria-label="Preview ${article.title}"
+                      >
+                        Quick view
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+      articleGrid
+        .querySelectorAll(
+          ".card-image"
+        )
+        .forEach((image) => {
+          image.addEventListener(
+            "error",
+            () => {
+              image.style.display =
+                "none";
+            }
+          );
+        });
+
+      articleGrid
+        .querySelectorAll(
+          "[data-preview]"
+        )
+        .forEach((button) => {
+          button.addEventListener(
+            "click",
+            () => {
+              openArticlePreview(
+                Number(
+                  button.dataset.preview
+                )
+              );
+            }
+          );
+        });
+
+      observeRevealElements();
+    }
+
+    /* ========================================
+       FILTER AND SEARCH
+    ======================================== */
+
+    function filterArticles() {
+      const searchTerm =
+        archiveSearch.value
+          .trim()
+          .toLowerCase();
+
+      let visibleArticles = 0;
+
+      articleGrid
+        .querySelectorAll(
+          ".article-card"
+        )
+        .forEach((card) => {
+          const categoryMatches =
+            activeFilter === "all" ||
+            card.dataset.category ===
+              activeFilter;
+
+          const searchMatches =
+            searchTerm === "" ||
+            card.dataset.search.includes(
+              searchTerm
+            );
+
+          const shouldShow =
+            categoryMatches &&
+            searchMatches;
+
+          card.hidden = !shouldShow;
+
+          if (shouldShow) {
+            visibleArticles += 1;
+          }
+        });
+
+      emptyState.style.display =
+        visibleArticles > 0
+          ? "none"
+          : "block";
+    }
+
+    filterButtons.forEach(
+      (button) => {
+        button.addEventListener(
+          "click",
+          () => {
+            activeFilter =
+              button.dataset.filter;
+
+            filterButtons.forEach(
+              (filterButton) => {
+                filterButton.setAttribute(
+                  "aria-pressed",
+                  String(
+                    filterButton === button
+                  )
+                );
+              }
+            );
+
+            filterArticles();
+          }
+        );
+      }
+    );
+
+    archiveSearch.addEventListener(
+      "input",
+      filterArticles
+    );
+
+    /* ========================================
+       ARTICLE POPUP
+    ======================================== */
+
+    function openArticlePreview(index) {
+      const article =
+        unknownArticles[index];
+
+      if (!article) {
+        return;
+      }
+
+      modalImage.src =
+        article.image;
+
+      modalImage.alt =
+        article.imageAlt;
+
+      modalMeta.textContent = `
+        ${article.number}
+        ·
+        ${article.categoryLabel}
+        ·
+        ${article.readTime}
+      `;
+
+      modalTitle.textContent =
+        article.title;
+
+      modalSummary.textContent =
+        article.summary;
+
+      modalQuestion.textContent =
+        article.question;
+
+      modalLink.href =
+        article.href;
+
+      modalImage.onerror = () => {
+        modalImage.style.display =
+          "none";
+      };
+
+      modalImage.onload = () => {
+        modalImage.style.display =
+          "block";
+      };
+
+      if (
+        typeof articleDialog.showModal ===
+        "function"
+      ) {
+        articleDialog.showModal();
+      }
+    }
+
+    document
+      .getElementById("modalClose")
+      .addEventListener(
+        "click",
+        () => {
+          articleDialog.close();
+        }
+      );
+
+    articleDialog.addEventListener(
+      "click",
+      (event) => {
+        if (
+          event.target ===
+          articleDialog
+        ) {
+          articleDialog.close();
+        }
+      }
+    );
+
+    /* ========================================
+       SCROLL REVEALS
+    ======================================== */
+
+    function observeRevealElements() {
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      const revealElements =
+        document.querySelectorAll(
+          ".reveal:not(.visible)"
+        );
+
+      if (
+        reducedMotion ||
+        !(
+          "IntersectionObserver"
+          in window
+        )
+      ) {
+        revealElements.forEach(
+          (element) => {
+            element.classList.add(
+              "visible"
+            );
+          }
+        );
+
+        return;
+      }
+
+      const observer =
+        new IntersectionObserver(
+          (
+            entries,
+            currentObserver
+          ) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target.classList.add(
+                    "visible"
+                  );
+
+                  currentObserver.unobserve(
+                    entry.target
+                  );
+                }
+              }
+            );
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+      revealElements.forEach(
+        (element) => {
+          observer.observe(element);
+        }
+      );
+    }
+
+    /* ========================================
+       CREATE STAR FIELD
+    ======================================== */
+
+    function createStars() {
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (reducedMotion) {
+        return;
+      }
+
+      const starField =
+        document.getElementById(
+          "starField"
+        );
+
+      for (
+        let starNumber = 0;
+        starNumber < 85;
+        starNumber += 1
+      ) {
+        const star =
+          document.createElement(
+            "span"
+          );
+
+        star.className = "star";
+
+        star.style.left =
+          `${Math.random() * 100}%`;
+
+        star.style.top =
+          `${Math.random() * 100}%`;
+
+        star.style.setProperty(
+          "--size",
+          `${1 + Math.random() * 3}px`
+        );
+
+        star.style.setProperty(
+          "--opacity",
+          `${0.2 + Math.random() * 0.7}`
+        );
+
+        star.style.setProperty(
+          "--duration",
+          `${2.5 + Math.random() * 5}s`
+        );
+
+        star.style.setProperty(
+          "--delay",
+          `${Math.random() * -7}s`
+        );
+
+        starField.appendChild(star);
+      }
+    }
+
+    /* START PAGE */
+
+    createArticleCards();
+    createStars();
+    observeRevealElements();
+  </script>
+</body>
+</html>
