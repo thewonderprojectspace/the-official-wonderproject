@@ -1,0 +1,2779 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="An immersive Jigyasa Verse field report about organisms that thrive at the edges of life."
+  >
+
+  <meta name="theme-color" content="#180406">
+
+  <title>
+    Breaking News: Life Found in Impossible Places | Jigyasa Verse
+  </title>
+
+  <style>
+    :root {
+      --ink: #fff7ef;
+      --muted: #dcbfc0;
+      --paper: #fff7ed;
+
+      --black-red: #130305;
+      --night-red: #230609;
+      --blood: #760f1d;
+
+      --signal: #ef233c;
+      --coral: #ff6557;
+      --gold: #ffc857;
+
+      --line: rgba(255, 239, 229, 0.18);
+
+      --display: Georgia, "Times New Roman", serif;
+
+      --sans:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--black-red);
+      font-family: var(--sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(239, 35, 60, 0.16),
+          transparent 34rem
+        ),
+        linear-gradient(
+          115deg,
+          rgba(255, 255, 255, 0.025),
+          transparent 40%
+        );
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      opacity: 0.16;
+      mix-blend-mode: soft-light;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      color: #160305;
+      background: var(--gold);
+    }
+
+    /* =========================
+       ACCESSIBILITY
+    ========================== */
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: -5rem;
+      left: 1rem;
+      padding: 0.75rem 1rem;
+      color: #160305;
+      background: white;
+      font-weight: 800;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* =========================
+       READING PROGRESS
+    ========================== */
+
+    .progress {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--gold),
+          var(--coral),
+          var(--signal)
+        );
+
+      box-shadow: 0 0 18px var(--signal);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .masthead {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      padding:
+        1.25rem
+        clamp(1rem, 5vw, 5rem);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      color: var(--ink);
+      text-decoration: none;
+
+      font-family: var(--display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .brand-fallback {
+      display: none;
+      position: relative;
+
+      width: 38px;
+      height: 38px;
+
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+
+      box-shadow:
+        inset -8px 0 0 var(--signal);
+    }
+
+    .edition {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       BREAKING NEWS HERO
+    ========================== */
+
+    .breaking {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      min-height: 100svh;
+
+      display: grid;
+      align-items: end;
+
+      padding:
+        9rem
+        clamp(1rem, 7vw, 7rem)
+        5rem;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(17, 2, 4, 0.96) 0%,
+          rgba(17, 2, 4, 0.72) 50%,
+          rgba(17, 2, 4, 0.18) 100%
+        ),
+        radial-gradient(
+          circle at 78% 40%,
+          #a11a24 0 4%,
+          #520812 14%,
+          #210308 34%,
+          #100103 66%
+        );
+    }
+
+    .breaking::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      width: min(56vw, 780px);
+      aspect-ratio: 1;
+
+      right: -8vw;
+      top: 10vh;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 37% 30%,
+          rgba(255, 200, 87, 0.8),
+          transparent 4%
+        ),
+        radial-gradient(
+          circle at 50% 50%,
+          #f13b34 0 14%,
+          #991321 35%,
+          #3b0710 65%,
+          #180305 72%
+        );
+
+      box-shadow:
+        0 0 120px rgba(239, 35, 60, 0.28);
+
+      filter: saturate(0.9);
+    }
+
+    .breaking::after {
+      content: "LIVE";
+
+      position: absolute;
+      z-index: -1;
+      right: clamp(1rem, 5vw, 5rem);
+      bottom: 4rem;
+
+      color: rgba(255, 255, 255, 0.06);
+
+      font-size: clamp(7rem, 22vw, 22rem);
+      font-weight: 950;
+      line-height: 0.7;
+      letter-spacing: -0.08em;
+    }
+
+    .hero-copy {
+      width: min(900px, 100%);
+    }
+
+    .live-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      padding: 0.45rem 0.8rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+      background:
+        rgba(76, 7, 14, 0.7);
+
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .live-label::before {
+      content: "";
+
+      width: 0.55rem;
+      height: 0.55rem;
+
+      border-radius: 50%;
+      background: #ff243f;
+
+      box-shadow:
+        0 0 0 0
+        rgba(255, 36, 63, 0.7);
+
+      animation: live 1.5s infinite;
+    }
+
+    @keyframes live {
+      70% {
+        box-shadow:
+          0 0 0 10px
+          rgba(255, 36, 63, 0);
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 880px;
+
+      margin:
+        1.2rem 0
+        1.4rem;
+
+      font-family: var(--display);
+      font-size: clamp(4rem, 10.5vw, 9.8rem);
+      font-weight: 500;
+      line-height: 0.82;
+      letter-spacing: -0.065em;
+    }
+
+    h1 em {
+      color: var(--coral);
+      font-weight: 400;
+    }
+
+    .standfirst {
+      max-width: 720px;
+      margin: 0;
+
+      color: #f5dad7;
+
+      font-family: var(--display);
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      line-height: 1.45;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+
+      margin-top: 2rem;
+
+      color: var(--muted);
+
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue {
+      display: inline-block;
+
+      margin-top: 2.2rem;
+      padding-bottom: 0.3rem;
+
+      border-bottom:
+        1px solid
+        var(--coral);
+
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    /* =========================
+       NEWS TICKER
+    ========================== */
+
+    .ticker {
+      position: sticky;
+      z-index: 35;
+      top: 0;
+
+      overflow: hidden;
+      white-space: nowrap;
+
+      color: #210205;
+      background: var(--coral);
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+
+      border-bottom:
+        1px solid
+        #240307;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      min-width: 200%;
+      padding: 0.62rem 0;
+
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      animation:
+        ticker 28s
+        linear infinite;
+    }
+
+    .ticker-track span {
+      margin-right: 4rem;
+    }
+
+    @keyframes ticker {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================
+       NEWSROOM INTRODUCTION
+    ========================== */
+
+    .newsroom {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.55fr)
+        minmax(260px, 0.65fr);
+
+      gap: clamp(2rem, 7vw, 7rem);
+
+      width:
+        min(
+          1180px,
+          calc(100% - 2rem)
+        );
+
+      margin: 0 auto;
+
+      padding:
+        clamp(5rem, 9vw, 9rem)
+        0;
+    }
+
+    .kicker {
+      margin: 0 0 0.75rem;
+
+      color: var(--coral);
+
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .newsroom h2,
+    .closing h2,
+    .sources h2 {
+      margin: 0 0 1.5rem;
+
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    .lede {
+      max-width: 760px;
+
+      font-family: var(--display);
+      font-size: clamp(1.28rem, 2vw, 1.7rem);
+      line-height: 1.5;
+    }
+
+    .copy p {
+      max-width: 70ch;
+      color: #ead8d5;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+
+      padding:
+        0.22rem
+        0.55rem
+        0 0;
+
+      color: var(--coral);
+
+      font-family: var(--display);
+      font-size: 5.6rem;
+      line-height: 0.68;
+    }
+
+    .desk-note {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+
+      padding: 1.5rem;
+
+      color: #2a070a;
+      background: var(--paper);
+
+      transform: rotate(1deg);
+
+      box-shadow:
+        0 24px 70px
+        rgba(0, 0, 0, 0.32);
+    }
+
+    .desk-note strong {
+      display: block;
+      margin-bottom: 0.55rem;
+
+      color: #a71223;
+
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .desk-note p {
+      margin: 0;
+
+      font-family: var(--display);
+      font-size: 1.12rem;
+    }
+
+    /* =========================
+       ENVIRONMENTAL REPORTS
+    ========================== */
+
+    .field-report {
+      --accent: #ff6557;
+      --accent-soft: #ffc0b6;
+      --scene: #270508;
+
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      min-height: 100svh;
+
+      display: grid;
+      place-items: center;
+
+      padding:
+        clamp(5rem, 10vw, 10rem)
+        clamp(1rem, 6vw, 6rem);
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+      background: var(--scene);
+    }
+
+    .field-report::before {
+      content: "";
+
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+
+      opacity: 0.9;
+      background: var(--environment-art);
+    }
+
+    .field-report::after {
+      content: "";
+
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(12, 2, 4, 0.94),
+          rgba(12, 2, 4, 0.58) 60%,
+          rgba(12, 2, 4, 0.2)
+        );
+    }
+
+    /* Heat world */
+
+    .heat {
+      --accent: #ff6138;
+      --accent-soft: #ffd08f;
+      --scene: #240300;
+
+      --environment-art:
+        radial-gradient(
+          circle at 78% 63%,
+          #ffbd33 0 2%,
+          #ff4d23 8%,
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 84% 52%,
+          #f02213 0,
+          transparent 35%
+        ),
+        linear-gradient(
+          140deg,
+          #1e0100 15%,
+          #6d0a02 65%,
+          #160100
+        );
+    }
+
+    /* Frozen world */
+
+    .cold {
+      --accent: #7bdff2;
+      --accent-soft: #d9f7ff;
+      --scene: #04101b;
+
+      --environment-art:
+        linear-gradient(
+          128deg,
+          transparent 0 48%,
+          rgba(187, 241, 255, 0.23) 49% 52%,
+          transparent 53%
+        ),
+        radial-gradient(
+          circle at 79% 37%,
+          #76d8ee 0,
+          #174b66 22%,
+          transparent 48%
+        ),
+        linear-gradient(
+          145deg,
+          #05101c,
+          #0d334b 65%,
+          #02080f
+        );
+    }
+
+    /* Salt world */
+
+    .salt {
+      --accent: #ffa6cf;
+      --accent-soft: #ffe0ef;
+      --scene: #220717;
+
+      --environment-art:
+        repeating-linear-gradient(
+          25deg,
+          transparent 0 55px,
+          rgba(255, 255, 255, 0.06) 56px 57px
+        ),
+        radial-gradient(
+          circle at 78% 45%,
+          #ff9dc5 0,
+          #8f2c68 28%,
+          transparent 54%
+        ),
+        linear-gradient(
+          140deg,
+          #1b0515,
+          #40102d 68%,
+          #0d030a
+        );
+    }
+
+    /* Acid world */
+
+    .acid {
+      --accent: #d9ff57;
+      --accent-soft: #efffb8;
+      --scene: #101600;
+
+      --environment-art:
+        radial-gradient(
+          circle at 80% 28%,
+          rgba(226, 255, 94, 0.8) 0 2%,
+          transparent 3%
+        ),
+        radial-gradient(
+          circle at 75% 45%,
+          #a4cf24 0,
+          #3d5d09 24%,
+          transparent 48%
+        ),
+        linear-gradient(
+          150deg,
+          #090f00,
+          #293d08 65%,
+          #090500
+        );
+    }
+
+    /* Pressure world */
+
+    .pressure {
+      --accent: #5fc5ff;
+      --accent-soft: #c9edff;
+      --scene: #020817;
+
+      --environment-art:
+        radial-gradient(
+          circle at 79% 50%,
+          rgba(102, 209, 255, 0.35) 0 2%,
+          transparent 3%
+        ),
+        repeating-radial-gradient(
+          circle at 80% 50%,
+          transparent 0 42px,
+          rgba(102, 209, 255, 0.08) 43px 45px
+        ),
+        linear-gradient(
+          145deg,
+          #01040c,
+          #042746 70%,
+          #00040a
+        );
+    }
+
+    /* Multiple extremes */
+
+    .poly {
+      --accent: #ff4d9d;
+      --accent-soft: #ffc2dd;
+      --scene: #19031d;
+
+      --environment-art:
+        conic-gradient(
+          from 90deg at 80% 45%,
+          transparent,
+          rgba(255, 34, 139, 0.35),
+          transparent 18%,
+          rgba(116, 65, 255, 0.32),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 80% 45%,
+          #ff3b88 0,
+          #5b0b5f 24%,
+          transparent 48%
+        ),
+        linear-gradient(
+          145deg,
+          #100113,
+          #2b0732 70%,
+          #080109
+        );
+    }
+
+    .report-inner {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(260px, 0.7fr);
+
+      gap: clamp(2.5rem, 7vw, 7rem);
+
+      width: min(1180px, 100%);
+    }
+
+    .report-number {
+      color: var(--accent);
+
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .field-report h2 {
+      margin: 0.75rem 0 0.4rem;
+
+      font-family: var(--display);
+      font-size: clamp(3.8rem, 8.5vw, 8rem);
+      font-weight: 500;
+      line-height: 0.86;
+      letter-spacing: -0.055em;
+    }
+
+    .field-report h2 span {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 0.38em;
+      letter-spacing: 0.02em;
+    }
+
+    .location {
+      margin: 1rem 0 2rem;
+
+      color: var(--accent-soft);
+
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .field-report p {
+      max-width: 66ch;
+    }
+
+    .correspondent {
+      margin: 1.5rem 0;
+
+      padding:
+        1rem 0
+        1rem 1.25rem;
+
+      border-left:
+        3px solid
+        var(--accent);
+
+      font-family: var(--display);
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      line-height: 1.45;
+    }
+
+    .correspondent strong {
+      display: block;
+      margin-bottom: 0.35rem;
+
+      color: var(--accent);
+
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .fact-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+
+      margin: 2rem 0;
+
+      background:
+        rgba(255, 255, 255, 0.15);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+    }
+
+    .fact-strip div {
+      padding: 1rem;
+      background: rgba(10, 2, 4, 0.7);
+    }
+
+    .fact-strip small {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .fact-strip b {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .survival-box {
+      padding: 1.3rem;
+
+      color: #180305;
+      background: var(--accent-soft);
+
+      box-shadow:
+        10px 10px 0
+        rgba(0, 0, 0, 0.22);
+    }
+
+    .survival-box h3 {
+      margin: 0 0 0.4rem;
+
+      font-size: 0.8rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .survival-box p {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .side-column {
+      align-self: center;
+    }
+
+    /* =========================
+       IMAGE PLACEMENTS
+    ========================== */
+
+    .image-slot {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 360px;
+
+      display: grid;
+      place-items: end start;
+
+      padding: 1.2rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.32);
+
+      background:
+        linear-gradient(
+          transparent 55%,
+          rgba(0, 0, 0, 0.74)
+        ),
+        radial-gradient(
+          circle at 50% 38%,
+          var(--accent),
+          transparent 2%,
+          rgba(255, 255, 255, 0.08) 3%,
+          transparent 32%
+        ),
+        rgba(0, 0, 0, 0.28);
+
+      box-shadow:
+        20px 24px 70px
+        rgba(0, 0, 0, 0.28);
+    }
+
+    .image-slot::before {
+      content: "IMAGE FIELD";
+
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      color: var(--accent);
+
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .image-slot figcaption {
+      position: relative;
+
+      max-width: 30ch;
+
+      color: #f7eaea;
+      font-size: 0.75rem;
+    }
+
+    .replace-note {
+      opacity: 0.72;
+    }
+
+    /* =========================
+       EXPANDABLE EXPLANATIONS
+    ========================== */
+
+    details {
+      margin-top: 1rem;
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.23);
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.23);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 1rem 0;
+
+      color: var(--accent-soft);
+      font-weight: 900;
+
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      float: right;
+
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin-top: 0;
+
+      color: #eadbdd;
+      font-size: 0.93rem;
+    }
+
+    /* =========================
+       TARDIGRADE BULLETIN
+    ========================== */
+
+    .bulletin {
+      display: grid;
+
+      grid-template-columns:
+        0.8fr
+        1.2fr;
+
+      gap: clamp(2rem, 6vw, 6rem);
+
+      width:
+        min(
+          1180px,
+          calc(100% - 2rem)
+        );
+
+      margin:
+        clamp(4rem, 9vw, 9rem)
+        auto;
+
+      padding:
+        clamp(2rem, 5vw, 5rem);
+
+      color: #24050a;
+      background: var(--paper);
+
+      box-shadow:
+        22px 30px 0
+        #6d0c18;
+    }
+
+    .bulletin h2 {
+      margin: 0;
+
+      font-family: var(--display);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+
+    .bulletin .kicker {
+      color: #b11325;
+    }
+
+    .bulletin p {
+      max-width: 65ch;
+    }
+
+    .stamp {
+      display: inline-block;
+
+      margin-top: 1rem;
+      padding: 0.45rem 0.75rem;
+
+      color: #a20e20;
+
+      border:
+        3px double
+        #a20e20;
+
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      transform: rotate(-3deg);
+    }
+
+    /* =========================
+       WHY IT MATTERS
+    ========================== */
+
+    .why-matters {
+      padding:
+        clamp(5rem, 10vw, 10rem)
+        clamp(1rem, 6vw, 6rem);
+
+      background:
+        linear-gradient(
+          150deg,
+          #29070a,
+          #0f0204 70%
+        );
+    }
+
+    .why-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+    }
+
+    .why-matters h2 {
+      max-width: 900px;
+
+      margin: 0 0 3rem;
+
+      font-family: var(--display);
+      font-size: clamp(3.1rem, 7vw, 6.8rem);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      min-height: 290px;
+      padding: 1.6rem;
+
+      border: 1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .card b {
+      color: var(--coral);
+
+      font-family: var(--display);
+      font-size: 2.2rem;
+    }
+
+    .card h3 {
+      margin: 2rem 0 0.5rem;
+
+      font-family: var(--display);
+      font-size: 1.55rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* =========================
+       CONCLUSION
+    ========================== */
+
+    .closing {
+      width:
+        min(
+          980px,
+          calc(100% - 2rem)
+        );
+
+      margin: auto;
+
+      padding:
+        clamp(6rem, 13vw, 13rem)
+        0;
+
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-size: clamp(3.4rem, 8vw, 8rem);
+    }
+
+    .closing p {
+      max-width: 690px;
+
+      margin:
+        1.5rem auto 0;
+
+      color: #ead0d2;
+
+      font-family: var(--display);
+      font-size: 1.35rem;
+    }
+
+    /* =========================
+       REFERENCES
+    ========================== */
+
+    .sources {
+      padding:
+        clamp(4rem, 8vw, 8rem)
+        clamp(1rem, 7vw, 7rem);
+
+      color: #2a080c;
+      background: var(--paper);
+    }
+
+    .sources-inner {
+      width: min(1040px, 100%);
+      margin: auto;
+    }
+
+    .sources h2 {
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+    }
+
+    .sources ol {
+      padding-left: 1.3rem;
+    }
+
+    .sources li {
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .sources a {
+      color: #a20e20;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+
+    .source-note {
+      max-width: 72ch;
+      color: #654c4c;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+
+      padding:
+        2rem
+        clamp(1rem, 5vw, 5rem);
+
+      color: var(--muted);
+      background: #0c0103;
+
+      font-size: 0.75rem;
+    }
+
+    /* =========================
+       SCROLL REVEALS
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 820px) {
+      .newsroom,
+      .report-inner,
+      .bulletin {
+        grid-template-columns: 1fr;
+      }
+
+      .desk-note {
+        position: static;
+        transform: rotate(0.5deg);
+      }
+
+      .side-column {
+        width: 100%;
+      }
+
+      .image-slot {
+        min-height: 290px;
+      }
+
+      .fact-strip,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+
+      .breaking::before {
+        width: 95vw;
+        right: -35vw;
+        opacity: 0.66;
+      }
+
+      .edition {
+        display: none;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#article">
+    Skip to the report
+  </a>
+
+  <div
+    class="progress"
+    id="progress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="masthead">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Jigyasa Verse home"
+    >
+
+      <!--
+        Change this path to the path of
+        your real moon-and-pencil logo.
+      -->
+
+      <img
+        src="images/jigyasa-verse-logo.png"
+        alt=""
+        onerror="
+          this.style.display='none';
+          this.nextElementSibling.style.display='block';
+        "
+      >
+
+      <span
+        class="brand-fallback"
+        aria-hidden="true"
+      ></span>
+
+      <span>Jigyasa Verse</span>
+
+    </a>
+
+    <div class="edition">
+      The Red Edition · Truth of Survival
+      <br>
+      Special science broadcast
+    </div>
+
+  </header>
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section
+    class="breaking"
+    aria-labelledby="headline"
+  >
+
+    <div class="hero-copy reveal">
+
+      <span class="live-label">
+        Breaking news · Planet Earth
+      </span>
+
+      <h1 id="headline">
+        Life found in
+        <em>impossible</em>
+        places.
+      </h1>
+
+      <p class="standfirst">
+        Our correspondents have entered boiling springs,
+        frozen seas, acid pools, salt deserts and the
+        deepest ocean trenches. The humans are retreating.
+        The microbes are doing wonderfully.
+      </p>
+
+      <div class="hero-meta">
+        <span>Approx. 10-minute read</span>
+        <span>Filed under: Life at the limits</span>
+        <span>No science background required</span>
+      </div>
+
+      <a class="scroll-cue" href="#article">
+        Enter the broadcast ↓
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       BREAKING NEWS TICKER
+  ========================== -->
+
+  <div
+    class="ticker"
+    aria-label="Latest science headlines"
+  >
+
+    <div class="ticker-track">
+
+      <span>
+        Life refuses to obey our comfort zone
+      </span>
+
+      <span>
+        “Extreme” may be a human word
+      </span>
+
+      <span>
+        Microbes report: conditions excellent
+      </span>
+
+      <span>
+        Stand by for field reports
+      </span>
+
+      <span aria-hidden="true">
+        Life refuses to obey our comfort zone
+      </span>
+
+      <span aria-hidden="true">
+        “Extreme” may be a human word
+      </span>
+
+      <span aria-hidden="true">
+        Microbes report: conditions excellent
+      </span>
+
+      <span aria-hidden="true">
+        Stand by for field reports
+      </span>
+
+    </div>
+
+  </div>
+
+  <main id="article">
+
+    <article>
+
+      <!-- =========================
+           NEWSROOM INTRODUCTION
+      ========================== -->
+
+      <section class="newsroom">
+
+        <div class="copy reveal">
+
+          <p class="kicker">
+            From the central desk
+          </p>
+
+          <h2>
+            First, a correction to everything we assumed.
+          </h2>
+
+          <p class="lede dropcap">
+            For a long time, humans drew a comfortable
+            little boundary around life. Not too hot.
+            Not too cold. Give it water, light, gentle
+            chemistry and room to breathe. Then life was
+            found outside the boundary.
+          </p>
+
+          <p>
+            Extremophiles are organisms that thrive in
+            conditions most familiar life would find hostile
+            or lethal. The name joins <em>extreme</em> with
+            <em>phile</em>—“loving.” Many do not merely
+            withstand their worlds; those worlds are where
+            they grow best.
+          </p>
+
+          <p>
+            Most are microorganisms, but extremophiles occur
+            across all three domains of life: Bacteria,
+            Archaea and Eukarya. They have been discovered
+            in intense heat, deep cold, concentrated salt,
+            crushing pressure, severe acidity and alkalinity—
+            and sometimes several extremes at once.
+          </p>
+
+          <p>
+            One warning before we send you into the field:
+            “extreme” describes the environment from our
+            point of view. Oxygen is essential to us, for
+            example, but it is absent—or even harmful—in
+            the lives of some organisms. We are not the
+            universal measurement of what counts as normal.
+          </p>
+
+        </div>
+
+        <aside class="desk-note reveal">
+
+          <strong>
+            Newsroom vocabulary
+          </strong>
+
+          <p>
+            <b>Extremophile:</b>
+            an organism that grows best under one or more
+            extreme conditions.
+
+            <br><br>
+
+            <b>Extremotolerant:</b>
+            an organism that can endure an extreme but
+            usually prefers less severe conditions.
+          </p>
+
+        </aside>
+
+      </section>
+
+      <!-- =========================
+           REPORT 1: THERMOPHILES
+      ========================== -->
+
+      <section
+        class="field-report heat"
+        id="heat"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 01 · Connection unstable
+            </span>
+
+            <h2>
+              Thermophiles
+              <span>The heat lovers</span>
+            </h2>
+
+            <p class="location">
+              Live from: hot springs and hydrothermal vents
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, shouting over steam
+              </strong>
+
+              “The water beside me could burn human skin.
+              I am being asked to step back. The local
+              microorganisms appear completely unbothered.”
+
+            </div>
+
+            <p>
+              Heat usually causes the delicate machinery of
+              a cell to lose its shape. Proteins can unfold;
+              membranes can become unstable. Thermophiles
+              answer with molecular equipment built for
+              heat—proteins and enzymes that remain useful
+              where ours would fail.
+            </p>
+
+            <p>
+              In Yellowstone hot springs, the bacterium
+              <em>Thermus aquaticus</em> grows beautifully
+              around 70°C. Its heat-stable enzyme later
+              transformed molecular biology: scientists use
+              a related tool, Taq polymerase, to copy DNA
+              through repeated heating cycles.
+            </p>
+
+            <p>
+              At deep-sea vents, superheated, mineral-rich
+              water meets the cold ocean. Microbial life
+              occupies habitable gradients around these
+              vents, and entire food webs can be supported
+              by chemical energy rather than sunlight.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Thermophile facts"
+            >
+
+              <div>
+                <small>Main threat</small>
+                <b>Heat damages cell machinery</b>
+              </div>
+
+              <div>
+                <small>Microbial answer</small>
+                <b>Heat-stable molecules</b>
+              </div>
+
+              <div>
+                <small>Case file</small>
+                <b><em>T. aquaticus</em></b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                Your body would overheat rapidly and hot
+                water could cause severe injury. For a
+                thermophile, however, cooler conditions may
+                be the uncomfortable ones.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                a red-orange hot spring or hydrothermal
+                vent with a small inset microscope image.
+
+                <span class="replace-note">
+                  Replace this panel with a licensed image
+                  and credit it here.
+                </span>
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                How can anything live without sunlight?
+              </summary>
+
+              <p>
+                Some vent microbes use chemical reactions
+                involving substances released from Earth’s
+                crust. This process supports ecosystems in
+                darkness, where photosynthesis cannot
+                operate.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           REPORT 2: PSYCHROPHILES
+      ========================== -->
+
+      <section
+        class="field-report cold"
+        id="cold"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 02 · Audio freezing
+            </span>
+
+            <h2>
+              Psychrophiles
+              <span>The cold lovers</span>
+            </h2>
+
+            <p class="location">
+              Live from: polar ice and the deep ocean
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, teeth chattering
+              </strong>
+
+              “Our equipment is slowing. Ice is forming.
+              The microorganisms beneath it are still
+              carrying on with their day.”
+
+            </div>
+
+            <p>
+              Cold is not simply the absence of warmth.
+              It slows chemical reactions, stiffens cell
+              membranes and turns water into crystals sharp
+              enough to damage cellular structures.
+              Psychrophiles—organisms that grow best in
+              cold—have evolved ways to keep their inner
+              chemistry moving.
+            </p>
+
+            <p>
+              Some make antifreeze-like proteins or other
+              protective substances that reduce the danger
+              of ice. Their cell membranes remain flexible
+              at low temperatures, and their enzymes are
+              shaped to work when most biological reactions
+              become painfully slow.
+            </p>
+
+            <p>
+              Cold habitats often combine several
+              difficulties. The deep ocean is dark,
+              nutrient-poor and under pressure. Antarctic
+              environments may be both freezing and
+              extremely dry. Surviving one extreme can
+              mean solving several problems at once.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Psychrophile facts"
+            >
+
+              <div>
+                <small>Main threat</small>
+                <b>Ice and slowed reactions</b>
+              </div>
+
+              <div>
+                <small>Microbial answer</small>
+                <b>Cold-active chemistry</b>
+              </div>
+
+              <div>
+                <small>Habitat</small>
+                <b>Ice, sea and rock</b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                Your temperature would fall, movement would
+                become difficult and exposed tissue could
+                freeze. A psychrophile’s biology is tuned
+                for precisely this slow, cold world.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                blue Antarctic ice with a translucent
+                close-up of microbes living in brine
+                channels. Add a scale bar so visitors
+                understand how small they are.
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                Does frozen mean lifeless?
+              </summary>
+
+              <p>
+                No. Ice can contain tiny veins of salty
+                liquid water. Some microorganisms remain
+                active in these protected microhabitats,
+                while others survive freezing and become
+                active again later.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           REPORT 3: HALOPHILES
+      ========================== -->
+
+      <section
+        class="field-report salt"
+        id="salt"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 03 · Water disappearing
+            </span>
+
+            <h2>
+              Halophiles
+              <span>The salt lovers</span>
+            </h2>
+
+            <p class="location">
+              Live from: salt lakes, brines and crystalline worlds
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, wiping salt from camera
+              </strong>
+
+              “It looks like water, but the salt is pulling
+              water out of ordinary cells. The lake has
+              turned pink with organisms that call this home.”
+
+            </div>
+
+            <p>
+              Place an ordinary cell in extremely salty water
+              and osmosis becomes a crisis: water tends to
+              move out of the cell. The cell shrinks, and its
+              normal chemistry begins to fail. Halophiles
+              prevent that imbalance.
+            </p>
+
+            <p>
+              Different salt lovers use different strategies.
+              Some balance their inner environment with salts;
+              others produce or collect small protective
+              molecules. Their proteins are adapted to keep
+              working in conditions that would interfere with
+              ordinary enzymes.
+            </p>
+
+            <p>
+              Some hypersaline lakes appear red, orange or
+              pink because of pigments made by salt-loving
+              microorganisms. What looks like an empty,
+              chemically severe landscape can be a coloured
+              announcement of life.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Halophile facts"
+            >
+
+              <div>
+                <small>Main threat</small>
+                <b>Loss of cellular water</b>
+              </div>
+
+              <div>
+                <small>Microbial answer</small>
+                <b>Balance inside and out</b>
+              </div>
+
+              <div>
+                <small>Visual clue</small>
+                <b>Pink and red pigments</b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                The water would sting cuts and feel unusually
+                buoyant, but drinking it would worsen
+                dehydration. For many halophiles, the salt is
+                not contamination—it is part of home.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                an aerial photograph of a pink hypersaline
+                lake beside geometric salt crystals. Keep the
+                dusty rose palette so this world feels
+                different from the heat section.
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                Is every salt-loving organism a bacterium?
+              </summary>
+
+              <p>
+                No. Many famous extreme halophiles are
+                Archaea, but salt-loving organisms also occur
+                among Bacteria and Eukarya. Extremophiles are
+                not a single branch of the tree of life.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           REPORT 4: ACIDOPHILES
+      ========================== -->
+
+      <section
+        class="field-report acid"
+        id="acid"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 04 · Protective gear required
+            </span>
+
+            <h2>
+              Acidophiles
+              <span>The acid lovers</span>
+            </h2>
+
+            <p class="location">
+              Live from: acidic pools, volcanic soils and mine drainage
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, from a safe distance
+              </strong>
+
+              “The pH reading is approaching zero. This is
+              no place for an unprotected human. Under the
+              microscope, life is not escaping—it is growing.”
+
+            </div>
+
+            <p>
+              Acids release large numbers of hydrogen ions.
+              If those ions flood a cell, they can disrupt
+              proteins and reactions. Acidophiles protect
+              their interiors with specialised membranes,
+              transport systems and repair mechanisms.
+            </p>
+
+            <p>
+              The genus <em>Picrophilus</em> includes
+              organisms reported growing at a pH near 0.06—
+              an environment astonishingly acidic by human
+              standards. On the opposite chemical edge are
+              alkaliphiles, which grow best in highly basic
+              conditions and face the reverse challenge.
+            </p>
+
+            <p>
+              These organisms remind us that pH is not merely
+              a number from a classroom scale. It changes how
+              molecules behave and whether cellular machinery
+              can continue working.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Acidophile facts"
+            >
+
+              <div>
+                <small>Main threat</small>
+                <b>Disrupted cell chemistry</b>
+              </div>
+
+              <div>
+                <small>Microbial answer</small>
+                <b>Protected internal pH</b>
+              </div>
+
+              <div>
+                <small>Opposite team</small>
+                <b>Alkaliphiles</b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                Contact with a strongly acidic environment
+                could damage skin, eyes and lungs. Never
+                approach acidic pools: their edges can also
+                be unstable. Our microscopic residents are
+                built for chemistry that we are not.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                an acidic green-yellow pool photographed
+                from a safe, legal viewpoint. Add a clean
+                pH scale beside it, with neutral pH 7
+                clearly marked.
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                Do acidophiles contain acid inside?
+              </summary>
+
+              <p>
+                Not in the same way as their surroundings.
+                A major part of their survival is controlling
+                what crosses the membrane and maintaining an
+                internal environment in which their cellular
+                systems can function.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           REPORT 5: PIEZOPHILES
+      ========================== -->
+
+      <section
+        class="field-report pressure"
+        id="pressure"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 05 · Signal from 10 km below
+            </span>
+
+            <h2>
+              Piezophiles
+              <span>The pressure lovers</span>
+            </h2>
+
+            <p class="location">
+              Live from: the deepest ocean trenches
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, aboard a submersible
+              </strong>
+
+              “There are kilometres of water above us.
+              Outside pressure would be catastrophic for
+              an unprotected human. Yet samples reveal
+              organisms adapted to this weight.”
+
+            </div>
+
+            <p>
+              Pressure increases as the ocean deepens. At the
+              greatest trenches it reaches roughly a thousand
+              times the pressure at sea level. That force can
+              distort proteins and push biological membranes
+              into an unworkably rigid state.
+            </p>
+
+            <p>
+              Piezophiles—also called barophiles—grow best
+              under high pressure. Their membranes and
+              proteins are suited to the deep. Studying them
+              is difficult because bringing a sample to the
+              surface changes the very condition it requires.
+            </p>
+
+            <p>
+              Research has found life more than 10 kilometres
+              into the ocean, where darkness, cold, scarce
+              food and pressure arrive together. The deep is
+              not one problem. It is several problems stacked
+              on top of one another.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Piezophile facts"
+            >
+
+              <div>
+                <small>Main threat</small>
+                <b>Crushing pressure</b>
+              </div>
+
+              <div>
+                <small>Microbial answer</small>
+                <b>Pressure-ready molecules</b>
+              </div>
+
+              <div>
+                <small>Research problem</small>
+                <b>Keeping samples pressurised</b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                Without a specialised vessel, human survival
+                would be impossible. The cold, darkness and
+                pressure define this world; a piezophile’s
+                cells are calibrated to it.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                a deep-sea submersible beam cutting through
+                black water, with a vertical depth ruler
+                from sea level to the trench floor.
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                Why not simply bring them to the laboratory?
+              </summary>
+
+              <p>
+                Removing a pressure-loving organism from the
+                deep can alter or kill it. Researchers need
+                specialised chambers that recreate high
+                pressure, which makes collection and
+                observation unusually challenging.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           REPORT 6: POLYEXTREMOPHILES
+      ========================== -->
+
+      <section
+        class="field-report poly"
+        id="poly"
+      >
+
+        <div class="report-inner">
+
+          <div class="reveal">
+
+            <span class="report-number">
+              Field report 06 · More than one emergency
+            </span>
+
+            <h2>
+              Polyextremophiles
+              <span>The multi-crisis specialists</span>
+            </h2>
+
+            <p class="location">
+              Live from: places where extremes collide
+            </p>
+
+            <div class="correspondent">
+
+              <strong>
+                Reporter, reconsidering career choices
+              </strong>
+
+              “It is hot, acidic and rich in metals.
+              Apparently one hostile condition was not
+              enough. The local organisms have adapted
+              to the entire combination.”
+
+            </div>
+
+            <p>
+              Real environments rarely organise themselves
+              into tidy textbook categories. A hot spring
+              may also be acidic and metal-rich. A salt lake
+              may be highly alkaline. The deep ocean is cold,
+              dark, nutrient-poor and pressurised.
+            </p>
+
+            <p>
+              Organisms adapted to several extremes are
+              called polyextremophiles. Their existence
+              matters because it pushes the possible
+              boundary of life in several directions at
+              once—and gives astrobiologists more realistic
+              models for other worlds.
+            </p>
+
+            <p>
+              But there is an important distinction: finding
+              organisms that can live in an extreme
+              environment does not prove that life first
+              originated there. Surviving, thriving and
+              beginning are three different scientific
+              questions.
+            </p>
+
+            <div
+              class="fact-strip"
+              aria-label="Polyextremophile facts"
+            >
+
+              <div>
+                <small>Challenge</small>
+                <b>Several extremes together</b>
+              </div>
+
+              <div>
+                <small>Lesson</small>
+                <b>Nature ignores our categories</b>
+              </div>
+
+              <div>
+                <small>Big question</small>
+                <b>Where else could life exist?</b>
+              </div>
+
+            </div>
+
+            <div class="survival-box">
+
+              <h3>If you were here</h3>
+
+              <p>
+                Your protective equipment would need to
+                solve several dangers simultaneously.
+                A polyextremophile has no single superpower;
+                its whole biology is a coordinated survival
+                system.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="side-column reveal">
+
+            <figure class="image-slot">
+
+              <figcaption>
+                <b>Suggested image:</b>
+                a split scientific collage—hot spring,
+                salt crust, polar ice and deep ocean—
+                connected by one glowing microbial cell.
+              </figcaption>
+
+            </figure>
+
+            <details>
+
+              <summary>
+                Does this mean aliens definitely exist?
+              </summary>
+
+              <p>
+                No. Extremophiles expand our understanding
+                of where life <em>can</em> operate. They
+                help scientists form better questions about
+                Mars, Europa and other worlds, but they are
+                not proof of extraterrestrial life.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           TARDIGRADE CORRECTION
+      ========================== -->
+
+      <aside
+        class="bulletin reveal"
+        aria-labelledby="tardigrade-title"
+      >
+
+        <div>
+
+          <p class="kicker">
+            Special survival bulletin
+          </p>
+
+          <h2 id="tardigrade-title">
+            Enter the water bear.
+          </h2>
+
+          <span class="stamp">
+            Tiny · famous · complicated
+          </span>
+
+        </div>
+
+        <div>
+
+          <p>
+            Tardigrades are microscopic animals celebrated
+            for surviving dehydration, freezing and even
+            exposure experiments in space. When conditions
+            deteriorate, some enter a contracted,
+            low-activity state called a <em>tun</em>.
+          </p>
+
+          <p>
+            However, “survives an extreme” is not identical
+            to “grows best in an extreme.” It is more precise
+            to discuss tardigrades as extraordinary
+            <b>extremotolerant</b> organisms. Their story
+            remains remarkable—but accuracy makes it more
+            remarkable, not less.
+          </p>
+
+          <p>
+            <b>Editor’s note:</b>
+            this is why our opening vocabulary mattered.
+            Science becomes clearer when we resist turning
+            every fascinating survivor into the same kind
+            of creature.
+          </p>
+
+        </div>
+
+      </aside>
+
+      <!-- =========================
+           WHY EXTREMOPHILES MATTER
+      ========================== -->
+
+      <section class="why-matters">
+
+        <div class="why-inner">
+
+          <p class="kicker">
+            Back at the science desk
+          </p>
+
+          <h2>
+            Why travel to the edges of life?
+          </h2>
+
+          <div class="cards">
+
+            <section class="card reveal">
+
+              <b>01</b>
+
+              <h3>
+                To redraw life’s boundaries
+              </h3>
+
+              <p>
+                Every extremophile reveals another range
+                of temperature, pressure, salt or chemistry
+                in which biology can function.
+              </p>
+
+            </section>
+
+            <section class="card reveal">
+
+              <b>02</b>
+
+              <h3>
+                To borrow molecular tools
+              </h3>
+
+              <p>
+                Extremozymes remain active under harsh
+                conditions. Heat-stable Taq polymerase,
+                originally obtained from a thermophile,
+                became essential to DNA amplification.
+              </p>
+
+            </section>
+
+            <section class="card reveal">
+
+              <b>03</b>
+
+              <h3>
+                To search beyond Earth
+              </h3>
+
+              <p>
+                Extreme places on Earth provide imperfect
+                but useful analogues for environments that
+                may exist on Mars or icy ocean worlds.
+              </p>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =========================
+           CONCLUSION
+      ========================== -->
+
+      <section class="closing reveal">
+
+        <p class="kicker">
+          Final transmission
+        </p>
+
+        <h2>
+          The impossible place was alive before we arrived.
+        </h2>
+
+        <p>
+          Extremophiles do not make nature more dramatic.
+          They reveal that nature was already more dramatic
+          than our definitions allowed.
+        </p>
+
+        <p>
+          So the next time a place looks empty, hostile or
+          still, leave room for a quieter possibility:
+          perhaps life is there—living by rules we have
+          not learned yet.
+        </p>
+
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- =========================
+       REFERENCES
+  ========================== -->
+
+  <section
+    class="sources"
+    aria-labelledby="sources-title"
+  >
+
+    <div class="sources-inner">
+
+      <p class="kicker">
+        Source desk · Further reading
+      </p>
+
+      <h2 id="sources-title">
+        The reporting behind the broadcast
+      </h2>
+
+      <p class="source-note">
+        This feature translates scientific ideas into an
+        accessible narrative. Environmental descriptions
+        are experiential, not instructions for entering
+        hazardous locations. Accessed 10 October 2026.
+      </p>
+
+      <ol>
+
+        <li>
+          Las Cumbres Observatory,
+          <a
+            href="https://lco.global/spacebook/astrobiology/what-are-extremophiles/"
+            target="_blank"
+            rel="noopener"
+          >
+            “What Are Extremophiles?”
+          </a>
+          Background on heat, cold, pressure, isolated
+          ecosystems and astrobiology.
+        </li>
+
+        <li>
+          NOAA National Ocean Service,
+          <a
+            href="https://oceanservice.noaa.gov/facts/extremophile.html"
+            target="_blank"
+            rel="noopener"
+          >
+            “What is an extremophile?”
+          </a>
+          Hydrothermal vents, extremozymes and the human
+          perspective of “extreme.”
+        </li>
+
+        <li>
+          National Geographic Society,
+          <a
+            href="https://education.nationalgeographic.org/resource/extremophiles-101/"
+            target="_blank"
+            rel="noopener"
+          >
+            “Extremophiles 101.”
+          </a>
+          Educational overview of types, adaptations and
+          habitats.
+        </li>
+
+        <li>
+          P. H. Rampelotto,
+          <a
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4187170/"
+            target="_blank"
+            rel="noopener"
+          >
+            “Extremophiles and Extreme Environments,”
+          </a>
+          <em>Life</em> 3(3), 2013, pp. 482–485.
+          DOI: 10.3390/life3030482.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <span>
+      Jigyasa Verse · The Red Edition
+    </span>
+
+    <span>
+      Written for curious humans, wherever they begin.
+    </span>
+
+  </footer>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const progress =
+        document.querySelector("#progress");
+
+      const revealItems =
+        document.querySelectorAll(".reveal");
+
+      /*
+       * Update the red reading-progress bar.
+       */
+
+      function updateProgress() {
+        const pageHeight =
+          document.documentElement.scrollHeight -
+          window.innerHeight;
+
+        const amount =
+          pageHeight > 0
+            ? (window.scrollY / pageHeight) * 100
+            : 0;
+
+        progress.style.width =
+          `${Math.min(
+            100,
+            Math.max(0, amount)
+          )}%`;
+      }
+
+      /*
+       * Reveal article sections as they
+       * enter the visitor's screen.
+       */
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+              }
+            });
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+      revealItems.forEach((item) => {
+        observer.observe(item);
+      });
+
+      window.addEventListener(
+        "scroll",
+        updateProgress,
+        {
+          passive: true
+        }
+      );
+
+      updateProgress();
+    })();
+  </script>
+
+</body>
+</html>
