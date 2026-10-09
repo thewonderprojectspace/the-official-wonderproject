@@ -2,30 +2,6 @@
 <html lang="en">
 
 <head>
-
-  <!-- =========================================================
-       GOOGLE ANALYTICS
-  ========================================================== -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
-  ></script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-EF9DVH7JQN");
-  </script>
-
-
-  <!-- =========================================================
-       BASIC META
-  ========================================================== -->
   <meta charset="utf-8">
 
   <meta
@@ -35,28 +11,48 @@
 
   <meta
     name="description"
-    content="The JigyasaVerse Living Library — books, blogs, poetry and true stories for curious humans of every age."
+    content="The JigyasaVerse Living Library — two books, real human stories, and a place to leave something true."
   >
 
   <meta
     name="theme-color"
-    content="#07050e"
+    content="#09080d"
   >
 
   <title>
     The Living Library | JigyasaVerse
   </title>
 
+  <!-- Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
+  ></script>
 
-  <!-- =========================================================
-       FAVICON AND FONTS
-  ========================================================== -->
+  <script>
+    window.dataLayer =
+      window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+
+    gtag(
+      "config",
+      "G-EF9DVH7JQN"
+    );
+  </script>
+
+  <!-- JigyasaVerse favicon -->
   <link
     rel="icon"
     type="image/png"
     href="images/wonder-verse-moon-pencil-logo.png"
   >
 
+  <!-- Fonts -->
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com"
@@ -69,74 +65,1853 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gloock&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@300;400;500;600&family=Gloock&family=Noto+Sans+Devanagari:wght@500;600&display=swap"
     rel="stylesheet"
   >
 
+  <style>
+    :root {
+      --night: #09080d;
+      --night-two: #111019;
+      --night-three: #17141f;
 
-  <!-- =========================================================
-       LIBRARY CSS AND JAVASCRIPT
-  ========================================================== -->
-  <link
-    rel="stylesheet"
-    href="books.css"
-  >
+      --paper: #f5edda;
+      --paper-dim:
+        rgba(245, 237, 218, 0.68);
+      --paper-faint:
+        rgba(245, 237, 218, 0.42);
 
-  <script
-    src="books.js"
-    defer
-  ></script>
+      --line:
+        rgba(245, 237, 218, 0.14);
 
+      --gold: #eab564;
+      --violet: #a69cdb;
+      --cyan: #82c4c4;
+      --rust: #b9634f;
+
+      --display:
+        "Gloock",
+        Georgia,
+        serif;
+
+      --hand:
+        "Caveat",
+        cursive;
+
+      --sans:
+        "DM Sans",
+        Arial,
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+
+      color: var(--paper);
+
+      background:
+        radial-gradient(
+          circle at 10% 7%,
+          rgba(234, 181, 100, 0.1),
+          transparent 27rem
+        ),
+        radial-gradient(
+          circle at 92% 43%,
+          rgba(166, 156, 219, 0.1),
+          transparent 32rem
+        ),
+        var(--night);
+
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    body::after {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+
+      content: "";
+      pointer-events: none;
+
+      opacity: 0.045;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    :focus-visible {
+      outline:
+        2px solid var(--gold);
+
+      outline-offset: 4px;
+    }
+
+    /* Accessibility */
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 12px;
+      left: 12px;
+
+      padding: 9px 13px;
+
+      color: var(--night);
+      background: var(--paper);
+
+      transform:
+        translateY(-180%);
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    /* Background */
+
+    #starField {
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      z-index: -1;
+
+      width: 30rem;
+      height: 30rem;
+
+      border-radius: 50%;
+
+      opacity: 0.08;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle,
+          var(--violet),
+          transparent 68%
+        );
+
+      transform:
+        translate(-50%, -50%);
+
+      transition:
+        left 0.7s ease,
+        top 0.7s ease;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      z-index: 40;
+      top: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      min-height: 84px;
+
+      padding:
+        14px
+        max(
+          22px,
+          calc((100% - 1240px) / 2)
+        );
+
+      border-bottom:
+        1px solid var(--line);
+
+      background:
+        rgba(9, 8, 13, 0.78);
+
+      backdrop-filter:
+        blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 0 14px
+          rgba(234, 181, 100, 0.2)
+        );
+    }
+
+    .brand strong,
+    .brand small {
+      display: block;
+    }
+
+    .brand strong {
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+    }
+
+    .brand strong span {
+      color: var(--gold);
+    }
+
+    .brand small {
+      color: var(--paper-faint);
+      font-size: 0.68rem;
+    }
+
+    .menu-button {
+      display: none;
+
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+
+      gap:
+        clamp(
+          16px,
+          2.4vw,
+          34px
+        );
+
+      color: var(--paper-dim);
+
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .site-nav a {
+      transition:
+        color 0.2s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--paper);
+    }
+
+    .site-nav .submit-nav {
+      padding: 9px 13px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 999px;
+
+      color: var(--paper);
+    }
+
+    /* General layout */
+
+    .wrap {
+      width:
+        min(
+          1180px,
+          calc(100% - 40px)
+        );
+
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin: 0 0 22px;
+
+      color: var(--paper-faint);
+
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 32px;
+      height: 1px;
+
+      content: "";
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--gold),
+          var(--violet)
+        );
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+
+      min-width: 210px;
+
+      padding: 13px 15px;
+
+      border:
+        1px solid var(--paper);
+
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+
+      transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease;
+    }
+
+    .button:hover {
+      transform:
+        translateY(-3px);
+    }
+
+    .button-light {
+      color: var(--night);
+      background: var(--paper);
+    }
+
+    .button-light:hover {
+      color: var(--paper);
+      background: transparent;
+    }
+
+    .button-ghost {
+      color: var(--paper);
+
+      border-color: var(--line);
+
+      background: transparent;
+    }
+
+    .button-ghost:hover {
+      border-color: var(--paper);
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        1.05fr 0.95fr;
+
+      gap:
+        clamp(
+          40px,
+          7vw,
+          90px
+        );
+
+      align-items: center;
+
+      min-height:
+        calc(100svh - 84px);
+
+      padding:
+        clamp(
+          70px,
+          10vw,
+          130px
+        )
+        0;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          4rem,
+          8.2vw,
+          8rem
+        ) /
+        0.89
+        var(--display);
+
+      letter-spacing:
+        -0.055em;
+    }
+
+    .hero h1 em {
+      display: block;
+
+      color: transparent;
+
+      font-style: normal;
+
+      -webkit-text-stroke:
+        1px
+        rgba(
+          245,
+          237,
+          218,
+          0.72
+        );
+    }
+
+    .hero-lede {
+      max-width: 650px;
+      margin: 30px 0 0;
+
+      color: var(--paper-dim);
+
+      font-size:
+        clamp(
+          1rem,
+          1.5vw,
+          1.17rem
+        );
+
+      font-weight: 300;
+    }
+
+    .hero-lede strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+
+      margin-top: 36px;
+    }
+
+    .hero-note {
+      margin: 28px 0 0;
+
+      color: var(--gold);
+
+      font:
+        500
+        1.35rem
+        var(--hand);
+
+      transform:
+        rotate(-1.5deg);
+    }
+
+    /* Floating book */
+
+    .book-universe {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      min-height: 530px;
+    }
+
+    .orbit {
+      position: absolute;
+
+      border:
+        1px solid
+        rgba(245, 237, 218, 0.11);
+
+      border-radius: 50%;
+
+      animation:
+        spin 34s linear infinite;
+    }
+
+    .orbit-one {
+      width:
+        min(450px, 92%);
+
+      aspect-ratio: 1;
+    }
+
+    .orbit-two {
+      width:
+        min(350px, 72%);
+
+      aspect-ratio: 1;
+
+      animation-direction: reverse;
+      animation-duration: 25s;
+    }
+
+    .orbit::before {
+      position: absolute;
+      top: 13%;
+      left: 13%;
+
+      width: 8px;
+      aspect-ratio: 1;
+
+      content: "";
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 18px var(--gold);
+    }
+
+    .orbit-two::before {
+      top: auto;
+      bottom: 8%;
+      left: 26%;
+
+      background: var(--violet);
+
+      box-shadow:
+        0 0 18px var(--violet);
+    }
+
+    @keyframes spin {
+      to {
+        transform:
+          rotate(360deg);
+      }
+    }
+
+    .open-book {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      width:
+        min(390px, 78%);
+
+      filter:
+        drop-shadow(
+          0 28px 48px
+          rgba(0, 0, 0, 0.42)
+        );
+
+      transform:
+        perspective(900px)
+        rotateX(10deg)
+        rotateZ(-2deg);
+    }
+
+    .page {
+      min-height: 250px;
+
+      padding: 36px 25px;
+
+      color: #201b1d;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 24px,
+          rgba(40, 30, 25, 0.08) 25px
+        ),
+        #efe4cb;
+
+      font-family: var(--display);
+    }
+
+    .page-left {
+      border-radius:
+        9px 1px 1px 14px;
+
+      box-shadow:
+        inset -18px 0 28px
+        rgba(40, 25, 20, 0.13);
+    }
+
+    .page-right {
+      border-radius:
+        1px 9px 14px 1px;
+
+      box-shadow:
+        inset 18px 0 28px
+        rgba(40, 25, 20, 0.1);
+    }
+
+    .page small {
+      display: block;
+
+      margin-bottom: 35px;
+
+      color:
+        rgba(32, 27, 29, 0.55);
+
+      font:
+        600
+        0.55rem
+        var(--sans);
+
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .page strong {
+      display: block;
+
+      font-size:
+        clamp(
+          1.6rem,
+          3vw,
+          2.3rem
+        );
+
+      line-height: 1.05;
+    }
+
+    .page span {
+      display: block;
+
+      margin-top: 16px;
+
+      color:
+        rgba(32, 27, 29, 0.63);
+
+      font:
+        500
+        1rem
+        var(--hand);
+    }
+
+    .floating-slip {
+      position: absolute;
+      z-index: 3;
+
+      padding: 8px 12px;
+
+      color: #271f20;
+      background: #e8d5a9;
+
+      box-shadow:
+        0 9px 24px
+        rgba(0, 0, 0, 0.25);
+
+      font:
+        500
+        0.95rem
+        var(--hand);
+    }
+
+    .slip-one {
+      top: 15%;
+      right: 4%;
+
+      transform:
+        rotate(4deg);
+    }
+
+    .slip-two {
+      bottom: 13%;
+      left: 0;
+
+      transform:
+        rotate(-5deg);
+    }
+
+    /* Library statement */
+
+    .statement {
+      border-block:
+        1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.018);
+    }
+
+    .statement .wrap {
+      display: grid;
+
+      grid-template-columns:
+        0.55fr 1.45fr;
+
+      gap:
+        clamp(
+          30px,
+          7vw,
+          90px
+        );
+
+      padding-block:
+        clamp(
+          55px,
+          8vw,
+          90px
+        );
+    }
+
+    .statement-number {
+      color: var(--gold);
+
+      font:
+        500
+        clamp(
+          4rem,
+          9vw,
+          8rem
+        ) /
+        1
+        var(--display);
+
+      opacity: 0.42;
+    }
+
+    .statement h2 {
+      max-width: 820px;
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          2.3rem,
+          5.5vw,
+          5.5rem
+        ) /
+        1
+        var(--display);
+
+      letter-spacing: -0.04em;
+    }
+
+    .statement p {
+      max-width: 700px;
+      margin: 25px 0 0;
+
+      color: var(--paper-dim);
+    }
+
+    /* Books */
+
+    .books-section {
+      padding:
+        clamp(
+          85px,
+          12vw,
+          150px
+        )
+        0;
+    }
+
+    .section-heading {
+      display: grid;
+
+      grid-template-columns:
+        1.3fr 0.7fr;
+
+      gap: 50px;
+      align-items: end;
+
+      margin-bottom: 55px;
+    }
+
+    .section-heading h2 {
+      max-width: 820px;
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          2.8rem,
+          6vw,
+          6.2rem
+        ) /
+        0.95
+        var(--display);
+
+      letter-spacing: -0.045em;
+    }
+
+    .section-heading > p {
+      margin: 0;
+
+      color: var(--paper-dim);
+
+      font-size: 0.92rem;
+    }
+
+    .book-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .book-card {
+      display: grid;
+
+      grid-template-columns:
+        minmax(150px, 0.72fr)
+        1.28fr;
+
+      gap:
+        clamp(
+          22px,
+          4vw,
+          45px
+        );
+
+      align-items: center;
+
+      padding:
+        clamp(
+          32px,
+          5vw,
+          64px
+        );
+
+      border-bottom:
+        1px solid var(--line);
+
+      transition:
+        background 0.3s ease;
+    }
+
+    .book-card:first-child {
+      border-right:
+        1px solid var(--line);
+    }
+
+    .book-card:hover {
+      background:
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .cover {
+      position: relative;
+
+      min-height: 300px;
+
+      padding: 24px 19px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 22px 45px
+        rgba(0, 0, 0, 0.35);
+
+      transform:
+        rotate(-1.5deg);
+
+      transition:
+        transform 0.3s ease;
+    }
+
+    .book-card:nth-child(2) .cover {
+      transform:
+        rotate(1.5deg);
+    }
+
+    .book-card:hover .cover {
+      transform:
+        rotate(0)
+        translateY(-6px);
+    }
+
+    .cover-medicine {
+      color: #ece7d9;
+
+      background:
+        radial-gradient(
+          circle at 65% 28%,
+          rgba(148, 145, 213, 0.38),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #131723,
+          #252138
+        );
+    }
+
+    .cover-microbes {
+      color: #231510;
+
+      background:
+        radial-gradient(
+          circle at 73% 23%,
+          rgba(255, 255, 255, 0.25),
+          transparent 20%
+        ),
+        linear-gradient(
+          145deg,
+          #dc9a59,
+          #b95d4e
+        );
+    }
+
+    .cover::after {
+      position: absolute;
+      right: -45px;
+      bottom: -45px;
+
+      width: 145px;
+      aspect-ratio: 1;
+
+      content: "";
+
+      border:
+        1px solid currentColor;
+
+      border-radius: 50%;
+
+      opacity: 0.25;
+    }
+
+    .cover small,
+    .cover strong,
+    .cover span {
+      position: relative;
+      z-index: 2;
+
+      display: block;
+    }
+
+    .cover small {
+      font-size: 0.52rem;
+      letter-spacing: 0.16em;
+    }
+
+    .cover strong {
+      margin-top: 78px;
+
+      font:
+        400
+        clamp(
+          1.3rem,
+          2.4vw,
+          2rem
+        ) /
+        1
+        var(--display);
+    }
+
+    .cover span {
+      position: absolute;
+      bottom: 22px;
+      left: 19px;
+
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+    }
+
+    .book-copy > span {
+      color: var(--gold);
+
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .book-copy h3 {
+      margin: 13px 0;
+
+      font:
+        400
+        clamp(
+          1.8rem,
+          3vw,
+          3.1rem
+        ) /
+        1
+        var(--display);
+    }
+
+    .book-copy p {
+      margin: 0 0 25px;
+
+      color: var(--paper-dim);
+
+      font-size: 0.87rem;
+    }
+
+    .book-copy b {
+      display: inline-flex;
+      gap: 10px;
+
+      padding-bottom: 3px;
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-size: 0.74rem;
+      font-weight: 500;
+    }
+
+    /* Stories */
+
+    .stories-section {
+      padding:
+        clamp(
+          90px,
+          12vw,
+          155px
+        )
+        0;
+
+      border-top:
+        1px solid var(--line);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.015),
+          transparent 30%
+        );
+    }
+
+    .archive-note {
+      max-width: 760px;
+
+      margin: -25px 0 55px;
+
+      padding-left: 18px;
+
+      color: var(--paper-dim);
+
+      border-left:
+        1px solid var(--gold);
+
+      font-size: 0.84rem;
+    }
+
+    .story-list {
+      border-top:
+        1px solid var(--line);
+    }
+
+    .story {
+      display: grid;
+
+      grid-template-columns:
+        105px
+        minmax(230px, 0.8fr)
+        1.2fr
+        34px;
+
+      gap:
+        clamp(
+          20px,
+          4vw,
+          55px
+        );
+
+      align-items: center;
+
+      width: 100%;
+
+      padding: 31px 8px;
+
+      border: 0;
+
+      border-bottom:
+        1px solid var(--line);
+
+      color: inherit;
+      background: transparent;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        padding 0.2s ease;
+    }
+
+    .story:hover,
+    .story[aria-expanded="true"] {
+      padding-inline: 20px;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .story-index {
+      color: var(--paper-faint);
+
+      font-size: 0.64rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .story h3 {
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          1.55rem,
+          3vw,
+          2.8rem
+        ) /
+        1
+        var(--display);
+    }
+
+    .story-excerpt {
+      margin: 0;
+
+      color: var(--paper-dim);
+
+      font-size: 0.84rem;
+    }
+
+    .story-plus {
+      display: grid;
+      place-items: center;
+
+      width: 32px;
+      height: 32px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      transition:
+        transform 0.3s ease;
+    }
+
+    .story[aria-expanded="true"]
+    .story-plus {
+      transform:
+        rotate(45deg);
+    }
+
+    .story-body {
+      display: none;
+
+      grid-template-columns:
+        105px 1fr;
+
+      gap:
+        clamp(
+          20px,
+          4vw,
+          55px
+        );
+
+      padding:
+        15px 8px 48px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .story-body.open {
+      display: grid;
+    }
+
+    .story-body small {
+      color: var(--gold);
+
+      font-size: 0.61rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .story-body div {
+      max-width: 740px;
+
+      color: var(--paper-dim);
+    }
+
+    .story-body p {
+      margin: 0 0 16px;
+    }
+
+    .story-body .signature {
+      color: var(--paper);
+
+      font:
+        500
+        1.25rem
+        var(--hand);
+    }
+
+    .waiting-shelf {
+      display: grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap: 30px;
+      align-items: center;
+
+      margin-top: 42px;
+      padding: 30px;
+
+      border:
+        1px dashed
+        rgba(245, 237, 218, 0.23);
+
+      background:
+        rgba(255, 255, 255, 0.018);
+    }
+
+    .waiting-shelf h3 {
+      margin: 0 0 7px;
+
+      font:
+        400
+        clamp(
+          1.7rem,
+          3vw,
+          2.8rem
+        )
+        var(--display);
+    }
+
+    .waiting-shelf p {
+      max-width: 690px;
+      margin: 0;
+
+      color: var(--paper-dim);
+
+      font-size: 0.84rem;
+    }
+
+    /* Submission section */
+
+    .submission {
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        clamp(
+          90px,
+          13vw,
+          170px
+        )
+        0;
+
+      color: #241d1c;
+      background: #eee2c8;
+    }
+
+    .submission::before {
+      position: absolute;
+      inset: 0;
+
+      content: "";
+
+      opacity: 0.36;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 37px,
+          rgba(71, 55, 46, 0.08) 38px
+        );
+    }
+
+    .submission-grid {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        1.05fr 0.95fr;
+
+      gap:
+        clamp(
+          45px,
+          8vw,
+          110px
+        );
+
+      align-items: center;
+    }
+
+    .submission .eyebrow {
+      color:
+        rgba(36, 29, 28, 0.5);
+    }
+
+    .submission h2 {
+      max-width: 720px;
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          3.1rem,
+          7vw,
+          7rem
+        ) /
+        0.9
+        var(--display);
+
+      letter-spacing: -0.05em;
+    }
+
+    .submission-copy > p {
+      max-width: 650px;
+      margin: 27px 0 0;
+
+      color:
+        rgba(36, 29, 28, 0.7);
+    }
+
+    .submission-copy strong {
+      color: #241d1c;
+    }
+
+    .submission-card {
+      padding:
+        clamp(
+          25px,
+          5vw,
+          48px
+        );
+
+      border:
+        1px solid
+        rgba(36, 29, 28, 0.19);
+
+      background:
+        rgba(255, 255, 255, 0.22);
+
+      box-shadow:
+        13px 14px 0
+        rgba(36, 29, 28, 0.08);
+
+      transform:
+        rotate(1deg);
+    }
+
+    .submission-card > span {
+      display: block;
+
+      margin-bottom: 25px;
+
+      color:
+        rgba(36, 29, 28, 0.48);
+
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .submission-card h3 {
+      margin: 0 0 12px;
+
+      font:
+        400
+        clamp(
+          1.8rem,
+          3.2vw,
+          3rem
+        ) /
+        1
+        var(--display);
+    }
+
+    .submission-card p {
+      margin: 0 0 27px;
+
+      color:
+        rgba(36, 29, 28, 0.68);
+
+      font-size: 0.84rem;
+    }
+
+    .submission-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .submission-actions a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 14px 15px;
+
+      border:
+        1px solid
+        rgba(36, 29, 28, 0.22);
+
+      font-size: 0.76rem;
+      font-weight: 600;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .submission-actions
+    a:first-child {
+      color: var(--paper);
+      background: #241d1c;
+    }
+
+    .submission-actions a:hover {
+      transform:
+        translateX(4px);
+    }
+
+    .submission-card small {
+      display: block;
+
+      margin-top: 17px;
+
+      color:
+        rgba(36, 29, 28, 0.52);
+
+      font-size: 0.65rem;
+    }
+
+    /* Closing */
+
+    .closing {
+      padding:
+        clamp(
+          90px,
+          13vw,
+          160px
+        )
+        0;
+
+      text-align: center;
+    }
+
+    .closing img {
+      width: 72px;
+
+      margin: 0 auto 28px;
+
+      filter:
+        drop-shadow(
+          0 0 23px
+          rgba(234, 181, 100, 0.2)
+        );
+    }
+
+    .closing .eyebrow {
+      justify-content: center;
+    }
+
+    .closing h2 {
+      margin: 0;
+
+      font:
+        400
+        clamp(
+          3rem,
+          7vw,
+          7rem
+        ) /
+        0.92
+        var(--display);
+
+      letter-spacing: -0.05em;
+    }
+
+    .closing h2 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .closing a {
+      display: inline-block;
+
+      margin-top: 30px;
+
+      color: var(--paper-dim);
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-size: 0.75rem;
+    }
+
+    /* Footer */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+
+      padding:
+        28px
+        max(
+          22px,
+          calc((100% - 1240px) / 2)
+        );
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--paper-faint);
+
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    footer nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Reveal animation */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .book-universe {
+        min-height: 460px;
+      }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-card:first-child {
+        border-right: 0;
+      }
+
+      .submission-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-button {
+        display: block;
+
+        padding: 8px 0;
+
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: 84px;
+        right: 0;
+        left: 0;
+
+        display: none;
+        align-items: stretch;
+
+        padding: 22px;
+
+        border-bottom:
+          1px solid var(--line);
+
+        background:
+          rgba(9, 8, 13, 0.97);
+      }
+
+      .site-nav.open {
+        display: grid;
+      }
+
+      .site-nav a {
+        padding: 10px 0;
+      }
+
+      .site-nav .submit-nav {
+        border: 0;
+        border-radius: 0;
+      }
+
+      .statement .wrap,
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .statement-number {
+        font-size: 4.5rem;
+      }
+
+      .story {
+        grid-template-columns:
+          72px 1fr 32px;
+      }
+
+      .story-excerpt {
+        grid-column: 2 / -1;
+      }
+
+      .story-body {
+        grid-template-columns:
+          72px 1fr;
+      }
+
+      .waiting-shelf {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 560px) {
+      .site-header {
+        min-height: 76px;
+      }
+
+      .site-nav {
+        top: 76px;
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .wrap {
+        width:
+          min(
+            100% - 28px,
+            1180px
+          );
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            3.5rem,
+            18vw,
+            5.5rem
+          );
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .book-universe {
+        min-height: 380px;
+      }
+
+      .page {
+        min-height: 190px;
+        padding: 24px 15px;
+      }
+
+      .page small {
+        margin-bottom: 28px;
+      }
+
+      .floating-slip {
+        font-size: 0.8rem;
+      }
+
+      .book-card {
+        grid-template-columns: 1fr;
+      }
+
+      .cover {
+        width:
+          min(220px, 82%);
+
+        min-height: 310px;
+      }
+
+      .section-heading h2 {
+        font-size:
+          clamp(
+            2.8rem,
+            14vw,
+            4.6rem
+          );
+      }
+
+      .story {
+        grid-template-columns:
+          1fr 32px;
+      }
+
+      .story-index {
+        grid-column: 1;
+      }
+
+      .story h3 {
+        grid-column: 1;
+      }
+
+      .story-plus {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
+      .story-excerpt {
+        grid-column: 1 / -1;
+      }
+
+      .story-body {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* Reduced motion */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-  <!-- Accessibility -->
   <a
     class="skip-link"
-    href="#main"
-  >
-    Skip to main content
+    href="#main">
+    Skip to the library
   </a>
 
-
-  <!-- Living star background -->
   <canvas
-    class="star-field"
     id="starField"
-    aria-hidden="true"
-  ></canvas>
+    aria-hidden="true">
+  </canvas>
 
   <div
-    class="nebula"
-    aria-hidden="true"
-  ></div>
+    class="cursor-glow"
+    id="cursorGlow"
+    aria-hidden="true">
+  </div>
 
+  <!-- Header -->
 
-  <!-- =========================================================
-       HEADER
-  ========================================================== -->
-  <header
-    class="site-header"
-    id="siteHeader"
-  >
+  <header class="site-header">
 
     <a
       class="brand"
       href="index.html"
-      aria-label="JigyasaVerse homepage"
-    >
+      aria-label="JigyasaVerse home">
 
       <img
         src="images/wonder-verse-moon-pencil-logo.png"
         alt=""
+        onerror="this.style.visibility='hidden'"
       >
 
       <span>
 
         <strong>
-          JIGYASAVERSE
+          JIGYASA<span>VERSE</span>
         </strong>
 
         <small>
@@ -147,130 +1922,617 @@
 
     </a>
 
-
     <button
       class="menu-button"
       id="menuButton"
       type="button"
       aria-expanded="false"
-      aria-controls="mainNav"
-    >
-
-      <span>
-        Menu
-      </span>
-
-      <i></i>
-      <i></i>
-
+      aria-controls="siteNav">
+      Menu
     </button>
 
-
     <nav
-      class="main-nav"
-      id="mainNav"
-      aria-label="Main navigation"
-    >
+      class="site-nav"
+      id="siteNav"
+      aria-label="Primary navigation">
 
       <a href="index.html">
         Home
       </a>
 
-      <a href="wonderverse.html">
-        Wonder <span lang="hi">लोक</span>
+      <a href="#books">
+        Isha’s books
       </a>
 
-      <a href="learning-lok.html">
-        Learning <span lang="hi">लोक</span>
-      </a>
-
-      <a
-        href="books.html"
-        aria-current="page"
-      >
-        Library
+      <a href="#stories">
+        Real stories
       </a>
 
       <a
-        class="contact-link"
-        href="https://endearing-cat-c1f80e.netlify.app/"
-      >
-        Say hello <span>↗</span>
+        class="submit-nav"
+        href="#submit">
+        Leave your story ↗
       </a>
 
     </nav>
 
   </header>
 
-
-  <!-- =========================================================
-       MAIN
-  ========================================================== -->
   <main id="main">
 
+    <!-- Hero -->
 
-    <!-- =======================================================
-         LIBRARY ENTRANCE
-    ======================================================== -->
-    <section
-      class="entrance"
-      aria-labelledby="libraryTitle"
-    >
+    <div class="wrap">
 
-      <div class="entrance-copy reveal">
+      <section
+        class="hero"
+        aria-labelledby="libraryTitle">
 
-        <p class="eyebrow">
+        <div class="hero-copy reveal">
 
-          <span>
-            Doors open
+          <p class="eyebrow">
+            The Living Library · open to every human
+          </p>
+
+          <h1 id="libraryTitle">
+            A library of things people
+            <em>nearly never said.</em>
+          </h1>
+
+          <p class="hero-lede">
+            Two books live here beside something less
+            polished and more fragile:
+
+            <strong>
+              real stories, hard-earned lessons, private
+              becoming, and truths that took years to find
+              their voice.
+            </strong>
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              class="button button-light"
+              href="#stories">
+
+              <span>
+                Enter the archive
+              </span>
+
+              <span>↓</span>
+
+            </a>
+
+            <a
+              class="button button-ghost"
+              href="#submit">
+
+              <span>
+                Leave something true
+              </span>
+
+              <span>↗</span>
+
+            </a>
+
+          </div>
+
+          <p class="hero-note">
+            No ranks. No genres. No perfect endings.
+          </p>
+
+        </div>
+
+        <!-- Floating book visual -->
+
+        <div
+          class="book-universe reveal"
+          aria-label="An open book floating inside two gentle orbits">
+
+          <span
+            class="orbit orbit-one"
+            aria-hidden="true">
           </span>
 
-          The Living Library · constellation 05
+          <span
+            class="orbit orbit-two"
+            aria-hidden="true">
+          </span>
 
-        </p>
+          <div
+            class="open-book"
+            aria-hidden="true">
 
+            <div class="page page-left">
 
-        <h1 id="libraryTitle">
+              <small>
+                Archive of ordinary lives
+              </small>
 
-          Not every universe is made of stars.
+              <strong>
+                I was here.
+              </strong>
 
-          <em>
-            Some are made of sentences.
-          </em>
+              <span>
+                and this is what life taught me…
+              </span>
 
-        </h1>
+            </div>
 
+            <div class="page page-right">
 
-        <p class="entrance-lead">
+              <small>
+                Leave the sentence behind
+              </small>
 
-          Books, blogs, poems and honest pieces of a life.
+              <strong>
+                You are not alone.
+              </strong>
 
-          Some teach. Some comfort. Some quietly ask the
-          question you have been avoiding.
+              <span>
+                someone else may need your truth.
+              </span>
 
-        </p>
+            </div>
 
+          </div>
 
-        <div class="entrance-actions">
+          <span class="floating-slip slip-one">
+            truth does not need a title
+          </span>
+
+          <span class="floating-slip slip-two">
+            anonymous is still human
+          </span>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- Non-hierarchical statement -->
+
+    <section class="statement">
+
+      <div class="wrap reveal">
+
+        <div class="statement-number">
+          ∞
+        </div>
+
+        <div>
+
+          <h2>
+            This library is organised by lives,
+            not labels.
+          </h2>
+
+          <p>
+            You will not be sent to a shelf because you
+            are a student, a teacher, an expert, young,
+            old, successful, lost, or still deciding.
+
+            A human life rarely belongs to one category.
+
+            Here, a story simply sits beside another
+            story and waits to be recognised.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Published books -->
+
+    <section
+      class="books-section"
+      id="books">
+
+      <div class="wrap">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              Two authored books · Isha Tiwari
+            </p>
+
+            <h2>
+              The books that already found their shelf.
+            </h2>
+
+          </div>
+
+          <p>
+            Built to make difficult knowledge feel less
+            distant—without making the thinking smaller.
+          </p>
+
+        </div>
+
+        <div class="book-grid">
+
+          <!-- Book one -->
 
           <a
-            class="button primary"
-            href="#moodDesk"
-          >
+            class="book-card reveal"
+            href="https://www.amazon.com.au/dp/B0H8C1G3R5"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Before the Stethoscope on Amazon Australia">
 
-            Ask the librarian
+            <div class="cover cover-medicine">
 
-            <span>↓</span>
+              <small>
+                Foundational medicine
+              </small>
+
+              <strong>
+                Before the<br>
+                Stethoscope
+              </strong>
+
+              <span>
+                Isha Tiwari
+              </span>
+
+            </div>
+
+            <div class="book-copy">
+
+              <span>
+                Understanding before memorising
+              </span>
+
+              <h3>
+                Before the Stethoscope
+              </h3>
+
+              <p>
+                A clearer doorway into the science that
+                comes before the clinic.
+              </p>
+
+              <b>
+                Open on Amazon
+
+                <i aria-hidden="true">
+                  ↗
+                </i>
+              </b>
+
+            </div>
 
           </a>
 
+          <!-- Book two -->
 
           <a
-            class="button ghost"
-            href="#newBooks"
-          >
+            class="book-card reveal"
+            href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Memesplained Microbiology Edition 1 on Amazon Australia">
 
-            See Isha’s books
+            <div class="cover cover-microbes">
+
+              <small>
+                Microbiology · Edition 1
+              </small>
+
+              <strong>
+                Memesplained:<br>
+                Microbiology
+              </strong>
+
+              <span>
+                Isha Tiwari
+              </span>
+
+            </div>
+
+            <div class="book-copy">
+
+              <span>
+                Science · humour · memory
+              </span>
+
+              <h3>
+                Memesplained: Microbiology
+              </h3>
+
+              <p>
+                Complex microbiology made visual,
+                memorable and unmistakably human.
+              </p>
+
+              <b>
+                Open on Amazon
+
+                <i aria-hidden="true">
+                  ↗
+                </i>
+              </b>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Real stories -->
+
+    <section
+      class="stories-section"
+      id="stories"
+      aria-labelledby="storiesTitle">
+
+      <div class="wrap">
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              Archive of real lives · no heroic editing
+            </p>
+
+            <h2 id="storiesTitle">
+              Things we learned while becoming.
+            </h2>
+
+          </div>
+
+          <p>
+            These first pieces come from the founder’s
+            notebook. Community stories will be added
+            only with the writer’s permission.
+          </p>
+
+        </div>
+
+        <p class="archive-note reveal">
+          This archive will never invent a contributor or
+          call fiction a true story. Empty space is more
+          honest than a voice that did not consent to be
+          here.
+        </p>
+
+        <div class="story-list">
+
+          <!-- Story one -->
+
+          <button
+            class="story reveal"
+            type="button"
+            aria-expanded="false"
+            aria-controls="storyOne">
+
+            <span class="story-index">
+              Notebook 01
+            </span>
+
+            <h3>
+              The work nobody saw
+            </h3>
+
+            <p class="story-excerpt">
+              On mistaking invisible progress for no
+              progress at all.
+            </p>
+
+            <span
+              class="story-plus"
+              aria-hidden="true">
+              +
+            </span>
+
+          </button>
+
+          <div
+            class="story-body"
+            id="storyOne">
+
+            <small>
+              From the founder’s notebook
+            </small>
+
+            <div>
+
+              <p>
+                There are seasons when your life is
+                changing but nothing around you appears
+                impressed. The work happens in private:
+                another early morning, another page
+                rewritten, another attempt that looks too
+                small to count.
+              </p>
+
+              <p>
+                I used to think progress had to become
+                visible before it became real. Life taught
+                me the opposite. Roots are not less
+                important because the world cannot applaud
+                them. Some of the most honest becoming
+                happens before there is evidence anyone
+                else can understand.
+              </p>
+
+              <p class="signature">
+                — from the beginning of JigyasaVerse
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- Story two -->
+
+          <button
+            class="story reveal"
+            type="button"
+            aria-expanded="false"
+            aria-controls="storyTwo">
+
+            <span class="story-index">
+              Notebook 02
+            </span>
+
+            <h3>
+              More than one thing
+            </h3>
+
+            <p class="story-excerpt">
+              On refusing to make a whole human fit
+              inside one acceptable box.
+            </p>
+
+            <span
+              class="story-plus"
+              aria-hidden="true">
+              +
+            </span>
+
+          </button>
+
+          <div
+            class="story-body"
+            id="storyTwo">
+
+            <small>
+              From the founder’s notebook
+            </small>
+
+            <div>
+
+              <p>
+                People often ask for the simplest version
+                of you. One ambition. One direction. One
+                sentence that makes your life easy to
+                introduce. But curiosity rarely grows in
+                a straight line, and neither do people.
+              </p>
+
+              <p>
+                I have learned that being interested in
+                many things is not the same as being
+                committed to nothing. Sometimes the thread
+                connecting everything is invisible from
+                the outside. You are still allowed to
+                follow it.
+              </p>
+
+              <p class="signature">
+                — a note for the difficult introductions
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- Story three -->
+
+          <button
+            class="story reveal"
+            type="button"
+            aria-expanded="false"
+            aria-controls="storyThree">
+
+            <span class="story-index">
+              Notebook 03
+            </span>
+
+            <h3>
+              The question I made smaller
+            </h3>
+
+            <p class="story-excerpt">
+              On the quiet ways people learn to hide
+              their curiosity.
+            </p>
+
+            <span
+              class="story-plus"
+              aria-hidden="true">
+              +
+            </span>
+
+          </button>
+
+          <div
+            class="story-body"
+            id="storyThree">
+
+            <small>
+              From the founder’s notebook
+            </small>
+
+            <div>
+
+              <p>
+                Not every question disappears because it
+                was answered. Some disappear because the
+                room made them embarrassing. We learn to
+                ask for less, to sound certain, and to
+                hide the strange thought that might reveal
+                how unfinished we still are.
+              </p>
+
+              <p>
+                JigyasaVerse began as a refusal to keep
+                doing that. Wonder does not need to justify
+                itself before it enters the room. A
+                question can be clumsy, inconvenient, or
+                years too early—and still deserve
+                somewhere safe to exist.
+              </p>
+
+              <p class="signature">
+                — why this universe exists
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Waiting for a real submission -->
+
+        <div class="waiting-shelf reveal">
+
+          <div>
+
+            <h3>
+              The next true story has not arrived yet.
+            </h3>
+
+            <p>
+              This is not a fake book spine or a made-up
+              anonymous confession. It is an open place
+              for a real person who decides that something
+              they lived, learned, survived, changed, or
+              finally admitted may help someone else.
+            </p>
+
+          </div>
+
+          <a
+            class="button button-ghost"
+            href="contact.html">
+
+            <span>
+              Place your story here
+            </span>
 
             <span>↗</span>
 
@@ -278,1029 +2540,516 @@
 
         </div>
 
-
-        <p class="entrance-note">
-          No membership card. No late fees. Wandering encouraged.
-        </p>
-
-      </div>
-
-
-      <!-- Glowing book portal -->
-      <div
-        class="library-planet reveal"
-        aria-label="A glowing book-shaped portal surrounded by orbiting words"
-      >
-
-        <div
-          class="library-orbit orbit-one"
-          aria-hidden="true"
-        >
-
-          <span>
-            WONDER
-          </span>
-
-          <i></i>
-
-        </div>
-
-
-        <div
-          class="library-orbit orbit-two"
-          aria-hidden="true"
-        >
-
-          <span>
-            BECOME
-          </span>
-
-          <i></i>
-
-        </div>
-
-
-        <div
-          class="book-portal"
-          aria-hidden="true"
-        >
-
-          <div class="page left-page">
-
-            <b>
-              Once
-            </b>
-
-            <span>
-              upon a question…
-            </span>
-
-          </div>
-
-
-          <div class="page right-page">
-
-            <b>
-              What
-            </b>
-
-            <span>
-              will you find?
-            </span>
-
-          </div>
-
-
-          <div class="book-glow"></div>
-
-        </div>
-
-
-        <span class="floating-tag tag-one">
-          Open all night
-        </span>
-
-        <span class="floating-tag tag-two">
-          Silence optional
-        </span>
-
-        <span class="floating-tag tag-three">
-          Return with a question
-        </span>
-
       </div>
 
     </section>
 
+    <!-- Story submission -->
 
-    <!-- =======================================================
-         MOVING LIBRARY MESSAGE
-    ======================================================== -->
-    <div
-      class="library-ticker"
-      aria-hidden="true"
-    >
-
-      <div>
-
-        <span>Borrow an idea</span>
-        <b>✦</b>
-
-        <span>Meet a former self</span>
-        <b>✦</b>
-
-        <span>Learn something inconvenient</span>
-        <b>✦</b>
-
-        <span>Read past bedtime</span>
-        <b>✦</b>
-
-        <span>Borrow an idea</span>
-        <b>✦</b>
-
-        <span>Meet a former self</span>
-        <b>✦</b>
-
-        <span>Learn something inconvenient</span>
-        <b>✦</b>
-
-        <span>Read past bedtime</span>
-        <b>✦</b>
-
-      </div>
-
-    </div>
-
-
-    <!-- =======================================================
-         MOOD DESK
-    ======================================================== -->
     <section
-      class="mood-desk"
-      id="moodDesk"
-      aria-labelledby="moodTitle"
-    >
+      class="submission"
+      id="submit"
+      aria-labelledby="submitTitle">
 
-      <div class="librarian-scene reveal">
+      <div class="wrap submission-grid">
 
-        <div
-          class="ladder"
-          aria-hidden="true"
-        >
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-
-
-        <img
-          src="images/ladderlady.png"
-          alt="An illustrated librarian climbing a rolling ladder with a stack of books"
-        >
-
-
-        <div class="librarian-note">
-
-          <span>
-            Current location
-          </span>
-
-          <strong>
-            Somewhere between<br>
-            courage and wonder
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="mood-copy reveal">
-
-        <p class="eyebrow">
-
-          <span>
-            The librarian asks
-          </span>
-
-          No algorithmic judgement
-
-        </p>
-
-
-        <h2 id="moodTitle">
-          “What is the mood today?”
-        </h2>
-
-
-        <p>
-          Choose what you need. The right rooms will glow
-          a little brighter.
-        </p>
-
-
-        <div
-          class="mood-picker"
-          role="group"
-          aria-label="Filter the library by mood"
-        >
-
-          <button
-            class="mood active"
-            type="button"
-            data-mood="all"
-            aria-pressed="true"
-          >
-            Surprise me
-          </button>
-
-          <button
-            class="mood"
-            type="button"
-            data-mood="wonder"
-            aria-pressed="false"
-          >
-            I want to wonder
-          </button>
-
-          <button
-            class="mood"
-            type="button"
-            data-mood="learn"
-            aria-pressed="false"
-          >
-            I need to learn
-          </button>
-
-          <button
-            class="mood"
-            type="button"
-            data-mood="seen"
-            aria-pressed="false"
-          >
-            I want to feel seen
-          </button>
-
-          <button
-            class="mood"
-            type="button"
-            data-mood="brave"
-            aria-pressed="false"
-          >
-            I need courage
-          </button>
-
-          <button
-            class="mood"
-            type="button"
-            data-mood="quiet"
-            aria-pressed="false"
-          >
-            Something quiet
-          </button>
-
-        </div>
-
-
-        <label class="shelf-search">
-
-          <span>
-            Search the shelves
-          </span>
-
-          <span class="search-box">
-
-            <input
-              id="shelfSearch"
-              type="search"
-              placeholder="Try medicine, poetry, courage…"
-            >
-
-            <b aria-hidden="true">
-              ⌕
-            </b>
-
-          </span>
-
-        </label>
-
-
-        <p
-          class="mood-result"
-          id="moodResult"
-          aria-live="polite"
-        >
-          Every room is currently open.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =======================================================
-         ISHA'S BOOKS
-    ======================================================== -->
-    <section
-      class="new-books"
-      id="newBooks"
-      aria-labelledby="newBooksTitle"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
+        <div class="submission-copy reveal">
 
           <p class="eyebrow">
-
-            <span>
-              New arrivals
-            </span>
-
-            Written by Isha Tiwari
-
+            The receiving desk · open
           </p>
 
-
-          <h2 id="newBooksTitle">
-            Two books already found their shelf.
+          <h2 id="submitTitle">
+            What has life taught you that a textbook
+            never could?
           </h2>
+
+          <p>
+            Send a true story, a lesson gathered over
+            years, something you once felt afraid to
+            admit, or a reflection you believe another
+            person may need.
+
+            <strong>
+              It does not have to be dramatic. It only
+              has to be yours.
+            </strong>
+          </p>
 
         </div>
 
+        <div class="submission-card reveal">
 
-        <p>
+          <span>
+            Two ways to leave something behind
+          </span>
 
-          More are being written in notebooks, margins
-          and slightly unreasonable bursts of ambition.
+          <h3>
+            Your name is optional. Your truth is not.
+          </h3>
 
-        </p>
+          <p>
+            Email a longer story or attachment directly.
+            If you would rather remain anonymous, use the
+            Contact page and choose “They may be shared
+            anonymously.”
 
-      </div>
+            Nothing is published automatically.
+          </p>
 
+          <div class="submission-actions">
 
-      <div class="featured-grid">
+            <a
+              href="mailto:itsnevertoolate@jigyasaverse.org?subject=A%20story%20for%20the%20JigyasaVerse%20Library">
 
+              <span>
+                Email your story
+              </span>
 
-        <!-- Before the Stethoscope -->
-        <a
-          class="featured-book medicine reveal"
-          href="https://www.amazon.com.au/dp/B0H8C1G3R5"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Before the Stethoscope on Amazon Australia"
-        >
+              <span>↗</span>
 
-          <div class="cosmic-cover">
+            </a>
 
-            <span>
-              FOUNDATIONAL MEDICINE
-            </span>
+            <a href="contact.html">
 
-            <strong>
-              Before the<br>
-              Stethoscope
-            </strong>
+              <span>
+                Share through Contact
+              </span>
 
-            <small>
-              ISHA TIWARI
-            </small>
+              <span>↗</span>
 
-            <i aria-hidden="true"></i>
-
-          </div>
-
-
-          <div class="featured-copy">
-
-            <span>
-              Medicine · students · understanding before memorising
-            </span>
-
-            <h3>
-              Before the Stethoscope
-            </h3>
-
-            <p>
-              A clearer doorway into the science that
-              comes before the clinic.
-            </p>
-
-            <b>
-              Open on Amazon <i>↗</i>
-            </b>
+            </a>
 
           </div>
 
-        </a>
+          <small>
+            itsnevertoolate@jigyasaverse.org · Suggested
+            subject: “A story for the Library”
+          </small>
 
-
-        <!-- Memesplained -->
-        <a
-          class="featured-book microbes reveal"
-          href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Memesplained Microbiology on Amazon Australia"
-        >
-
-          <div class="cosmic-cover">
-
-            <span>
-              MICROBIOLOGY · EDITION 1
-            </span>
-
-            <strong>
-              Memesplained:<br>
-              Microbiology
-            </strong>
-
-            <small>
-              ISHA TIWARI
-            </small>
-
-            <i aria-hidden="true"></i>
-
-          </div>
-
-
-          <div class="featured-copy">
-
-            <span>
-              Science · humour · microbes made memorable
-            </span>
-
-            <h3>
-              Memesplained: Microbiology
-            </h3>
-
-            <p>
-              Complex microbiology made visual,
-              memorable and unmistakably human.
-            </p>
-
-            <b>
-              Open on Amazon <i>↗</i>
-            </b>
-
-          </div>
-
-        </a>
+        </div>
 
       </div>
 
     </section>
 
+    <!-- Closing -->
 
-    <!-- =======================================================
-         LIBRARY ROOMS
-    ======================================================== -->
-    <section
-      class="shelf-hall"
-      id="shelves"
-      aria-labelledby="shelvesTitle"
-    >
+    <section class="closing wrap reveal">
 
-      <div class="section-heading reveal">
-
-        <div>
-
-          <p class="eyebrow">
-
-            <span>
-              The constellation catalogue
-            </span>
-
-            Scroll slowly
-
-          </p>
-
-
-          <h2 id="shelvesTitle">
-            A library is organised by what a human might need.
-          </h2>
-
-        </div>
-
-
-        <p>
-
-          These shelves contain finished work, doorways
-          into the website and spaces waiting for their
-          future books.
-
-        </p>
-
-      </div>
-
-
-      <div
-        class="room-count"
-        id="roomCount"
-        aria-live="polite"
-      >
-        Showing 5 rooms
-      </div>
-
-
-      <div
-        class="library-rooms"
-        id="libraryRooms"
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+        onerror="this.style.visibility='hidden'"
       >
 
-
-        <!-- Room 01 -->
-        <article
-          class="shelf-room children reveal"
-          data-moods="wonder quiet"
-          data-search="children curiosity questions years 3 5 activities old paths"
-        >
-
-          <header>
-
-            <span>
-              ROOM 01 · ORBIT OF BEGINNINGS
-            </span>
-
-            <h3>
-              The Children’s Cabinet
-            </h3>
-
-            <p>
-              For small hands and enormous questions.
-            </p>
-
-          </header>
-
-
-          <div class="shelf-books">
-
-            <a
-              href="resources-years-3-5.html"
-              class="spine tall gold"
-            >
-              <b>
-                Old Paths, New Curiosity
-              </b>
-
-              <small>
-                Explore
-              </small>
-            </a>
-
-
-            <a
-              href="resources-years-3-5.html"
-              class="spine short coral"
-            >
-              <b>
-                Questions That Wiggle
-              </b>
-
-              <small>
-                Activities
-              </small>
-            </a>
-
-
-            <span class="spine lean violet">
-
-              <b>
-                A Pocketful of Why
-              </b>
-
-              <small>
-                Coming soon
-              </small>
-
-            </span>
-
-
-            <span class="spine slim cyan">
-
-              <b>
-                Stories Before Screens
-              </b>
-
-              <small>
-                Coming soon
-              </small>
-
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- Room 02 -->
-        <article
-          class="shelf-room students reveal"
-          data-moods="learn brave"
-          data-search="students medicine microbiology science learning years 7 10 senior classroom"
-        >
-
-          <header>
-
-            <span>
-              ROOM 02 · ORBIT OF LEARNING
-            </span>
-
-            <h3>
-              The Student Stacks
-            </h3>
-
-            <p>
-              For the chapter that refuses to make sense.
-            </p>
-
-          </header>
-
-
-          <div class="shelf-books">
-
-            <a
-              href="https://www.amazon.com.au/dp/B0H8C1G3R5"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="spine tall navy"
-            >
-              <b>
-                Before the Stethoscope
-              </b>
-
-              <small>
-                Medicine
-              </small>
-            </a>
-
-
-            <a
-              href="https://www.amazon.com.au/MEMESPLAINED-Microbiology-Ms-Isha-Tiwari/dp/B0GB5R994S"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="spine wide gold"
-            >
-              <b>
-                Memesplained: Microbiology
-              </b>
-
-              <small>
-                Science
-              </small>
-            </a>
-
-
-            <a
-              href="resources-years-7-10.html"
-              class="spine slim coral"
-            >
-              <b>
-                Independent Thinkers
-              </b>
-
-              <small>
-                Years 7–10
-              </small>
-            </a>
-
-
-            <a
-              href="resources-beyond.html"
-              class="spine short violet"
-            >
-              <b>
-                Beyond the Classroom
-              </b>
-
-              <small>
-                Senior learners
-              </small>
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- Room 03 -->
-        <article
-          class="shelf-room lives reveal"
-          data-moods="seen brave quiet"
-          data-search="real stories life mistakes identity memoir becoming courage reflection"
-        >
-
-          <header>
-
-            <span>
-              ROOM 03 · ORBIT OF BECOMING
-            </span>
-
-            <h3>
-              Lives, Honestly Told
-            </h3>
-
-            <p>
-              True stories. No heroic editing required.
-            </p>
-
-          </header>
-
-
-          <div class="shelf-books">
-
-            <span class="spine lean coral">
-
-              <b>
-                The Mistake I Kept
-              </b>
-
-              <small>
-                Real story
-              </small>
-
-            </span>
-
-
-            <span class="spine tall violet">
-
-              <b>
-                Things I Couldn’t Say Then
-              </b>
-
-              <small>
-                Experience
-              </small>
-
-            </span>
-
-
-            <span class="spine slim navy">
-
-              <b>
-                Becoming, Slowly
-              </b>
-
-              <small>
-                Memoir
-              </small>
-
-            </span>
-
-
-            <a
-              href="#sendStory"
-              class="spine wide cyan"
-            >
-              <b>
-                Your Story Could Live Here
-              </b>
-
-              <small>
-                Send it
-              </small>
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- Room 04 -->
-        <article
-          class="shelf-room poetry reveal"
-          data-moods="wonder seen quiet"
-          data-search="poetry poems language hindi words multilingual quiet"
-        >
-
-          <header>
-
-            <span>
-              ROOM 04 · ORBIT OF VOICES
-            </span>
-
-            <h3>
-              Poetry in Every Tongue
-            </h3>
-
-            <p>
-              No translation required to belong here.
-            </p>
-
-          </header>
-
-
-          <div class="shelf-books">
-
-            <span class="spine short gold">
-
-              <b>
-                Poems for Loud Days
-              </b>
-
-              <small>
-                Poetry
-              </small>
-
-            </span>
-
-
-            <span class="spine tall navy">
-
-              <b lang="hi">
-                शब्द जो घर बन गए
-              </b>
-
-              <small lang="hi">
-                हिन्दी
-              </small>
-
-            </span>
-
-
-            <span class="spine wide violet">
-
-              <b>
-                Words Without Borders
-              </b>
-
-              <small>
-                Many languages
-              </small>
-
-            </span>
-
-
-            <a
-              href="#sendStory"
-              class="spine slim coral"
-            >
-              <b>
-                Add Your Voice
-              </b>
-
-              <small>
-                Submit
-              </small>
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- Room 05 -->
-        <article
-          class="shelf-room margins reveal"
-          data-moods="wonder learn brave"
-          data-search="blog questions adults learning fun ideas possibility education curiosity"
-        >
-
-          <header>
-
-            <span>
-              ROOM 05 · ORBIT OF RESTLESS THOUGHTS
-            </span>
-
-            <h3>
-              Notes from the Margins
-            </h3>
-
-            <p>
-              Blogs for thoughts too restless for a textbook.
-            </p>
-
-          </header>
-
-
-          <div class="shelf-books">
-
-            <a
-              href="blog.html"
-              class="spine wide navy"
-            >
-              <b>
-                Why Adults Stop Asking Silly Questions
-              </b>
-
-              <small>
-                Curiosity
-              </small>
-            </a>
-
-
-            <a
-              href="blog-serious-learning-can-be-fun.html"
-              class="spine tall cyan"
-            >
-              <b>
-                Can Serious Learning Still Be Fun?
-              </b>
-
-              <small>
-                Education
-              </small>
-            </a>
-
-
-            <a
-              href="blog-everything-started-as-an-idea.html"
-              class="spine lean gold"
-            >
-              <b>
-                Everything Began as an Idea
-              </b>
-
-              <small>
-                Possibility
-              </small>
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <!-- No search results -->
-      <div
-        class="no-results"
-        id="noResults"
-        hidden
-      >
-
-        <span>
-          ☾
-        </span>
-
-        <h3>
-          That shelf has not appeared yet.
-        </h3>
-
-        <p>
-          Try another word—or send the missing book idea
-          into the Verse.
-        </p>
-
-        <a href="https://endearing-cat-c1f80e.netlify.app/">
-          Send a signal ↗
-        </a>
-
-      </div>
+      <p class="eyebrow">
+        Before you leave
+      </p>
+
+      <h2>
+        Borrow a truth.<br>
+        <em>Leave one light on.</em>
+      </h2>
+
+      <a href="#main">
+        Return to the beginning ↑
+      </a>
 
     </section>
 
+  </main>
 
-    <!-- =======================================================
-         IMMORTAL WORDS
-    ======================================================== -->
-    <section
-      class="immortal-words"
-      aria-labelledby="immortalTitle"
-    >
+  <!-- Footer -->
 
-      <div
-        class="immortal-visual reveal"
-        aria-hidden="true"
-      >
+  <footer>
 
-        <div class="memory-moon">
+    <span>
+      © <span id="year"></span> JigyasaVerse
+    </span>
 
-          <span>
-            WORDS<br>
-            OUTLIVE<br>
-            US
-          </span>
+    <nav aria-label="Footer navigation">
 
-        </div>
+      <a href="index.html">
+        Home
+      </a>
 
+      <a href="#books">
+        Books
+      </a>
 
-        <div class="paper-orbit paper-one">
-          “I was here.”
-        </div>
+      <a href="#stories">
+        Stories
+      </a>
 
-        <div class="paper-orbit paper-two">
-          “This mattered.”
-        </div>
+      <a href="contact.html">
+        Contact
+      </a>
 
-        <div class="paper-orbit paper-three">
-          “You are not alone.”
-        </div>
+    </nav>
 
-      </div>
+    <span>
+      A library of real human traces.
+    </span>
 
+  </footer>
 
-      <div class="immortal-copy reveal">
+  <script>
+    (() => {
+      "use strict";
 
-        <p class="eyebrow">
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
 
-          <span>
-            The room at the end
-          </span>
+      const canvas =
+        document.querySelector(
+          "#starField"
+        );
 
-          Archive of human traces
+      const ctx =
+        canvas.getContext("2d");
 
-        </p>
+      const glow =
+        document.querySelector(
+          "#cursorGlow"
+        );
 
+      const menuButton =
+        document.querySelector(
+          "#menuButton"
+        );
 
-        <h2 id="immortalTitle">
+      const nav =
+        document.querySelector(
+          "#siteNav"
+        );
 
-          A life ends.
+      let stars = [];
+      let frame;
 
-          <em>
-            A true sentence can remain.
-          </em>
+      /* Current year */
 
-        </h2>
+      document
+        .querySelector("#year")
+        .textContent =
+          new Date().getFullYear();
 
+      /* Mobile navigation */
 
-        <p>
+      menuButton.addEventListener(
+        "click",
+        () => {
+          const open =
+            nav.classList.toggle(
+              "open"
+            );
 
-          Writing lets a thought cross a distance its
-          writer never could.
+          menuButton.setAttribute(
+            "aria-expanded",
+            String(open)
+          );
+        }
+      );
 
-          Long after we are gone, a poem,
+      nav
+        .querySelectorAll("a")
+        .forEach(
+          link => {
+            link.addEventListener(
+              "click",
+              () => {
+                nav.classList.remove(
+                  "open"
+                );
+
+                menuButton.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+              }
+            );
+          }
+        );
+
+      /* Star field */
+
+      function buildStars() {
+        const ratio =
+          Math.min(
+            window.devicePixelRatio || 1,
+            2
+          );
+
+        canvas.width =
+          innerWidth * ratio;
+
+        canvas.height =
+          innerHeight * ratio;
+
+        canvas.style.width =
+          `${innerWidth}px`;
+
+        canvas.style.height =
+          `${innerHeight}px`;
+
+        ctx.setTransform(
+          ratio,
+          0,
+          0,
+          ratio,
+          0,
+          0
+        );
+
+        const total =
+          Math.max(
+            50,
+            Math.floor(
+              innerWidth / 16
+            )
+          );
+
+        stars =
+          Array.from(
+            {
+              length: total
+            },
+            () => ({
+              x:
+                Math.random() *
+                innerWidth,
+
+              y:
+                Math.random() *
+                innerHeight,
+
+              r:
+                Math.random() *
+                1.2 +
+                0.2,
+
+              a:
+                Math.random() *
+                0.46 +
+                0.1,
+
+              phase:
+                Math.random() *
+                Math.PI *
+                2
+            })
+          );
+      }
+
+      function drawStars(
+        time = 0
+      ) {
+        ctx.clearRect(
+          0,
+          0,
+          innerWidth,
+          innerHeight
+        );
+
+        stars.forEach(
+          star => {
+            const alpha =
+              reducedMotion
+                ? star.a
+                : star.a +
+                  Math.sin(
+                    time *
+                    0.0006 +
+                    star.phase
+                  ) *
+                  0.1;
+
+            ctx.beginPath();
+
+            ctx.arc(
+              star.x,
+              star.y,
+              star.r,
+              0,
+              Math.PI * 2
+            );
+
+            ctx.fillStyle =
+              `rgba(245,237,218,${
+                Math.max(
+                  0.04,
+                  alpha
+                )
+              })`;
+
+            ctx.fill();
+          }
+        );
+
+        if (!reducedMotion) {
+          frame =
+            requestAnimationFrame(
+              drawStars
+            );
+        }
+      }
+
+      function resizeStars() {
+        cancelAnimationFrame(
+          frame
+        );
+
+        buildStars();
+        drawStars();
+      }
+
+      let resizeTimer;
+
+      window.addEventListener(
+        "resize",
+        () => {
+          clearTimeout(
+            resizeTimer
+          );
+
+          resizeTimer =
+            setTimeout(
+              resizeStars,
+              140
+            );
+        }
+      );
+
+      /* Cursor glow */
+
+      if (!reducedMotion) {
+        window.addEventListener(
+          "pointermove",
+          event => {
+            glow.style.left =
+              `${event.clientX}px`;
+
+            glow.style.top =
+              `${event.clientY}px`;
+          }
+        );
+      } else {
+        glow.style.left = "70%";
+        glow.style.top = "35%";
+      }
+
+      /* Expandable stories */
+
+      document
+        .querySelectorAll(".story")
+        .forEach(
+          button => {
+            button.addEventListener(
+              "click",
+              () => {
+                const body =
+                  document.querySelector(
+                    `#${
+                      button.getAttribute(
+                        "aria-controls"
+                      )
+                    }`
+                  );
+
+                const open =
+                  button.getAttribute(
+                    "aria-expanded"
+                  ) === "true";
+
+                document
+                  .querySelectorAll(
+                    ".story"
+                  )
+                  .forEach(
+                    other => {
+                      other.setAttribute(
+                        "aria-expanded",
+                        "false"
+                      );
+
+                      const otherBody =
+                        document
+                          .querySelector(
+                            `#${
+                              other.getAttribute(
+                                "aria-controls"
+                              )
+                            }`
+                          );
+
+                      otherBody
+                        .classList
+                        .remove("open");
+                    }
+                  );
+
+                if (!open) {
+                  button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                  );
+
+                  body
+                    .classList
+                    .add("open");
+                }
+              }
+            );
+          }
+        );
+
+      /* Scroll reveal */
+
+      const observer =
+        new IntersectionObserver(
+          entries => {
+            entries.forEach(
+              entry => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry
+                    .target
+                    .classList
+                    .add("in-view");
+
+                  observer.unobserve(
+                    entry.target
+                  );
+                }
+              }
+            );
+          },
+          {
+            threshold: 0.1
+          }
+        );
+
+      document
+        .querySelectorAll(
+          ".reveal"
+        )
+        .forEach(
+          item => {
+            observer.observe(
+              item
+            );
+          }
+        );
+
+      /* Start visual background */
+
+      buildStars();
+      drawStars();
+    })();
+  </script>
+
+</body>
+</html>
