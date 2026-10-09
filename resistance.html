@@ -1,0 +1,2751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Resistance — Phase Three of Chandra Lok. A place for conflict, criticism, boundaries and choosing yourself without abandoning who you are."
+  >
+
+  <meta name="theme-color" content="#14070d">
+
+  <title>
+    The Resistance | Chandra Lok | Jigyasa Verse
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       ROOT
+       ========================================================= */
+
+    :root {
+      --night: #060307;
+      --night-red: #13070d;
+      --night-violet: #120e20;
+      --surface: #130a11;
+
+      --cream: #fff4e8;
+      --cream-muted: #d9cac8;
+      --text-muted: #ab989d;
+
+      --red: #d94b4b;
+      --red-deep: #8f1f38;
+      --crimson: #b92f4b;
+      --ember: #ee7457;
+      --copper: #e79a68;
+      --gold: #f1c58e;
+      --violet: #8f77b5;
+      --violet-light: #c1addc;
+
+      --line: rgba(255, 229, 218, 0.13);
+      --line-strong: rgba(255, 229, 218, 0.27);
+
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+
+      --content: 1180px;
+      --reading: 730px;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--crimson) var(--night);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      color: var(--cream);
+
+      background:
+        radial-gradient(
+          circle at 85% 12%,
+          rgba(217, 75, 75, 0.2),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 14% 48%,
+          rgba(143, 119, 181, 0.17),
+          transparent 34%
+        ),
+        linear-gradient(
+          140deg,
+          #050307 0%,
+          #100710 45%,
+          #160b14 72%,
+          #0b0710 100%
+        );
+
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+
+      background-image:
+        radial-gradient(
+          circle at 20% 30%,
+          rgba(255,255,255,0.34) 0 1px,
+          transparent 1.4px
+        ),
+        radial-gradient(
+          circle at 80% 22%,
+          rgba(238,116,87,0.34) 0 1px,
+          transparent 1.4px
+        ),
+        radial-gradient(
+          circle at 62% 72%,
+          rgba(193,173,220,0.25) 0 1px,
+          transparent 1.4px
+        );
+
+      background-size:
+        270px 270px,
+        370px 370px,
+        470px 470px;
+
+      opacity: 0.42;
+    }
+
+    ::selection {
+      color: var(--night);
+      background: var(--gold);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 5px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1200;
+
+      padding: 0.75rem 1rem;
+
+      color: var(--night);
+      background: var(--gold);
+      text-decoration: none;
+
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       PROGRESS
+       ========================================================= */
+
+    .progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+
+      width: 100%;
+      height: 3px;
+
+      background: rgba(255,255,255,0.03);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        var(--violet),
+        var(--crimson),
+        var(--ember),
+        var(--gold)
+      );
+
+      box-shadow:
+        0 0 12px rgba(217,75,75,0.65),
+        0 0 25px rgba(238,116,87,0.35);
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 900;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      min-height: 84px;
+      padding: 1rem clamp(1.25rem, 4vw, 4rem);
+
+      border-bottom: 1px solid transparent;
+
+      transition:
+        background 300ms ease,
+        border-color 300ms ease,
+        backdrop-filter 300ms ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(7, 3, 8, 0.8);
+      border-color: var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+
+      filter:
+        saturate(0.8)
+        brightness(1.07)
+        drop-shadow(0 0 18px rgba(238,116,87,0.2));
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-world {
+      margin-top: 0.3rem;
+
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .desktop-nav a {
+      position: relative;
+
+      color: #b4a3a7;
+      font-size: 0.74rem;
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition: color 200ms ease;
+    }
+
+    .desktop-nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -0.55rem;
+      left: 0;
+
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--crimson),
+        var(--ember),
+        var(--gold)
+      );
+
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 300ms var(--ease);
+    }
+
+    .desktop-nav a:hover {
+      color: var(--cream);
+    }
+
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .menu-button {
+      display: none;
+
+      width: 46px;
+      height: 46px;
+      padding: 0;
+
+      color: var(--cream);
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      margin: 5px auto;
+
+      background: currentColor;
+
+      transition:
+        transform 250ms ease,
+        opacity 250ms ease;
+    }
+
+    .menu-button.active span:first-child {
+      transform: translateY(3px) rotate(45deg);
+    }
+
+    .menu-button.active span:last-child {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 850;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(185,47,75,0.25),
+          transparent 45%
+        ),
+        rgba(6,3,7,0.98);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 300ms ease,
+        visibility 300ms ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 10vw, 3.8rem);
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 100svh;
+      padding:
+        9rem
+        clamp(1.25rem, 6vw, 6rem)
+        5rem;
+
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -28%;
+      right: -15%;
+
+      width: 78vw;
+      height: 78vw;
+      max-width: 1100px;
+      max-height: 1100px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(241,197,142,0.15) 0%,
+          rgba(238,116,87,0.14) 18%,
+          rgba(185,47,75,0.1) 38%,
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -20%;
+      bottom: -65%;
+
+      width: 85vw;
+      height: 85vw;
+
+      border: 1px solid rgba(238,116,87,0.06);
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 80px rgba(185,47,75,0.025),
+        0 0 0 180px rgba(143,119,181,0.018);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+
+      display: grid;
+      grid-template-columns: 0.75fr 1.35fr 0.8fr;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 6rem);
+
+      width: min(100%, var(--content));
+      margin: 0 auto;
+    }
+
+    .moon-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .moon-stage {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      width: clamp(220px, 21vw, 300px);
+      aspect-ratio: 1;
+      margin-bottom: 2rem;
+    }
+
+    .moon-stage::before,
+    .moon-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .moon-stage::before {
+      inset: -13%;
+
+      border:
+        1px solid
+        rgba(238,116,87,0.11);
+
+      animation: rotate-ring 26s linear infinite;
+    }
+
+    .moon-stage::after {
+      inset: -3%;
+
+      border:
+        1px dashed
+        rgba(241,197,142,0.12);
+
+      animation: rotate-ring-reverse 34s linear infinite;
+    }
+
+    .quarter-moon {
+      position: relative;
+      width: 82%;
+      aspect-ratio: 1;
+      overflow: hidden;
+
+      border: 1px solid rgba(255,244,232,0.55);
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #08070c 0%,
+          #0a080d 49.5%,
+          #eee3d0 50%,
+          #fff2dc 74%,
+          #f3d6b4 100%
+        );
+
+      box-shadow:
+        -25px 0 55px rgba(0,0,0,0.48),
+        24px 0 45px rgba(238,116,87,0.3),
+        44px 0 95px rgba(185,47,75,0.22),
+        0 0 110px rgba(143,119,181,0.1);
+
+      transition: transform 250ms ease-out;
+      animation: moon-pulse 6s ease-in-out infinite;
+    }
+
+    .quarter-moon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 69% 28%,
+          rgba(116,91,78,0.26) 0 7%,
+          transparent 7.5%
+        ),
+        radial-gradient(
+          circle at 80% 62%,
+          rgba(118,91,78,0.2) 0 11%,
+          transparent 11.5%
+        ),
+        radial-gradient(
+          circle at 61% 73%,
+          rgba(120,92,81,0.18) 0 6%,
+          transparent 6.5%
+        );
+    }
+
+    .quarter-moon::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 48%;
+
+      width: 8%;
+
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.65),
+        rgba(238,116,87,0.22),
+        transparent
+      );
+
+      filter: blur(7px);
+    }
+
+    @keyframes rotate-ring {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotate-ring-reverse {
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    @keyframes moon-pulse {
+      0%,
+      100% {
+        filter: brightness(0.96);
+      }
+
+      50% {
+        filter: brightness(1.1);
+      }
+    }
+
+    .phase-label {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .phase-label::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--crimson),
+        var(--gold)
+      );
+    }
+
+    .hero-copy {
+      max-width: 700px;
+    }
+
+    .eyebrow {
+      margin-bottom: 1.5rem;
+
+      color: #e6a09b;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(4.2rem, 8vw, 8.6rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.82;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-left: clamp(1rem, 4vw, 4rem);
+
+      color: transparent;
+
+      background: linear-gradient(
+        95deg,
+        var(--violet-light),
+        #efa49c,
+        var(--ember),
+        var(--gold)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-question {
+      max-width: 590px;
+      margin-bottom: 1.8rem;
+
+      color: #f0b7ae;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .hero-introduction {
+      max-width: 570px;
+      margin-bottom: 2.5rem;
+
+      color: #b8a5a8;
+      font-family: var(--serif);
+      font-size: clamp(1.12rem, 1.5vw, 1.3rem);
+      line-height: 1.7;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.95rem 1.35rem;
+
+      color: var(--cream);
+
+      background: linear-gradient(
+        110deg,
+        rgba(185,47,75,0.18),
+        rgba(238,116,87,0.1),
+        rgba(241,197,142,0.06)
+      );
+
+      border: 1px solid rgba(238,116,87,0.42);
+      border-radius: 999px;
+
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      box-shadow: 0 0 28px rgba(185,47,75,0.1);
+
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease,
+        box-shadow 250ms ease;
+    }
+
+    .hero-action:hover {
+      color: var(--night);
+
+      background: linear-gradient(
+        90deg,
+        var(--ember),
+        var(--gold)
+      );
+
+      border-color: var(--gold);
+
+      box-shadow:
+        0 0 35px rgba(238,116,87,0.3);
+
+      transform: translateY(-3px);
+    }
+
+    .hero-themes {
+      align-self: end;
+      padding-bottom: 1rem;
+    }
+
+    .theme-list {
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .theme-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      padding: 0.92rem 0;
+      border-bottom: 1px solid var(--line);
+
+      color: #ae9da1;
+      font-size: 0.83rem;
+    }
+
+    .theme-list li::after {
+      content: "—";
+      color: var(--ember);
+      opacity: 0.8;
+    }
+
+    .vertical-text {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 3rem;
+
+      color: rgba(255,255,255,0.22);
+      font-size: 0.64rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    /* =========================================================
+       SHARED SECTIONS
+       ========================================================= */
+
+    .section {
+      position: relative;
+
+      padding:
+        clamp(6rem, 11vw, 10rem)
+        clamp(1.25rem, 6vw, 6rem);
+    }
+
+    .section-inner {
+      width: min(100%, var(--content));
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      margin-bottom: 1.4rem;
+
+      color: #e99c96;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-label::after {
+      content: "";
+      width: 48px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--ember),
+        transparent
+      );
+    }
+
+    .section-title {
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.97;
+    }
+
+    .section-title em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .section-introduction {
+      max-width: 700px;
+
+      color: #ac999e;
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       FRICTION SECTION
+       ========================================================= */
+
+    .friction {
+      overflow: hidden;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 18% 50%,
+          rgba(185,47,75,0.22),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 82% 35%,
+          rgba(238,116,87,0.14),
+          transparent 34%
+        ),
+        linear-gradient(
+          135deg,
+          #08050b,
+          #180912,
+          #110b18
+        );
+    }
+
+    .friction-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(3rem, 9vw, 9rem);
+      align-items: center;
+    }
+
+    .collision-field {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      min-height: 580px;
+      overflow: hidden;
+
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(185,47,75,0.1),
+          transparent 45%
+        ),
+        rgba(7,4,8,0.75);
+    }
+
+    .collision-field::before,
+    .collision-field::after {
+      content: "";
+      position: absolute;
+
+      width: 72%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--crimson),
+        var(--ember),
+        var(--gold),
+        transparent
+      );
+
+      box-shadow:
+        0 0 22px rgba(217,75,75,0.45),
+        0 0 60px rgba(238,116,87,0.2);
+    }
+
+    .collision-field::before {
+      transform: rotate(40deg);
+      animation: tension-one 7s ease-in-out infinite;
+    }
+
+    .collision-field::after {
+      transform: rotate(-40deg);
+      animation: tension-two 7s ease-in-out infinite;
+    }
+
+    .collision-core {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+      place-items: center;
+
+      width: 145px;
+      aspect-ratio: 1;
+
+      color: var(--gold);
+      background:
+        radial-gradient(
+          circle,
+          rgba(238,116,87,0.2),
+          rgba(185,47,75,0.1),
+          transparent 70%
+        );
+
+      border: 1px solid rgba(241,197,142,0.32);
+      border-radius: 50%;
+
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      letter-spacing: 0.08em;
+
+      box-shadow:
+        0 0 50px rgba(217,75,75,0.2),
+        inset 0 0 40px rgba(238,116,87,0.08);
+    }
+
+    @keyframes tension-one {
+      0%,
+      100% {
+        transform: rotate(40deg) scaleX(0.85);
+      }
+
+      50% {
+        transform: rotate(40deg) scaleX(1.08);
+      }
+    }
+
+    @keyframes tension-two {
+      0%,
+      100% {
+        transform: rotate(-40deg) scaleX(1.08);
+      }
+
+      50% {
+        transform: rotate(-40deg) scaleX(0.85);
+      }
+    }
+
+    .friction-copy blockquote {
+      margin: 2.5rem 0;
+      padding-left: 1.5rem;
+
+      color: #eed7d4;
+      border-left: 1px solid var(--ember);
+
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .friction-copy p {
+      color: #ad9ba0;
+    }
+
+    /* =========================================================
+       FIVE STORIES
+       ========================================================= */
+
+    .archive-header {
+      display: grid;
+      grid-template-columns: 1.15fr 0.65fr;
+      gap: 4rem;
+      align-items: end;
+
+      margin-bottom: 5rem;
+    }
+
+    .archive-note {
+      max-width: 380px;
+      margin: 0 0 0 auto;
+
+      color: #97868b;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .archive-note strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .stories {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .story {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+
+      transition:
+        background 350ms ease,
+        border-color 350ms ease;
+    }
+
+    .story[open] {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(185,47,75,0.13),
+          rgba(238,116,87,0.055),
+          transparent 72%
+        );
+
+      border-color: rgba(238,116,87,0.35);
+    }
+
+    .story summary {
+      display: grid;
+      grid-template-columns: 85px 1fr auto;
+      gap: clamp(1rem, 4vw, 4rem);
+      align-items: center;
+
+      min-height: 155px;
+      padding: 1.5rem 0;
+
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .story summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .story-number {
+      color: #7f6870;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .story-title {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .story-subtitle {
+      display: block;
+      margin-top: 0.7rem;
+
+      color: #8e7b81;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .story-toggle {
+      display: grid;
+      place-items: center;
+
+      width: 47px;
+      height: 47px;
+
+      color: var(--ember);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+
+      transition:
+        transform 350ms var(--ease),
+        color 250ms ease,
+        background 250ms ease,
+        box-shadow 250ms ease;
+    }
+
+    .story[open] .story-toggle {
+      color: var(--night);
+
+      background: linear-gradient(
+        135deg,
+        var(--ember),
+        var(--gold)
+      );
+
+      box-shadow:
+        0 0 26px rgba(238,116,87,0.25);
+
+      transform: rotate(45deg);
+    }
+
+    .story-body {
+      display: grid;
+      grid-template-columns: 85px minmax(0, var(--reading));
+      gap: clamp(1rem, 4vw, 4rem);
+
+      padding: 0 0 5rem;
+    }
+
+    .story-thread {
+      width: 1px;
+      height: 100%;
+      min-height: 130px;
+      margin: 0 auto;
+
+      background: linear-gradient(
+        to bottom,
+        var(--crimson),
+        var(--ember),
+        var(--gold),
+        transparent
+      );
+    }
+
+    .story-content {
+      color: #b8a6aa;
+      font-family: var(--serif);
+      font-size: clamp(1.12rem, 1.7vw, 1.3rem);
+      line-height: 1.88;
+    }
+
+    .story-content p:first-child::first-letter {
+      float: left;
+      margin: 0.05em 0.12em 0 0;
+
+      color: var(--ember);
+      font-size: 4.1em;
+      line-height: 0.78;
+    }
+
+    .story-content strong {
+      color: #f0d9d6;
+      font-weight: 500;
+    }
+
+    .story-truth {
+      margin-top: 2.5rem;
+      padding: 1.5rem 0 0 1.5rem;
+
+      color: #ebc8c4;
+      border-top: 1px solid var(--line);
+
+      font-size: 1.28rem;
+      font-style: italic;
+    }
+
+    .edit-note {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 0.75rem;
+
+      color: #967b82;
+      border: 1px dashed rgba(238,116,87,0.25);
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-style: normal;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       FORMS OF RESISTANCE
+       ========================================================= */
+
+    .resistance-map {
+      overflow: hidden;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 83% 33%,
+          rgba(238,116,87,0.14),
+          transparent 33%
+        ),
+        radial-gradient(
+          circle at 15% 74%,
+          rgba(143,119,181,0.16),
+          transparent 35%
+        ),
+        #0b060c;
+    }
+
+    .resistance-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: clamp(3rem, 8vw, 9rem);
+      align-items: start;
+    }
+
+    .resistance-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .resistance-card {
+      position: relative;
+
+      min-height: 220px;
+      padding: 2rem;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          #10080e,
+          #0b070c
+        );
+
+      transition:
+        background 300ms ease,
+        transform 300ms ease;
+    }
+
+    .resistance-card::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+
+      width: 115px;
+      height: 115px;
+
+      background: radial-gradient(
+        circle,
+        rgba(238,116,87,0.2),
+        transparent 68%
+      );
+
+      border-radius: 50%;
+      opacity: 0;
+
+      transition: opacity 300ms ease;
+    }
+
+    .resistance-card:hover {
+      z-index: 2;
+      background:
+        linear-gradient(
+          145deg,
+          #1b0a13,
+          #10090f
+        );
+
+      transform: translateY(-4px);
+    }
+
+    .resistance-card:hover::after {
+      opacity: 1;
+    }
+
+    .card-number {
+      display: block;
+      margin-bottom: 2.5rem;
+
+      color: var(--ember);
+      font-family: var(--serif);
+      font-size: 1.75rem;
+    }
+
+    .resistance-card h3 {
+      margin-bottom: 0.7rem;
+
+      color: #e5d0d0;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .resistance-card p {
+      margin: 0;
+
+      color: #8e7d82;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       REFLECTION
+       ========================================================= */
+
+    .reflection {
+      text-align: center;
+    }
+
+    .reflection-inner {
+      width: min(100%, 870px);
+      margin: 0 auto;
+    }
+
+    .reflection-field {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      width: min(78vw, 640px);
+      aspect-ratio: 1;
+      margin: 5rem auto;
+
+      border:
+        1px solid
+        rgba(238,116,87,0.12);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(185,47,75,0.15),
+          rgba(143,119,181,0.06) 35%,
+          transparent 62%
+        );
+    }
+
+    .reflection-field::before,
+    .reflection-field::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .reflection-field::before {
+      inset: 11%;
+      border: 1px solid rgba(241,197,142,0.15);
+    }
+
+    .reflection-field::after {
+      inset: 25%;
+      border: 1px solid rgba(238,116,87,0.22);
+    }
+
+    .reflection-question {
+      position: relative;
+      z-index: 2;
+
+      width: 72%;
+      margin: 0;
+
+      color: #f1ddda;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-style: italic;
+      line-height: 1.1;
+    }
+
+    .orbit-light {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 9px;
+      height: 9px;
+      margin: -4.5px;
+
+      background: var(--ember);
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 16px var(--red),
+        0 0 38px rgba(238,116,87,0.75);
+
+      animation: orbit 15s linear infinite;
+    }
+
+    @keyframes orbit {
+      from {
+        transform: rotate(0deg) translateX(320px);
+      }
+
+      to {
+        transform: rotate(360deg) translateX(320px);
+      }
+    }
+
+    .reflection-copy {
+      max-width: 640px;
+      margin: 0 auto;
+
+      color: #a7959a;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       CLOSING
+       ========================================================= */
+
+    .closing {
+      min-height: 92vh;
+
+      display: grid;
+      place-items: center;
+
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(238,116,87,0.2),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 50% 55%,
+          rgba(185,47,75,0.16),
+          transparent 45%
+        ),
+        linear-gradient(
+          to bottom,
+          #10070e,
+          #050306
+        );
+
+      text-align: center;
+    }
+
+    .closing-inner {
+      position: relative;
+      z-index: 2;
+
+      width: min(100%, 880px);
+      margin: 0 auto;
+    }
+
+    .closing-logo {
+      width: clamp(105px, 15vw, 165px);
+      margin: 0 auto 2.5rem;
+
+      filter:
+        saturate(0.8)
+        brightness(1.04)
+        drop-shadow(0 0 38px rgba(238,116,87,0.22));
+
+      opacity: 0.92;
+    }
+
+    .closing h2 {
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 0.94;
+    }
+
+    .closing h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .closing-copy {
+      max-width: 670px;
+      margin: 0 auto 3rem;
+
+      color: #b19da1;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      line-height: 1.75;
+    }
+
+    .phase-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .phase-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 1rem 1.4rem;
+
+      color: #c4b0b3;
+
+      background: linear-gradient(
+        100deg,
+        rgba(185,47,75,0.12),
+        rgba(238,116,87,0.06)
+      );
+
+      border: 1px solid rgba(238,116,87,0.34);
+      border-radius: 999px;
+
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease;
+    }
+
+    .phase-link:hover {
+      color: var(--night);
+
+      background: linear-gradient(
+        90deg,
+        var(--ember),
+        var(--gold)
+      );
+
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .phase-link.secondary {
+      background: transparent;
+      border-color: var(--line-strong);
+    }
+
+    .phase-link.secondary:hover {
+      color: var(--cream);
+      background: rgba(143,119,181,0.12);
+      border-color: var(--violet);
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .site-footer {
+      padding: 2rem clamp(1.25rem, 5vw, 5rem);
+      border-top: 1px solid var(--line);
+      background: #030203;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+
+      width: min(100%, var(--content));
+      margin: 0 auto;
+
+      color: #78676c;
+      font-size: 0.73rem;
+      letter-spacing: 0.07em;
+    }
+
+    .footer-inner a {
+      color: #a79297;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       REVEALS
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+
+      transition:
+        opacity 900ms var(--ease),
+        transform 900ms var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+      .hero-inner {
+        grid-template-columns: 0.7fr 1.3fr;
+      }
+
+      .hero-themes {
+        grid-column: 1 / -1;
+        width: min(100%, 680px);
+        margin-left: auto;
+      }
+
+      .friction-grid,
+      .resistance-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collision-field {
+        min-height: 440px;
+      }
+
+      .archive-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .archive-note {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        min-height: 72px;
+        padding: 0.75rem 1rem;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-name {
+        font-size: 1.15rem;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 8rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .moon-column {
+        align-items: center;
+      }
+
+      .moon-stage {
+        width: min(64vw, 250px);
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero h1 span {
+        margin-left: 0;
+      }
+
+      .hero-introduction {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-themes {
+        width: 100%;
+      }
+
+      .vertical-text {
+        display: none;
+      }
+
+      .section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+
+      .story summary {
+        grid-template-columns: 44px 1fr auto;
+        gap: 0.8rem;
+        min-height: 130px;
+      }
+
+      .story-body {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 0.8rem;
+      }
+
+      .resistance-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .reflection-field {
+        width: min(88vw, 520px);
+      }
+
+      .orbit-light {
+        display: none;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-world {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.6rem, 18vw, 5rem);
+      }
+
+      .story summary {
+        grid-template-columns: 1fr auto;
+      }
+
+      .story-number {
+        display: none;
+      }
+
+      .story-body {
+        grid-template-columns: 1fr;
+      }
+
+      .story-thread {
+        display: none;
+      }
+
+      .collision-field {
+        min-height: 350px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">
+    Skip to the resistance
+  </a>
+
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse home">
+      <img
+        class="brand-logo"
+        src="wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span class="brand-copy">
+        <span class="brand-name">Jigyasa Verse</span>
+        <span class="brand-world">Chandra Lok</span>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="chandra-lok.html">Chandra Lok</a>
+      <a href="#stories">Five stories</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open navigation"
+      aria-controls="mobileMenu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="chandra-lok.html">Chandra Lok</a>
+      <a href="#stories">Stories</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+  </div>
+
+  <main id="main-content">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+
+        <div class="moon-column reveal">
+          <div class="moon-stage">
+            <div
+              class="quarter-moon"
+              id="quarterMoon"
+              role="img"
+              aria-label="A first-quarter moon divided equally between darkness and light"
+            ></div>
+          </div>
+
+          <div class="phase-label">
+            Phase 03 · First Quarter
+          </div>
+        </div>
+
+        <div class="hero-copy reveal">
+          <p class="eyebrow">
+            Chandra Lok · The Becoming
+          </p>
+
+          <h1 id="page-title">
+            The
+            <span>Resistance</span>
+          </h1>
+
+          <p class="hero-question">
+            What do you protect when the world asks you to
+            abandon it?
+          </p>
+
+          <p class="hero-introduction">
+            Becoming creates friction. This phase holds
+            criticism, rejection, family expectations, pressure
+            to conform and the difficult work of saying no
+            without losing yourself.
+          </p>
+
+          <a class="hero-action" href="#friction">
+            Enter the friction
+          </a>
+        </div>
+
+        <aside
+          class="hero-themes reveal"
+          aria-label="Themes explored in this phase"
+        >
+          <ul class="theme-list">
+            <li>Conflict and opposition</li>
+            <li>Pressure to conform</li>
+            <li>Holding a boundary</li>
+            <li>Fear after commitment</li>
+            <li>Choosing an unfamiliar path</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="vertical-text" aria-hidden="true">
+        Friction does not always mean the direction is wrong
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FRICTION
+         ===================================================== -->
+
+    <section class="section friction" id="friction">
+      <div class="section-inner friction-grid">
+
+        <div class="collision-field reveal" aria-hidden="true">
+          <div class="collision-core">
+            hold
+          </div>
+        </div>
+
+        <div class="friction-copy reveal">
+          <p class="section-label">When becoming pushes back</p>
+
+          <h2 class="section-title">
+            The path became real<br>
+            <em>when it became difficult.</em>
+          </h2>
+
+          <blockquote>
+            “The moment I chose myself, I discovered how many
+            people preferred the version of me who never said no.”
+          </blockquote>
+
+          <p>
+            Resistance often arrives after the beginning. The
+            dream is no longer safely imagined—it is being lived.
+            Our choices begin affecting expectations, routines,
+            relationships and the identities others assigned to us.
+          </p>
+
+          <p>
+            Some resistance comes from outside. Some comes from
+            the part of us that still believes familiarity is
+            safer than freedom. Both can sound convincing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FIVE STORIES
+         ===================================================== -->
+
+    <section class="section" id="stories">
+      <div class="section-inner">
+
+        <header class="archive-header reveal">
+          <div>
+            <p class="section-label">Stories from the friction</p>
+
+            <h2 class="section-title">
+              Five moments of<br>
+              <em>choosing not to retreat.</em>
+            </h2>
+          </div>
+
+          <p class="archive-note">
+            <strong>Resistance does not always announce itself
+            as fear.</strong> Sometimes it sounds like logic,
+            duty, guilt or the voice of somebody who believes
+            they know us better than we know ourselves.
+          </p>
+        </header>
+
+        <div class="stories">
+
+          <!-- STORY 01 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">01 / 05</span>
+
+              <h3 class="story-title">
+                When the first criticism arrived
+                <span class="story-subtitle">
+                  On continuing after somebody questioned the work
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  It was easier to believe in the idea while it
+                  belonged only to me. Inside my mind, it was
+                  protected from misunderstanding. The moment I
+                  showed it to somebody else, it became vulnerable.
+                </p>
+
+                <p>
+                  The first criticism reached further than the
+                  work itself. I heard it as a judgment of my
+                  intelligence, my direction and whether I had the
+                  right to attempt something so ambitious.
+                </p>
+
+                <p>
+                  Part of me wanted to erase everything and return
+                  to being someone who could not be criticised
+                  because they had not created anything visible.
+                </p>
+
+                <p>
+                  Instead, I learned to separate useful criticism
+                  from the criticism that merely asked me to become
+                  smaller. <strong>Feedback could shape the work
+                  without owning the person creating it.</strong>
+                </p>
+
+                <div class="story-truth">
+                  Being questioned did not mean I had to disappear.
+                </div>
+
+                <span class="edit-note">
+                  Add a moment when criticism made you question your work
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 02 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">02 / 05</span>
+
+              <h3 class="story-title">
+                The life others imagined for me
+                <span class="story-subtitle">
+                  On family expectations and inherited definitions of success
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  Some expectations were given to me with love.
+                  People wanted safety, stability and certainty
+                  for me because uncertainty frightened them.
+                </p>
+
+                <p>
+                  That made resisting harder. It is easier to
+                  oppose cruelty than concern. I could understand
+                  why they wanted a familiar life for me while
+                  still knowing that it was not entirely mine.
+                </p>
+
+                <p>
+                  I tried to make my choices easy to approve of.
+                  I gathered explanations, evidence and sensible
+                  plans, hoping permission would remove the guilt
+                  of choosing differently.
+                </p>
+
+                <p>
+                  Eventually, I understood that gratitude did not
+                  require obedience. <strong>I could honour where
+                  I came from without allowing it to decide every
+                  place I was permitted to go.</strong>
+                </p>
+
+                <div class="story-truth">
+                  Loving people did not require me to live only
+                  the life they could understand.
+                </div>
+
+                <span class="edit-note">
+                  Add an expectation you carried that was never truly yours
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 03 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">03 / 05</span>
+
+              <h3 class="story-title">
+                Holding the boundary after the guilt
+                <span class="story-subtitle">
+                  On discovering that saying no was only the beginning
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  Saying no once was difficult. Holding the no
+                  after somebody became disappointed was harder.
+                  Their reaction made me question whether my limit
+                  had been unreasonable.
+                </p>
+
+                <p>
+                  I had expected a boundary to create immediate
+                  peace. Instead, it created tension. The old
+                  version of the relationship resisted the new
+                  shape I was asking it to take.
+                </p>
+
+                <p>
+                  I felt the familiar urge to explain until my
+                  boundary sounded acceptable, gentle and almost
+                  invisible. I wanted to protect myself without
+                  making anybody feel the inconvenience of my
+                  protection.
+                </p>
+
+                <p>
+                  But a boundary that disappears whenever somebody
+                  dislikes it is not protection. <strong>Their
+                  discomfort did not automatically mean I had done
+                  something wrong.</strong>
+                </p>
+
+                <div class="story-truth">
+                  I learned to survive the silence that followed
+                  an honest no.
+                </div>
+
+                <span class="edit-note">
+                  Add a boundary that became difficult after it was challenged
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 04 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">04 / 05</span>
+
+              <h3 class="story-title">
+                Choosing a path nobody recognised
+                <span class="story-subtitle">
+                  On being misunderstood before your direction becomes visible
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  My direction did not fit into one familiar title.
+                  I wanted to learn across fields, create something
+                  of my own and follow questions that did not lead
+                  neatly towards a predictable answer.
+                </p>
+
+                <p>
+                  To other people, this sometimes looked like
+                  indecision. They asked me to choose one path,
+                  focus on one identity and become easier to
+                  explain.
+                </p>
+
+                <p>
+                  Their certainty about who I should be made me
+                  distrust my own curiosity. I wondered whether
+                  wanting many things meant I was incapable of
+                  committing deeply to anything.
+                </p>
+
+                <p>
+                  But some paths cannot be recognised at their
+                  beginning because they are being created by the
+                  person walking them. <strong>Unfamiliar did not
+                  mean meaningless.</strong>
+                </p>
+
+                <div class="story-truth">
+                  I stopped asking an existing map to validate a
+                  place I was still discovering.
+                </div>
+
+                <span class="edit-note">
+                  Add a choice that others misunderstood or tried to simplify
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 05 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">05 / 05</span>
+
+              <h3 class="story-title">
+                The resistance living inside me
+                <span class="story-subtitle">
+                  On self-sabotage, avoidance and fear disguised as reason
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  Not every force asking me to stop came from
+                  another person. Some of the strongest resistance
+                  spoke in my own voice.
+                </p>
+
+                <p>
+                  It told me to wait until I knew more. It made
+                  small tasks feel enormous and convinced me that
+                  perfectionism was simply evidence of high
+                  standards. It called avoidance preparation.
+                </p>
+
+                <p>
+                  This voice was not entirely an enemy. It had
+                  learned that not trying could protect me from
+                  failing publicly. It wanted safety, even when
+                  that safety became a cage.
+                </p>
+
+                <p>
+                  I did not defeat it through cruelty. I learned
+                  to recognise it and continue beside it.
+                  <strong>Courage did not require the resistant
+                  voice to disappear. It required that the voice
+                  was no longer the only one allowed to decide.</strong>
+                </p>
+
+                <div class="story-truth">
+                  Sometimes the wall in front of me was built from
+                  my own fear—and I could still make a door.
+                </div>
+
+                <span class="edit-note">
+                  Add a moment when you recognised your own self-resistance
+                </span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FORMS OF RESISTANCE
+         ===================================================== -->
+
+    <section class="section resistance-map">
+      <div class="section-inner resistance-grid">
+
+        <div class="reveal">
+          <p class="section-label">Recognising the pressure</p>
+
+          <h2 class="section-title">
+            Resistance has<br>
+            <em>many voices.</em>
+          </h2>
+
+          <p class="section-introduction">
+            Not every warning is wisdom. Not every difficulty is
+            a sign to stop. Sometimes resistance is simply the
+            sound an old life makes when a new one begins moving.
+          </p>
+        </div>
+
+        <div class="resistance-cards reveal">
+
+          <article class="resistance-card">
+            <span class="card-number">01</span>
+            <h3>“People will judge you.”</h3>
+            <p>
+              The fear that visibility will cost you belonging.
+            </p>
+          </article>
+
+          <article class="resistance-card">
+            <span class="card-number">02</span>
+            <h3>“This is not practical.”</h3>
+            <p>
+              The demand that every meaningful path provide
+              immediate proof.
+            </p>
+          </article>
+
+          <article class="resistance-card">
+            <span class="card-number">03</span>
+            <h3>“You have changed.”</h3>
+            <p>
+              Spoken as an accusation when growth changes what
+              you are willing to accept.
+            </p>
+          </article>
+
+          <article class="resistance-card">
+            <span class="card-number">04</span>
+            <h3>“Do not disappoint them.”</h3>
+            <p>
+              The belief that another person’s comfort must
+              decide your direction.
+            </p>
+          </article>
+
+          <article class="resistance-card">
+            <span class="card-number">05</span>
+            <h3>“Wait until you are certain.”</h3>
+            <p>
+              Fear disguising indefinite delay as sensible
+              preparation.
+            </p>
+          </article>
+
+          <article class="resistance-card">
+            <span class="card-number">06</span>
+            <h3>“Maybe you are the problem.”</h3>
+            <p>
+              The doubt that appears when self-respect disrupts
+              an old pattern.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         REFLECTION
+         ===================================================== -->
+
+    <section class="section reflection" id="reflection">
+      <div class="reflection-inner reveal">
+        <p
+          class="section-label"
+          style="justify-content:center;"
+        >
+          The divided mirror
+        </p>
+
+        <h2 class="section-title">
+          Listen beneath the resistance.
+        </h2>
+
+        <div class="reflection-field">
+          <span class="orbit-light" aria-hidden="true"></span>
+
+          <p class="reflection-question">
+            What are you protecting by refusing to become smaller?
+          </p>
+        </div>
+
+        <p class="reflection-copy">
+          Not every conflict must be won. Not every opinion must
+          be answered. Ask only which parts of yourself require
+          protection—and which parts are simply afraid of leaving
+          what is familiar.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CLOSING
+         ===================================================== -->
+
+    <section class="section closing">
+      <div class="closing-inner reveal">
+
+        <img
+          class="closing-logo"
+          src="wonder-verse-moon-pencil-logo.png"
+          alt="Jigyasa Verse moon and pencils"
+        >
+
+        <p class="eyebrow">Phase Three · First Quarter</p>
+
+        <h2>
+          Resistance did not mean<br>
+          <em>the direction was wrong.</em>
+        </h2>
+
+        <p class="closing-copy">
+          Sometimes resistance was evidence that I had finally
+          moved beyond the version of myself the world already
+          knew how to hold.
+        </p>
+
+        <div class="phase-navigation">
+          <!-- Change these filenames to match your pages -->
+
+          <a
+            class="phase-link secondary"
+            href="chandra-phase-two.html"
+          >
+            Phase Two · Waxing Crescent
+          </a>
+
+          <a
+            class="phase-link"
+            href="chandra-phase-four.html"
+          >
+            Phase Four · Waxing Gibbous
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>
+        © <span id="currentYear"></span> Jigyasa Verse
+      </span>
+
+      <span>
+        Chandra Lok · A universe of becoming
+      </span>
+
+      <a href="#main-content">
+        Return to the quarter moon
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const header =
+        document.querySelector("#siteHeader");
+
+      const progressBar =
+        document.querySelector("#progressBar");
+
+      const menuButton =
+        document.querySelector("#menuButton");
+
+      const mobileMenu =
+        document.querySelector("#mobileMenu");
+
+      const quarterMoon =
+        document.querySelector("#quarterMoon");
+
+      const currentYear =
+        document.querySelector("#currentYear");
+
+      /* Current year */
+
+      if (currentYear) {
+        currentYear.textContent =
+          new Date().getFullYear();
+      }
+
+      /* Header and reading progress */
+
+      function updatePagePosition() {
+        const scrollTop =
+          window.scrollY ||
+          document.documentElement.scrollTop;
+
+        const availableHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+
+        const progress =
+          availableHeight > 0
+            ? (scrollTop / availableHeight) * 100
+            : 0;
+
+        header?.classList.toggle(
+          "scrolled",
+          scrollTop > 30
+        );
+
+        if (progressBar) {
+          progressBar.style.width =
+            `${Math.min(progress, 100)}%`;
+        }
+      }
+
+      window.addEventListener(
+        "scroll",
+        updatePagePosition,
+        { passive: true }
+      );
+
+      updatePagePosition();
+
+      /* Mobile navigation */
+
+      function setMenu(open) {
+        if (!menuButton || !mobileMenu) return;
+
+        menuButton.classList.toggle(
+          "active",
+          open
+        );
+
+        mobileMenu.classList.toggle(
+          "open",
+          open
+        );
+
+        document.body.classList.toggle(
+          "menu-open",
+          open
+        );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          open
+            ? "Close navigation"
+            : "Open navigation"
+        );
+      }
+
+      menuButton?.addEventListener(
+        "click",
+        () => {
+          const open =
+            menuButton.getAttribute(
+              "aria-expanded"
+            ) === "true";
+
+          setMenu(!open);
+        }
+      );
+
+      mobileMenu
+        ?.querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener(
+            "click",
+            () => setMenu(false)
+          );
+        });
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (event.key === "Escape") {
+            setMenu(false);
+          }
+        }
+      );
+
+      /* Reveal elements while scrolling */
+
+      const revealElements =
+        document.querySelectorAll(".reveal");
+
+      const revealObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+          }
+        );
+
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+
+      /* Keep one story open at a time */
+
+      const stories =
+        document.querySelectorAll(".story");
+
+      stories.forEach((story) => {
+        story.addEventListener(
+          "toggle",
+          () => {
+            if (!story.open) return;
+
+            stories.forEach((otherStory) => {
+              if (
+                otherStory !== story &&
+                otherStory.open
+              ) {
+                otherStory.open = false;
+              }
+            });
+          }
+        );
+      });
+
+      /* Gentle first-quarter moon movement */
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (quarterMoon && !reducedMotion) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            const x =
+              (
+                event.clientX /
+                window.innerWidth -
+                0.5
+              ) * 9;
+
+            const y =
+              (
+                event.clientY /
+                window.innerHeight -
+                0.5
+              ) * 9;
+
+            quarterMoon.style.transform =
+              `translate3d(${x}px, ${y}px, 0)`;
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "mouseleave",
+          () => {
+            quarterMoon.style.transform =
+              "translate3d(0, 0, 0)";
+          }
+        );
+      }
+    })();
+  </script>
+</body>
+</html>
