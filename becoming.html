@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Weight of Becoming — Phase Four of Chandra Lok. A night-train journey through invisible progress, burnout, comparison and the exhausting middle."
+  >
+
+  <meta name="theme-color" content="#070812">
+
+  <title>
+    The Weight of Becoming | Chandra Lok | Jigyasa Verse
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       ROOT
+       ========================================================= */
+
+    :root {
+      --night: #04050a;
+      --night-blue: #080b15;
+      --tunnel: #0d0f1b;
+      --surface: #11131f;
+
+      --ivory: #f6f0e5;
+      --ivory-muted: #d3ccd0;
+      --muted: #9d98a7;
+      --faint: #6e6b78;
+
+      --blue: #5e729f;
+      --blue-light: #9aadd2;
+      --violet: #8976aa;
+      --violet-light: #b7a9cf;
+      --amber: #d7a669;
+      --amber-light: #f0d19d;
+      --rust: #a55f50;
+
+      --line: rgba(232, 228, 234, 0.12);
+      --line-strong: rgba(232, 228, 234, 0.25);
+
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+
+      --content: 1180px;
+      --reading: 730px;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--violet) var(--night);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      color: var(--ivory);
+
+      background:
+        radial-gradient(
+          circle at 82% 15%,
+          rgba(137, 118, 170, 0.18),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 12% 55%,
+          rgba(94, 114, 159, 0.14),
+          transparent 34%
+        ),
+        linear-gradient(
+          145deg,
+          #04050a,
+          #090a13 48%,
+          #100d18
+        );
+
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    ::selection {
+      color: var(--night);
+      background: var(--amber-light);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--amber-light);
+      outline-offset: 5px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1200;
+
+      padding: 0.75rem 1rem;
+
+      color: var(--night);
+      background: var(--amber-light);
+      text-decoration: none;
+
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       READING PROGRESS
+       ========================================================= */
+
+    .progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1100;
+
+      width: 100%;
+      height: 3px;
+
+      background: rgba(255,255,255,0.025);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--violet),
+        var(--amber)
+      );
+
+      box-shadow:
+        0 0 14px rgba(215,166,105,0.45),
+        0 0 26px rgba(137,118,170,0.3);
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 900;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+      min-height: 84px;
+      padding: 1rem clamp(1.25rem, 4vw, 4rem);
+
+      border-bottom: 1px solid transparent;
+
+      transition:
+        background 300ms ease,
+        border-color 300ms ease,
+        backdrop-filter 300ms ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(4,5,10,0.82);
+      border-color: var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+
+      filter:
+        saturate(0.7)
+        brightness(1.05)
+        drop-shadow(0 0 18px rgba(215,166,105,0.17));
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-world {
+      margin-top: 0.3rem;
+
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .desktop-nav a {
+      position: relative;
+
+      color: #aaa6b1;
+      font-size: 0.74rem;
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition: color 200ms ease;
+    }
+
+    .desktop-nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -0.55rem;
+      left: 0;
+
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--violet-light),
+        var(--amber)
+      );
+
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 300ms var(--ease);
+    }
+
+    .desktop-nav a:hover {
+      color: var(--ivory);
+    }
+
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .menu-button {
+      display: none;
+
+      width: 46px;
+      height: 46px;
+      padding: 0;
+
+      color: var(--ivory);
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      margin: 5px auto;
+
+      background: currentColor;
+
+      transition:
+        transform 250ms ease,
+        opacity 250ms ease;
+    }
+
+    .menu-button.active span:first-child {
+      transform: translateY(3px) rotate(45deg);
+    }
+
+    .menu-button.active span:last-child {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 850;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(137,118,170,0.24),
+          transparent 46%
+        ),
+        rgba(4,5,10,0.98);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 300ms ease,
+        visibility 300ms ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 10vw, 3.8rem);
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 100svh;
+      padding:
+        9rem
+        clamp(1.25rem, 6vw, 6rem)
+        5rem;
+
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -15%;
+
+      width: 78vw;
+      height: 78vw;
+      max-width: 1080px;
+      max-height: 1080px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(240,209,157,0.09),
+          rgba(137,118,170,0.1) 24%,
+          transparent 66%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+
+      display: grid;
+      grid-template-columns: 0.72fr 1.35fr 0.8fr;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 6rem);
+
+      width: min(100%, var(--content));
+      margin: 0 auto;
+    }
+
+    /* Waxing gibbous moon */
+
+    .moon-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .moon-stage {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      width: clamp(220px, 21vw, 300px);
+      aspect-ratio: 1;
+      margin-bottom: 2rem;
+    }
+
+    .moon-stage::before,
+    .moon-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .moon-stage::before {
+      inset: -12%;
+      border: 1px solid rgba(154,173,210,0.09);
+      animation: orbit-ring 30s linear infinite;
+    }
+
+    .moon-stage::after {
+      inset: -2%;
+      border: 1px dashed rgba(215,166,105,0.1);
+      animation: orbit-ring-reverse 38s linear infinite;
+    }
+
+    .gibbous-moon {
+      position: relative;
+
+      width: 82%;
+      aspect-ratio: 1;
+      overflow: hidden;
+
+      border: 1px solid rgba(246,240,229,0.58);
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 63% 27%,
+          rgba(116,108,100,0.24) 0 7%,
+          transparent 7.5%
+        ),
+        radial-gradient(
+          circle at 72% 66%,
+          rgba(111,103,96,0.2) 0 11%,
+          transparent 11.5%
+        ),
+        radial-gradient(
+          circle at 43% 73%,
+          rgba(110,103,98,0.2) 0 7%,
+          transparent 7.5%
+        ),
+        #f1ebdf;
+
+      box-shadow:
+        24px 0 55px rgba(215,166,105,0.2),
+        40px 0 95px rgba(137,118,170,0.15),
+        inset -18px -12px 30px rgba(96,88,83,0.16);
+
+      transition: transform 250ms ease-out;
+      animation: moon-breathe 7s ease-in-out infinite;
+    }
+
+    .gibbous-moon::before {
+      content: "";
+      position: absolute;
+      top: -8%;
+      bottom: -8%;
+      left: -36%;
+
+      width: 57%;
+
+      background: #080911;
+      border-radius: 50%;
+
+      box-shadow:
+        13px 0 22px rgba(20,19,28,0.62),
+        20px 0 35px rgba(137,118,170,0.1);
+    }
+
+    @keyframes orbit-ring {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes orbit-ring-reverse {
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    @keyframes moon-breathe {
+      0%,
+      100% {
+        filter: brightness(0.97);
+      }
+
+      50% {
+        filter: brightness(1.09);
+      }
+    }
+
+    .phase-label {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      color: var(--amber-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .phase-label::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--violet),
+        var(--amber)
+      );
+    }
+
+    .hero-copy {
+      max-width: 710px;
+    }
+
+    .eyebrow {
+      margin-bottom: 1.5rem;
+
+      color: var(--violet-light);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(4rem, 7.6vw, 8rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.82;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-left: clamp(1rem, 3vw, 3.5rem);
+
+      color: transparent;
+
+      background: linear-gradient(
+        95deg,
+        var(--blue-light),
+        var(--violet-light),
+        var(--amber-light)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-question {
+      max-width: 610px;
+      margin-bottom: 1.8rem;
+
+      color: var(--violet-light);
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .hero-introduction {
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+
+      color: #aaa5b1;
+      font-family: var(--serif);
+      font-size: clamp(1.12rem, 1.5vw, 1.3rem);
+      line-height: 1.7;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.95rem 1.35rem;
+
+      color: var(--ivory);
+
+      background: linear-gradient(
+        110deg,
+        rgba(94,114,159,0.14),
+        rgba(137,118,170,0.12),
+        rgba(215,166,105,0.08)
+      );
+
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease;
+    }
+
+    .hero-action:hover {
+      color: var(--night);
+      background: var(--amber-light);
+      border-color: var(--amber-light);
+      transform: translateY(-3px);
+    }
+
+    .hero-themes {
+      align-self: end;
+      padding-bottom: 1rem;
+    }
+
+    .theme-list {
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .theme-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      padding: 0.92rem 0;
+      border-bottom: 1px solid var(--line);
+
+      color: #9f9aa6;
+      font-size: 0.83rem;
+    }
+
+    .theme-list li::after {
+      content: "·";
+      color: var(--amber);
+      font-size: 1.2rem;
+    }
+
+    /* =========================================================
+       TRAIN TUNNEL
+       ========================================================= */
+
+    .tunnel-section {
+      position: relative;
+
+      min-height: 100svh;
+      overflow: hidden;
+
+      display: grid;
+      place-items: center;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          ellipse at 50% 40%,
+          #141725 0%,
+          #080a12 44%,
+          #030409 78%
+        );
+    }
+
+    .tunnel {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      perspective: 700px;
+    }
+
+    .tunnel-ring {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+
+      width: 92vw;
+      height: 80vh;
+
+      border: 2px solid rgba(198,201,216,0.08);
+      border-radius: 50% 50% 12% 12%;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .tunnel-ring.ring-two {
+      width: 68vw;
+      height: 59vh;
+      border-color: rgba(198,201,216,0.07);
+    }
+
+    .tunnel-ring.ring-three {
+      width: 46vw;
+      height: 40vh;
+      border-color: rgba(215,166,105,0.08);
+    }
+
+    .tunnel-ring.ring-four {
+      width: 25vw;
+      height: 23vh;
+      border-color: rgba(215,166,105,0.1);
+    }
+
+    .hidden-light {
+      position: absolute;
+      top: 43%;
+      left: 54%;
+
+      width: 70px;
+      height: 70px;
+
+      background: radial-gradient(
+        circle,
+        rgba(240,209,157,0.3),
+        rgba(215,166,105,0.08) 28%,
+        transparent 70%
+      );
+
+      border-radius: 50%;
+      filter: blur(12px);
+      opacity: 0.22;
+
+      transform: translate(-50%, -50%);
+    }
+
+    /* The tunnel curve hides the exit light */
+
+    .hidden-light::after {
+      content: "";
+      position: absolute;
+      inset: -50px -90px -50px 20px;
+
+      background: #080a12;
+      border-radius: 50%;
+    }
+
+    .rail {
+      position: absolute;
+      bottom: -12%;
+      left: 50%;
+
+      width: 3px;
+      height: 64%;
+
+      background: linear-gradient(
+        to bottom,
+        rgba(240,209,157,0.18),
+        #7d7880 65%,
+        #b2a8a1
+      );
+
+      box-shadow: 0 0 10px rgba(215,166,105,0.1);
+
+      transform-origin: bottom;
+    }
+
+    .rail.left {
+      transform: translateX(-50%) rotate(19deg);
+    }
+
+    .rail.right {
+      transform: translateX(-50%) rotate(-19deg);
+    }
+
+    .sleepers {
+      position: absolute;
+      right: 0;
+      bottom: -3%;
+      left: 0;
+
+      height: 53%;
+
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 42px,
+        rgba(199,193,194,0.2) 43px,
+        rgba(199,193,194,0.2) 46px,
+        transparent 47px,
+        transparent 69px
+      );
+
+      clip-path: polygon(
+        43% 0,
+        57% 0,
+        84% 100%,
+        16% 100%
+      );
+
+      animation: tracks-move 1.5s linear infinite;
+    }
+
+    @keyframes tracks-move {
+      from {
+        background-position-y: 0;
+      }
+
+      to {
+        background-position-y: 69px;
+      }
+    }
+
+    .tunnel-lights {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .passing-light {
+      position: absolute;
+      top: 22%;
+
+      width: 3px;
+      height: 42%;
+
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(240,209,157,0.8),
+        transparent
+      );
+
+      filter: blur(1px);
+      opacity: 0;
+
+      animation: pass-light 4.8s linear infinite;
+    }
+
+    .passing-light:nth-child(1) {
+      left: 9%;
+    }
+
+    .passing-light:nth-child(2) {
+      right: 11%;
+      animation-delay: 1.7s;
+    }
+
+    .passing-light:nth-child(3) {
+      left: 22%;
+      animation-delay: 3.2s;
+    }
+
+    @keyframes pass-light {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) scaleY(0.5);
+      }
+
+      12% {
+        opacity: 0.65;
+      }
+
+      28% {
+        opacity: 0;
+        transform: translateY(90px) scaleY(1.5);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .tunnel-content {
+      position: relative;
+      z-index: 5;
+
+      width: min(92%, 790px);
+      padding: 3rem;
+
+      background: rgba(5,6,12,0.69);
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .tunnel-content h2 {
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+
+    .tunnel-content h2 em {
+      color: var(--amber-light);
+      font-weight: 400;
+    }
+
+    .tunnel-content blockquote {
+      max-width: 620px;
+      margin: 2rem auto 0;
+
+      color: #bbb4be;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .distance-marker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      margin-bottom: 1.5rem;
+
+      color: var(--amber-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .distance-marker::before,
+    .distance-marker::after {
+      content: "";
+      width: 35px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--amber)
+      );
+    }
+
+    .distance-marker::after {
+      transform: rotate(180deg);
+    }
+
+    /* =========================================================
+       SHARED SECTIONS
+       ========================================================= */
+
+    .section {
+      position: relative;
+
+      padding:
+        clamp(6rem, 11vw, 10rem)
+        clamp(1.25rem, 6vw, 6rem);
+    }
+
+    .section-inner {
+      width: min(100%, var(--content));
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      margin-bottom: 1.4rem;
+
+      color: var(--violet-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-label::after {
+      content: "";
+      width: 48px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        var(--violet),
+        transparent
+      );
+    }
+
+    .section-title {
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.97;
+    }
+
+    .section-title em {
+      color: var(--amber-light);
+      font-weight: 400;
+    }
+
+    .section-introduction {
+      max-width: 700px;
+
+      color: #a9a4ae;
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       JOURNEY STATUS
+       ========================================================= */
+
+    .journey-status {
+      border-bottom: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 82% 35%,
+          rgba(215,166,105,0.1),
+          transparent 33%
+        ),
+        #070912;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: center;
+    }
+
+    .journey-board {
+      overflow: hidden;
+
+      background: #0b0d15;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.28);
+    }
+
+    .board-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid var(--line);
+
+      color: var(--faint);
+      font-size: 0.7rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .board-row {
+      display: grid;
+      grid-template-columns: 95px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+
+      padding: 1.25rem 1.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-row:last-child {
+      border-bottom: 0;
+    }
+
+    .board-time {
+      color: var(--amber-light);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .board-place {
+      color: #cbc5cc;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .board-state {
+      color: #7f7b87;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .board-state.passed {
+      color: var(--blue-light);
+    }
+
+    .board-state.current {
+      color: var(--amber-light);
+    }
+
+    /* =========================================================
+       FIVE STORY CARRIAGES
+       ========================================================= */
+
+    .archive-header {
+      display: grid;
+      grid-template-columns: 1.15fr 0.65fr;
+      gap: 4rem;
+      align-items: end;
+
+      margin-bottom: 5rem;
+    }
+
+    .archive-note {
+      max-width: 380px;
+      margin: 0 0 0 auto;
+
+      color: #918d98;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .archive-note strong {
+      color: var(--amber-light);
+      font-weight: 500;
+    }
+
+    .stories {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .story {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+
+      transition:
+        background 350ms ease,
+        border-color 350ms ease;
+    }
+
+    .story[open] {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(94,114,159,0.1),
+          rgba(137,118,170,0.06),
+          transparent 72%
+        );
+
+      border-color: rgba(215,166,105,0.28);
+    }
+
+    .story summary {
+      display: grid;
+      grid-template-columns: 85px 1fr auto;
+      gap: clamp(1rem, 4vw, 4rem);
+      align-items: center;
+
+      min-height: 155px;
+      padding: 1.5rem 0;
+
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .story summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .story-number {
+      color: #6f6d78;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .story-title {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .story-subtitle {
+      display: block;
+      margin-top: 0.7rem;
+
+      color: #7f7b87;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .story-toggle {
+      display: grid;
+      place-items: center;
+
+      width: 47px;
+      height: 47px;
+
+      color: var(--amber-light);
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+
+      transition:
+        transform 350ms var(--ease),
+        color 250ms ease,
+        background 250ms ease;
+    }
+
+    .story[open] .story-toggle {
+      color: var(--night);
+
+      background: linear-gradient(
+        135deg,
+        var(--violet-light),
+        var(--amber-light)
+      );
+
+      transform: rotate(45deg);
+    }
+
+    .story-body {
+      display: grid;
+      grid-template-columns: 85px minmax(0, var(--reading));
+      gap: clamp(1rem, 4vw, 4rem);
+
+      padding: 0 0 5rem;
+    }
+
+    .story-thread {
+      width: 1px;
+      height: 100%;
+      min-height: 130px;
+      margin: 0 auto;
+
+      background: linear-gradient(
+        to bottom,
+        var(--blue),
+        var(--violet),
+        var(--amber),
+        transparent
+      );
+    }
+
+    .story-content {
+      color: #b0abb4;
+      font-family: var(--serif);
+      font-size: clamp(1.12rem, 1.7vw, 1.3rem);
+      line-height: 1.88;
+    }
+
+    .story-content p:first-child::first-letter {
+      float: left;
+      margin: 0.05em 0.12em 0 0;
+
+      color: var(--amber-light);
+      font-size: 4.1em;
+      line-height: 0.78;
+    }
+
+    .story-content strong {
+      color: #e4dee2;
+      font-weight: 500;
+    }
+
+    .story-truth {
+      margin-top: 2.5rem;
+      padding: 1.5rem 0 0 1.5rem;
+
+      color: #d8cbd2;
+      border-top: 1px solid var(--line);
+
+      font-size: 1.28rem;
+      font-style: italic;
+    }
+
+    .edit-note {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 0.75rem;
+
+      color: #837c87;
+      border: 1px dashed rgba(215,166,105,0.22);
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-style: normal;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       WHAT THE DARK CANNOT ERASE
+       ========================================================= */
+
+    .evidence {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 18% 65%,
+          rgba(94,114,159,0.16),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 82% 32%,
+          rgba(215,166,105,0.1),
+          transparent 34%
+        ),
+        #080912;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 0.76fr 1.24fr;
+      gap: clamp(3rem, 8vw, 9rem);
+      align-items: start;
+    }
+
+    .evidence-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .evidence-card {
+      position: relative;
+
+      min-height: 220px;
+      padding: 2rem;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          #0e101a,
+          #090a11
+        );
+
+      transition:
+        background 300ms ease,
+        transform 300ms ease;
+    }
+
+    .evidence-card:hover {
+      z-index: 2;
+
+      background:
+        linear-gradient(
+          145deg,
+          #151624,
+          #0d0e17
+        );
+
+      transform: translateY(-4px);
+    }
+
+    .evidence-card::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+
+      width: 110px;
+      height: 110px;
+
+      background: radial-gradient(
+        circle,
+        rgba(215,166,105,0.17),
+        transparent 68%
+      );
+
+      border-radius: 50%;
+      opacity: 0;
+
+      transition: opacity 300ms ease;
+    }
+
+    .evidence-card:hover::after {
+      opacity: 1;
+    }
+
+    .card-number {
+      display: block;
+      margin-bottom: 2.5rem;
+
+      color: var(--amber);
+      font-family: var(--serif);
+      font-size: 1.7rem;
+    }
+
+    .evidence-card h3 {
+      margin-bottom: 0.7rem;
+
+      color: #dcd7dd;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .evidence-card p {
+      margin: 0;
+
+      color: #7e7b86;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       REFLECTION
+       ========================================================= */
+
+    .reflection {
+      text-align: center;
+    }
+
+    .reflection-inner {
+      width: min(100%, 870px);
+      margin: 0 auto;
+    }
+
+    .window-reflection {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      width: min(82vw, 680px);
+      min-height: 470px;
+      margin: 5rem auto;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(17,20,34,0.9),
+          rgba(6,7,13,0.92)
+        );
+
+      border: 12px solid #10121b;
+      border-radius: 48% 48% 1.8rem 1.8rem;
+
+      box-shadow:
+        inset 0 0 80px rgba(0,0,0,0.5),
+        0 30px 80px rgba(0,0,0,0.25);
+    }
+
+    .window-reflection::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(255,255,255,0.05) 42%,
+        transparent 52%
+      );
+
+      transform: translateX(-100%);
+      animation: window-shine 8s ease-in-out infinite;
+    }
+
+    @keyframes window-shine {
+      0%,
+      40% {
+        transform: translateX(-100%);
+      }
+
+      70%,
+      100% {
+        transform: translateX(130%);
+      }
+    }
+
+    .reflection-question {
+      position: relative;
+      z-index: 2;
+
+      width: 72%;
+      margin: 0;
+
+      color: #e2dce1;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 4.4rem);
+      font-style: italic;
+      line-height: 1.1;
+    }
+
+    .reflection-copy {
+      max-width: 650px;
+      margin: 0 auto;
+
+      color: #99949f;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       CLOSING
+       ========================================================= */
+
+    .closing {
+      min-height: 92vh;
+
+      display: grid;
+      place-items: center;
+
+      border-top: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(215,166,105,0.12),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 50% 55%,
+          rgba(137,118,170,0.13),
+          transparent 47%
+        ),
+        linear-gradient(
+          to bottom,
+          #090a13,
+          #030409
+        );
+
+      text-align: center;
+    }
+
+    .closing-inner {
+      width: min(100%, 890px);
+      margin: 0 auto;
+    }
+
+    .closing-logo {
+      width: clamp(105px, 15vw, 165px);
+      margin: 0 auto 2.5rem;
+
+      filter:
+        saturate(0.7)
+        brightness(1.02)
+        drop-shadow(0 0 38px rgba(215,166,105,0.18));
+
+      opacity: 0.9;
+    }
+
+    .closing h2 {
+      margin-bottom: 1.5rem;
+
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 0.94;
+    }
+
+    .closing h2 em {
+      color: var(--amber-light);
+      font-weight: 400;
+    }
+
+    .closing-copy {
+      max-width: 680px;
+      margin: 0 auto 3rem;
+
+      color: #a7a1ac;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      line-height: 1.75;
+    }
+
+    .phase-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .phase-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 1rem 1.4rem;
+
+      color: #bbb5bf;
+
+      background: linear-gradient(
+        100deg,
+        rgba(94,114,159,0.1),
+        rgba(137,118,170,0.08)
+      );
+
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease;
+    }
+
+    .phase-link:hover {
+      color: var(--night);
+      background: var(--amber-light);
+      border-color: var(--amber-light);
+      transform: translateY(-2px);
+    }
+
+    .phase-link.secondary:hover {
+      color: var(--ivory);
+      background: rgba(137,118,170,0.13);
+      border-color: var(--violet);
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .site-footer {
+      padding: 2rem clamp(1.25rem, 5vw, 5rem);
+      border-top: 1px solid var(--line);
+      background: #020307;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+
+      width: min(100%, var(--content));
+      margin: 0 auto;
+
+      color: #706d77;
+      font-size: 0.73rem;
+      letter-spacing: 0.07em;
+    }
+
+    .footer-inner a {
+      color: #99939e;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       SCROLL REVEALS
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+
+      transition:
+        opacity 900ms var(--ease),
+        transform 900ms var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+      .hero-inner {
+        grid-template-columns: 0.7fr 1.3fr;
+      }
+
+      .hero-themes {
+        grid-column: 1 / -1;
+        width: min(100%, 680px);
+        margin-left: auto;
+      }
+
+      .status-grid,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .archive-note {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        min-height: 72px;
+        padding: 0.75rem 1rem;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-name {
+        font-size: 1.15rem;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 8rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .moon-column {
+        align-items: center;
+      }
+
+      .moon-stage {
+        width: min(64vw, 250px);
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero h1 span {
+        margin-left: 0;
+      }
+
+      .hero-introduction {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-themes {
+        width: 100%;
+      }
+
+      .section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+
+      .tunnel-content {
+        padding: 2rem 1.25rem;
+      }
+
+      .story summary {
+        grid-template-columns: 44px 1fr auto;
+        gap: 0.8rem;
+        min-height: 130px;
+      }
+
+      .story-body {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 0.8rem;
+      }
+
+      .evidence-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .board-row {
+        grid-template-columns: 74px 1fr;
+      }
+
+      .board-state {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-world {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 17vw, 4.8rem);
+      }
+
+      .story summary {
+        grid-template-columns: 1fr auto;
+      }
+
+      .story-number {
+        display: none;
+      }
+
+      .story-body {
+        grid-template-columns: 1fr;
+      }
+
+      .story-thread {
+        display: none;
+      }
+
+      .window-reflection {
+        min-height: 390px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">
+    Skip to the journey
+  </a>
+
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html" aria-label="Jigyasa Verse home">
+      <img
+        class="brand-logo"
+        src="wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span class="brand-copy">
+        <span class="brand-name">Jigyasa Verse</span>
+        <span class="brand-world">Chandra Lok</span>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="chandra-lok.html">Chandra Lok</a>
+      <a href="#stories">Five carriages</a>
+      <a href="#reflection">Window</a>
+    </nav>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open navigation"
+      aria-controls="mobileMenu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <nav aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="chandra-lok.html">Chandra Lok</a>
+      <a href="#stories">Carriages</a>
+      <a href="#reflection">Window</a>
+    </nav>
+  </div>
+
+  <main id="main-content">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner">
+
+        <div class="moon-column reveal">
+          <div class="moon-stage">
+            <div
+              class="gibbous-moon"
+              id="gibbousMoon"
+              role="img"
+              aria-label="A waxing gibbous moon, almost fully illuminated"
+            ></div>
+          </div>
+
+          <div class="phase-label">
+            Phase 04 · Waxing Gibbous
+          </div>
+        </div>
+
+        <div class="hero-copy reveal">
+          <p class="eyebrow">
+            Chandra Lok · The Becoming
+          </p>
+
+          <h1 id="page-title">
+            The Weight of
+            <span>Becoming</span>
+          </h1>
+
+          <p class="hero-question">
+            Can progress be real before it becomes visible?
+          </p>
+
+          <p class="hero-introduction">
+            This is the exhausting middle: too far from the
+            beginning to feel new, but too far from the result
+            to feel certain. The train is moving. The tunnel
+            continues. The exit has not entered your field of
+            vision yet.
+          </p>
+
+          <a class="hero-action" href="#tunnel">
+            Board the night train
+          </a>
+        </div>
+
+        <aside
+          class="hero-themes reveal"
+          aria-label="Themes explored in this phase"
+        >
+          <ul class="theme-list">
+            <li>Burnout and perfectionism</li>
+            <li>Feeling behind</li>
+            <li>Invisible discipline</li>
+            <li>Carrying several dreams</li>
+            <li>Continuing without proof</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         THE TUNNEL
+         ===================================================== -->
+
+    <section
+      class="tunnel-section"
+      id="tunnel"
+      aria-labelledby="tunnel-title"
+    >
+      <div class="tunnel" aria-hidden="true">
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring ring-two"></div>
+        <div class="tunnel-ring ring-three"></div>
+        <div class="tunnel-ring ring-four"></div>
+
+        <div class="hidden-light"></div>
+
+        <div class="rail left"></div>
+        <div class="rail right"></div>
+        <div class="sleepers"></div>
+
+        <div class="tunnel-lights">
+          <span class="passing-light"></span>
+          <span class="passing-light"></span>
+          <span class="passing-light"></span>
+        </div>
+      </div>
+
+      <div class="tunnel-content reveal">
+        <div class="distance-marker">
+          Somewhere after the beginning
+        </div>
+
+        <h2 id="tunnel-title">
+          You cannot see the exit.<br>
+          <em>But you have left the station.</em>
+        </h2>
+
+        <blockquote>
+          “The absence of visible light does not mean the train
+          has stopped. Sometimes the track curves before the
+          opening appears.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         JOURNEY STATUS
+         ===================================================== -->
+
+    <section class="section journey-status">
+      <div class="section-inner status-grid">
+
+        <div class="reveal">
+          <p class="section-label">Journey status</p>
+
+          <h2 class="section-title">
+            Look at what is<br>
+            <em>already behind you.</em>
+          </h2>
+
+          <p class="section-introduction">
+            When the destination remains invisible, measure the
+            journey by the places you no longer live inside.
+          </p>
+        </div>
+
+        <div class="journey-board reveal">
+          <div class="board-heading">
+            <span>Chandra night service</span>
+            <span>Direction: becoming</span>
+          </div>
+
+          <div class="board-row">
+            <span class="board-time">00:01</span>
+            <span class="board-place">The Unseen Self</span>
+            <span class="board-state passed">Passed</span>
+          </div>
+
+          <div class="board-row">
+            <span class="board-time">00:02</span>
+            <span class="board-place">The First Attempt</span>
+            <span class="board-state passed">Passed</span>
+          </div>
+
+          <div class="board-row">
+            <span class="board-time">00:03</span>
+            <span class="board-place">The Resistance</span>
+            <span class="board-state passed">Passed</span>
+          </div>
+
+          <div class="board-row">
+            <span class="board-time">Now</span>
+            <span class="board-place">The Weight of Becoming</span>
+            <span class="board-state current">In transit</span>
+          </div>
+
+          <div class="board-row">
+            <span class="board-time">—:—</span>
+            <span class="board-place">What Comes Next</span>
+            <span class="board-state">Not yet visible</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FIVE STORY CARRIAGES
+         ===================================================== -->
+
+    <section class="section" id="stories">
+      <div class="section-inner">
+
+        <header class="archive-header reveal">
+          <div>
+            <p class="section-label">Five carriages</p>
+
+            <h2 class="section-title">
+              Stories from the<br>
+              <em>exhausting middle.</em>
+            </h2>
+          </div>
+
+          <p class="archive-note">
+            <strong>These stories are not about arriving.</strong>
+            They are about the strange courage required to remain
+            in motion when the destination cannot yet be seen.
+          </p>
+        </header>
+
+        <div class="stories">
+
+          <!-- STORY 01 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">Carriage 01</span>
+
+              <h3 class="story-title">
+                Too far to feel like a beginner
+                <span class="story-subtitle">
+                  On losing the excitement that made starting easier
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  The beginning had its own energy. Everything was
+                  new enough to feel meaningful. Small improvements
+                  felt enormous because I had only just started.
+                </p>
+
+                <p>
+                  Then the novelty disappeared. The work became
+                  ordinary, repetitive and heavier than the dream
+                  had looked from a distance. I was no longer new
+                  enough to celebrate every step, but not advanced
+                  enough to feel confident.
+                </p>
+
+                <p>
+                  This was the part nobody had described: the long
+                  middle where effort became routine and routine
+                  stopped feeling like evidence.
+                </p>
+
+                <p>
+                  I began to understand that
+                  <strong>commitment starts where novelty ends.</strong>
+                  The quiet repetition was not a less meaningful
+                  part of the journey. It was the journey becoming
+                  real.
+                </p>
+
+                <div class="story-truth">
+                  The beginning did not disappear. It became the
+                  distance behind me.
+                </div>
+
+                <span class="edit-note">
+                  Add a time when initial excitement became difficult routine
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 02 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">Carriage 02</span>
+
+              <h3 class="story-title">
+                Watching other trains pass
+                <span class="story-subtitle">
+                  On comparison and the fear of being left behind
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  Other people’s progress became clearest when my
+                  own felt uncertain. I saw their announcements,
+                  achievements, finished work and destinations.
+                  I saw none of the tunnels they had crossed.
+                </p>
+
+                <p>
+                  Their speed made mine feel like failure. I forgot
+                  that we were not travelling on the same track,
+                  carrying the same weight or heading towards the
+                  same place.
+                </p>
+
+                <p>
+                  Comparison made every step feel late. It turned
+                  somebody else’s arrival into evidence that I had
+                  missed my chance.
+                </p>
+
+                <p>
+                  But another train passing did not mean mine had
+                  stopped. <strong>Speed was not the only measure
+                  of movement, and timing was not a hierarchy of
+                  human worth.</strong>
+                </p>
+
+                <div class="story-truth">
+                  Their arrival was not proof of my failure. It was
+                  simply a different journey becoming visible.
+                </div>
+
+                <span class="edit-note">
+                  Add a time comparison made you feel behind
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 03 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">Carriage 03</span>
+
+              <h3 class="story-title">
+                Carrying several destinations
+                <span class="story-subtitle">
+                  On holding more than one dream without apologising
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  I carried more than one dream, and each one
+                  demanded time, attention and belief. People often
+                  spoke as though seriousness required me to choose
+                  only one version of myself.
+                </p>
+
+                <p>
+                  I wondered whether wanting to learn, create,
+                  lead, train and build meant that I lacked focus.
+                  Some days, the weight of carrying several futures
+                  made every direction feel incomplete.
+                </p>
+
+                <p>
+                  Eventually I stopped treating my complexity as a
+                  defect. Not every dream had to grow at the same
+                  speed. Some could rest without being abandoned.
+                </p>
+
+                <p>
+                  <strong>A meaningful life did not need to become
+                  a single straight line.</strong> It needed an
+                  honest rhythm: knowing what required attention
+                  now and what could wait without disappearing.
+                </p>
+
+                <div class="story-truth">
+                  I was not lost because I contained more than one
+                  possible destination.
+                </div>
+
+                <span class="edit-note">
+                  Add the different dreams or identities you are carrying
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 04 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">Carriage 04</span>
+
+              <h3 class="story-title">
+                Resting without leaving the train
+                <span class="story-subtitle">
+                  On burnout and confusing exhaustion with failure
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  I treated exhaustion as proof that I was not
+                  disciplined enough. When my body asked for rest,
+                  I answered with guilt. When my attention weakened,
+                  I demanded more concentration.
+                </p>
+
+                <p>
+                  I believed that stopping for a moment would undo
+                  all the distance I had travelled. Rest felt
+                  dangerously similar to giving up.
+                </p>
+
+                <p>
+                  But the train did not require me to run through
+                  every carriage to prove I wanted to arrive.
+                  Sometimes I could sit, breathe and let the
+                  movement carry me.
+                </p>
+
+                <p>
+                  <strong>Rest was not the opposite of progress.</strong>
+                  It was how I remained capable of continuing a
+                  journey longer than one burst of motivation.
+                </p>
+
+                <div class="story-truth">
+                  I could pause inside the journey without returning
+                  to the station.
+                </div>
+
+                <span class="edit-note">
+                  Add a moment when you needed rest but interpreted it as failure
+                </span>
+              </div>
+            </div>
+          </details>
+
+          <!-- STORY 05 -->
+
+          <details class="story reveal">
+            <summary>
+              <span class="story-number">Carriage 05</span>
+
+              <h3 class="story-title">
+                Continuing without visible light
+                <span class="story-subtitle">
+                  On trusting movement before the destination appears
+                </span>
+              </h3>
+
+              <span class="story-toggle" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="story-body">
+              <div class="story-thread" aria-hidden="true"></div>
+
+              <div class="story-content">
+                <p>
+                  I kept looking ahead for reassurance. I wanted
+                  one clear sign that the work would matter, that
+                  the waiting would end and that I was travelling
+                  towards something real.
+                </p>
+
+                <p>
+                  The tunnel offered no such certainty. It gave me
+                  only small evidence: a passing light, the sound
+                  of wheels, the stations already behind me and the
+                  fact that the view outside continued changing.
+                </p>
+
+                <p>
+                  I had confused visibility with existence. The
+                  exit could exist beyond a curve even when my
+                  current position made it impossible to see.
+                </p>
+
+                <p>
+                  So I continued—not because I knew exactly where
+                  the light was, but because
+                  <strong>I had already become someone who could
+                  travel through the dark.</strong>
+                </p>
+
+                <div class="story-truth">
+                  I could not see the end of the tunnel, but I was
+                  no longer standing where I had begun.
+                </div>
+
+                <span class="edit-note">
+                  Add something you continued without knowing the outcome
+                </span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         EVIDENCE
+         ===================================================== -->
+
+    <section class="section evidence">
+      <div class="section-inner evidence-grid">
+
+        <div class="reveal">
+          <p class="section-label">Evidence of movement</p>
+
+          <h2 class="section-title">
+            What the dark<br>
+            <em>cannot erase.</em>
+          </h2>
+
+          <p class="section-introduction">
+            Progress leaves traces, even when it has not yet
+            produced the destination you hoped to see.
+          </p>
+        </div>
+
+        <div class="evidence-cards reveal">
+
+          <article class="evidence-card">
+            <span class="card-number">01</span>
+            <h3>You recover differently</h3>
+            <p>
+              Difficult moments still hurt, but they no longer
+              return you to the same place.
+            </p>
+          </article>
+
+          <article class="evidence-card">
+            <span class="card-number">02</span>
+            <h3>Your questions have changed</h3>
+            <p>
+              You are no longer asking whether you may begin, but
+              how you can continue honestly.
+            </p>
+          </article>
+
+          <article class="evidence-card">
+            <span class="card-number">03</span>
+            <h3>Your boundaries last longer</h3>
+            <p>
+              Guilt still arrives, but it no longer immediately
+              erases the line you drew.
+            </p>
+          </article>
+
+          <article class="evidence-card">
+            <span class="card-number">04</span>
+            <h3>You return more gently</h3>
+            <p>
+              One imperfect day no longer requires an entirely
+              new life.
+            </p>
+          </article>
+
+          <article class="evidence-card">
+            <span class="card-number">05</span>
+            <h3>You recognise old stations</h3>
+            <p>
+              Places that once felt permanent now appear as
+              moments you travelled through.
+            </p>
+          </article>
+
+          <article class="evidence-card">
+            <span class="card-number">06</span>
+            <h3>You are still moving</h3>
+            <p>
+              Not dramatically. Not perfectly. But deliberately
+              enough to have created distance.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         WINDOW REFLECTION
+         ===================================================== -->
+
+    <section class="section reflection" id="reflection">
+      <div class="reflection-inner reveal">
+        <p
+          class="section-label"
+          style="justify-content:center;"
+        >
+          The carriage window
+        </p>
+
+        <h2 class="section-title">
+          Look at the traveller.
+        </h2>
+
+        <div class="window-reflection">
+          <p class="reflection-question">
+            If you cannot see the destination, can you honour
+            the distance?
+          </p>
+        </div>
+
+        <p class="reflection-copy">
+          Do not ask only how far you still have to travel. Ask
+          what you now understand, carry, protect and survive
+          differently because you chose to leave the station.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CLOSING
+         ===================================================== -->
+
+    <section class="section closing">
+      <div class="closing-inner reveal">
+
+        <img
+          class="closing-logo"
+          src="wonder-verse-moon-pencil-logo.png"
+          alt="Jigyasa Verse moon and pencils"
+        >
+
+        <p class="eyebrow">Phase Four · Waxing Gibbous</p>
+
+        <h2>
+          The light is not visible.<br>
+          <em>The journey is still real.</em>
+        </h2>
+
+        <p class="closing-copy">
+          You have almost completed the beginning. The destination
+          remains beyond the curve, but the station is far behind
+          you now. Let the distance count.
+        </p>
+
+        <div class="phase-navigation">
+          <!-- Change these filenames to match your pages -->
+
+          <a
+            class="phase-link secondary"
+            href="chandra-phase-three.html"
+          >
+            Phase Three · The Resistance
+          </a>
+
+          <a
+            class="phase-link"
+            href="chandra-phase-five.html"
+          >
+            Continue to Phase Five
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>
+        © <span id="currentYear"></span> Jigyasa Verse
+      </span>
+
+      <span>
+        Chandra Lok · A universe of becoming
+      </span>
+
+      <a href="#main-content">
+        Return to the beginning
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const header =
+        document.querySelector("#siteHeader");
+
+      const progressBar =
+        document.querySelector("#progressBar");
+
+      const menuButton =
+        document.querySelector("#menuButton");
+
+      const mobileMenu =
+        document.querySelector("#mobileMenu");
+
+      const gibbousMoon =
+        document.querySelector("#gibbousMoon");
+
+      const currentYear =
+        document.querySelector("#currentYear");
+
+      /* Current year */
+
+      if (currentYear) {
+        currentYear.textContent =
+          new Date().getFullYear();
+      }
+
+      /* Header and reading progress */
+
+      function updatePagePosition() {
+        const scrollTop =
+          window.scrollY ||
+          document.documentElement.scrollTop;
+
+        const availableHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+
+        const progress =
+          availableHeight > 0
+            ? (scrollTop / availableHeight) * 100
+            : 0;
+
+        header?.classList.toggle(
+          "scrolled",
+          scrollTop > 30
+        );
+
+        if (progressBar) {
+          progressBar.style.width =
+            `${Math.min(progress, 100)}%`;
+        }
+      }
+
+      window.addEventListener(
+        "scroll",
+        updatePagePosition,
+        { passive: true }
+      );
+
+      updatePagePosition();
+
+      /* Mobile navigation */
+
+      function setMenu(open) {
+        if (!menuButton || !mobileMenu) return;
+
+        menuButton.classList.toggle(
+          "active",
+          open
+        );
+
+        mobileMenu.classList.toggle(
+          "open",
+          open
+        );
+
+        document.body.classList.toggle(
+          "menu-open",
+          open
+        );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          open
+            ? "Close navigation"
+            : "Open navigation"
+        );
+      }
+
+      menuButton?.addEventListener(
+        "click",
+        () => {
+          const open =
+            menuButton.getAttribute(
+              "aria-expanded"
+            ) === "true";
+
+          setMenu(!open);
+        }
+      );
+
+      mobileMenu
+        ?.querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener(
+            "click",
+            () => setMenu(false)
+          );
+        });
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+          if (event.key === "Escape") {
+            setMenu(false);
+          }
+        }
+      );
+
+      /* Scroll reveals */
+
+      const revealElements =
+        document.querySelectorAll(".reveal");
+
+      const revealObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+          }
+        );
+
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+
+      /* Keep one story carriage open at a time */
+
+      const stories =
+        document.querySelectorAll(".story");
+
+      stories.forEach((story) => {
+        story.addEventListener(
+          "toggle",
+          () => {
+            if (!story.open) return;
+
+            stories.forEach((otherStory) => {
+              if (
+                otherStory !== story &&
+                otherStory.open
+              ) {
+                otherStory.open = false;
+              }
+            });
+          }
+        );
+      });
+
+      /* Gentle moon movement */
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      if (gibbousMoon && !reducedMotion) {
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            const x =
+              (
+                event.clientX /
+                window.innerWidth -
+                0.5
+              ) * 9;
+
+            const y =
+              (
+                event.clientY /
+                window.innerHeight -
+                0.5
+              ) * 9;
+
+            gibbousMoon.style.transform =
+              `translate3d(${x}px, ${y}px, 0)`;
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "mouseleave",
+          () => {
+            gibbousMoon.style.transform =
+              "translate3d(0, 0, 0)";
+          }
+        );
+      }
+    })();
+  </script>
+</body>
+</html>
