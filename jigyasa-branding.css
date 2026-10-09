@@ -1,0 +1,186 @@
+/* =========================================
+   JIGYASA VERSE GLOBAL BRANDING
+========================================= */
+
+:root {
+  --jv-logo-size: 54px;
+  --jv-logo-ink: #fff7ef;
+  --jv-logo-background: rgba(18, 3, 6, 0.72);
+  --jv-logo-border: rgba(255, 247, 239, 0.18);
+  --jv-logo-glow: rgba(255, 91, 90, 0.28);
+}
+
+/* Logo container */
+
+.jv-global-logo {
+  position: fixed;
+  z-index: 9999;
+  top: 22px;
+  left: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 15px 8px 8px;
+
+  color: var(--jv-logo-ink);
+  background: var(--jv-logo-background);
+
+  border: 1px solid var(--jv-logo-border);
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.22),
+    0 0 30px var(--jv-logo-glow);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Logo image */
+
+.jv-global-logo img {
+  width: var(--jv-logo-size);
+  height: var(--jv-logo-size);
+
+  display: block;
+  object-fit: contain;
+
+  border-radius: 50%;
+}
+
+/* Jigyasa Verse name */
+
+.jv-global-logo__name {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Small secondary text */
+
+.jv-global-logo__name small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: rgba(255, 247, 239, 0.62);
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+/* Hover effect */
+
+.jv-global-logo:hover {
+  transform: translateY(-2px);
+
+  background: rgba(43, 7, 12, 0.9);
+
+  box-shadow:
+    0 14px 45px rgba(0, 0, 0, 0.3),
+    0 0 38px rgba(255, 91, 90, 0.4);
+}
+
+/* Keyboard accessibility */
+
+.jv-global-logo:focus-visible {
+  outline: 3px solid #ffc857;
+  outline-offset: 5px;
+}
+
+/* Hide text when the visitor scrolls */
+
+.jv-global-logo.jv-logo-scrolled {
+  padding-right: 8px;
+}
+
+.jv-global-logo.jv-logo-scrolled
+.jv-global-logo__name {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* Light-page variation */
+
+body.jv-light-page .jv-global-logo {
+  color: #271015;
+  background: rgba(255, 250, 241, 0.82);
+  border-color: rgba(75, 25, 34, 0.15);
+
+  box-shadow:
+    0 10px 38px rgba(67, 18, 27, 0.14);
+}
+
+body.jv-light-page
+.jv-global-logo__name small {
+  color: rgba(39, 16, 21, 0.58);
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  :root {
+    --jv-logo-size: 43px;
+  }
+
+  .jv-global-logo {
+    top: 14px;
+    left: 14px;
+
+    padding:
+      6px 12px
+      6px 6px;
+  }
+
+  .jv-global-logo__name {
+    font-size: 10px;
+  }
+
+  .jv-global-logo__name small {
+    display: none;
+  }
+}
+
+/* Very small phones */
+
+@media (max-width: 390px) {
+  .jv-global-logo {
+    padding-right: 6px;
+  }
+
+  .jv-global-logo__name {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .jv-global-logo {
+    transition: none;
+  }
+}
