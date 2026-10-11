@@ -1,0 +1,3390 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="The Resistance Files — an immersive Jigyasa Verse investigation into antibiotic resistance."
+  >
+
+  <meta
+    name="theme-color"
+    content="#f2f5f5"
+  >
+
+  <!-- Jigyasa Verse browser-tab logo -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <title>
+    The Resistance Files | Jigyasa Verse
+  </title>
+
+  <style>
+    :root {
+      --white: #f7f7f2;
+      --paper: #e9eeec;
+      --ink: #142023;
+      --muted: #607074;
+
+      --blue: #96e4ef;
+      --teal: #36a9b8;
+      --amber: #ffc857;
+
+      --warning: #ff4d3d;
+      --red: #d7172f;
+      --blood: #76091b;
+      --black: #080b0d;
+
+      --line: rgba(20, 32, 35, 0.16);
+
+      --display:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      --mono:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      color: var(--ink);
+      background: var(--white);
+
+      font-family: var(--sans);
+      line-height: 1.65;
+
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0.12;
+      mix-blend-mode: multiply;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      color: white;
+      background: var(--red);
+    }
+
+    /* =================================
+       ACCESSIBILITY
+    ================================= */
+
+    .skip-link {
+      position: fixed;
+      z-index: 200;
+      top: -5rem;
+      left: 1rem;
+
+      padding: 0.75rem 1rem;
+
+      color: white;
+      background: var(--blood);
+
+      font-weight: 900;
+
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* =================================
+       READING PROGRESS
+    ================================= */
+
+    .case-progress {
+      position: fixed;
+      z-index: 90;
+      top: 0;
+      left: 0;
+
+      width: 0;
+      height: 4px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--teal),
+          var(--amber),
+          var(--red)
+        );
+
+      box-shadow:
+        0 0 16px
+        rgba(215, 23, 47, 0.42);
+    }
+
+    /* =================================
+       JIGYASA VERSE LOGO
+    ================================= */
+
+    .brand {
+      position: fixed;
+      z-index: 80;
+      top: 20px;
+      left: 22px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      padding:
+        0.45rem
+        0.8rem
+        0.45rem
+        0.45rem;
+
+      color: var(--ink);
+      background:
+        rgba(247, 247, 242, 0.86);
+
+      border:
+        1px solid
+        rgba(20, 32, 35, 0.14);
+
+      border-radius: 999px;
+
+      box-shadow:
+        0 12px 40px
+        rgba(13, 30, 34, 0.12);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      text-decoration: none;
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .brand:hover {
+      transform: translateY(-2px);
+      background: white;
+    }
+
+    .brand:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      font-family: var(--display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .brand-copy small {
+      display: block;
+
+      margin-top: 0.2rem;
+
+      color: var(--muted);
+
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* =================================
+       HERO
+    ================================= */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      min-height: 100svh;
+
+      display: grid;
+      place-items: center;
+
+      padding:
+        9rem
+        clamp(1rem, 7vw, 7rem)
+        5rem;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(248, 250, 248, 0.97),
+          rgba(248, 250, 248, 0.78) 55%,
+          rgba(248, 250, 248, 0.18)
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 79px,
+          rgba(26, 99, 110, 0.08) 80px
+        ),
+        linear-gradient(
+          145deg,
+          #f4f7f5,
+          #b9dce0 75%,
+          #76bcc6
+        );
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      z-index: -1;
+
+      width: min(72vw, 920px);
+      aspect-ratio: 1;
+
+      right: -25vw;
+      top: 7vh;
+
+      border-radius: 50%;
+
+      background:
+        repeating-radial-gradient(
+          circle,
+          transparent 0 24px,
+          rgba(17, 104, 117, 0.12) 25px 26px
+        ),
+        radial-gradient(
+          circle,
+          rgba(150, 228, 239, 0.7),
+          rgba(54, 169, 184, 0.22) 45%,
+          transparent 68%
+        );
+    }
+
+    .hero::after {
+      content: "CASE 01";
+
+      position: absolute;
+      z-index: -1;
+
+      right: -1rem;
+      bottom: 0;
+
+      color: rgba(17, 76, 86, 0.06);
+
+      font-size: clamp(7rem, 19vw, 19rem);
+      font-weight: 950;
+      line-height: 0.7;
+      letter-spacing: -0.08em;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+    }
+
+    .case-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+
+      padding: 0.45rem 0.7rem;
+
+      color: #06323a;
+      background:
+        rgba(150, 228, 239, 0.38);
+
+      border:
+        1px solid
+        rgba(23, 106, 118, 0.25);
+
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .case-label::before {
+      content: "";
+
+      width: 0.55rem;
+      height: 0.55rem;
+
+      border-radius: 50%;
+      background: var(--red);
+
+      box-shadow:
+        0 0 0 0
+        rgba(215, 23, 47, 0.45);
+
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      70% {
+        box-shadow:
+          0 0 0 10px
+          rgba(215, 23, 47, 0);
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 1000px;
+
+      margin:
+        1.3rem 0
+        1rem;
+
+      font-family: var(--display);
+      font-size: clamp(4rem, 10.5vw, 10rem);
+      font-weight: 500;
+      line-height: 0.82;
+      letter-spacing: -0.065em;
+    }
+
+    h1 span {
+      display: block;
+
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .standfirst {
+      max-width: 760px;
+      margin: 0;
+
+      color: #32484d;
+
+      font-family: var(--display);
+      font-size: clamp(1.18rem, 2vw, 1.55rem);
+    }
+
+    .opening-line {
+      max-width: 760px;
+
+      margin: 2rem 0 0;
+
+      padding:
+        1rem 0
+        1rem 1.2rem;
+
+      border-left:
+        3px solid
+        var(--red);
+
+      font-family: var(--mono);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+    }
+
+    .enter-case {
+      display: inline-block;
+
+      margin-top: 2rem;
+      padding: 0.9rem 1.25rem;
+
+      color: white;
+      background: var(--red);
+
+      border: 0;
+
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      box-shadow:
+        8px 8px 0
+        #8a1021;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .enter-case:hover {
+      transform: translate(3px, 3px);
+
+      box-shadow:
+        5px 5px 0
+        #8a1021;
+    }
+
+    /* =================================
+       TICKER
+    ================================= */
+
+    .ticker {
+      position: sticky;
+      z-index: 70;
+      top: 0;
+
+      overflow: hidden;
+
+      color: white;
+      background: var(--red);
+
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      min-width: 200%;
+
+      padding: 0.6rem 0;
+
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      animation:
+        ticker 30s
+        linear infinite;
+    }
+
+    .ticker span {
+      margin-right: 4rem;
+    }
+
+    @keyframes ticker {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =================================
+       GENERAL ARTICLE SECTIONS
+    ================================= */
+
+    .section {
+      position: relative;
+
+      padding:
+        clamp(5rem, 10vw, 10rem)
+        clamp(1rem, 7vw, 7rem);
+    }
+
+    .inner {
+      width: min(1180px, 100%);
+      margin: auto;
+    }
+
+    .two-col {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(260px, 0.75fr);
+
+      gap: clamp(2rem, 7vw, 7rem);
+
+      align-items: start;
+    }
+
+    .kicker {
+      margin: 0 0 0.7rem;
+
+      color: var(--red);
+
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      max-width: 940px;
+
+      margin: 0 0 1.5rem;
+
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 7rem);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+    }
+
+    .section h3 {
+      font-family: var(--display);
+    }
+
+    .lead {
+      max-width: 720px;
+
+      font-family: var(--display);
+      font-size: clamp(1.25rem, 2vw, 1.65rem);
+      line-height: 1.5;
+    }
+
+    .copy p {
+      max-width: 70ch;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+
+      padding:
+        0.22rem
+        0.55rem
+        0 0;
+
+      color: var(--red);
+
+      font-family: var(--display);
+      font-size: 5.5rem;
+      line-height: 0.68;
+    }
+
+    .evidence-note {
+      padding: 1.4rem;
+
+      color: #132326;
+      background: #dff4f5;
+
+      border-top:
+        5px solid
+        var(--teal);
+
+      box-shadow:
+        12px 14px 0
+        rgba(19, 84, 94, 0.12);
+    }
+
+    .evidence-note strong {
+      display: block;
+
+      margin-bottom: 0.5rem;
+
+      color: #086573;
+
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .evidence-note p {
+      margin: 0;
+
+      font-family: var(--display);
+      font-size: 1.1rem;
+    }
+
+    .stamp {
+      display: inline-block;
+
+      padding: 0.42rem 0.65rem;
+
+      color: var(--red);
+
+      border:
+        3px double
+        var(--red);
+
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      transform: rotate(-2deg);
+    }
+
+    .reading-note {
+      margin-top: 1rem;
+
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* =================================
+       PATIENT FILE
+    ================================= */
+
+    .patient-file {
+      background:
+        linear-gradient(
+          145deg,
+          #eef4f2,
+          #cadbd9
+        );
+    }
+
+    .file-card {
+      position: relative;
+
+      padding:
+        clamp(1.5rem, 4vw, 3.5rem);
+
+      background: #fdfdf8;
+
+      border:
+        1px solid
+        #aabbb9;
+
+      box-shadow:
+        22px 26px 0
+        rgba(32, 77, 83, 0.12);
+    }
+
+    .file-card::before {
+      content:
+        "CONFIDENTIAL · ILLUSTRATIVE CASE";
+
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      color: var(--red);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+
+      margin-top: 2rem;
+
+      background: var(--line);
+
+      border:
+        1px solid
+        var(--line);
+    }
+
+    .file-field {
+      padding: 1rem;
+      background: #fdfdf8;
+    }
+
+    .file-field small {
+      display: block;
+
+      color: var(--muted);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .file-field b {
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .status-alert {
+      color: white;
+      background: var(--red) !important;
+    }
+
+    .status-alert small {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* =================================
+       ANTIBIOTIC TARGETS
+    ================================= */
+
+    .targets {
+      color: white;
+      background: var(--ink);
+    }
+
+    .targets .kicker {
+      color: var(--blue);
+    }
+
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+
+      margin-top: 3rem;
+    }
+
+    .target-card {
+      min-height: 310px;
+      padding: 1.4rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+      background:
+        rgba(255, 255, 255, 0.04);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .target-card:hover {
+      transform: translateY(-6px);
+
+      background:
+        rgba(150, 228, 239, 0.09);
+    }
+
+    .target-icon {
+      width: 76px;
+      height: 76px;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--blue);
+
+      border:
+        1px solid
+        var(--blue);
+
+      border-radius: 50%;
+
+      font-size: 1.8rem;
+    }
+
+    .target-card h3 {
+      margin: 2rem 0 0.5rem;
+      font-size: 1.45rem;
+    }
+
+    .target-card p {
+      margin: 0;
+
+      color: #bdd0d3;
+      font-size: 0.9rem;
+    }
+
+    /* =================================
+       SELECTION SIMULATOR
+    ================================= */
+
+    .selection-lab {
+      color: white;
+
+      background:
+        linear-gradient(
+          140deg,
+          #1a2326,
+          #080b0d 70%
+        );
+    }
+
+    .selection-lab .kicker {
+      color: var(--amber);
+    }
+
+    .lab-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(320px, 1.15fr);
+
+      gap: clamp(2rem, 6vw, 6rem);
+
+      align-items: center;
+    }
+
+    .petri-wrap {
+      position: relative;
+
+      min-height: 540px;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .petri {
+      position: relative;
+      overflow: hidden;
+
+      width: min(520px, 82vw);
+      aspect-ratio: 1;
+
+      border:
+        12px solid
+        rgba(205, 243, 247, 0.38);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 42% 38%,
+          rgba(230, 255, 248, 0.18),
+          rgba(79, 165, 174, 0.08) 46%,
+          rgba(0, 0, 0, 0.32) 72%
+        );
+
+      box-shadow:
+        inset 0 0 50px
+        rgba(150, 228, 239, 0.18),
+        0 0 80px
+        rgba(54, 169, 184, 0.14);
+    }
+
+    .bacterium {
+      position: absolute;
+
+      width: 13px;
+      height: 7px;
+
+      border-radius: 999px;
+
+      background: var(--blue);
+
+      box-shadow:
+        0 0 9px
+        rgba(150, 228, 239, 0.55);
+
+      transform:
+        rotate(var(--rotation));
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        background 0.4s ease;
+    }
+
+    .bacterium.resistant {
+      background: var(--red);
+
+      box-shadow:
+        0 0 12px
+        rgba(255, 77, 61, 0.7);
+    }
+
+    .petri.treated
+    .bacterium:not(.resistant) {
+      opacity: 0.08;
+
+      transform:
+        rotate(var(--rotation))
+        scale(0.2);
+    }
+
+    .petri.treated
+    .bacterium.resistant {
+      animation:
+        survivor
+        1s ease-in-out
+        infinite alternate;
+    }
+
+    .petri.multiplied
+    .bacterium {
+      opacity: 1;
+
+      background: var(--red);
+
+      transform:
+        rotate(var(--rotation))
+        scale(1);
+
+      box-shadow:
+        0 0 12px
+        rgba(255, 77, 61, 0.7);
+    }
+
+    @keyframes survivor {
+      to {
+        transform:
+          rotate(var(--rotation))
+          scale(1.55);
+      }
+    }
+
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+
+      margin-top: 2rem;
+    }
+
+    .lab-button {
+      cursor: pointer;
+
+      padding: 0.85rem 1rem;
+
+      color: white;
+      background: transparent;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.3);
+
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .lab-button.primary {
+      color: #170b00;
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .lab-button:hover {
+      border-color: var(--amber);
+    }
+
+    .lab-button:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .lab-readout {
+      min-height: 5rem;
+
+      margin-top: 1.2rem;
+      padding: 1rem;
+
+      color: var(--amber);
+
+      background:
+        rgba(255, 200, 87, 0.07);
+
+      border-left:
+        3px solid
+        var(--amber);
+
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+
+    .crucial-line {
+      margin-top: 2rem;
+      padding: 1.4rem;
+
+      color: #1d070a;
+      background: #ffdadd;
+
+      font-family: var(--display);
+      font-size: 1.25rem;
+    }
+
+    /* =================================
+       RESISTANCE TOOLKIT
+    ================================= */
+
+    .toolkit {
+      background: #f0ebe3;
+    }
+
+    .mechanism-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+
+      margin-top: 3rem;
+    }
+
+    .mechanism {
+      position: relative;
+
+      min-height: 330px;
+      padding: 1.3rem;
+
+      background: #fffdf6;
+
+      border:
+        1px solid
+        #d0c4b7;
+    }
+
+    .mechanism::before {
+      content: attr(data-evidence);
+
+      display: block;
+
+      color: var(--red);
+
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .mechanism h3 {
+      margin: 2rem 0 0.7rem;
+      font-size: 1.4rem;
+    }
+
+    .mechanism p {
+      color: #5f5851;
+      font-size: 0.9rem;
+    }
+
+    .mechanism .symbol {
+      position: absolute;
+      right: 1rem;
+      bottom: 0.7rem;
+
+      color: rgba(215, 23, 47, 0.11);
+
+      font-family: var(--display);
+      font-size: 5rem;
+    }
+
+    /* =================================
+       DNA EXCHANGE
+    ================================= */
+
+    .exchange {
+      overflow: hidden;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 70% 50%,
+          #53113e,
+          transparent 35%
+        ),
+        linear-gradient(
+          140deg,
+          #170416,
+          #06070c 70%
+        );
+    }
+
+    .exchange .kicker {
+      color: #ff84c1;
+    }
+
+    .network {
+      position: relative;
+
+      min-height: 470px;
+      margin-top: 3rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 39px,
+          rgba(255, 255, 255, 0.04) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 39px,
+          rgba(255, 255, 255, 0.04) 40px
+        );
+    }
+
+    .cell {
+      position: absolute;
+
+      width: 120px;
+      height: 64px;
+
+      display: grid;
+      place-items: center;
+
+      color: #ffd5e9;
+      background:
+        rgba(116, 9, 83, 0.35);
+
+      border:
+        2px solid
+        #ff84c1;
+
+      border-radius:
+        60% 40%
+        55% 45%;
+
+      font-family: var(--mono);
+      font-size: 0.68rem;
+
+      transform:
+        rotate(var(--cell-rotation));
+    }
+
+    .cell.one {
+      left: 8%;
+      top: 16%;
+      --cell-rotation: -8deg;
+    }
+
+    .cell.two {
+      right: 10%;
+      top: 20%;
+      --cell-rotation: 9deg;
+    }
+
+    .cell.three {
+      left: 42%;
+      bottom: 12%;
+      --cell-rotation: -4deg;
+    }
+
+    .gene-line {
+      position: absolute;
+
+      height: 2px;
+
+      transform-origin: left;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ff84c1,
+          #ff3c50
+        );
+
+      box-shadow:
+        0 0 12px
+        #ff3c50;
+    }
+
+    .gene-line.a {
+      width: 50%;
+      left: 17%;
+      top: 28%;
+      transform: rotate(4deg);
+    }
+
+    .gene-line.b {
+      width: 34%;
+      left: 19%;
+      top: 31%;
+      transform: rotate(46deg);
+    }
+
+    .gene-line.c {
+      width: 35%;
+      right: 17%;
+      top: 34%;
+      transform: rotate(132deg);
+    }
+
+    .plasmid {
+      position: absolute;
+
+      width: 32px;
+      height: 32px;
+
+      left: 48%;
+      top: 28%;
+
+      border:
+        5px solid
+        var(--amber);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 18px
+        rgba(255, 200, 87, 0.65);
+
+      animation:
+        plasmidFloat
+        3s ease-in-out infinite;
+    }
+
+    @keyframes plasmidFloat {
+      50% {
+        transform:
+          translateY(36px)
+          rotate(180deg);
+      }
+    }
+
+    .network-key {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+
+      max-width: 35ch;
+
+      color: #cbb8c8;
+      font-size: 0.76rem;
+    }
+
+    /* =================================
+       EVIDENCE WALL
+    ================================= */
+
+    .culprits {
+      background: #ecefea;
+    }
+
+    .evidence-wall {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+
+      margin-top: 3rem;
+    }
+
+    .evidence-card {
+      min-height: 250px;
+      padding: 1.4rem;
+
+      background: #fafbf6;
+
+      border-top:
+        4px solid
+        var(--red);
+
+      box-shadow:
+        10px 14px 0
+        rgba(32, 66, 69, 0.07);
+
+      transform:
+        rotate(var(--tilt));
+    }
+
+    .evidence-card:nth-child(odd) {
+      --tilt: -0.5deg;
+    }
+
+    .evidence-card:nth-child(even) {
+      --tilt: 0.6deg;
+    }
+
+    .evidence-card small {
+      color: var(--red);
+
+      font-family: var(--mono);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .evidence-card h3 {
+      margin: 1.4rem 0 0.5rem;
+      font-size: 1.35rem;
+    }
+
+    .evidence-card p {
+      margin: 0;
+
+      color: #5d696a;
+      font-size: 0.9rem;
+    }
+
+    /* =================================
+       MYTH INTERROGATION
+    ================================= */
+
+    .interrogation {
+      color: white;
+      background: var(--black);
+    }
+
+    .interrogation .kicker {
+      color: var(--warning);
+    }
+
+    .myths {
+      margin-top: 3rem;
+
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+    }
+
+    .myth {
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+    }
+
+    .myth summary {
+      cursor: pointer;
+
+      padding: 1.25rem 0;
+
+      list-style: none;
+
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    }
+
+    .myth summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .myth summary::after {
+      content: "REVEAL EVIDENCE +";
+
+      float: right;
+
+      color: var(--warning);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+    }
+
+    .myth[open] summary::after {
+      content: "EVIDENCE OPEN −";
+    }
+
+    .verdict {
+      margin: 0 0 1.4rem;
+      padding: 1.1rem;
+
+      color: #240408;
+      background: #ffdadd;
+    }
+
+    .verdict b {
+      color: var(--red);
+      font-family: var(--mono);
+    }
+
+    /* =================================
+       EMERGENCY ROOM
+    ================================= */
+
+    .emergency {
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 72% 30%,
+          rgba(255, 54, 62, 0.28),
+          transparent 26%
+        ),
+        linear-gradient(
+          145deg,
+          #5a0615,
+          #160208 72%
+        );
+    }
+
+    .emergency .kicker {
+      color: #ff9a9f;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+
+      margin-top: 3rem;
+
+      background:
+        rgba(255, 255, 255, 0.2);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+    }
+
+    .stat {
+      min-height: 230px;
+      padding: 1.5rem;
+
+      background:
+        rgba(20, 1, 6, 0.55);
+    }
+
+    .stat b {
+      display: block;
+
+      color: #ff8c91;
+
+      font-family: var(--display);
+      font-size: clamp(3.1rem, 6vw, 6rem);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+
+      margin-top: 1rem;
+
+      color: #f3cfd2;
+    }
+
+    .human-impact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      margin-top: 2rem;
+    }
+
+    .impact {
+      padding: 1.2rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+      background:
+        rgba(255, 255, 255, 0.04);
+    }
+
+    /* =================================
+       COMMAND CENTRE
+    ================================= */
+
+    .command {
+      background:
+        linear-gradient(
+          145deg,
+          #f7f1e4,
+          #dceee9
+        );
+    }
+
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+
+      margin-top: 3rem;
+    }
+
+    .command-card {
+      padding: 1.5rem;
+
+      background:
+        rgba(255, 255, 255, 0.66);
+
+      border:
+        1px solid
+        rgba(25, 69, 72, 0.16);
+    }
+
+    .command-card h3 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+    }
+
+    .command-card ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .command-card li {
+      margin-bottom: 0.7rem;
+    }
+
+    .hope-line {
+      max-width: 900px;
+
+      margin:
+        4rem auto 0;
+
+      padding: 2rem;
+
+      color: white;
+      background: var(--blood);
+
+      font-family: var(--display);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      text-align: center;
+
+      box-shadow:
+        16px 18px 0
+        #e24e48;
+    }
+
+    /* =================================
+       FINAL FILE
+    ================================= */
+
+    .final-file {
+      color: white;
+      background: #0a0e0f;
+      text-align: center;
+    }
+
+    .final-file h2 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-status {
+      width: min(760px, 100%);
+
+      margin:
+        3rem auto 0;
+
+      padding: 1.5rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+      text-align: left;
+
+      font-family: var(--mono);
+    }
+
+    .final-status p {
+      margin: 0.55rem 0;
+    }
+
+    .green {
+      color: #8ce6b4;
+    }
+
+    .closing-quote {
+      max-width: 760px;
+
+      margin:
+        4rem auto 0;
+
+      color: #ffd9dc;
+
+      font-family: var(--display);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+    }
+
+    /* =================================
+       REFERENCES
+    ================================= */
+
+    .sources {
+      color: #29251f;
+      background: #f7f1e4;
+    }
+
+    .sources h2 {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+    }
+
+    .sources ol {
+      padding-left: 1.3rem;
+    }
+
+    .sources li {
+      margin-bottom: 1.1rem;
+      padding-left: 0.5rem;
+    }
+
+    .sources a {
+      color: #9b1022;
+
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+
+    .medical-note {
+      max-width: 76ch;
+
+      color: #6c645b;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+
+      padding:
+        2rem
+        clamp(1rem, 6vw, 6rem);
+
+      color: #b7c4c5;
+      background: #060809;
+
+      font-size: 0.75rem;
+    }
+
+    /* =================================
+       SCROLL REVEAL
+    ================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(28px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =================================
+       RESPONSIVE DESIGN
+    ================================= */
+
+    @media (max-width: 960px) {
+      .target-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .mechanism-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .mechanism:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .two-col,
+      .lab-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .file-grid,
+      .stat-grid,
+      .human-impact,
+      .command-grid,
+      .evidence-wall {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-copy {
+        display: none;
+      }
+
+      .brand {
+        top: 12px;
+        left: 12px;
+        padding-right: 0.45rem;
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero {
+        padding-top: 7rem;
+      }
+
+      .petri-wrap {
+        min-height: 390px;
+      }
+
+      .network {
+        min-height: 540px;
+      }
+
+      .cell.one {
+        left: 4%;
+      }
+
+      .cell.two {
+        right: 4%;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .target-grid,
+      .mechanism-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mechanism:last-child {
+        grid-column: auto;
+      }
+
+      .file-card::before {
+        position: static;
+
+        display: inline-block;
+
+        margin-bottom: 1rem;
+      }
+
+      .myth summary::after {
+        display: block;
+        float: none;
+
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a
+    class="skip-link"
+    href="#case"
+  >
+    Skip to the investigation
+  </a>
+
+  <div
+    class="case-progress"
+    id="caseProgress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =================================
+       JIGYASA VERSE LOGO
+  ================================== -->
+
+  <a
+    class="brand"
+    href="index.html"
+    aria-label="Return to the Jigyasa Verse homepage"
+  >
+
+    <img
+      src="images/wonder-verse-moon-pencil-logo.png"
+      alt="Jigyasa Verse moon and pencils logo"
+    >
+
+    <span class="brand-copy">
+      Jigyasa Verse
+
+      <small>
+        Wonder beyond the obvious
+      </small>
+    </span>
+
+  </a>
+
+  <!-- =================================
+       HERO
+  ================================== -->
+
+  <header class="hero">
+
+    <div class="hero-inner reveal">
+
+      <span class="case-label">
+        Urgent medical investigation · File opened
+      </span>
+
+      <h1>
+        The Resistance
+        <span>Files</span>
+      </h1>
+
+      <p class="standfirst">
+        A medical mystery about the treatment that
+        stopped working—and the microscopic evolution
+        occurring while the world believed the case
+        was closed.
+      </p>
+
+      <p class="opening-line">
+        08:10 — Antibiotic administered.
+        <br>
+        23:58 — Almost every bacterium is dead.
+        <br>
+        Almost.
+      </p>
+
+      <a
+        class="enter-case"
+        href="#case"
+      >
+        Open the case
+      </a>
+
+    </div>
+
+  </header>
+
+  <!-- =================================
+       CASE TICKER
+  ================================== -->
+
+  <div
+    class="ticker"
+    aria-label="Case evidence ticker"
+  >
+
+    <div class="ticker-track">
+
+      <span>
+        The patient is not resistant—the bacteria are
+      </span>
+
+      <span>
+        Antibiotics do not treat viruses
+      </span>
+
+      <span>
+        Selection detected
+      </span>
+
+      <span>
+        Resistance gene in circulation
+      </span>
+
+      <span aria-hidden="true">
+        The patient is not resistant—the bacteria are
+      </span>
+
+      <span aria-hidden="true">
+        Antibiotics do not treat viruses
+      </span>
+
+      <span aria-hidden="true">
+        Selection detected
+      </span>
+
+      <span aria-hidden="true">
+        Resistance gene in circulation
+      </span>
+
+    </div>
+
+  </div>
+
+  <main id="case">
+
+    <article>
+
+      <!-- =================================
+           PATIENT CASE FILE
+      ================================== -->
+
+      <section class="section patient-file">
+
+        <div class="inner">
+
+          <div class="file-card reveal">
+
+            <p class="kicker">
+              Case file 00 · The patient
+            </p>
+
+            <h2>
+              The medicine arrived.
+              The infection remained.
+            </h2>
+
+            <p class="lead">
+              This patient is fictional. The biological
+              problem is real: an antibiotic that once
+              controlled an infection may fail when the
+              bacteria causing it are resistant.
+            </p>
+
+            <div class="file-grid">
+
+              <div class="file-field">
+                <small>Patient</small>
+                <b>Human civilisation</b>
+              </div>
+
+              <div class="file-field">
+                <small>Condition</small>
+                <b>Bacterial infection</b>
+              </div>
+
+              <div class="file-field">
+                <small>Treatment</small>
+                <b>Antibiotic therapy</b>
+              </div>
+
+              <div class="file-field status-alert">
+                <small>Response</small>
+                <b>Expected improvement not detected</b>
+              </div>
+
+              <div class="file-field">
+                <small>Primary question</small>
+                <b>Why did treatment fail?</b>
+              </div>
+
+              <div class="file-field">
+                <small>Investigation status</small>
+                <b>OPEN</b>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           MEET THE BACTERIA
+      ================================== -->
+
+      <section class="section">
+
+        <div class="inner two-col">
+
+          <div class="copy reveal">
+
+            <p class="kicker">
+              Evidence room 01 · Meet the suspect
+            </p>
+
+            <h2>
+              First correction: bacteria are not
+              waiting to attack us.
+            </h2>
+
+            <p class="lead dropcap">
+              Bacteria are ancient, diverse and
+              everywhere. Many live harmlessly around
+              us; many support life. A smaller number
+              can cause infection—and some of those
+              bacteria possess ways to survive
+              antibiotic treatment.
+            </p>
+
+            <p>
+              An antibiotic is a medicine designed to
+              kill bacteria or stop them from
+              multiplying. Antibiotics transformed
+              modern medicine. They make bacterial
+              infections treatable and help make
+              surgery, organ transplantation,
+              intensive care and cancer treatment safer.
+            </p>
+
+            <p>
+              But antibiotics are not universal
+              weapons. They do not work against viruses
+              such as those responsible for colds and
+              influenza. Using an antibiotic when it
+              cannot help still exposes bacteria to
+              the drug and can add unnecessary
+              selection pressure.
+            </p>
+
+            <span class="stamp">
+              Case correction
+            </span>
+
+          </div>
+
+          <aside class="evidence-note reveal">
+
+            <strong>
+              Statement corrected
+            </strong>
+
+            <p>
+              “My body became resistant to antibiotics”
+              is inaccurate. The person does not become
+              resistant. The bacteria change, acquire
+              resistance or are selected because they
+              already possess it.
+            </p>
+
+          </aside>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           ANTIBIOTIC TARGETS
+      ================================== -->
+
+      <section class="section targets">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Evidence room 02 · The medicine enters
+          </p>
+
+          <h2>
+            Four ways to interrupt a bacterial cell.
+          </h2>
+
+          <p class="lead">
+            Different antibiotics act on different
+            bacterial processes. The comparisons below
+            are metaphors—not literal buildings—but they
+            make the molecular investigation easier
+            to see.
+          </p>
+
+          <div class="target-grid">
+
+            <section class="target-card reveal">
+
+              <div class="target-icon">▦</div>
+
+              <h3>Collapse the wall</h3>
+
+              <p>
+                Some antibiotics interfere with
+                construction of the bacterial cell
+                wall. Without a stable boundary,
+                susceptible bacteria can rupture.
+              </p>
+
+            </section>
+
+            <section class="target-card reveal">
+
+              <div class="target-icon">⚙</div>
+
+              <h3>Stop the factory</h3>
+
+              <p>
+                Some bind to bacterial ribosomes and
+                interrupt protein production—the
+                cellular machinery needed for growth
+                and repair.
+              </p>
+
+            </section>
+
+            <section class="target-card reveal">
+
+              <div class="target-icon">⌁</div>
+
+              <h3>Interrupt copying</h3>
+
+              <p>
+                Some interfere with processes needed
+                to copy or manage bacterial DNA,
+                preventing successful reproduction.
+              </p>
+
+            </section>
+
+            <section class="target-card reveal">
+
+              <div class="target-icon">◇</div>
+
+              <h3>Cut a pathway</h3>
+
+              <p>
+                Some block chemical pathways bacteria
+                need to build essential molecules and
+                continue growing.
+              </p>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           NATURAL-SELECTION LAB
+      ================================== -->
+
+      <section class="section selection-lab">
+
+        <div class="inner lab-layout">
+
+          <div class="reveal">
+
+            <p class="kicker">
+              Evidence room 03 · Natural selection
+            </p>
+
+            <h2>
+              Watch the survivors change the population.
+            </h2>
+
+            <p class="lead">
+              A bacterial population is not always
+              genetically identical. By chance, a few
+              organisms may already carry a mutation
+              or resistance gene that helps them survive.
+            </p>
+
+            <p>
+              When an antibiotic is introduced,
+              susceptible bacteria are removed.
+              Resistant bacteria face less competition,
+              reproduce and can become a much larger
+              proportion of the next population.
+            </p>
+
+            <div class="lab-controls">
+
+              <button
+                class="lab-button primary"
+                id="treatButton"
+                type="button"
+              >
+                1 · Administer antibiotic
+              </button>
+
+              <button
+                class="lab-button"
+                id="multiplyButton"
+                type="button"
+              >
+                2 · Allow survivors to reproduce
+              </button>
+
+              <button
+                class="lab-button"
+                id="resetButton"
+                type="button"
+              >
+                Reset evidence
+              </button>
+
+            </div>
+
+            <div
+              class="lab-readout"
+              id="labReadout"
+              aria-live="polite"
+            >
+              BEFORE TREATMENT: most bacteria are
+              susceptible. A small resistant minority
+              is already present.
+            </div>
+
+            <div class="crucial-line">
+              The antibiotic did not teach the bacteria
+              how to resist. It changed which bacteria
+              remained to reproduce.
+            </div>
+
+          </div>
+
+          <div
+            class="petri-wrap reveal"
+            aria-label="Interactive bacterial selection simulation"
+          >
+
+            <div
+              class="petri"
+              id="petriDish"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           RESISTANCE TOOLKIT
+      ================================== -->
+
+      <section class="section toolkit">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Evidence room 04 · Resistance toolkit
+          </p>
+
+          <h2>
+            Five escape routes hidden inside the cell.
+          </h2>
+
+          <p class="lead">
+            Resistance is not one trick. Different
+            bacteria can evade different antibiotics
+            through distinct biological mechanisms.
+          </p>
+
+          <div class="mechanism-grid">
+
+            <section
+              class="mechanism reveal"
+              data-evidence="Evidence A"
+            >
+
+              <h3>The blocked door</h3>
+
+              <p>
+                The bacterium changes its outer
+                structures or reduces entry, so less
+                antibiotic reaches its target.
+              </p>
+
+              <span class="symbol">⌂</span>
+
+            </section>
+
+            <section
+              class="mechanism reveal"
+              data-evidence="Evidence B"
+            >
+
+              <h3>The changed lock</h3>
+
+              <p>
+                The antibiotic target changes shape.
+                The medicine can no longer bind
+                effectively to the place it once
+                recognised.
+              </p>
+
+              <span class="symbol">⌁</span>
+
+            </section>
+
+            <section
+              class="mechanism reveal"
+              data-evidence="Evidence C"
+            >
+
+              <h3>The efflux pump</h3>
+
+              <p>
+                Transport proteins actively push the
+                antibiotic back out before it can
+                accumulate to an effective level.
+              </p>
+
+              <span class="symbol">→</span>
+
+            </section>
+
+            <section
+              class="mechanism reveal"
+              data-evidence="Evidence D"
+            >
+
+              <h3>The destroyer</h3>
+
+              <p>
+                The bacterium produces an enzyme that
+                breaks down or chemically modifies
+                the antibiotic.
+              </p>
+
+              <span class="symbol">×</span>
+
+            </section>
+
+            <section
+              class="mechanism reveal"
+              data-evidence="Evidence E"
+            >
+
+              <h3>The protected community</h3>
+
+              <p>
+                Some bacteria grow in biofilms—
+                structured communities that can reduce
+                penetration and contain slower-growing
+                cells that are harder to eliminate.
+              </p>
+
+              <span class="symbol">◉</span>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           HORIZONTAL GENE TRANSFER
+      ================================== -->
+
+      <section class="section exchange">
+
+        <div class="inner">
+
+          <div class="two-col">
+
+            <div class="copy reveal">
+
+              <p class="kicker">
+                Evidence room 05 · The secret exchange
+              </p>
+
+              <h2>
+                A bacterium does not always inherit
+                resistance from its parent.
+              </h2>
+
+              <p class="lead">
+                Resistance genes can also move
+                horizontally between bacteria,
+                sometimes even between different
+                bacterial species.
+              </p>
+
+              <p>
+                Small circles of DNA called plasmids
+                can carry resistance genes and move
+                from one bacterial cell to another.
+                Bacteria may also collect DNA from
+                their surroundings, while viruses
+                that infect bacteria can occasionally
+                move genetic material between cells.
+              </p>
+
+              <p>
+                This is not conscious communication.
+                The bacteria are not planning an
+                escape. These are biological
+                processes—but their effect can resemble
+                information moving rapidly through
+                a hidden network.
+              </p>
+
+            </div>
+
+            <aside class="evidence-note reveal">
+
+              <strong>
+                Evidence recovered
+              </strong>
+
+              <p>
+                A resistance trait can spread even
+                when the resistant bacterium itself
+                does not travel. Sometimes the gene
+                is the thing that moves.
+              </p>
+
+            </aside>
+
+          </div>
+
+          <div
+            class="network reveal"
+            aria-label="Stylised diagram of horizontal gene transfer"
+          >
+
+            <div class="cell one">
+              BACTERIUM A
+            </div>
+
+            <div class="cell two">
+              BACTERIUM B
+            </div>
+
+            <div class="cell three">
+              BACTERIUM C
+            </div>
+
+            <div class="gene-line a"></div>
+            <div class="gene-line b"></div>
+            <div class="gene-line c"></div>
+
+            <div
+              class="plasmid"
+              title="Resistance plasmid"
+            ></div>
+
+            <p class="network-key">
+              Visual metaphor: the glowing ring
+              represents a plasmid carrying genetic
+              information. Lines represent possible
+              routes of gene movement, not literal wires.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           CAUSE MAP
+      ================================== -->
+
+      <section class="section culprits">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Evidence room 06 · Cause map
+          </p>
+
+          <h2>
+            There was no single culprit.
+          </h2>
+
+          <p class="lead">
+            Resistance is a natural evolutionary
+            possibility. Human systems determine how
+            often bacteria encounter antibiotics,
+            how strongly they are selected and how
+            easily resistant strains spread.
+          </p>
+
+          <div class="evidence-wall">
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 01</small>
+
+              <h3>Unnecessary use</h3>
+
+              <p>
+                Antibiotics used when no bacterial
+                infection is present create risk
+                without providing the intended benefit.
+              </p>
+
+            </section>
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 02</small>
+
+              <h3>Incorrect prescribing</h3>
+
+              <p>
+                The wrong drug, dose or treatment
+                duration can expose bacteria without
+                controlling the infection effectively.
+              </p>
+
+            </section>
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 03</small>
+
+              <h3>Spread between people</h3>
+
+              <p>
+                Poor infection prevention allows
+                resistant bacteria to move through
+                hospitals, households and communities.
+              </p>
+
+            </section>
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 04</small>
+
+              <h3>Animal and environmental routes</h3>
+
+              <p>
+                Antibiotic use and resistant organisms
+                connect human health, animal health,
+                food systems, soil and water.
+              </p>
+
+            </section>
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 05</small>
+
+              <h3>Unequal access</h3>
+
+              <p>
+                Limited diagnostics, sanitation and
+                reliable treatment can encourage both
+                untreated infection and poorly targeted
+                antibiotic use.
+              </p>
+
+            </section>
+
+            <section class="evidence-card reveal">
+
+              <small>FILE 06</small>
+
+              <h3>A thin development pipeline</h3>
+
+              <p>
+                Antibiotic discovery and development
+                have struggled to keep pace with the
+                emergence of resistant bacteria.
+              </p>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           MYTH INTERROGATION
+      ================================== -->
+
+      <section class="section interrogation">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Interrogation room · Myth or evidence?
+          </p>
+
+          <h2>
+            Four statements are waiting
+            for questioning.
+          </h2>
+
+          <div class="myths">
+
+            <details class="myth">
+
+              <summary>
+                “My body has become resistant
+                to the medicine.”
+              </summary>
+
+              <p class="verdict">
+                <b>VERDICT: INCORRECT.</b>
+                Resistance occurs in the bacteria
+                or other microorganisms—not in
+                the human body.
+              </p>
+
+            </details>
+
+            <details class="myth">
+
+              <summary>
+                “Antibiotics will help my cold
+                or influenza clear faster.”
+              </summary>
+
+              <p class="verdict">
+                <b>VERDICT: INCORRECT.</b>
+                Colds and influenza are caused by
+                viruses. Antibiotics target bacteria,
+                not viruses.
+              </p>
+
+            </details>
+
+            <details class="myth">
+
+              <summary>
+                “A stronger antibiotic will always
+                solve the problem.”
+              </summary>
+
+              <p class="verdict">
+                <b>VERDICT: INCORRECT.</b>
+                Some bacteria resist multiple antibiotic
+                classes. Broader treatment may also
+                disturb helpful bacteria and add
+                selection pressure, so therapy must
+                be professionally targeted.
+              </p>
+
+            </details>
+
+            <details class="myth">
+
+              <summary>
+                “Resistance belongs only
+                inside hospitals.”
+              </summary>
+
+              <p class="verdict">
+                <b>VERDICT: INCORRECT.</b>
+                Resistant bacteria and resistance genes
+                can circulate through healthcare
+                facilities, communities, animals,
+                food and the environment.
+              </p>
+
+            </details>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           EMERGENCY ROOM
+      ================================== -->
+
+      <section class="section emergency">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Emergency room · The scale of the case
+          </p>
+
+          <h2>
+            When treatment options disappear,
+            modern medicine becomes more fragile.
+          </h2>
+
+          <p class="lead">
+            A major 2024 global analysis estimated
+            past and future deaths involving bacterial
+            antimicrobial resistance. “Attributable”
+            means the death would have been avoided
+            if the resistant infection had instead
+            been drug-susceptible.
+          </p>
+
+          <div class="stat-grid">
+
+            <div class="stat reveal">
+
+              <b>1.14m</b>
+
+              <span>
+                Estimated deaths directly attributable
+                to bacterial antimicrobial resistance
+                in 2021.
+              </span>
+
+            </div>
+
+            <div class="stat reveal">
+
+              <b>1.91m</b>
+
+              <span>
+                Projected annual deaths attributable
+                to bacterial antimicrobial resistance
+                in 2050 under the reference scenario.
+              </span>
+
+            </div>
+
+            <div class="stat reveal">
+
+              <b>39.1m</b>
+
+              <span>
+                Projected cumulative deaths attributable
+                to bacterial antimicrobial resistance
+                from 2025 to 2050.
+              </span>
+
+            </div>
+
+          </div>
+
+          <p class="reading-note">
+            These are modelled estimates with uncertainty
+            ranges, not a countdown or a future that cannot
+            be changed. Source: GBD 2021 Antimicrobial
+            Resistance Collaborators, The Lancet, 2024.
+          </p>
+
+          <div class="human-impact">
+
+            <div class="impact reveal">
+
+              <b>A common infection</b>
+
+              <p>
+                may require longer, more complex
+                or more toxic treatment.
+              </p>
+
+            </div>
+
+            <div class="impact reveal">
+
+              <b>A surgical procedure</b>
+
+              <p>
+                becomes riskier if postoperative bacterial
+                infections are difficult to treat.
+              </p>
+
+            </div>
+
+            <div class="impact reveal">
+
+              <b>Cancer treatment</b>
+
+              <p>
+                depends on effective infection control
+                while the immune system may be weakened.
+              </p>
+
+            </div>
+
+            <div class="impact reveal">
+
+              <b>A child with a serious infection</b>
+
+              <p>
+                needs the right antibiotic, dose and
+                duration—not simply the broadest
+                medicine available.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           COMMAND CENTRE
+      ================================== -->
+
+      <section class="section command">
+
+        <div class="inner">
+
+          <p class="kicker">
+            Command centre · The response
+          </p>
+
+          <h2>
+            The case is serious.
+            It is not hopeless.
+          </h2>
+
+          <p class="lead">
+            The goal is not to fear antibiotics or
+            avoid them when they are needed. The goal
+            is to preserve their power through accurate
+            diagnosis, careful use, infection prevention,
+            surveillance and research.
+          </p>
+
+          <div class="command-grid">
+
+            <section class="command-card reveal">
+
+              <h3>For individuals</h3>
+
+              <ul>
+                <li>
+                  Use antibiotics only when prescribed
+                  for you.
+                </li>
+
+                <li>
+                  Do not use leftover or shared
+                  antibiotics.
+                </li>
+
+                <li>
+                  Follow professional instructions
+                  for dose and duration.
+                </li>
+
+                <li>
+                  Do not demand antibiotics for
+                  viral illnesses.
+                </li>
+
+                <li>
+                  Use hygiene and vaccination to
+                  prevent infections.
+                </li>
+              </ul>
+
+            </section>
+
+            <section class="command-card reveal">
+
+              <h3>For healthcare systems</h3>
+
+              <ul>
+                <li>
+                  Use diagnostic evidence where possible.
+                </li>
+
+                <li>
+                  Choose the appropriate drug, dose,
+                  route and duration.
+                </li>
+
+                <li>
+                  Review treatment when laboratory
+                  results arrive.
+                </li>
+
+                <li>
+                  Track resistance and prescribing
+                  patterns.
+                </li>
+
+                <li>
+                  Prevent transmission in every
+                  care setting.
+                </li>
+              </ul>
+
+            </section>
+
+            <section class="command-card reveal">
+
+              <h3>For the wider world</h3>
+
+              <ul>
+                <li>
+                  Strengthen clean water and sanitation.
+                </li>
+
+                <li>
+                  Improve access to vaccines and
+                  reliable diagnostics.
+                </li>
+
+                <li>
+                  Use antibiotics responsibly across
+                  human and animal health.
+                </li>
+
+                <li>
+                  Limit environmental contamination.
+                </li>
+
+                <li>
+                  Invest in antibiotics and alternative
+                  strategies.
+                </li>
+              </ul>
+
+            </section>
+
+          </div>
+
+          <div class="hope-line reveal">
+            We cannot order evolution to stop.
+            We can stop giving it unnecessary opportunities.
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =================================
+           FINAL CASE FILE
+      ================================== -->
+
+      <section class="section final-file">
+
+        <div class="inner reveal">
+
+          <p class="kicker">
+            Final case update
+          </p>
+
+          <h2>
+            The treatment did not simply
+            “stop working.”
+            The population changed.
+          </h2>
+
+          <div class="final-status">
+
+            <p>
+              RESISTANCE:
+              <span class="green">
+                IDENTIFIED
+              </span>
+            </p>
+
+            <p>
+              RESPONSE:
+              <span class="green">
+                TARGETED TREATMENT +
+                INFECTION CONTROL +
+                STEWARDSHIP
+              </span>
+            </p>
+
+            <p>
+              RESPONSIBILITY:
+              <span class="green">
+                SHARED ACROSS SYSTEMS
+              </span>
+            </p>
+
+            <p>
+              CASE STATUS:
+              <span class="green">
+                STILL OPEN FOR ALL OF US
+              </span>
+            </p>
+
+          </div>
+
+          <p class="closing-quote">
+            Antibiotics are not ordinary medicines.
+            Every time they are used, they enter an
+            evolutionary story. The ending depends
+            partly on how carefully we write the
+            next chapter.
+          </p>
+
+        </div>
+
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- =================================
+       REFERENCES
+  ================================== -->
+
+  <section
+    class="section sources"
+    aria-labelledby="sourcesTitle"
+  >
+
+    <div class="inner">
+
+      <p class="kicker">
+        Evidence archive · References
+      </p>
+
+      <h2 id="sourcesTitle">
+        The research behind the investigation
+      </h2>
+
+      <p class="medical-note">
+        This page is general science communication,
+        not individual medical advice. Antibiotic
+        decisions should be made with a qualified
+        healthcare professional. The opening patient
+        is an illustrative narrative and does not
+        describe a real person.
+      </p>
+
+      <ol>
+
+        <li>
+          C. Lee Ventola,
+
+          <a
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4378521/"
+            target="_blank"
+            rel="noopener"
+          >
+            “The Antibiotic Resistance Crisis:
+            Part 1: Causes and Threats,”
+          </a>
+
+          <em>Pharmacy and Therapeutics</em>,
+          2015.
+        </li>
+
+        <li>
+          Murdoch Children’s Research Institute,
+
+          <a
+            href="https://www.mcri.edu.au/impact/a-z-child-adolescent-health/a/antibiotic-resistance"
+            target="_blank"
+            rel="noopener"
+          >
+            “Antibiotic resistance.”
+          </a>
+
+          Child health, careful antibiotic use
+          and precision treatment research.
+        </li>
+
+        <li>
+          GBD 2021 Antimicrobial Resistance
+          Collaborators,
+
+          <a
+            href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(24)01867-1/fulltext"
+            target="_blank"
+            rel="noopener"
+          >
+            “Global burden of bacterial antimicrobial
+            resistance 1990–2021: a systematic analysis
+            with forecasts to 2050,”
+          </a>
+
+          <em>The Lancet</em>,
+          2024.
+
+          DOI:
+          10.1016/S0140-6736(24)01867-1.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+  <!-- =================================
+       FOOTER
+  ================================== -->
+
+  <footer>
+
+    <span>
+      Jigyasa Verse · The Resistance Files
+    </span>
+
+    <span>
+      Built for curious humans,
+      not medical hierarchy.
+    </span>
+
+  </footer>
+
+  <!-- =================================
+       JAVASCRIPT
+  ================================== -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const progress =
+        document.querySelector(
+          "#caseProgress"
+        );
+
+      const petri =
+        document.querySelector(
+          "#petriDish"
+        );
+
+      const readout =
+        document.querySelector(
+          "#labReadout"
+        );
+
+      const treatButton =
+        document.querySelector(
+          "#treatButton"
+        );
+
+      const multiplyButton =
+        document.querySelector(
+          "#multiplyButton"
+        );
+
+      const resetButton =
+        document.querySelector(
+          "#resetButton"
+        );
+
+      /*
+       * UPDATE READING PROGRESS
+       */
+
+      function updateProgress() {
+        const available =
+          document.documentElement.scrollHeight -
+          window.innerHeight;
+
+        const value =
+          available > 0
+            ? (
+                window.scrollY /
+                available
+              ) * 100
+            : 0;
+
+        progress.style.width =
+          `${Math.min(
+            100,
+            Math.max(0, value)
+          )}%`;
+      }
+
+      /*
+       * BUILD THE STARTING
+       * BACTERIAL POPULATION
+       */
+
+      function buildPopulation() {
+        petri.innerHTML = "";
+
+        petri.className =
+          "petri";
+
+        for (
+          let index = 0;
+          index < 74;
+          index += 1
+        ) {
+          const bacterium =
+            document.createElement(
+              "span"
+            );
+
+          /*
+           * Seven organisms begin as
+           * resistant. The remainder
+           * begin as susceptible.
+           */
+
+          bacterium.className =
+            index < 7
+              ? "bacterium resistant"
+              : "bacterium";
+
+          /*
+           * Arrange bacteria around
+           * the circular dish.
+           */
+
+          const angle =
+            (
+              index *
+              137.5
+            ) *
+            Math.PI /
+            180;
+
+          const radius =
+            8 +
+            Math.sqrt(
+              index / 74
+            ) *
+            39;
+
+          const x =
+            50 +
+            Math.cos(angle) *
+            radius;
+
+          const y =
+            50 +
+            Math.sin(angle) *
+            radius;
+
+          bacterium.style.left =
+            `${x}%`;
+
+          bacterium.style.top =
+            `${y}%`;
+
+          bacterium.style.setProperty(
+            "--rotation",
+            `${(
+              index *
+              47
+            ) % 180}deg`
+          );
+
+          petri.appendChild(
+            bacterium
+          );
+        }
+
+        readout.textContent =
+          "BEFORE TREATMENT: most bacteria are susceptible. A small resistant minority is already present.";
+      }
+
+      /*
+       * ANTIBIOTIC TREATMENT
+       */
+
+      treatButton.addEventListener(
+        "click",
+        () => {
+          petri.classList.remove(
+            "multiplied"
+          );
+
+          petri.classList.add(
+            "treated"
+          );
+
+          readout.textContent =
+            "AFTER ANTIBIOTIC EXPOSURE: susceptible bacteria fall dramatically. Resistant survivors remain—not because they decided to change, but because their existing biology protected them.";
+        }
+      );
+
+      /*
+       * RESISTANT SURVIVORS REPRODUCE
+       */
+
+      multiplyButton.addEventListener(
+        "click",
+        () => {
+          petri.classList.add(
+            "treated",
+            "multiplied"
+          );
+
+          readout.textContent =
+            "NEXT GENERATION: resistant survivors reproduce. Resistance is now common across the visible population. This is natural selection in motion.";
+        }
+      );
+
+      /*
+       * RESET THE SIMULATION
+       */
+
+      resetButton.addEventListener(
+        "click",
+        buildPopulation
+      );
+
+      /*
+       * SCROLL REVEAL ANIMATIONS
+       */
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  entry.isIntersecting
+                ) {
+                  entry.target
+                    .classList
+                    .add(
+                      "visible"
+                    );
+
+                  observer.unobserve(
+                    entry.target
+                  );
+                }
+              }
+            );
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+      document
+        .querySelectorAll(
+          ".reveal"
+        )
+        .forEach(
+          (item) => {
+            observer.observe(
+              item
+            );
+          }
+        );
+
+      window.addEventListener(
+        "scroll",
+        updateProgress,
+        {
+          passive: true
+        }
+      );
+
+      buildPopulation();
+      updateProgress();
+    })();
+  </script>
+
+</body>
+</html>
