@@ -1,0 +1,3928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Impossible Times investigates the allegedly immortal tardigrade in an interactive antique newspaper experience by Jigyasa Verse."
+  >
+
+  <meta name="theme-color" content="#681913">
+
+  <!-- Jigyasa Verse logo in the browser tab -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <title>
+    The Impossible Times: Tardigrade on Trial | Jigyasa Verse
+  </title>
+
+  <style>
+    @import url(
+      "https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Franklin:wght@400;600;700;800&family=Special+Elite&display=swap"
+    );
+
+    :root {
+      --ink: #1b1713;
+      --faded-ink: #594b3e;
+
+      --paper: #e7d3aa;
+      --paper-light: #f5e8c9;
+      --paper-dark: #c4aa7a;
+
+      --red: #761d17;
+      --bright-red: #a53327;
+
+      --night: #161622;
+
+      --serif:
+        "Libre Caslon Display",
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --sans:
+        "Libre Franklin",
+        Arial,
+        sans-serif;
+
+      --typewriter:
+        "Special Elite",
+        "Courier New",
+        monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      color: var(--ink);
+
+      font-family: var(--serif);
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(255, 255, 255, 0.08),
+          transparent 28rem
+        ),
+        repeating-linear-gradient(
+          8deg,
+          rgba(255, 255, 255, 0.012) 0 1px,
+          transparent 1px 5px
+        ),
+        #28150f;
+
+      overflow-x: hidden;
+    }
+
+    /*
+      Adds a grainy antique texture.
+    */
+
+    body::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 50;
+
+      pointer-events: none;
+
+      opacity: 0.3;
+
+      mix-blend-mode: multiply;
+
+      background-image:
+        url(
+          "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.12'/%3E%3C/svg%3E"
+        );
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /*
+      Reading progress bar
+    */
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      z-index: 100;
+
+      width: 0;
+      height: 4px;
+
+      background: var(--bright-red);
+
+      box-shadow:
+        0 0 12px rgba(165, 51, 39, 0.8);
+    }
+
+    /*
+      Fixed Jigyasa Verse bar
+    */
+
+    .site-bar {
+      position: sticky;
+      top: 0;
+
+      z-index: 80;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 1rem;
+
+      min-height: 56px;
+
+      padding:
+        0.5rem
+        clamp(1rem, 4vw, 3rem);
+
+      color: var(--paper-light);
+
+      background:
+        rgba(38, 17, 12, 0.95);
+
+      border-bottom:
+        1px solid rgba(245, 232, 201, 0.3);
+
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.7rem;
+
+      color: inherit;
+
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+
+      object-fit: contain;
+
+      filter:
+        sepia(1)
+        saturate(0.6)
+        brightness(1.7);
+    }
+
+    .reading-tools {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tool-button {
+      padding: 0.5rem 0.75rem;
+
+      color: inherit;
+      background: transparent;
+
+      border:
+        1px solid rgba(245, 232, 201, 0.4);
+
+      border-radius: 999px;
+
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+    }
+
+    .tool-button:hover,
+    .tool-button:focus-visible {
+      color: #28150f;
+      background: var(--paper-light);
+    }
+
+    /*
+      Main newspaper sheet
+    */
+
+    .newspaper {
+      position: relative;
+
+      width:
+        min(
+          1180px,
+          calc(100% - 2rem)
+        );
+
+      margin:
+        clamp(1rem, 3vw, 2.5rem)
+        auto
+        5rem;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(91, 57, 27, 0.07),
+          transparent 20%,
+          transparent 80%,
+          rgba(91, 57, 27, 0.08)
+        ),
+        var(--paper);
+
+      box-shadow:
+        0 24px 75px rgba(22, 12, 7, 0.48);
+    }
+
+    /*
+      Torn edges
+    */
+
+    .newspaper::before,
+    .newspaper::after {
+      content: "";
+
+      position: absolute;
+
+      left: -8px;
+      right: -8px;
+
+      z-index: 5;
+
+      height: 20px;
+
+      background: var(--paper);
+
+      clip-path:
+        polygon(
+          0 40%,
+          3% 6%,
+          7% 58%,
+          11% 12%,
+          16% 67%,
+          21% 16%,
+          27% 74%,
+          33% 11%,
+          39% 58%,
+          45% 8%,
+          51% 68%,
+          58% 18%,
+          64% 62%,
+          71% 7%,
+          77% 58%,
+          84% 13%,
+          91% 66%,
+          96% 18%,
+          100% 44%,
+          100% 100%,
+          0 100%
+        );
+    }
+
+    .newspaper::before {
+      top: -9px;
+    }
+
+    .newspaper::after {
+      bottom: -9px;
+
+      transform: rotate(180deg);
+    }
+
+    /*
+      Newspaper masthead
+    */
+
+    .masthead {
+      padding:
+        clamp(1.5rem, 4vw, 3.5rem)
+        clamp(1rem, 4vw, 4rem)
+        1rem;
+    }
+
+    .edition-line {
+      display: grid;
+
+      grid-template-columns:
+        1fr auto 1fr;
+
+      align-items: center;
+
+      gap: 1rem;
+
+      padding: 0.45rem 0;
+
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+
+      font-family: var(--sans);
+      font-size: clamp(0.55rem, 1.5vw, 0.75rem);
+      font-weight: 800;
+
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .edition-line span:last-child {
+      text-align: right;
+    }
+
+    .newspaper-name {
+      margin: 0.7rem 0 0.35rem;
+
+      text-align: center;
+
+      font-size:
+        clamp(
+          2.7rem,
+          8vw,
+          7.2rem
+        );
+
+      line-height: 0.82;
+
+      letter-spacing: -0.055em;
+
+      text-transform: uppercase;
+    }
+
+    .newspaper-name small {
+      display: block;
+
+      margin-bottom: 0.25rem;
+
+      font-family: var(--sans);
+      font-size: 0.14em;
+      font-weight: 800;
+
+      letter-spacing: 0.65em;
+
+      transform: translateX(0.3em);
+    }
+
+    .newspaper-motto {
+      margin: 0.8rem 0 1rem;
+
+      text-align: center;
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /*
+      Main headline
+    */
+
+    .lead-story {
+      position: relative;
+
+      padding: 1rem 0;
+
+      border-top: 7px double var(--ink);
+    }
+
+    .breaking-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 0.7rem;
+
+      margin: 0.4rem 0 0.8rem;
+
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: clamp(0.7rem, 2vw, 1rem);
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .breaking-label::before,
+    .breaking-label::after {
+      content: "✦";
+    }
+
+    .lead-story h1 {
+      max-width: 14ch;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      font-size:
+        clamp(
+          3.2rem,
+          11vw,
+          9.5rem
+        );
+
+      line-height: 0.77;
+
+      letter-spacing: -0.07em;
+
+      text-transform: uppercase;
+    }
+
+    .lead-story h1 em {
+      display: block;
+
+      color: var(--red);
+
+      font-style: normal;
+    }
+
+    .headline-summary {
+      max-width: 850px;
+
+      margin: 1.2rem auto;
+
+      text-align: center;
+
+      font-size:
+        clamp(
+          1rem,
+          2.4vw,
+          1.5rem
+        );
+
+      line-height: 1.35;
+    }
+
+    .byline {
+      text-align: center;
+
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /*
+      Front-page microscope illustration
+    */
+
+    .front-grid {
+      display: grid;
+
+      grid-template-columns:
+        0.72fr
+        1.65fr
+        0.72fr;
+
+      gap: 1rem;
+
+      margin-top: 1.5rem;
+      padding: 1rem 0;
+
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .side-headline {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 0.8rem;
+
+      border:
+        1px solid rgba(27, 23, 19, 0.5);
+
+      background:
+        rgba(255, 255, 255, 0.1);
+    }
+
+    .side-headline strong {
+      display: block;
+
+      font-size:
+        clamp(
+          1.2rem,
+          2.6vw,
+          2rem
+        );
+
+      line-height: 0.95;
+
+      text-transform: uppercase;
+    }
+
+    .side-headline span {
+      margin-top: 0.8rem;
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+
+      line-height: 1.5;
+    }
+
+    .microscope {
+      position: relative;
+
+      min-height: 350px;
+
+      overflow: hidden;
+
+      border: 3px solid var(--ink);
+
+      background:
+        radial-gradient(
+          circle at 50% 48%,
+          rgba(255, 255, 255, 0.8) 0 7%,
+          transparent 8%
+        ),
+        radial-gradient(
+          circle at 50% 48%,
+          #d1bd94 0 31%,
+          #776448 32% 33%,
+          #211c18 34% 35%,
+          transparent 36%
+        ),
+        repeating-radial-gradient(
+          circle at 50% 48%,
+          rgba(31, 25, 20, 0.18) 0 1px,
+          transparent 1px 8px
+        ),
+        #8f7957;
+    }
+
+    .microscope::after {
+      content: "MICROSCOPE PLATE No. 08";
+
+      position: absolute;
+      right: 0.6rem;
+      bottom: 0.5rem;
+
+      font-family: var(--typewriter);
+      font-size: 0.58rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+    }
+
+    /*
+      CSS-drawn tardigrade
+    */
+
+    .water-bear {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: min(72%, 390px);
+
+      aspect-ratio: 1.45;
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-7deg);
+
+      border: 3px solid var(--ink);
+
+      border-radius:
+        46% 44% 42% 48%;
+
+      background:
+        rgba(121, 29, 23, 0.6);
+
+      box-shadow:
+        inset 0 0 0 8px
+        rgba(245, 232, 201, 0.25);
+    }
+
+    .water-bear::before {
+      content: "";
+
+      position: absolute;
+
+      top: 25%;
+      left: -12%;
+
+      width: 30%;
+
+      aspect-ratio: 1;
+
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+
+      background: #9d4438;
+    }
+
+    .water-bear::after {
+      content: "";
+
+      position: absolute;
+
+      top: 42%;
+      left: -2%;
+
+      width: 7%;
+
+      aspect-ratio: 1;
+
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+
+      background: #251a15;
+    }
+
+    .bear-leg {
+      position: absolute;
+
+      width: 17%;
+      height: 36%;
+
+      border: 3px solid var(--ink);
+      border-top: 0;
+
+      border-radius:
+        0 0 45% 45%;
+
+      background: #924038;
+
+      transform-origin: top;
+    }
+
+    .bear-leg::after {
+      content: "⋔";
+
+      position: absolute;
+
+      left: 50%;
+      bottom: -19px;
+
+      transform:
+        translateX(-50%);
+
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .leg-one {
+      left: 12%;
+      bottom: -27%;
+
+      transform: rotate(10deg);
+    }
+
+    .leg-two {
+      left: 38%;
+      bottom: -30%;
+
+      transform: rotate(-3deg);
+    }
+
+    .leg-three {
+      left: 63%;
+      bottom: -27%;
+
+      transform: rotate(-13deg);
+    }
+
+    .leg-four {
+      right: -4%;
+      bottom: -17%;
+
+      transform: rotate(-30deg);
+    }
+
+    /*
+      Red newspaper stamps
+    */
+
+    .stamp {
+      position: absolute;
+
+      z-index: 10;
+
+      display: grid;
+      place-items: center;
+
+      width: 170px;
+
+      aspect-ratio: 1.9;
+
+      padding: 0.5rem;
+
+      color: var(--red);
+
+      border: 5px double var(--red);
+
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 800;
+
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+
+      transform: rotate(-10deg);
+
+      opacity: 0.9;
+
+      mix-blend-mode: multiply;
+    }
+
+    .front-stamp {
+      right: 2%;
+      bottom: 0;
+    }
+
+    /*
+      Navigation
+    */
+
+    .newspaper-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      gap: 0.5rem 1rem;
+
+      padding:
+        0.9rem
+        clamp(1rem, 4vw, 4rem);
+
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+
+      background:
+        rgba(85, 57, 31, 0.09);
+    }
+
+    .newspaper-nav a {
+      font-family: var(--sans);
+      font-size: 0.66rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .newspaper-nav a:hover {
+      color: var(--red);
+    }
+
+    /*
+      Article sections
+    */
+
+    .article-section {
+      padding:
+        clamp(3rem, 8vw, 7rem)
+        clamp(1rem, 5vw, 5rem);
+    }
+
+    .article-section +
+    .article-section {
+      border-top: 2px solid var(--ink);
+    }
+
+    .section-label {
+      margin: 0 0 0.6rem;
+
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 16ch;
+
+      margin: 0 0 1.2rem;
+
+      font-size:
+        clamp(
+          2.5rem,
+          7vw,
+          6rem
+        );
+
+      line-height: 0.9;
+
+      letter-spacing: -0.04em;
+    }
+
+    .section-introduction {
+      max-width: 750px;
+
+      margin: 0 0 2.3rem;
+
+      font-size:
+        clamp(
+          1.15rem,
+          2.2vw,
+          1.55rem
+        );
+
+      line-height: 1.4;
+    }
+
+    /*
+      Traditional newspaper columns
+    */
+
+    .newspaper-columns {
+      column-count: 3;
+      column-gap: 2.2rem;
+
+      column-rule:
+        1px solid rgba(27, 23, 19, 0.45);
+
+      font-size: 1.03rem;
+      line-height: 1.65;
+
+      text-align: justify;
+
+      hyphens: auto;
+    }
+
+    .newspaper-columns p {
+      margin: 0 0 1rem;
+    }
+
+    .newspaper-columns
+    p:first-child::first-letter {
+      float: left;
+
+      margin:
+        0.06em
+        0.08em
+        0
+        0;
+
+      color: var(--red);
+
+      font-size: 4.6em;
+      line-height: 0.72;
+    }
+
+    .pull-quote {
+      break-inside: avoid;
+
+      margin: 1.2rem 0;
+      padding: 1rem 0.8rem;
+
+      color: var(--red);
+
+      border-top: 5px double var(--ink);
+      border-bottom: 5px double var(--ink);
+
+      font-size: 1.65rem;
+      line-height: 1.08;
+
+      text-align: left;
+    }
+
+    /*
+      Case file
+    */
+
+    .case-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(240px, 0.8fr);
+
+      gap:
+        clamp(
+          1.5rem,
+          4vw,
+          4rem
+        );
+
+      align-items: start;
+    }
+
+    .case-file {
+      padding: 1.4rem;
+
+      border: 2px solid var(--ink);
+
+      background:
+        rgba(255, 255, 255, 0.13);
+
+      box-shadow:
+        inset 0 0 0 5px
+        rgba(121, 29, 23, 0.08);
+    }
+
+    .case-file h3 {
+      margin: 0 0 1rem;
+      padding-bottom: 0.7rem;
+
+      border-bottom: 1px solid var(--ink);
+
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .case-file dl {
+      margin: 0;
+    }
+
+    .case-file dt {
+      margin-top: 0.9rem;
+
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 800;
+
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .case-file dd {
+      margin: 0.2rem 0 0;
+
+      font-size: 1.13rem;
+    }
+
+    /*
+      Research-image frame
+    */
+
+    .evidence-photo {
+      position: relative;
+
+      margin:
+        3rem
+        auto
+        0;
+
+      padding:
+        0.65rem
+        0.65rem
+        2.8rem;
+
+      border: 1px solid var(--ink);
+
+      background: #e7d4ab;
+
+      box-shadow:
+        10px 12px 0
+        rgba(71, 43, 23, 0.18);
+
+      transform: rotate(-1.2deg);
+    }
+
+    .evidence-photo::before {
+      content: "EVIDENCE";
+
+      position: absolute;
+
+      top: -18px;
+      right: -14px;
+
+      z-index: 3;
+
+      padding: 0.45rem 0.75rem;
+
+      color: var(--paper-light);
+      background: var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+
+      transform: rotate(5deg);
+    }
+
+    .evidence-photo img {
+      display: block;
+
+      width: 100%;
+      min-height: 300px;
+      max-height: 620px;
+
+      object-fit: cover;
+
+      background: #806e52;
+
+      filter:
+        sepia(0.8)
+        grayscale(0.25)
+        contrast(1.12);
+    }
+
+    .evidence-photo figcaption {
+      position: absolute;
+
+      left: 0.8rem;
+      right: 0.8rem;
+      bottom: 0.7rem;
+
+      font-family: var(--typewriter);
+      font-size: 0.66rem;
+
+      line-height: 1.4;
+    }
+
+    /*
+      Torn note
+    */
+
+    .torn-note {
+      position: relative;
+
+      max-width: 780px;
+
+      margin: 3rem auto 0;
+
+      padding:
+        2.2rem
+        clamp(1.2rem, 4vw, 3.5rem);
+
+      background: #f2e4c4;
+
+      box-shadow:
+        9px 13px 25px
+        rgba(55, 31, 17, 0.23);
+
+      transform: rotate(0.7deg);
+
+      clip-path:
+        polygon(
+          0 2%,
+          4% 0,
+          9% 2%,
+          15% 0,
+          23% 1%,
+          30% 0,
+          37% 2%,
+          46% 0,
+          55% 1%,
+          64% 0,
+          73% 2%,
+          82% 0,
+          91% 1%,
+          100% 0,
+          99% 96%,
+          94% 100%,
+          87% 97%,
+          80% 100%,
+          72% 98%,
+          64% 100%,
+          55% 97%,
+          47% 100%,
+          38% 98%,
+          30% 100%,
+          22% 97%,
+          14% 100%,
+          7% 98%,
+          0 100%
+        );
+    }
+
+    .torn-note p {
+      margin: 0;
+
+      font-family: var(--typewriter);
+      font-size:
+        clamp(
+          1.3rem,
+          3vw,
+          2rem
+        );
+
+      line-height: 1.35;
+
+      text-align: center;
+    }
+
+    /*
+      Active tardigrade to tun transformation
+    */
+
+    .transformation {
+      display: grid;
+
+      grid-template-columns:
+        1fr auto 1fr;
+
+      gap: 1.5rem;
+
+      align-items: center;
+
+      margin-top: 2.5rem;
+    }
+
+    .state-card {
+      min-height: 310px;
+
+      padding: 1.5rem;
+
+      border: 2px solid var(--ink);
+
+      text-align: center;
+
+      background:
+        rgba(255, 255, 255, 0.1);
+    }
+
+    .state-card h3 {
+      margin: 0;
+
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 800;
+
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .state-card p {
+      max-width: 31ch;
+
+      margin: 0.8rem auto 0;
+
+      line-height: 1.5;
+    }
+
+    .state-picture {
+      position: relative;
+
+      width: 170px;
+
+      aspect-ratio: 1;
+
+      margin: 1.2rem auto;
+
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+
+      background:
+        repeating-radial-gradient(
+          circle,
+          rgba(121, 29, 23, 0.18)
+          0 3px,
+          transparent 4px 13px
+        );
+    }
+
+    .state-picture.active::after {
+      content: "𓆣";
+
+      position: absolute;
+      inset: 0;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--red);
+
+      font-size: 6rem;
+
+      transform: rotate(90deg);
+    }
+
+    .state-picture.tun::after {
+      content: "";
+
+      position: absolute;
+      inset: 22%;
+
+      border: 8px double var(--red);
+
+      border-radius:
+        46% 54% 44% 56%;
+
+      background:
+        rgba(121, 29, 23, 0.2);
+
+      transform: rotate(24deg);
+    }
+
+    .transformation-arrow {
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+
+    /*
+      Environmental chambers
+    */
+
+    .chambers {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 1rem;
+
+      margin-top: 2rem;
+    }
+
+    .chamber {
+      position: relative;
+
+      min-height: 340px;
+
+      padding: 1.7rem;
+
+      overflow: hidden;
+
+      border: 2px solid var(--ink);
+
+      background:
+        rgba(255, 255, 255, 0.12);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .chamber:hover {
+      transform:
+        translateY(-5px)
+        rotate(-0.3deg);
+
+      background:
+        rgba(255, 255, 255, 0.23);
+    }
+
+    .chamber-number {
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 800;
+
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .chamber h3 {
+      margin: 0.7rem 0;
+
+      font-size:
+        clamp(
+          2rem,
+          5vw,
+          4rem
+        );
+
+      line-height: 0.9;
+
+      text-transform: uppercase;
+    }
+
+    .chamber p {
+      max-width: 48ch;
+
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .chamber-status {
+      display: inline-block;
+
+      margin-top: 0.6rem;
+      padding: 0.4rem 0.6rem;
+
+      color: var(--red);
+
+      border: 2px solid var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      font-weight: 800;
+
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      transform: rotate(-2deg);
+    }
+
+    .drought {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(151, 83, 36, 0.27),
+          transparent 64%
+        );
+    }
+
+    .freezing {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(104, 131, 144, 0.25),
+          transparent 64%
+        );
+    }
+
+    .radiation {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(154, 128, 27, 0.22),
+          transparent 64%
+        );
+    }
+
+    .vacuum {
+      color: var(--paper-light);
+
+      background:
+        radial-gradient(
+          circle at 78% 20%,
+          rgba(255, 255, 255, 0.8)
+          0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 20% 70%,
+          rgba(255, 255, 255, 0.5)
+          0 1px,
+          transparent 2px
+        ),
+        var(--night);
+
+      background-size:
+        70px 70px,
+        42px 42px,
+        auto;
+    }
+
+    .vacuum .chamber-status {
+      color: #e0aaa2;
+
+      border-color: #e0aaa2;
+    }
+
+    /*
+      Interactive myth desk
+    */
+
+    .myth-desk {
+      background: #d7c49d;
+    }
+
+    .myth-list {
+      display: grid;
+
+      gap: 0.8rem;
+
+      margin-top: 2rem;
+    }
+
+    .myth {
+      border: 1px solid var(--ink);
+
+      background:
+        rgba(244, 232, 202, 0.5);
+    }
+
+    .myth button {
+      display: grid;
+
+      grid-template-columns:
+        auto 1fr auto;
+
+      gap: 1rem;
+
+      align-items: center;
+
+      width: 100%;
+
+      padding: 1rem;
+
+      color: var(--ink);
+      background: transparent;
+
+      border: 0;
+
+      text-align: left;
+
+      cursor: pointer;
+    }
+
+    .myth button:hover {
+      background:
+        rgba(121, 29, 23, 0.08);
+    }
+
+    .myth-number {
+      color: var(--red);
+
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .myth-claim {
+      font-size:
+        clamp(
+          1.15rem,
+          2.5vw,
+          1.65rem
+        );
+    }
+
+    .myth-symbol {
+      font-family: var(--sans);
+      font-size: 1.2rem;
+      font-weight: 800;
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .myth-answer {
+      max-height: 0;
+
+      overflow: hidden;
+
+      padding:
+        0 1rem 0 3.65rem;
+
+      border-top:
+        0 solid rgba(27, 23, 19, 0.45);
+
+      font-family: var(--sans);
+      font-size: 0.95rem;
+
+      line-height: 1.65;
+
+      transition:
+        max-height 0.35s ease,
+        padding 0.35s ease,
+        border-width 0.35s ease;
+    }
+
+    .myth.open .myth-answer {
+      max-height: 260px;
+
+      padding-top: 1rem;
+      padding-bottom: 1.2rem;
+
+      border-top-width: 1px;
+    }
+
+    .myth.open .myth-symbol {
+      transform: rotate(45deg);
+    }
+
+    /*
+      Court witnesses
+    */
+
+    .witnesses {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1rem;
+
+      margin-top: 2rem;
+    }
+
+    .witness {
+      position: relative;
+
+      padding: 1.5rem;
+
+      border-top:
+        5px solid var(--red);
+
+      background:
+        rgba(255, 255, 255, 0.12);
+
+      box-shadow:
+        0 8px 0
+        rgba(69, 43, 24, 0.12);
+    }
+
+    .witness::before {
+      content: "“";
+
+      position: absolute;
+
+      top: -0.2rem;
+      right: 0.8rem;
+
+      color:
+        rgba(121, 29, 23, 0.18);
+
+      font-size: 7rem;
+      line-height: 1;
+    }
+
+    .witness h3 {
+      position: relative;
+
+      margin: 0 0 0.8rem;
+
+      font-size: 1.8rem;
+    }
+
+    .witness p {
+      position: relative;
+
+      line-height: 1.55;
+    }
+
+    /*
+      Space edition
+    */
+
+    .space-edition {
+      color: #eee3ca;
+
+      background:
+        radial-gradient(
+          circle at 12% 24%,
+          rgba(255, 255, 255, 0.75)
+          0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 82% 42%,
+          rgba(255, 255, 255, 0.5)
+          0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 66% 76%,
+          rgba(255, 255, 255, 0.55)
+          0 1px,
+          transparent 2px
+        ),
+        #171724;
+
+      background-size:
+        90px 90px,
+        130px 130px,
+        65px 65px,
+        auto;
+    }
+
+    .space-edition .section-label {
+      color: #dfa79f;
+    }
+
+    .space-edition
+    .section-introduction {
+      color: #e1d1b0;
+    }
+
+    .space-layout {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 2rem;
+
+      align-items: center;
+    }
+
+    .space-copy {
+      font-size: 1.04rem;
+      line-height: 1.7;
+    }
+
+    .space-copy strong {
+      color: #e5aaa2;
+    }
+
+    .orbit {
+      position: relative;
+
+      min-height: 430px;
+
+      border:
+        1px solid rgba(238, 227, 202, 0.4);
+
+      border-radius: 50%;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 12%;
+
+      border:
+        1px solid rgba(238, 227, 202, 0.25);
+
+      border-radius: 50%;
+
+      transform: rotate(27deg);
+    }
+
+    .orbit::after {
+      inset: 25%;
+
+      transform: rotate(-18deg);
+    }
+
+    .planet {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: 48%;
+
+      aspect-ratio: 1;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 28%,
+          #e1cc9e,
+          #7a5142 60%,
+          #261a25 72%
+        );
+
+      box-shadow:
+        0 0 35px
+        rgba(214, 180, 129, 0.25);
+    }
+
+    .space-capsule {
+      position: absolute;
+
+      top: 14%;
+      left: 10%;
+
+      padding: 0.55rem 0.75rem;
+
+      color: #dfa79f;
+
+      border: 2px solid #dfa79f;
+
+      font-family: var(--sans);
+      font-size: 0.63rem;
+      font-weight: 800;
+
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      transform: rotate(-8deg);
+    }
+
+    /*
+      Visitor verdict
+    */
+
+    .verdict-box {
+      max-width: 900px;
+
+      margin: 2.3rem auto 0;
+      padding:
+        clamp(
+          1.3rem,
+          4vw,
+          2.8rem
+        );
+
+      border: 4px double var(--ink);
+
+      text-align: center;
+
+      background:
+        rgba(255, 255, 255, 0.12);
+    }
+
+    .verdict-box h3 {
+      margin: 0 0 0.5rem;
+
+      font-size:
+        clamp(
+          2rem,
+          6vw,
+          4.5rem
+        );
+
+      line-height: 0.9;
+
+      text-transform: uppercase;
+    }
+
+    .verdict-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      gap: 0.7rem;
+
+      margin-top: 1.5rem;
+    }
+
+    .verdict-button {
+      padding: 0.9rem 1rem;
+
+      color: var(--ink);
+      background: transparent;
+
+      border: 2px solid var(--ink);
+
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+    }
+
+    .verdict-button:hover,
+    .verdict-button:focus-visible {
+      color: var(--paper-light);
+      background: var(--red);
+    }
+
+    .verdict-result {
+      display: none;
+
+      margin-top: 1.6rem;
+      padding-top: 1.5rem;
+
+      border-top: 1px solid var(--ink);
+    }
+
+    .verdict-result.show {
+      display: block;
+
+      animation:
+        stamp-in
+        0.45s
+        ease
+        both;
+    }
+
+    .verdict-result strong {
+      display: block;
+
+      color: var(--red);
+
+      font-size:
+        clamp(
+          2rem,
+          7vw,
+          5.5rem
+        );
+
+      line-height: 0.85;
+
+      text-transform: uppercase;
+    }
+
+    /*
+      Final corrected page
+    */
+
+    .final-page {
+      text-align: center;
+
+      background: #ead8b4;
+    }
+
+    .final-stamp {
+      display: inline-block;
+
+      margin: 1rem auto 2rem;
+      padding: 1.3rem 1.6rem;
+
+      color: var(--red);
+
+      border: 7px double var(--red);
+
+      font-family: var(--sans);
+      font-size:
+        clamp(
+          2rem,
+          7vw,
+          5.5rem
+        );
+
+      font-weight: 800;
+
+      line-height: 0.9;
+
+      text-transform: uppercase;
+
+      transform: rotate(-3deg);
+    }
+
+    .closing-line {
+      max-width: 780px;
+
+      margin: 0 auto;
+
+      font-size:
+        clamp(
+          1.45rem,
+          3.5vw,
+          2.45rem
+        );
+
+      line-height: 1.28;
+    }
+
+    .closing-line em {
+      color: var(--red);
+    }
+
+    /*
+      References
+    */
+
+    .references {
+      padding:
+        clamp(
+          2rem,
+          5vw,
+          4rem
+        );
+
+      border-top: 6px double var(--ink);
+
+      background: #d1bb91;
+    }
+
+    .references h2 {
+      margin: 0 0 1rem;
+
+      font-size:
+        clamp(
+          2rem,
+          5vw,
+          3.8rem
+        );
+
+      text-transform: uppercase;
+    }
+
+    .references ol {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 0.9rem 2rem;
+
+      margin: 0;
+      padding-left: 1.4rem;
+
+      font-family: var(--sans);
+      font-size: 0.82rem;
+
+      line-height: 1.6;
+    }
+
+    .references a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+
+      overflow-wrap: anywhere;
+    }
+
+    .editor-note {
+      margin-top: 1.6rem;
+
+      font-family: var(--sans);
+      font-size: 0.72rem;
+
+      line-height: 1.55;
+    }
+
+    /*
+      Article citation circles
+    */
+
+    .citation {
+      display: inline-grid;
+      place-items: center;
+
+      min-width: 1.45em;
+      height: 1.45em;
+
+      color: var(--red);
+
+      border: 1px solid currentColor;
+      border-radius: 50%;
+
+      font-family: var(--sans);
+      font-size: 0.62em;
+      font-weight: 800;
+
+      text-decoration: none;
+
+      vertical-align: super;
+    }
+
+    /*
+      Footer
+    */
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 1rem;
+
+      padding:
+        1.2rem
+        clamp(1rem, 4vw, 4rem);
+
+      color: #f3e6c8;
+      background: #2a140e;
+
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.6rem;
+    }
+
+    .footer-brand img {
+      width: 34px;
+      height: 34px;
+
+      object-fit: contain;
+
+      filter:
+        sepia(1)
+        brightness(1.7);
+    }
+
+    /*
+      Larger-reading mode
+    */
+
+    body.large-type
+    .newspaper-columns,
+
+    body.large-type
+    .chamber p,
+
+    body.large-type
+    .space-copy {
+      font-size: 1.18rem;
+    }
+
+    @keyframes stamp-in {
+      0% {
+        opacity: 0;
+
+        transform:
+          scale(1.7)
+          rotate(-8deg);
+      }
+
+      65% {
+        opacity: 1;
+
+        transform:
+          scale(0.94)
+          rotate(1deg);
+      }
+
+      100% {
+        opacity: 1;
+
+        transform:
+          scale(1)
+          rotate(0);
+      }
+    }
+
+    /*
+      Tablet layout
+    */
+
+    @media (max-width: 850px) {
+      .front-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .microscope {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .newspaper-columns {
+        column-count: 2;
+      }
+
+      .case-layout,
+      .space-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .witnesses {
+        grid-template-columns: 1fr;
+      }
+
+      .references ol {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /*
+      Phone layout
+    */
+
+    @media (max-width: 620px) {
+      .brand span {
+        display: none;
+      }
+
+      .edition-line {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+      }
+
+      .edition-line span:last-child {
+        text-align: center;
+      }
+
+      .front-grid,
+      .chambers {
+        grid-template-columns: 1fr;
+      }
+
+      .microscope {
+        min-height: 290px;
+      }
+
+      .newspaper-columns {
+        column-count: 1;
+
+        text-align: left;
+      }
+
+      .transformation {
+        grid-template-columns: 1fr;
+      }
+
+      .transformation-arrow {
+        text-align: center;
+
+        transform: rotate(90deg);
+      }
+
+      .orbit {
+        min-height: 320px;
+      }
+
+      .footer {
+        flex-direction: column;
+
+        text-align: center;
+      }
+    }
+
+    /*
+      Motion accessibility
+    */
+
+    @media (
+      prefers-reduced-motion:
+      reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+    }
+
+    /*
+      Printable newspaper edition
+    */
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      body::before,
+      .site-bar,
+      .reading-progress,
+      .newspaper-nav {
+        display: none;
+      }
+
+      .newspaper {
+        width: 100%;
+
+        margin: 0;
+
+        box-shadow: none;
+      }
+
+      .myth-answer {
+        max-height: none;
+
+        padding:
+          0.8rem
+          1rem
+          1rem
+          3.65rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div
+    class="reading-progress"
+    id="readingProgress"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Jigyasa Verse identity -->
+
+  <div class="site-bar">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="Return to the Jigyasa Verse homepage"
+    >
+
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>
+        Jigyasa Verse · Wonder Desk
+      </span>
+
+    </a>
+
+    <div
+      class="reading-tools"
+      aria-label="Reading tools"
+    >
+
+      <button
+        class="tool-button"
+        id="typeButton"
+        type="button"
+        aria-pressed="false"
+      >
+        Larger type
+      </button>
+
+      <button
+        class="tool-button"
+        id="printButton"
+        type="button"
+      >
+        Print edition
+      </button>
+
+    </div>
+  </div>
+
+  <main class="newspaper">
+
+    <!-- FRONT PAGE -->
+
+    <header
+      class="masthead"
+      id="front-page"
+    >
+
+      <div class="edition-line">
+
+        <span>
+          Vol. VIII · No. 1773
+        </span>
+
+        <span>
+          Independent reporting from the edge of life
+        </span>
+
+        <span>
+          Price: One drop of water
+        </span>
+
+      </div>
+
+      <p class="newspaper-name">
+
+        <small>The</small>
+
+        Impossible Times
+
+      </p>
+
+      <p class="newspaper-motto">
+        Published by Jigyasa Verse ·
+        Department of Unbelievable but True
+      </p>
+
+      <div class="lead-story">
+
+        <p class="breaking-label">
+          Breaking biological news
+        </p>
+
+        <h1>
+          Immortal Animal
+          <em>Found?</em>
+        </h1>
+
+        <p class="headline-summary">
+          A creature smaller than a full stop
+          has survived dehydration, freezing
+          and experiments beyond Earth.
+          Our reporters ask the question
+          alarming the scientific world:
+          can this eight-legged suspect
+          actually die?
+        </p>
+
+        <p class="byline">
+          By The Wonder Desk ·
+          A 10-minute investigative edition
+        </p>
+
+        <div class="front-grid">
+
+          <aside class="side-headline">
+
+            <strong>
+              Vacuum survived!
+            </strong>
+
+            <span>
+              Our Space Desk investigates
+              the extraordinary claim
+              on Page VI.
+            </span>
+
+          </aside>
+
+          <div
+            class="microscope"
+            role="img"
+            aria-label="An antique scientific illustration of a tardigrade seen through a microscope"
+          >
+
+            <div
+              class="water-bear"
+              aria-hidden="true"
+            >
+
+              <i class="bear-leg leg-one"></i>
+
+              <i class="bear-leg leg-two"></i>
+
+              <i class="bear-leg leg-three"></i>
+
+              <i class="bear-leg leg-four"></i>
+
+            </div>
+          </div>
+
+          <aside class="side-headline">
+
+            <strong>
+              Dead—or waiting?
+            </strong>
+
+            <span>
+              A single drop of water
+              awakens a motionless suspect.
+              Scientists demand answers.
+            </span>
+
+          </aside>
+
+        </div>
+
+        <div class="stamp front-stamp">
+          Fact check pending
+        </div>
+
+      </div>
+    </header>
+
+    <!-- NEWSPAPER NAVIGATION -->
+
+    <nav
+      class="newspaper-nav"
+      aria-label="Article sections"
+    >
+
+      <a href="#accused">
+        Meet the accused
+      </a>
+
+      <a href="#transformation">
+        The transformation
+      </a>
+
+      <a href="#chambers">
+        Trial chambers
+      </a>
+
+      <a href="#myths">
+        Myth desk
+      </a>
+
+      <a href="#space">
+        Space edition
+      </a>
+
+      <a href="#verdict">
+        Your verdict
+      </a>
+
+    </nav>
+
+    <article>
+
+      <!-- MEET THE TARDIGRADE -->
+
+      <section
+        class="article-section"
+        id="accused"
+      >
+
+        <p class="section-label">
+          Page II ·
+          The creature behind the headline
+        </p>
+
+        <h2 class="section-title">
+          Meet the accused.
+        </h2>
+
+        <p class="section-introduction">
+          Before we place immortality
+          on trial, our suspect deserves
+          a proper introduction.
+          This is not a germ, a myth
+          or a miniature bear.
+          It is a complete animal belonging
+          to the phylum
+          <em>Tardigrada</em>.
+        </p>
+
+        <div class="case-layout">
+
+          <div class="newspaper-columns">
+
+            <p>
+              Look closely at a wet cushion
+              of moss and you may discover
+              an entire wilderness between
+              its leaves. There, moving through
+              a thin film of water, is an animal
+              with a plump body, four pairs
+              of legs and tiny claws.
+              It walks with such an unhurried,
+              slightly clumsy gait that the name
+              <em>Tardigrada</em> means
+              “slow stepper.”
+              It is also called a water bear
+              or moss piglet.
+
+              <a
+                class="citation"
+                href="#reference-one"
+                aria-label="Reference one"
+              >
+                1
+              </a>
+            </p>
+
+            <p>
+              Most tardigrades are far too
+              small to notice without
+              magnification. They inhabit
+              marine water, freshwater and
+              damp terrestrial environments,
+              including mosses and lichens.
+              They are not lurking inside
+              humans, and they are not
+              dangerous to us.
+            </p>
+
+            <p>
+              Many feed by piercing plant,
+              algal or fungal cells and drawing
+              out their contents. Some species
+              are predators that consume even
+              smaller creatures.
+            </p>
+
+            <aside class="pull-quote">
+              The first surprise is not
+              that it survives.
+              It is that something so small
+              is an animal at all.
+            </aside>
+
+            <p>
+              An active tardigrade is not
+              permanently living in a
+              superhero state. It moves,
+              feeds, grows and reproduces
+              when its surroundings are
+              suitable. It needs liquid water
+              around it to remain active.
+            </p>
+
+            <p>
+              When that water disappears,
+              however, certain tardigrades
+              perform the biological manoeuvre
+              that created their astonishing
+              reputation.
+            </p>
+
+            <p>
+              One distinction will matter
+              throughout this investigation:
+              a tardigrade may
+              <em>survive</em>
+              a condition in which it cannot
+              normally live, eat or reproduce.
+              Survival is not comfort.
+              Endurance is not immortality.
+              The headline has already
+              begun to wobble.
+            </p>
+
+          </div>
+
+          <aside
+            class="case-file"
+            aria-label="Tardigrade case file"
+          >
+
+            <h3>
+              Official case file
+            </h3>
+
+            <dl>
+
+              <dt>
+                Defendant
+              </dt>
+
+              <dd>
+                Tardigrada
+              </dd>
+
+              <dt>
+                Known aliases
+              </dt>
+
+              <dd>
+                Water bear · Moss piglet
+              </dd>
+
+              <dt>
+                Body plan
+              </dt>
+
+              <dd>
+                Plump, segmented
+                and eight-legged
+              </dd>
+
+              <dt>
+                Usual address
+              </dt>
+
+              <dd>
+                Oceans, freshwater,
+                moss and lichen
+              </dd>
+
+              <dt>
+                Known appetite
+              </dt>
+
+              <dd>
+                Plant, algal and fungal
+                cell contents.
+                Some species hunt.
+              </dd>
+
+              <dt>
+                Special ability
+              </dt>
+
+              <dd>
+                Entering cryptobiosis
+                during severe stress
+              </dd>
+
+              <dt>
+                Plea
+              </dt>
+
+              <dd>
+                Extraordinary—but
+                not immortal
+              </dd>
+
+            </dl>
+          </aside>
+        </div>
+
+        <!--
+          You can replace this image URL
+          with your own downloaded tardigrade
+          image if you prefer.
+        -->
+
+        <figure class="evidence-photo">
+
+          <img
+            src="https://imb.uq.edu.au/files/130743/Tardigrade1.jpg"
+            alt="A tardigrade photographed through a microscope"
+            loading="lazy"
+            onerror="
+              this.alt =
+              'Research image unavailable. This frame is reserved for a microscope photograph of a tardigrade.';
+
+              this.style.opacity = '.18';
+            "
+          >
+
+          <figcaption>
+            Exhibit 01 —
+            A tardigrade viewed under
+            the microscope.
+            Image associated with the
+            University of Queensland
+            Institute for Molecular Bioscience
+            article listed in Reference 4.
+          </figcaption>
+
+        </figure>
+      </section>
+
+      <!-- THE TUN -->
+
+      <section
+        class="article-section"
+        id="transformation"
+      >
+
+        <p class="section-label">
+          Page III · Exhibit A
+        </p>
+
+        <h2 class="section-title">
+          The great disappearing act.
+        </h2>
+
+        <p class="section-introduction">
+          The moss dries.
+          The watery paths between its
+          leaves disappear.
+          For us, the story would be ending.
+          For the tardigrade,
+          an extraordinary intermission
+          is beginning.
+        </p>
+
+        <div
+          class="transformation"
+          aria-label="Transformation from an active tardigrade into a tun"
+        >
+
+          <div class="state-card">
+
+            <h3>
+              State 01 · Active
+            </h3>
+
+            <div
+              class="state-picture active"
+              aria-hidden="true"
+            ></div>
+
+            <p>
+              Hydrated, moving, feeding
+              and carrying out ordinary
+              metabolism.
+            </p>
+
+          </div>
+
+          <div
+            class="transformation-arrow"
+            aria-hidden="true"
+          >
+            →
+          </div>
+
+          <div class="state-card">
+
+            <h3>
+              State 02 · Tun
+            </h3>
+
+            <div
+              class="state-picture tun"
+              aria-hidden="true"
+            ></div>
+
+            <p>
+              Contracted, dehydrated
+              and metabolically arrested
+              until conditions improve.
+            </p>
+
+          </div>
+        </div>
+
+        <div class="torn-note">
+
+          <p>
+            Cryptobiosis is not resurrection.
+            It is a reversible state of
+            “hidden life”—an emergency pause
+            so deep that the animal can appear
+            almost lifeless.
+          </p>
+
+        </div>
+
+        <div
+          class="newspaper-columns"
+          style="margin-top: 3rem;"
+        >
+
+          <p>
+            As dehydration begins,
+            the tardigrade retracts its
+            legs and contracts into a
+            compact form known as a
+            <strong>tun</strong>.
+            During anhydrobiosis—
+            cryptobiosis triggered by drying—
+            its water content falls dramatically
+            and normal metabolic activity
+            becomes extremely low or
+            undetectable.
+
+            <a
+              class="citation"
+              href="#reference-three"
+              aria-label="Reference three"
+            >
+              3
+            </a>
+          </p>
+
+          <p>
+            The animal is no longer strolling
+            through moss, searching for food
+            or carrying out an ordinary day
+            of microscopic life.
+            It is waiting.
+          </p>
+
+          <p>
+            Drying is dangerous because
+            water helps biological molecules
+            maintain their shape and function.
+            Remove it carelessly and membranes,
+            proteins and DNA may become
+            damaged.
+          </p>
+
+          <p>
+            Tardigrades use protective
+            strategies that vary between
+            species. Researchers are especially
+            interested in tardigrade-specific
+            proteins that help vulnerable
+            cellular material endure dehydration
+            and other stresses.
+
+            <a
+              class="citation"
+              href="#reference-four"
+              aria-label="Reference four"
+            >
+              4
+            </a>
+          </p>
+
+          <aside class="pull-quote">
+            It does not defeat death.
+            It suspends ordinary life until
+            the world becomes welcoming again.
+          </aside>
+
+          <p>
+            Then comes the scene that earned
+            the front-page headline.
+            Water returns.
+            The tun rehydrates.
+            Its body expands.
+            Its legs emerge.
+            Movement begins again.
+          </p>
+
+          <p>
+            Researchers at the University
+            of Queensland describe observing
+            tardigrades emerge from dry moss
+            after water was added.
+            Under a microscope, the contracted
+            form begins to unfold and the
+            animal starts moving again.
+
+            <a
+              class="citation"
+              href="#reference-four"
+              aria-label="Reference four"
+            >
+              4
+            </a>
+          </p>
+
+          <p>
+            Yet even this ability has
+            conditions and limits.
+            Species differ.
+            The animal’s physiological state
+            matters.
+            The intensity and duration
+            of the exposure matter.
+          </p>
+
+          <p>
+            “A tardigrade survived this
+            experiment” cannot honestly
+            be transformed into
+            “every tardigrade survives
+            everything.”
+            That is precisely how remarkable
+            evidence becomes a misleading
+            legend.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- EXTREME ENVIRONMENT CHAMBERS -->
+
+      <section
+        class="article-section"
+        id="chambers"
+      >
+
+        <p class="section-label">
+          Page IV ·
+          The prosecution presents
+          four chambers
+        </p>
+
+        <h2 class="section-title">
+          How harsh is harsh?
+        </h2>
+
+        <p class="section-introduction">
+          The courtroom doors open.
+          Each chamber tests a different
+          form of environmental stress.
+          Imagine entering them as an active
+          human—and remember that the
+          tardigrade’s best-known feats
+          often involve a protected,
+          inactive state.
+        </p>
+
+        <div class="chambers">
+
+          <section class="chamber drought">
+
+            <span class="chamber-number">
+              Chamber 01
+            </span>
+
+            <h3>
+              Drought
+            </h3>
+
+            <p>
+              The water around you drains
+              away. Your cells begin losing
+              the liquid in which their
+              chemistry operates.
+              A capable tardigrade contracts
+              into a tun and enters
+              anhydrobiosis.
+              When water returns,
+              it may resume activity.
+            </p>
+
+            <span class="chamber-status">
+              Strategy:
+              shut down and wait
+            </span>
+
+          </section>
+
+          <section class="chamber freezing">
+
+            <span class="chamber-number">
+              Chamber 02
+            </span>
+
+            <h3>
+              Freezing
+            </h3>
+
+            <p>
+              Temperature falls and ice
+              threatens delicate biological
+              structures. Some tardigrades
+              tolerate freezing by entering
+              a cryptobiotic state,
+              but tolerance varies between
+              species and circumstances.
+            </p>
+
+            <span class="chamber-status">
+              Evidence:
+              species dependent
+            </span>
+
+          </section>
+
+          <section class="chamber radiation">
+
+            <span class="chamber-number">
+              Chamber 03
+            </span>
+
+            <h3>
+              Radiation
+            </h3>
+
+            <p>
+              High-energy radiation can
+              damage DNA and other cellular
+              machinery. Tardigrade research
+              points to several layers of
+              defence—including protection
+              and repair—not an invisible
+              shield of invincibility.
+            </p>
+
+            <span class="chamber-status">
+              Defence:
+              protect and repair
+            </span>
+
+          </section>
+
+          <section class="chamber vacuum">
+
+            <span class="chamber-number">
+              Chamber 04
+            </span>
+
+            <h3>
+              Vacuum
+            </h3>
+
+            <p>
+              There is no breathable
+              atmosphere and almost no pressure.
+              Dehydrated tardigrades have
+              survived controlled exposure
+              during low-Earth-orbit research.
+              That does not mean they naturally
+              live, feed or reproduce in
+              open space.
+
+              <a
+                class="citation"
+                href="#reference-one"
+                aria-label="Reference one"
+              >
+                1
+              </a>
+            </p>
+
+            <span class="chamber-status">
+              Breaking:
+              survival is not thriving
+            </span>
+
+          </section>
+        </div>
+      </section>
+
+      <!-- MYTH DESK -->
+
+      <section
+        class="article-section myth-desk"
+        id="myths"
+      >
+
+        <p class="section-label">
+          Page V ·
+          Corrections and clarifications
+        </p>
+
+        <h2 class="section-title">
+          Cross-examining the legend.
+        </h2>
+
+        <p class="section-introduction">
+          Select each sensational claim.
+          The Myth Desk has obtained
+          evidence the front page neglected
+          to mention.
+        </p>
+
+        <div class="myth-list">
+
+          <div class="myth">
+
+            <button
+              type="button"
+              aria-expanded="false"
+            >
+
+              <span class="myth-number">
+                Claim 01
+              </span>
+
+              <span class="myth-claim">
+                “Tardigrades are immortal.”
+              </span>
+
+              <span
+                class="myth-symbol"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </button>
+
+            <div class="myth-answer">
+
+              <strong>
+                Verdict: false.
+              </strong>
+
+              Tardigrades can be injured
+              and killed. Their active
+              lifespans are finite,
+              and even cryptobiosis has limits.
+              Their fame comes from exceptional
+              survival—not an escape from death.
+
+            </div>
+          </div>
+
+          <div class="myth">
+
+            <button
+              type="button"
+              aria-expanded="false"
+            >
+
+              <span class="myth-number">
+                Claim 02
+              </span>
+
+              <span class="myth-claim">
+                “They comfortably live
+                in boiling water,
+                ice and space.”
+              </span>
+
+              <span
+                class="myth-symbol"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </button>
+
+            <div class="myth-answer">
+
+              <strong>
+                Verdict: misleading.
+              </strong>
+
+              Short-term survival during
+              an experiment is different
+              from living actively in an
+              environment. Temperature,
+              duration, hydration,
+              species and life stage can
+              all affect the outcome.
+
+            </div>
+          </div>
+
+          <div class="myth">
+
+            <button
+              type="button"
+              aria-expanded="false"
+            >
+
+              <span class="myth-number">
+                Claim 03
+              </span>
+
+              <span class="myth-claim">
+                “The tun is a dead body
+                brought back to life.”
+              </span>
+
+              <span
+                class="myth-symbol"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </button>
+
+            <div class="myth-answer">
+
+              <strong>
+                Verdict: false.
+              </strong>
+
+              A tun is a living organism
+              in cryptobiosis, with ordinary
+              activity dramatically reduced.
+              Rehydration restores activity.
+              It does not resurrect an animal
+              that was biologically dead.
+
+            </div>
+          </div>
+
+          <div class="myth">
+
+            <button
+              type="button"
+              aria-expanded="false"
+            >
+
+              <span class="myth-number">
+                Claim 04
+              </span>
+
+              <span class="myth-claim">
+                “Every tardigrade has
+                identical superpowers.”
+              </span>
+
+              <span
+                class="myth-symbol"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </button>
+
+            <div class="myth-answer">
+
+              <strong>
+                Verdict: false.
+              </strong>
+
+              Tardigrada is an entire phylum
+              containing many species.
+              Their habitats, biology and
+              environmental tolerances differ.
+              A finding about one species
+              cannot automatically be applied
+              to every tardigrade.
+
+            </div>
+          </div>
+
+          <div class="myth">
+
+            <button
+              type="button"
+              aria-expanded="false"
+            >
+
+              <span class="myth-number">
+                Claim 05
+              </span>
+
+              <span class="myth-claim">
+                “Extreme survival is their
+                normal everyday life.”
+              </span>
+
+              <span
+                class="myth-symbol"
+                aria-hidden="true"
+              >
+                +
+              </span>
+
+            </button>
+
+            <div class="myth-answer">
+
+              <strong>
+                Verdict: false.
+              </strong>
+
+              Many tardigrades inhabit ordinary
+              aquatic or moist environments.
+              Cryptobiosis is an emergency
+              response to hostile conditions,
+              not their preferred daily routine.
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WITNESSES -->
+
+      <section
+        class="article-section"
+        id="witnesses"
+      >
+
+        <p class="section-label">
+          The defence calls
+          three witnesses
+        </p>
+
+        <h2 class="section-title">
+          Who protects a water bear?
+        </h2>
+
+        <p class="section-introduction">
+          No single magical ingredient
+          explains every tardigrade or
+          every form of stress.
+          The defence presents a coordinated
+          biological response.
+        </p>
+
+        <div class="witnesses">
+
+          <article class="witness">
+
+            <h3>
+              Water
+            </h3>
+
+            <p>
+              “Do not let the headline
+              erase me. Active tardigrades
+              still depend on liquid water.
+              Their most famous trick begins
+              when I disappear—and ends
+              when I return.”
+            </p>
+
+          </article>
+
+          <article class="witness">
+
+            <h3>
+              Protective proteins
+            </h3>
+
+            <p>
+              “During dehydration,
+              certain tardigrade-specific
+              proteins can help stabilise
+              vulnerable cellular material.
+              Researchers study us because
+              biological preservation may have
+              uses far beyond the moss.”
+
+              <a
+                class="citation"
+                href="#reference-four"
+                aria-label="Reference four"
+              >
+                4
+              </a>
+            </p>
+
+          </article>
+
+          <article class="witness">
+
+            <h3>
+              Repair systems
+            </h3>
+
+            <p>
+              “Survival is not only about
+              preventing every injury.
+              Cells may also need to recognise
+              and repair damage after danger
+              passes. Protection and recovery
+              work together.”
+            </p>
+
+          </article>
+        </div>
+
+        <div class="torn-note">
+
+          <p>
+            Science becomes more wonderful—
+            not less—when we replace
+            “magic” with the patient question:
+            <em>how?</em>
+          </p>
+
+        </div>
+      </section>
+
+      <!-- SPACE EDITION -->
+
+      <section
+        class="article-section space-edition"
+        id="space"
+      >
+
+        <div class="space-layout">
+
+          <div>
+
+            <p class="section-label">
+              Page VI · Late space edition
+            </p>
+
+            <h2 class="section-title">
+              A passenger beyond Earth.
+            </h2>
+
+            <p class="section-introduction">
+              The legend escaped the moss
+              when tardigrades entered
+              space research.
+            </p>
+
+            <div class="space-copy">
+
+              <p>
+                In a landmark low-Earth-orbit
+                experiment, dehydrated
+                tardigrades were exposed
+                to the vacuum of space
+                and different levels of
+                solar radiation.
+                Some survived after returning
+                to Earth.
+              </p>
+
+              <p>
+                The result was astonishing,
+                but carefully bounded:
+                vacuum survival was strong,
+                while ultraviolet radiation
+                reduced survival.
+                Outcomes differed between
+                experimental treatments.
+              </p>
+
+              <p>
+                <strong>
+                  Read that again:
+                </strong>
+
+                some tardigrades survived
+                an exposure experiment.
+                They did not build a civilisation
+                on a satellite.
+              </p>
+
+              <p>
+                Survival, recovery and
+                successful reproduction
+                are separate scientific
+                questions.
+              </p>
+
+              <p>
+                Why send them at all?
+                Their biology helps researchers
+                investigate how animal cells
+                respond to dehydration,
+                radiation and microgravity.
+              </p>
+
+              <p>
+                It also sharpens an important
+                question for astrobiology:
+                if Earth organisms can endure
+                more than expected,
+                how carefully must we protect
+                other worlds from biological
+                contamination?
+              </p>
+
+              <p>
+                The tiny creature has therefore
+                become more than a curiosity.
+                It is a model for studying
+                the boundaries of animal life—
+                and for imagining how biological
+                material could be protected
+                during storage, medicine
+                or long journeys.
+
+                <a
+                  class="citation"
+                  href="#reference-four"
+                  aria-label="Reference four"
+                >
+                  4
+                </a>
+              </p>
+
+            </div>
+          </div>
+
+          <div
+            class="orbit"
+            aria-label="Illustration of a research capsule orbiting Earth"
+          >
+
+            <div
+              class="planet"
+              aria-hidden="true"
+            ></div>
+
+            <div class="space-capsule">
+              Specimen in orbit
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- VISITOR VERDICT -->
+
+      <section
+        class="article-section"
+        id="verdict"
+      >
+
+        <p class="section-label">
+          Page VII · Jury deliberation
+        </p>
+
+        <h2 class="section-title">
+          You have heard the evidence.
+        </h2>
+
+        <p class="section-introduction">
+          The defendant is microscopic.
+          The claims are enormous.
+          Choose the phrase that belongs
+          in tomorrow’s corrected edition.
+        </p>
+
+        <div class="verdict-box">
+
+          <h3>
+            Your verdict
+          </h3>
+
+          <p>
+            How should
+            <em>The Impossible Times</em>
+            describe a tardigrade?
+          </p>
+
+          <div class="verdict-options">
+
+            <button
+              class="verdict-button"
+              type="button"
+              data-verdict="wrong"
+            >
+              Immortal
+            </button>
+
+            <button
+              class="verdict-button"
+              type="button"
+              data-verdict="wrong"
+            >
+              Indestructible
+            </button>
+
+            <button
+              class="verdict-button"
+              type="button"
+              data-verdict="correct"
+            >
+              Remarkably resilient
+            </button>
+
+          </div>
+
+          <div
+            class="verdict-result"
+            id="verdictResult"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+        </div>
+      </section>
+
+      <!-- FINAL CORRECTED HEADLINE -->
+
+      <section class="article-section final-page">
+
+        <p class="section-label">
+          Final edition ·
+          The corrected headline
+        </p>
+
+        <div class="final-stamp">
+          Not immortal
+        </div>
+
+        <h2
+          class="section-title"
+          style="
+            margin-inline: auto;
+            max-width: 18ch;
+          "
+        >
+          Guilty of being extraordinary.
+        </h2>
+
+        <p class="closing-line">
+          The wonder of a tardigrade
+          is not that it cannot die.
+          The wonder is how close to
+          stillness an animal can travel—
+          <em>
+            and still return
+            when water does.
+          </em>
+        </p>
+
+      </section>
+
+    </article>
+
+    <!-- REFERENCES -->
+
+    <section
+      class="references"
+      id="references"
+      aria-labelledby="referencesTitle"
+    >
+
+      <h2 id="referencesTitle">
+        Sources &amp; further reading
+      </h2>
+
+      <ol>
+
+        <li id="reference-one">
+
+          <a
+            href="https://www.livescience.com/57985-tardigrade-facts.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live Science —
+            “Tardigrades: Facts about
+            one of the hardiest animals
+            on Earth, and beyond”
+          </a>
+
+          General biology, habitats,
+          feeding, cryptobiosis and
+          extreme-exposure reporting.
+
+        </li>
+
+        <li id="reference-two">
+
+          <a
+            href="https://www.britannica.com/animal/tardigrade"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Encyclopaedia Britannica —
+            “Tardigrade”
+          </a>
+
+          An overview of tardigrade
+          anatomy, classification,
+          distribution and biology.
+
+        </li>
+
+        <li id="reference-three">
+
+          <a
+            href="https://www.americanscientist.org/article/tardigrades"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            American Scientist —
+            “Tardigrades”
+          </a>
+
+          A closer look at water bears,
+          their discovery and their value
+          in scientific research
+          and education.
+
+        </li>
+
+        <li id="reference-four">
+
+          <a
+            href="https://imb.uq.edu.au/just-add-water-magic-tardigrades"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            University of Queensland,
+            Institute for Molecular Bioscience —
+            “‘Just add water’:
+            the magic of tardigrades”
+          </a>
+
+          Cryptobiosis, rehydration,
+          protective proteins and possible
+          biomedical research applications.
+
+        </li>
+
+      </ol>
+
+      <p class="editor-note">
+
+        <strong>
+          Editorial note:
+        </strong>
+
+        This article uses a theatrical
+        newspaper and courtroom structure,
+        but its central correction is
+        scientific: extraordinary tolerance
+        is not immortality.
+
+        Exact tolerance depends on the
+        tardigrade species, its biological
+        state and the conditions and duration
+        of exposure.
+
+        Research image credit and context
+        remain with the University of
+        Queensland source linked above.
+
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      <span class="footer-brand">
+
+        <img
+          src="images/wonder-verse-moon-pencil-logo.png"
+          alt=""
+        >
+
+        Jigyasa Verse ·
+        The Impossible Times
+
+      </span>
+
+      <span>
+        Keep the wonder.
+        Correct the headline.
+      </span>
+
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const progressBar =
+        document.querySelector(
+          "#readingProgress"
+        );
+
+      const typeButton =
+        document.querySelector(
+          "#typeButton"
+        );
+
+      const printButton =
+        document.querySelector(
+          "#printButton"
+        );
+
+      const verdictResult =
+        document.querySelector(
+          "#verdictResult"
+        );
+
+      /*
+        Update the red progress bar
+        as the visitor reads.
+      */
+
+      function updateReadingProgress() {
+        const totalScrollableHeight =
+          document.documentElement
+            .scrollHeight -
+          window.innerHeight;
+
+        const percentage =
+          totalScrollableHeight > 0
+            ? (
+                window.scrollY /
+                totalScrollableHeight
+              ) * 100
+            : 0;
+
+        progressBar.style.width =
+          `${Math.min(
+            100,
+            percentage
+          )}%`;
+      }
+
+      window.addEventListener(
+        "scroll",
+        updateReadingProgress,
+        {
+          passive: true
+        }
+      );
+
+      updateReadingProgress();
+
+      /*
+        Toggle larger article text.
+      */
+
+      typeButton.addEventListener(
+        "click",
+        () => {
+          const isLarge =
+            document.body.classList.toggle(
+              "large-type"
+            );
+
+          typeButton.setAttribute(
+            "aria-pressed",
+            String(isLarge)
+          );
+
+          typeButton.textContent =
+            isLarge
+              ? "Standard type"
+              : "Larger type";
+        }
+      );
+
+      /*
+        Open the browser's print dialog.
+      */
+
+      printButton.addEventListener(
+        "click",
+        () => {
+          window.print();
+        }
+      );
+
+      /*
+        Interactive myth corrections.
+      */
+
+      document
+        .querySelectorAll(".myth")
+        .forEach((myth) => {
+          const button =
+            myth.querySelector("button");
+
+          button.addEventListener(
+            "click",
+            () => {
+              const isOpen =
+                myth.classList.toggle(
+                  "open"
+                );
+
+              button.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+              );
+            }
+          );
+        });
+
+      /*
+        Interactive jury verdict.
+      */
+
+      document
+        .querySelectorAll(
+          ".verdict-button"
+        )
+        .forEach((button) => {
+          button.addEventListener(
+            "click",
+            () => {
+              const isCorrect =
+                button.dataset.verdict ===
+                "correct";
+
+              if (isCorrect) {
+                verdictResult.innerHTML = `
+                  <strong>
+                    Evidence accepted
+                  </strong>
+
+                  <p>
+                    Remarkably resilient
+                    is the accurate verdict.
+
+                    The animal can survive
+                    astonishing stresses,
+                    but it remains mortal
+                    and biologically limited.
+                  </p>
+                `;
+              } else {
+                verdictResult.innerHTML = `
+                  <strong>
+                    Objection!
+                  </strong>
+
+                  <p>
+                    The evidence does not
+                    support that headline.
+
+                    Tardigrades can die,
+                    and their survival depends
+                    on species, biological
+                    state, duration and
+                    environmental conditions.
+
+                    Try the verdict the
+                    science can defend.
+                  </p>
+                `;
+              }
+
+              /*
+                Restart the stamp animation
+                whenever another answer
+                is chosen.
+              */
+
+              verdictResult.classList.remove(
+                "show"
+              );
+
+              requestAnimationFrame(() => {
+                verdictResult.classList.add(
+                  "show"
+                );
+              });
+            }
+          );
+        });
+    })();
+  </script>
+</body>
+</html>
