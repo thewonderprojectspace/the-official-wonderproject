@@ -1,0 +1,3586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Descend five kilometres beneath the sea with Jigyasa Verse and discover black smokers, chemosynthesis and cities of life without sunlight."
+  >
+
+  <meta name="theme-color" content="#01050a">
+
+  <!-- Jigyasa Verse moon-and-pencil logo -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="../images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="../images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <title>
+    Black Smokers: Cities Beneath a Crushing Sea | Jigyasa Verse
+  </title>
+
+  <style>
+    @import url(
+      "https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    );
+
+    :root {
+      --ink: #e9f7f6;
+      --soft: #a8c0c3;
+      --dim: #647c82;
+
+      --cyan: #74f0e4;
+      --blue: #2d89b7;
+
+      --vent: #ff7447;
+      --mineral: #f2c878;
+
+      --abyss: #01050a;
+
+      --panel:
+        rgba(2, 15, 22, 0.72);
+
+      --line:
+        rgba(157, 225, 223, 0.2);
+
+      --depth-progress: 0;
+
+      --serif:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      --sans:
+        "Manrope",
+        Arial,
+        sans-serif;
+
+      --mono:
+        "DM Mono",
+        monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--abyss);
+    }
+
+    body {
+      margin: 0;
+
+      color: var(--ink);
+      background: var(--abyss);
+
+      font-family: var(--sans);
+
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /*
+      Accessibility
+    */
+
+    .skip-link {
+      position: fixed;
+
+      top: 1rem;
+      left: 1rem;
+
+      z-index: 200;
+
+      padding: 0.7rem 1rem;
+
+      color: #001016;
+      background: white;
+
+      transform:
+        translateY(-180%);
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform:
+        translateY(0);
+    }
+
+    /*
+      Reading depth progress
+    */
+
+    .depth-progress {
+      position: fixed;
+
+      inset:
+        0 auto 0 0;
+
+      z-index: 100;
+
+      width: 3px;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+    }
+
+    .depth-progress span {
+      display: block;
+
+      width: 100%;
+
+      height:
+        calc(
+          var(--depth-progress) *
+          100%
+        );
+
+      background:
+        linear-gradient(
+          #e8fbff,
+          #49bdd2 30%,
+          #146090 58%,
+          #ff6a40
+        );
+
+      box-shadow:
+        0 0 13px currentColor;
+    }
+
+    /*
+      Fixed header
+    */
+
+    .site-header {
+      position: fixed;
+
+      inset:
+        0 0 auto;
+
+      z-index: 90;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      padding:
+        0.75rem
+        clamp(1rem, 4vw, 3rem);
+
+      border-bottom:
+        1px solid
+        rgba(225, 249, 250, 0.12);
+
+      background:
+        rgba(1, 8, 13, 0.68);
+
+      backdrop-filter:
+        blur(16px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.7rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+
+      letter-spacing: 0.14em;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 0 12px
+          rgba(116, 240, 228, 0.32)
+        );
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+
+      gap: 1rem;
+    }
+
+    .live-depth {
+      min-width: 105px;
+
+      text-align: right;
+      text-transform: uppercase;
+
+      font-family: var(--mono);
+      font-size: 0.61rem;
+      font-weight: 500;
+
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+    }
+
+    .live-depth strong {
+      display: block;
+
+      color: var(--cyan);
+
+      font-size: 0.9rem;
+    }
+
+    .back-link {
+      color: #c7dcdd;
+
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+
+      letter-spacing: 0.1em;
+
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /*
+      Persistent ocean atmosphere
+    */
+
+    .ocean-atmosphere {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -4;
+
+      background:
+        radial-gradient(
+          circle at 50% -15%,
+          rgba(230, 251, 255, 0.9),
+          transparent 22%
+        ),
+        linear-gradient(
+          180deg,
+          #75c9da 0%,
+          #176b91 11%,
+          #07364f 25%,
+          #041c2a 42%,
+          #020d15 62%,
+          #01050a 82%
+        );
+    }
+
+    .ocean-atmosphere::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      opacity: 0.18;
+
+      mix-blend-mode: screen;
+
+      background-image:
+        url(
+          "data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.72' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"
+        );
+    }
+
+    /*
+      Fish disappear progressively
+      while the visitor scrolls.
+    */
+
+    .fish-field {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -1;
+
+      overflow: hidden;
+
+      pointer-events: none;
+    }
+
+    .fish {
+      --fish-color:
+        rgba(215, 244, 245, 0.65);
+
+      position: absolute;
+
+      width:
+        var(--size, 62px);
+
+      height:
+        calc(
+          var(--size, 62px) *
+          0.34
+        );
+
+      border-radius:
+        54% 46% 48% 52%;
+
+      background:
+        var(--fish-color);
+
+      filter:
+        drop-shadow(
+          0 0 9px
+          rgba(137, 225, 231, 0.18)
+        );
+
+      opacity:
+        var(--fish-opacity, 0.7);
+
+      transform:
+        scaleX(
+          var(--direction, 1)
+        );
+
+      transition:
+        opacity 0.18s linear;
+
+      animation:
+        swim
+        var(--speed, 22s)
+        linear
+        infinite;
+    }
+
+    .fish::before {
+      content: "";
+
+      position: absolute;
+
+      top: -43%;
+      right: -38%;
+
+      width: 45%;
+      height: 180%;
+
+      background: inherit;
+
+      clip-path:
+        polygon(
+          0 50%,
+          100% 0,
+          80% 50%,
+          100% 100%
+        );
+    }
+
+    .fish::after {
+      content: "";
+
+      position: absolute;
+
+      top: 27%;
+      left: 18%;
+
+      width: 5px;
+
+      aspect-ratio: 1;
+
+      border-radius: 50%;
+
+      background: #001016;
+    }
+
+    .fish:nth-child(1) {
+      top: 17%;
+      left: 8%;
+
+      --size: 72px;
+      --speed: 29s;
+      --vanish: 0.18;
+    }
+
+    .fish:nth-child(2) {
+      top: 24%;
+      left: 62%;
+
+      --size: 48px;
+      --speed: 21s;
+      --vanish: 0.25;
+    }
+
+    .fish:nth-child(3) {
+      top: 33%;
+      left: 28%;
+
+      --size: 32px;
+      --speed: 25s;
+      --vanish: 0.31;
+    }
+
+    .fish:nth-child(4) {
+      top: 39%;
+      left: 78%;
+
+      --size: 86px;
+      --speed: 34s;
+      --vanish: 0.37;
+    }
+
+    .fish:nth-child(5) {
+      top: 49%;
+      left: 13%;
+
+      --size: 42px;
+      --speed: 20s;
+      --vanish: 0.43;
+    }
+
+    .fish:nth-child(6) {
+      top: 57%;
+      left: 68%;
+
+      --size: 28px;
+      --speed: 18s;
+      --vanish: 0.49;
+    }
+
+    .fish:nth-child(7) {
+      top: 65%;
+      left: 39%;
+
+      --size: 54px;
+      --speed: 30s;
+      --vanish: 0.55;
+    }
+
+    .fish:nth-child(8) {
+      top: 73%;
+      left: 82%;
+
+      --size: 33px;
+      --speed: 23s;
+      --vanish: 0.6;
+    }
+
+    @keyframes swim {
+      from {
+        translate:
+          -18vw 0;
+      }
+
+      to {
+        translate:
+          118vw 0;
+      }
+    }
+
+    /*
+      Marine snow
+    */
+
+    .marine-snow {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -2;
+
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+
+      width: var(--size);
+      height: var(--size);
+
+      border-radius: 50%;
+
+      background:
+        rgba(211, 238, 231, 0.55);
+
+      opacity: 0.45;
+
+      animation:
+        snow
+        var(--duration)
+        linear
+        var(--delay)
+        infinite;
+    }
+
+    @keyframes snow {
+      from {
+        transform:
+          translate3d(
+            0,
+            -8vh,
+            0
+          );
+      }
+
+      to {
+        transform:
+          translate3d(
+            var(--drift),
+            108vh,
+            0
+          );
+      }
+    }
+
+    /*
+      Main article zones
+    */
+
+    .dive-stage {
+      position: relative;
+    }
+
+    .zone {
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      min-height: 120vh;
+
+      padding:
+        clamp(6rem, 12vw, 11rem)
+        clamp(1rem, 7vw, 7rem);
+    }
+
+    .zone-inner {
+      width:
+        min(
+          1080px,
+          100%
+        );
+
+      margin: auto;
+    }
+
+    .zone-tag {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.7rem;
+
+      margin:
+        0 0 1rem;
+
+      color: var(--cyan);
+
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+
+      line-height: 1.4;
+      letter-spacing: 0.16em;
+
+      text-transform: uppercase;
+    }
+
+    .zone-tag::before {
+      content: "";
+
+      width: 2.4rem;
+      height: 1px;
+
+      background:
+        currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      text-wrap: balance;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+    }
+
+    h1 {
+      max-width: 1050px;
+
+      margin: 0;
+
+      font-size:
+        clamp(
+          4rem,
+          11vw,
+          9.5rem
+        );
+
+      line-height: 0.82;
+      letter-spacing: -0.06em;
+    }
+
+    h1 em {
+      display: block;
+
+      color: transparent;
+
+      font-weight: 500;
+
+      -webkit-text-stroke:
+        1px
+        rgba(235, 252, 252, 0.78);
+    }
+
+    h2 {
+      max-width: 850px;
+
+      margin:
+        0 0 1.4rem;
+
+      font-size:
+        clamp(
+          2.6rem,
+          7vw,
+          6.5rem
+        );
+
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      font-size:
+        clamp(
+          1.55rem,
+          3vw,
+          2.3rem
+        );
+
+      line-height: 1.05;
+    }
+
+    .lead {
+      max-width: 700px;
+
+      margin:
+        1.6rem 0 0 auto;
+
+      color: #d1e6e7;
+
+      font-family: var(--sans);
+
+      font-size:
+        clamp(
+          1.05rem,
+          2vw,
+          1.35rem
+        );
+
+      line-height: 1.75;
+    }
+
+    .lead strong {
+      color: white;
+    }
+
+    /*
+      Surface and iceberg
+    */
+
+    .surface {
+      min-height: 112vh;
+
+      padding-top: 9rem;
+
+      overflow: hidden;
+    }
+
+    .surface::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(182, 229, 237, 0.12),
+          rgba(5, 31, 43, 0.35) 64%,
+          rgba(1, 7, 12, 0.92)
+        );
+
+      pointer-events: none;
+    }
+
+    .surface .zone-inner {
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .iceberg-wrap {
+      position: relative;
+
+      width:
+        min(
+          680px,
+          88vw
+        );
+
+      height: 430px;
+
+      margin:
+        4rem auto -10rem;
+    }
+
+    .waterline {
+      position: absolute;
+
+      top: 32%;
+      left: -25vw;
+      right: -25vw;
+
+      height: 2px;
+
+      background:
+        rgba(238, 253, 255, 0.8);
+
+      box-shadow:
+        0 0 24px
+        rgba(191, 246, 255, 0.7);
+    }
+
+    .iceberg {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          155deg,
+          #f5ffff 0 25%,
+          #a8dce5 26% 48%,
+          #286e87 70%,
+          #0c3348 100%
+        );
+
+      clip-path:
+        polygon(
+          45% 0,
+          59% 9%,
+          66% 31%,
+          100% 50%,
+          80% 73%,
+          62% 100%,
+          29% 89%,
+          6% 57%,
+          31% 32%
+        );
+
+      filter:
+        drop-shadow(
+          0 0 28px
+          rgba(191, 244, 255, 0.28)
+        );
+
+      opacity: 0.92;
+    }
+
+    .known-label,
+    .unknown-label {
+      position: absolute;
+
+      z-index: 2;
+
+      padding:
+        0.4rem 0.6rem;
+
+      border:
+        1px solid
+        rgba(231, 251, 252, 0.32);
+
+      background:
+        rgba(0, 19, 28, 0.55);
+
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      font-weight: 500;
+
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+    }
+
+    .known-label {
+      top: 12%;
+      left: 66%;
+    }
+
+    .unknown-label {
+      top: 62%;
+      left: 2%;
+
+      color: #9ce6e3;
+    }
+
+    .scroll-cue {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 0.8rem;
+
+      margin-top: 12rem;
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::after {
+      content: "↓";
+
+      color: var(--cyan);
+
+      animation:
+        drift-down
+        1.6s
+        ease-in-out
+        infinite;
+    }
+
+    @keyframes drift-down {
+      50% {
+        transform:
+          translateY(8px);
+      }
+    }
+
+    /*
+      Environmental facts
+    */
+
+    .fact-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1px;
+
+      margin-top: 3rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        var(--line);
+    }
+
+    .fact {
+      min-height: 170px;
+
+      padding: 1.3rem;
+
+      background:
+        rgba(1, 12, 18, 0.84);
+    }
+
+    .fact span {
+      color: var(--cyan);
+
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      display: block;
+
+      margin: 0.7rem 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.6rem,
+          4vw,
+          3.1rem
+        );
+
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .fact p {
+      margin: 0;
+
+      color: var(--soft);
+
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    /*
+      Article typography
+    */
+
+    .two-column {
+      display: grid;
+
+      grid-template-columns:
+        0.85fr 1.15fr;
+
+      gap:
+        clamp(
+          2rem,
+          8vw,
+          8rem
+        );
+
+      align-items: start;
+    }
+
+    .article-copy {
+      max-width: 680px;
+
+      color: #bed0d1;
+
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .article-copy p {
+      margin:
+        0 0 1.35rem;
+    }
+
+    .dropcap::first-letter {
+      float: left;
+
+      margin:
+        0.08em
+        0.1em
+        0
+        0;
+
+      color: var(--cyan);
+
+      font-family: var(--serif);
+      font-size: 5.4em;
+      font-weight: 500;
+
+      line-height: 0.66;
+    }
+
+    .depth-note {
+      position: sticky;
+
+      top: 7rem;
+
+      padding: 1.3rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        var(--panel);
+
+      backdrop-filter:
+        blur(12px);
+    }
+
+    .depth-note small {
+      color: var(--cyan);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+
+      letter-spacing: 0.14em;
+
+      text-transform: uppercase;
+    }
+
+    .depth-note strong {
+      display: block;
+
+      margin: 0.7rem 0;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          2.4rem,
+          6vw,
+          5rem
+        );
+
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .depth-note p {
+      color: var(--soft);
+
+      line-height: 1.6;
+    }
+
+    .twilight {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 37, 55, 0.15),
+          rgba(1, 15, 23, 0.66)
+        );
+    }
+
+    .midnight {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(2, 18, 27, 0.4),
+          rgba(1, 7, 12, 0.87)
+        );
+    }
+
+    .abyss {
+      background: #01050a;
+    }
+
+    .quote {
+      max-width: 900px;
+
+      margin: 4rem auto;
+
+      padding:
+        2rem
+        clamp(1rem, 4vw, 3rem);
+
+      color: #e7fafa;
+
+      border-top:
+        1px solid
+        var(--cyan);
+
+      border-bottom:
+        1px solid
+        var(--cyan);
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.55rem,
+          4vw,
+          3.25rem
+        );
+
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.3;
+
+      text-align: center;
+    }
+
+    /*
+      Research images
+    */
+
+    .photo-frame {
+      position: relative;
+
+      margin: 3rem 0;
+      padding: 0.65rem;
+
+      border:
+        1px solid
+        rgba(179, 226, 226, 0.24);
+
+      background:
+        rgba(2, 10, 15, 0.8);
+    }
+
+    .photo-frame img {
+      display: block;
+
+      width: 100%;
+      max-height: 650px;
+
+      object-fit: cover;
+
+      background: #031019;
+
+      filter:
+        saturate(0.82)
+        contrast(1.1)
+        brightness(0.78);
+    }
+
+    .photo-frame figcaption {
+      padding:
+        0.8rem
+        0.3rem
+        0.2rem;
+
+      color: #80989b;
+
+      font-family: var(--mono);
+      font-size: 0.65rem;
+
+      line-height: 1.5;
+    }
+
+    .photo-frame::after {
+      content: "REMOTE OBSERVATION";
+
+      position: absolute;
+
+      top: 1.3rem;
+      left: 1.3rem;
+
+      padding:
+        0.38rem
+        0.5rem;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+      background:
+        rgba(1, 8, 12, 0.72);
+
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      font-weight: 500;
+
+      letter-spacing: 0.12em;
+    }
+
+    /*
+      Formation diagram
+    */
+
+    .process {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 1px;
+
+      margin-top: 3rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        var(--line);
+    }
+
+    .process-step {
+      position: relative;
+
+      min-height: 310px;
+
+      padding: 1.3rem;
+
+      background: #020b11;
+    }
+
+    .process-step::after {
+      content: "→";
+
+      position: absolute;
+
+      top: 50%;
+      right: -14px;
+
+      z-index: 2;
+
+      color: var(--cyan);
+
+      font-size: 1.4rem;
+    }
+
+    .process-step:last-child::after {
+      content: none;
+    }
+
+    .process-number {
+      color: var(--vent);
+
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+
+      letter-spacing: 0.15em;
+    }
+
+    .process-icon {
+      display: grid;
+      place-items: center;
+
+      height: 90px;
+
+      margin: 1rem 0;
+
+      color: var(--cyan);
+
+      font-size: 3.2rem;
+    }
+
+    .process-step h3 {
+      margin: 0.7rem 0;
+
+      font-size: 1.45rem;
+    }
+
+    .process-step p {
+      margin: 0;
+
+      color: var(--soft);
+
+      font-size: 0.84rem;
+      line-height: 1.65;
+    }
+
+    /*
+      Black smoker city reveal
+    */
+
+    .vent-city {
+      min-height: 150vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 88%,
+          rgba(255, 79, 38, 0.17),
+          transparent 35%
+        ),
+        #010306;
+    }
+
+    .vent-city::after {
+      content: "";
+
+      position: absolute;
+
+      inset:
+        auto 0 0;
+
+      height: 35%;
+
+      background:
+        linear-gradient(
+          165deg,
+          transparent 28%,
+          #020202 29% 45%,
+          transparent 46%
+        ),
+        linear-gradient(
+          195deg,
+          transparent 25%,
+          #050402 26% 47%,
+          transparent 48%
+        ),
+        #020202;
+
+      clip-path:
+        polygon(
+          0 100%,
+          0 71%,
+          8% 63%,
+          14% 77%,
+          24% 52%,
+          29% 77%,
+          38% 66%,
+          45% 84%,
+          53% 60%,
+          60% 78%,
+          69% 48%,
+          74% 76%,
+          84% 61%,
+          91% 79%,
+          100% 68%,
+          100% 100%
+        );
+    }
+
+    .chimney-field {
+      position: absolute;
+
+      inset:
+        auto 0 0;
+
+      z-index: 1;
+
+      height: 55%;
+
+      pointer-events: none;
+    }
+
+    .chimney {
+      position: absolute;
+
+      bottom: 3%;
+
+      width:
+        clamp(
+          55px,
+          8vw,
+          110px
+        );
+
+      height:
+        var(--height);
+
+      background:
+        linear-gradient(
+          90deg,
+          #110c08,
+          #382016 38%,
+          #130d09 70%,
+          #020202
+        );
+
+      clip-path:
+        polygon(
+          24% 100%,
+          14% 72%,
+          25% 54%,
+          17% 30%,
+          35% 23%,
+          32% 0,
+          68% 3%,
+          65% 23%,
+          82% 36%,
+          70% 56%,
+          87% 75%,
+          76% 100%
+        );
+
+      filter:
+        drop-shadow(
+          0 0 20px
+          rgba(255, 91, 43, 0.16)
+        );
+    }
+
+    .chimney::before {
+      content: "";
+
+      position: absolute;
+
+      top: -5%;
+      left: 34%;
+
+      width: 36%;
+      height: 65%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(20, 20, 18, 0.82),
+          rgba(6, 8, 8, 0.2) 58%,
+          transparent 70%
+        );
+
+      filter:
+        blur(10px);
+
+      transform:
+        translateY(-44%);
+
+      animation:
+        smoke 4s ease-in-out infinite;
+    }
+
+    .chimney:nth-child(1) {
+      left: 12%;
+      --height: 48%;
+    }
+
+    .chimney:nth-child(2) {
+      left: 31%;
+      --height: 72%;
+    }
+
+    .chimney:nth-child(3) {
+      left: 54%;
+      --height: 40%;
+    }
+
+    .chimney:nth-child(4) {
+      left: 72%;
+      --height: 82%;
+    }
+
+    .chimney:nth-child(5) {
+      left: 87%;
+      --height: 51%;
+    }
+
+    @keyframes smoke {
+      50% {
+        opacity: 0.55;
+
+        transform:
+          translate(
+            10px,
+            -60%
+          )
+          scale(1.2);
+      }
+    }
+
+    .vent-city .zone-inner {
+      position: relative;
+
+      z-index: 3;
+    }
+
+    .vent-reveal {
+      max-width: 760px;
+
+      margin: 0 auto;
+      padding: 2rem;
+
+      border:
+        1px solid
+        rgba(255, 116, 71, 0.35);
+
+      background:
+        rgba(2, 5, 7, 0.76);
+
+      backdrop-filter:
+        blur(12px);
+
+      text-align: center;
+    }
+
+    .vent-reveal h2 {
+      margin-inline: auto;
+    }
+
+    .vent-reveal p {
+      color: #bdd0d0;
+
+      line-height: 1.8;
+    }
+
+    .temperature {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.7rem;
+
+      margin-top: 1rem;
+      padding: 0.6rem 0.8rem;
+
+      color: #ffc0aa;
+
+      border:
+        1px solid
+        var(--vent);
+
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 500;
+
+      letter-spacing: 0.1em;
+    }
+
+    /*
+      Chemosynthesis
+    */
+
+    .equation {
+      display: grid;
+
+      grid-template-columns:
+        1fr auto 1fr auto 1fr;
+
+      align-items: center;
+
+      gap: 1rem;
+
+      margin: 3rem 0;
+      padding: 2rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        rgba(2, 14, 20, 0.72);
+
+      text-align: center;
+    }
+
+    .equation-piece strong {
+      display: block;
+
+      color: var(--cyan);
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.4rem,
+          3vw,
+          2.2rem
+        );
+
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .equation-piece span {
+      color: var(--dim);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    .operator {
+      color: var(--vent);
+
+      font-size: 1.8rem;
+    }
+
+    .life-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1rem;
+    }
+
+    .life-card {
+      padding: 1.4rem;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        rgba(2, 14, 20, 0.68);
+    }
+
+    .life-card b {
+      display: block;
+
+      margin-bottom: 0.5rem;
+
+      color: var(--mineral);
+
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      line-height: 1;
+    }
+
+    .life-card p {
+      margin: 0;
+
+      color: var(--soft);
+
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    /*
+      Lost City contrast
+    */
+
+    .lost-city {
+      color: #161d1d;
+
+      background:
+        linear-gradient(
+          180deg,
+          #0a1114 0,
+          #d5cfb9 16%,
+          #eee7d2 100%
+        );
+    }
+
+    .lost-city .zone-tag {
+      color: #4f544b;
+    }
+
+    .lost-city .article-copy {
+      color: #36403e;
+    }
+
+    .lost-city .photo-frame {
+      background: #ded8c3;
+
+      border-color:
+        rgba(31, 42, 40, 0.22);
+    }
+
+    .lost-city .photo-frame img {
+      filter:
+        saturate(0.72)
+        contrast(1.08);
+    }
+
+    .comparison {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 1px;
+
+      margin-top: 3rem;
+
+      border:
+        1px solid
+        rgba(20, 30, 29, 0.24);
+
+      background:
+        rgba(20, 30, 29, 0.28);
+    }
+
+    .compare-card {
+      padding:
+        clamp(
+          1.3rem,
+          3vw,
+          2.4rem
+        );
+
+      background:
+        rgba(245, 240, 221, 0.72);
+    }
+
+    .compare-card.dark {
+      color: #e9f7f6;
+
+      background: #101719;
+    }
+
+    .compare-card small {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    .compare-card h3 {
+      margin:
+        0.7rem 0 1rem;
+    }
+
+    .compare-card ul {
+      padding-left: 1.1rem;
+
+      line-height: 1.75;
+    }
+
+    /*
+      Final section
+    */
+
+    .ending {
+      min-height: 120vh;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 80%,
+          rgba(69, 176, 181, 0.12),
+          transparent 30%
+        ),
+        #01050a;
+    }
+
+    .ending h2 {
+      margin-inline: auto;
+    }
+
+    .ending-copy {
+      max-width: 780px;
+
+      margin: 0 auto;
+
+      color: #b8cecf;
+
+      font-size:
+        clamp(
+          1rem,
+          2vw,
+          1.25rem
+        );
+
+      line-height: 1.85;
+    }
+
+    .ending-line {
+      margin-top: 3rem;
+
+      color: white;
+
+      font-family: var(--serif);
+
+      font-size:
+        clamp(
+          1.7rem,
+          4vw,
+          3.3rem
+        );
+
+      font-style: italic;
+      font-weight: 500;
+
+      line-height: 1.3;
+    }
+
+    /*
+      References
+    */
+
+    .references {
+      padding:
+        clamp(4rem, 8vw, 7rem)
+        clamp(1rem, 7vw, 7rem);
+
+      border-top:
+        1px solid
+        var(--line);
+
+      background: #010407;
+    }
+
+    .references-inner {
+      width:
+        min(
+          1050px,
+          100%
+        );
+
+      margin: auto;
+    }
+
+    .references h2 {
+      font-size:
+        clamp(
+          2.4rem,
+          5vw,
+          4.5rem
+        );
+    }
+
+    .references ol {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 1rem 2rem;
+
+      padding-left: 1.3rem;
+
+      color: #9eb3b5;
+
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    .references a {
+      color: #d9eeee;
+
+      text-underline-offset: 4px;
+
+      overflow-wrap: anywhere;
+    }
+
+    /*
+      Footer
+    */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      padding:
+        1.2rem
+        clamp(1rem, 4vw, 3rem);
+
+      color: #8da5a7;
+      background: #000204;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+
+      line-height: 1.4;
+      letter-spacing: 0.1em;
+
+      text-transform: uppercase;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 0.6rem;
+    }
+
+    .footer-brand img {
+      width: 34px;
+      height: 34px;
+
+      object-fit: contain;
+    }
+
+    /*
+      Scroll reveals
+    */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(35px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform: none;
+    }
+
+    /*
+      Responsive layouts
+    */
+
+    @media (max-width: 850px) {
+      .two-column,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .depth-note {
+        position: relative;
+        top: auto;
+      }
+
+      .process {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .process-step::after {
+        content: none;
+      }
+
+      .fact-grid,
+      .life-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .equation {
+        grid-template-columns: 1fr;
+      }
+
+      .operator {
+        transform:
+          rotate(90deg);
+      }
+
+      .references ol {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand span,
+      .back-link {
+        display: none;
+      }
+
+      .zone {
+        min-height: 110vh;
+
+        padding-inline: 1.1rem;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .iceberg-wrap {
+        height: 330px;
+      }
+
+      footer {
+        flex-direction: column;
+
+        text-align: center;
+      }
+    }
+
+    @media (
+      prefers-reduced-motion:
+      reduce
+    ) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          0.01ms !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a
+    class="skip-link"
+    href="#descent"
+  >
+    Skip to the descent
+  </a>
+
+  <div
+    class="depth-progress"
+    aria-hidden="true"
+  >
+    <span></span>
+  </div>
+
+  <div
+    class="ocean-atmosphere"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="marine-snow"
+    id="marineSnow"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Fish progressively disappear -->
+
+  <div
+    class="fish-field"
+    aria-hidden="true"
+  >
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+    <i class="fish"></i>
+  </div>
+
+  <!-- Header -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Jigyasa Verse home"
+    >
+
+      <img
+        src="../images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      <span>
+        Jigyasa Verse ·
+        Truth of Survival
+      </span>
+
+    </a>
+
+    <div class="header-right">
+
+      <div
+        class="live-depth"
+        aria-live="polite"
+      >
+        Current depth
+
+        <strong id="depthReadout">
+          0 m
+        </strong>
+      </div>
+
+      <a
+        class="back-link"
+        href="truth-of-survival.html"
+      >
+        ← Survival archive
+      </a>
+
+    </div>
+  </header>
+
+  <main
+    class="dive-stage"
+    id="descent"
+  >
+
+    <!-- SURFACE -->
+
+    <section class="zone surface">
+
+      <div class="zone-inner">
+
+        <p class="zone-tag">
+          Dive log 00 · Surface
+        </p>
+
+        <h1>
+          Black Smokers
+
+          <em>
+            Cities beneath a crushing sea.
+          </em>
+        </h1>
+
+        <p class="lead">
+          We have mapped continents,
+          crossed deserts and named
+          the mountains.
+
+          Yet the largest habitat on Earth
+          begins where our eyes become
+          almost useless.
+
+          <strong>
+            What we know is the tip.
+            The rest waits below.
+          </strong>
+        </p>
+
+        <div
+          class="iceberg-wrap"
+          aria-label="Iceberg illustration showing a small known portion above water and a vast unknown portion beneath"
+        >
+
+          <div class="iceberg"></div>
+
+          <div class="waterline"></div>
+
+          <span class="known-label">
+            What we know
+          </span>
+
+          <span class="unknown-label">
+            What the ocean has not
+            finished telling us
+          </span>
+
+        </div>
+
+        <p class="scroll-cue">
+          Begin the descent
+        </p>
+
+      </div>
+    </section>
+
+    <!-- TWILIGHT ZONE -->
+
+    <section
+      class="zone twilight"
+      data-depth="200"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          200 metres ·
+          The light begins to fail
+        </p>
+
+        <div class="two-column">
+
+          <aside class="depth-note">
+
+            <small>
+              Surface assumption
+            </small>
+
+            <strong>
+              Life follows light.
+            </strong>
+
+            <p>
+              On land and in sunlit water,
+              plants and algae capture
+              sunlight.
+
+              Nearly every familiar food web
+              traces its energy back
+              to that light.
+            </p>
+
+          </aside>
+
+          <div class="article-copy">
+
+            <p class="dropcap">
+              At first, the descent is almost
+              comforting.
+
+              Blue still exists.
+              Fish move through columns
+              of light, and the surface
+              remains imaginable above you.
+
+              But blue is not an endless
+              colour.
+
+              Water absorbs light,
+              wavelength by wavelength,
+              until the ocean begins removing
+              the world you recognise.
+            </p>
+
+            <p>
+              Photosynthesis requires light.
+
+              Descend far enough and that
+              familiar engine of life
+              stops working.
+
+              No forests.
+              No meadows.
+              No sunlit plankton manufacturing
+              food in the water above you.
+            </p>
+
+            <p>
+              For a long time, this shaped
+              a reasonable human expectation:
+              deep life could survive only
+              on scraps falling from the
+              brighter world—dead organisms,
+              waste and fragments of organic
+              matter drifting downward
+              as marine snow.
+            </p>
+
+            <p>
+              Then scientists found ecosystems
+              that did not merely endure
+              the darkness.
+
+              They were built around energy
+              rising from inside Earth.
+            </p>
+
+          </div>
+        </div>
+
+        <div class="fact-grid">
+
+          <div class="fact">
+
+            <span>
+              Visibility
+            </span>
+
+            <strong>
+              Falling
+            </strong>
+
+            <p>
+              Red light vanishes first.
+
+              With depth, the remaining
+              blue dims until sunlight
+              disappears.
+            </p>
+
+          </div>
+
+          <div class="fact">
+
+            <span>
+              Temperature
+            </span>
+
+            <strong>
+              Cooling
+            </strong>
+
+            <p>
+              Far from a vent,
+              deep water is commonly only
+              a few degrees above freezing.
+            </p>
+
+          </div>
+
+          <div class="fact">
+
+            <span>
+              Pressure
+            </span>
+
+            <strong>
+              Rising
+            </strong>
+
+            <p>
+              Pressure increases by roughly
+              one atmosphere for every
+              ten metres of seawater.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MIDNIGHT ZONE -->
+
+    <section
+      class="zone midnight"
+      data-depth="1000"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          1,000 metres ·
+          Midnight begins
+        </p>
+
+        <h2>
+          The last daylight
+          has disappeared.
+        </h2>
+
+        <div class="two-column">
+
+          <div class="article-copy">
+
+            <p class="dropcap">
+              There is no sunrise here.
+
+              The darkness is not a nighttime
+              waiting to end;
+              it is the permanent condition.
+
+              Animals may manufacture
+              their own light,
+              sense vibration or follow
+              chemical traces,
+              but the surface has ceased
+              to be a useful reference.
+            </p>
+
+            <p>
+              Continue downward and fish
+              become less visible on this page,
+              just as familiar life becomes
+              harder to find outside
+              the submersible.
+
+              Every hundred metres
+              adds pressure.
+
+              At five kilometres,
+              the surrounding water exerts
+              hundreds of times the pressure
+              experienced at sea level.
+            </p>
+
+            <p>
+              And still we are not
+              at the city.
+            </p>
+
+          </div>
+
+          <aside class="depth-note">
+
+            <small>
+              Human comparison
+            </small>
+
+            <strong>
+              No sunlight.
+            </strong>
+
+            <p>
+              Switching off a lamp does not
+              recreate this place.
+
+              Darkness here arrives with cold,
+              distance, immense pressure
+              and no simple route back to air.
+            </p>
+
+          </aside>
+        </div>
+
+        <p class="quote">
+          The deeper we travel,
+          the less the ocean resembles
+          an empty space—and the more
+          our definition of “habitable”
+          begins to look provincial.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- HYDROTHERMAL CIRCULATION -->
+
+    <section
+      class="zone abyss"
+      data-depth="2500"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          2,500 metres ·
+          The seafloor is not still
+        </p>
+
+        <h2>
+          Earth is leaking
+          through its own crust.
+        </h2>
+
+        <div class="two-column">
+
+          <aside class="depth-note">
+
+            <small>
+              Hydrothermal circulation
+            </small>
+
+            <strong>
+              Ocean in.
+              Chemistry out.
+            </strong>
+
+            <p>
+              A vent is not an underwater
+              volcano pouring lava.
+
+              It is a circulating plumbing
+              system driven by heat beneath
+              fractured seafloor.
+            </p>
+
+          </aside>
+
+          <div class="article-copy">
+
+            <p class="dropcap">
+              Seawater slips into cracks
+              in the oceanic crust.
+
+              It travels downward,
+              approaching hot rock and,
+              in many black-smoker systems,
+              heat associated with magma
+              beneath mid-ocean ridges.
+
+              As the water heats,
+              it reacts with rock and carries
+              dissolved metals and chemicals.
+            </p>
+
+            <p>
+              The transformed fluid becomes
+              buoyant and rises.
+
+              When it bursts back into
+              the ocean, it can be hundreds
+              of degrees Celsius—yet the
+              immense pressure helps keep
+              it from boiling as it would
+              at the surface.
+            </p>
+
+            <p>
+              Then the hot fluid collides
+              with near-freezing seawater.
+
+              Dissolved metal sulphides
+              rapidly precipitate into
+              tiny dark particles.
+
+              What resembles smoke
+              is not combustion.
+
+              It is mineral matter appearing
+              before your eyes.
+            </p>
+
+          </div>
+        </div>
+
+        <div
+          class="process"
+          aria-label="Four stages in the formation of a black smoker"
+        >
+
+          <article class="process-step">
+
+            <span class="process-number">
+              01 · DESCENT
+            </span>
+
+            <div class="process-icon">
+              ⇣
+            </div>
+
+            <h3>
+              Water enters
+            </h3>
+
+            <p>
+              Cold seawater penetrates
+              fractures in young
+              oceanic crust.
+            </p>
+
+          </article>
+
+          <article class="process-step">
+
+            <span class="process-number">
+              02 · REACTION
+            </span>
+
+            <div class="process-icon">
+              ⌁
+            </div>
+
+            <h3>
+              Rock changes it
+            </h3>
+
+            <p>
+              Heat drives reactions
+              between seawater and
+              surrounding rock.
+            </p>
+
+          </article>
+
+          <article class="process-step">
+
+            <span class="process-number">
+              03 · ASCENT
+            </span>
+
+            <div class="process-icon">
+              ⇡
+            </div>
+
+            <h3>
+              Hot fluid rises
+            </h3>
+
+            <p>
+              Buoyant, chemically altered
+              water returns toward
+              the seafloor.
+            </p>
+
+          </article>
+
+          <article class="process-step">
+
+            <span class="process-number">
+              04 · PRECIPITATION
+            </span>
+
+            <div class="process-icon">
+              ♨
+            </div>
+
+            <h3>
+              “Smoke” appears
+            </h3>
+
+            <p>
+              Cold seawater triggers
+              dissolved minerals to
+              precipitate and build
+              a chimney.
+            </p>
+
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BLACK-SMOKER CITY -->
+
+    <section
+      class="zone vent-city"
+      data-depth="5000"
+    >
+
+      <div
+        class="chimney-field"
+        aria-hidden="true"
+      >
+        <i class="chimney"></i>
+        <i class="chimney"></i>
+        <i class="chimney"></i>
+        <i class="chimney"></i>
+        <i class="chimney"></i>
+      </div>
+
+      <div class="zone-inner">
+
+        <div class="vent-reveal reveal">
+
+          <p class="zone-tag">
+            Nearly 5,000 metres ·
+            Cayman Trough
+          </p>
+
+          <h2>
+            The city appears.
+          </h2>
+
+          <p>
+            In April 2010,
+            a remotely operated vehicle
+            surveying the Cayman Trough
+            encountered extraordinarily
+            deep hydrothermal vents.
+
+            Slender mineral spires rose
+            from a volcanic rift between
+            the Cayman Islands and Jamaica,
+            nearly five kilometres beneath
+            the sea.
+          </p>
+
+          <p>
+            At the time,
+            these were announced as the
+            deepest known black smokers.
+
+            The landscape was so alien that
+            researchers compared it to
+            another world.
+
+            But it was not empty.
+
+            Extreme chemistry,
+            permanent darkness and crushing
+            pressure had not erased life.
+          </p>
+
+          <span class="temperature">
+            VENT FLUID ·
+            UP TO ABOUT 400°C
+          </span>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BLACK-SMOKER CHIMNEY -->
+
+    <section
+      class="zone abyss"
+      data-depth="5000"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          The smoker itself
+        </p>
+
+        <h2>
+          A chimney built
+          by collision.
+        </h2>
+
+        <div
+          class="article-copy"
+          style="max-width: 820px;"
+        >
+
+          <p class="dropcap">
+            A black smoker is both a vent
+            and a structure continuously
+            being made.
+
+            Hot, reduced, mineral-rich fluid
+            rises through a central passage.
+
+            Cold, oxygenated seawater presses
+            against the outside.
+
+            Between them lies a steep gradient
+            of temperature and chemistry.
+          </p>
+
+          <p>
+            Minerals precipitate along
+            this boundary and thicken
+            the chimney walls.
+
+            Iron, copper and zinc sulphides
+            can accumulate around vents
+            and fissures.
+
+            The chimney may grow,
+            branch, fracture, clog
+            and begin again elsewhere.
+
+            The architecture is geology
+            happening at the speed
+            of observation.
+          </p>
+
+          <p>
+            The plume is chemically hostile
+            to much familiar life.
+
+            Hydrogen sulphide is toxic to us.
+
+            Temperatures near the central
+            jet are lethal to animals.
+
+            Yet along the mixing zones—
+            where hot vent fluid and cold
+            seawater meet—microorganisms gain
+            access to usable chemical energy.
+          </p>
+
+        </div>
+
+        <figure class="photo-frame">
+
+          <img
+            src="https://i.natgeofe.com/n/7d6495d3-c8dc-4bad-a0eb-701ecbb30a47/18667.jpg"
+            alt="A deep-sea black smoker chimney releasing a dark mineral plume"
+            loading="lazy"
+            onerror="
+              this.style.opacity = '.12';
+
+              this.alt =
+              'Image unavailable: place a black smoker photograph here';
+            "
+          >
+
+          <figcaption>
+            Black smoker documented during
+            exploration of the Cayman Trough.
+
+            Photograph credited by
+            National Geographic to the
+            National Oceanography Centre
+            and University of Southampton.
+
+            See Source 1.
+          </figcaption>
+
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- CHEMOSYNTHESIS -->
+
+    <section
+      class="zone midnight"
+      data-depth="5000"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          The biological revolution
+        </p>
+
+        <h2>
+          A food web
+          without the Sun.
+        </h2>
+
+        <div class="two-column">
+
+          <div class="article-copy">
+
+            <p class="dropcap">
+              At the surface,
+              primary producers capture light.
+
+              At the vent,
+              microorganisms capture
+              chemical opportunity.
+
+              Through chemosynthesis,
+              bacteria and archaea use
+              reactions involving compounds
+              such as hydrogen sulphide
+              or hydrogen to obtain energy
+              and build organic matter.
+            </p>
+
+            <p>
+              These microbes form the base
+              of the ecosystem.
+
+              Some live freely on rocks
+              and chimney surfaces.
+
+              Others live in intimate
+              partnerships inside animals.
+
+              The animals provide access
+              to useful chemicals;
+              the microbes manufacture food.
+            </p>
+
+            <p>
+              This is why the vent city can
+              support dense communities
+              even though sunlight
+              never arrives.
+
+              The energy pathway begins
+              not in the sky,
+              but in the meeting between
+              seawater, rock and Earth’s
+              internal heat.
+            </p>
+
+          </div>
+
+          <aside class="depth-note">
+
+            <small>
+              The corrected rule
+            </small>
+
+            <strong>
+              Life needs energy.
+            </strong>
+
+            <p>
+              Sunlight is one powerful
+              route to that energy.
+
+              It is not the only route.
+            </p>
+
+          </aside>
+        </div>
+
+        <div
+          class="equation"
+          aria-label="Simplified explanation of chemosynthesis"
+        >
+
+          <div class="equation-piece">
+
+            <strong>
+              Vent chemicals
+            </strong>
+
+            <span>
+              Energy-rich compounds
+            </span>
+
+          </div>
+
+          <div class="operator">
+            +
+          </div>
+
+          <div class="equation-piece">
+
+            <strong>
+              Microbes
+            </strong>
+
+            <span>
+              Chemical reactions
+            </span>
+
+          </div>
+
+          <div class="operator">
+            →
+          </div>
+
+          <div class="equation-piece">
+
+            <strong>
+              Organic matter
+            </strong>
+
+            <span>
+              The food-web foundation
+            </span>
+
+          </div>
+        </div>
+
+        <div class="life-grid">
+
+          <article class="life-card">
+
+            <b>
+              Microbial mats
+            </b>
+
+            <p>
+              Communities of bacteria
+              and archaea transform
+              vent chemistry into
+              biological energy.
+            </p>
+
+          </article>
+
+          <article class="life-card">
+
+            <b>
+              Symbiotic animals
+            </b>
+
+            <p>
+              Tubeworms and other animals
+              can partner with microbes
+              that manufacture their food.
+            </p>
+
+          </article>
+
+          <article class="life-card">
+
+            <b>
+              Predators and grazers
+            </b>
+
+            <p>
+              Shrimp, crabs, worms,
+              limpets and other organisms
+              build a wider community
+              around microbial production.
+            </p>
+
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LOST CITY -->
+
+    <section
+      class="zone lost-city"
+      data-depth="5000"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          A necessary correction ·
+          Not every vent is black
+        </p>
+
+        <h2>
+          Then the darkness
+          turns white.
+        </h2>
+
+        <div class="article-copy">
+
+          <p class="dropcap">
+            Lost City,
+            discovered in the Atlantic
+            in 2000,
+            is a hydrothermal vent field—
+            but it is not a typical
+            black-smoker system.
+
+            Its pale carbonate towers
+            are created by a different
+            geological process.
+
+            Instead of being heated directly
+            by magma, its fluids are warmed
+            through serpentinization:
+            reactions between seawater
+            and mantle rock.
+          </p>
+
+          <p>
+            Lost City fluids are cooler
+            than the hottest black-smoker
+            fluids, highly alkaline and rich
+            in hydrogen and methane.
+
+            WHOI reported that the system
+            generates hydrocarbons through
+            non-biological water–rock
+            reactions, making the site
+            important to research into
+            chemical pathways that may
+            have mattered near the
+            origin of life.
+          </p>
+
+        </div>
+
+        <div class="comparison">
+
+          <article class="compare-card dark">
+
+            <small>
+              Volcanic ridge system
+            </small>
+
+            <h3>
+              Black smoker
+            </h3>
+
+            <ul>
+              <li>
+                Dark metal-sulphide particles
+              </li>
+
+              <li>
+                Often acidic fluids
+              </li>
+
+              <li>
+                Can approach 400°C
+              </li>
+
+              <li>
+                Strongly associated
+                with volcanic heat
+              </li>
+            </ul>
+
+          </article>
+
+          <article class="compare-card">
+
+            <small>
+              Serpentinization system
+            </small>
+
+            <h3>
+              Lost City
+            </h3>
+
+            <ul>
+              <li>
+                Pale carbonate towers
+              </li>
+
+              <li>
+                Highly alkaline fluids
+              </li>
+
+              <li>
+                Generally around 90°C
+              </li>
+
+              <li>
+                Heat and chemistry from
+                water–rock reactions
+              </li>
+            </ul>
+
+          </article>
+        </div>
+
+        <figure class="photo-frame">
+
+          <img
+            src="https://www.whoi.edu/wp-content/uploads/2008/01/lostcitry_nr_en3_61532_63024.jpg"
+            alt="Pale carbonate spires of the Lost City hydrothermal vent field"
+            loading="lazy"
+            onerror="
+              this.style.opacity = '.12';
+
+              this.alt =
+              'Image unavailable: place a Lost City vent photograph here';
+            "
+          >
+
+          <figcaption>
+            Carbonate structures at Lost City.
+
+            Image credited by WHOI to Kelley,
+            University of Washington,
+            IFE, URI-IAO and NOAA.
+
+            See Source 4.
+          </figcaption>
+
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ENDING -->
+
+    <section
+      class="zone ending"
+      data-depth="5000"
+    >
+
+      <div class="zone-inner reveal">
+
+        <p class="zone-tag">
+          Final dive log ·
+          The rule has changed
+        </p>
+
+        <h2>
+          The sea was never empty.
+          Our imagination was shallow.
+        </h2>
+
+        <div class="ending-copy">
+
+          <p>
+            Black smokers do not prove
+            that life can survive
+            absolutely anything.
+
+            They reveal something
+            more useful:
+
+            our first definition of a
+            habitable world was built from
+            the environments easiest
+            for humans to see.
+          </p>
+
+          <p>
+            At five kilometres down,
+            there is no sunlight,
+            no breathable air
+            and no mercy from pressure.
+
+            Yet rock, water and heat
+            create gradients.
+
+            Microbes exploit those gradients.
+
+            Animals gather around
+            the microbes.
+
+            A city rises where an older
+            textbook might have placed
+            only darkness.
+          </p>
+
+          <p>
+            These vents have become natural
+            laboratories for studying the
+            limits of life,
+            the chemistry of our planet
+            and the possibility that
+            chemically powered ecosystems
+            might exist elsewhere—
+            including beneath the oceans
+            of icy worlds.
+          </p>
+
+        </div>
+
+        <p class="ending-line">
+          The tip was never
+          the whole truth.
+
+          <br>
+
+          The dark was never
+          the same as lifeless.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REFERENCES -->
+
+  <section
+    class="references"
+    aria-labelledby="sourcesTitle"
+  >
+
+    <div class="references-inner">
+
+      <p class="zone-tag">
+        Field notes
+      </p>
+
+      <h2 id="sourcesTitle">
+        Sources &amp;
+        further descent
+      </h2>
+
+      <ol>
+
+        <li>
+
+          <a
+            href="https://www.nationalgeographic.com/science/article/100412-worlds-deepest-undersea-volcanic-vents-hydrothermal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            National Geographic —
+            “Deepest Volcanic Sea Vents
+            Found; ‘Like Another World’”
+          </a>
+
+          Cayman Trough discovery,
+          depth, conditions and
+          vent ecosystems.
+
+        </li>
+
+        <li>
+
+          <a
+            href="https://www.jsg.utexas.edu/news/2010/04/worlds-deepest-hydrothermal-vents/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Jackson School of Geosciences,
+            University of Texas at Austin —
+            “World’s Deepest
+            Hydrothermal Vents”
+          </a>
+
+          Expedition, geology and
+          remotely operated exploration.
+
+        </li>
+
+        <li>
+
+          <a
+            href="https://www.sciencedirect.com/topics/earth-and-planetary-sciences/black-smoker"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ScienceDirect Topics —
+            “Black Smoker:
+            An Overview”
+          </a>
+
+          Hydrothermal circulation,
+          mineral precipitation,
+          chimney formation
+          and vent chemistry.
+
+        </li>
+
+        <li>
+
+          <a
+            href="https://www.whoi.edu/oceanus/feature/lost-city-pumps-life-essential-chemicals-at-rates-unseen-at-typical-black-smokers/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Woods Hole Oceanographic
+            Institution —
+            “Lost City Pumps Life-essential
+            Chemicals at Rates Unseen
+            at Typical Black Smokers”
+          </a>
+
+          Lost City chemistry,
+          serpentinization,
+          hydrocarbons and
+          origin-of-life research.
+
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span class="footer-brand">
+
+      <img
+        src="../images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
+      Jigyasa Verse ·
+      Truth of Survival
+
+    </span>
+
+    <span>
+      Record 04 ·
+      The deep is not empty
+    </span>
+
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const root =
+        document.documentElement;
+
+      const depthReadout =
+        document.querySelector(
+          "#depthReadout"
+        );
+
+      const fish = [
+        ...document.querySelectorAll(
+          ".fish"
+        )
+      ];
+
+      const reveals = [
+        ...document.querySelectorAll(
+          ".reveal"
+        )
+      ];
+
+      const snowField =
+        document.querySelector(
+          "#marineSnow"
+        );
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      /*
+        Keep numbers between
+        a minimum and maximum.
+      */
+
+      function clamp(
+        value,
+        minimum = 0,
+        maximum = 1
+      ) {
+        return Math.min(
+          maximum,
+          Math.max(
+            minimum,
+            value
+          )
+        );
+      }
+
+      /*
+        Update depth and make
+        fish disappear gradually.
+      */
+
+      function updateDive() {
+        const scrollableHeight =
+          document.documentElement
+            .scrollHeight -
+          window.innerHeight;
+
+        const progress =
+          scrollableHeight > 0
+            ? clamp(
+                window.scrollY /
+                scrollableHeight
+              )
+            : 0;
+
+        const depth =
+          Math.round(
+            progress *
+            5000 /
+            10
+          ) * 10;
+
+        root.style.setProperty(
+          "--depth-progress",
+          progress.toFixed(4)
+        );
+
+        depthReadout.textContent =
+          `${depth.toLocaleString()} m`;
+
+        fish.forEach((fishElement) => {
+          const vanishPoint =
+            Number(
+              getComputedStyle(
+                fishElement
+              ).getPropertyValue(
+                "--vanish"
+              )
+            ) || 0.4;
+
+          const opacity =
+            clamp(
+              (
+                vanishPoint -
+                progress
+              ) /
+              0.11
+            ) *
+            0.7;
+
+          fishElement.style.setProperty(
+            "--fish-opacity",
+            opacity.toFixed(3)
+          );
+        });
+      }
+
+      /*
+        Create falling marine snow.
+      */
+
+      function createMarineSnow() {
+        if (reducedMotion) {
+          return;
+        }
+
+        for (
+          let particleNumber = 0;
+          particleNumber < 46;
+          particleNumber += 1
+        ) {
+          const particle =
+            document.createElement(
+              "i"
+            );
+
+          particle.className =
+            "particle";
+
+          particle.style.left =
+            `${Math.random() * 100}%`;
+
+          particle.style.setProperty(
+            "--size",
+            `${1 + Math.random() * 3}px`
+          );
+
+          particle.style.setProperty(
+            "--duration",
+            `${12 + Math.random() * 22}s`
+          );
+
+          particle.style.setProperty(
+            "--delay",
+            `${Math.random() * -24}s`
+          );
+
+          particle.style.setProperty(
+            "--drift",
+            `${-40 + Math.random() * 80}px`
+          );
+
+          snowField.appendChild(
+            particle
+          );
+        }
+      }
+
+      /*
+        Reveal article sections
+        when they enter the screen.
+      */
+
+      if (
+        reducedMotion ||
+        !(
+          "IntersectionObserver"
+          in window
+        )
+      ) {
+        reveals.forEach(
+          (element) => {
+            element.classList.add(
+              "visible"
+            );
+          }
+        );
+      } else {
+        const observer =
+          new IntersectionObserver(
+            (
+              entries,
+              currentObserver
+            ) => {
+              entries.forEach(
+                (entry) => {
+                  if (
+                    entry.isIntersecting
+                  ) {
+                    entry.target
+                      .classList.add(
+                        "visible"
+                      );
+
+                    currentObserver
+                      .unobserve(
+                        entry.target
+                      );
+                  }
+                }
+              );
+            },
+            {
+              threshold: 0.14
+            }
+          );
+
+        reveals.forEach(
+          (element) => {
+            observer.observe(
+              element
+            );
+          }
+        );
+      }
+
+      /*
+        Use requestAnimationFrame
+        for smooth scroll updates.
+      */
+
+      let ticking = false;
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(
+              () => {
+                updateDive();
+
+                ticking = false;
+              }
+            );
+
+            ticking = true;
+          }
+        },
+        {
+          passive: true
+        }
+      );
+
+      createMarineSnow();
+      updateDive();
+    })();
+  </script>
+</body>
+</html>
