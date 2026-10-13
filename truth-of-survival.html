@@ -10,11 +10,23 @@
 
   <meta
     name="description"
-    content="The Survival Archive — stories of extremophiles, resistance, adaptation and life under pressure."
+    content="The Truth of Survival — ten image-led encounters with extremophiles, resistance, adaptation and life under pressure."
+  >
+
+  <!-- Jigyasa Verse moon-and-pencil identity -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="images/wonder-verse-moon-pencil-logo.png"
   >
 
   <title>
-    The Survival Archive | Surya Lok | Jigyasa Verse
+    The Truth of Survival | Surya Lok | Jigyasa Verse
   </title>
 
   <style>
@@ -221,40 +233,22 @@
     }
 
     .brand-mark {
-      position: relative;
-
-      width: 1.9rem;
-      aspect-ratio: 1;
-
-      border:
-        1px solid
-        rgba(255, 198, 151, 0.58);
-
-      border-radius: 50%;
-
-      box-shadow:
-        0 0 24px
-        rgba(255, 66, 20, 0.35);
+      display: block;
+      width: 2.6rem;
+      height: 2.6rem;
+      object-fit: contain;
+      filter:
+        sepia(0.2)
+        saturate(0.85)
+        drop-shadow(
+          0 0 15px
+          rgba(255, 91, 43, 0.42)
+        );
     }
 
     .brand-mark::before,
     .brand-mark::after {
-      content: "";
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--cream),
-          var(--fire-orange)
-        );
-
-      transform:
-        translate(-50%, -50%)
-        rotate(45deg);
+      content: none;
     }
 
     .brand-mark::before {
@@ -305,7 +299,7 @@
           var(--black) 100%
         ),
         url(
-          "../images/surya/survival/survival-hero.jpg"
+          "images//survival-hero.jpg"
         )
         center 44% / cover no-repeat;
     }
@@ -1584,6 +1578,239 @@
         display: none;
       }
     }
+    /* ========================================
+       18. IMAGE-FIRST SURVIVAL PORTALS
+
+       These rules intentionally come last.
+       They turn every archive record into a
+       visible image-led doorway rather than
+       hiding the artwork behind dark copy.
+    ======================================== */
+
+    .hero-brand-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      padding: 0.55rem 0.8rem 0.55rem 0.55rem;
+      border: 1px solid rgba(255, 226, 204, 0.2);
+      border-radius: 999px;
+      color: #f6ded0;
+      background: rgba(10, 2, 2, 0.48);
+      backdrop-filter: blur(10px);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero-brand-seal img {
+      width: 2.35rem;
+      height: 2.35rem;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(255, 83, 35, 0.45));
+    }
+
+    .article-grid {
+      gap: clamp(1.1rem, 2vw, 1.7rem);
+      align-items: start;
+    }
+
+    .article-card,
+    .article-card:nth-child(1),
+    .article-card:nth-child(6) {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: linear-gradient(145deg, #190604, #090302);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+    }
+
+    .article-card::before {
+      content: none;
+    }
+
+    .article-card:hover,
+    .article-card:focus-within {
+      transform: translateY(-8px);
+      border-color: color-mix(in srgb, var(--accent) 70%, white 10%);
+      box-shadow:
+        0 26px 60px rgba(0, 0, 0, 0.38),
+        0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    .card-visual {
+      position: relative;
+      isolation: isolate;
+      display: block;
+      height: 285px;
+      overflow: hidden;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 75% 22%, color-mix(in srgb, var(--accent) 50%, transparent), transparent 38%),
+        linear-gradient(135deg, #4c0d08, #100302);
+      text-decoration: none;
+    }
+
+    .article-card:nth-child(1) .card-visual,
+    .article-card:nth-child(6) .card-visual {
+      height: 380px;
+    }
+
+    .card-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(6, 2, 2, 0.04) 25%, rgba(8, 2, 2, 0.82) 100%),
+        linear-gradient(90deg, rgba(69, 6, 4, 0.2), transparent 68%);
+      pointer-events: none;
+    }
+
+    .card-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.78) contrast(1.08) brightness(0.82);
+      transform: scale(1.015);
+    }
+
+    .article-card:hover .card-image,
+    .article-card:focus-within .card-image {
+      filter: saturate(1.08) contrast(1.1) brightness(0.94);
+      transform: scale(1.075);
+    }
+
+    .card-image-topline {
+      position: absolute;
+      inset: 1rem 1rem auto;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .card-image-number,
+    .card-image-category,
+    .card-image-entry {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid rgba(255, 239, 225, 0.32);
+      color: #fff4ea;
+      background: rgba(13, 3, 3, 0.58);
+      backdrop-filter: blur(10px);
+      font-size: 0.59rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .card-image-entry {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      border-color: color-mix(in srgb, var(--accent) 72%, white 15%);
+      background: color-mix(in srgb, var(--accent) 62%, rgba(20, 3, 2, 0.8));
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .card-visual:hover .card-image-entry,
+    .card-visual:focus-visible .card-image-entry {
+      transform: translateX(-0.25rem);
+      background: var(--accent);
+    }
+
+    .card-image-entry::after {
+      content: "↗";
+      margin-left: 0.55rem;
+      font-size: 0.9rem;
+    }
+
+    .card-inner {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+
+    .card-top {
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(255, 223, 204, 0.12);
+    }
+
+    .card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      margin-top: 1.4rem;
+    }
+
+    .card-kicker {
+      color: color-mix(in srgb, var(--accent) 70%, #ffd2b6 30%);
+    }
+
+    .card-summary {
+      flex: 1;
+      max-width: 62ch;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      padding-top: 0.35rem;
+    }
+
+    .read-link {
+      padding: 0.7rem 0.8rem;
+      border: 1px solid color-mix(in srgb, var(--accent) 52%, transparent);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+
+    .read-link:hover,
+    .read-link:focus-visible {
+      color: white;
+      background: color-mix(in srgb, var(--accent) 34%, transparent);
+    }
+
+    .image-fallback {
+      object-fit: cover;
+      filter: none;
+    }
+
+    .footer-identity {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .footer-identity img {
+      width: 2.2rem;
+      height: 2.2rem;
+      object-fit: contain;
+      filter: sepia(0.25) drop-shadow(0 0 10px rgba(255, 88, 38, 0.35));
+    }
+
+    @media (max-width: 760px) {
+      .article-card:nth-child(1) .card-visual,
+      .article-card:nth-child(6) .card-visual,
+      .card-visual {
+        height: 300px;
+      }
+
+      .hero-brand-seal span {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -1605,10 +1832,11 @@
       href="../index.html"
       aria-label="Jigyasa Verse home"
     >
-      <span
+      <img
         class="brand-mark"
-        aria-hidden="true"
-      ></span>
+        src="../images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
 
       <span class="brand-text">
         Jigyasa Verse
@@ -1639,19 +1867,26 @@
       ></div>
 
       <div class="hero-inner">
+        <div class="hero-brand-seal">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt=""
+          >
+
+          <span>
+            A Jigyasa Verse field collection
+          </span>
+        </div>
+
         <p class="eyebrow">
           Surya Lok · Colour 01 · Red
         </p>
 
         <h1 id="page-title">
-          The
+          The Truth
           <span class="outlined-word">
-            Survival
+            of Survival
           </span>
-
-          <br>
-
-          Archive
         </h1>
 
         <div class="hero-copy">
@@ -1663,16 +1898,16 @@
           </p>
 
           <p class="hero-introduction">
-            Life does not survive because
-            reality becomes kinder.
-
-            It survives by
+            Ten encounters with organisms,
+            ecosystems and bodies that met
+            impossible conditions—and answered
+            by becoming something the pressure
+            did not expect.
 
             <strong>
-              meeting reality as it is
+              Survival is not invincibility.
+              It is response.
             </strong>
-
-            —and changing before it is erased.
           </p>
         </div>
       </div>
@@ -1717,9 +1952,9 @@
     >
       <div class="archive-heading reveal">
         <h2 id="archive-title">
-          Ten records
+          Ten encounters
           <br>
-          from the edge.
+          with the impossible.
         </h2>
 
         <p class="archive-description">
@@ -1730,6 +1965,9 @@
 
           Every article is a different
           collision between life and pressure.
+          Begin with the image, open the case
+          file, and then enter the complete
+          experience.
         </p>
       </div>
 
@@ -1849,7 +2087,7 @@
 
         <a
           class="closing-link"
-          href="../surya-lok.html"
+          href="surya-lok.html"
         >
           Continue through the seven truths
         </a>
@@ -1862,7 +2100,12 @@
   ======================================= -->
 
   <footer>
-    <span>
+    <span class="footer-identity">
+      <img
+        src="images/wonder-verse-moon-pencil-logo.png"
+        alt=""
+      >
+
       Jigyasa Verse · The Constant Light
     </span>
 
@@ -1961,7 +2204,7 @@
         readTime: "10 min read",
 
         image:
-          "impossible.jpg",
+          "images/extremophiles.jpg",
 
         imageAlt:
           "A volcanic hydrothermal environment representing heat-loving extremophiles",
@@ -1993,7 +2236,7 @@
         readTime: "10 min read",
 
         image:
-          "../images/surya/survival/antibiotic-resistance.jpg",
+          "images/antibiotic-resistance.jpg",
 
         imageAlt:
           "Bacteria under a microscope in a red scientific visualisation",
@@ -2025,7 +2268,7 @@
         readTime: "6 min read",
 
         image:
-          "../images/surya/survival/tardigrades.jpg",
+          "images/tardigrades.jpg",
 
         imageAlt:
           "A microscopic tardigrade shown in dramatic red light",
@@ -2057,7 +2300,7 @@
         readTime: "9 min read",
 
         image:
-          "../images/surya/survival/hydrothermal-vents.jpg",
+          "images/hydrothermal-vents.jpg",
 
         imageAlt:
           "A deep-sea hydrothermal vent releasing mineral-rich water",
@@ -2089,7 +2332,7 @@
         readTime: "7 min read",
 
         image:
-          "../images/surya/survival/fire-ecology.jpg",
+          "images/fire-ecology.jpg",
 
         imageAlt:
           "A forest burning while new growth emerges from blackened ground",
@@ -2121,7 +2364,7 @@
         readTime: "8 min read",
 
         image:
-          "../images/surya/survival/radiation-resistance.jpg",
+          "images/radiation-resistance.jpg",
 
         imageAlt:
           "A microscopic environment representing radiation-resistant bacteria",
@@ -2153,7 +2396,7 @@
         readTime: "7 min read",
 
         image:
-          "../images/surya/survival/desert-survival.jpg",
+          "images/desert-survival.jpg",
 
         imageAlt:
           "A solitary organism crossing cracked red desert earth",
@@ -2185,7 +2428,7 @@
         readTime: "6 min read",
 
         image:
-          "../images/surya/survival/frozen-life.jpg",
+          "images/frozen-life.jpg",
 
         imageAlt:
           "Cracked ice containing microscopic signs of life",
@@ -2217,7 +2460,7 @@
         readTime: "11 min read",
 
         image:
-          "../images/surya/survival/immune-system.jpg",
+          "images/immune-system.jpg",
 
         imageAlt:
           "Immune cells surrounding a pathogen in a biological visualisation",
@@ -2250,7 +2493,7 @@
         readTime: "9 min read",
 
         image:
-          "../images/surya/survival/after-impact.jpg",
+          "images/after-impact.jpg",
 
         imageAlt:
           "A person walking through smoke and ruined structures toward red light",
@@ -2329,6 +2572,56 @@
 
     let activeFilter = "all";
 
+    /* Create an article-specific visual plate
+       when a local photograph has not yet been
+       added. Every record therefore keeps its
+       image-led entrance instead of showing a
+       broken-image icon. */
+
+    function createImageFallback(article) {
+      const escapeXml = (value) =>
+        String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&apos;");
+
+      const safeTitle = escapeXml(
+        article.title
+      );
+
+      const safeCategory = escapeXml(
+        article.categoryLabel
+      );
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+          <defs>
+            <radialGradient id="glow" cx="76%" cy="25%" r="74%">
+              <stop offset="0" stop-color="${article.accent}" stop-opacity=".9"/>
+              <stop offset=".45" stop-color="#4b0a07" stop-opacity=".72"/>
+              <stop offset="1" stop-color="#090202"/>
+            </radialGradient>
+            <filter id="grain">
+              <feTurbulence baseFrequency=".8" numOctaves="4" seed="7"/>
+              <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .14 0"/>
+            </filter>
+          </defs>
+          <rect width="1600" height="1000" fill="url(#glow)"/>
+          <circle cx="1190" cy="300" r="250" fill="none" stroke="#ffd8bd" stroke-opacity=".22" stroke-width="3"/>
+          <circle cx="1190" cy="300" r="164" fill="none" stroke="#ffd8bd" stroke-opacity=".18" stroke-width="2"/>
+          <path d="M-80 820 C300 570 580 980 960 730 S1460 620 1700 790" fill="none" stroke="${article.accent}" stroke-opacity=".44" stroke-width="44"/>
+          <rect width="1600" height="1000" filter="url(#grain)" opacity=".34"/>
+          <text x="90" y="105" fill="#ffd7c3" opacity=".8" font-family="Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="9">${safeCategory.toUpperCase()}</text>
+          <text x="90" y="790" fill="#fff1e4" font-family="Georgia, serif" font-size="62">${safeTitle}</text>
+          <text x="90" y="862" fill="#ffc3a2" font-family="Arial, sans-serif" font-size="26" letter-spacing="7">IMAGE PLACEHOLDER · ADD YOUR PHOTOGRAPH</text>
+        </svg>
+      `;
+
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
+
     /* ========================================
        CREATE ARTICLE BOXES
     ======================================== */
@@ -2354,12 +2647,34 @@
                 data-search="${searchableText}"
                 style="--accent: ${article.accent};"
               >
-                <img
-                  class="card-image"
-                  src="${article.image}"
-                  alt="${article.imageAlt}"
-                  loading="lazy"
+                <a
+                  class="card-visual"
+                  href="${article.href}"
+                  aria-label="Enter ${article.title}"
                 >
+                  <img
+                    class="card-image"
+                    src="${article.image}"
+                    alt="${article.imageAlt}"
+                    loading="${index === 0 ? "eager" : "lazy"}"
+                    width="1600"
+                    height="1000"
+                  >
+
+                  <span class="card-image-topline">
+                    <span class="card-image-number">
+                      ${article.number}
+                    </span>
+
+                    <span class="card-image-category">
+                      ${article.categoryLabel}
+                    </span>
+                  </span>
+
+                  <span class="card-image-entry">
+                    Enter this world
+                  </span>
+                </a>
 
                 <div class="card-inner">
                   <div class="card-top">
@@ -2410,8 +2725,8 @@
           })
           .join("");
 
-      /* Hide broken images without
-         destroying the card design. */
+      /* Replace missing photographs with
+         designed, article-specific plates. */
 
       articleGrid
         .querySelectorAll(
@@ -2421,8 +2736,23 @@
           image.addEventListener(
             "error",
             () => {
-              image.style.display =
-                "none";
+              const card = image.closest(
+                ".article-card"
+              );
+
+              const articleIndex = Number(
+                card.dataset.index
+              );
+
+              const article =
+                survivalArticles[articleIndex];
+
+              image.classList.add(
+                "image-fallback"
+              );
+
+              image.src =
+                createImageFallback(article);
             }
           );
         });
@@ -2565,11 +2895,19 @@
         article.href;
 
       modalImage.onerror = () => {
-        modalImage.style.display =
-          "none";
+        modalImage.classList.add(
+          "image-fallback"
+        );
+
+        modalImage.src =
+          createImageFallback(article);
       };
 
       modalImage.onload = () => {
+        modalImage.classList.remove(
+          "image-fallback"
+        );
+
         modalImage.style.display =
           "block";
       };
