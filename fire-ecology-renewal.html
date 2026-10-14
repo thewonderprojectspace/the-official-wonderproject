@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#140705">
+
+  <meta
+    name="description"
+    content="Born to Burn — an immersive Jigyasa Verse article about fire ecology, survival and renewal."
+  >
+
+  <!-- JIGYASA VERSE LOGO IN THE BROWSER TAB -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+  <link
+    rel="apple-touch-icon"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <title>Born to Burn | Jigyasa Verse</title>
+
+  <style>
+    @import url(
+      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    );
+
+    :root {
+      --ink: #f5eee5;
+      --muted: #c9b9aa;
+      --ember: #ff4b24;
+      --gold: #ffb248;
+      --ash: #83746b;
+      --green: #a8d47a;
+      --dark: #0b0706;
+      --read: 0%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #070504;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: #090605;
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    ::selection {
+      color: white;
+      background: #d94220;
+    }
+
+    /* READING PROGRESS */
+
+    .progress {
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .progress::after {
+      display: block;
+      width: var(--read);
+      height: 100%;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        #7c160d,
+        #ff5b2e,
+        #d5ed95
+      );
+      box-shadow: 0 0 18px #ff5b2e;
+    }
+
+    /* ANIMATED FOREST */
+
+    #forest {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .veil {
+      position: fixed;
+      z-index: 1;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(5, 3, 2, 0.1),
+        rgba(6, 4, 3, 0.42) 35%,
+        rgba(7, 5, 4, 0.76)
+      );
+    }
+
+    .noise {
+      position: fixed;
+      z-index: 2;
+      inset: 0;
+      opacity: 0.06;
+      pointer-events: none;
+      background-image: url(
+        "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"
+      );
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* NAVIGATION AND LOGO */
+
+    .nav {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px clamp(20px, 5vw, 72px);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      flex: 0 0 54px;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      border: 1px solid rgba(255, 230, 177, 0.26);
+      border-radius: 50%;
+      background: rgba(8, 5, 4, 0.62);
+      box-shadow:
+        0 0 30px rgba(255, 83, 37, 0.28),
+        inset 0 0 20px rgba(255, 221, 148, 0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-mark img {
+      display: block;
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 7px rgba(255, 205, 99, 0.26));
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 1px;
+    }
+
+    .brand-copy strong {
+      color: #fff4d8;
+      font-size: 0.76rem;
+      line-height: 1.2;
+      letter-spacing: 0.17em;
+    }
+
+    .brand-copy small {
+      color: #f0cc69;
+      font: 400 0.57rem/1.2 "DM Sans", sans-serif;
+      letter-spacing: 0.09em;
+      text-transform: none;
+    }
+
+    .crumb {
+      color: #d6c8bc;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .crumb:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      min-height: 100svh;
+      overflow: hidden;
+      place-items: end center;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 2, 1, 0.08),
+          rgba(8, 4, 2, 0.78)
+        ),
+        url("images/FIRE.png") center / cover no-repeat;
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: 40% 0 0;
+      content: "";
+      background: linear-gradient(
+        180deg,
+        transparent,
+        #0b0604 88%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1050px, 90vw);
+      padding: 18vh 0 11vh;
+    }
+
+    .kicker {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      color: #ffc197;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      width: 38px;
+      height: 1px;
+      content: "";
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 25px 0 30px;
+      font: 500 clamp(4.2rem, 11vw, 9rem) / 0.79
+        "Cormorant Garamond", serif;
+      letter-spacing: -0.055em;
+    }
+
+    h1 em {
+      display: block;
+      color: #ff6b39;
+      font-weight: 400;
+    }
+
+    .dek {
+      max-width: 660px;
+      color: #eadbd0;
+      font: 400 clamp(1.3rem, 2.4vw, 2rem) / 1.35
+        "Cormorant Garamond", serif;
+    }
+
+    .meta {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      margin-top: 34px;
+      color: #bdaea3;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .scroll {
+      position: absolute;
+      z-index: 3;
+      right: clamp(20px, 5vw, 70px);
+      bottom: 44px;
+      color: #cdb9a8;
+      font-size: 0.64rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .scroll::after {
+      display: inline-block;
+      width: 1px;
+      height: 66px;
+      margin-top: 14px;
+      content: "";
+      background: linear-gradient(#e76637, transparent);
+    }
+
+    /* ARTICLE */
+
+    article {
+      width: min(760px, calc(100% - 42px));
+      margin: 0 auto;
+      padding: 16vh 0 10vh;
+    }
+
+    .opening {
+      margin: 0 0 10vh;
+      color: #fff7ee;
+      font: 400 clamp(1.7rem, 3.3vw, 2.55rem) / 1.38
+        "Cormorant Garamond", serif;
+    }
+
+    .opening::first-letter {
+      float: left;
+      margin: 16px 12px 0 0;
+      color: #ff6033;
+      font-size: 6rem;
+      line-height: 0.72;
+    }
+
+    .chapter {
+      margin: 0 0 17vh;
+      scroll-margin-top: 70px;
+    }
+
+    .chapter-no {
+      color: #fb7650;
+      font: 500 0.66rem/1 "DM Sans", sans-serif;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 16px 0 34px;
+      font: 500 clamp(2.6rem, 6vw, 4.6rem) / 0.96
+        "Cormorant Garamond", serif;
+      letter-spacing: -0.035em;
+    }
+
+    p {
+      margin: 0 0 1.45em;
+      color: #ded1c6;
+      font-size: 1.03rem;
+    }
+
+    .fact {
+      margin: 54px 0;
+      padding: 30px 0 30px 32px;
+      color: #fff3e9;
+      border-left: 1px solid #e44e29;
+      font: italic 400 clamp(1.45rem, 3vw, 2rem) / 1.35
+        "Cormorant Garamond", serif;
+    }
+
+    .fact small {
+      display: block;
+      margin-top: 14px;
+      color: #ba9e8d;
+      font: 500 0.62rem/1.4 "DM Sans", sans-serif;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .species {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+      margin: 48px 0;
+    }
+
+    .species div {
+      min-height: 155px;
+      padding: 22px 18px;
+      border: 1px solid rgba(255, 136, 80, 0.22);
+      background: rgba(24, 10, 6, 0.56);
+      backdrop-filter: blur(8px);
+    }
+
+    .species b {
+      display: block;
+      margin-bottom: 7px;
+      color: #ffab77;
+      font: 500 1.35rem "Cormorant Garamond", serif;
+    }
+
+    .species span {
+      color: #bbaaa0;
+      font-size: 0.72rem;
+      line-height: 1.55;
+    }
+
+    .burn-line {
+      width: 100%;
+      height: 1px;
+      margin: 16vh 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #ff4d21,
+        transparent
+      );
+      box-shadow: 0 0 18px #e74b22;
+    }
+
+    /* TRANSITION INTO RECOVERY */
+
+    .turn {
+      width: 100%;
+      padding: 22vh 21px;
+      text-align: center;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(8, 12, 7, 0.86) 30%,
+        rgba(8, 16, 9, 0.92)
+      );
+    }
+
+    .turn p {
+      max-width: 850px;
+      margin: auto;
+      color: #dfe8d7;
+      font: 400 clamp(2.3rem, 6vw, 5.4rem) / 1.02
+        "Cormorant Garamond", serif;
+      letter-spacing: -0.035em;
+    }
+
+    .turn em {
+      color: #b9dc8e;
+    }
+
+    .renewal {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 16, 9, 0.92),
+        #101b10 70%,
+        #172517
+      );
+    }
+
+    .renewal article {
+      padding-top: 13vh;
+    }
+
+    .renewal .chapter-no {
+      color: #b7d989;
+    }
+
+    .renewal h2 {
+      color: #f3f4e8;
+    }
+
+    .renewal p {
+      color: #d4ddcc;
+    }
+
+    .seed-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 48px 0;
+    }
+
+    .seed-card {
+      padding: 28px;
+      text-align: center;
+      border: 1px solid rgba(190, 222, 145, 0.25);
+      border-radius: 999px 999px 20px 20px;
+      background: rgba(16, 34, 18, 0.48);
+    }
+
+    .seed {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 15px #a5d776);
+    }
+
+    .seed-card b {
+      color: #e8f1d9;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+    }
+
+    .seed-card p {
+      margin: 10px 0 0;
+      font-size: 0.78rem;
+    }
+
+    /* SURYA LOK CLOSING */
+
+    .being {
+      margin-top: 16vh;
+      padding: clamp(34px, 7vw, 70px);
+      text-align: center;
+      border: 1px solid rgba(218, 234, 177, 0.27);
+      border-radius: 50% 50% 20px 20px;
+      background: radial-gradient(
+        circle at 50% 30%,
+        rgba(169, 206, 108, 0.17),
+        transparent 58%
+      );
+    }
+
+    .closing-logo {
+      display: block;
+      width: clamp(105px, 15vw, 160px);
+      height: auto;
+      margin: 0 auto 24px;
+      object-fit: contain;
+      filter: drop-shadow(
+        0 0 22px rgba(223, 205, 118, 0.24)
+      );
+    }
+
+    .being h2 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+    }
+
+    .being p {
+      max-width: 590px;
+      margin: 0 auto 32px;
+    }
+
+    .cta {
+      display: inline-flex;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 20px;
+      color: #e7f1d8;
+      border-bottom: 1px solid #c7df9c;
+      font-size: 0.72rem;
+      letter-spacing: 0.17em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .cta:hover {
+      gap: 22px;
+      color: white;
+    }
+
+    .sources {
+      padding-top: 12vh;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .sources h2 {
+      font-size: 2.6rem;
+    }
+
+    .sources ol {
+      padding-left: 20px;
+    }
+
+    .sources li {
+      margin-bottom: 12px;
+      color: #acb5a5;
+      font-size: 0.78rem;
+    }
+
+    .sources a {
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      padding: 42px 6vw;
+      color: #91a088;
+      background: #172517;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        padding: 18px 20px;
+      }
+
+      .crumb {
+        display: none;
+      }
+
+      .brand-mark {
+        flex-basis: 44px;
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-mark img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.68rem;
+      }
+
+      .brand-copy small {
+        font-size: 0.52rem;
+      }
+
+      .hero-content {
+        padding-bottom: 13vh;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 20vw, 6rem);
+      }
+
+      .scroll {
+        display: none;
+      }
+
+      article {
+        padding-top: 12vh;
+      }
+
+      .chapter {
+        margin-bottom: 13vh;
+      }
+
+      .species,
+      .seed-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      #forest {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <canvas id="forest" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="hero">
+    <nav class="nav" aria-label="Breadcrumb">
+
+      <!-- JIGYASA VERSE MOON-PENCIL LOGO -->
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Jigyasa Verse home"
+      >
+        <span class="brand-mark">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt="Jigyasa Verse moon with pencils logo"
+          >
+        </span>
+
+        <span class="brand-copy">
+          <strong>JIGYASA VERSE</strong>
+          <small>Curiosity lives here</small>
+        </span>
+      </a>
+
+      <a class="crumb" href="truth-of-survival.html">
+        Surya Lok / The Truth of Survival
+      </a>
+    </nav>
+
+    <div class="hero-content">
+      <div class="kicker">
+        The Truth of Survival · Field Note 05
+      </div>
+
+      <h1>
+        Born to Burn:
+        <em>When destruction becomes renewal</em>
+      </h1>
+
+      <p class="dek">
+        A forest does not always survive by avoiding fire.
+        Sometimes it survives by remembering exactly what to
+        do when the flames arrive.
+      </p>
+
+      <div class="meta">
+        <span>8 minute read</span>
+        <span>Fire ecology</span>
+        <span>Scroll to ignite</span>
+      </div>
+    </div>
+
+    <span class="scroll">Enter the burn</span>
+  </header>
+
+  <main>
+    <article>
+      <p class="opening">
+        The first thing fire takes is the illusion of stillness.
+        Bark cracks. Leaves lift into sparks. Air becomes weather
+        of its own. To a human watching from the edge, the forest
+        appears to be ending. But beneath the noise, thousands of
+        older instructions are already being followed.
+      </p>
+
+      <section class="chapter" id="not-an-enemy">
+        <span class="chapter-no">
+          01 — A force, not a villain
+        </span>
+
+        <h2>The forest has met fire before.</h2>
+
+        <p>
+          Fire is not one single event. Ecologists speak of a
+          <em>fire regime</em>: the characteristic frequency,
+          intensity, season and pattern of burning in a place.
+          Those details matter. A cool, patchy ground fire and an
+          immense canopy-consuming blaze may carry the same name,
+          yet leave radically different futures behind.
+        </p>
+
+        <p>
+          Across many grasslands, savannas, heathlands and dry
+          forests, fire has helped shape which species live where.
+          It opens dense vegetation, releases nutrients held in
+          dead material and creates a shifting mosaic of shelter,
+          sunlight and food. Some organisms tolerate it. Some
+          evade it. Others have built fire into the timing of
+          reproduction itself.
+        </p>
+
+        <blockquote class="fact">
+          Fire does not merely act upon an ecosystem. Over
+          evolutionary time, it can become one of the forces
+          that helps compose it.
+
+          <small>
+            Fire ecology: the study of relationships between
+            fire, living systems and place
+          </small>
+        </blockquote>
+
+        <p>
+          This does not make every fire “good.” It means the
+          question is more precise than whether fire belongs.
+          We must ask:
+          <em>
+            which fire, how hot, how often, in what season—and
+            in an ecosystem with what history?
+          </em>
+        </p>
+      </section>
+
+      <section class="chapter" id="during">
+        <span class="chapter-no">
+          02 — While the canopy burns
+        </span>
+
+        <h2>Survival moves out of sight.</h2>
+
+        <p>
+          As flames climb, life retreats into layers. Wombats and
+          reptiles may use burrows. Insects shelter beneath bark
+          or soil. Fungi persist through underground networks.
+          Seeds wait in the earth or inside woody fruits. The
+          visible forest is only one floor of a much deeper
+          building.
+        </p>
+
+        <p>
+          Plants have their own architectures of endurance. Thick
+          bark insulates living tissue. Protected buds wait
+          beneath bark or inside swollen underground lignotubers.
+          Deep roots store water and carbohydrates. When the crown
+          is scorched, those reserves can push out new shoots
+          along blackened trunks.
+        </p>
+
+        <div
+          class="species"
+          aria-label="Three fire survival strategies"
+        >
+          <div>
+            <b>Resprout</b>
+            <span>
+              Protected buds and underground stores allow a plant
+              to rebuild after leaves and branches are lost.
+            </span>
+          </div>
+
+          <div>
+            <b>Release</b>
+            <span>
+              Heat dries or opens woody fruits, scattering seeds
+              onto newly exposed ground.
+            </span>
+          </div>
+
+          <div>
+            <b>Germinate</b>
+            <span>
+              Heat and smoke chemicals can interrupt dormancy and
+              begin a seed’s next stage.
+            </span>
+          </div>
+        </div>
+
+        <p>
+          Fire can therefore remove one living form while creating
+          conditions for another. Light reaches the ground.
+          Competition changes. Minerals return to surface soil.
+          Yet each advantage has limits: extreme heat can kill
+          buried seeds, damage soils and consume refuges that
+          animals need.
+        </p>
+      </section>
+
+      <div class="burn-line" aria-hidden="true"></div>
+
+      <section class="chapter" id="wrong-fire">
+        <span class="chapter-no">
+          03 — When the rhythm breaks
+        </span>
+
+        <h2>Adapted to fire does not mean invincible.</h2>
+
+        <p>
+          A forest adapted to periodic burning may still collapse
+          when fire returns too soon. Young plants can be killed
+          before producing seed. Animals can lose the hollow trees
+          and unburnt patches that once acted as refuges. Repeated
+          severe fire may simplify a community rather than renew
+          it.
+        </p>
+
+        <p>
+          Climate change is intensifying this problem in many
+          regions by producing hotter, drier conditions and longer
+          fire seasons. At the same time, historical fire
+          suppression can allow fuels to accumulate in ecosystems
+          that once experienced more frequent, lower-intensity
+          burning. Land clearing, invasive species and
+          fragmentation alter the result again.
+        </p>
+
+        <p>
+          Research after Australia’s 2019–20 bushfires illustrates
+          why recovery cannot be assumed. UNSW researchers are
+          monitoring fire-sensitive rainforests, peatlands and wet
+          eucalypt forests while tracking threats including
+          frequent fire, weeds, erosion and predation. Recovery is
+          not a single green shoot. It is the return of
+          relationships—and some communities need active help.
+        </p>
+
+        <blockquote class="fact">
+          The hopeful truth is not that nature always bounces back.
+          It is that careful observation can show us where
+          resilience remains—and where care must enter the story.
+
+          <small>
+            Recovery must be monitored, not merely imagined
+          </small>
+        </blockquote>
+      </section>
+
+      <section class="chapter" id="remembering-fire">
+        <span class="chapter-no">
+          04 — Remembering how to burn
+        </span>
+
+        <h2>Good fire begins with relationship.</h2>
+
+        <p>
+          For millennia, Indigenous peoples have used fire to care
+          for Country: burning with close knowledge of season,
+          moisture, wind, plants, animals and cultural
+          responsibility. These practices are not a simple
+          technique that can be detached from the people and
+          places that hold the knowledge. They are systems of
+          relationship.
+        </p>
+
+        <p>
+          Colonial fire exclusion interrupted many of these
+          practices. In some fire-dependent landscapes, the
+          absence of regular, attentive burning contributed to
+          dense fuels and changed habitat. Today, Indigenous fire
+          stewards, scientists and land managers are rebuilding
+          partnerships around cultural burning and carefully
+          planned fire.
+        </p>
+
+        <p>
+          Prescribed burns can reduce some fuels, support
+          particular species and build a patchwork of vegetation
+          ages. But they are not universal prescriptions. They
+          require expertise, appropriate weather, clear objectives
+          and deep local knowledge. Fire is powerful precisely
+          because it is not simple.
+        </p>
+      </section>
+    </article>
+
+    <section
+      class="turn"
+      aria-label="Transition from burning to renewal"
+    >
+      <p>
+        Then the flame front passes.<br>
+        The forest is quiet—but <em>not empty.</em>
+      </p>
+    </section>
+
+    <section class="renewal">
+      <article>
+        <section class="chapter" id="after">
+          <span class="chapter-no">
+            05 — The first green
+          </span>
+
+          <h2>Life returns in verbs.</h2>
+
+          <p>
+            Rain darkens the ash. Fungal threads extend through
+            altered soil. Insects enter. A red epicormic bud swells
+            beneath black bark and breaks into green. Seeds respond
+            to heat, smoke or the sudden opening of space. Animals
+            return unevenly, following food and shelter back into
+            the burn.
+          </p>
+
+          <div class="seed-grid">
+            <div class="seed-card">
+              <span class="seed">⌁</span>
+              <b>Days</b>
+              <p>
+                Ash settles. Surviving roots and microorganisms
+                begin responding to changed moisture and nutrients.
+              </p>
+            </div>
+
+            <div class="seed-card">
+              <span class="seed">˱</span>
+              <b>Weeks</b>
+              <p>
+                Resprouts appear. Germination begins. Pollinators
+                and mobile animals revisit recovering patches.
+              </p>
+            </div>
+
+            <div class="seed-card">
+              <span class="seed">♧</span>
+              <b>Years</b>
+              <p>
+                Structure returns unevenly. Shrubs, grasses and
+                young trees compete, shelter and reshape habitat.
+              </p>
+            </div>
+
+            <div class="seed-card">
+              <span class="seed">✣</span>
+              <b>Decades</b>
+              <p>
+                Old trees, hollows and complex relationships may
+                return—if the next fires allow enough time.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            The new forest is not a rewind. It may contain
+            different proportions of species and new gaps in its
+            memory. Ecology does not promise restoration to one
+            frozen original state. It describes persistence
+            through change—and gives us evidence for protecting
+            what remains possible.
+          </p>
+        </section>
+
+        <section class="chapter" id="stewardship">
+          <span class="chapter-no">
+            06 — Survival with help
+          </span>
+
+          <h2>Hope is a form of attention.</h2>
+
+          <p>
+            Post-fire recovery can be supported by protecting
+            unburnt refuges, controlling invasive plants and
+            predators, reducing erosion, reconnecting fragmented
+            habitat and allowing enough time between fires. Remote
+            sensing can reveal landscape-scale change; field
+            surveys can show which species are returning; citizen
+            observations can add thousands of small pieces to the
+            record.
+          </p>
+
+          <p>
+            Fire ecologists increasingly study the whole moving
+            system: how intensity, frequency, season and patchiness
+            interact with topography, climate and the traits of
+            plants and animals. The goal is not to remove fire
+            from every landscape. It is to restore better rhythms
+            while preventing avoidable harm.
+          </p>
+
+          <p>
+            There is humility in this work. We cannot command a
+            forest back into being. We can reduce pressure,
+            protect its surviving knowledge and learn when
+            intervention helps. Sometimes stewardship means
+            lighting a careful flame. Sometimes it means keeping
+            the next one away.
+          </p>
+        </section>
+
+        <section class="being" id="being">
+
+          <!-- LARGE JIGYASA VERSE LOGO AT THE END -->
+          <img
+            class="closing-logo"
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt="Jigyasa Verse moon with pencils logo"
+          >
+
+          <span class="chapter-no">
+            Return to Surya Lok — Being
+          </span>
+
+          <h2>
+            What survives is not what remains unchanged.
+          </h2>
+
+          <p>
+            In Surya Lok, the truth of survival belongs to
+            <strong>being</strong>: the reality that persists
+            beneath our interpretations. The forest does not deny
+            the fire. It carries the wound, alters its shape and
+            begins again—not because destruction was harmless, but
+            because life had stored more possibilities than the
+            flames could see.
+          </p>
+
+          <p>
+            Perhaps endurance is not hardness. Perhaps it is the
+            ability to keep a future hidden in the roots.
+          </p>
+
+          <a class="cta" href="surya-lok.html#being">
+            Continue through Surya Lok
+            <span aria-hidden="true">→</span>
+          </a>
+        </section>
+
+        <section
+          class="sources"
+          aria-labelledby="sources-title"
+        >
+          <span class="chapter-no">Reading trail</span>
+
+          <h2 id="sources-title">
+            Sources &amp; further wandering
+          </h2>
+
+          <ol>
+            <li>
+              <a
+                href="https://www.sciencedirect.com/science/article/pii/S0960982225004555"
+                target="_blank"
+                rel="noopener"
+              >
+                Plumanns-Pouton et al. (2025), “Restoring fire
+                regimes through rewilding,” Current Biology.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://regeneration.org/nexus/fire-ecology"
+                target="_blank"
+                rel="noopener"
+              >
+                Project Regeneration, “Fire Ecology.”
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.unsw.edu.au/research/ecosystem/our-research/terrestrial-ecosystems/post-fire-recovery-of-threatened-ecological-communities"
+                target="_blank"
+                rel="noopener"
+              >
+                UNSW Centre for Ecosystem Science, “Post-fire
+                recovery of threatened ecological communities.”
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.flarewildfire.com/capabilities/forest-fire-ecology/"
+                target="_blank"
+                rel="noopener"
+              >
+                FLARE Wildfire Research, “Fire &amp; Forest
+                Ecology.”
+              </a>
+            </li>
+          </ol>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Jigyasa Verse · The Truth of Survival</span>
+    <span>Curiosity leaves the door open.</span>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const canvas = document.getElementById("forest");
+      const ctx = canvas.getContext("2d");
+
+      const reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let scrollProgress = 0;
+      let time = 0;
+
+      let trees = [];
+      let embers = [];
+      let sprouts = [];
+
+      function randomBetween(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function resize() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        width = innerWidth;
+        height = innerHeight;
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        seedScene();
+      }
+
+      function seedScene() {
+        trees = Array.from(
+          { length: Math.ceil(width / 55) + 5 },
+          (_, index) => ({
+            x: index * 55 + randomBetween(-25, 25),
+            base: height + 20,
+            tall: randomBetween(0.38, 0.82) * height,
+            wide: randomBetween(6, 14),
+            lean: randomBetween(-0.08, 0.08)
+          })
+        );
+
+        embers = Array.from({ length: 95 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: randomBetween(0.5, 2.4),
+          speed: randomBetween(0.2, 1.15),
+          opacity: randomBetween(0.15, 0.75)
+        }));
+
+        const numberOfSprouts = Math.max(
+          8,
+          Math.floor(width / 95)
+        );
+
+        sprouts = Array.from(
+          { length: numberOfSprouts },
+          (_, index) => ({
+            x:
+              (index + 0.5) *
+                width /
+                numberOfSprouts +
+              randomBetween(-22, 22),
+            scale: randomBetween(0.55, 1.15),
+            phase: Math.random()
+          })
+        );
+      }
+
+      function drawTree(tree, burn) {
+        ctx.save();
+        ctx.translate(tree.x, tree.base);
+        ctx.rotate(tree.lean);
+
+        const trunkGradient = ctx.createLinearGradient(
+          0,
+          0,
+          0,
+          -tree.tall
+        );
+
+        trunkGradient.addColorStop(0, "#070504");
+        trunkGradient.addColorStop(
+          1,
+          burn > 0.25 ? "#190805" : "#10100d"
+        );
+
+        ctx.strokeStyle = trunkGradient;
+        ctx.lineWidth = tree.wide;
+        ctx.lineCap = "round";
+
+        ctx.beginPath();
+        ctx.moveTo(0, 10);
+        ctx.lineTo(0, -tree.tall);
+        ctx.stroke();
+
+        ctx.lineWidth = Math.max(2, tree.wide * 0.35);
+
+        for (let branch = 1; branch < 6; branch++) {
+          const y =
+            -tree.tall * (0.2 + branch * 0.115);
+
+          const length =
+            tree.tall * (0.08 + branch * 0.015);
+
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(
+            -length,
+            y - length * 0.45
+          );
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(0, y - 12);
+          ctx.lineTo(
+            length * 0.8,
+            y - length * 0.5
+          );
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      function drawFlame(x, y, size, alpha) {
+        const flicker =
+          Math.sin(time * 0.006 + x) * 5;
+
+        const flameGradient =
+          ctx.createRadialGradient(
+            x,
+            y,
+            0,
+            x,
+            y,
+            size * 2.3
+          );
+
+        flameGradient.addColorStop(
+          0,
+          `rgba(255,215,104,${alpha})`
+        );
+
+        flameGradient.addColorStop(
+          0.28,
+          `rgba(255,75,23,${alpha * 0.9})`
+        );
+
+        flameGradient.addColorStop(
+          1,
+          "rgba(88,10,3,0)"
+        );
+
+        ctx.fillStyle = flameGradient;
+        ctx.beginPath();
+
+        ctx.ellipse(
+          x + flicker,
+          y,
+          size * 0.72,
+          size * 2.2,
+          -0.08,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fill();
+      }
+
+      function drawSprouts(recovery) {
+        ctx.strokeStyle =
+          `rgba(135,184,92,${recovery * 0.88})`;
+
+        ctx.fillStyle =
+          `rgba(167,216,105,${recovery * 0.78})`;
+
+        ctx.lineWidth = 2;
+
+        sprouts.forEach((sprout) => {
+          const growth = Math.max(
+            0,
+            Math.min(
+              1,
+              recovery * 1.6 - sprout.phase * 0.45
+            )
+          );
+
+          const ground = height - 8;
+          const length =
+            28 * sprout.scale * growth;
+
+          ctx.beginPath();
+          ctx.moveTo(sprout.x, ground);
+
+          ctx.quadraticCurveTo(
+            sprout.x - 3,
+            ground - length * 0.55,
+            sprout.x + 2,
+            ground - length
+          );
+
+          ctx.stroke();
+
+          if (growth > 0.45) {
+            ctx.beginPath();
+
+            ctx.ellipse(
+              sprout.x - 5,
+              ground - length * 0.72,
+              8 * growth,
+              3.5 * growth,
+              -0.55,
+              0,
+              Math.PI * 2
+            );
+
+            ctx.fill();
+
+            ctx.beginPath();
+
+            ctx.ellipse(
+              sprout.x + 7,
+              ground - length * 0.85,
+              8 * growth,
+              3.5 * growth,
+              0.5,
+              0,
+              Math.PI * 2
+            );
+
+            ctx.fill();
+          }
+        });
+      }
+
+      function draw() {
+        time = performance.now();
+
+        const burn = Math.min(
+          1,
+          scrollProgress / 0.48
+        );
+
+        const recovery = Math.max(
+          0,
+          (scrollProgress - 0.56) / 0.34
+        );
+
+        ctx.clearRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+        const sky = ctx.createLinearGradient(
+          0,
+          0,
+          0,
+          height
+        );
+
+        if (recovery > 0) {
+          sky.addColorStop(
+            0,
+            `rgba(18,29,18,${0.18 * recovery})`
+          );
+        } else {
+          sky.addColorStop(
+            0,
+            `rgba(38,6,3,${0.12 + 0.35 * burn})`
+          );
+        }
+
+        sky.addColorStop(
+          1,
+          "rgba(5,4,3,0.42)"
+        );
+
+        ctx.fillStyle = sky;
+        ctx.fillRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+        trees.forEach((tree) => {
+          drawTree(tree, burn);
+        });
+
+        if (burn > 0.06 && recovery < 0.82) {
+          const burningTrees = Math.floor(
+            trees.length *
+              burn *
+              (1 - recovery)
+          );
+
+          for (
+            let index = 0;
+            index < burningTrees;
+            index++
+          ) {
+            const tree = trees[index];
+
+            drawFlame(
+              tree.x + Math.sin(index) * 16,
+              height - 20,
+              tree.wide * (2.2 + burn * 2),
+              (0.08 + 0.18 * burn) *
+                (1 - recovery)
+            );
+          }
+
+          embers.forEach((ember) => {
+            ember.y -=
+              ember.speed *
+              (0.5 + burn * 2);
+
+            ember.x +=
+              Math.sin(
+                time * 0.001 + ember.y
+              ) * 0.18;
+
+            if (ember.y < 0) {
+              ember.y = height;
+              ember.x = Math.random() * width;
+            }
+
+            ctx.fillStyle =
+              `rgba(255,105,45,${
+                ember.opacity *
+                burn *
+                (1 - recovery)
+              })`;
+
+            ctx.beginPath();
+
+            ctx.arc(
+              ember.x,
+              ember.y,
+              ember.size,
+              0,
+              Math.PI * 2
+            );
+
+            ctx.fill();
+          });
+        }
+
+        if (recovery > 0) {
+          drawSprouts(recovery);
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      function updateScroll() {
+        const maximumScroll =
+          document.documentElement.scrollHeight -
+          innerHeight;
+
+        scrollProgress = maximumScroll
+          ? scrollY / maximumScroll
+          : 0;
+
+        root.style.setProperty(
+          "--read",
+          (scrollProgress * 100).toFixed(2) + "%"
+        );
+      }
+
+      addEventListener(
+        "resize",
+        resize,
+        { passive: true }
+      );
+
+      addEventListener(
+        "scroll",
+        updateScroll,
+        { passive: true }
+      );
+
+      resize();
+      updateScroll();
+
+      if (!reducedMotion) {
+        draw();
+      }
+    })();
+  </script>
+</body>
+</html>
