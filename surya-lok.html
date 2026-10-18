@@ -1,2961 +1,1433 @@
-<!doctype html>
-<html lang="en" class="no-js">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-
-  <meta
-    name="description"
-    content="Surya Lok — The Constant Light. Seven colours of truth revealed through the prism of curiosity."
-  >
-
-  <meta
-    name="theme-color"
-    content="#f8f3e9"
-  >
-
-  <title>
-    Surya Lok — The Constant Light | Jigyasa Verse
-  </title>
-
-  <!-- GOOGLE ANALYTICS -->
-
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-EF9DVH7JQN"
-  ></script>
-
-  <script>
-    window.dataLayer =
-      window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-
-    gtag(
-      "config",
-      "G-EF9DVH7JQN"
-    );
-  </script>
-
-  <!-- FAVICON -->
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="images/wonder-verse-moon-pencil-logo.png"
-  >
-
-  <script>
-    document.documentElement.classList.replace(
-      "no-js",
-      "js"
-    );
-  </script>
-
-  <style>
-    /* ========================================================
-       FOUNDATION
-       ======================================================== */
-
-    :root {
-      --paper: #f8f3e9;
-      --paper-deep: #eadfcb;
-
-      --ink: #201b15;
-      --muted: #756b5e;
-
-      --sun: #f5ad19;
-      --sun-hot: #ffe76a;
-
-      --red: #c93b2f;
-      --orange: #df6f22;
-      --yellow: #d7a80b;
-      --green: #4d7d4b;
-      --blue: #37769b;
-      --indigo: #50548e;
-      --violet: #75518b;
-
-      --border:
-        rgba(24, 23, 17, 0.18);
-
-      --shadow:
-        0 24px 80px
-        rgba(72, 52, 20, 0.14);
-
-      --serif:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      --sans:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--paper);
-    }
-
-    body {
-      margin: 0;
-      overflow-x: hidden;
-
-      color: var(--ink);
-      font-family: var(--sans);
-
-      background:
-        radial-gradient(
-          circle at 82% 12%,
-          rgba(244, 190, 75, 0.14),
-          transparent 28rem
-        ),
-        linear-gradient(
-          180deg,
-          #fbf7ef 0%,
-          var(--paper) 38%,
-          #f3ecdf 100%
-        );
-    }
-
-    body::before {
-      content: "";
-
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-
-      pointer-events: none;
-      opacity: 0.1;
-      mix-blend-mode: multiply;
-
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
-    }
-
-    a {
-      color: inherit;
-    }
-
-    button,
-    a {
-      font: inherit;
-    }
-
-    button {
-      color: inherit;
-    }
-
-    ::selection {
-      color: #16130c;
-      background: #f7ca58;
-    }
-
-    :focus-visible {
-      outline:
-        3px solid var(--blue);
-
-      outline-offset: 5px;
-    }
-
-    /* ========================================================
-       ACCESSIBILITY
-       ======================================================== */
-
-    .skip-link {
-      position: fixed;
-      left: 1rem;
-      top: -6rem;
-      z-index: 300;
-
-      padding: 0.8rem 1rem;
-
-      color: var(--paper);
-      background: var(--ink);
-
-      text-decoration: none;
-    }
-
-    .skip-link:focus {
-      top: 1rem;
-    }
-
-    /* ========================================================
-       RAINBOW SCROLL PROGRESS
-       ======================================================== */
-
-    .progress {
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 250;
-
-      width: 100%;
-      height: 3px;
-
-      transform: scaleX(0);
-      transform-origin: left;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--red),
-          var(--orange),
-          var(--yellow),
-          var(--green),
-          var(--blue),
-          var(--indigo),
-          var(--violet)
-        );
-    }
-
-    /* ========================================================
-       HEADER
-       ======================================================== */
-
-    .masthead {
-      position: fixed;
-      left: 0;
-      right: 0;
-      top: 0;
-      z-index: 200;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding:
-        1.1rem
-        clamp(1rem, 4vw, 4.5rem);
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(248, 243, 233, 0.94),
-          rgba(248, 243, 233, 0)
-        );
-
-      backdrop-filter: blur(8px);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-
-      text-decoration: none;
-    }
-
-    .brand-mark {
-      width: 3.1rem;
-      height: 3.1rem;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255, 255, 255, 0.45);
-
-      box-shadow:
-        0 7px 24px
-        rgba(100, 67, 12, 0.11);
-    }
-
-    .brand-mark img {
-      width: 3rem;
-      height: 3rem;
-
-      display: block;
-
-      object-fit: contain;
-    }
-
-    .brand-copy {
-      display: grid;
-      gap: 0.1rem;
-    }
-
-    .brand-name {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-
-    .brand-note {
-      color: var(--muted);
-
-      font-family: var(--serif);
-      font-size: 0.75rem;
-      font-style: italic;
-    }
-
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-link::before {
-      content: "";
-
-      width: 1.8rem;
-      height: 1px;
-
-      background: currentColor;
-
-      transition:
-        width 0.25s ease;
-    }
-
-    .nav-link:hover::before {
-      width: 3rem;
-    }
-
-    /* ========================================================
-       HERO
-       ======================================================== */
-
-    .hero {
-      min-height: 100svh;
-
-      display: grid;
-      grid-template-columns:
-        minmax(0, 0.85fr)
-        minmax(430px, 1.15fr);
-
-      align-items: center;
-      gap:
-        clamp(2rem, 5vw, 6rem);
-
-      padding:
-        8rem
-        clamp(1.2rem, 5vw, 6rem)
-        5rem;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 5;
-
-      max-width: 690px;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-
-      margin: 0 0 1.6rem;
-
-      color: #7c5b10;
-
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-    }
-
-    .eyebrow::before {
-      content: "☀";
-
-      color: var(--sun);
-      font-size: 1rem;
-    }
-
-    h1 {
-      max-width: 9ch;
-
-      margin: 0;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(4rem, 8.7vw, 8.8rem);
-      font-weight: 400;
-      line-height: 0.8;
-      letter-spacing: -0.065em;
-    }
-
-    h1 em {
-      display: block;
-
-      padding-left:
-        clamp(1rem, 5vw, 5rem);
-
-      color: transparent;
-      font-weight: 400;
-
-      -webkit-text-stroke:
-        1.5px var(--ink);
-    }
-
-    .hero-lede {
-      max-width: 37rem;
-
-      margin: 2.2rem 0 0;
-      padding-left:
-        clamp(0rem, 5vw, 5rem);
-
-      color: #484238;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(1.1rem, 1.65vw, 1.45rem);
-      line-height: 1.6;
-    }
-
-    .hero-action {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      margin-top: 2.2rem;
-      padding-left:
-        clamp(0rem, 5vw, 5rem);
-    }
-
-    .solar-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.1rem;
-
-      padding:
-        0.9rem
-        1rem
-        0.9rem
-        1.3rem;
-
-      border:
-        1px solid var(--ink);
-
-      border-radius: 999px;
-
-      color: var(--paper);
-      background: var(--ink);
-
-      font-size: 0.67rem;
-      font-weight: 800;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .solar-button span {
-      width: 2rem;
-      height: 2rem;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      color: var(--ink);
-      background: var(--sun);
-    }
-
-    .solar-button:hover {
-      transform:
-        translateY(-3px);
-
-      box-shadow:
-        0 12px 24px
-        rgba(24, 23, 17, 0.18);
-    }
-
-    .instruction {
-      color: var(--muted);
-
-      font-family: var(--serif);
-      font-size: 0.9rem;
-      font-style: italic;
-    }
-
-    /* ========================================================
-       SOLAR ARTWORK
-       ======================================================== */
-
-    .solar-stage {
-      position: relative;
-
-      width: min(100%, 760px);
-      aspect-ratio: 1;
-
-      display: grid;
-      place-items: center;
-
-      margin: auto;
-
-      filter:
-        drop-shadow(
-          0 35px 55px
-          rgba(110, 74, 5, 0.13)
-        );
-
-      transition:
-        transform 0.2s ease-out;
-    }
-
-    .solar-halo,
-    .solar-halo::before,
-    .solar-halo::after {
-      position: absolute;
-
-      border:
-        1px solid
-        rgba(176, 123, 24, 0.24);
-
-      border-radius: 50%;
-    }
-
-    .solar-halo {
-      inset: 10%;
-
-      animation:
-        orbit-rotation
-        34s linear infinite;
-    }
-
-    .solar-halo::before,
-    .solar-halo::after {
-      content: "";
-    }
-
-    .solar-halo::before {
-      inset: 12%;
-
-      border-style: dashed;
-    }
-
-    .solar-halo::after {
-      inset: 27%;
-
-      border-color:
-        rgba(176, 123, 24, 0.15);
-    }
-
-    .background-sun {
-      position: absolute;
-
-      width: 53%;
-      aspect-ratio: 1;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 42% 36%,
-          #fffbd0 0 8%,
-          #ffe56a 20%,
-          #f5ad19 57%,
-          rgba(245, 173, 25, 0.26) 69%,
-          transparent 70%
-        );
-
-      animation:
-        solar-breathe
-        6s ease-in-out infinite;
-    }
-
-    .human {
-      position: absolute;
-      left: 42%;
-      top: 23%;
-
-      width: 23%;
-      height: 60%;
-    }
-
-    .human-head {
-      position: absolute;
-      left: 50%;
-      top: 0;
-
-      width: 35%;
-      aspect-ratio: 0.82;
-
-      border:
-        1px solid #6f5844;
-
-      border-radius:
-        48% 48% 44% 44%;
-
-      background:
-        linear-gradient(
-          135deg,
-          #d7b990,
-          #876c51
-        );
-
-      transform:
-        translateX(-50%);
-    }
-
-    .human-body {
-      position: absolute;
-      left: 50%;
-      top: 15%;
-
-      width: 74%;
-      height: 80%;
-
-      border:
-        1px solid #6f5844;
-
-      border-radius:
-        42% 42% 22% 22%;
-
-      background:
-        linear-gradient(
-          135deg,
-          #c8aa80,
-          #745943
-        );
-
-      transform:
-        translateX(-50%);
-
-      clip-path:
-        polygon(
-          31% 0,
-          69% 0,
-          86% 17%,
-          79% 56%,
-          72% 100%,
-          53% 100%,
-          50% 62%,
-          47% 100%,
-          28% 100%,
-          21% 56%,
-          14% 17%
-        );
-    }
-
-    .human-light {
-      position: absolute;
-      left: 50%;
-      top: 21%;
-
-      width: 58%;
-      height: 65%;
-
-      border-radius:
-        45% 45% 30% 30%;
-
-      background:
-        radial-gradient(
-          circle at 50% 35%,
-          rgba(255, 246, 177, 0.75),
-          rgba(238, 162, 32, 0.34) 45%,
-          transparent 72%
-        );
-
-      transform:
-        translateX(-50%);
-    }
-
-    .chest-sun {
-      position: absolute;
-      left: 50%;
-      top: 39%;
-      z-index: 5;
-
-      width: 30%;
-      aspect-ratio: 1;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          #fffce0 0 15%,
-          #ffe56a 29%,
-          #f5ad19 70%
-        );
-
-      box-shadow:
-        0 0 1.2rem #ffe56a,
-        0 0 3rem
-        rgba(245, 173, 25, 0.7);
-
-      transform:
-        translate(-50%, -50%);
-
-      animation:
-        chest-pulse
-        4s ease-in-out infinite;
-    }
-
-    .prism {
-      position: absolute;
-      left: 53%;
-      top: 46%;
-      z-index: 7;
-
-      width: 0;
-      height: 0;
-
-      border-top:
-        22px solid transparent;
-
-      border-bottom:
-        22px solid transparent;
-
-      border-left:
-        38px solid
-        rgba(255, 252, 230, 0.82);
-
-      filter:
-        drop-shadow(
-          0 0 8px
-          rgba(255, 255, 255, 0.7)
-        );
-    }
-
-    .rays {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-
-      pointer-events: none;
-    }
-
-    .ray {
-      --angle: 0deg;
-      --ray-color: var(--red);
-      --delay: 0s;
-
-      position: absolute;
-      left: 52%;
-      top: 49%;
-
-      width: 45%;
-      height: 12px;
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--ray-color),
-          color-mix(
-            in srgb,
-            var(--ray-color) 65%,
-            transparent
-          )
-        );
-
-      opacity: 0;
-      transform:
-        rotate(var(--angle))
-        scaleX(0);
-
-      transform-origin: left;
-
-      animation:
-        reveal-ray
-        1.4s
-        cubic-bezier(
-          0.2,
-          0.7,
-          0.2,
-          1
-        )
-        forwards;
-
-      animation-delay:
-        var(--delay);
-    }
-
-    .ray:nth-child(1) {
-      --angle: -34deg;
-      --ray-color: var(--red);
-      --delay: 0.15s;
-    }
-
-    .ray:nth-child(2) {
-      --angle: -23deg;
-      --ray-color: var(--orange);
-      --delay: 0.28s;
-    }
-
-    .ray:nth-child(3) {
-      --angle: -12deg;
-      --ray-color: var(--yellow);
-      --delay: 0.41s;
-    }
-
-    .ray:nth-child(4) {
-      --angle: 0deg;
-      --ray-color: var(--green);
-      --delay: 0.54s;
-    }
-
-    .ray:nth-child(5) {
-      --angle: 12deg;
-      --ray-color: var(--blue);
-      --delay: 0.67s;
-    }
-
-    .ray:nth-child(6) {
-      --angle: 23deg;
-      --ray-color: var(--indigo);
-      --delay: 0.8s;
-    }
-
-    .ray:nth-child(7) {
-      --angle: 34deg;
-      --ray-color: var(--violet);
-      --delay: 0.93s;
-    }
-
-    .stage-caption {
-      position: absolute;
-      right: 2%;
-      bottom: 5%;
-
-      color: var(--muted);
-
-      font-family: var(--serif);
-      font-size: 0.8rem;
-      font-style: italic;
-
-      transform:
-        rotate(-4deg);
-    }
-
-    /* ========================================================
-       MANIFESTO
-       ======================================================== */
-
-    .manifesto {
-      min-height: 84svh;
-
-      display: grid;
-      grid-template-columns:
-        minmax(180px, 0.45fr)
-        minmax(0, 1.55fr);
-
-      align-items: start;
-      gap:
-        clamp(2rem, 8vw, 9rem);
-
-      padding:
-        clamp(6rem, 12vw, 11rem)
-        clamp(1.2rem, 8vw, 9rem);
-
-      border-top:
-        1px solid var(--border);
-    }
-
-    .manifesto-kicker {
-      position: sticky;
-      top: 8rem;
-
-      color: var(--muted);
-
-      font-size: 0.66rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-    }
-
-    .manifesto-kicker strong {
-      display: block;
-
-      margin-bottom: 1rem;
-
-      color: var(--sun);
-
-      font-family: var(--serif);
-      font-size: 5.5rem;
-      font-weight: 400;
-      line-height: 1;
-    }
-
-    .manifesto blockquote {
-      max-width: 16ch;
-
-      margin: 0;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(2.25rem, 5.4vw, 6rem);
-      line-height: 1.03;
-      letter-spacing: -0.045em;
-    }
-
-    .manifesto blockquote span {
-      color: var(--muted);
-    }
-
-    .manifesto-note {
-      max-width: 36rem;
-
-      margin: 3rem 0 0 auto;
-
-      color: #514c42;
-
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* ========================================================
-       SEVEN COLOURS
-       ======================================================== */
-
-    .prism-section {
-      padding:
-        7rem
-        clamp(1.2rem, 5vw, 6rem)
-        9rem;
-
-      background:
-        linear-gradient(
-          180deg,
-          var(--paper),
-          #f8f4ec
-        );
-    }
-
-    .section-heading {
-      display: grid;
-      grid-template-columns:
-        0.7fr 1.3fr;
-
-      align-items: end;
-      gap: 3rem;
-
-      margin-bottom: 4rem;
-    }
-
-    .section-heading h2 {
-      max-width: 8ch;
-
-      margin: 0;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(3rem, 7vw, 7.5rem);
-      font-weight: 400;
-      line-height: 0.86;
-      letter-spacing: -0.055em;
-    }
-
-    .section-heading p {
-      max-width: 35rem;
-
-      margin: 0 0 0.6rem;
-
-      color: #514b40;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(1.05rem, 1.6vw, 1.35rem);
-      line-height: 1.55;
-    }
-
-    .prism-word {
-      display: inline-block;
-
-      color: transparent;
-
-      -webkit-text-stroke:
-        1px var(--ink);
-    }
-
-    .spectrum {
-      border-top:
-        1px solid var(--border);
-    }
-
-    .truth-link {
-      --c: var(--red);
-
-      position: relative;
-      isolation: isolate;
-
-      width: 100%;
-
-      display: grid;
-      grid-template-columns:
-        6.5rem
-        minmax(190px, 0.7fr)
-        minmax(260px, 1.1fr)
-        3rem;
-
-      align-items: center;
-      gap:
-        clamp(1rem, 3vw, 4rem);
-
-      padding:
-        1.65rem 0.75rem;
-
-      appearance: none;
-
-      border: 0;
-      border-bottom:
-        1px solid var(--border);
-
-      color: inherit;
-      background: transparent;
-
-      cursor: pointer;
-      text-align: left;
-
-      transition:
-        color 0.35s ease,
-        padding 0.35s ease;
-    }
-
-    .truth-link::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-
-      background: var(--c);
-
-      opacity: 0.93;
-
-      transform: scaleY(0);
-      transform-origin: bottom;
-
-      transition:
-        transform
-        0.35s
-        cubic-bezier(
-          0.22,
-          0.8,
-          0.22,
-          1
-        );
-    }
-
-    .truth-link:hover,
-    .truth-link:focus-visible {
-      padding-left: 1.35rem;
-      padding-right: 1.35rem;
-
-      color: #ffffff;
-    }
-
-    .truth-link:hover::before,
-    .truth-link:focus-visible::before {
-      transform: scaleY(1);
-    }
-
-    .truth-link[data-color="orange"] {
-      --c: var(--orange);
-    }
-
-    .truth-link[data-color="yellow"] {
-      --c: var(--yellow);
-    }
-
-    .truth-link[data-color="green"] {
-      --c: var(--green);
-    }
-
-    .truth-link[data-color="blue"] {
-      --c: var(--blue);
-    }
-
-    .truth-link[data-color="indigo"] {
-      --c: var(--indigo);
-    }
-
-    .truth-link[data-color="violet"] {
-      --c: var(--violet);
-    }
-
-    .truth-number {
-      font-family: var(--serif);
-      font-size: 0.86rem;
-    }
-
-    .truth-name {
-      font-family: var(--serif);
-      font-size:
-        clamp(1.55rem, 3vw, 3.1rem);
-      letter-spacing: -0.035em;
-    }
-
-    .truth-question {
-      font-family: var(--serif);
-      font-size:
-        clamp(0.95rem, 1.3vw, 1.1rem);
-      font-style: italic;
-      line-height: 1.4;
-    }
-
-    .truth-arrow {
-      font-size: 1.5rem;
-
-      transition:
-        transform 0.35s ease;
-    }
-
-    .truth-link:hover .truth-arrow {
-      transform:
-        translateX(5px);
-    }
-
-    /* ========================================================
-       CLOSING
-       ======================================================== */
-
-    .closing {
-      position: relative;
-
-      min-height: 96svh;
-
-      display: grid;
-      place-items: center;
-
-      padding: 8rem 1.2rem;
-      overflow: hidden;
-
-      border-top:
-        1px solid var(--border);
-
-      text-align: center;
-    }
-
-    .closing-sun {
-      position: absolute;
-
-      width: min(76vw, 800px);
-      aspect-ratio: 1;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          #fffbd0 0 5%,
-          #ffe56a 18%,
-          #f6aa1b 53%,
-          rgba(246, 170, 27, 0.34) 67%,
-          transparent 68%
-        );
-
-      animation:
-        solar-breathe
-        6s ease-in-out infinite;
-    }
-
-    .closing::before,
-    .closing::after {
-      content: "";
-
-      position: absolute;
-
-      width: min(88vw, 960px);
-      aspect-ratio: 1;
-
-      border:
-        1px solid
-        rgba(201, 145, 12, 0.3);
-
-      border-radius: 50%;
-    }
-
-    .closing::after {
-      width:
-        min(96vw, 1080px);
-
-      border-style: dashed;
-
-      animation:
-        orbit-rotation
-        40s linear infinite;
-    }
-
-    .closing-copy {
-      position: relative;
-      z-index: 2;
-
-      max-width: 800px;
-    }
-
-    .closing-copy p:first-child {
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-    }
-
-    .closing-copy h2 {
-      margin: 2rem 0;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(3rem, 8vw, 8.5rem);
-      font-weight: 400;
-      line-height: 0.84;
-      letter-spacing: -0.06em;
-    }
-
-    .closing-copy h2 em {
-      color: transparent;
-      font-weight: 400;
-
-      -webkit-text-stroke:
-        1px var(--ink);
-    }
-
-    .closing-copy p:last-child {
-      max-width: 33rem;
-
-      margin: 0 auto;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(1.05rem, 1.5vw, 1.3rem);
-      line-height: 1.55;
-    }
-
-    /* ========================================================
-       FOOTER
-       ======================================================== */
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-
-      padding:
-        1.5rem
-        clamp(1.2rem, 4vw, 4rem);
-
-      border-top:
-        1px solid var(--border);
-
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    footer em {
-      color: var(--muted);
-
-      font-family: var(--serif);
-      font-size: 0.9rem;
-      text-transform: none;
-      letter-spacing: 0;
-    }
-
-    /* ========================================================
-       TRUTH POPUP
-       ======================================================== */
-
-    dialog {
-      position: relative;
-
-      width:
-        min(
-          760px,
-          calc(100% - 2rem)
-        );
-
-      max-height:
-        min(
-          88svh,
-          850px
-        );
-
-      padding: 0;
-
-      overflow-x: hidden;
-
-      border:
-        1px solid var(--ink);
-
-      color: var(--ink);
-      background: var(--paper);
-
-      box-shadow: var(--shadow);
-    }
-
-    dialog::backdrop {
-      background:
-        rgba(20, 17, 10, 0.56);
-
-      backdrop-filter: blur(6px);
-    }
-
-    dialog[open] {
-      animation:
-        dialog-in
-        0.35s ease both;
-    }
-
-    .dialog-bar {
-      height: 0.7rem;
-
-      background:
-        var(
-          --dialog-color,
-          var(--sun)
-        );
-    }
-
-    .dialog-close {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-      z-index: 5;
-
-      width: 2.5rem;
-      height: 2.5rem;
-
-      display: grid;
-      place-items: center;
-
-      border:
-        1px solid var(--ink);
-
-      border-radius: 50%;
-
-      color: var(--ink);
-
-      background:
-        rgba(248, 243, 233, 0.92);
-
-      backdrop-filter: blur(7px);
-
-      cursor: pointer;
-
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-
-    .dialog-media {
-      position: relative;
-
-      min-height:
-        clamp(12rem, 34vw, 20rem);
-
-      overflow: hidden;
-
-      border-bottom:
-        1px solid var(--ink);
-
-      background:
-        linear-gradient(
-          135deg,
-          var(
-            --dialog-color,
-            var(--sun)
-          ),
-          var(--paper-deep)
-        );
-    }
-
-    .dialog-media::after {
-      content:
-        "A COLOUR OF TRUTH";
-
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-
-      padding:
-        0.45rem 0.65rem;
-
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.7);
-
-      color: #ffffff;
-
-      background:
-        rgba(20, 17, 10, 0.45);
-
-      backdrop-filter: blur(6px);
-
-      font-size: 0.58rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-    }
-
-    .dialog-image {
-      display: block;
-
-      width: 100%;
-      height:
-        clamp(12rem, 34vw, 20rem);
-
-      object-fit: cover;
-    }
-
-    .dialog-image[hidden] {
-      display: none;
-    }
-
-    .dialog-inner {
-      padding:
-        clamp(1.5rem, 5vw, 4rem);
-    }
-
-    .dialog-index {
-      margin: 0;
-
-      color:
-        var(
-          --dialog-color,
-          var(--sun)
-        );
-
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-
-    .dialog-inner h3 {
-      margin: 1.5rem 0;
-
-      font-family: var(--serif);
-      font-size:
-        clamp(2.5rem, 6vw, 5rem);
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-    }
-
-    .dialog-quote {
-      margin: 0 0 2rem;
-      padding-left: 1rem;
-
-      border-left:
-        2px solid
-        var(
-          --dialog-color,
-          var(--sun)
-        );
-
-      font-family: var(--serif);
-      font-size:
-        clamp(1.15rem, 2vw, 1.45rem);
-      font-style: italic;
-      line-height: 1.5;
-    }
-
-    .dialog-body {
-      max-width: 62ch;
-
-      color: #4d483f;
-
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
-
-    .dialog-topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-
-      margin-top: 2rem;
-    }
-
-    .dialog-topics span {
-      padding:
-        0.5rem 0.75rem;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 999px;
-
-      background:
-        rgba(255, 255, 255, 0.28);
-
-      font-size: 0.7rem;
-    }
-
-    .dialog-action {
-      width: fit-content;
-
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-
-      margin-top: 2rem;
-      padding: 0.9rem 1.1rem;
-
-      border:
-        1px solid var(--ink);
-
-      color: #ffffff;
-
-      background:
-        var(
-          --dialog-color,
-          var(--sun)
-        );
-
-      text-decoration: none;
-
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .dialog-action:hover,
-    .dialog-action:focus-visible {
-      transform:
-        translateY(-3px);
-
-      box-shadow:
-        6px 6px 0
-        var(--ink);
-    }
-
-    /* ========================================================
-       REVEALS AND ANIMATIONS
-       ======================================================== */
-
-    .reveal {
-      opacity: 0;
-
-      transform:
-        translateY(34px);
-
-      transition:
-        opacity 0.8s ease,
-        transform
-        0.8s
-        cubic-bezier(
-          0.2,
-          0.75,
-          0.2,
-          1
-        );
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @keyframes orbit-rotation {
-      to {
-        transform:
-          rotate(360deg);
-      }
-    }
-
-    @keyframes solar-breathe {
-      0%,
-      100% {
-        transform:
-          scale(0.97);
-
-        filter:
-          brightness(0.98);
-      }
-
-      50% {
-        transform:
-          scale(1.04);
-
-        filter:
-          brightness(1.08);
-      }
-    }
-
-    @keyframes chest-pulse {
-      0%,
-      100% {
-        transform:
-          translate(-50%, -50%)
-          scale(0.96);
-      }
-
-      50% {
-        transform:
-          translate(-50%, -50%)
-          scale(1.08);
-      }
-    }
-
-    @keyframes reveal-ray {
-      to {
-        opacity: 0.78;
-
-        transform:
-          rotate(var(--angle))
-          scaleX(1);
-      }
-    }
-
-    @keyframes dialog-in {
-      from {
-        opacity: 0;
-
-        transform:
-          translateY(18px)
-          scale(0.98);
-      }
-
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* ========================================================
-       TABLET
-       ======================================================== */
-
-    @media (max-width: 920px) {
-      .hero {
-        grid-template-columns: 1fr;
-
-        padding-top: 8rem;
-      }
-
-      .hero-copy {
-        max-width: 760px;
-      }
-
-      .solar-stage {
-        width:
-          min(90vw, 720px);
-      }
-
-      .manifesto {
-        grid-template-columns: 1fr;
-      }
-
-      .manifesto-kicker {
-        position: static;
-      }
-
-      .section-heading {
-        grid-template-columns: 1fr;
-      }
-
-      .truth-link {
-        grid-template-columns:
-          3.4rem
-          1fr
-          2rem;
-      }
-
-      .truth-question {
-        grid-column: 2 / 3;
-
-        margin-top: -0.7rem;
-      }
-
-      .truth-arrow {
-        grid-column: 3;
-        grid-row: 1 / 3;
-      }
-    }
-
-    /* ========================================================
-       MOBILE
-       ======================================================== */
-
-    @media (max-width: 620px) {
-      .masthead {
-        padding: 1rem;
-      }
-
-      .brand-note {
-        display: none;
-      }
-
-      .brand-mark {
-        width: 2.75rem;
-        height: 2.75rem;
-      }
-
-      .brand-mark img {
-        width: 2.6rem;
-        height: 2.6rem;
-      }
-
-      .hero {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .hero-lede,
-      .hero-action {
-        padding-left: 0;
-      }
-
-      .hero-action {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .solar-stage {
-        width: 112%;
-
-        margin-left: -6%;
-      }
-
-      .stage-caption {
-        display: none;
-      }
-
-      .manifesto,
-      .prism-section {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .manifesto blockquote {
-        font-size:
-          clamp(2.3rem, 11vw, 4.4rem);
-      }
-
-      .truth-link {
-        grid-template-columns:
-          2.2rem
-          1fr
-          1.8rem;
-
-        gap: 0.7rem;
-
-        padding:
-          1.3rem 0.25rem;
-      }
-
-      .truth-question {
-        font-size: 0.87rem;
-      }
-
-      footer {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .dialog-media,
-      .dialog-image {
-        min-height: 12rem;
-        height: 12rem;
-      }
-    }
-
-    @media (
-      prefers-reduced-motion: reduce
-    ) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration:
-          0.01ms !important;
-
-        animation-iteration-count:
-          1 !important;
-
-        transition-duration:
-          0.01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-
-      .ray {
-        opacity: 0.78;
-
-        transform:
-          rotate(var(--angle))
-          scaleX(1);
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f3e9">
+<meta name="description" content="Surya Lok — seven colours, seven truths, one constant light.">
+<title>Surya Lok | Jigyasa Verse</title>
+
+<link rel="icon" href="images/wonder-verse-moon-pencil-logo.png">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --paper: #f8f3e9;
+  --ink: #211d18;
+  --muted: #776d61;
+  --gold: #df9e2a;
+  --line: rgba(47,37,22,.17);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, a { font: inherit; }
+a { color: inherit; }
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #37769b;
+  outline-offset: 5px;
+}
+
+::selection { background: #f4c65e; }
+
+#progress {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg,
+    #c93b2f,#df6f22,#e8bc32,#4d7d4b,
+    #37769b,#50548e,#75518b);
+}
+
+/* NAVIGATION */
+
+nav {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.brand img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+nav .nav-right {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+nav .nav-right a {
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 145px 7% 95px;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 78% 47%, #f4dba8 0%, transparent 49%),
+    linear-gradient(120deg,#faf7f0,#eee2cb);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .14;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+.hero-content {
+  position: relative;
+  z-index: 15;
+  width: min(48%, 640px);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #a27125;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.kicker::before {
+  content: "";
+  width: 35px;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero h1 {
+  margin: 25px 0 28px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(75px, 10vw, 165px);
+  letter-spacing: -.08em;
+  line-height: .94;
+}
+
+.hero h1 em {
+  display: block;
+  padding-left: .45em;
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #342b20;
+}
+
+.hero-description {
+  max-width: 460px;
+  color: #5f5548;
+  font-family: Georgia, serif;
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  padding: 18px 25px;
+  background: #252018;
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: transform .3s, background .3s;
+}
+
+.primary-button:hover {
+  transform: translateY(-5px);
+  background: #956320;
+}
+
+.hero-hint {
+  color: #817361;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* CINEMATIC SOLAR SCENE */
+
+.solar-universe {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  right: -5%;
+  width: min(66vw, 950px);
+  height: 85%;
+  pointer-events: none;
+}
+
+.solar-aura {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,247,191,.55) 0%,
+    rgba(248,180,49,.27) 30%,
+    rgba(235,140,31,.09) 50%,
+    transparent 72%);
+  filter: blur(22px);
+  animation: breathe 7s ease-in-out infinite;
+}
+
+.sun-disc {
+  position: absolute;
+  top: 11%;
+  left: 21%;
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 38% 35%,
+      rgba(255,247,202,.65),transparent 48%),
+    url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1400&q=85')
+    center/cover,
+    #eea52c;
+  background-blend-mode: screen, luminosity, normal;
+  box-shadow:
+    0 0 35px rgba(255,209,94,.75),
+    0 0 100px rgba(244,163,37,.4),
+    0 0 200px rgba(244,163,37,.2);
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.sun-disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 35%,
+    rgba(255,251,214,.45),
+    rgba(244,149,25,.12) 48%,
+    rgba(119,55,13,.4) 100%);
+  mix-blend-mode: screen;
+}
+
+.corona {
+  position: absolute;
+  top: 4%;
+  left: 14%;
+  width: 79%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(228,162,43,.35);
+  box-shadow:
+    0 0 45px rgba(255,193,69,.35),
+    inset 0 0 35px rgba(255,193,69,.18);
+  animation: coronaSpin 40s linear infinite;
+}
+
+.corona::before,
+.corona::after {
+  content: "";
+  position: absolute;
+  inset: 7%;
+  border-radius: 50%;
+  border: 1px dashed rgba(204,137,31,.27);
+}
+
+.corona::after {
+  inset: -8%;
+  border-style: solid;
+  opacity: .5;
+}
+
+/* HUMAN PHOTOGRAPHIC SILHOUETTE */
+
+.human-photo {
+  position: absolute;
+  z-index: 4;
+  bottom: -7%;
+  left: 34%;
+  width: 42%;
+  height: 78%;
+  overflow: hidden;
+  opacity: .88;
+  filter: sepia(.45) contrast(1.35) saturate(.55);
+  mask-image: linear-gradient(to bottom,
+    transparent 0%,black 15%,black 65%,transparent 98%);
+}
+
+.human-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: multiply;
+}
+
+.human-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(246,225,184,.75),
+    transparent 40%,
+    rgba(242,193,108,.35));
+  mix-blend-mode: screen;
+}
+
+.heart-light {
+  position: absolute;
+  z-index: 7;
+  left: 55%;
+  top: 54%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff9ce;
+  box-shadow:
+    0 0 20px 10px rgba(255,245,177,.85),
+    0 0 65px 35px rgba(255,194,59,.45),
+    0 0 125px 70px rgba(255,168,33,.2);
+  animation: heartPulse 4s ease-in-out infinite;
+}
+
+/* ORBITAL LINES */
+
+.orbit {
+  position: absolute;
+  z-index: 3;
+  left: 15%;
+  top: 7%;
+  width: 78%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(141,104,47,.19);
+  border-radius: 50%;
+  transform: rotate(-28deg) scaleY(.67);
+}
+
+.orbit.two {
+  transform: rotate(35deg) scaleY(.8);
+  border-style: dashed;
+  animation: orbitRotate 35s linear infinite;
+}
+
+.orbit.three {
+  inset: 0;
+  width: 100%;
+  border-color: rgba(141,104,47,.1);
+  transform: rotate(-45deg) scaleY(.8);
+}
+
+/* PARTICLE CANVAS */
+
+#particles {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* PRISM EXPERIENCE */
+
+.prism-experience {
+  position: relative;
+  padding: 110px 7% 125px;
+  overflow: hidden;
+  background: #191a20;
+  color: #f7f2e9;
+  text-align: center;
+}
+
+.prism-experience::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      rgba(104,110,154,.2),transparent 65%);
+}
+
+.section-label {
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #caa66c;
+}
+
+.prism-experience h2,
+.truth-section h2,
+.manifesto h2 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(45px,6vw,85px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.05em;
+}
+
+.prism-experience p {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  margin: 0 auto;
+  font-family: Georgia, serif;
+  color: #b8b5b8;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.prism-stage {
+  position: relative;
+  width: min(100%,1000px);
+  height: 440px;
+  margin: 65px auto 0;
+}
+
+.prism-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.incident-beam {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: drawBeam 2s ease forwards;
+}
+
+.spectrum-beam {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawBeam 2s ease forwards;
+  animation-delay: 1.4s;
+}
+
+.prism-shape {
+  filter: drop-shadow(0 0 20px rgba(218,227,255,.4));
+  animation: prismFloat 6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+.prism-caption {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b6a992;
+}
+
+/* MANIFESTO */
+
+.manifesto {
+  padding: 145px 8%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8%;
+  background: #f3ecdf;
+}
+
+.manifesto-symbol {
+  font-family: Georgia, serif;
+  font-size: 110px;
+  color: #d7a23b;
+}
+
+.manifesto h2 {
+  margin: 0;
+  max-width: 900px;
+}
+
+.manifesto h2 em {
+  color: #9c8b74;
+  font-weight: 400;
+}
+
+.manifesto p {
+  max-width: 600px;
+  margin-top: 35px;
+  color: #675b4c;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* SEVEN TRUTHS */
+
+.truth-section {
+  padding: 120px 7% 150px;
+  background: #faf7f0;
+}
+
+.truth-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 50px;
+  margin-bottom: 75px;
+}
+
+.truth-header h2 { margin: 20px 0 0; }
+
+.truth-header p {
+  max-width: 500px;
+  color: #6e6255;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.truth-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 20px;
+}
+
+.truth-card {
+  --card-color: #c93b2f;
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  border: 0;
+  color: #fff;
+  background: #302c2a;
+  text-align: left;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform .45s,box-shadow .45s;
+}
+
+.truth-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(29,24,18,.2);
+}
+
+.truth-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: var(--card-image);
+  background-size: cover;
+  background-position: center;
+  transition: transform .8s;
+}
+
+.truth-card:hover::before {
+  transform: scale(1.1);
+}
+
+.truth-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.05) 0%,
+    rgba(0,0,0,.22) 35%,
+    rgba(0,0,0,.88) 100%);
+}
+
+.truth-card .number {
+  position: absolute;
+  top: 25px;
+  left: 28px;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.truth-card .wavelength {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #eee2cd;
+}
+
+.truth-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px,3vw,43px);
+  line-height: 1.1;
+  margin: 14px 0;
+}
+
+.truth-card p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  line-height: 1.6;
+  color: #e3dcd1;
+}
+
+.truth-card .explore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.3);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.truth-card .explore span:last-child {
+  font-size: 25px;
+  transition: transform .3s;
+}
+
+.truth-card:hover .explore span:last-child {
+  transform: translateX(8px);
+}
+
+.truth-card:last-child {
+  grid-column: span 3;
+  min-height: 360px;
+}
+
+/* CLOSING */
+
+.closing {
+  position: relative;
+  min-height: 90svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 7%;
+  overflow: hidden;
+  text-align: center;
+  background: #f0e4cd;
+}
+
+.closing::before {
+  content: "";
+  position: absolute;
+  width: min(85vw,700px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    #fff9cf 0%,#f8d777 30%,
+    rgba(236,164,49,.4) 53%,transparent 72%);
+  animation: breathe 7s infinite;
+}
+
+.closing > * {
+  position: relative;
+  z-index: 2;
+}
+
+.closing h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(55px,9vw,120px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.06em;
+}
+
+.closing h2 em {
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1px #3c3021;
+}
+
+.closing p {
+  max-width: 570px;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 35px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  background: #f8f3e9;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+footer a { text-decoration: none; }
+
+/* DIALOG */
+
+dialog {
+  width: min(720px,calc(100% - 30px));
+  max-height: 90svh;
+  padding: 0;
+  border: 1px solid #40362a;
+  background: #faf6ed;
+  color: #28231e;
+  box-shadow: 0 30px 100px rgba(0,0,0,.3);
+}
+
+dialog::backdrop {
+  background: rgba(15,13,12,.7);
+  backdrop-filter: blur(8px);
+}
+
+.dialog-image {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.dialog-content { padding: clamp(25px,5vw,55px); }
+
+.dialog-content h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(40px,6vw,65px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.dialog-content p { line-height: 1.8; }
+
+.dialog-quote {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.dialog-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.dialog-topics span {
+  padding: 8px 12px;
+  border: 1px solid #cfc5b5;
+  border-radius: 30px;
+  font-size: 12px;
+}
+
+.dialog-link {
+  display: inline-block;
+  padding: 16px 25px;
+  background: #262018;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dialog-close {
+  position: absolute;
+  z-index: 5;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #faf6ed;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+/* ANIMATIONS */
+
+@keyframes breathe {
+  0%,100% { transform: scale(.97); opacity: .85; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes coronaSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitRotate {
+  to { transform: rotate(395deg) scaleY(.8); }
+}
+
+@keyframes heartPulse {
+  0%,100% { transform: scale(.85); }
+  50% { transform: scale(1.25); }
+}
+
+@keyframes drawBeam {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes prismFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s,transform .8s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+  .hero-content { width: 60%; }
+  .solar-universe { right: -25%; width: 85vw; }
+  .truth-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .truth-card:last-child { grid-column: span 2; }
+}
+
+@media(max-width:700px) {
+  nav { padding: 18px 5%; }
+  .brand { font-size: 10px; letter-spacing: 1px; }
+  .brand img { width: 42px; height: 42px; }
+  nav .nav-right { gap: 12px; }
+  nav .nav-right a { font-size: 9px; letter-spacing: 1px; }
+
+  .hero {
+    min-height: 950px;
+    align-items: flex-start;
+    padding: 155px 6% 440px;
+  }
+
+  .hero-content { width: 100%; }
+  .hero h1 { font-size: clamp(75px,17vw,120px); }
+  .hero-description { max-width: 550px; }
+
+  .solar-universe {
+    top: auto;
+    bottom: -4%;
+    right: -15%;
+    width: 110vw;
+    height: 490px;
+  }
+
+  .manifesto { grid-template-columns: 1fr; padding: 90px 6%; }
+  .manifesto-symbol { font-size: 75px; }
+
+  .truth-header { grid-template-columns: 1fr; gap: 10px; }
+  .truth-section { padding: 85px 5%; }
+  .truth-grid { grid-template-columns: 1fr; }
+  .truth-card { min-height: 380px; }
+  .truth-card:last-child { grid-column: auto; }
+
+  .prism-experience { padding: 90px 4%; }
+  .prism-stage { height: 280px; }
+  .prism-experience p { font-size: 16px; }
+
+  footer { flex-direction: column; text-align: center; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .incident-beam,.spectrum-beam { stroke-dashoffset: 0; }
+}
+</style>
 </head>
 
 <body>
-  <a
-    class="skip-link"
-    href="#main"
-  >
-    Skip to the light
+
+<div id="progress" aria-hidden="true"></div>
+
+<nav>
+  <a href="index.html" class="brand">
+    <img src="images/wonder-verse-moon-pencil-logo.png" alt="">
+    <span>Jigyasa Verse</span>
   </a>
 
-  <div
-    class="progress"
-    aria-hidden="true"
-  ></div>
-
-  <!-- HEADER -->
-
-  <header class="masthead">
-    <a
-      class="brand"
-      href="index.html"
-      aria-label="Jigyasa Verse homepage"
-    >
-      <span class="brand-mark">
-        <img
-          src="images/wonder-verse-moon-pencil-logo.png"
-          alt=""
-        >
-      </span>
-
-      <span class="brand-copy">
-        <span class="brand-name">
-          Jigyasa Verse
-        </span>
-
-        <span class="brand-note">
-          Curiosity lives here
-        </span>
-      </span>
-    </a>
-
-    <a
-      class="nav-link"
-      href="#spectrum"
-    >
-      Seven truths
-    </a>
-  </header>
-
-  <main id="main">
-
-    <!-- HERO -->
-
-    <section
-      class="hero"
-      id="top"
-    >
-      <div class="hero-copy">
-        <p class="eyebrow">
-          The Constant Light
-        </p>
-
-        <h1>
-          Surya
-
-          <em>
-            Lok
-          </em>
-        </h1>
-
-        <p class="hero-lede">
-          The external world does not shift
-          with our moods. It remains a steady
-          anchor—a reliable surface of pure
-          being. Step into the solar path:
-          a realm of clear truth where the mind
-          rests upon things that do not fade.
-        </p>
-
-        <div class="hero-action">
-          <a
-            class="solar-button"
-            href="#spectrum"
-          >
-            Enter the spectrum
-
-            <span aria-hidden="true">
-              →
-            </span>
-          </a>
-
-          <span class="instruction">
-            One light. Seven ways of seeing.
-          </span>
-        </div>
-      </div>
-
-      <!-- SOLAR HUMAN ARTWORK -->
-
-      <figure
-        class="solar-stage"
-        aria-label="A human carries a sun within them. Its light passes through a prism and becomes seven colours."
-      >
-        <div
-          class="solar-halo"
-          aria-hidden="true"
-        ></div>
-
-        <div
-          class="background-sun"
-          aria-hidden="true"
-        ></div>
-
-        <div
-          class="rays"
-          aria-hidden="true"
-        >
-          <span class="ray"></span>
-          <span class="ray"></span>
-          <span class="ray"></span>
-          <span class="ray"></span>
-          <span class="ray"></span>
-          <span class="ray"></span>
-          <span class="ray"></span>
-        </div>
-
-        <div
-          class="human"
-          aria-hidden="true"
-        >
-          <div class="human-head"></div>
-          <div class="human-body"></div>
-          <div class="human-light"></div>
-          <div class="chest-sun"></div>
-        </div>
-
-        <div
-          class="prism"
-          aria-hidden="true"
-        ></div>
-
-        <figcaption class="stage-caption">
-          the light was always within us
-        </figcaption>
-      </figure>
-    </section>
-
-    <!-- SOLAR PREMISE -->
-
-    <section class="manifesto">
-      <div class="manifesto-kicker reveal">
-        <strong>☉</strong>
-
-        The solar premise
-      </div>
-
-      <div>
-        <blockquote class="reveal">
-          Reality does not rearrange itself
-          around our comfort.
-
-          <span>
-            We simply learn to see it
-            more clearly.
-          </span>
-        </blockquote>
-
-        <p class="manifesto-note reveal">
-          The Sun is not optimism or
-          motivation. It is the symbol of
-          what continues to be true whether
-          we celebrate it, fear it,
-          misunderstand it or refuse to look.
-          It is an unyielding light that burns
-          on whether we choose to worship it
-          or close our eyes.
-        </p>
-      </div>
-    </section>
-
-    <!-- SEVEN COLOURS -->
-
-    <section
-      class="prism-section"
-      id="spectrum"
-    >
-      <div class="section-heading reveal">
-        <h2>
-          The seven colours of truth.
-        </h2>
-
-        <p>
-          White light appears singular, yet it
-          carries an entire spectrum. The
-
-          <span class="prism-word">
-            prism
-          </span>
-
-          does not invent the colours—it
-          reveals what was already there.
-          Curiosity works the same way.
-        </p>
-      </div>
-
-      <div
-        class="spectrum"
-        aria-label="Explore the seven colours of truth"
-      >
-        <button
-          class="truth-link reveal"
-          data-truth="survival"
-          data-color="red"
-          type="button"
-        >
-          <span class="truth-number">
-            650–700 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Survival
-          </span>
-
-          <span class="truth-question">
-            What endures when the world
-            refuses to bend?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="change"
-          data-color="orange"
-          type="button"
-        >
-          <span class="truth-number">
-            590–650 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Change
-          </span>
-
-          <span class="truth-question">
-            What must transform in order
-            to continue?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="evidence"
-          data-color="yellow"
-          type="button"
-        >
-          <span class="truth-number">
-            570–590 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Evidence
-          </span>
-
-          <span class="truth-question">
-            How do we know what is
-            actually true?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="connection"
-          data-color="green"
-          type="button"
-        >
-          <span class="truth-number">
-            495–570 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Connection
-          </span>
-
-          <span class="truth-question">
-            How does one life alter
-            another?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="pattern"
-          data-color="blue"
-          type="button"
-        >
-          <span class="truth-number">
-            450–495 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Pattern
-          </span>
-
-          <span class="truth-question">
-            What hidden order exists
-            beneath what we see?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="perception"
-          data-color="indigo"
-          type="button"
-        >
-          <span class="truth-number">
-            425–450 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of Perception
-          </span>
-
-          <span class="truth-question">
-            How much of reality are we
-            capable of seeing?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-
-        <button
-          class="truth-link reveal"
-          data-truth="unknown"
-          data-color="violet"
-          type="button"
-        >
-          <span class="truth-number">
-            380–425 nm
-          </span>
-
-          <span class="truth-name">
-            Truth of the Unknown
-          </span>
-
-          <span class="truth-question">
-            What remains beyond human
-            understanding?
-          </span>
-
-          <span
-            class="truth-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
-        </button>
-      </div>
-    </section>
-
-    <!-- CLOSING -->
-
-    <section class="closing">
-      <div
-        class="closing-sun"
-        aria-hidden="true"
-      ></div>
-
-      <div class="closing-copy reveal">
-        <p>
-          Return to the source
-        </p>
-
-        <h2>
-          Seven colours.
-
-          <br>
-
-          <em>
-            One light.
-          </em>
-        </h2>
-
-        <p>
-          Survival, change, evidence,
-          connection, pattern, perception
-          and the unknown are not separate
-          realities. They are different ways
-          the same world becomes visible.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-
-  <footer>
-    <span>
-      Jigyasa Verse © 2026
-    </span>
-
-    <em>
-      Curiosity does not invent truth.
-      It reveals it.
-    </em>
-
-    <a href="#top">
-      Back to the Sun
-    </a>
-  </footer>
-
-  <!-- SHARED POPUP FOR ALL SEVEN TRUTHS -->
-
-  <dialog
-    id="truthDialog"
-    aria-labelledby="dialogTitle"
-  >
-    <div class="dialog-bar"></div>
-
-    <button
-      class="dialog-close"
-      type="button"
-      aria-label="Close this truth"
-    >
-      ×
-    </button>
-
-    <div class="dialog-media">
-      <img
-        class="dialog-image"
-        id="dialogImage"
-        alt=""
-        hidden
-      >
-    </div>
-
-    <div class="dialog-inner">
-      <p
-        class="dialog-index"
-        id="dialogIndex"
-      ></p>
-
-      <h3 id="dialogTitle"></h3>
-
-      <p
-        class="dialog-quote"
-        id="dialogQuote"
-      ></p>
-
-      <p
-        class="dialog-body"
-        id="dialogBody"
-      ></p>
-
-      <div
-        class="dialog-topics"
-        id="dialogTopics"
-        aria-label="Ideas inside this truth"
-      ></div>
-
-      <a
-        class="dialog-action"
-        id="dialogLink"
-        href="#"
-      >
-        <span id="dialogLinkLabel">
-          Explore this truth
-        </span>
-
-        <span aria-hidden="true">
-          →
-        </span>
+  <div class="nav-right">
+    <a href="#spectrum">Seven Truths</a>
+    <a href="index.html">Return Home ↗</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="top">
+
+  <div class="hero-content">
+    <div class="kicker">The Constant Light</div>
+
+    <h1>Surya <em>Lok.</em></h1>
+
+    <p class="hero-description">
+      The external world does not shift with our moods.
+      It remains a steady anchor — a reliable surface
+      of pure being.
+      <br><br>
+      Step into the solar path. A realm of clear truth
+      where curiosity reveals what was always there.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="#prism">
+        Follow the light <span>↗</span>
       </a>
+      <span class="hero-hint">One light. Seven ways of seeing.</span>
     </div>
-  </dialog>
-
-  <script>
-    /*
-      ========================================================
-      CONTENT FOR THE SEVEN TRUTHS
-
-      Change the image, href and linkLabel
-      values whenever you add new content.
-      ========================================================
-    */
-
-    const truths = {
-      survival: {
-        index:
-          "Colour 01 · Red",
-
-        color:
-          "#c93b2f",
-
-        title:
-          "The Truth of Survival",
-
-        quote:
-          "Life does not survive because reality becomes kinder. It survives by responding to reality as it is.",
-
-        body:
-          "Meet the outliers of life—organisms surviving in volcanic heat, frozen deserts, acid lakes and crushing darkness. They do not prove that we can do anything simply by believing. They reveal something more honest: survival depends on adaptation, response and the ability to work within conditions we did not choose.",
-
-        image:
-          "images/impossible.jpg",
-
-        imageAlt:
-          "A red volcanic landscape representing survival under extreme conditions",
-
-        href:
-          "truth-of-survival.html",
-
-        linkLabel:
-          "Enter the survival archive",
-
-        topics: [
-          "Extremophiles",
-          "Adaptation",
-          "Antibiotic resistance",
-          "The living body"
-        ]
-      },
-
-      change: {
-        index:
-          "Colour 02 · Orange",
-
-        color:
-          "#df6f22",
-
-        title:
-          "The Truth of Change",
-
-        quote:
-          "Change is not the opposite of truth, but sometimes the consequence of it.",
-
-        body:
-          "Follow the currents of deep change—from the shuffling of genes to the shaping of worlds, from the wear of age to the forward movement of time. The laws governing existence may remain stable while producing a universe in constant motion. Continuity is not always a monument of stone; sometimes it is a river that continues by flowing.",
-
-        image:
-          "images/surya/orange-change.jpg",
-
-        imageAlt:
-          "An orange landscape transforming through movement and time",
-
-        href:
-          "truth-of-change.html",
-
-        linkLabel:
-          "Enter the change archive",
-
-        topics: [
-          "Evolution",
-          "Deep time",
-          "Metamorphosis",
-          "Entropy"
-        ]
-      },
-
-      evidence: {
-        index:
-          "Colour 03 · Yellow",
-
-        color:
-          "#d7a80b",
-
-        title:
-          "The Truth of Evidence",
-
-        quote:
-          "The universe did not alter when our beliefs shifted; we simply developed better ways to see it as it was.",
-
-        body:
-          "Revisit the historic collisions between human certainty and physical evidence—from a fixed Earth to invisible microbes and drifting continents. Science is not trustworthy because it is flawless; it is trustworthy because it develops methods capable of exposing and correcting its own mistakes.",
-
-        image:
-          "images/surya/yellow-evidence.jpg",
-
-        imageAlt:
-          "Yellow light revealing evidence that was previously hidden",
-
-        href:
-          "truth-of-evidence.html",
-
-        linkLabel:
-          "Enter the evidence archive",
-
-        topics: [
-          "Scientific correction",
-          "Light as information",
-          "Misinformation",
-          "Cause and correlation"
-        ]
-      },
-
-      connection: {
-        index:
-          "Colour 04 · Green",
-
-        color:
-          "#4d7d4b",
-
-        title:
-          "The Truth of Connection",
-
-        quote:
-          "Nothing living exists entirely alone.",
-
-        body:
-          "Follow the unseen exchanges moving through bodies, soil and sky—the microbes supporting living systems, the relationships sustaining ecosystems and the consequences that travel through climates. Connection is not merely a poetic idea. It is a physical network of exchange, dependence and consequence.",
-
-        image:
-          "images/surya/green-connection.jpg",
-
-        imageAlt:
-          "Green living systems connected through roots, microbes and ecosystems",
-
-        href:
-          "truth-of-connection.html",
-
-        linkLabel:
-          "Enter the connection archive",
-
-        topics: [
-          "Ecosystems",
-          "Microbiomes",
-          "Symbiosis",
-          "Consequences"
-        ]
-      },
-
-      pattern: {
-        index:
-          "Colour 05 · Blue",
-
-        color:
-          "#37769b",
-
-        title:
-          "The Truth of Pattern",
-
-        quote:
-          "Structure continues beneath the apparent chaos of the physical world.",
-
-        body:
-          "Enter the architecture of tiny worlds: crystal lattices, DNA, molecular bonds, symmetry and recurring mathematics. Even uncertainty and chaos unfold within conditions that human preference cannot rewrite.",
-
-        image:
-          "images/surya/blue-pattern.jpg",
-
-        imageAlt:
-          "Blue repeating structures representing patterns in nature and mathematics",
-
-        href:
-          "truth-of-pattern.html",
-
-        linkLabel:
-          "Enter the pattern archive",
-
-        topics: [
-          "Tiny worlds",
-          "DNA",
-          "Mathematics",
-          "Symmetry"
-        ]
-      },
-
-      perception: {
-        index:
-          "Colour 06 · Indigo",
-
-        color:
-          "#50548e",
-
-        title:
-          "The Truth of Perception",
-
-        quote:
-          "We do not experience all of reality. We experience what our minds can construct from it.",
-
-        body:
-          "Test the limits of the senses, attention and memory. Optical illusions and cognitive biases do not mean reality is unknowable; they remind us why evidence must extend beyond personal experience and certainty.",
-
-        image:
-          "images/surya/indigo-perception.jpg",
-
-        imageAlt:
-          "An indigo eye looking through distorted layers of perception",
-
-        href:
-          "truth-of-perception.html",
-
-        linkLabel:
-          "Enter the perception archive",
-
-        topics: [
-          "Optical illusions",
-          "False memory",
-          "Cognitive bias",
-          "Invisible wavelengths"
-        ]
-      },
-
-      unknown: {
-        index:
-          "Colour 07 · Violet",
-
-        color:
-          "#75518b",
-
-        title:
-          "The Truth of the Unknown",
-
-        quote:
-          "“We do not know” is the most honest place from which discovery can begin.",
-
-        body:
-          "Stand at the edge of dark matter, consciousness, time, infinity and the origin of life. The unknown is not an invitation to invent certainty. It is a boundary—and an opening.",
-
-        image:
-          "images/surya/violet-unknown.jpg",
-
-        imageAlt:
-          "A violet cosmic horizon representing the boundary of human knowledge",
-
-        href:
-          "truth-of-the-unknown.html",
-
-        linkLabel:
-          "Enter the unknown archive",
-
-        topics: [
-          "Dark matter",
-          "Consciousness",
-          "Time",
-          "The Fermi paradox"
-        ]
+  </div>
+
+  <div class="solar-universe"
+       role="img"
+       aria-label="A luminous sun, human silhouette and floating solar particles">
+
+    <div class="solar-aura"></div>
+    <div class="corona"></div>
+    <div class="sun-disc"></div>
+
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <div class="orbit three"></div>
+
+    <div class="human-photo">
+      <img
+        src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
+        alt=""
+      >
+    </div>
+
+    <div class="heart-light"></div>
+    <canvas id="particles"></canvas>
+  </div>
+
+</section>
+
+<!-- PRISM -->
+
+<section class="prism-experience" id="prism">
+
+  <div class="section-label">The Physics of Wonder</div>
+
+  <h2>One beam enters.<br><em>Seven truths emerge.</em></h2>
+
+  <p>
+    White light is not empty. It carries an entire spectrum.
+    A prism does not create those colours.
+    It separates the wavelengths that were already present.
+    Curiosity can do something similar with the world.
+  </p>
+
+  <div class="prism-stage">
+    <svg viewBox="0 0 1000 440"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-label="Animated light entering a glass prism and separating into seven colours">
+
+      <defs>
+        <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#eaf8ff" stop-opacity=".15"/>
+          <stop offset="45%" stop-color="#d2e9ff" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity=".1"/>
+        </linearGradient>
+
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="5" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- WHITE LIGHT -->
+      <path class="incident-beam"
+            d="M0 235 L460 235"
+            stroke="#ffffff"
+            stroke-width="8"
+            opacity=".85"
+            filter="url(#glow)"
+            fill="none"/>
+
+      <!-- GLASS PRISM -->
+      <g class="prism-shape">
+        <path d="M455 345 L555 105 L665 345 Z"
+              fill="url(#glass)"
+              stroke="#e6f2ff"
+              stroke-width="3"/>
+        <path d="M455 345 L555 105 L565 325"
+              fill="none"
+              stroke="#fff"
+              opacity=".55"/>
+        <path d="M555 105 L665 345"
+              stroke="#fff"
+              opacity=".65"
+              fill="none"/>
+      </g>
+
+      <!-- SEVEN REFRACTED BEAMS -->
+      <g fill="none" stroke-width="6" filter="url(#glow)">
+        <path class="spectrum-beam" d="M615 235 Q745 195 1000 65" stroke="#e84d4d"/>
+        <path class="spectrum-beam" d="M615 235 Q745 210 1000 120" stroke="#ff973d"/>
+        <path class="spectrum-beam" d="M615 235 Q745 225 1000 175" stroke="#ffe45e"/>
+        <path class="spectrum-beam" d="M615 235 Q745 240 1000 230" stroke="#62d68b"/>
+        <path class="spectrum-beam" d="M615 235 Q745 255 1000 285" stroke="#55b9ff"/>
+        <path class="spectrum-beam" d="M615 235 Q745 270 1000 340" stroke="#7777ed"/>
+        <path class="spectrum-beam" d="M615 235 Q745 285 1000 395" stroke="#bf78f1"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="prism-caption">Scroll to explore the spectrum ↓</div>
+</section>
+
+<!-- MANIFESTO -->
+
+<section class="manifesto">
+  <div class="manifesto-symbol">☉</div>
+
+  <div class="reveal">
+    <div class="kicker">The Solar Premise</div>
+
+    <h2>
+      Reality does not rearrange itself around our comfort.
+      <em>We learn to see it more clearly.</em>
+    </h2>
+
+    <p>
+      The Sun is not a symbol of endless optimism.
+      It represents the physical world that continues
+      whether we celebrate it, fear it, misunderstand
+      it or refuse to look.
+      <br><br>
+      Surya Lok is a place to examine that world —
+      through survival, change, evidence, connection,
+      pattern, perception and the unknown.
+    </p>
+  </div>
+</section>
+
+<!-- SEVEN TRUTHS -->
+
+<section class="truth-section" id="spectrum">
+
+  <div class="truth-header reveal">
+    <div>
+      <div class="kicker">The Spectrum of Being</div>
+      <h2>Seven colours.<br>Seven truths.</h2>
+    </div>
+
+    <p>
+      Each colour is an invitation into a different
+      question about reality. Choose the one that
+      makes you curious. There is no correct order.
+    </p>
+  </div>
+
+  <div class="truth-grid" id="truthGrid"></div>
+
+</section>
+
+<!-- CLOSING -->
+
+<section class="closing">
+  <div class="kicker">Return to the source</div>
+
+  <h2>Seven colours.<br><em>One light.</em></h2>
+
+  <p>
+    Curiosity does not invent truth.
+    It reveals what was already there.
+    <br><br>
+    And somewhere beyond what we know,
+    another question is waiting.
+  </p>
+
+  <a class="primary-button" href="#top">Return to the Sun ↑</a>
+</section>
+
+</main>
+
+<footer>
+  <span>Jigyasa Verse © 2026</span>
+  <span>Being · Becoming · Wonder</span>
+  <a href="index.html">Return to Jigyasa Verse ↗</a>
+</footer>
+
+<!-- INTERACTIVE TRUTH POPUP -->
+
+<dialog id="truthDialog" aria-labelledby="dialogTitle">
+  <button class="dialog-close" id="closeDialog"
+          aria-label="Close dialog">×</button>
+
+  <img class="dialog-image" id="dialogImage" alt="">
+
+  <div class="dialog-content">
+    <div class="kicker" id="dialogIndex"></div>
+    <h2 id="dialogTitle"></h2>
+    <p class="dialog-quote" id="dialogQuote"></p>
+    <p id="dialogBody"></p>
+    <div class="dialog-topics" id="dialogTopics"></div>
+    <a class="dialog-link" id="dialogLink" href="#">
+      Enter this truth ↗
+    </a>
+  </div>
+</dialog>
+
+<script>
+/* ==================================================
+   SEVEN TRUTHS
+   Existing article filenames are preserved.
+   Replace photographic URLs with your own images
+   whenever you are ready.
+================================================== */
+
+const truths = [
+  {
+    id: "survival",
+    number: "01",
+    wavelength: "650–700 nm",
+    title: "Truth of Survival",
+    question: "What endures when the world refuses to bend?",
+    quote: "Life survives by responding to reality as it is.",
+    body: "Meet organisms that survive volcanic heat, frozen deserts, acidic environments and crushing darkness. Their survival reveals the remarkable biological mechanisms that allow life to persist under extreme conditions.",
+    topics: ["Extremophiles","Adaptation","Antibiotic resistance","The living body"],
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-survival.html",
+    color: "#c93b2f"
+  },
+  {
+    id: "change",
+    number: "02",
+    wavelength: "590–650 nm",
+    title: "Truth of Change",
+    question: "What must transform in order to continue?",
+    quote: "Change is not the opposite of truth.",
+    body: "Follow the transformation of living organisms, landscapes and entire worlds. From evolution and metamorphosis to deep time and entropy, change unfolds through physical processes that continue regardless of our preferences.",
+    topics: ["Evolution","Deep time","Metamorphosis","Entropy"],
+    image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-change.html",
+    color: "#df6f22"
+  },
+  {
+    id: "evidence",
+    number: "03",
+    wavelength: "570–590 nm",
+    title: "Truth of Evidence",
+    question: "How do we know what is actually true?",
+    quote: "The world did not change when our beliefs changed.",
+    body: "Explore the discoveries that challenged human certainty. From invisible microorganisms to continental drift, evidence allows us to test our explanations and correct what we once believed.",
+    topics: ["Scientific correction","Light as information","Misinformation","Cause and correlation"],
+    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-evidence.html",
+    color: "#d7a80b"
+  },
+  {
+    id: "connection",
+    number: "04",
+    wavelength: "495–570 nm",
+    title: "Truth of Connection",
+    question: "How does one life alter another?",
+    quote: "Nothing living exists entirely alone.",
+    body: "Explore symbiosis, ecosystems, microbiomes and the networks connecting living systems. Life is sustained by countless interactions, many of which remain invisible to the human eye.",
+    topics: ["Ecosystems","Microbiomes","Symbiosis","Consequences"],
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-connection.html",
+    color: "#4d7d4b"
+  },
+  {
+    id: "pattern",
+    number: "05",
+    wavelength: "450–495 nm",
+    title: "Truth of Pattern",
+    question: "What hidden order exists beneath what we see?",
+    quote: "Structure continues beneath apparent chaos.",
+    body: "Discover the architecture of matter, from DNA and crystal lattices to atomic structures, symmetry and mathematics. Patterns reveal relationships that extend far beyond what our senses can directly observe.",
+    topics: ["DNA","Crystal lattices","Mathematics","Symmetry"],
+    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-pattern.html",
+    color: "#37769b"
+  },
+  {
+    id: "perception",
+    number: "06",
+    wavelength: "425–450 nm",
+    title: "Truth of Perception",
+    question: "How much of reality can we actually see?",
+    quote: "Our experience of reality is not reality in its entirety.",
+    body: "Investigate optical illusions, cognitive biases, memory and the limitations of human senses. Perception is a remarkable construction, but it is not an infallible representation of the world.",
+    topics: ["Optical illusions","False memory","Cognitive bias","Invisible wavelengths"],
+    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-perception.html",
+    color: "#50548e"
+  },
+  {
+    id: "unknown",
+    number: "07",
+    wavelength: "380–425 nm",
+    title: "Truth of the Unknown",
+    question: "What remains beyond human understanding?",
+    quote: "We do not know is where discovery can begin.",
+    body: "Stand at the boundaries of scientific understanding. Explore dark matter, consciousness, time, the origins of life and questions that remain unanswered. The unknown is not a failure of curiosity; it is an invitation to continue.",
+    topics: ["Dark matter","Consciousness","Time","The Fermi paradox"],
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=85",
+    href: "truth-of-the-unknown.html",
+    color: "#75518b"
+  }
+];
+
+/* CREATE THE SEVEN CARDS */
+
+const grid = document.getElementById("truthGrid");
+
+truths.forEach(truth => {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "truth-card reveal";
+  card.style.setProperty("--card-color", truth.color);
+  card.style.setProperty("--card-image", `url("${truth.image}")`);
+
+  card.innerHTML = `
+    <span class="number">COLOUR ${truth.number}</span>
+    <span class="wavelength">${truth.wavelength}</span>
+    <h3>${truth.title}</h3>
+    <p>${truth.question}</p>
+    <div class="explore">
+      <span>Explore this truth</span>
+      <span aria-hidden="true">↗</span>
+    </div>
+  `;
+
+  card.addEventListener("click", () => openTruth(truth));
+  grid.appendChild(card);
+});
+
+/* POPUP */
+
+const dialog = document.getElementById("truthDialog");
+
+function openTruth(truth) {
+  document.getElementById("dialogImage").src = truth.image;
+  document.getElementById("dialogImage").alt = truth.title;
+  document.getElementById("dialogIndex").textContent =
+    `COLOUR ${truth.number} · ${truth.wavelength}`;
+  document.getElementById("dialogTitle").textContent = truth.title;
+  document.getElementById("dialogQuote").textContent = truth.quote;
+  document.getElementById("dialogBody").textContent = truth.body;
+  document.getElementById("dialogLink").href = truth.href;
+
+  const topics = document.getElementById("dialogTopics");
+  topics.replaceChildren();
+
+  truth.topics.forEach(topic => {
+    const chip = document.createElement("span");
+    chip.textContent = topic;
+    topics.appendChild(chip);
+  });
+
+  dialog.showModal();
+}
+
+document.getElementById("closeDialog").addEventListener("click", () => {
+  dialog.close();
+});
+
+dialog.addEventListener("click", event => {
+  if (event.target === dialog) dialog.close();
+});
+
+/* SCROLL PROGRESS */
+
+const progress = document.getElementById("progress");
+
+function updateProgress() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const ratio = max > 0 ? scrollY / max : 0;
+  progress.style.transform = `scaleX(${ratio})`;
+}
+
+addEventListener("scroll", updateProgress, {passive:true});
+updateProgress();
+
+/* SCROLL REVEALS */
+
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if ("IntersectionObserver" in window && !reducedMotion) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
-    };
+    });
+  }, {threshold:.1});
 
-    /*
-      ========================================================
-      IMPORTANT ELEMENTS
-      ========================================================
-    */
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+}
 
-    const progress =
-      document.querySelector(
-        ".progress"
-      );
+/* ==================================================
+   SOLAR PARTICLE ENGINE
+   Animated points of light around the solar disc.
+================================================== */
 
-    const dialog =
-      document.querySelector(
-        "#truthDialog"
-      );
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+const scene = document.querySelector(".solar-universe");
 
-    const closeDialogButton =
-      dialog.querySelector(
-        ".dialog-close"
-      );
+let particles = [];
+let width = 0;
+let height = 0;
+let animationId;
 
-    const dialogImage =
-      dialog.querySelector(
-        "#dialogImage"
-      );
+function resizeCanvas() {
+  const rect = scene.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio || 1, 2);
 
-    const dialogLink =
-      dialog.querySelector(
-        "#dialogLink"
-      );
+  width = rect.width;
+  height = rect.height;
 
-    const dialogLinkLabel =
-      dialog.querySelector(
-        "#dialogLinkLabel"
-      );
+  canvas.width = Math.round(width * dpr);
+  canvas.height = Math.round(height * dpr);
 
-    const reducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
 
-    /*
-      ========================================================
-      SCROLL PROGRESS
-      ========================================================
-    */
+  particles = Array.from({length:95}, () => ({
+    angle: Math.random() * Math.PI * 2,
+    radius: .2 + Math.random() * .34,
+    size: .5 + Math.random() * 2,
+    speed: .00015 + Math.random() * .00055,
+    opacity: .2 + Math.random() * .6
+  }));
+}
 
-    function updateProgress() {
-      if (!progress) {
-        return;
-      }
+function animateParticles(time) {
+  ctx.clearRect(0,0,width,height);
 
-      const maximumScroll =
-        document.documentElement
-          .scrollHeight -
-        window.innerHeight;
+  const cx = width * .535;
+  const cy = height * .435;
+  const scale = Math.min(width,height);
 
-      const amount =
-        maximumScroll > 0
-          ? window.scrollY /
-            maximumScroll
-          : 0;
+  particles.forEach(p => {
+    const angle = p.angle + time * p.speed;
+    const radius = p.radius * scale;
 
-      progress.style.transform =
-        `scaleX(${amount})`;
-    }
+    const x = cx + Math.cos(angle) * radius;
+    const y = cy + Math.sin(angle) * radius * .85;
 
-    window.addEventListener(
-      "scroll",
-      updateProgress,
-      {
-        passive: true
-      }
-    );
+    ctx.beginPath();
+    ctx.arc(x,y,p.size,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,190,65,${p.opacity})`;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = "#f8b84b";
+    ctx.fill();
+  });
 
-    updateProgress();
+  animationId = requestAnimationFrame(animateParticles);
+}
 
-    /*
-      ========================================================
-      SCROLL REVEALS
-      ========================================================
-    */
+resizeCanvas();
+addEventListener("resize", resizeCanvas);
 
-    if (
-      "IntersectionObserver" in window
-    ) {
-      const observer =
-        new IntersectionObserver(
-          (entries) => {
-            entries.forEach(
-              (entry) => {
-                if (
-                  entry.isIntersecting
-                ) {
-                  entry.target
-                    .classList.add(
-                      "is-visible"
-                    );
+if (!reducedMotion) {
+  animationId = requestAnimationFrame(animateParticles);
+} else {
+  animateParticles(0);
+  cancelAnimationFrame(animationId);
+}
 
-                  observer.unobserve(
-                    entry.target
-                  );
-                }
-              }
-            );
-          },
-          {
-            threshold: 0.12
-          }
-        );
+/* MOUSE PARALLAX */
 
-      document
-        .querySelectorAll(
-          ".reveal"
-        )
-        .forEach(
-          (element) => {
-            observer.observe(
-              element
-            );
-          }
-        );
-    } else {
-      document
-        .querySelectorAll(
-          ".reveal"
-        )
-        .forEach(
-          (element) => {
-            element.classList.add(
-              "is-visible"
-            );
-          }
-        );
-    }
+if (!reducedMotion) {
+  scene.addEventListener("pointermove", event => {
+    const rect = scene.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - .5;
+    const y = (event.clientY - rect.top) / rect.height - .5;
 
-    /*
-      ========================================================
-      OPEN SELECTED TRUTH
-      ========================================================
-    */
+    scene.querySelector(".sun-disc").style.transform =
+      `translate(${x * -12}px,${y * -12}px)`;
 
-    document
-      .querySelectorAll(
-        ".truth-link"
-      )
-      .forEach(
-        (truthButton) => {
-          truthButton.addEventListener(
-            "click",
-            () => {
-              const truthName =
-                truthButton.dataset.truth;
+    scene.querySelector(".human-photo").style.transform =
+      `translate(${x * 15}px,${y * 10}px)`;
+  });
 
-              const selectedTruth =
-                truths[truthName];
+  scene.addEventListener("pointerleave", () => {
+    scene.querySelector(".sun-disc").style.transform = "";
+    scene.querySelector(".human-photo").style.transform = "";
+  });
+}
+</script>
 
-              if (!selectedTruth) {
-                return;
-              }
-
-              /*
-                Set popup colour.
-              */
-
-              dialog.style.setProperty(
-                "--dialog-color",
-                selectedTruth.color
-              );
-
-              /*
-                Set popup text.
-              */
-
-              dialog.querySelector(
-                "#dialogIndex"
-              ).textContent =
-                selectedTruth.index;
-
-              dialog.querySelector(
-                "#dialogTitle"
-              ).textContent =
-                selectedTruth.title;
-
-              dialog.querySelector(
-                "#dialogQuote"
-              ).textContent =
-                selectedTruth.quote;
-
-              dialog.querySelector(
-                "#dialogBody"
-              ).textContent =
-                selectedTruth.body;
-
-              /*
-                Set the individual image.
-              */
-
-              dialogImage.hidden = false;
-
-              dialogImage.src =
-                selectedTruth.image;
-
-              dialogImage.alt =
-                selectedTruth.imageAlt;
-
-              /*
-                Hide a missing image rather
-                than showing a broken icon.
-              */
-
-              dialogImage.onerror =
-                () => {
-                  dialogImage.hidden =
-                    true;
-                };
-
-              dialogImage.onload =
-                () => {
-                  dialogImage.hidden =
-                    false;
-                };
-
-              /*
-                Set the individual blog link.
-              */
-
-              dialogLink.href =
-                selectedTruth.href;
-
-              dialogLinkLabel.textContent =
-                selectedTruth.linkLabel;
-
-              /*
-                Build the topic chips.
-              */
-
-              const topicElements =
-                selectedTruth.topics.map(
-                  (topic) => {
-                    const chip =
-                      document.createElement(
-                        "span"
-                      );
-
-                    chip.textContent =
-                      topic;
-
-                    return chip;
-                  }
-                );
-
-              dialog.querySelector(
-                "#dialogTopics"
-              ).replaceChildren(
-                ...topicElements
-              );
-
-              /*
-                Open the popup.
-              */
-
-              dialog.showModal();
-            }
-          );
-        }
-      );
-
-    /*
-      ========================================================
-      CLOSE POPUP
-      ========================================================
-    */
-
-    closeDialogButton.addEventListener(
-      "click",
-      () => {
-        dialog.close();
-      }
-    );
-
-    /*
-      The Escape key automatically closes
-      a native dialog. This event makes the
-      intended behaviour explicit.
-    */
-
-    dialog.addEventListener(
-      "cancel",
-      () => {
-        dialog.close();
-      }
-    );
-
-    /*
-      Close when the visitor clicks outside
-      the visible popup.
-    */
-
-    dialog.addEventListener(
-      "click",
-      (event) => {
-        const rectangle =
-          dialog.getBoundingClientRect();
-
-        const clickedOutside =
-          event.clientX <
-            rectangle.left ||
-          event.clientX >
-            rectangle.right ||
-          event.clientY <
-            rectangle.top ||
-          event.clientY >
-            rectangle.bottom;
-
-        if (clickedOutside) {
-          dialog.close();
-        }
-      }
-    );
-
-    /*
-      ========================================================
-      SUBTLE ARTWORK MOVEMENT
-      ========================================================
-    */
-
-    if (!reducedMotion) {
-      const solarArtwork =
-        document.querySelector(
-          ".solar-stage"
-        );
-
-      if (solarArtwork) {
-        window.addEventListener(
-          "pointermove",
-          (event) => {
-            const horizontalMovement =
-              (
-                event.clientX /
-                window.innerWidth -
-                0.5
-              ) * 8;
-
-            const verticalMovement =
-              (
-                event.clientY /
-                window.innerHeight -
-                0.5
-              ) * 8;
-
-            solarArtwork.style.transform =
-              `translate(
-                ${horizontalMovement}px,
-                ${verticalMovement}px
-              )`;
-          },
-          {
-            passive: true
-          }
-        );
-      }
-    }
-  </script>
 </body>
 </html>
