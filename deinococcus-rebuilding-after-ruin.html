@@ -1,0 +1,1584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta name="theme-color" content="#09060d">
+  <meta
+    name="description"
+    content="Conan the Bacterium: Rebuilding After Ruin — Jigyasa Verse Survival Record 06."
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="images/wonder-verse-moon-pencil-logo.png"
+  >
+
+  <title>Conan the Bacterium | Jigyasa Verse</title>
+
+  <style>
+    @import url(
+      'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap'
+    );
+
+    :root {
+      --red: #ff3b28;
+      --hot: #ff7654;
+      --violet: #b88cff;
+      --acid: #b9ff9a;
+      --bone: #f2e9df;
+      --ash: #a99cae;
+      --void: #06050a;
+      --read: 0%;
+      --dose: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--void);
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--bone);
+      background: #07060a;
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.82;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    ::selection {
+      background: #7d2030;
+      color: #fff;
+    }
+
+    #radiation-field {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          transparent 0 28%,
+          rgba(3, 2, 6, 0.54) 76%,
+          #030205 100%
+        );
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      opacity: 0.055;
+      pointer-events: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Reading progress */
+
+    .progress {
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .progress::after {
+      content: "";
+      display: block;
+      width: var(--read);
+      height: 100%;
+      background:
+        linear-gradient(
+          90deg,
+          #ff2d20,
+          #bd65ff,
+          #a8ff9a
+        );
+      box-shadow: 0 0 16px #ef4361;
+    }
+
+    /* Navigation and logo */
+
+    .nav {
+      position: absolute;
+      z-index: 5;
+      inset: 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px clamp(18px, 5vw, 72px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(241, 211, 145, 0.26);
+      border-radius: 50%;
+      background: rgba(8, 6, 13, 0.68);
+      box-shadow: 0 0 30px rgba(187, 99, 255, 0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-mark img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 7px rgba(255, 209, 105, 0.25));
+    }
+
+    .brand-copy {
+      display: grid;
+    }
+
+    .brand-copy strong {
+      color: #fff2d2;
+      font-size: 0.75rem;
+      letter-spacing: 0.17em;
+    }
+
+    .brand-copy small {
+      color: #e6c96c;
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+    }
+
+    .crumb {
+      color: #c4b6c9;
+      font: 0.5rem "DM Mono", monospace;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: end center;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 3, 9, 0.08),
+          #08060d 96%
+        ),
+        url("assets/conan-radiation-repair.png")
+        center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 10vw,
+          rgba(194, 126, 255, 0.025)
+          10vw calc(10vw + 1px)
+        );
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: min(1080px, 90vw);
+      padding: 19vh 0 10vh;
+    }
+
+    .record {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #d6b5ff;
+      font: 0.66rem "DM Mono", monospace;
+      letter-spacing: 0.23em;
+      text-transform: uppercase;
+    }
+
+    .record::before {
+      content: "";
+      width: 37px;
+      height: 1px;
+      background: #d6b5ff;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 28px 0 30px;
+      font:
+        500 clamp(4rem, 10.5vw, 8.7rem) / 0.8
+        "Cormorant Garamond",
+        serif;
+      letter-spacing: -0.055em;
+    }
+
+    h1 em {
+      display: block;
+      color: #ff5940;
+      font-weight: 400;
+      text-shadow: 0 0 40px rgba(255, 63, 40, 0.3);
+    }
+
+    .dek {
+      max-width: 670px;
+      color: #e1d5e2;
+      font:
+        400 clamp(1.3rem, 2.4vw, 1.95rem) / 1.36
+        "Cormorant Garamond",
+        serif;
+    }
+
+    .meta {
+      display: flex;
+      gap: 22px;
+      margin-top: 34px;
+      color: #b6a7b6;
+      font: 0.6rem "DM Mono", monospace;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Radiation dose meter */
+
+    .dose-meter {
+      position: fixed;
+      z-index: 20;
+      top: 50%;
+      right: 20px;
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      color: #a997ae;
+      font: 0.51rem "DM Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: translateY(-50%);
+    }
+
+    .dose-track {
+      position: relative;
+      width: 2px;
+      height: 160px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dose-fill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: calc(var(--dose) * 100%);
+      background:
+        linear-gradient(
+          #a7ff91,
+          #c863ff,
+          #ff4531
+        );
+      box-shadow: 0 0 12px #ce5fff;
+    }
+
+    .dose-number {
+      color: #d8c6dc;
+      writing-mode: vertical-rl;
+    }
+
+    /* Article */
+
+    article {
+      width: min(760px, calc(100% - 42px));
+      margin: auto;
+      padding: 16vh 0 8vh;
+    }
+
+    .opening {
+      margin: 0 0 12vh;
+      color: #fbf1eb;
+      font:
+        400 clamp(1.7rem, 3.3vw, 2.5rem) / 1.38
+        "Cormorant Garamond",
+        serif;
+    }
+
+    .opening::first-letter {
+      float: left;
+      margin: 15px 12px 0 0;
+      color: #ff503a;
+      font-size: 6rem;
+      line-height: 0.7;
+    }
+
+    .chapter {
+      margin-bottom: 17vh;
+      scroll-margin-top: 60px;
+    }
+
+    .chapter-tag {
+      color: #c292ff;
+      font: 0.59rem "DM Mono", monospace;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 15px 0 33px;
+      font:
+        500 clamp(2.6rem, 6vw, 4.7rem) / 0.96
+        "Cormorant Garamond",
+        serif;
+      letter-spacing: -0.035em;
+    }
+
+    p {
+      margin: 0 0 1.4em;
+      color: #d6cbd6;
+      font-size: 1.02rem;
+    }
+
+    .whisper {
+      margin: 58px 0;
+      padding: 27px 0 27px 30px;
+      border-left: 1px solid #bc68ef;
+      color: #f5e9f7;
+      font:
+        italic 400 clamp(1.45rem, 3vw, 2rem) / 1.38
+        "Cormorant Garamond",
+        serif;
+    }
+
+    .whisper small {
+      display: block;
+      margin-top: 15px;
+      color: #a998ac;
+      font: 400 0.56rem "DM Mono", monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .lab-readout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 11px;
+      margin: 48px 0;
+    }
+
+    .lab-cell {
+      padding: 22px 16px;
+      border: 1px solid rgba(194, 125, 255, 0.2);
+      background: rgba(21, 12, 28, 0.48);
+      backdrop-filter: blur(8px);
+    }
+
+    .lab-cell b {
+      display: block;
+      color: #f0daff;
+      font: 500 1.45rem "Cormorant Garamond", serif;
+    }
+
+    .lab-cell span {
+      color: #9e8ca5;
+      font: 0.61rem/1.55 "DM Mono", monospace;
+    }
+
+    .break {
+      position: relative;
+      height: 1px;
+      margin: 15vh 0;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #e54cff,
+          transparent
+        );
+      box-shadow: 0 0 22px #a33ee4;
+    }
+
+    .break::after {
+      content: "DNA // SIGNAL LOST";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      color: #a888b4;
+      font: 0.51rem "DM Mono", monospace;
+      letter-spacing: 0.19em;
+      white-space: nowrap;
+      transform: translateX(-50%);
+    }
+
+    /* Mars transition
+       position: relative keeps the mountain inside this section.
+    */
+
+    .mars-gate {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 92vh;
+      display: grid;
+      place-items: center;
+      padding: 14vh 24px 25vh;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 92%,
+          rgba(181, 48, 21, 0.7),
+          transparent 36%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(6, 5, 10, 0.15),
+          #160708
+        );
+    }
+
+    .mars-gate::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      bottom: -7%;
+      left: -10%;
+      width: 120%;
+      height: 26%;
+      border-radius: 50% 50% 0 0;
+      background:
+        linear-gradient(
+          #6e1d12,
+          #210909
+        );
+      box-shadow: 0 -35px 100px rgba(255, 67, 24, 0.3);
+    }
+
+    .mars-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 950px;
+    }
+
+    .mars-copy span {
+      color: #ff9478;
+      font: 0.61rem "DM Mono", monospace;
+      letter-spacing: 0.23em;
+      text-transform: uppercase;
+    }
+
+    .mars-copy h2 {
+      color: #fff0e7;
+      font-size: clamp(4rem, 10vw, 8.5rem);
+    }
+
+    .mars-copy p {
+      max-width: 700px;
+      margin: auto;
+      color: #dbb9b1;
+      font:
+        400 clamp(1.2rem, 2.4vw, 1.8rem) / 1.45
+        "Cormorant Garamond",
+        serif;
+    }
+
+    .mars-section {
+      background:
+        linear-gradient(
+          #160708,
+          #0c090f 65%,
+          #0d1511
+        );
+    }
+
+    .mars-section .chapter-tag {
+      color: #ff8265;
+    }
+
+    .mars-section article {
+      padding-top: 14vh;
+    }
+
+    .warning {
+      display: flex;
+      gap: 18px;
+      margin: 45px 0;
+      padding: 24px;
+      border: 1px solid rgba(255, 116, 80, 0.25);
+      background: rgba(53, 14, 10, 0.28);
+    }
+
+    .warning strong {
+      color: #ff795e;
+      font: 500 1rem "DM Mono", monospace;
+    }
+
+    .warning p {
+      margin: 0;
+      font-size: 0.83rem;
+    }
+
+    /* Genome reconstruction */
+
+    .repair-sequence {
+      margin: 52px 0;
+      counter-reset: repair;
+    }
+
+    .repair-step {
+      position: relative;
+      margin-left: 14px;
+      padding: 0 0 35px 42px;
+      border-left: 1px solid rgba(188, 119, 255, 0.28);
+    }
+
+    .repair-step::before {
+      counter-increment: repair;
+      content: "0" counter(repair);
+      position: absolute;
+      top: -4px;
+      left: -16px;
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #a866dc;
+      border-radius: 50%;
+      color: #e3beff;
+      background: #110b18;
+      font: 0.54rem "DM Mono", monospace;
+    }
+
+    .repair-step b {
+      color: #f1e7f3;
+      font: 500 1.2rem "Cormorant Garamond", serif;
+    }
+
+    .repair-step p {
+      margin: 5px 0 0;
+      font-size: 0.84rem;
+    }
+
+    /* Surya Lok ending */
+
+    .being {
+      margin-top: 17vh;
+      padding: clamp(36px, 7vw, 74px);
+      border: 1px solid rgba(184, 232, 164, 0.22);
+      border-radius: 50% 50% 24px 24px;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 28%,
+          rgba(121, 204, 120, 0.14),
+          transparent 58%
+        );
+    }
+
+    .closing-logo {
+      display: block;
+      width: clamp(105px, 15vw, 160px);
+      height: auto;
+      margin: 0 auto 24px;
+      object-fit: contain;
+      filter:
+        drop-shadow(
+          0 0 22px
+          rgba(235, 210, 116, 0.24)
+        );
+    }
+
+    .being .chapter-tag {
+      color: #a9d898;
+    }
+
+    .being h2 {
+      color: #f4f1e7;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+    }
+
+    .being p {
+      max-width: 610px;
+      margin: 0 auto 31px;
+      color: #cfdccb;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      padding: 13px 19px;
+      border-bottom: 1px solid #b9db9e;
+      color: #e6f0da;
+      font: 0.58rem "DM Mono", monospace;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.25s;
+    }
+
+    .cta:hover {
+      gap: 22px;
+      color: white;
+    }
+
+    /* Sources */
+
+    .sources {
+      margin-top: 13vh;
+      padding-top: 10vh;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sources h2 {
+      font-size: 2.6rem;
+    }
+
+    .sources ol {
+      padding-left: 19px;
+    }
+
+    .sources li {
+      margin-bottom: 12px;
+      color: #a79caa;
+      font-size: 0.76rem;
+    }
+
+    .sources a {
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 40px 6vw;
+      color: #849689;
+      background: #0d1511;
+      font: 0.55rem "DM Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 680px) {
+      .nav {
+        padding: 17px 18px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-mark img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.66rem;
+      }
+
+      .brand-copy small {
+        font-size: 0.5rem;
+      }
+
+      .crumb,
+      .dose-meter {
+        display: none;
+      }
+
+      .hero-copy {
+        padding-bottom: 12vh;
+      }
+
+      h1 {
+        font-size: clamp(3.9rem, 19vw, 6rem);
+      }
+
+      .meta {
+        flex-wrap: wrap;
+        gap: 10px 18px;
+      }
+
+      .lab-readout {
+        grid-template-columns: 1fr;
+      }
+
+      .chapter {
+        margin-bottom: 13vh;
+      }
+
+      .warning {
+        display: block;
+      }
+
+      .warning strong {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .mars-gate {
+        padding: 13vh 22px 23vh;
+      }
+
+      .mars-gate::after {
+        bottom: -5%;
+        height: 20%;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      #radiation-field {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"></div>
+
+  <canvas
+    id="radiation-field"
+    aria-hidden="true">
+  </canvas>
+
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <aside class="dose-meter" aria-hidden="true">
+    <span>Dose</span>
+
+    <div class="dose-track">
+      <div class="dose-fill"></div>
+    </div>
+
+    <span class="dose-number" id="dose-number">
+      0.0 kGy
+    </span>
+  </aside>
+
+  <header class="hero">
+    <nav class="nav" aria-label="Breadcrumb">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Jigyasa Verse home"
+      >
+        <span class="brand-mark">
+          <img
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt="Jigyasa Verse moon with pencils logo"
+          >
+        </span>
+
+        <span class="brand-copy">
+          <strong>JIGYASA VERSE</strong>
+          <small>Curiosity lives here</small>
+        </span>
+      </a>
+
+      <a
+        class="crumb"
+        href="truth-of-survival.html"
+      >
+        Surya Lok / The Truth of Survival
+      </a>
+    </nav>
+
+    <div class="hero-copy">
+      <div class="record">
+        Survival Record 06 · Radiation archive
+      </div>
+
+      <h1>
+        Conan the Bacterium:
+        <em>Rebuilding after ruin</em>
+      </h1>
+
+      <p class="dek">
+        Its genome can be broken into fragments. Its proteins can
+        stand inside a storm of radiation. Then, somehow, the pieces
+        find one another again.
+      </p>
+
+      <div class="meta">
+        <span>8 minute read</span>
+        <span>Deinococcus radiodurans</span>
+        <span>Scroll to irradiate</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <p class="opening">
+        In 1956, scientists tried to make canned meat lifeless.
+        They exposed it to gamma radiation strong enough, they
+        believed, to sterilise anything inside. The meat spoiled
+        anyway. Somewhere in that sealed metal darkness, a tiny
+        red bacterium had survived the impossible.
+      </p>
+
+      <section class="chapter" id="found">
+        <span class="chapter-tag">
+          01 — The thing in the can
+        </span>
+
+        <h2>
+          It was discovered by refusing to die.
+        </h2>
+
+        <p>
+          The organism was eventually named
+          <em>Deinococcus radiodurans</em>—roughly, “the strange
+          berry that withstands radiation.” Under a microscope its
+          spherical cells often gather in pairs or groups of four,
+          pigmented in shades of red and orange. The nickname came
+          later: Conan the Bacterium.
+        </p>
+
+        <p>
+          The name makes it sound like an armoured creature. That is
+          slightly misleading. Conan is not untouched by radiation.
+          Ionising radiation can split its DNA into many fragments,
+          generate aggressive free radicals and damage the proteins
+          a cell requires to function. The remarkable part happens
+          after the injury.
+        </p>
+
+        <blockquote class="whisper">
+          Conan survives not because nothing breaks, but because the
+          machinery of repair remains capable of remembering what the
+          fragments once were.
+
+          <small>
+            Specimen note // damage is not disappearance
+          </small>
+        </blockquote>
+      </section>
+
+      <section class="chapter" id="radiation">
+        <span class="chapter-tag">
+          02 — The invisible storm
+        </span>
+
+        <h2>
+          Radiation does not burn like fire.
+        </h2>
+
+        <p>
+          Ionising radiation carries enough energy to remove
+          electrons from atoms. Inside a cell, it can strike
+          biological molecules directly or split water into reactive
+          chemical fragments. These free radicals damage membranes,
+          oxidise proteins and cut DNA.
+        </p>
+
+        <p>
+          Humans are vulnerable to doses measured in only a few
+          grays. <em>D. radiodurans</em> can survive radiation
+          exposures thousands of times greater. Exact survival
+          depends on conditions and how survival is measured; its
+          endurance is extraordinary, not limitless.
+        </p>
+
+        <div class="lab-readout">
+          <div class="lab-cell">
+            <b>DNA</b>
+            <span>
+              Broken into fragments by ionising radiation
+            </span>
+          </div>
+
+          <div class="lab-cell">
+            <b>Proteins</b>
+            <span>
+              Protected well enough to keep repair functioning
+            </span>
+          </div>
+
+          <div class="lab-cell">
+            <b>Cell</b>
+            <span>
+              Reassembles a viable genome and resumes growth
+            </span>
+          </div>
+        </div>
+
+        <p>
+          This distinction matters. DNA is the archive, but proteins
+          are the workers who read, copy and repair it. Protect the
+          archive while losing all the workers and recovery still
+          fails.
+        </p>
+      </section>
+
+      <div class="break" aria-hidden="true"></div>
+
+      <section class="chapter" id="shield">
+        <span class="chapter-tag">
+          03 — The manganese shield
+        </span>
+
+        <h2>
+          Its secret may be less armour than chemistry.
+        </h2>
+
+        <p>
+          Conan accumulates unusual manganese-based antioxidant
+          complexes. These complexes help neutralise reactive
+          molecules before they can disable essential proteins.
+          The DNA may still fracture, but the enzymes required to
+          rebuild it remain available.
+        </p>
+
+        <p>
+          Recent work examined a three-part protective complex
+          involving manganese ions, phosphate and small peptides.
+          Researchers used this biological clue to build a synthetic
+          manganese-dependent peptide, or MDP. In laboratory studies,
+          the combination proved more powerful than its components
+          alone.
+        </p>
+
+        <p>
+          That does not yet make it a medicine. A substance that
+          protects molecules in an experiment must still be tested
+          for safety, delivery, dosage and effectiveness inside the
+          human body. But Conan has provided a design principle:
+          preserve the repair system, and survival may remain possible
+          after enormous molecular damage.
+        </p>
+      </section>
+
+      <section class="chapter" id="reassembly">
+        <span class="chapter-tag">
+          04 — Reconstruction protocol
+        </span>
+
+        <h2>
+          A genome returns from pieces.
+        </h2>
+
+        <p>
+          <em>D. radiodurans</em> keeps multiple copies of its genome.
+          Those overlapping copies give the cell reference material
+          when radiation cuts one version apart. Repair pathways align
+          shared sequences, extend surviving fragments and join them
+          into complete chromosomes.
+        </p>
+
+        <div class="repair-sequence">
+          <div class="repair-step">
+            <b>The archive shatters.</b>
+
+            <p>
+              Radiation produces many DNA breaks rather than one
+              clean wound.
+            </p>
+          </div>
+
+          <div class="repair-step">
+            <b>Overlaps are found.</b>
+
+            <p>
+              Redundant genome copies provide matching sequences and
+              templates.
+            </p>
+          </div>
+
+          <div class="repair-step">
+            <b>Fragments extend.</b>
+
+            <p>
+              Repair enzymes rebuild missing stretches using intact
+              information.
+            </p>
+          </div>
+
+          <div class="repair-step">
+            <b>The circles close.</b>
+
+            <p>
+              Chromosomes are reassembled and ordinary cellular life
+              can resume.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          Why would an Earth bacterium evolve a skill that seems
+          designed for reactors and space? One leading idea is that
+          radiation resistance is a by-product of surviving extreme
+          drying. Desiccation also damages DNA and requires excellent
+          repair. Evolution did not prepare Conan for Mars. It may
+          have prepared it for thirst—and accidentally made it ready
+          for the stars.
+        </p>
+      </section>
+    </article>
+
+    <section
+      class="mars-gate"
+      aria-label="Transition to Mars"
+    >
+      <div class="mars-copy">
+        <span>
+          Signal origin uncertain · Mars simulation
+        </span>
+
+        <h2>
+          Under the red planet
+        </h2>
+
+        <p>
+          If life once appeared on Mars, could something remain below
+          its irradiated surface—not awake, perhaps, but not entirely
+          erased?
+        </p>
+      </div>
+    </section>
+
+    <section class="mars-section">
+      <article>
+        <section class="chapter" id="mars">
+          <span class="chapter-tag">
+            05 — A future buried underground
+          </span>
+
+          <h2>
+            Mars changes the meaning of waiting.
+          </h2>
+
+          <p>
+            The Martian surface is dry, cold and exposed to
+            ultraviolet light, solar particles and cosmic radiation.
+            Researchers have recreated parts of those conditions on
+            Earth by freezing and drying microorganisms before
+            exposing them to protons and gamma rays.
+          </p>
+
+          <p>
+            Models based on these experiments suggest that dormant
+            <em>D. radiodurans</em>, if shielded about ten metres
+            beneath Mars, could potentially persist for roughly
+            280 million years. Near the surface, survival would be
+            dramatically shorter. This is not evidence that Conan
+            lives on Mars. It shows that if comparable life once
+            existed, deep burial could preserve cells or biological
+            traces far longer than we once assumed.
+          </p>
+
+          <div class="warning">
+            <strong>CAUTION</strong>
+
+            <p>
+              “Could survive Martian conditions” is not the same as
+              “came from Mars,” “currently lives on Mars,” or “will
+              grow on the Martian surface.” The experiment tests
+              limits; it does not announce extraterrestrial life.
+            </p>
+          </div>
+
+          <p>
+            The result also sharpens a practical problem. Spacecraft
+            can carry Earth microbes. A hardy organism introduced by
+            us could confuse future searches for native life.
+            Planetary protection therefore moves in both directions:
+            protect Mars from our biology, and handle returned samples
+            without careless assumptions.
+          </p>
+        </section>
+
+        <section class="chapter" id="astronauts">
+          <span class="chapter-tag">
+            06 — Borrowing protection
+          </span>
+
+          <h2>
+            What Conan might teach an astronaut.
+          </h2>
+
+          <p>
+            Beyond Earth’s protective magnetic field, astronauts face
+            long exposure to galactic cosmic rays and bursts of solar
+            particles. A mission to Mars could last well over a year,
+            making radiation one of the central biological problems
+            of deep-space travel.
+          </p>
+
+          <p>
+            Researchers are investigating whether chemistry inspired
+            by Conan’s manganese antioxidants could help protect human
+            tissues or preserve biological materials. Possible
+            applications have been discussed for astronauts, radiation
+            emergencies and medicine on Earth. These ideas remain
+            experimental; they complement rather than replace physical
+            shielding, mission planning and radiation monitoring.
+          </p>
+
+          <p>
+            Still, the connection is profound. A microbe first noticed
+            in spoiled meat may help us think about protecting humans
+            between planets. The smallest survivor on Earth becomes a
+            teacher for the largest journey we have imagined.
+          </p>
+        </section>
+
+        <section class="being" id="being">
+          <img
+            class="closing-logo"
+            src="images/wonder-verse-moon-pencil-logo.png"
+            alt="Jigyasa Verse moon with pencils logo"
+          >
+
+          <span class="chapter-tag">
+            Return to Surya Lok — Being
+          </span>
+
+          <h2>
+            Being is not the absence of breaking.
+          </h2>
+
+          <p>
+            In Surya Lok, Being is what remains true whether or not
+            we are watching. Conan offers a difficult version of that
+            truth. An organism can be torn into molecular disorder
+            and still retain the instructions, chemistry and
+            relationships required to become whole again.
+          </p>
+
+          <p>
+            Perhaps survival is not a body that never changes.
+            Perhaps it is a pattern capable of finding itself
+            after ruin.
+          </p>
+
+          <a
+            class="cta"
+            href="surya-lok.html#being"
+          >
+            Continue through Surya Lok
+            <span aria-hidden="true">→</span>
+          </a>
+        </section>
+
+        <section
+          class="sources"
+          aria-labelledby="sources-title"
+        >
+          <span class="chapter-tag">
+            Reading trail
+          </span>
+
+          <h2 id="sources-title">
+            Sources &amp; further signals
+          </h2>
+
+          <ol>
+            <li>
+              <a
+                href="https://www.npr.org/2024/12/13/1219032799/bacteria-radiation-resistant-conan-bacterium"
+                target="_blank"
+                rel="noopener"
+              >
+                NPR, “Scientists unlock the secret of a bacterium
+                that can withstand radiation.”
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.forbes.com/sites/scotttravers/2025/03/24/meet-conan-the-bacterium-a-microbe-that-defies-radiation-acid-and-even-martian-extremes/"
+                target="_blank"
+                rel="noopener"
+              >
+                Forbes, “Meet ‘Conan the Bacterium.’”
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.zmescience.com/science/news-science/conan-bacterium-extreme-radiation-survival-updates/"
+                target="_blank"
+                rel="noopener"
+              >
+                ZME Science, radiation-survival research update.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.livescience.com/health/radiation-resistant-extremophile-microbe-dubbed-conan-the-bacterium-inspires-new-antioxidant"
+                target="_blank"
+                rel="noopener"
+              >
+                Live Science, “Conan the Bacterium inspires new
+                antioxidant.”
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.smithsonianmag.com/smart-news/conan-the-bacterium-has-what-it-takes-to-survive-on-mars-180981019/"
+                target="_blank"
+                rel="noopener"
+              >
+                Smithsonian Magazine, “Conan the Bacterium Has What
+                It Takes to Survive on Mars.”
+              </a>
+            </li>
+          </ol>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>
+      Jigyasa Verse · The Truth of Survival
+    </span>
+
+    <span>
+      Record 06 // transmission continues
+    </span>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const canvas = document.getElementById("radiation-field");
+      const context = canvas.getContext("2d");
+      const doseText = document.getElementById("dose-number");
+
+      const reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      let width = 0;
+      let height = 0;
+      let pixelRatio = 1;
+      let progress = 0;
+      let time = 0;
+      let particles = [];
+      let fragments = [];
+
+      const random = (minimum, maximum) => {
+        return minimum + Math.random() * (maximum - minimum);
+      };
+
+      function resizeCanvas() {
+        pixelRatio = Math.min(devicePixelRatio || 1, 2);
+        width = innerWidth;
+        height = innerHeight;
+
+        canvas.width = width * pixelRatio;
+        canvas.height = height * pixelRatio;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+
+        context.setTransform(
+          pixelRatio,
+          0,
+          0,
+          pixelRatio,
+          0,
+          0
+        );
+
+        particles = Array.from(
+          { length: 110 },
+          () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            velocity: random(0.2, 1.5),
+            size: random(0.3, 1.8),
+            alpha: random(0.12, 0.65),
+            direction: Math.random() > 0.5 ? 1 : -1
+          })
+        );
+
+        fragments = Array.from(
+          { length: 24 },
+          (_, index) => ({
+            angle: index / 24 * Math.PI * 2,
+            radius: random(35, 145)
+          })
+        );
+      }
+
+      function drawHelix(intensity, repair) {
+        const centreX = width * 0.5;
+        const centreY = height * 0.51;
+        const span = Math.min(width * 0.36, 300);
+        const alpha = 0.08 + 0.22 * intensity;
+
+        context.lineWidth = 1.2;
+
+        for (let index = -16; index <= 16; index++) {
+          const y = centreY + index * 9;
+
+          const firstX =
+            centreX +
+            Math.sin(index * 0.68 + time * 0.001) *
+            span *
+            0.18;
+
+          const secondX =
+            centreX -
+            Math.sin(index * 0.68 + time * 0.001) *
+            span *
+            0.18;
+
+          const broken =
+            intensity > 0.45 &&
+            Math.abs(index) % 5 === 0 &&
+            repair < 0.65;
+
+          context.strokeStyle =
+            `rgba(204, 129, 255, ${
+              alpha * (broken ? 0.2 : 1)
+            })`;
+
+          if (!broken) {
+            context.beginPath();
+            context.moveTo(firstX, y);
+            context.lineTo(secondX, y);
+            context.stroke();
+          }
+
+          context.fillStyle =
+            `rgba(255, 83, 58, ${alpha + 0.08})`;
+
+          context.beginPath();
+          context.arc(firstX, y, 2.2, 0, Math.PI * 2);
+          context.fill();
+
+          context.beginPath();
+          context.arc(secondX, y, 2.2, 0, Math.PI * 2);
+          context.fill();
+        }
+      }
+
+      function drawRadiation() {
+        time = performance.now();
+
+        const radiation = Math.min(1, progress / 0.5);
+        const mars = Math.max(0, (progress - 0.48) / 0.3);
+        const repair = Math.max(0, (progress - 0.7) / 0.22);
+
+        context.clearRect(0, 0, width, height);
+
+        const background = context.createRadialGradient(
+          width * 0.5,
+          height * 0.5,
+          0,
+          width * 0.5,
+          height * 0.5,
+          Math.max(width, height) * 0.65
+        );
+
+        if (mars > 0) {
+          background.addColorStop(
+            0,
+            `rgba(86, 18, 10, ${0.14 * mars})`
+          );
+        } else {
+          background.addColorStop(
+            0,
+            `rgba(
+              80,
+              19,
+              102,
+              ${0.1 + 0.12 * radiation}
+            )`
+          );
+        }
+
+        background.addColorStop(
+          1,
+          "rgba(3, 2, 6, 0.22)"
+        );
+
+        context.fillStyle = background;
+        context.fillRect(0, 0, width, height);
+
+        drawHelix(radiation, repair);
+
+        particles.forEach((particle) => {
+          particle.y -=
+            particle.velocity * (0.35 + radiation * 2);
+
+          particle.x +=
+            Math.sin(time * 0.001 + particle.y) *
+            0.14 *
+            particle.direction;
+
+          if (particle.y < 0) {
+            particle.y = height;
+            particle.x = Math.random() * width;
+          }
+
+          const particleColour =
+            mars > 0
+              ? "255, 92, 52"
+              : "203, 127, 255";
+
+          context.fillStyle =
+            `rgba(
+              ${particleColour},
+              ${particle.alpha * (0.25 + radiation * 0.75)}
+            )`;
+
+          context.beginPath();
+          context.arc(
+            particle.x,
+            particle.y,
+            particle.size,
+            0,
+            Math.PI * 2
+          );
+          context.fill();
+        });
+
+        if (repair > 0) {
+          fragments.forEach((fragment) => {
+            const radius =
+              fragment.radius * (1 - repair * 0.82);
+
+            const x =
+              width * 0.5 +
+              Math.cos(
+                fragment.angle + time * 0.0003
+              ) *
+              radius;
+
+            const y =
+              height * 0.51 +
+              Math.sin(
+                fragment.angle + time * 0.0003
+              ) *
+              radius *
+              0.55;
+
+            context.fillStyle =
+              `rgba(
+                171,
+                255,
+                150,
+                ${repair * 0.45}
+              )`;
+
+            context.beginPath();
+            context.arc(
+              x,
+              y,
+              1.8,
+              0,
+              Math.PI * 2
+            );
+            context.fill();
+          });
+        }
+
+        requestAnimationFrame(drawRadiation);
+      }
+
+      function updateScrollProgress() {
+        const maximumScroll =
+          document.documentElement.scrollHeight -
+          innerHeight;
+
+        progress =
+          maximumScroll
+            ? scrollY / maximumScroll
+            : 0;
+
+        root.style.setProperty(
+          "--read",
+          (progress * 100).toFixed(2) + "%"
+        );
+
+        root.style.setProperty(
+          "--dose",
+          Math.min(1, progress / 0.62)
+        );
+
+        doseText.textContent =
+          (Math.min(15, progress * 22)).toFixed(1) +
+          " kGy";
+      }
+
+      addEventListener(
+        "resize",
+        resizeCanvas,
+        { passive: true }
+      );
+
+      addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+      );
+
+      resizeCanvas();
+      updateScrollProgress();
+
+      if (!reducedMotion) {
+        drawRadiation();
+      }
+    })();
+  </script>
+</body>
+</html>
