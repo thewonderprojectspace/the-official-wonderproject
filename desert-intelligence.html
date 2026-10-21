@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160907">
+  <meta name="description" content="A JigyasaVerse field scene exploring the water budgets and survival strategies of desert life.">
+  <title>The Mathematics of Every Drop | JigyasaVerse</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Oswald:wght@400;500;600;700&display=swap');
+    :root{--night:#160907;--night2:#23100c;--panel:#291713;--panel-light:#351d16;--sand:#f3e7d1;--muted:#c7ad98;--ember:#ed5b32;--orange:#f48a43;--gold:#f4ca78;--water:#75d5e5;--line:rgba(255,231,209,.16);--progress:0%;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--night)}body{margin:0;overflow-x:hidden;background:radial-gradient(ellipse at 50% -12%,#69301d 0,transparent 38rem),var(--night);color:var(--sand);font:16px/1.7 'DM Sans',sans-serif}body::after{position:fixed;inset:0;z-index:40;pointer-events:none;content:"";opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    a{color:inherit}button,input{font:inherit}.read-line{position:fixed;z-index:60;top:0;left:0;width:var(--progress);height:3px;background:linear-gradient(90deg,var(--gold),var(--ember));box-shadow:0 0 14px #ed5b3277}.skip{position:fixed;z-index:90;top:-4rem;left:1rem;background:white;color:#211;padding:.7rem 1rem}.skip:focus{top:1rem}.wrap{width:min(var(--max),calc(100% - 2.5rem));margin:auto}.mono,.eyebrow,.label,.number,.smallcaps{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.13em}.masthead{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}.brand-icon{width:42px;height:42px;border:1px solid #e9ab645c;border-radius:50%;display:grid;place-items:center;color:var(--gold);font:600 .64rem/1.1 'DM Mono',monospace;text-align:center;box-shadow:0 0 24px #ed5b3222}.brand-text strong{display:block;font:600 .8rem 'DM Mono',monospace;letter-spacing:.17em}.brand-text small{display:block;color:#b79a81;font:.51rem 'DM Mono',monospace;letter-spacing:.12em}.mast-nav{display:flex;gap:1.25rem;font:.58rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.mast-nav a{text-decoration:none;color:#c9b4a1}.mast-nav a:hover{color:var(--gold)}
+    .hero{position:relative;isolation:isolate;min-height:87vh;display:grid;align-items:center;padding:5rem 0 4rem;overflow:hidden}.hero::before{position:absolute;z-index:-2;inset:0;content:"";background:radial-gradient(ellipse at 82% 58%,#bf5725 0,#622817 17%,#2c130f 43%,transparent 70%)}.hero::after{position:absolute;z-index:-1;inset:0;content:"";opacity:.22;background:repeating-linear-gradient(90deg,transparent 0 10vw,#f4ca780a 10vw calc(10vw + 1px)),linear-gradient(180deg,transparent 70%,var(--night))}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,5vw,5rem);align-items:center}.eyebrow{color:var(--gold);font-size:.62rem}.hero h1{max-width:730px;margin:1.25rem 0 1.1rem;font:600 clamp(4.2rem,10vw,8.6rem)/.84 'Oswald',sans-serif;text-transform:uppercase;letter-spacing:-.04em}.hero h1 em{display:block;color:var(--ember);font-style:normal}.hero-copy{max-width:650px;color:#ebd8c4;font:clamp(1.15rem,2.4vw,1.6rem)/1.5 'Literata',serif}.hero-meta{display:flex;flex-wrap:wrap;gap:.8rem 1.25rem;margin-top:1.6rem;color:#c3a891;font:.55rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.hero-meta span+span::before{content:'✦';color:var(--ember);padding-right:1.25rem}
+    .scene{position:relative;min-height:440px;overflow:hidden;border:1px solid #f4ca7838;background:linear-gradient(170deg,#442116 0%,#21100e 58%,#100807 100%);box-shadow:0 28px 90px #0008}.scene-sky{position:absolute;inset:0;background:radial-gradient(circle at 76% 22%,#ffd889 0 2px,transparent 3px),radial-gradient(circle at 62% 14%,#fff0ce 0 1px,transparent 2px),radial-gradient(circle at 35% 21%,#fff0ce 0 1px,transparent 2px),radial-gradient(circle at 91% 33%,#fff0ce 0 1px,transparent 2px),radial-gradient(ellipse at 50% 63%,#ab5129 0,#552819 35%,transparent 72%)}.moon{position:absolute;top:34px;right:50px;width:58px;height:58px;border-radius:50%;background:#f4d69c;box-shadow:0 0 30px #f4d69c66}.dune{position:absolute;right:-10%;bottom:0;width:120%;height:42%;border-radius:50% 50% 0 0/30% 30% 0 0;background:linear-gradient(160deg,#b9562c,#5e2819 66%);transform:rotate(-5deg)}.dune.back{right:34%;bottom:6%;width:95%;height:28%;background:linear-gradient(160deg,#82402a,#3b1c16 75%);transform:rotate(8deg)}.dune.front{right:-20%;bottom:-16%;height:29%;background:#24110e;transform:rotate(-2deg)}.scene-title{position:absolute;z-index:3;top:18px;left:18px;color:#f2dbbc;font:.52rem 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}.meeting-orbit{position:absolute;z-index:4;left:50%;top:53%;width:290px;height:290px;border:1px solid #f4ca7850;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 18px #f4ca7808,0 0 0 36px #f4ca7805}.meeting-orbit::before{content:"";position:absolute;inset:32px;border:1px dashed #f4ca7844;border-radius:50%;animation:orbit 30s linear infinite}@keyframes orbit{to{transform:rotate(360deg)}}.drop-core{position:absolute;left:50%;top:50%;width:100px;height:120px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 25px #61d7f488)}.drop-core svg{width:100%;height:100%}.scene-creature{position:absolute;z-index:5;display:grid;place-items:center;width:70px;height:70px;border:1px solid #f4ca7850;border-radius:50%;background:#1e100ce8;box-shadow:0 0 22px #f4ca7818;font-size:2.2rem}.scene-creature span{position:absolute;top:72px;color:#f2d8b6;font:.47rem 'DM Mono',monospace;white-space:nowrap;letter-spacing:.08em;text-transform:uppercase}.cr-mouse{left:8%;top:27%}.cr-beetle{right:9%;top:24%}.cr-lizard{left:13%;bottom:14%}.cr-cactus{right:11%;bottom:16%}.scene-caption{position:absolute;z-index:6;left:14px;right:14px;bottom:12px;display:flex;justify-content:space-between;gap:1rem;color:#d7b999;font:.48rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.scene-caption b{color:var(--water);font-weight:500}.hero-quote{max-width:670px;margin:2.3rem 0 0;padding-left:1rem;border-left:2px solid var(--water);color:#a9e5eb;font:italic clamp(1.25rem,2.5vw,1.8rem)/1.4 'Literata',serif}
+    .opening{max-width:830px;padding:7rem 0 4.5rem}.opening p{color:#d4c0ac}.opening .lead{color:#f3e7d1;font:clamp(1.55rem,3.2vw,2.25rem)/1.42 'Literata',serif}.opening strong{color:white}.question{margin:3rem 0 0;padding:1.3rem 1.4rem;border-top:1px solid #ed5b3266;border-bottom:1px solid #ed5b3266;color:var(--gold);font:italic clamp(1.5rem,3vw,2.4rem)/1.25 'Literata',serif;text-align:center}
+    .meeting{padding:2rem 0 7rem}.section-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.7rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}.section-head h2{margin:0;font:500 clamp(2.2rem,5vw,3.5rem)/.95 'Oswald',sans-serif;text-transform:uppercase}.section-head p{margin:0;color:#c4a78c;font:.55rem 'DM Mono',monospace;letter-spacing:.11em;text-transform:uppercase}.meeting-intro{max-width:720px;margin-bottom:2rem;color:#cfb9a3;font:1.05rem/1.7 'Literata',serif}.council{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,.95fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:1rem;padding:1.25rem;border:1px solid #f4ca7833;background:radial-gradient(ellipse at 50% 50%,#70311d 0,#351a13 43%,#1d100d 100%);overflow:hidden}.council::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;background:radial-gradient(circle at 12% 24%,#ffd98c 0 1px,transparent 2px),radial-gradient(circle at 79% 16%,#ffd98c 0 1px,transparent 2px),radial-gradient(circle at 91% 77%,#ffd98c 0 1px,transparent 2px),radial-gradient(circle at 21% 84%,#ffd98c 0 1px,transparent 2px)}.member{position:relative;z-index:1;display:flex;align-items:flex-start;gap:.85rem;padding:1rem;border:1px solid #f4ca7825;background:#1c100edb;backdrop-filter:blur(8px)}.member:nth-child(1){grid-column:1;grid-row:1}.member:nth-child(2){grid-column:3;grid-row:1}.member:nth-child(3){grid-column:1;grid-row:2}.member:nth-child(4){grid-column:3;grid-row:2}.avatar{flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;background:#f4ca7816;font-size:1.75rem}.member h3{margin:0 0 .3rem;color:var(--gold);font:500 1.12rem 'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em}.member p{margin:0;color:#cfbba8;font-size:.8rem;line-height:1.55}.member .tag{display:block;margin-top:.6rem;color:#ef8255;font-size:.45rem}.ledger{position:relative;z-index:2;grid-column:2;grid-row:1 / span 2;align-self:center;padding:1.3rem;border:1px solid #75d5e577;background:linear-gradient(160deg,#1b3535f2,#122123f4);box-shadow:0 0 45px #75d5e52b,0 20px 55px #0008}.ledger-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.8rem;border-bottom:1px solid #75d5e544}.ledger-head b{color:#b1f0f2;font:500 .62rem 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase}.ledger-head span{color:#87cbd1;font:.48rem 'DM Mono',monospace;text-transform:uppercase}.equation{margin:1rem 0 .7rem;color:#e0faf6;font:500 1.18rem/1.35 'Literata',serif;text-align:center}.equation em{color:var(--water);font-style:normal}.ledger-list{display:grid;gap:.5rem}.ledger-line{display:flex;justify-content:space-between;gap:.8rem;padding:.47rem .55rem;background:#ffffff08;color:#cfdfd8;font-size:.73rem}.ledger-line strong{color:#e0f6f1;font:500 .7rem 'DM Mono',monospace}.ledger-line.total{border-top:1px solid #75d5e555;background:#75d5e510;color:#baf1ec;font-weight:700}.ledger-foot{margin:.75rem 0 0;color:#a8cec9;font:.56rem/1.5 'DM Mono',monospace;text-align:center}.roundtable{position:absolute;z-index:0;left:50%;top:50%;width:360px;height:360px;border:1px solid #f4ca7818;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 28px #f4ca7805,0 0 0 58px #f4ca7804;pointer-events:none}
+    .voices{padding:0 0 6rem}.voices-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.voice{position:relative;padding:1.35rem 1.45rem;border-top:2px solid var(--voice,#ed5b32);background:linear-gradient(135deg,#2a1712,#1b100e)}.voice-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}.voice-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid #ffffff22;border-radius:50%;background:#ffffff08;font-size:1.45rem}.voice h3{margin:0;color:var(--gold);font:500 1.18rem 'Oswald',sans-serif;text-transform:uppercase}.voice .role{display:block;color:#b99579;font:.48rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.voice blockquote{margin:0;color:#f0dfca;font:1.08rem/1.6 'Literata',serif}.voice blockquote strong{color:var(--water);font-weight:500}.voice .science{margin:.8rem 0 0;color:#bda692;font-size:.76rem}.voice .source-num{position:absolute;top:1rem;right:1rem;color:#b58b6b;font:.5rem 'DM Mono',monospace}
+    .math-lab{padding:5rem 0 6rem;background:linear-gradient(180deg,transparent,#21100d 10%,#21100d 90%,transparent)}.lab-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}.lab-copy h2{margin:.5rem 0 1rem;font:500 clamp(2.6rem,6vw,4.4rem)/.95 'Oswald',sans-serif;text-transform:uppercase}.lab-copy p{color:#d0bba6}.formula{margin:1.4rem 0;padding:1rem;border-left:2px solid var(--water);background:#75d5e50b;color:#d9f6f1;font:1rem/1.55 'Literata',serif}.formula small{display:block;margin-top:.55rem;color:#a8c5bd;font:.54rem/1.6 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em}.calculator{padding:1.4rem;border:1px solid #f4ca7833;background:#1b100e;box-shadow:0 18px 60px #0005}.calc-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.1rem}.calc-top h3{margin:0;font:500 1.4rem 'Oswald',sans-serif;text-transform:uppercase}.calc-top span{color:#bd9f84;font:.5rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}.calc-group h4{margin:0 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid var(--line);color:var(--gold);font:.55rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.range-row{margin:.9rem 0}.range-label{display:flex;justify-content:space-between;gap:.5rem;margin-bottom:.3rem;color:#d6c3ad;font-size:.73rem}.range-label output{color:#a9e9e9;font:.62rem 'DM Mono',monospace}.range-row input{width:100%;height:4px;accent-color:var(--water);cursor:pointer}.sum-line{display:flex;justify-content:space-between;gap:.5rem;margin-top:1rem;padding:.75rem .8rem;border:1px solid #75d5e54a;background:#75d5e50b;color:#c6ece7;font:.58rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.05em}.sum-line strong{font-size:.76rem}.balance{margin-top:.8rem;padding:.9rem 1rem;background:#f4ca780d;border-left:3px solid var(--gold);color:#d9c9b5;font:.76rem/1.55 'DM Sans',sans-serif}.balance strong{display:block;color:var(--gold);font:.58rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem}.balance.good{border-color:#7ce0bd;background:#7ce0bd0c}.balance.good strong{color:#9be8cf}.balance.warn{border-color:var(--ember);background:#ed5b320c}.balance.warn strong{color:#ff9778}.calc-note{margin:.8rem 0 0;color:#a99581;font:.57rem/1.6 'DM Mono',monospace}.reset{margin-top:1rem;padding:.55rem .75rem;border:1px solid #f4ca7855;background:transparent;color:var(--gold);font:.55rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.reset:hover{background:#f4ca7812}
+    .principles{padding:5rem 0}.principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.principle{padding:1.3rem;border:1px solid var(--line);background:#ffffff05}.principle .number{color:var(--ember);font-size:.55rem}.principle h3{margin:.65rem 0 .4rem;color:var(--gold);font:500 1.3rem 'Oswald',sans-serif;text-transform:uppercase}.principle p{margin:0;color:#c8b29d;font-size:.82rem}.truth{max-width:850px;margin:3rem auto 0;padding:1.5rem 1.7rem;border:1px solid #ed5b3259;background:linear-gradient(120deg,#ed5b3210,#f4ca7808);color:#e7d5c0;font:1.05rem/1.7 'Literata',serif;text-align:center}.truth strong{color:var(--gold)}
+    .ending{position:relative;padding:5.5rem 0 6rem;text-align:center;overflow:hidden}.ending::before{position:absolute;inset:0;z-index:-1;content:"";background:radial-gradient(ellipse at center,#8d3a1d44,transparent 67%)}.ending h2{max-width:900px;margin:1rem auto;font:500 clamp(2.8rem,7vw,5.8rem)/.94 'Oswald',sans-serif;text-transform:uppercase}.ending h2 em{color:var(--water);font-style:normal}.ending p{max-width:750px;margin:1.2rem auto;color:#d8c2aa;font:1.12rem/1.7 'Literata',serif}.ending .signoff{margin-top:2rem;color:var(--gold);font:.54rem 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}.sources{padding:2rem 0 3rem;border-top:1px solid var(--line);color:#a99682;font-size:.75rem}.sources summary{cursor:pointer;color:#e2d3bf;font:.56rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.sources ol{padding-left:1.2rem}.sources li{margin:.65rem 0}.sources a{color:#d4c1aa}.source-note{margin-top:1.2rem;padding:.9rem 1rem;border-left:2px solid var(--ember);background:#ed5b320b;color:#c9b29b;font:.68rem/1.6 'DM Mono',monospace}.footer{padding:1.2rem 0 2rem;border-top:1px solid var(--line);color:#927b67;font:.52rem 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.footer .wrap{display:flex;justify-content:space-between;gap:1rem}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero{min-height:0;padding:4rem 0}.hero-visual{max-width:700px;width:100%;margin:0 auto}.council{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto}.ledger{grid-column:1 / -1;grid-row:1;justify-self:center;width:min(520px,100%)}.member:nth-child(1){grid-column:1;grid-row:2}.member:nth-child(2){grid-column:2;grid-row:2}.member:nth-child(3){grid-column:1;grid-row:3}.member:nth-child(4){grid-column:2;grid-row:3}.roundtable{display:none}.lab-grid{grid-template-columns:1fr}.principle-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 1.4rem))}.mast-nav{display:none}.hero h1{font-size:4.3rem}.scene{min-height:360px}.meeting-orbit{width:230px;height:230px}.drop-core{width:76px;height:96px}.scene-creature{width:58px;height:58px;font-size:1.8rem}.scene-creature span{top:59px;font-size:.39rem}.opening{padding:4.5rem 0 3.5rem}.section-head{display:block}.section-head p{margin-top:.7rem}.voices-grid{grid-template-columns:1fr}.council{grid-template-columns:1fr;gap:.7rem;padding:.7rem}.ledger{grid-column:1;grid-row:1}.member:nth-child(1),.member:nth-child(2),.member:nth-child(3),.member:nth-child(4){grid-column:1;grid-row:auto}.member{padding:.85rem}.calc-cols{grid-template-columns:1fr}.principle-grid{grid-template-columns:1fr}.footer .wrap{flex-direction:column}.hero-meta{font-size:.49rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the water budget</a>
+  <div class="read-line" aria-hidden="true"></div>
+  <header class="wrap masthead">
+    <a class="brand" href="#top" aria-label="JigyasaVerse, Truth of Survival"><span class="brand-icon">JV<br>07</span><span class="brand-text"><strong>JIGYASA VERSE</strong><small>THE RED EDITION · TRUTH OF SURVIVAL</small></span></a>
+    <nav class="mast-nav" aria-label="Article sections"><a href="#council">The council</a><a href="#math">Water ledger</a><a href="#sources">Source desk</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Truth of Survival · Record 07 · A continent without mercy</div>
+          <h1>The mathematics<br>of <em>every drop</em></h1>
+          <p class="hero-copy">Under a desert moon, life calls a meeting. The question on the table is not how to find more water. It is how to make each possible source, each moment and each movement count.</p>
+          <div class="hero-meta"><span>Field scene · Australia and beyond</span><span>Water budget in session</span><span>7 minute read</span></div>
+          <blockquote class="hero-quote">“What becomes possible when attention replaces abundance?”</blockquote>
+        </div>
+        <div class="scene" role="img" aria-label="A night-time desert council gathered around a glowing blue water droplet, with a hopping mouse, beetle, thorny devil and cactus represented around the meeting.">
+          <div class="scene-sky"></div><div class="moon"></div><div class="dune back"></div><div class="dune"></div><div class="dune front"></div>
+          <div class="scene-title">Night council · water budget meeting</div>
+          <div class="meeting-orbit"><div class="drop-core"><svg viewBox="0 0 100 130" aria-hidden="true"><defs><linearGradient id="drop" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#d4ffff"/><stop offset=".35" stop-color="#75d5e5"/><stop offset="1" stop-color="#217e98"/></linearGradient></defs><path d="M50 4C39 25 12 55 12 82a38 38 0 0 0 76 0C88 55 61 25 50 4Z" fill="url(#drop)" stroke="#d8ffff" stroke-width="2"/><path d="M33 79c1-14 8-25 18-39" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5" opacity=".65"/><circle cx="61" cy="93" r="4" fill="#efffff" opacity=".8"/></svg></div></div>
+          <div class="scene-creature cr-mouse" aria-hidden="true">🐭<span>Spinifex mouse</span></div><div class="scene-creature cr-beetle" aria-hidden="true">🪲<span>Fog beetle</span></div><div class="scene-creature cr-lizard" aria-hidden="true">🦎<span>Thorny devil</span></div><div class="scene-creature cr-cactus" aria-hidden="true">🌵<span>Cactus</span></div>
+          <div class="scene-caption"><span>Every source enters the ledger</span><b>01 drop · accounted</b></div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap opening">
+      <p class="eyebrow">The meeting begins</p>
+      <p class="lead">The desert looks empty until the room fills.</p>
+      <p>A <strong>mulgara</strong> arrives with the moisture in its prey. A <strong>Spinifex hopping mouse</strong> brings seeds and roots to the table. A beetle describes gathering fog. A thorny devil traces a path from its skin to its mouth. Nearby, a cactus waits for condensation that may or may not come.</p>
+      <p>They do not all live in the same desert. This is a meeting across drylands—a way to compare different strategies. Each one asks the same practical question: where can water enter, and where can it leave?</p>
+      <div class="question">No one here is given an endless supply.<br>Every drop has a route.</div>
+    </section>
+    <section class="wrap meeting" id="council">
+      <div class="section-head"><h2>The water budget meeting</h2><p>Inputs · losses · what remains</p></div>
+      <p class="meeting-intro">The ledger glows in the centre of the council. Around it, each resident offers a different kind of intelligence: collect what is available, take water in with food, avoid the hottest hours, and limit avoidable loss.</p>
+      <div class="council" aria-label="Water budget council with desert animals and plants around an example water ledger">
+        <div class="roundtable"></div>
+        <article class="member"><div class="avatar" aria-hidden="true">🐭</div><div><h3>Spinifex hopping mouse</h3><p>Seeds, roots and succulent plants can bring moisture in with food. Night activity and shelter reduce exposure to daytime heat.</p><span class="tag">Input · timing · shelter</span></div></article>
+        <article class="member"><div class="avatar" aria-hidden="true">🪲</div><div><h3>Desert beetle</h3><p>Some beetles harvest droplets from fog on their body surface. A tiny change in surface texture can make water easier to gather.</p><span class="tag">Input · atmospheric moisture</span></div></article>
+        <article class="member"><div class="avatar" aria-hidden="true">🦎</div><div><h3>Thorny devil</h3><p>Small channels between its scales can guide water across the skin toward the mouth. The body becomes part of the collection system.</p><span class="tag">Input · capillary transport</span></div></article>
+        <article class="member"><div class="avatar" aria-hidden="true">🌵</div><div><h3>Cactus</h3><p>Some cactus structures collect and move condensed moisture. Water capture depends on the plant, surface and local conditions.</p><span class="tag">Input · surface design</span></div></article>
+        <div class="ledger">
+          <div class="ledger-head"><b>Tonight’s sample ledger</b><span>Illustrative units</span></div>
+          <p class="equation"><em>Water in</em> = losses + change in stores</p>
+          <div class="ledger-list">
+            <div class="ledger-line"><span>Food + environmental moisture</span><strong>38 units</strong></div>
+            <div class="ledger-line"><span>Metabolic water</span><strong>12 units</strong></div>
+            <div class="ledger-line total"><span>Total water in</span><strong>50 units</strong></div>
+            <div class="ledger-line"><span>Urine + faeces</span><strong>11 units</strong></div>
+            <div class="ledger-line"><span>Breath + skin evaporation</span><strong>11 units</strong></div>
+            <div class="ledger-line"><span>Change in body water stores</span><strong>+28 units</strong></div>
+            <div class="ledger-line total"><span>Accounted for</span><strong>50 units</strong></div>
+          </div>
+          <p class="ledger-foot">A teaching model, not measured data for any one species.</p>
+        </div>
+      </div>
+    </section>
+    <section class="wrap voices" aria-labelledby="voices-title">
+      <div class="section-head"><h2 id="voices-title">Around the table</h2><p>Four strategies · One dry world</p></div>
+      <div class="voices-grid">
+        <article class="voice" style="--voice:#e9824b"><span class="source-num">01</span><div class="voice-top"><span class="voice-icon" aria-hidden="true">🐾</span><div><h3>Mulgara</h3><span class="role">Water arrives with prey</span></div></div><blockquote>“I may not need to visit a waterhole. <strong>Moisture comes in with food</strong>; efficient kidneys help limit what leaves.”</blockquote><p class="science">Australian Wildlife Conservancy describes mulgaras as able to meet their water needs from food, supported by efficient kidneys.</p></article>
+        <article class="voice" style="--voice:#d5aa56"><span class="source-num">02</span><div class="voice-top"><span class="voice-icon" aria-hidden="true">🐭</span><div><h3>Spinifex hopping mouse</h3><span class="role">The food is also a water source</span></div></div><blockquote>“Seeds, roots and succulent plants are more than calories. <strong>Look for the water carried inside the meal.</strong>”</blockquote><p class="science">Some Australian desert mammals obtain moisture from foods and can survive without drinking, though strategies differ among species.</p></article>
+        <article class="voice" style="--voice:#81cbd3"><span class="source-num">03</span><div class="voice-top"><span class="voice-icon" aria-hidden="true">🪲</span><div><h3>Fog beetle</h3><span class="role">A collector at the surface</span></div></div><blockquote>“When fog passes through, my surface can help droplets gather. <strong>Collection is a design problem.</strong>”</blockquote><p class="science">The desert-water review describes water capture and transport in beetles, cacti, lizards and snakes; it also notes the designs differ by organism.</p></article>
+        <article class="voice" style="--voice:#91d4d7"><span class="source-num">04</span><div class="voice-top"><span class="voice-icon" aria-hidden="true">🦎</span><div><h3>Thorny devil</h3><span class="role">A living channel system</span></div></div><blockquote>“A drop touches my skin. Tiny channels between scales guide it along. <strong>Water does not have to stay where it lands.</strong>”</blockquote><p class="science">Research on the Australian thorny devil describes capillary channels that move water across the skin toward the mouth.</p></article>
+      </div>
+    </section>
+    <section class="math-lab" id="math">
+      <div class="wrap lab-grid">
+        <div class="lab-copy">
+          <p class="eyebrow">Open the ledger</p>
+          <h2>Can the numbers balance?</h2>
+          <p>Try changing the values. This simple model treats one organism over one chosen time period. Add the water entering, then account for water leaving and any change in the body’s water stores.</p>
+          <div class="formula">Inputs = urine + faeces + evaporation + change in body water stores<small>Positive storage means body water increased; negative storage means the organism used some stored water.</small></div>
+          <p>In real research, each value depends on the species, diet, temperature, activity and time period. The slider values are made for learning the arithmetic; they are not species measurements.</p>
+        </div>
+        <div class="calculator" aria-label="Interactive illustrative water budget calculator">
+          <div class="calc-top"><h3>Build a water budget</h3><span>Abstract units · adjust the sliders</span></div>
+          <div class="calc-cols">
+            <div class="calc-group">
+              <h4>Water entering</h4>
+              <div class="range-row"><label class="range-label" for="food"><span>Moisture in food</span><output id="food-out">22</output></label><input id="food" type="range" min="0" max="50" value="22" data-group="in"></div>
+              <div class="range-row"><label class="range-label" for="drink"><span>Drinking water</span><output id="drink-out">5</output></label><input id="drink" type="range" min="0" max="50" value="5" data-group="in"></div>
+              <div class="range-row"><label class="range-label" for="dew"><span>Rain, dew or fog</span><output id="dew-out">8</output></label><input id="dew" type="range" min="0" max="50" value="8" data-group="in"></div>
+              <div class="range-row"><label class="range-label" for="metabolic"><span>Metabolic water</span><output id="metabolic-out">15</output></label><input id="metabolic" type="range" min="0" max="50" value="15" data-group="in"></div>
+            </div>
+            <div class="calc-group">
+              <h4>Water accounted for</h4>
+              <div class="range-row"><label class="range-label" for="urine"><span>Urine</span><output id="urine-out">8</output></label><input id="urine" type="range" min="0" max="50" value="8" data-group="out"></div>
+              <div class="range-row"><label class="range-label" for="faeces"><span>Faeces</span><output id="faeces-out">3</output></label><input id="faeces" type="range" min="0" max="50" value="3" data-group="out"></div>
+              <div class="range-row"><label class="range-label" for="evaporation"><span>Breath + skin loss</span><output id="evaporation-out">11</output></label><input id="evaporation" type="range" min="0" max="50" value="11" data-group="out"></div>
+              <div class="range-row"><label class="range-label" for="storage"><span>Change in body stores</span><output id="storage-out">28</output></label><input id="storage" type="range" min="-20" max="40" value="28" data-group="out"></div>
+            </div>
+          </div>
+          <div class="sum-line"><span>Total in <strong id="input-total">50</strong></span><span>Accounted for <strong id="accounted-total">50</strong></span><span>Difference <strong id="difference">0</strong></span></div>
+          <div class="balance good" id="balance" role="status" aria-live="polite"><strong id="balance-title">Balanced</strong><span id="balance-copy">Every input is accounted for in this simplified example.</span></div>
+          <p class="calc-note">If the difference is not zero, the model is incomplete or out of balance. In a real organism, stored water can rise or fall, and some flows may not have been measured.</p>
+          <button class="reset" type="button" id="reset">Reset example</button>
+        </div>
+      </div>
+    </section>
+    <section class="wrap principles">
+      <div class="section-head"><h2>How the desert saves</h2><p>Attention is an adaptation</p></div>
+      <div class="principle-grid">
+        <article class="principle"><span class="number">01 / Find</span><h3>Count hidden sources</h3><p>Food moisture, dew, fog and metabolic water may all contribute. Different species rely on different combinations.</p></article>
+        <article class="principle"><span class="number">02 / Avoid</span><h3>Spend less in the heat</h3><p>Nocturnal activity, burrows and torpor can reduce heat exposure and conserve water and energy.</p></article>
+        <article class="principle"><span class="number">03 / Retain</span><h3>Limit what leaves</h3><p>Efficient kidneys and concentrated urine help some mammals reduce water loss. Every adaptation has limits and trade-offs.</p></article>
+      </div>
+      <div class="truth">“Nothing gets wasted” is the meeting’s shorthand—not a claim that organisms lose no water. <strong>Urine, faeces and evaporation are real outflows.</strong> The intelligence is in meeting needs while reducing avoidable loss and making use of scarce sources.</div>
+    </section>
+    <section class="ending">
+      <div class="wrap">
+        <p class="eyebrow">The ledger closes</p>
+        <h2>Survival is not abundance.<br>It is <em>attention.</em></h2>
+        <p>The desert does not promise a full cup. It offers brief rain, a trace of moisture, a meal, a cool burrow and the right moment to move. Life persists by noticing what is available—and by making each exchange count.</p>
+        <div class="signoff">Jigyasa Verse · The Red Edition · Truth of Survival</div>
+      </div>
+    </section>
+    <section class="wrap sources" id="sources">
+      <details>
+        <summary>Source desk · further reading</summary>
+        <ol>
+          <li><a href="https://www.australianwildlife.org/news-and-resources/news/surviving-the-sands-australias-desert-dwelling-mammals" target="_blank" rel="noopener">Australian Wildlife Conservancy — “Surviving the sands: Australia’s desert-dwelling mammals”</a>. Used for the Australian mammal examples: food moisture, kidneys, nocturnal behaviour, burrows and torpor.</li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9830228/" target="_blank" rel="noopener">He, Zhang &amp; Dong — “Survival in desert: Extreme water adaptations and bioinspired structural designs,” iScience (2023)</a>. Review of water capture and transport in desert beetles, cacti, lizards and snakes.</li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5627102/" target="_blank" rel="noopener">Comanns et al. — “Adsorption and movement of water by skin of the Australian thorny devil,” Royal Society Open Science (2017)</a>. Research on water movement through the lizard’s skin channels.</li>
+          <li><a href="https://www.mdpi.com/2409-9287/7/1/18" target="_blank" rel="noopener">Kershnar &amp; Tooley — “The Mathematics of Desert: Merit, Fit, and Well-Being,” Philosophies (2022)</a>. The word “desert” here is a philosophical term about deservingness; this paper is not a source for ecological water budgets.</li>
+        </ol>
+      </details>
+      <p class="source-note">The meeting and character dialogue are a creative teaching device. The calculator uses illustrative values only. Real water budgets vary by species, environment, diet and measurement period.</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><span>Jigyasa Verse · The Red Edition</span><span>Record 07 · The Mathematics of Every Drop</span></div></footer>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const sliders = [...document.querySelectorAll('.calculator input[type="range"]')];
+      const initial = Object.fromEntries(sliders.map(input => [input.id, input.value]));
+      const sum = group => sliders.filter(input => input.dataset.group === group).reduce((total, input) => total + Number(input.value), 0);
+      function updateBudget() {
+        sliders.forEach(input => {
+          document.getElementById(`${input.id}-out`).value = input.value;
+        });
+        const incoming = sum('in');
+        const accounted = sum('out');
+        const difference = incoming - accounted;
+        document.getElementById('input-total').textContent = incoming;
+        document.getElementById('accounted-total').textContent = accounted;
+        document.getElementById('difference').textContent = difference > 0 ? `+${difference}` : difference;
+        const status = document.getElementById('balance');
+        const title = document.getElementById('balance-title');
+        const copy = document.getElementById('balance-copy');
+        status.classList.remove('good', 'warn');
+        if (difference === 0) {
+          status.classList.add('good');
+          title.textContent = 'Balanced';
+          copy.textContent = 'Every input is accounted for in this simplified example.';
+        } else if (difference > 0) {
+          status.classList.add('warn');
+          title.textContent = `${difference} units still unassigned`;
+          copy.textContent = 'The model has more water entering than accounted for. Increase storage or add another measured outflow.';
+        } else {
+          status.classList.add('warn');
+          title.textContent = `${Math.abs(difference)} extra units accounted for`;
+          copy.textContent = 'The model accounts for more water than entered. Check the values, or consider whether stored body water is being used.';
+        }
+      }
+      sliders.forEach(input => input.addEventListener('input', updateBudget));
+      document.getElementById('reset').addEventListener('click', () => {
+        sliders.forEach(input => input.value = initial[input.id]);
+        updateBudget();
+      });
+      function updateReading() {
+        const max = root.scrollHeight - innerHeight;
+        root.style.setProperty('--progress', `${max > 0 ? (scrollY / max) * 100 : 0}%`);
+      }
+      addEventListener('scroll', updateReading, { passive: true });
+      addEventListener('resize', updateReading);
+      updateBudget();
+      updateReading();
+    })();
+  </script>
+</body>
+</html>
